@@ -7,8 +7,7 @@ import torch.nn
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 import numpy as np
-import d2l
-import d2l.torch
+from d2l import torch as d2l
 
 
 class Classifier(metaclass=ABCMeta):
@@ -47,18 +46,21 @@ class SklearnClassifier(Classifier):
         return self.model.score(X, y, sample_weight=sample_weight)
 
 
-class TorchClassifier(Classifier):  # @device just CPU
+class TorchClassifier(Classifier):  # @save
+
     def __init__(self, model: torch.nn.Module, labels, model_name,
+                 dataset_class,
                  num_epochs: int,
                  criterion: torch.nn.modules.loss._Loss,
                  optimizer: torch.optim.Optimizer,
                  batch_size: int):
         super().__init__('torch', model, labels, model_name)
+        self.dataset_class = dataset_class
         self.num_epochs = num_epochs
         self.criterion = criterion
         self.optimizer = optimizer
         self.batch_size = batch_size
-        self.devices = d2l.torch.try_all_gpus()
+        self.devices = d2l.try_all_gpus()
         self.model_param_path = f'{self.model_name}_params.pth'
         self.model_path = f'{self.model_name}_model.pth'
 
@@ -84,14 +86,14 @@ class TorchClassifier(Classifier):  # @device just CPU
                 loss, trainer,
                 num_epochs,
                 devices):
-        timer, num_batches = d2l.torch.Timer(), len(train_iter)
-        animator = d2l.torch.Animator(xlabel='epoch',
-                                      xlim=[1, num_epochs], ylim=[0, 1],
-                                      legend=['train loss', 'train acc', 'test acc'])
+        timer, num_batches = d2l.Timer(), len(train_iter)
+        animator = d2l.Animator(xlabel='epoch',
+                                xlim=[1, num_epochs], ylim=[0, 1],
+                                legend=['train loss', 'train acc', 'test acc'])
         model = torch.nn.DataParallel(model, device_ids=devices).to(devices[0])
         for epoch in range(num_epochs):
             # 4个维度：储存训练损失，训练准确度，实例数，特点数
-            metric = d2l.torch.Accumulator(4)
+            metric = d2l.Accumulator(4)
             for i, (features, labels) in enumerate(train_iter):
                 timer.start()
                 l, acc = TorchClassifier.__train_batch(
@@ -102,7 +104,7 @@ class TorchClassifier(Classifier):  # @device just CPU
                     animator.add(epoch + (i + 1) / num_batches,
                                  (metric[0] / metric[2], metric[1] / metric[3],
                                   None))
-            test_acc = d2l.torch.evaluate_accuracy_gpu(model, test_iter)
+            test_acc = d2l.evaluate_accuracy_gpu(model, test_iter)
             animator.add(epoch + 1, (None, None, test_acc))
         print(f'loss {metric[0] / metric[2]:.3f}, train acc '
               f'{metric[1] / metric[3]:.3f}, test acc {test_acc:.3f}')
@@ -116,8 +118,8 @@ class TorchClassifier(Classifier):  # @device just CPU
 
     def fit(self, X_train, y_train, X_test=None, y_test=None):
         self.model.apply(TorchClassifier.init_weights)
-        train_iter = DataLoader(TensorDataset(X_train, y_train))
-        test_iter = DataLoader(TensorDataset(X_test, y_test))
+        train_iter = DataLoader(self.dataset_class(X_train, y_train))
+        test_iter = DataLoader(self.dataset_class(X_test, y_test))
         TorchClassifier.__train(self.model,
                                 train_iter, test_iter,
                                 self.criterion,
@@ -131,8 +133,9 @@ class TorchClassifier(Classifier):  # @device just CPU
     def __infer(model, X, devices):
         with torch.no_grad():
             X = X.to(devices[0])
-            label = torch.squeeze(model(X))
-        return label.cpu().numpy()[0]
+            digits = torch.squeeze(model(X))
+        label = digits.cpu().numpy().argmax()
+        return label
 
     def predict(self, X_eval):
         if not os.path.exists(self.model_param_path):
@@ -141,6 +144,9 @@ class TorchClassifier(Classifier):  # @device just CPU
         self.model.to(self.devices[0])
         preds = []
         for X in X_eval:
-            pred = TorchClassifier.__infer(self.model, X)
+            pred = TorchClassifier.__infer(self.model, X, self.devices)
             preds.append(pred)
         return preds
+
+    def score(self, X, y, sample_weight=None):
+        pass

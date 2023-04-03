@@ -31,6 +31,7 @@ class Webpage:
         self.all_texts = None
         self.node_texts = None
         self.node_infos = None
+        self.url_priority = self.get_url_priority()
 
     @classmethod
     def clean_spaces(cls, text):
@@ -73,9 +74,13 @@ class Webpage:
             if not t.find_next():
                 return
             recursive(t.find_next())
+
         recursive(self.soup.html)
         self.node_infos = infos
         return infos
+
+    def get_url_priority(self):
+        return 1 if 'edu' in self.url else 0
 
 
 if __name__ == '__main__':
