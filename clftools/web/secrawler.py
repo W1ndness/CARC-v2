@@ -53,4 +53,4 @@ class SearchEngineCrawler:
 if __name__ == '__main__':
     crawler = SearchEngineCrawler('bing')
     pages = asyncio.run(crawler.crawl_by_keyword('nlp', 20))
-    print(len(pages))
+    print(pages)

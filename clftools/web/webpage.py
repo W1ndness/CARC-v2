@@ -7,10 +7,14 @@ import requests
 from bs4 import BeautifulSoup
 from lxml import etree
 from lxml.html.clean import Cleaner
+import networkx as nx
+import matplotlib.pyplot as plt
 
 
 class Webpage:
-    def __init__(self, url):
+    def __init__(self, url=None, html_doc=None):
+        if url is None and html_doc is None:
+            raise ValueError("Webpage.__init__() has no argument to initialize.")
         self.url = url
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
@@ -21,8 +25,12 @@ class Webpage:
             "Cookie": 'BAIDUID=1A6EF88EE4929836C761FB37A1303522:FG=1; BIDUPSID=1A6EF88EE4929836C761FB37A1303522; PSTM=1603199415; H_PS_PSSID=32755_1459_32877_7567_31253_32706_32231_7517_32117_32845_32761_26350; BD_UPN=13314752; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; delPer=0; BD_CK_SAM=1; PSINO=5; H_PS_645EC=e4bcE4275G3zWcvH2pxYG6R32rBxb5yuey8xcioaej8V7IaJRfEq4xp4iCo; COOKIE_SESSION=45294_0_2_5_0_2_0_1_0_2_3_0_0_0_0_0_0_0_1603244844%7C5%230_0_1603244844%7C1; BA_HECTOR=2gal2h2ga58025f1vs1fov5vf0k'
         }
         self.encoding = 'utf-8'
-        self.response = self.__get_response()
-        self.html = self.response.text
+        if self.url is not None and html_doc is None:
+            self.response = self.__get_response()
+            self.html = self.response.text
+        else:
+            self.response = None
+            self.html = html_doc
         cleaner = Cleaner()
         self.html = cleaner.clean_html(self.html)
         self.dom = etree.HTML(self.html)
@@ -31,7 +39,11 @@ class Webpage:
         self.all_texts = None
         self.node_texts = None
         self.node_infos = None
-        self.url_priority = self.get_url_priority()
+
+        if self.url is not None:
+            self.url_priority = self.get_url_priority()
+            
+        self.dom_as_graph = self.to_graph()
 
     @classmethod
     def clean_spaces(cls, text):
@@ -57,6 +69,7 @@ class Webpage:
     def get_node_texts(self) -> List[str]:
         texts = []
         for elem in self.soup.descendants:
+            # num_nodes += 1
             if isinstance(elem, bs4.NavigableString):
                 texts.append(elem.get_text())
             else:
@@ -82,10 +95,45 @@ class Webpage:
     def get_url_priority(self):
         return 1 if 'edu' in self.url else 0
 
+    def to_graph(self):
+        """Converts a BeautifulSoup DOM with tag IDs to a networkx graph
+
+        Args:
+            soup: The BeautifulSoup DOM object.
+
+        Return:
+            A networkx graph
+        """
+        g = nx.DiGraph()
+        index_to_tag = {}
+        tag_to_index = {}
+        for idx, tag in enumerate(self.soup.find_all()):
+            index_to_tag[idx] = tag
+            tag_to_index[tag] = idx
+            try: # tag.flattened_feats is what?
+                feat = tag.flattened_feats
+            except:
+                feat = None
+            # print(feat)
+            g.add_node(idx, feat=feat)
+
+        for n in g.nodes:
+            tag = index_to_tag[n]
+            if type(tag.parent) == bs4.element.Tag:
+                g.add_edge(n, tag_to_index[tag.parent], type_id=0) # edge: parent->node
+            for c in tag.children:
+                if type(c) == bs4.element.Tag:
+                    g.add_edge(n, tag_to_index[c], type_id=1) # edge: node->child
+        return g
 
 if __name__ == '__main__':
-    url = "https://www.jianshu.com/p/ff37a8524e72"
-    webpage = Webpage(url)
+    # url = "https://www.cs.tsinghua.edu.cn/info/1111/3486.htm"
+    # webpage = Webpage(url=url)
+    path = '../../test/datasets/ki-04/articles/1233368667.html'
+    with open(path, 'r') as fp:
+        s = fp.read()
+    webpage = Webpage(html_doc=s)
     print(webpage.get_all_texts())
-    print(webpage.get_node_texts())
-    print(webpage.get_node_infos())
+    # print(webpage.get_node_texts())
+    # print(webpage.get_node_infos())
+    print(webpage.to_graph())
