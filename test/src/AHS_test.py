@@ -32,8 +32,8 @@ if __name__ == '__main__':
 
     num_cores = multiprocessing.cpu_count()
     print("CPU Cores:", num_cores)
-    print("Usage:", num_cores // 2)
-    Parallel(n_jobs=num_cores // 2)(delayed(process)(doc) for doc in html_docs)
+    pool = multiprocessing.Pool()
+    pool.map(process, html_docs)
     num_nodes_of_webpages = np.array(num_nodes_of_webpages)
     num_edges_of_webpages = np.array(num_edges_of_webpages)
     print(num_nodes_of_webpages.mean(), num_edges_of_webpages.mean())

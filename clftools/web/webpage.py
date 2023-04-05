@@ -42,7 +42,7 @@ class Webpage:
 
         if self.url is not None:
             self.url_priority = self.get_url_priority()
-            
+
         self.dom_as_graph = self.to_graph()
 
     @classmethod
@@ -110,21 +110,18 @@ class Webpage:
         for idx, tag in enumerate(self.soup.find_all()):
             index_to_tag[idx] = tag
             tag_to_index[tag] = idx
-            try: # tag.flattened_feats is what?
-                feat = tag.flattened_feats
-            except:
-                feat = None
-            # print(feat)
-            g.add_node(idx, feat=feat)
+            g.add_node(idx)
 
         for n in g.nodes:
+            # edges always as parent->child
             tag = index_to_tag[n]
             if type(tag.parent) == bs4.element.Tag:
-                g.add_edge(n, tag_to_index[tag.parent], type_id=0) # edge: parent->node
+                g.add_edge(n, tag_to_index[tag.parent], type_id=0)  # edge: parent->node
             for c in tag.children:
                 if type(c) == bs4.element.Tag:
-                    g.add_edge(n, tag_to_index[c], type_id=1) # edge: node->child
+                    g.add_edge(n, tag_to_index[c], type_id=1)  # edge: node->child
         return g
+
 
 if __name__ == '__main__':
     # url = "https://www.cs.tsinghua.edu.cn/info/1111/3486.htm"

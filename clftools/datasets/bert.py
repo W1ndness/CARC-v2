@@ -1,11 +1,12 @@
 from torch.utils.data import Dataset
 from transformers import AutoTokenizer
 
+
 class BertDataset(Dataset):
     def __init__(self,
                  maxlen,
                  sentences, labels=None, with_labels=True,
-                 model: str="bert-base-chinese"):
+                 model: str = "bert-base-chinese"):
         self.tokenizer = AutoTokenizer.from_pretrained(model)
         self.with_labels = with_labels
         self.sentences = sentences
