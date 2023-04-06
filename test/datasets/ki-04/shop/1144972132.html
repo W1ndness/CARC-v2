@@ -1,0 +1,318 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1144972132.html
+	</FILE>
+	<URL>
+		http://www.amiga-anywhere.com/
+	</URL>
+	<TITLE>
+		Amiga-Anywhere Home
+	</TITLE>
+	<GENRE>
+		shop
+	</GENRE>
+	<PLAINTEXT>
+ Amiga-Anywhere Home Netscape or Internet Explorer 4.0 or higher is required. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Amiga-Anywhere Home</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="/shop_pub.css">
+
+
+<style>
+#divNewsCont {
+	position:absolute;
+	width:383;
+	height:80;
+	left:18;
+	top:123;
+	visibility:hidden;
+	z-index: 250;
+	clip: rect(   )
+}
+#divNews {
+	position:absolute;
+	z-index: 250;
+}
+</style>
+
+<!-- always begin by loading in the dynapi.js file -->
+<script language="javascript" type="text/javascript" src="/dynapi/src/dynapi.js"></script>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+function AM_helpWindow() {
+  var helpWin = window.open("http://www.amiga-anywhere.com/newhelp.php", "", "HEIGHT=300,WIDTH=600,scrollbars,resizable");
+}
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		blogin_over = newImage("/grafx/newde0321/blogin-over.gif");
+		blogin_down = newImage("/grafx/newde0321/blogin-down.gif");
+		blogin_up = newImage("/grafx/newde0321/blogin-up.gif");
+		bsignup_over = newImage("/grafx/newde0321/bsignup-over.gif");
+		bsignup_down = newImage("/grafx/newde0321/bsignup-down.gif");
+		bhome_over = newImage("/grafx/newde0321/bhome-over.gif");
+		bhome_down = newImage("/grafx/newde0321/bhome-down.gif");
+		bnews_over = newImage("/grafx/newde0321/bnews-over.gif");
+		bnews_down = newImage("/grafx/newde0321/bnews-down.gif");
+		bshop_over = newImage("/grafx/newde0321/bshop-over.gif");
+		bshop_down = newImage("/grafx/newde0321/bshop-down.gif");
+		bmclips_over = newImage("/grafx/newde0321/bmclips-over.gif");
+		bmclips_down = newImage("/grafx/newde0321/bmclips-down.gif");
+		bcommunity_over = newImage("/grafx/newde0321/bcommunity-over.gif");
+		bcommunity_down = newImage("/grafx/newde0321/bcommunity-down.gif");
+		bproducts_over = newImage("/grafx/newde0321/bproducts-over.gif");
+		bproducts_down = newImage("/grafx/newde0321/bproducts-down.gif");
+		bdevelopers_over = newImage("/grafx/newde0321/bdevelopers-over.gif");
+		bdevelopers_down = newImage("/grafx/newde0321/bdevelopers-down.gif");
+		preloadFlag = true;
+	}
+}
+
+function myInitNews() {
+	nNews=new Array()
+	nNews[0]=new Array()
+	nNews[0]["text"]=time 
+	nNews[0]["link"]="http://www.amiga-anywhere.com/"
+
+	
+		nNews[1]=new Array()
+		nNews[1]["text"]= "Bill McEwen comments on Thendic-Amiga Litigation"
+		nNews[1]["link"]= "news/"
+	
+		nNews[2]=new Array()
+		nNews[2]["text"]= "The latest Amiga Games Pack #2 review has been posted by Quantum Leap"
+		nNews[2]["link"]= "news/"
+	
+		nNews[3]=new Array()
+		nNews[3]["text"]= "GetBoinged reviews Amiga Games Pocket Pak #2 for Pocket PC. It is currently available from CompUSA's online store and retail chains."
+		nNews[3]["link"]= "news/"
+	
+		nNews[4]=new Array()
+		nNews[4]["text"]= "Amiga is happy to announce that 2 of our products have hit CompUSA. The products can also be found on the CompUSA website."
+		nNews[4]["link"]= "news/"
+	
+		nNews[5]=new Array()
+		nNews[5]["text"]= "Amiga comments on delay of Club Amiga T-shirts."
+		nNews[5]["link"]= "news/"
+	
+}
+
+function myInitMBAct() {
+	nMBAct=new Array()
+	
+		nMBAct[0]=new Array()
+		nMBAct[0]["text"]= "tutoials for Toaster 4.2"
+		nMBAct[0]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=108&forum=1&0"
+	
+		nMBAct[1]=new Array()
+		nMBAct[1]["text"]= "Your Website and the Opera Browser"
+		nMBAct[1]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=107&forum=4&0"
+	
+		nMBAct[2]=new Array()
+		nMBAct[2]["text"]= "Amiga games on the PC?"
+		nMBAct[2]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=104&forum=1&0"
+	
+		nMBAct[3]=new Array()
+		nMBAct[3]["text"]= "NCSCAUG Interview with Jim Wingard of Omniscience"
+		nMBAct[3]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=105&forum=4&0"
+	
+		nMBAct[4]=new Array()
+		nMBAct[4]["text"]= "Why is it so difficult to become a developer!!!"
+		nMBAct[4]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=74&forum=4&0"
+	
+		nMBAct[5]=new Array()
+		nMBAct[5]["text"]= "This game Rocks"
+		nMBAct[5]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=97&forum=5&0"
+	
+		nMBAct[6]=new Array()
+		nMBAct[6]["text"]= "The revenge of the bouncing ball"
+		nMBAct[6]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=88&forum=1&0"
+	
+		nMBAct[7]=new Array()
+		nMBAct[7]["text"]= "First Question updated"
+		nMBAct[7]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=93&forum=1&0"
+	
+		nMBAct[8]=new Array()
+		nMBAct[8]["text"]= "New content for Amiga Anywhere player?"
+		nMBAct[8]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=92&forum=1&0"
+	
+		nMBAct[9]=new Array()
+		nMBAct[9]["text"]= "advantages & xbox ?!"
+		nMBAct[9]["link"]= "http://www.amiga-anywhere.com/forums/viewtopic.php?topic=27&forum=1&0"
+	
+}
+
+DynAPI.setLibraryPath("/dynapi/src/lib/"); // set basepath URL of DynAPI files
+DynAPI.include("dynapi.api.*"); // include all dynapi/api/ files
+
+DynAPI.onLoad = function() { // create dynlayer after page is loaded
+
+	preloadImages();
+
+	MBActLayer = new DynLayer();
+	MBActLayer.setSize(401, 71);
+	MBActLayer.moveTo(8, 196); // x,y
+	MBActLayer.setHTML('<table><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=108&amp;forum=1&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=108&forum=1&0">tutoials for Toaster 4.2</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=107&amp;forum=4&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=107&forum=4&0">Your Website and the Opera Browser</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=104&amp;forum=1&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=104&forum=1&0">Amiga games on the PC?</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=105&amp;forum=4&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=105&forum=4&0">NCSCAUG Interview with Jim Wingard of Omniscience</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=74&amp;forum=4&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=74&forum=4&0">Why is it so difficult to become a developer!!!</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=97&amp;forum=5&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=97&forum=5&0">This game Rocks</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=88&amp;forum=1&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=88&forum=1&0">The revenge of the bouncing ball</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=93&amp;forum=1&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=93&forum=1&0">First Question updated</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=92&amp;forum=1&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=92&forum=1&0">New content for Amiga Anywhere player?</A></td></tr><tr class="tblbody"><td width="10" nowrap class="prodlinkwh"><A HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=27&amp;forum=1&amp;0" class="prodlinkwh" TARGET="_top"><IMG SRC="/grafx/newde/mbbullet.gif" WIDTH="10" HEIGHT="10" BORDER="0" ALT="Click to read post"></A></td><td width="301" class="tblbody"><A CLASS="whitelink" HREF="http://www.amiga-anywhere.com/forums/viewtopic.php?topic=27&forum=1&0">advantages &amp; xbox ?!</A></td></tr></table>'); // x,y
+	DynAPI.document.addChild(MBActLayer);
+
+	NewAppsLayer = new DynLayer();
+	NewAppsLayer.setSize(246, 112);
+	NewAppsLayer.moveTo(71, 308); // x,y
+	NewAppsLayer.setHTML('<table width="246" class="appsmall"><tr><td class="appsmall" width="82" align="center" valign="top"><A class="appsmall" HREF="/shop.php?prod_id=41&amp;PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca" TARGET="_top"><IMG src="/images/club_join.png" alt="Club Amiga Membership screenshot (click for product information)" width="72" height="84" border="0"></A><br><table border=0 cellpadding=0 cellspacing=0><tr><td valign="middle" class="appsmall"><A HREF="http://www.amiga-anywhere.com/shop.php?CA=1&prod_id=41"><img src="/grafx/butbuy_mini.gif" border="0" alt="Add Club Amiga Membership to my cart!"></A></td><td valign="middle" class="appsmall">Buy It!</td></tr></table></td><td class="appsmall" width="82" align="center" valign="top"><A class="appsmall" HREF="/shop.php?prod_id=39&amp;PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca" TARGET="_top"><IMG src="/images/sdaaepak1.jpg" alt="Amiga Anywhere Entertainment Pack #1 for PocketPC -  SD Card screenshot (click for product information)" width="72" height="84" border="0"></A><br><table border=0 cellpadding=0 cellspacing=0><tr><td valign="middle" class="appsmall"><A HREF="http://www.amiga-anywhere.com/shop.php?CA=1&prod_id=39"><img src="/grafx/butbuy_mini.gif" border="0" alt="Add Amiga Anywhere Entertainment Pack #1 for PocketPC -  SD Card to my cart!"></A></td><td valign="middle" class="appsmall">Buy It!</td></tr></table></td><td class="appsmall" width="82" align="center" valign="top"><A class="appsmall" HREF="/shop.php?prod_id=38&amp;PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca" TARGET="_top"><IMG src="/images/cfaaepak1.jpg" alt="Amiga Anywhere Entertainment Pack #1 for PocketPC - Compact Flash Card screenshot (click for product information)" width="72" height="84" border="0"></A><br><table border=0 cellpadding=0 cellspacing=0><tr><td valign="middle" class="appsmall"><A HREF="http://www.amiga-anywhere.com/shop.php?CA=1&prod_id=38"><img src="/grafx/butbuy_mini.gif" border="0" alt="Add Amiga Anywhere Entertainment Pack #1 for PocketPC - Compact Flash Card to my cart!"></A></td><td valign="middle" class="appsmall">Buy It!</td></tr></table></td></tr></table>');
+	DynAPI.document.addChild(NewAppsLayer);
+
+	HotAppsLayer = new DynLayer();
+	HotAppsLayer.setSize(246, 112);
+	HotAppsLayer.moveTo(71,457); // x,y
+	HotAppsLayer.setHTML('<table width="246" class="appsmall"><tr><td class="appsmall" width="82" align="center" valign="top"><A class="appsmall" HREF="/shop.php?prod_id=41&amp;PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca" TARGET="_top"><IMG src="/images/club_join.png" alt="Club Amiga Membership screenshot (click for product information)" width="72" height="84" border="0"></A><br><table border=0 cellpadding=0 cellspacing=0><tr><td valign="middle" class="appsmall"><A HREF="http://www.amiga-anywhere.com/shop.php?CA=1&prod_id=41"><img src="/grafx/butbuy_mini.gif" border="0" alt="Add Club Amiga Membership to my cart!"></A></td><td valign="middle" class="appsmall">Buy It!</td></tr></table></td><td class="appsmall" width="82" align="center" valign="top"><A class="appsmall" HREF="/shop.php?prod_id=21&amp;PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca" TARGET="_top"><IMG src="/images/planetzed.jpg" alt="Planet Zed screenshot (click for product information)" width="72" height="84" border="0"></A><br><table border=0 cellpadding=0 cellspacing=0><tr><td valign="middle" class="appsmall"><A HREF="http://www.amiga-anywhere.com/shop.php?CA=1&prod_id=21"><img src="/grafx/butbuy_mini.gif" border="0" alt="Add Planet Zed to my cart!"></A></td><td valign="middle" class="appsmall">Buy It!</td></tr></table></td><td class="appsmall" width="82" align="center" valign="top"><A class="appsmall" HREF="/shop.php?prod_id=37&amp;PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca" TARGET="_top"><IMG src="/images/entpk22.jpg" alt="Amiga Anywhere Entertainment Pack #1 for PocketPC (Download version) screenshot (click for product information)" width="72" height="84" border="0"></A><br><table border=0 cellpadding=0 cellspacing=0><tr><td valign="middle" class="appsmall"><A HREF="http://www.amiga-anywhere.com/shop.php?CA=1&prod_id=37"><img src="/grafx/butbuy_mini.gif" border="0" alt="Add Amiga Anywhere Entertainment Pack #1 for PocketPC (Download version) to my cart!"></A></td><td valign="middle" class="appsmall">Buy It!</td></tr></table></td></tr></table>'); // x,y
+	DynAPI.document.addChild(HotAppsLayer);
+
+	e2bLayer = new DynLayer();
+	e2bLayer.setSize(379, 185);
+	e2bLayer.moveTo(415, 87); // x,y
+	e2bLayer.setHTML('<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="380" height="185"><param name=movie value="/grafx/flash/entpack1.swf"><param name=quality value=high><embed src="/grafx/flash/entpack1.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="380" height="185"></embed></object>');
+	DynAPI.document.addChild(e2bLayer);
+
+
+	
+	appClipLayer = new DynLayer();
+	appClipLayer.setSize(225, 250);
+	appClipLayer.moveTo(493, 305); // x,y
+	appClipLayer.setHTML('<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="225" height="250"><param name=movie value="/grafx/flash/loader2.swf?flashURL=/grafx/flash/batty.swf&mpgURL=/video/batty.mpg"><param name=quality value=high><PARAM NAME=wmode value=transparent><embed src="/grafx/flash/loader2.swf?flashURL=/grafx/flash/batty.swf&mpgURL=/video/batty.mpg" wmode=transparent quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="225" height="250"></embed></object>');
+	DynAPI.document.addChild(appClipLayer);
+
+	
+
+	// start news scroller
+	nColor=new Array('#666666', '#009500','#00C817','#31FB4A')
+	myInitNews();
+	fadeInit();
+}
+
+
+// -->
+</SCRIPT>
+<script language="javascript" type="text/javascript" src="/newsscroller.js"></script>
+ </HEAD> <BODY BGCOLOR=#FFFFFF leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="/grafx/newde/aabg.jpg">
+<TABLE WIDTH=796 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+  <TR> 
+    <TD COLSPAN="13"><IMG SRC="/grafx/newde0321/spacer.gif" WIDTH=517 HEIGHT=1></TD>
+    <TD><IMG SRC="/grafx/newde0321/spacer.gif" WIDTH=177 HEIGHT=1></TD>
+    <TD><IMG SRC="/grafx/newde0321/spacer.gif" WIDTH=93 HEIGHT=1></TD>
+    <TD COLSPAN="2"><IMG SRC="/grafx/newde0321/spacer.gif" WIDTH=7 HEIGHT=1></TD>
+  </TR>
+  <TR> 
+    <TD COLSPAN=14 ROWSPAN=4><IMG SRC="/grafx/newde0321/header.gif" WIDTH=696 HEIGHT=58></TD>
+    <TD><IMG SRC="/grafx/newde0321/logintop.gif" WIDTH=93 HEIGHT=16></TD>
+    <TD ROWSPAN=6><IMG SRC="/grafx/newde0321/headend.gif" WIDTH=7 HEIGHT=86></TD>
+  </TR>
+  <TR> 
+    <TD> <A HREF="http://www.amiga-anywhere.com/?Login=1"
+				ONMOUSEOUT="changeImages('blogin', '/grafx/newde0321/blogin.gif'); return true;"
+				ONMOUSEDOWN="changeImages('blogin', '/grafx/newde0321/blogin-down.gif'); return true;"
+				ONMOUSEUP="changeImages('blogin', '/grafx/newde0321/blogin.gif'); return true;"> 
+      <IMG NAME="blogin" SRC="/grafx/newde0321/blogin.gif" WIDTH=93 HEIGHT=19 BORDER=0></A></TD>
+  </TR>
+  <TR> 
+    <TD> <A HREF="http://www.amiga-anywhere.com/?Signup=1"
+				ONMOUSEOUT="changeImages('bsignup', '/grafx/newde0321/bsignup.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bsignup', '/grafx/newde0321/bsignup-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bsignup', '/grafx/newde0321/bsignup.gif'); return true;"> 
+      <IMG NAME="bsignup" SRC="/grafx/newde0321/bsignup.gif" WIDTH=93 HEIGHT=20 BORDER=0></A></TD>
+  </TR>
+  <TR> 
+    <TD> <IMG SRC="/grafx/newde0321/signupbot.gif" WIDTH=93 HEIGHT=3></TD>
+  </TR>
+  <TR> 
+    <TD> <A HREF="http://www.amiga-anywhere.com/"
+				ONMOUSEOVER="changeImages('bhome', '/grafx/newde0321/bhome-over.gif'); return true;"
+				ONMOUSEOUT="changeImages('bhome', '/grafx/newde0321/bhome.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bhome', '/grafx/newde0321/bhome-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bhome', '/grafx/newde0321/bhome-over.gif'); return true;"> 
+      <IMG NAME="bhome" SRC="/grafx/newde0321/bhome.gif" WIDTH=43 HEIGHT=18 BORDER=0></A></TD>
+    <TD> <IMG SRC="/grafx/newde0321/bullet1.gif" WIDTH=6 HEIGHT=18></TD>
+    <TD> <A HREF="http://www.amiga-anywhere.com/news/"
+				ONMOUSEOVER="changeImages('bnews', '/grafx/newde0321/bnews-over.gif'); return true;"
+				ONMOUSEOUT="changeImages('bnews', '/grafx/newde0321/bnews.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bnews', '/grafx/newde0321/bnews-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bnews', '/grafx/newde0321/bnews-over.gif'); return true;"> 
+      <IMG NAME="bnews" SRC="/grafx/newde0321/bnews.gif" WIDTH=43 HEIGHT=18 BORDER=0></A></TD>
+    <TD> <IMG NAME="bullet2" SRC="/grafx/newde0321/bullet2.gif" WIDTH=5 HEIGHT=18></TD>
+    <TD> <A HREF="http://www.amiga-anywhere.com/shop.php"
+				ONMOUSEOVER="changeImages('bshop', '/grafx/newde0321/bshop-over.gif'); return true;"
+				ONMOUSEOUT="changeImages('bshop', '/grafx/newde0321/bshop.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bshop', '/grafx/newde0321/bshop-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bshop', '/grafx/newde0321/bshop-over.gif'); return true;"> 
+      <IMG NAME="bshop" SRC="/grafx/newde0321/bshop.gif" WIDTH=70 HEIGHT=18 BORDER=0></A></TD>
+    <TD> <IMG SRC="/grafx/newde0321/bullet3.gif" WIDTH=6 HEIGHT=18></TD>
+    <TD> <A HREF="/mclips/"?PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca
+				ONMOUSEOVER="changeImages('bmclips', '/grafx/newde0321/bmclips-over.gif'); return true;"
+				ONMOUSEOUT="changeImages('bmclips', '/grafx/newde0321/bmclips.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bmclips', '/grafx/newde0321/bmclips-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bmclips', '/grafx/newde0321/bmclips-over.gif'); return true;"> 
+      <IMG NAME="bmclips" SRC="/grafx/newde0321/bmclips.gif" WIDTH=85 HEIGHT=18 BORDER=0></A></TD>
+    <TD> <IMG SRC="/grafx/newde0321/bullet4.gif" WIDTH=5 HEIGHT=18></TD>
+    <TD> <A HREF="/community/"?PHPSESSID=8dea6918dc34e48aed6e5ba058eb66ca
+				ONMOUSEOVER="changeImages('bcommunity', '/grafx/newde0321/bcommunity-over.gif'); return true;"
+				ONMOUSEOUT="changeImages('bcommunity', '/grafx/newde0321/bcommunity.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bcommunity', '/grafx/newde0321/bcommunity-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bcommunity', '/grafx/newde0321/bcommunity-over.gif'); return true;"> 
+      <IMG NAME="bcommunity" SRC="/grafx/newde0321/bcommunity.gif" WIDTH=84 HEIGHT=18 BORDER=0></A></TD>
+    <TD><IMG SRC="/grafx/newde0321/bullet5.gif" WIDTH=7 HEIGHT=18></TD>
+    <TD><A HREF="http://www.amiga-anywhere.com/apps/"
+				ONMOUSEOVER="changeImages('bproducts', '/grafx/newde0321/bproducts-over.gif'); return true;"
+				ONMOUSEOUT="changeImages('bproducts', '/grafx/newde0321/bproducts.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bproducts', '/grafx/newde0321/bproducts-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bproducts', '/grafx/newde0321/bproducts-over.gif'); return true;"> 
+      <IMG NAME="bproducts" SRC="/grafx/newde0321/bproducts.gif" WIDTH=72 HEIGHT=18 BORDER=0></A></TD>
+    <TD WIDTH="5"><img src="../grafx/newde0321/bullet6.gif" width="5" height="18"></TD>
+    <TD WIDTH="86"><A HREF="http://www.amiga-anywhere.com/developers/"
+				ONMOUSEOVER="changeImages('bdevelopers', '/grafx/newde0321/bdevelopers-over.gif'); return true;"
+				ONMOUSEOUT="changeImages('bdevelopers', '/grafx/newde0321/bdevelopers.gif'); return true;"
+				ONMOUSEDOWN="changeImages('bdevelopers', '/grafx/newde0321/bdevelopers-down.gif'); return true;"
+				ONMOUSEUP="changeImages('bdevelopers', '/grafx/newde0321/bdevelopers-over.gif'); return true;"> 
+      <IMG NAME="bdevelopers" SRC="/grafx/newde0321/bdevelopers.gif" WIDTH=86 HEIGHT=18 BORDER=0></A></TD>
+    <TD COLSPAN=2 WIDTH="272"> <IMG SRC="/grafx/newde0321/butend.gif" WIDTH=272 HEIGHT=18></TD>
+  </TR>
+  <TR> 
+    <TD COLSPAN=17> <IMG SRC="/grafx/newde0321/header_bottom.gif" WIDTH=789 HEIGHT=10></TD>
+  </TR>
+</TABLE><TABLE WIDTH=800 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD COLSPAN=3><IMG SRC="/grafx/newde/main_body_01.gif" WIDTH=800 HEIGHT=28></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=2><IMG SRC="/grafx/newde/main_body_02.gif" WIDTH=7 HEIGHT=482></TD>
+		<TD BACKGROUND=BACKGROUND="/grafx/newde/rcntnwsbdy.gif" WIDTH=403 HEIGHT=57><img src="/grafx/newde/rcntnwsbdy.gif" WIDTH=403 HEIGHT=57><div id="divNewsCont" BACKGROUND="/grafx/newde/rcntnwsbdy.gif"><div id="divNews" BACKGROUND="/grafx/newde/rcntnwsbdy.gif">Netscape or Internet Explorer 4.0 or higher is required.</div></div></TD>
+		<TD ROWSPAN=2><IMG SRC="/grafx/newde/main_flash.gif" WIDTH=390 HEIGHT=482></TD>
+	</TR>
+	<TR>
+		<TD><IMG SRC="/grafx/newde/main_apps.gif" WIDTH=403 HEIGHT=425></TD>
+	</TR>
+	</TABLE></BODY>
+</HTML>

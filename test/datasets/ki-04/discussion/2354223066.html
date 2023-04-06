@@ -1,0 +1,96 @@
+<!-- <DOCUMENT>
+	<FILE>
+		2354223066.html
+	</FILE>
+	<URL>
+		http://videl.ics.hawaii.edu/pipermail/luau/2003-January/012202.html
+	</URL>
+	<TITLE>
+		Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option Vince Hoang luau@videl.ics.hawaii.edu Thu Jan 23 15:45:01 2003 Previous message: Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option Next message: [luau] connection between kernel .config file and autoconf.h Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] On Thu, Jan 23, 2003 at 01:37:25PM -1000, Dennis T. Ching wrote: &gt; Experimental options and Advanced router don't help. ... &gt; Maybe it got lost by 2.4.18-3 and 2.4.20. Ah. I was using the very old 2.4.2 kernel when digging up those notes. :) Unfortunately, stability in the older kernels has been very spotty. The option has been deprecated. Here are comments in net/netlink/netlink_dev.c: Now netlink devices are emulated on the top of netlink sockets by compatibility reasons. Remove this file after a period. --ANK On a recent system running 2.4.20, I did not enable the netlink device option in the kernel. However, /proc/net/netlink still exists and is available via AF_NETLINK sockets. What is it that you are trying to do? I am able to run the iproute tools and start zebra with my current setup. -Vince Previous message: Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option Next message: [luau] connection between kernel .config file and autoconf.h Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:luau%40videl.ics.hawaii.edu">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="012200.html">
+   <LINK REL="Next"  HREF="012201.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option
+   </H1>
+    <B>Vince Hoang
+    </B> 
+    <A HREF="mailto:luau%40videl.ics.hawaii.edu"
+       TITLE="Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option">luau@videl.ics.hawaii.edu
+       </A><BR>
+    <I>Thu Jan 23 15:45:01 2003</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="012200.html">Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option
+</A></li>
+        <LI> Next message: <A HREF="012201.html">[luau] connection between kernel .config file and autoconf.h
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#12202">[ date ]</a>
+              <a href="thread.html#12202">[ thread ]</a>
+              <a href="subject.html#12202">[ subject ]</a>
+              <a href="author.html#12202">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jan 23, 2003 at 01:37:25PM -1000, Dennis T. Ching wrote:
+&gt;<i> Experimental options and Advanced router don't help.
+</I>...
+&gt;<i> Maybe it got lost by 2.4.18-3 and 2.4.20.
+</I>
+Ah. I was using the very old 2.4.2 kernel when digging up those
+notes. :) Unfortunately, stability in the older kernels has been
+very spotty.
+
+The option has been deprecated. Here are comments in
+net/netlink/netlink_dev.c:
+
+  Now netlink devices are emulated on the top of netlink sockets
+  by compatibility reasons. Remove this file after a period. --ANK
+
+On a recent system running 2.4.20, I did not enable the netlink
+device option in the kernel. However, /proc/net/netlink still
+exists and is available via AF_NETLINK sockets.
+
+What is it that you are trying to do? I am able to run the
+iproute tools and start zebra with my current setup.
+
+-Vince
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="012200.html">Fw: [luau] CONFIG_RTNETLINK -- Linux kernel configuration option
+</A></li>
+	<LI> Next message: <A HREF="012201.html">[luau] connection between kernel .config file and autoconf.h
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#12202">[ date ]</a>
+              <a href="thread.html#12202">[ thread ]</a>
+              <a href="subject.html#12202">[ subject ]</a>
+              <a href="author.html#12202">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>
+

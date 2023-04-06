@@ -1,0 +1,223 @@
+<!-- <DOCUMENT>
+	<FILE>
+		4686552158.html
+	</FILE>
+	<URL>
+		http://www.techfak.uni-bielefeld.de/bcd/Curric/PrwAli/node3.html#SECTION00030000000000000000
+	</URL>
+	<TITLE>
+		2 Pairwise Alignment via Dynamic Programming
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ 2 Pairwise Alignment via Dynamic Programming Next: 3 Weight Matrices for Up: Pairwise Sequence Alignments Previous: 1 Distance and Similarity 2 Pairwise Alignment via Dynamic Programming 2.1 Calculating Edit Distances and Optimal Alignments &#160; (Edit Dist. Calculation) The number of possible alignments between two sequences is gigantic, and unless the weight function is very simple, it may seem difficult to pick out an optimal alignment. But fortunately, there is an easy and systematic way to find it. The algorithm described now is very famous in biocomputing, it is usually called ``the dynamic programming algorithm''. Consider two prefixes and , with . Let us assume we already know optimal alignments between all shorter prefixes of and , in particular of and , of and , and of and . An optimal alignment of and must be an extension of one of the above by a Replacement , or a Match , depending on whether a Deletion , or an Insertion . (Edit Dist. Recursion) We simply have to choose the minimum: There is no choice when one of the prefixes is empty, i.e. , or , or both: According to this scheme, and for a given , the edit distances of all prefixes of and define an distance matrix with . The three-way choice in the minimization formula for leads to the following pattern of dependencies between matrix elements: The bottom right corner of the distance matrix contains the desired result: . (Edit Dist. Matrix) This is the distance matrix for our previous example with : In the second diagram, we have drawn a path through the distance matrix indicating which case was chosen when taking the minimum. A diagonal line means Replacement or Match, a vertical line means Deletion, and a horizontal line means Insertion. Thus, this path indicates the edit operation protocol of the optimal alignment with . Note that in some cases, the minimal choice is not unique, and different paths could have been drawn which indicate alternative optimal alignments. Another example is here . In which order should we calculate the matrix entries? The only constraint is the above pattern of dependencies. The most common order of calculation is line by line (each line from left to right), or column by column (each column from top-to-bottom). Some Exercises involving Dynamic Programming Find out the cost model used by the BioMOO aligner. Calculate a dynamic programming matrix and alignment for the sequences ATT and TTC. Check your results using the BioMOO alignment, i.e. type &quot;opt_align ATT TTC matrix with #90&quot; on the MOO. (You can also use the WWW-Interface, see this tutorial .) How many optimal alignments are there ? The number of possible alignments is described as &quot;gigantic&quot;. How many are there for the sequences ATT and TTC ? (Extra Credit.) If you wish do devise a formula for the number of alignments, which method can be used to enumerate them systematically ? Devise such a formula. 2.2 A Word on the Dynamic Programming Paradigm ``Dynamic Programming'' is a very general programming technique. It is applicable when a large search space can be structured into a succession of stages, such that the initial stage contains trivial solutions to sub-problems, each partial solution in a later stage can be calculated by recurring on only a fixed number of partial solutions in an earlier stage, the final stage contains the overall solution. This applies to our distance matrix: The columns are the stages, the first column is trivial, the final one contains the overall result. A matrix entry is the partial solution and can be determined from two solutions in the previous column and plus one in the same column, namely . Since calculating edit distances is the predominant approach to sequence comparison, some people simply call this THE dynamic programming algorithm. Just note that the dynamic programming paradigm has many other applications as well, even within bioinformatics. 2.3 A Word on Scoring Functions and Related Notions Many authors use different words for essentially the same idea: scores, weights, costs, distance and similarity functions all attribute a numeric value to a pair of sequences. ``distance'' should only be used when the metric axioms are satisfied. In particular, distance values are never negative. The optimal alignment minimizes distance. The term ``costs'' usually implies positive values, with the overall cost to be minimized. However, metric axioms are not assumed. ``weights'' and ``scores'' can be positive or negative. The most popular use is that a high score is good, i.e. it indicates a lot of similarity. Hence, the optimal alignments maximize scores. The term ``similarity'' immediately implies that large values are good, i.e. an optimal alignment maximizes similarity. Intuitively, one would expect that similarity values should not be negative (what is less than zero similarity?). But don't be surprised to see negative similarity scores shortly. Mathematically, distances are a little more tractable than the others. In terms of programming, general scoring functions are a little more flexible. For example, the algorithm for local similarity presented in section 5.1 depends on the use of both positive and negative scores. The accumulated score of two subsequences may rise above the threshold value, and may fall below it after encountering some negative scores. Let us close with another caveat concerning the influence of sequence length on similarity. Let us just count exact matches and let us assume that two sequences of length and , respectively, have 99 exact matches. Let be the similarity score calculated for and under this cost model. So, . What this means depends on : If , the sequences are very similar - almost identical. If , we have only 10% identity! (Two typos were corrected in this paragraph on Wed May 15 17:06:38 MDT 1996.) So if we relate sequences of varying length, it makes sense to use length-relative scores - rather than we use for sequence comparison. Back to VSNS BioComputing Division Home Page . VSNS-BCD Copyright 1995/1996 . Robert Giegerich Next: 3 Weight Matrices for Up: Pairwise Sequence Alignments Previous: 1 Distance and Similarity Mon Apr 29 18:31:03 MET DST 1996 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!-- Converted with LaTeX2HTML 0.6.4 (Tues Aug 30 1994) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>2 Pairwise Alignment via Dynamic Programming</TITLE>
+<LINK REV="made" HREF="mailto:robert@techfak.uni-bielefeld.de">
+<meta name="description" content="2 Pairwise Alignment via Dynamic Programming">
+<meta name="keywords" content="prwali">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+</HEAD>
+<BODY><P>
+ <BR> <HR><A NAME=tex2html74 HREF="node4.html"><IMG ALIGN=BOTTOM ALT="next"
+SRC="next_motif.gif"></A> <A NAME=tex2html72 HREF="prwali.html"><IMG ALIGN=BOTTOM ALT="up"
+SRC="up_motif.gif"></A> <A NAME=tex2html66 HREF="node2.html"><IMG ALIGN=BOTTOM
+ALT="previous" SRC="previous_motif.gif"></A> <A NAME=tex2html76 HREF="node1.html"><IMG
+ALIGN=BOTTOM ALT="contents" SRC="contents_motif.gif"></A>  <BR>
+<STRONG> Next:</STRONG> <A NAME=tex2html75 HREF="node4.html">3 Weight Matrices for</A>
+<STRONG>Up:</STRONG> <A NAME=tex2html73 HREF="prwali.html">Pairwise Sequence Alignments</A>
+<STRONG> Previous:</STRONG> <A NAME=tex2html67 HREF="node2.html">1 Distance and Similarity</A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00030000000000000000>2 Pairwise Alignment via Dynamic Programming</A></H1>
+<P>
+<H2><A NAME=SECTION00031000000000000000>2.1 Calculating Edit Distances and Optimal Alignments</A></H2>
+<P>
+<A NAME=14>&#160;</A>
+<STRONG><EM>(Edit Dist. Calculation)</EM></STRONG>
+The number of possible alignments between two sequences is gigantic, and 
+unless the weight function is very simple, it may seem difficult to pick 
+out an optimal alignment. But fortunately, there is an easy and systematic 
+way to find it. The algorithm described now is very famous in biocomputing,
+it is usually called ``the dynamic programming algorithm''.
+<P>
+Consider two prefixes <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1234.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1228.gif">, 
+with <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1216.gif">. Let us assume we already know optimal alignments between all 
+shorter prefixes of <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1382.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1168.gif">, in
+particular of
+<OL><LI> <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1226.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1232.gif">, of 
+<LI> <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1226.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1228.gif">, and of
+<LI> <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1234.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1232.gif">.
+</OL>
+An optimal alignment of <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1234.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1228.gif"> 
+must be an extension of one of the above by
+<OL><LI> a Replacement<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1238.gif">, or a Match<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1238.gif">,
+depending on whether <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1242.gif">
+<LI> a Deletion<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1244.gif">, or
+<LI> an Insertion<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1246.gif">.
+</OL>
+<STRONG><EM>(Edit Dist. Recursion)</EM></STRONG>
+We simply have to choose the minimum:
+<P>
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1248.gif">
+<P>
+There is no choice when one of the prefixes is empty, i.e. <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1250.gif">, or
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1252.gif">, or both:
+<P>
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1254.gif">
+<P>
+According to this scheme, and for a given <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1256.gif">, the edit distances of all 
+prefixes of <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1258.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap998.gif"> define an<BR><IMG
+ALIGN=BOTTOM SRC="_18604_tex2html_wrap1262.gif"> distance matrix 
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1264.gif"> with <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1266.gif">.
+<P>
+The three-way choice in the minimization formula for <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1316.gif"> leads to the 
+following pattern of dependencies between matrix elements:
+<P>
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1270.gif">
+<P>
+The bottom right corner of the distance matrix contains the desired result:
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1272.gif">.
+<P>
+<STRONG><EM>(Edit Dist. Matrix)</EM></STRONG>
+This is the distance matrix for our previous example with
+<P>
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1274.gif">:
+<P>
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1312.gif">
+<P>
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1314.gif">
+<P>
+In the second diagram, we have drawn a path through the distance matrix indicating 
+which case was chosen when taking the minimum. A diagonal line means
+Replacement or Match, 
+a vertical line means Deletion, and a horizontal line means Insertion. Thus, 
+this path indicates the edit operation protocol of the optimal alignment with <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1186.gif">.
+Note that in some cases, the minimal choice is not unique,
+and different paths could have been drawn which indicate alternative 
+optimal alignments.
+<P>
+Another example is 
+<A HREF="node7.html#sec8">here</A>.
+<P>
+In which order should we calculate the matrix entries? The only constraint 
+is the above pattern of dependencies. The most common order of calculation 
+is line by line (each line from left to right), or column by column 
+(each column from top-to-bottom).
+<P>
+<H3><A NAME=SECTION00031100000000000000>Some Exercises involving Dynamic Programming</A></H3>
+<P>
+<OL><LI> Find out the cost model used by the BioMOO aligner. Calculate a dynamic 
+programming matrix and alignment for the sequences ATT and TTC. Check your results using the 
+BioMOO alignment, 
+i.e. type <code> &quot;opt_align ATT TTC matrix with #90&quot;</code> 
+on the MOO.
+(You can also use the WWW-Interface, see
+  <A HREF="../../Tec/AliTutor/sequenc.html">this tutorial</A>.)
+How many optimal alignments are there ?
+<LI> The number of possible alignments is described as
+&quot;gigantic&quot;. How many are there for the sequences ATT and TTC ?
+(Extra Credit.) If you wish do devise a formula for the 
+number of alignments, which method can be used to enumerate
+them systematically ? Devise such a formula.
+</OL>
+<P>
+<H2><A NAME=SECTION00032000000000000000>2.2 A Word on the Dynamic Programming Paradigm</A></H2>
+<P>
+``Dynamic Programming'' is a very general programming technique. It is
+applicable when a large search space can be structured into a succession of
+stages, such that
+<UL><LI> the initial stage contains trivial solutions to sub-problems,
+<LI> each partial solution in a later stage can be calculated by recurring on
+  only a fixed number of partial solutions in an earlier stage,
+<LI> the final stage contains the overall solution.
+</UL>
+<P>
+This applies to our distance matrix: The columns are the stages, the first
+column is trivial, the final one contains the overall result. A matrix entry
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1316.gif"> is the partial solution <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1318.gif"> and can be
+determined from two solutions in the previous column
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1320.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1322.gif"> plus one in the same column,
+namely
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1324.gif">.
+Since calculating edit distances is the predominant approach to sequence
+comparison, some people simply call this THE dynamic programming
+algorithm. Just note that the dynamic programming paradigm has many other
+applications as well, even within bioinformatics.
+<P>
+<H2><A NAME=SECTION00033000000000000000>2.3 A Word on Scoring Functions and Related Notions</A></H2>
+<P>
+Many authors use different words for essentially the same idea: scores,
+weights, costs, distance and similarity functions all attribute a numeric
+value to a pair of sequences.
+<UL><LI> ``distance'' should only be used when the metric axioms are satisfied.
+  In particular, distance values are never negative. The optimal alignment
+  minimizes distance.
+<LI> The term ``costs'' usually implies positive values, with the overall
+  cost to be minimized. However, metric axioms are not assumed.
+<LI> ``weights'' and ``scores'' can be positive or negative. The most popular
+  use is that a high score is good, i.e. it indicates a lot of similarity.
+  Hence, the optimal alignments maximize scores.
+<LI> The term ``similarity'' immediately implies that large values are good,
+  i.e. an optimal alignment maximizes similarity. Intuitively, one would expect
+  that similarity values should not be negative (what is less than zero
+  similarity?). But don't be surprised to see negative similarity scores
+  shortly.
+</UL>
+<P>
+Mathematically, distances are a little more tractable than the others. In terms of
+programming, general scoring functions are a little more flexible. For example,
+the algorithm for local similarity presented in section <A HREF="node6.html#110">5.1</A> depends on
+the use of both positive and negative scores. The accumulated score of two
+subsequences may rise above the threshold value, and may fall below it after
+encountering some negative scores.
+<P>
+Let us close with another caveat concerning the influence of sequence length
+on similarity. Let us just count exact matches and let us assume that two
+sequences of length <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1326.gif"> and <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1328.gif">,
+respectively, have 99 exact matches.  
+Let <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1344.gif"> be
+the similarity score calculated for <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1382.gif"> and <IMG ALIGN=BOTTOM
+SRC="_18604_tex2html_wrap1168.gif"> under this cost model. <p>
+So,
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1336.gif">. What this means depends on <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1326.gif">: If
+<IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1340.gif">, the sequences are
+very similar - almost identical. If <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1342.gif">, we have only 10% identity!  <EM>(Two typos were corrected in this paragraph on Wed May 15 17:06:38 MDT 1996.)</EM>
+So if we relate sequences of varying length, it makes sense to use
+length-relative scores - rather than <IMG ALIGN=BOTTOM SRC="_18604_tex2html_wrap1344.gif"> we use <IMG ALIGN=BOTTOM
+SRC="_18604_tex2html_wrap1346.gif"> for
+sequence comparison.
+<P>
+<A HREF="../../welcome.html"
+>Back to VSNS BioComputing Division Home Page</A>.
+<br><A HREF="../../Adm/copyright2.html"
+>VSNS-BCD Copyright 1995/1996</A>.
+<br><A HREF="http://www.TechFak.Uni-Bielefeld.DE/techfak/ags/pi/"
+><em>Robert Giegerich</em></A>
+<P>
+<BR> <HR><A NAME=tex2html74 HREF="node4.html"><IMG ALIGN=BOTTOM ALT="next"
+SRC="next_motif.gif"></A> <A NAME=tex2html72 HREF="prwali.html"><IMG ALIGN=BOTTOM ALT="up"
+SRC="up_motif.gif"></A> <A NAME=tex2html66 HREF="node2.html"><IMG ALIGN=BOTTOM
+ALT="previous" SRC="previous_motif.gif"></A> <A NAME=tex2html76 HREF="node1.html"><IMG
+ALIGN=BOTTOM ALT="contents" SRC="contents_motif.gif"></A>  <BR>
+<STRONG>Next:</STRONG> <A NAME=tex2html75 HREF="node4.html">3 Weight Matrices for</A>
+<STRONG>Up:</STRONG> <A NAME=tex2html73 HREF="prwali.html">Pairwise Sequence Alignments</A>
+<STRONG> Previous:</STRONG> <A NAME=tex2html67 HREF="node2.html">1 Distance and Similarity</A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<BR>
+<EM>Mon Apr 29 18:31:03 MET DST 1996</EM>
+</ADDRESS>
+<IMG SRC="../valid_html.gif" ALT="Valid HTML 2.0!">
+</BODY>
+</HTML>
+

@@ -1,0 +1,606 @@
+<!-- <DOCUMENT>
+	<FILE>
+		3051707456.html
+	</FILE>
+	<URL>
+		http://www.btg.co.uk/
+	</URL>
+	<TITLE>
+		BTG PLC
+	</TITLE>
+	<GENRE>
+		portrait-non_priv
+	</GENRE>
+	<PLAINTEXT>
+ News &amp; Events | Investor Relations | Information &amp; Resource Home Page contact BTG | site map | legal notice | eRooms News: SEARCH: GO BTG licenses technologies that build future product portfolios. Explore our strategy, browse our technologies available for licence. Click here to continue &gt; Our goal is to provide our skills in technology evaluation, protection, development, marketing and investment to your technology. Click here to continue &gt; BTG Ventures invests capital, technology, and expertise in technology based companies located in Europe and North America. Click here to continue &gt; &copy; BTG Copyright 2002 BTG Locations: Europe | North America | Japan Email Address: info@btgplc.com 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+
+
+<script language = "javascript">
+  
+  function submitform(formname){
+    
+	formname.submit();
+  
+  }
+  
+  
+  
+  function changeDate(startdate){
+     if(startdate == 0 || startdate == 1){
+	  
+		 if(startdate == 0){
+		  
+				
+				document.addsuccess.month.disabled=true;
+				document.addsuccess.day.disabled=true;
+				document.addsuccess.year.disabled=true;
+				
+				 
+		 }else{
+		 
+		 		document.addsuccess.month.disabled=false;
+				document.addsuccess.day.disabled=false;
+				document.addsuccess.year.disabled=false;
+		 }
+		 
+	 }else{
+	      
+		  if(!document.addsuccess.showdate.checked){
+		  
+				
+				document.addsuccess.month.disabled=true;
+				document.addsuccess.day.disabled=true;
+				document.addsuccess.year.disabled=true;
+				
+				 
+		 }else{
+		 
+		 		document.addsuccess.month.disabled=false;
+				document.addsuccess.day.disabled=false;
+				document.addsuccess.year.disabled=false;
+		 }
+		   
+	 
+	 
+	 }
+	 
+	 
+	 
+	  
+  }
+
+  
+
+  function validateAdmin(){
+    
+	form = document.useradmin;
+	
+	for(i=0;i<form.masteradmin.length;i++){
+	
+		if(form.masteradmin[i].checked){
+			mastervalue = form.masteradmin[i].value;
+			break;
+		}
+	
+	}
+	
+	if(form.firstname.value=="")
+	{
+		alert('Please enter a first name');
+		return false;
+	}
+	else if(form.lastname.value=="")
+	{
+	    alert('Please enter a first name');
+		return false;
+	}
+	else if(form.username.value=="")
+	{
+	    alert('Please enter a Username');
+		return false;
+	}
+	else if(form.password.value=="")
+	{
+	    alert('Please enter a Password');
+		return false;
+	}else
+		return true;
+    
+  }
+  
+  
+
+  
+ 
+  function delsuccess(id){
+  
+     if(confirm('This action will permanantly delete this success story. You will not be able to retrieve this record, Are you sure?')){
+	    location.replace('cmssuccessstorymanager.php?id=' + id);
+	 }
+	
+  }
+  
+   function newsupdate(){
+  
+     document.news.submit();
+	
+  }
+
+ function checkout(){
+	  
+	  var list = document.modcat.categoryid;
+	  
+	  if(list.options[list.selectedIndex].value == 0){
+	  	alert('Please select a category to edit');
+		return false;
+	  }else{
+		
+		  for(i=0;i<document.modcat.modtype.length;i++){
+		   
+			   if(document.modcat.modtype[i].checked)
+				 document.modcat.modaction.value = document.modcat.modtype[i].value;
+			 
+		  }
+	     return true;
+	  }
+	  	  
+	 
+ }
+
+ function deletemaster(){
+	  
+	  var list = document.modcat.categoryid;
+	  if(list.options[list.selectedIndex].value == 0){
+	  	alert('Please select a category to delete');
+		
+	  }else{
+	  
+		  commit = false;
+		  
+		  if(confirm('This will delete your selected Master Category and all of its contents')){
+			  
+			  document.modcat.modaction.value=3;
+			  commit = true;
+		
+		  }
+		  
+		  if(commit)
+			document.modcat.submit();
+	 
+	 }
+		
+
+ }
+ 
+  function validateMaster(){
+	  
+	 
+	  
+	  if(document.addmaster.mastername.value==""){
+		  	
+			alert('Please enter a master category name');
+			return false;
+		  
+			
+	  }
+	  
+  }
+ 
+  function validateAdd(){
+	  
+	 
+	  
+	  if(document.add.categoryname.value==""){
+		  	
+			alert('Please enter a category name');
+			return false;
+		  
+			
+	  }
+	  
+  }
+  
+  function validateUpdate(){
+	  
+	 
+	  
+	  if(document.update.categoryname.value==""){
+		  	
+			alert('Please enter a category name');
+			return false;
+		  
+			
+	  }
+	  
+  }
+  
+  function  setMasterOrdering(id,currentorder,type){
+  		
+		location.replace('cmsordertechnology.php?categoryid=' + id + '&currentorder=' + currentorder + '&type=' + type + '&cmod=t');
+		
+  }
+  
+   function  setSubcatOrdering(mainid,id,currentorder,type){
+  		
+		location.replace('cmsordertechnology.php?categoryid=' + mainid + '&subcategoryid=' + id + '&currentorder=' + currentorder + '&type=' + type + '&sub=t');
+		
+  }
+  
+  function  setNewsMasterOrdering(id,currentorder,type){
+  		
+		location.replace('cmsordernews.php?categoryid=' + id + '&currentorder=' + currentorder + '&type=' + type + '&cmod=t');
+		
+  }
+  
+   function  setNewsSubcatOrdering(mainid,id,currentorder,type){
+  		
+		location.replace('cmsordernews.php?categoryid=' + mainid + '&subcategoryid=' + id + '&currentorder=' + currentorder + '&type=' + type + '&sub=t');
+		
+  }
+  
+    function  setTechOrdering(mainid,id,techid,currentorder,type){
+  		
+		location.replace('cmsordertechnology.php?categoryid=' + mainid + '&subcategory=' + id + '&technologyid=' + techid + '&currentorder=' + currentorder + '&type=' + type + '&tech=t&sub=t');
+		
+  }
+  
+  function popUp(URL) {
+day = new Date();
+id = day.getTime();
+eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=400,height=400,left = 475,top = 300');");
+}
+
+function validatefields(form,title) {
+	
+  if(title == 'Press Release')
+  {
+	if(form.releasename.value == ""){
+		alert('Please enter a ' + title + ' Name');
+		return false;
+	}
+	
+  }
+  else if(title == 'Success Story')
+  {
+  
+  	if(form.successname.value == ""){
+		alert('Please enter a ' + title + ' Name');
+		return false;
+    }
+  }else
+  {
+    	if(form.eventname.value == ""){
+		  alert('Please enter a ' + title + ' Name');
+		  return false;
+    }
+  }
+  
+  if(form.content.value == "")
+  {
+		alert('Please enter the Body of the ' + title);
+		return false;
+ 
+  }
+
+}
+</script>
+
+
+<html>
+<head>
+<title>BTG plc: A World Leader in the Commercialisation of Novel Technologies</title>
+<meta name="Description" content="BTG finds, develops and comercialises emerging technologies in the life and physical sciences that will shape the markets of tomorrow. These innovations are protected by a strong portfolio of intellectual property that BTG develops and enhances."> 
+<META NAME="Keywords" CONTENT="BTG, trademark protection, patent law, patent information, patent agent, patents for sale, patent ideas, patent pending, patent laws, new patent inventions, patent law firms, invention idea, patent research, international patents, patenting an idea, idea patenting, intellectual property, trademarks, trademark registration, patent and trademark, patent application, information technology, wireless technology, apply patent, intellectual property attorney, new inventions, intellectual property lawyers, patents, trademark application, inventions, patent attorneys, patent search, trademark names, registering a trademark, intellectual property law, new technology products, invention submission, computer technology, communication technology, intellectual property protection, technology transfer, copyright protection, patent and trademark office, new technology, new technologies, science  technology, new invention ideas, european patents, intellectual property licensing, intellectual property rights, patenting invention ideas, invention submission corporation, recent inventions, intellectual property valuation, valuation intellectual property, intellectual property advice, life technologies, digital research technologies, american inventions, uk patent office, obtain trademark, land patent, land patents, european patent application, medical inventions, valuing intellectual property, cost of idea patenting, technology, inventions, inventor, commercialization, commercialisation, ventures, patents, patent protection, biotechnology, pharmaceuticals, agribusiness, medical technologies, engineering, electronics, information technologies, provensis, medical devices, semiconductors, developing technology, commercializing technology, life sciences, physical sciences, oncology, ageing  neuroscience, drug delivery, diagnostics, inflammation, immunology, infectious diseases, genomics, proteomics, platform technologies, alternative energy materials, display technologies, MEMS, multimedia networking, photonics, security technologies, wireless technologies, communications">
+
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+//-->
+</script>
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="print.css" type="text/css" media = "print">
+<style>@import "styles_formObjects.css";</style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('images/menu_home_over.gif','images/menu_about_over.gif','images/menu_techPort_over.gif','images/menu_findTech_over.gif','images/menu_ventures_over.gif')">
+
+<div class = "printtopmenu">
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="7">
+  <tr align="left" valign="top"> 
+	<td class="BodyText00386E"></td>
+	<td align="left" width="100"><img src="../images/logo_printPage.gif" width="57" height="81"></td>
+  </tr>
+</table>
+
+</div><div class = "hideprint">
+<table width="750" border="0" cellspacing="0" cellpadding="0" height="24">
+  <tr align="left" valign="top"> 
+	<td width="69"><a href="/index.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('home','','../images/menu_home_over.gif',1)"><img name="home" border="0" src="../images/menu_home.gif" width="69" height="24"></a></td>
+	<td width="106"><a href="../about/profile.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('about','','../images/menu_about_over.gif',1)"><img name="about" border="0" src="../images/menu_about.gif" width="106" height="24"></a></td>
+	<td width="160"><a href="../portfolio/how_license.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('TechPort','','../images/menu_techPort_over.gif',1)"><img name="TechPort" border="0" src="../images/menu_techPort.gif" width="160" height="24"></a></td>
+	<td width="160"><a href="../finding/bring_tech.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('FindTech','','../images/menu_findTech_over.gif',1)"><img name="FindTech" border="0" src="../images/menu_findTech.gif" width="160" height="24"></a></td>
+	<td><a href="../ventures/about_ventures.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('ventures','','../images/menu_ventures_over.gif',1)"><img name="ventures" border="0" src="../images/menu_ventures.gif" width="121" height="24"></a></td>
+	<td width="62"><img src="../images/menu_end.gif" width="62" height="24"></td>
+	<td width="72"><img src="../images/menu_topLogo.gif" width="72" height="24"></td>
+  </tr>
+</table>
+<table width="750" border="0" cellspacing="0" cellpadding="0" height="58">
+  <tr align="left" valign="top"> 
+	<td background="images/topImageBG.gif" align="right"> 
+	  <table width="456" border="0" cellspacing="0" cellpadding="3" background="images/trans.gif">
+		<tr align="left" valign="top"> 
+		  <td width="370" align="right" class="BodyText" valign="top"><a href="news/press_releases.php" class="menu2">News 
+			&amp; Events</a> | <a href="investor/overview.php" class="menu2">Investor 
+			Relations</a> | <a href="info/aboutIP.php" class="menu2">Information 
+			&amp; Resource</a></td>
+		  <td width="74">&nbsp;</td>
+		</tr>
+	  </table>
+	</td>
+	<td width="73" align="right"><img src="images/middle_logo.gif" width="73" height="58"></td>
+  </tr>
+</table>
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+	<td background="images/00386E.gif" height="2"><img src="images/00386E.gif" width="2" height="2"></td>
+  </tr>
+</table>
+
+<div class = "hideprint">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+	<td background="images/pageTitleBG.gif" align="left" valign="top"> 
+	  <table width="750" border="0" cellspacing="0" cellpadding="0" height="20">
+		<tr align="left" valign="top"> 
+		    <td background="images/pageTitleBG.gif" width="421"> 
+              <table width="250" border="0" cellspacing="0" cellpadding="0">
+			  <tr align="left" valign="top"> 
+				<td width="17">&nbsp;</td>
+				<td class="pageTitle406A92" valign="middle" width="233">Home Page</td>
+			  </tr>
+			</table>
+		    </td>
+		  <td width="20"><img src="images/subMenu_corner.gif" width="28" height="20"></td>
+		    <td background="images/subMenu_BG.gif" width="300" align="left" valign="middle" class="BodyTextWhite"><a href="contactUs.php" class="footerMenu">contact 
+              BTG</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="siteMap.php" class="footerMenu">site 
+              map</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="legalNotice.php" class="footerMenu">legal 
+              notice</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="footerMenu" onClick="MM_openBrWindow('erooms/welcome.asp','welcome','menubar=yes,width=406,height=320')">eRooms</a></td>
+		  <td background="images/00386E.gif" width="1" align="left" valign="middle" class="BodyTextWhite"><img src="images/00386E.gif" width="1" height="1"></td>
+		</tr>
+	  </table>
+	</td>
+  </tr>
+</table>
+</div>
+
+<table border="0" cellspacing="0" cellpadding="0" height="26" background="images/white.gif" width="750">
+  <tr align="left" valign="top"> 
+	<td width="17"><img src="images/trans.gif" width="17" height="20"> </td>
+	<td class="BodyTextRed" width="40" valign="middle">News:</td>
+	<td class="BodyTextRed" width="462" valign="middle">
+	  
+	  	  
+	  
+	  <applet code="ascroll.class" width="435" height="28">
+		<param name="applet_width" value="435">
+		<param name="applet_height" value="28">
+		<param name="regcode" value="ahs4457t8">
+		<param name="info" value="Applet by Gokhan Dagli,japplets.tripod.com">
+		<param name="bgcolor" value="ffffff">
+		<param name="border" value="no">
+		<param name="border_color" value="000000">
+		<param name="mouse_over" value="slow">
+		<param name="scroll_delay" value="16">
+		<param name="xspace" value="10">
+		<param name=target_frame value="_self">
+						<param name="text1" value="&nbsp;&nbsp;&nbsp;&nbsp; | BTG and Gentronix Ltd to Market Novel Genotoxicity Testing System |&nbsp;&nbsp;&nbsp;&nbsp; ">
+				<param name="link1" value="/news/17122003Gentronix.html">
+				<param name="font1" value="Verdana,0,10">
+				<param name="color1" value="000000,4f2222">
+				<param name="status_bar_msg1" value="">
+				<param name="yposition1" value="19">
+								<param name="text2" value="&nbsp;&nbsp;&nbsp;&nbsp; | BTG plc: Interim Results 2003 |&nbsp;&nbsp;&nbsp;&nbsp; ">
+				<param name="link2" value="/news/01122003Interims.html">
+				<param name="font2" value="Verdana,0,10">
+				<param name="color2" value="000000,4f2222">
+				<param name="status_bar_msg2" value="">
+				<param name="yposition2" value="19">
+								<param name="text3" value="&nbsp;&nbsp;&nbsp;&nbsp; | BTG presents a live webcast to announce interim results for the six months ended 30 September 2003 |&nbsp;&nbsp;&nbsp;&nbsp; ">
+				<param name="link3" value="/news/26112003Interims.html">
+				<param name="font3" value="Verdana,0,10">
+				<param name="color3" value="000000,4f2222">
+				<param name="status_bar_msg3" value="">
+				<param name="yposition3" value="19">
+								<param name="text4" value="&nbsp;&nbsp;&nbsp;&nbsp; | BTG plc: Statement on Varisolve® US Phase II safety study |&nbsp;&nbsp;&nbsp;&nbsp; ">
+				<param name="link4" value="/news/14112003Varisolve.html">
+				<param name="font4" value="Verdana,0,10">
+				<param name="color4" value="000000,4f2222">
+				<param name="status_bar_msg4" value="">
+				<param name="yposition4" value="19">
+					  </applet>
+	  	</td>
+	<td valign="middle" class="GOsearch" width="231"> 
+	  <table width="231" border="0" cellspacing="0" cellpadding="0">
+		<tr align="center" valign="middle"> 
+		 	<td width="129" valign="middle"> 
+			  <div class = "hideprint">
+			  <table width="231" border="0" cellspacing="0" cellpadding="0">
+			  <tr align="center" valign="middle"> 
+				<FORM ACTION="../search.php" METHOD="get" name="frmsearch">
+				  <td width="65" class="BodyText00386EBOLD">SEARCH: </td>
+				  <td width="129" class="BodyText00386EBOLD"> 
+					<input class="searchBOX" type="text" size="15" name="q">
+				  </td>
+				  <td width="22" class="BodyText00386EBOLD"><a href="javascript:document.frmsearch.submit();" class="GOsearchL">GO</a></td>
+				  <td width="10" class="BodyText00386EBOLD"><img src="../images/goArrow.gif" width="10" height="26"></td>
+			 	<input type="hidden" name="a" value="13624">
+ 			 	<input type="hidden" name="c" value="0">
+  				</form>
+			  </tr>
+			</table>			  </div>
+			</td>
+			
+		  
+		</tr>
+	  </table>
+	</td>
+	
+  </tr>
+</table>
+<table width="750" border="0" cellspacing="0" cellpadding="0" height="15">
+  <tr> 
+	<td><img src="images/white.gif" width="20" height="15"></td>
+  </tr>
+</table>
+<table width="750" border="0" cellspacing="0" cellpadding="0">
+  <tr align="left" valign="top"> 
+	<td width="17">&nbsp;</td>
+	<td width="415">
+	  <table width="415" border="0" cellspacing="0" cellpadding="0">
+		<tr align="left" valign="top"> 
+		  <td width="113"><a href="portfolio/how_license.php"><img src="images/TechPort_image.gif" width="113" height="83" border="0"></a></td>
+		  <td width="302">
+			<table width="302" border="0" cellspacing="0" cellpadding="0">
+			  <tr> 
+				<td align="left" valign="top" height="23"><img src="images/TechPort_imageTitle.gif" width="159" height="23"></td>
+			  </tr>
+			  <tr> 
+				<td align="left" valign="top" class="BodyText406A92">BTG licenses 
+				  technologies that build future product portfolios. Explore our 
+				  strategy, browse our technologies available for licence.</td>
+			  </tr>
+			  <tr>
+				<td align="left" valign="bottom" height="15"><a href="portfolio/how_license.php" class="clickContinue">Click 
+				  here to continue &gt;</a></td>
+			  </tr>
+			</table>
+		  </td>
+		</tr>
+	  </table>
+	  <table width="302" border="0" cellspacing="0" cellpadding="0" height="20">
+		<tr> 
+		  <td><img src="images/white.gif" width="20" height="20"></td>
+		</tr>
+	  </table>
+	  <table width="415" border="0" cellspacing="0" cellpadding="0">
+		<tr align="left" valign="top"> 
+		  <td width="113"><a href="finding/bring_tech.php"><img src="images/findTech_image.gif" width="113" height="83" border="0"></a></td>
+		  <td width="302"> 
+			<table width="302" border="0" cellspacing="0" cellpadding="0">
+			  <tr> 
+				<td align="left" valign="top" height="23"><img src="images/findTech_imageTitle.gif" width="160" height="23"></td>
+			  </tr>
+			  <tr> 
+				<td align="left" valign="top" class="BodyText406A92">Our goal 
+				  is to provide our skills in technology evaluation, protection, 
+				  development, marketing and investment to your technology.</td>
+			  </tr>
+			  <tr> 
+				<td align="left" valign="bottom" height="15"><a href="finding/bring_tech.php" class="clickContinue">Click 
+				  here to continue &gt;</a></td>
+			  </tr>
+			</table>
+		  </td>
+		</tr>
+	  </table>
+	  <table width="302" border="0" cellspacing="0" cellpadding="0" height="20">
+		<tr> 
+		  <td><img src="images/white.gif" width="20" height="20"></td>
+		</tr>
+	  </table>
+	  <table width="415" border="0" cellspacing="0" cellpadding="0">
+		<tr align="left" valign="top"> 
+		  <td width="113"><a href="ventures/about_ventures.php"><img src="images/ventures_image.gif" width="113" height="83" border="0"></a></td>
+		  <td width="302"> 
+			<table width="302" border="0" cellspacing="0" cellpadding="0">
+			  <tr> 
+				<td align="left" valign="top" height="23"><img src="images/ventures_imageTitle.gif" width="108" height="23"></td>
+			  </tr>
+			  <tr> 
+				<td align="left" valign="top" class="BodyText406A92">BTG Ventures 
+				  invests capital, technology, and expertise in technology based 
+				  companies located in Europe and North America. </td>
+			  </tr>
+			  <tr> 
+				<td align="left" valign="bottom" height="15"><a href="ventures/about_ventures.php" class="clickContinue">Click 
+				  here to continue &gt;</a></td>
+			  </tr>
+			</table>
+		  </td>
+		</tr>
+	  </table>
+	  <table width="302" border="0" cellspacing="0" cellpadding="0" height="20">
+		<tr> 
+		  <td><img src="images/white.gif" width="20" height="20"></td>
+		</tr>
+	  </table>
+	</td>
+	<td width="318" align="center">
+	  <table width="318" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		  <td align="right" valign="top"><img src="images/home_body_image.jpg" width="307" height="308"></td>
+		</tr>
+	  </table>
+	</td>
+  </tr>
+</table>
+<div class = "hideprint">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+	<td background="../images/00386E.gif" height="1"><img src="../images/00386E.gif" width="2" height="1"></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+	<td align="left" valign="top" background="../images/bottomBG.gif"> 
+	  <table width="750" border="0" cellspacing="0" cellpadding="0">
+		<tr valign="top"> 
+		  <td width="17" align="left"><img src="../images/bottomBG.gif" width="17" height="22"></td>
+		  <td class="BodyText00386E" align="left" valign="middle" width="171">&copy; 
+			BTG Copyright 2002</td>
+		  <td align="left" valign="middle" class="BodyText00386E" width="366">BTG 
+			Locations:&nbsp;&nbsp;<a href="../about/locations.php#europe">Europe</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../about/locations.php#us">North 
+			America</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../about/locations.php#japan">Japan</a></td>
+		  <td align="left" valign="middle" class="BodyText00386E" width="196">Email 
+			Address: <a href="mailto:info@btgplc.com" class="BodyText00386E">info@btgplc.com</a></td>
+		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></div>
+</body>
+</html>
+

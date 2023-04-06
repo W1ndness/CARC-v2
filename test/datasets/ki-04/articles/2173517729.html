@@ -1,0 +1,476 @@
+<!-- <DOCUMENT>
+	<FILE>
+		2173517729.html
+	</FILE>
+	<URL>
+		http://www.mathcore.com/products/mathmodelica/whatismm.shtml
+	</URL>
+	<TITLE>
+		What is MathModelica?
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ What is MathModelica? Home &gt; Products &gt; What is MathModelica? What is MathModelica? MathModelica is a powerful engineering tool for virtual model building and simulation of all kinds of physical systems. MathModelica handles any kind of domain, such as mechanics, electronics, hydraulics, control systems etc. This gives a unique capability to model and simulate complex systems with high accuracy and precision, in an easy and intuitive computer environment. With its simplicity and flexibility, it is a tool that supports updated and correct decision making in all stages of a product's life cycle. General Description MathModelica is a modeling, analysis, and simulation environment for engineers at companies that design complex products or systems of heterogeneous physical character. MathModelica is useful in a variety of fields such as the automotive and aircraft industries, robotics, and complex machinery. The tool provides a technology that makes it possible to "lift" modeling and simulation one or several levels closer to the real product than is possible with todays software tools. Virtual prototyping is a common term for parts of this process but does sometimes only include the mechanical modeling part of the whole system. Full system simulation is a more accurate description of what MathModelica provides. In MathModelica models are described using the Modelica language. The Modelica Association is the key to success in the "lift" since the focus of the Modelica effort has been on efficient multi-domain modeling and simulation from the very beginning in the language design. The term multi-domain (or heterogeneous) means that subsystems or components from different physical application domains can be handled in the same model and by the same modeling tool. A construction machine is one such example, containing mechanics, hydraulics, electric servo motors, and one or several software-based regulators or control systems. The development of products or systems of this character (i.e., mixes of mechanics, hydraulics, electronics, and software) is supported today by simulation tools with rather limited scope, which means that models and simulations can usually only be carried out in subsystems within each application area. The communication between designers and groups that develop these different subsystems is usually done through specifications and discussions during formal meetings. It is hard to verify that the given specifications correspond to a correct final product, and it is not unusual that problems are detected rather late in the development process when physical prototypes are built and the different subsystems are integrated. Multi-domain modeling software overcomes these problems and makes it possible to integrate the work done by different design groups at a much earlier stage - collaborative engineering! The full system behavior can be tested and verified virtually by analyses and simulations much earlier and faster than before. MathModelica is a suite of software including Mathematica, Visio, and the Dymola kernel, which are very tightly integrated into a single engineering workbench for advanced modeling, simulation, analysis, and documentation. The user interface of MathModelica can be divided into The Model Editor and Notebooks. The Model Editor is an extension of Visio and is used for quick and easy graphical composition of models in a drag-n-drop fashion, using ready-made components from the Modelica Standard Library or other user defined component libraries. The Notebook interface provides excellent "live" documentation of the whole model and simulation process.Additionally it offers advanced scripting and pre- and post processing capabilities. By integrating the powerful Modelica modeling and simulation technology with Mathematica, advanced modeling and simulation capabilities are merged seamlessly with a technical computing system complete with built-in functions for pre- and post processing as well as advanced scripting capabilities. The process of translating the models described in Modelica into efficient, executable simulation code (equation sorting, index reduction, symbolic implication, C-code generation, compilation, solver linking, etc) is handled by the Dymola kernel which is not directly visible to the user. Examples and Documents Find out more about MathModelica by examining examples and reading documents. References --> Examples Feature List Papers and Articles Model Editor The model editor is a graphical and textual interface, featuring intuitive drag-and-drop capabilities. The model is assembled using components from already built up component libraries. Read more... Screenshot of Model Editor Screenshot of Notebook textual interface --> AVI demo of user interface Simulation Center Simulations and results are presented in the simulation center. Here it is possible to trim the parameters and initial values of a model between simulations. Read more... Simulation Center Screenshot AVI of Visualizations The Bouncing Ball Example --> Documentation and Analysis Live documentation and mathematical analysis using Notebooks. Read more... Example Notebooks Documentation in Mathematica AVI of Documentation and Analysis --> Component Libraries Ready made or user defined component libraries. Read more... Component Libraries The Modelica Language Model Notebooks --> Communication Communicate and integrate with other software. --> Technologies Read here about the technologies used in MathModelica. Other links that might be of interest: MathModelica Examples &middot; Feature List &middot; Technical Documents &middot; MathMore's Products Questions or comments about the site? Please contact webmaster@mathcore.com . Thanks! 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+
+<head>
+<title>What is MathModelica?</title>
+<meta name="Description" content="A description of MathModelica.">
+<!-- "Target" is for the atomz search engine -->
+<meta name="target" content="MathModelica, modeling, simulation, documentation, analyzis, visualization">
+
+<!-- Begin common head element include document -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Jan Brugård, Andreas Idebrant, Dan Costello">
+<meta name="Generator" content="HTML-Kit">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+
+<LINK REL=StyleSheet HREF="/css/mathcore.css" TITLE="Default Styles" TYPE="text/css">
+</head>
+
+<script language="JavaScript">
+<!--
+function MM_findObj(n, d) { //v3.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;
+}
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+ var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+   var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+   if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+
+
+<body>
+<table summary="Page structure only" border="0" width="750">
+<tr valign="top">
+<td colspan="2">
+<!-- Begin page header -->
+<table border="0" cellpadding="0" cellspacing="0" width="750">
+<!-- fwtable fwsrc="head_1.png" fwbase="head_1.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr>
+   <td><img src="/images/images_head/spacer.gif" width="229" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="66" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="51" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="57" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="92" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="67" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="64" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="124" height="1" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+
+  <tr>
+   <td colspan="8"><a href="/"><img name="head_1_r1_c1" src="/images/images_head/head_1_r1_c1.gif" width="750" height="53" border="0"></a></td>
+   <td><img src="/images/images_head/spacer.gif" width="1" height="53" border="0"></td>
+  </tr>
+  <tr>
+   <td rowspan="2"><a href="/"><img name="head_1_r2_c1" src="/images/images_head/head_1_r2_c1.gif" width="229" height="19" border="0"></a></td>
+
+   <!-- Products -->
+   <td rowspan="2"><a href="/products/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('head_products','','/images/images_head/head_products_f2.gif',1);" ><img name="head_products" src="/images/images_head/head_products.gif" width="66" height="19" border="0"></a></td>
+   
+	 <td colspan="4"><img name="head_1_r2_c3" src="/images/images_head/head_1_r2_c3.gif" width="267" height="2" border="0"></td>
+   
+	 <!-- Downloads -->
+	 <td rowspan="2"><a href="/products/mathcode/download1.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('head_downloads','','/images/images_head/head_downloads_f2.gif',1);" ><img name="head_downloads" src="/images/images_head/head_downloads.gif" width="64" height="19" border="0"></a></td>
+   
+	 <td rowspan="2"><img name="head_1_r2_c8" src="/images/images_head/head_1_r2_c8.gif" width="124" height="19" border="0"></td>
+   <td><img src="/images/images_head/spacer.gif" width="1" height="2" border="0"></td>
+  </tr>
+  <tr>
+   
+	 <!-- News -->
+	 <td><a href="/news/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('head_news','','/images/images_head/head_news_f2.gif',1);" ><img name="head_news" src="/images/images_head/head_news.gif" width="51" height="17" border="0"></a></td>
+   
+	 <!-- Support -->
+	 <td><a href="/support/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('head_support','','/images/images_head/head_support_f2.gif',1);" ><img name="head_support" src="/images/images_head/head_support.gif" width="57" height="17" border="0"></a></td>
+   
+	 <!-- Company -->
+	 <td><a href="/company/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('head_about','','/images/images_head/head_about_f2.gif',1);" ><img name="head_about" src="/images/images_head/head_about.gif" width="92" height="17" border="0"></a></td>
+   
+	 <!-- Contact -->
+	 <td><a href="/company/contact.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('head_contact','','/images/images_head/head_contact_f2.gif',1);" ><img name="head_contact" src="/images/images_head/head_contact.gif" width="67" height="17" border="0"></a></td>
+   <td><img src="/images/images_head/spacer.gif" width="1" height="17" border="0"></td>
+  </tr>
+</table>
+
+<!-- End page header -->
+</td>
+</tr>
+
+<tr valign="top">
+<td width="189">
+<!-- Begin navbar -->
+<!-- Begin Atomz search form -->
+<form method="get" action="http://search.atomz.com/search/">
+<!-- Begin navbar structure table -->
+<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="190">
+<!-- fwtable fwsrc="navbar.png" fwbase="navbar.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr>
+    <td width="19"><img src="/images/images_navbar/spacer.gif" width="19" height="1" border="0"></td>
+    <td width="98"><img src="/images/images_navbar/spacer.gif" width="98" height="1" border="0"></td>
+    <td width="22"><img src="/images/images_navbar/spacer.gif" width="22" height="1" border="0"></td>
+    <td width="50"><img src="/images/images_navbar/spacer.gif" width="50" height="1" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="1" border="0"></td>
+  </tr>
+
+  <tr>
+    <td rowspan="2" bgcolor="#ffffff" width="19"><img src="/images/images_navbar/spacer.gif" width="19" height="48" border="0"></td>
+    <td width="98"><img name="navbar_r1_c2" src="/images/images_navbar/navbar_r1_c2.gif" width="98" height="20" border="0"></td>
+   <td colspan="2" bgcolor="#ffffff"><img src="/images/images_navbar/spacer.gif" width="72" height="20" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="20" border="0"></td>
+  </tr>
+  <tr>
+		<td width="98">
+		<!-- Atomz Search HTML for MathCore -->
+    
+			<input size=15 name="sp-q"><br>
+			<input type=hidden name="sp-a" value="sp042b7000">
+    </td>
+
+		<td colspan="2">
+				<!-- Image element used as submit button -->
+	 			<input type=image name="submit" alt="submit" value="submit" src="/images/images_navbar/navbar_r2_c3.gif" border="0">
+		</td>			
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="28" border="0"></td>
+  </tr>
+	
+	<!-- Home -->
+  <tr>
+    <td rowspan="4" width="19"><img name="navbar_r3_c1" src="/images/images_navbar/navbar_r3_c1.gif" width="19" height="67" border="0"></td>
+   <td colspan="2"><a href="/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_home','','/images/images_navbar/navbar_home_f2.gif',1);" target="_top"><img name="navbar_home" src="/images/images_navbar/navbar_home.gif" width="120" height="16" border="0"></a></td>
+    <td rowspan="20" bgcolor="#ffffff" width="50"><img src="/images/images_navbar/spacer.gif" width="50" height="304" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="16" border="0"></td>
+  </tr>
+	
+	<!-- Products -->
+  <tr>
+   <td colspan="2"><a href="/products/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_products','','/images/images_navbar/navbar_products_f2.gif',1);" ><img name="navbar_products" src="/images/images_navbar/navbar_products.gif" width="120" height="17" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="17" border="0"></td>
+  </tr>
+	
+	<!-- Company -->
+  <tr>
+   <td colspan="2"><a href="/company/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_company','','/images/images_navbar/navbar_company_f2.gif',1);" ><img name="navbar_company" src="/images/images_navbar/navbar_company.gif" width="120" height="17" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="17" border="0"></td>
+  </tr>
+	
+	<!-- Investors -->
+  <tr>
+   <td colspan="2"><a href="/company/investor/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_investors','','/images/images_navbar/navbar_investors_f2.gif',1);" ><img name="navbar_investors" src="/images/images_navbar/navbar_investors.gif" width="120" height="17" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="17" border="0"></td>
+  </tr>
+	
+	<!-- Spacer -->
+  <tr>
+   <td colspan="3" bgcolor="#ffffff"><img src="/images/images_navbar/spacer.gif" width="139" height="11" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="11" border="0"></td>
+  </tr>
+	
+	<!-- Customer service -->
+  <tr>
+    <td rowspan="4" width="19"><img name="navbar_r8_c1" src="/images/images_navbar/navbar_r8_c1.gif" width="19" height="68" border="0"></td>
+   <td colspan="2"><a href="/service.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_services','','/images/images_navbar/navbar_services_f2.gif',1);" ><img name="navbar_services" src="/images/images_navbar/navbar_services.gif" width="120" height="17" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="17" border="0"></td>
+  </tr>
+	
+	<!-- FAQ -->
+  <tr>
+   <td colspan="2"><a href="/support/faq.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_faq','','/images/images_navbar/navbar_faq_f2.gif',1);" ><img name="navbar_faq" src="/images/images_navbar/navbar_faq.gif" width="120" height="17" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="17" border="0"></td>
+  </tr>
+	
+	<!-- Technical Documents -->
+  <tr>
+   <td colspan="2"><a href="/documents/index.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_documents','','/images/images_navbar/navbar_documents_f2.gif',1);" ><img name="navbar_documents" src="/images/images_navbar/navbar_documents.gif" width="120" height="16" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="16" border="0"></td>
+  </tr>
+	
+	<!-- Links -->
+  <tr>
+   <td colspan="2"><a href="/links.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_links','','/images/images_navbar/navbar_links_f2.gif',1);" ><img name="navbar_links" src="/images/images_navbar/navbar_links.gif" width="120" height="18" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="18" border="0"></td>
+  </tr>
+	
+	<!-- Feedback -->
+  <tr>
+   <td colspan="3" bgcolor="#ffffff"><img src="/images/images_navbar/spacer.gif" width="139" height="14" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="14" border="0"></td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="19"><img name="navbar_r13_c1" src="/images/images_navbar/navbar_r13_c1.gif" width="19" height="29" border="0"></td>
+   <td colspan="2"><a href="/feedback.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_feedback','','/images/images_navbar/navbar_feedback_f2.gif',1);" ><img name="navbar_feedback" src="/images/images_navbar/navbar_feedback.gif" width="120" height="13" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="13" border="0"></td>
+  </tr>
+	
+	<!-- Careers -->
+  <tr>
+   <td colspan="2"><a href="/company/careers.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_careers','','/images/images_navbar/navbar_careers_f2.gif',1);" ><img name="navbar_careers" src="/images/images_navbar/navbar_careers.gif" width="120" height="16" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="16" border="0"></td>
+  </tr>
+	
+	<!-- Separator -->
+  <tr>
+   <td colspan="3" bgcolor="#ffffff"><img src="/images/images_navbar/spacer.gif" width="139" height="17" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="17" border="0"></td>
+  </tr>
+	<!-- Site Map -->
+  <tr>
+    <td rowspan="2" width="19"><img name="navbar_r16_c1" src="/images/images_navbar/navbar_r16_c1.gif" width="19" height="31" border="0"></td>
+   <td colspan="2"><a href="/sitemap.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_sitemap','','/images/images_navbar/navbar_sitemap_f2.gif',1);" ><img name="navbar_sitemap" src="/images/images_navbar/navbar_sitemap.gif" width="120" height="16" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="16" border="0"></td>
+  </tr>
+	
+	<!-- Help -->
+  <tr>
+   <td colspan="2"><a href="/support/sitehelp.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_sitemap_help','','/images/images_navbar/navbar_sitemap_help_f2.gif',1);" ><img name="navbar_sitemap_help" src="/images/images_navbar/navbar_sitemap_help.gif" width="120" height="15" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="15" border="0"></td>
+  </tr>
+	
+	<!-- Separator -->
+  <tr>
+   <td colspan="3" bgcolor="#ffffff"><img src="/images/images_navbar/spacer.gif" width="139" height="19" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="19" border="0"></td>
+  </tr>
+	
+	<!-- Privacy Policy -->
+  <tr>
+    <td rowspan="2" width="19"><img name="navbar_r19_c1" src="/images/images_navbar/navbar_r19_c1.gif" width="19" height="20" border="0"></td>
+   <td colspan="2"><a href="/privacy.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_privacy','','/images/images_navbar/navbar_privacy_f2.gif',1);" ><img name="navbar_privacy" src="/images/images_navbar/navbar_privacy.gif" width="120" height="12" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="12" border="0"></td>
+  </tr>
+	
+	<!-- Legal Notices -->
+  <tr>
+   <td rowspan="2" colspan="2"><a href="/legal.shtml" onMouseOut="MM_swapImgRestore();"  onMouseOver="MM_swapImage('navbar_legal','','/images/images_navbar/navbar_legal_f2.gif',1);" ><img name="navbar_legal" src="/images/images_navbar/navbar_legal.gif" width="120" height="24" border="0"></a></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="8" border="0"></td>
+  </tr>
+  <tr>
+    <td width="19"><img name="navbar_r21_c1" src="/images/gif_animations/blink.gif" width="19" height="16" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="16" border="0"></td>
+  </tr>
+  <tr>
+   <td colspan="3" bgcolor="#ffffff"><img src="/images/images_navbar/spacer.gif" width="139" height="12" border="0"></td>
+    <td width="1"><img src="/images/images_navbar/spacer.gif" width="1" height="12" border="0"></td>
+  </tr>
+<!-- End navbar structure table -->
+</table>
+<!-- End search form -->
+</form>
+
+<!-- End navbar -->
+</td>
+
+<td width="560">
+<!-- This is where the page content goes -->
+
+<!-- Begin locator -->
+<p class="locator"><a href="/">Home</a> &gt; <a href="../index.shtml">Products</a> &gt; <a href="/products/mathmodelica/whatismm.shtml">What is MathModelica?</a></p>
+<!-- End locator -->
+
+<h1>What is MathModelica?</h1>
+
+<!-- Beginning of Image Map -->
+<IMG SRC="/images/aboutmm/overview.jpg" USEMAP="#overview" BORDER=0>
+<MAP NAME="overview">
+  <AREA SHAPE=POLY COORDS="256,34,4,34,4,195,112,195,112,171,256,171,256,34" HREF="modeleditors/guipicture.shtml"  ALT="Model Editor"  OnMouseOut="window.status=''; return true"  OnMouseOver="window.status='Model Editor'; return true">
+  <AREA SHAPE=POLY COORDS="268,171,268,51,520,51,520,211,415,211,415,195,316,195,316,171,316,171" HREF="simcentre/simctrescreen.shtml"  ALT="Simulation Center"  OnMouseOut="window.status=''; return true"  OnMouseOver="window.status='Simulation Center'; return true">
+  <AREA SHAPE=POLY COORDS="113,405,113,170,316,171,316,195,415,195,414,435,215,435,215,405,215,405" HREF="doc_analysis/notebookexamples.shtml"  ALT="Documentation and Analysis"  OnMouseOut="window.status=''; return true"  OnMouseOver="window.status='Documentation and Analysis'; return true">
+</MAP>
+<!-- End of Image Map -->
+
+<p>MathModelica is a powerful engineering tool for virtual model building and 
+simulation of all kinds of physical systems. MathModelica handles any kind of domain, 
+such as mechanics, electronics, hydraulics, control systems etc. This gives a 
+unique capability to model and simulate complex systems with high accuracy and 
+precision, in an easy and intuitive computer environment. With its simplicity and 
+flexibility, it is a tool that supports updated and correct decision making in all stages 
+of a product's life cycle.</p>
+
+<h2>General Description</h2>
+
+<p>MathModelica is a modeling, analysis, and simulation environment for engineers 
+at companies that design complex products or systems of heterogeneous physical 
+character. MathModelica is useful in a variety of fields such as the 
+automotive and aircraft industries, robotics, and complex machinery. The tool 
+provides a technology that makes it possible to "lift" modeling and simulation 
+one or several levels closer to the real product than is possible with todays 
+software tools. Virtual prototyping is a common term for parts of this 
+process but does sometimes only include the mechanical modeling part of the 
+whole system. Full system simulation is a more accurate description of what 
+MathModelica provides.</p>
+
+
+
+<p>In MathModelica models are described using the Modelica language. The 
+Modelica Association is the key to success in the "lift" since the focus of the 
+Modelica effort has been on efficient multi-domain modeling and simulation from 
+the very beginning in the language design. The term multi-domain (or 
+heterogeneous) means that subsystems or components from different physical 
+application domains can be handled in the same model and by the same modeling 
+tool. A construction machine is one such example, containing mechanics, 
+hydraulics, electric servo motors, and one or several software-based regulators 
+or control systems. The development of products or systems of this character 
+(i.e., mixes of mechanics, hydraulics, electronics, and software) is  
+supported today by simulation tools with rather limited scope, which means that 
+models and simulations can usually only be carried out in subsystems within 
+each application area. The communication between designers and groups that 
+develop these different subsystems is usually done through specifications and 
+discussions during formal meetings. It is hard to verify that the given 
+specifications correspond to a correct final product, and it is not unusual that 
+problems are detected rather late in the development process when physical 
+prototypes are built and the different subsystems are integrated. Multi-domain 
+modeling software overcomes these problems and makes it possible to integrate 
+the work done by different design groups at a much earlier stage - 
+collaborative engineering! The full system behavior can be tested and verified 
+virtually by analyses and simulations much earlier and faster than before.</p>
+
+<p>MathModelica is a suite of software including Mathematica, Visio, and the Dymola 
+kernel, which are very tightly integrated into a single engineering workbench 
+for advanced modeling, simulation, analysis, and documentation. The user 
+interface of MathModelica can be divided into The Model Editor and Notebooks. 
+The Model Editor is an extension of Visio and is used for quick and easy 
+graphical composition of models in a drag-n-drop fashion, using ready-made 
+components from the Modelica Standard Library or other user defined component 
+libraries. The Notebook interface provides excellent "live" documentation of 
+the whole model and simulation process.Additionally it offers advanced scripting and pre- and 
+post processing capabilities. By integrating the powerful Modelica modeling and 
+simulation technology with Mathematica, advanced modeling and simulation 
+capabilities are merged seamlessly with a technical computing system complete with  
+built-in functions for pre- and post processing as well as advanced scripting 
+capabilities.</p>
+
+<p>The process of translating the models described in Modelica into efficient, 
+executable simulation code (equation sorting, index reduction, symbolic 
+implication, C-code generation, compilation, solver linking, etc) is handled by 
+the Dymola kernel which is not directly visible to the user.</p>
+
+<h2>Examples and Documents</h2>
+<p>Find out more about MathModelica by examining examples and reading documents.</p>
+<!-- Not available yet 
+<p><a href="references.shtml">References</a></p>
+-->
+<p><a href="examples/index.shtml">Examples</a></p>
+<p><a href="/products/mathmodelica/featurelist.shtml">Feature List</a></p>
+<p><a href="../../documents/index.shtml">Papers and Articles</a></p>
+
+<h2>Model Editor</h2>
+<p>The model editor is a graphical and textual interface, featuring intuitive drag-and-drop capabilities.
+The model is assembled using components from already built up component libraries. <a href="modeleditors/guipicture.shtml">Read more...</a></p>
+<p><a href="modeleditors/guipicture.shtml">Screenshot of Model Editor</a></p>
+<!-- <p><a href="modeleditors/nbtextpicture.shtml">Screenshot of Notebook textual interface</a></p> -->
+<p><a href="examples/DCmotor.avi">AVI demo of user interface</a></p>
+
+<h2>Simulation Center</h2>
+<p>Simulations and results are presented in the simulation center. Here it is 
+possible to trim the parameters and initial values of a model between simulations. 
+<a href="simcentre/simctrescreen.shtml">Read more...</a> </p>
+<p><a href="simcentre/simctrescreen.shtml">Simulation Center Screenshot</a></p>
+<p><a href="examples/index.shtml#visualization">AVI of Visualizations</a></p>
+<!-- Moved to examples 
+<p><a href="http://www.mathcore.com/webmm/BouncingBall/BouncingBall.php">The Bouncing Ball Example</a></p>
+-->
+
+<h2>Documentation and Analysis</h2>
+<p>Live documentation and mathematical analysis using Notebooks. <a href="doc_analysis/notebookexamples.shtml">Read more...</a> </p>
+<p><a href="doc_analysis/notebookexamples.shtml">Example Notebooks</a></p>
+<!--Not available yet
+<p><a href="doc_analysis/mathematica.shtml">Documentation in Mathematica</a></p>
+<p><a href="doc_analysis/docuavi.shtml">AVI of Documentation and Analysis</a></p>
+-->
+
+
+<h2>Component Libraries</h2>
+<p>Ready made or user defined component libraries. <a href="components/componentlibraries.shtml">Read more...</a></p>
+<p><a href="components/componentlibraries.shtml">Component Libraries</a></p>
+<p><a href="components/modelicalanguage.shtml">The Modelica Language</a></p>
+<!--Not available yet
+<p><a href="components/modelnotebooks.shtml">Model Notebooks</a></p>
+-->
+
+<!--No available yet
+<h2>Communication</h2>
+<p>Communicate and integrate with other software.</p>
+-->
+
+<h2>Technologies</h2>
+<p>Read <a href="technologies.shtml">here</a> about the technologies used in MathModelica.</p>
+
+<!-- Begin Otherlinks -->
+<table class="otherlinks" width=100%><tr><td>
+<p style="margin-top:0px;">Other links that might be of interest:</p>
+		 				 <p> 
+								<a href="/products/mathmodelica/examples/index.shtml">MathModelica Examples</a> &middot; 
+<a href="/products/mathmodelica/featurelist.shtml">Feature List</a> &middot;
+<a href="/documents/index.shtml">Technical Documents</a> &middot;
+<a href="../index.shtml">MathMore's Products</a>
+								<br>
+							</p>
+</td></tr></table>
+<!-- End Otherlinks -->
+
+<!-- End page content -->
+</td>
+
+</tr>
+<tr>
+<td colspan="2">
+<hr>
+<!-- Begin footer -->
+<p class="navtext">
+Questions or comments about the site? Please contact <a href="mailto:webmaster@mathcore.com">webmaster@mathcore.com</a>. Thanks!
+</p>
+<!-- End footer -->
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+

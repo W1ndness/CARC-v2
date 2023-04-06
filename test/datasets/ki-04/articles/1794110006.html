@@ -1,0 +1,145 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1794110006.html
+	</FILE>
+	<URL>
+		http://www.tau.ac.il/ilanproxy.html#what
+	</URL>
+	<TITLE>
+		ILAN Proxy Server
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ ILAN Proxy Server ILAN Proxy Server What is proxy? Why should I use proxy? How do I use proxy? What is proxy? A proxy server is a server that serves as a gateway between a local network (ILAN's in this case) and the outside world. The proxy server allows various services, mainly caching of the requests and a more secure means of obtaining documents. A proxy cache is a way for a client to get remote pages via the server rather than direct from the original site. When the server gets a request, it either provides it from the cache, or gets it through the original site (while caching it here). Any future requests are answered from the local copy of this document, thus saving multiple page transfers from abroad. Each page is dowloaded only once, thus saving time and network bandwidth for any future accesses to the cached documents. The cache will expire old entries, and will avoid caching results that are actually from programs (which may change each time called). Why should I use a proxy? The proxy cache will help you work faster and save bandwidth. If a certain document is in the cache, you wouldn't have to wait for it to be transfered from abroad (which saves you time, and helps make the connection faster for other users). If the document you asked for is not in the cache, it would take exactly the same amount of time for you (it will be downloaded from abroad) - but it would save a lot of time for the next user (who might very well be you) that would download this document. You have an interest in him getting the document faster - the international line would be less crowded, and you would get your transfers faster. How can I use proxy? Configure your client to have wwwproxy.ac.il as it's proxy server. On the Unix servers at the TAU Computation Center, it is done automatically. The configuration depends on the client: On Mosaic for UNIX and lynx , set the following environment variables before calling Mosaic or lynx Bourne shell: http_proxy="http://wwwproxy.ac.il:8080/" ftp_proxy=" $ http_proxy" wais_proxy=" $ http_proxy" gopher_proxy=" $ http_proxy" export http_proxy ftp_proxy wais_proxy gopher_proxy no_proxy="ac.il" export no_proxy Note: not all versions of Mosaic and lynx obey no_proxy. On Macintosh using Mac Mosaic , select Preferences -> Gates: Set WAIS Gateway: http://wwwproxy.ac.il:8080/ Turn on 'Use CERN Proxy Service' and set HTTP Gate: wwwproxy.ac.il : 8080 Gopher Gate: wwwproxy.ac.il : 8080 FTP Gate: wwwproxy.ac.il : 8080 On a PC using Mosaic for Windows , add the following to your MOSAIC.INI (probably found in C:\WINDOWS): [Proxy Information] http_proxy=http://wwwproxy.ac.il:8080/ ftp_proxy=http://wwwproxy.ac.il:8080/ gopher_proxy=http://wwwproxy.ac.il:8080/ wais_proxy=http://wwwproxy.ac.il:8080/ For Netscape 2.0 and up (Unix, Mac and Windows) , select the menu item Options -> Network Preferences. Go to the subsection 'Proxies' and select Manual Proxy Configuration. View the configuration. It should be: FTP Proxy: wwwproxy.ac.il Port: 8080 Gopher Proxy: wwwproxy.ac.il Port: 8080 HTTP Proxy: wwwproxy.ac.il Port: 8080 Security Proxy: wwwproxy.ac.il Port: 8080 WAIS Proxy: wwwproxy.ac.il Port: 8080 SOCKS Host: Port: 1080 No Proxy for: ac.il Select 'OK'. To avoid using the cache when not necessary users should exclude local pages. Set the "No proxy for" box to be "ac.il". Further information about proxies is available from the World Wide Web Consortium . Adapted from the proxy page at Hebrew University Computer Science written by Ariel Nowersztern. Last updated 31/3/96. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+
+<html>
+<!-- This document explains about ILAN's proxy server.
+     Adapted by David Sitman, 12/6/95, and updated 25/10/95
+     from a page written by Ariel Nowersztern, April 5th 1995. -->
+<head>
+<title>ILAN Proxy Server</title>
+</head>
+
+<body>
+
+<h1 align=center> ILAN Proxy Server </h1>
+
+<hr>
+<p>
+
+<ul>
+<LI><a href="#what">What is proxy?</a>
+<LI><a href="#why">Why should I use proxy?</a> 
+<LI><a href="#how">How do I use proxy?</a>
+</ul> <p>
+
+<a name = "what"> <hr> </a> <p>
+<h3> What is proxy? </h3>
+
+A proxy server is a server that serves as a gateway between a local 
+network (ILAN's in this case) and the outside world. The proxy server 
+allows various services, mainly caching of the requests and a more secure 
+means of obtaining documents. <p>
+
+A proxy cache is a way for a client to get remote pages via the server 
+rather than direct from the original site. When the server gets a 
+request, it either provides it from the cache, or gets it through the 
+original site (while caching it here). Any future requests are answered 
+from the local copy of this document, thus saving multiple page transfers 
+from abroad. Each page is dowloaded only once, thus saving time and 
+network bandwidth for any future accesses to the cached documents. The 
+cache will expire old entries, and will avoid caching results that are 
+actually from programs (which may change each time called). <p>
+
+<a name = "why"> </a> <p>
+<h3> Why should I use a proxy? </h3>
+
+The proxy cache will help you work faster and save bandwidth. If a 
+certain document is in the cache, you wouldn't have to wait for it to be 
+transfered from abroad (which saves you time, and helps make the 
+connection faster for other users). <p>
+
+If the document you asked for is not in the cache, it would take exactly 
+the same amount of time for you (it will be downloaded from abroad) - but 
+it would save a lot of time for the next user (who might very well be 
+you) that would download this document. You have an interest in him 
+getting the document faster - the international line would be less 
+crowded, and you would get your transfers faster.<p>
+
+<a name = "how"> </a> <p>
+
+<h3> How can I use proxy? </h3>
+
+Configure your client to have <code>wwwproxy.ac.il</code> as it's proxy 
+server. On the Unix servers at the TAU Computation Center, it is done 
+automatically. The configuration depends on the client:
+
+<ul>
+<li> <b>On Mosaic for UNIX and lynx</b>, set the following environment variables before calling Mosaic or lynx Bourne shell:
+<ul> <code>
+http_proxy="http://wwwproxy.ac.il:8080/" <br>
+ftp_proxy="$http_proxy" <br>
+wais_proxy="$http_proxy" <br>
+gopher_proxy="$http_proxy" <br>
+export http_proxy ftp_proxy wais_proxy gopher_proxy <br>
+no_proxy="ac.il" <br>
+export no_proxy <br>
+</code> </ul>
+<i>Note: not all versions of Mosaic and lynx obey no_proxy. </i> <p>
+
+<li> <b>On Macintosh using Mac Mosaic</b>, select Preferences -> Gates:
+<ul>
+<li> Set WAIS Gateway:   http://wwwproxy.ac.il:8080/ <br>
+<li> Turn on 'Use CERN Proxy Service' and set
+<ul> <code>
+HTTP Gate:      wwwproxy.ac.il : 8080 <br>
+Gopher Gate:    wwwproxy.ac.il : 8080 <br>
+FTP Gate:       wwwproxy.ac.il : 8080 <br>
+</code> </ul> </ul> <p>
+
+<li> <b>On a PC using Mosaic for Windows</b>, add the following to your MOSAIC.INI (probably found in C:\WINDOWS):
+<ul> <code>
+[Proxy Information] <br>
+http_proxy=http://wwwproxy.ac.il:8080/ <br>
+ftp_proxy=http://wwwproxy.ac.il:8080/ <br>
+gopher_proxy=http://wwwproxy.ac.il:8080/ <br>
+wais_proxy=http://wwwproxy.ac.il:8080/ <br>
+</ul> </code> <p>
+
+<li> <b>For Netscape 2.0 and up (Unix, Mac and Windows)</b>, select the menu 
+item Options -> Network Preferences. Go to the subsection 'Proxies'  and 
+select Manual Proxy Configuration. View the configuration. It should be: 
+<table>
+<tr><td>FTP Proxy:<td>wwwproxy.ac.il<td>Port:<td>8080
+<tr><td>Gopher Proxy:<td>wwwproxy.ac.il<td>Port:<td>8080
+<tr><td>HTTP Proxy:<td>wwwproxy.ac.il<td>Port:<td>8080
+<tr><td>Security Proxy:<td>wwwproxy.ac.il<td>Port:<td>8080
+<tr><td>WAIS Proxy:<td>wwwproxy.ac.il<td>Port:<td>8080
+<tr><td>SOCKS Host:<td><td>Port:<td>1080
+<tr><td>No Proxy for:<td>ac.il
+</table>
+Select 'OK'. To avoid using the cache when not necessary users should 
+exclude local pages. Set the "No proxy for" box to be "ac.il". 
+<p> 
+</ul>
+<hr>
+<A 
+HREF="http://www.w3.org/hypertext/WWW/Daemon/User/Proxies/Proxies.html">
+Further information about proxies</A> is available from the <A 
+HREF="http://www.w3.org/">World Wide Web Consortium</A>.
+<hr>
+<p>
+<EM>
+Adapted from the <A 
+HREF="http://www.cs.huji.ac.il/CS/system/proxy.html">proxy page</A> at 
+Hebrew University Computer Science written by Ariel Nowersztern.<br>
+Last updated 31/3/96.
+</EM>
+</body>
+</html>
+

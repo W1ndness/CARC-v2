@@ -1,0 +1,144 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5260241271.html
+	</FILE>
+	<URL>
+		http://www.trilug.org/pipermail/trilug/Week-of-Mon-20030324/015185.html
+	</URL>
+	<TITLE>
+		[TriLUG] Win2k boot problem
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ [TriLUG] Win2k boot problem [TriLUG] Win2k boot problem Joshua Bedick trilug@trilug.org Sun, 23 Mar 2003 23:37:08 -0500 Previous message: [TriLUG] [Semi-OT] Anyone have a drill press ? Next message: [TriLUG] Win2k boot problem Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] Hello Ken, Try the following - please make sure you have a lilo/grub boot disk as this may cause problems. Start the recovery console. Type the Admin password. Type &quot;Fixboot [drive]:&quot; where [drive] is the drive letter of your windows partition, for example c or d. Type exit Try it now. Fixboot writes a new Windows boot sector on the boot partition. You could also try FIXMBR but that will most likely frag lilo/grub as it rewrites the MBR. If neither of those work make sure your boot.ini file (root of the win2k partition) is pointing to the correct drive/partition combination for windows. You can actually add random entries until you get it right. Remember that win2k treats all Primary partitions as occurring first and Extended/Logical ones last. So if you had a hard drive with 1 primary, one extended and one logical in the extended then the primary would be 1 and the logical would be 2. Say win2k is installed on the logical drive. If there is space left on the drive and you create a new primary partition then the order changes. The first primary created is still one, but the second primary is now 2, with the logical partition becoming 3. If boot.ini is not changed to reflect that then windows won't boot. If you need to see how win2k is looking at the partitions so you can modify the ini file type DISKPART. It's basically a M $ version of fdisk. Let me know if you have any questions. Oh, I'm a windows sys admin converting to linux. Take care, Joshua &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; start original From: Ken Mink &lt; kmtrilug@nc.rr.com &gt; Yes, I'm asking a Windows question to a LUG, but there are plenty of folks here that deal with both sides of the force. Also, my problem involves Linux, sort of. I upgraded the HD on my dual boot(win2k/rh8) desktop. See, it involves Linux. I did a file based copy of each partition from the old drive to the new one. Everything copied fine and once I got grub installed, RH8 has been running fine. Today I tried to boot to win2k and got a message that it was an invalid system disk. I think all of the win2k files are there and on the same partition (hda1) that win2k was on before the transfer. It's a FAT32 partition. I'm pretty sure I need the Win2k equivalent of 'SYS C:' or maybe 'FORMAT /MBR'. More likely the former. I can get the repair console up on the non-booting installation, but I'm M $ clueless. I have no idea what to do once I'm at the command line. Any ideas? Oh yeah. I can't go back to the original drive. It's already in my MAC and reformatted. Thanks, Ken &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; end original Joshua Bedick, MCSE Integrated Technology, Inc. 919-630-3303 joshua@gratedtech.com Previous message: [TriLUG] [Semi-OT] Anyone have a drill press ? Next message: [TriLUG] Win2k boot problem Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [TriLUG] Win2k boot problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:trilug%40trilug.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="015180.html">
+   <LINK REL="Next"  HREF="015189.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[TriLUG] Win2k boot problem
+   </H1>
+<!--htdig_noindex-->
+    <B>Joshua Bedick
+    </B> 
+    <A HREF="mailto:trilug%40trilug.org"
+       TITLE="[TriLUG] Win2k boot problem">trilug@trilug.org
+       </A><BR>
+    <I>Sun, 23 Mar 2003 23:37:08 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="015180.html">[TriLUG] [Semi-OT] Anyone have a drill press ?
+</A></li>
+        <LI> Next message: <A HREF="015189.html">[TriLUG] Win2k boot problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15185">[ date ]</a>
+              <a href="thread.html#15185">[ thread ]</a>
+              <a href="subject.html#15185">[ subject ]</a>
+              <a href="author.html#15185">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--/htdig_noindex-->
+<!--beginarticle-->
+<PRE>Hello Ken,
+
+Try the following - please make sure you have a lilo/grub boot disk as this
+may cause problems.
+Start the recovery console.
+Type the Admin password.
+Type &quot;Fixboot [drive]:&quot; where [drive] is the drive letter of your windows
+partition, for example c or d.
+Type exit
+
+Try it now.
+
+Fixboot writes a new Windows boot sector on the boot partition.
+You could also try FIXMBR but that will most likely frag lilo/grub as it
+rewrites the MBR.
+
+If neither of those work make sure your boot.ini file (root of the win2k
+partition) is pointing to the correct drive/partition combination for
+windows.  You can actually add random entries until you get it right.
+Remember that win2k treats all Primary partitions as occurring first and
+Extended/Logical ones last.  So if you had a hard drive with 1 primary, one
+extended and one logical in the extended then the primary would be 1 and the
+logical would be 2.  Say win2k is installed on the logical drive.  If there
+is space left on the drive and you create a new primary partition then the
+order changes.  The first primary created is still one, but the second
+primary is now 2, with the logical partition becoming 3.  If boot.ini is not
+changed to reflect that then windows won't boot.  If you need to see how
+win2k is looking at the partitions so you can modify the ini file type
+DISKPART.  It's basically a M$ version of fdisk.  Let me know if you have
+any questions.
+
+Oh, I'm a windows sys admin converting to linux.
+
+Take care,
+
+Joshua
+
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>start original
+</I>From: Ken Mink &lt;<A HREF="mailto:kmtrilug@nc.rr.com">kmtrilug@nc.rr.com</A>&gt;
+
+Yes, I'm asking a Windows question to a LUG, but there are plenty of
+folks here that deal with both sides of the force. Also, my problem
+involves Linux, sort of.
+I upgraded the HD on my dual boot(win2k/rh8) desktop. See, it involves
+Linux. I did a file based copy of each partition from the old drive to
+the new one. Everything copied fine and once I got grub installed, RH8
+has been running fine. Today I tried to boot to win2k and got a message
+that it was an invalid system disk. I think all of the win2k files are
+there and on the same partition (hda1) that win2k was on before the
+transfer. It's a FAT32 partition. I'm pretty sure I need the Win2k
+equivalent of 'SYS C:' or maybe 'FORMAT /MBR'. More likely the former. I
+can get the repair console up on the non-booting installation, but I'm
+M$ clueless. I have no idea what to do once I'm at the command line. Any
+ideas?
+Oh yeah. I can't go back to the original drive. It's already in my MAC
+and reformatted.
+Thanks,
+Ken
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>end original
+</I>
+
+Joshua Bedick,  MCSE
+Integrated Technology, Inc.
+919-630-3303
+<A HREF="mailto:joshua@gratedtech.com">joshua@gratedtech.com</A>
+
+
+</PRE>
+<!--endarticle-->
+<!--htdig_noindex-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="015180.html">[TriLUG] [Semi-OT] Anyone have a drill press ?
+</A></li>
+	<LI> Next message: <A HREF="015189.html">[TriLUG] Win2k boot problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15185">[ date ]</a>
+              <a href="thread.html#15185">[ thread ]</a>
+              <a href="subject.html#15185">[ subject ]</a>
+              <a href="author.html#15185">[ author ]</a>
+         </LI>
+       </UL>
+<!--/htdig_noindex-->
+</body></html>
+

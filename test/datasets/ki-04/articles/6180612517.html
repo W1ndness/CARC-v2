@@ -1,0 +1,90 @@
+<!-- <DOCUMENT>
+	<FILE>
+		6180612517.html
+	</FILE>
+	<URL>
+		http://www-anw.cs.umass.edu/~rich/book/5/node6.html#SECTION00150000000000000000
+	</URL>
+	<TITLE>
+		5.5 Evaluating One Policy While Following Another
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ 5.5 Evaluating One Policy While Following Another Next: 5.6 Off-Policy Monte Carlo Up: 5 Monte Carlo Methods Previous: 5.4 On-Policy Monte Carlo 5.5 Evaluating One Policy While Following Another So far we have considered methods for estimating the value functions for a policy given an infinite supply of episodes generated using that policy. Suppose now that all we have are episodes generated from a different policy. That is, suppose we wish to estimate or , but all we have are episodes following , where . Can we do it? Happily, in many cases we can. Of course, in order to use episodes from to estimate values for , we require that every action taken under is also taken, at least occasionally, under . That is, we require that imply . In the episodes generated using , consider the i th first visit to state s and the complete sequence of states and actions following that visit. Let and denote the probabilities of that complete sequence happening given policies and and starting from s . Let denote the corresponding observed return from state s . To average these to obtain an unbiased estimate of , we need only weight each return by its relative probability of occurring under and , that is, by . The desired Monte Carlo estimate after observing returns from state s is then &#160; This equation involves the probabilities and , which are normally considered unknown in applications of Monte Carlo methods. Fortunately, here we need only their ratio, , which can be determined with no knowledge of the environment's dynamics. Let be the time of termination of the i th episode involving state s . Then and Thus the weight needed in ( 5.3 ), , depends only on the two policies and not at all on the environment's dynamics. Exercise . What is the Monte Carlo estimate analogous to ( 5.3 ) for action values, given returns generated using ? Next: 5.6 Off-Policy Monte Carlo Up: 5 Monte Carlo Methods Previous: 5.4 On-Policy Monte Carlo Richard Sutton Fri May 30 13:20:35 EDT 1997 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95.1 (Fri Jan 20 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>5.5 Evaluating One Policy While Following Another</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="5.5 Evaluating One Policy While Following Another">
+<meta name="keywords" value="book">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html89 HREF="node7.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.ai.mit.edu/latex2html/next_motif.gif"></A>   <A NAME=tex2html87 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.ai.mit.edu/latex2html/up_motif.gif"></A>   <A NAME=tex2html81 HREF="node5.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.ai.mit.edu/latex2html/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html90 HREF="node7.html">5.6 Off-Policy Monte Carlo </A>
+<B>Up:</B> <A NAME=tex2html88 HREF="node1.html">5 Monte Carlo Methods</A>
+<B> Previous:</B> <A NAME=tex2html82 HREF="node5.html">5.4 On-Policy Monte Carlo </A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00150000000000000000>5.5 Evaluating One Policy While Following Another</A></H1>
+<P>
+So far we have considered methods for estimating the value functions for a
+policy given an infinite supply of episodes generated using that policy. 
+Suppose now that all we have are episodes generated from a different policy. 
+That is, suppose we wish to estimate <IMG  ALIGN=BOTTOM ALT="" SRC="img158.gif">  or <IMG  ALIGN=MIDDLE ALT="" SRC="img159.gif">, but all we have
+are episodes following <IMG  ALIGN=BOTTOM ALT="" SRC="img160.gif">, where <IMG  ALIGN=MIDDLE ALT="" SRC="img161.gif">.  Can we do it?
+<P>
+Happily, in many cases we can.  Of course, in order to use episodes from <IMG  ALIGN=BOTTOM ALT="" SRC="img162.gif">
+to estimate values for <IMG  ALIGN=BOTTOM ALT="" SRC="img163.gif">, we require that every action taken under <IMG  ALIGN=BOTTOM ALT="" SRC="img164.gif">
+is also taken, at least occasionally, under <IMG  ALIGN=BOTTOM ALT="" SRC="img165.gif">.  That is, we require
+that <IMG  ALIGN=MIDDLE ALT="" SRC="img166.gif"> imply
+<IMG  ALIGN=MIDDLE ALT="" SRC="img167.gif">.  In the episodes generated using <IMG  ALIGN=BOTTOM ALT="" SRC="img168.gif">, consider the
+<b>i</b>th first visit to state <b>s</b> and the complete sequence of states and actions
+following that visit.  Let <IMG  ALIGN=MIDDLE ALT="" SRC="img169.gif"> and
+<IMG  ALIGN=MIDDLE ALT="" SRC="img170.gif"> denote the probabilities of that complete sequence happening given
+policies <IMG  ALIGN=BOTTOM ALT="" SRC="img171.gif"> and <IMG  ALIGN=BOTTOM ALT="" SRC="img172.gif"> and starting from <b>s</b>.  Let <IMG  ALIGN=MIDDLE ALT="" SRC="img173.gif">
+denote the corresponding observed return from state <b>s</b>.  To average
+these to obtain an unbiased estimate of <IMG  ALIGN=MIDDLE ALT="" SRC="img174.gif">, we need only weight each
+return by its relative probability of occurring under <IMG  ALIGN=BOTTOM ALT="" SRC="img175.gif"> and <IMG  ALIGN=BOTTOM ALT="" SRC="img176.gif">, that
+is, by
+<IMG  ALIGN=MIDDLE ALT="" SRC="img177.gif">.  The desired Monte Carlo estimate after observing <IMG  ALIGN=MIDDLE ALT="" SRC="img178.gif">
+returns from state <b>s</b> is then
+<P><A NAME=eqweightedMC>&#160;</A><IMG  ALIGN=BOTTOM ALT="" SRC="img179.gif"><P>
+<P>
+This equation involves the probabilities <IMG  ALIGN=MIDDLE ALT="" SRC="img180.gif"> and <IMG  ALIGN=MIDDLE ALT="" SRC="img181.gif">,
+which are normally considered unknown in applications of Monte Carlo methods. 
+Fortunately, here we need only their ratio, <IMG  ALIGN=MIDDLE ALT="" SRC="img182.gif">, which <i>
+can</i> be determined with no knowledge of the environment's dynamics.  Let
+<IMG  ALIGN=MIDDLE ALT="" SRC="img183.gif"> be the time of termination of the i th episode involving state
+<b>s</b>.  Then
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img184.gif"><P>
+and
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img185.gif"><P>
+Thus the weight needed in (<A HREF="node6.html#eqweightedMC">5.3</A>), <IMG  ALIGN=MIDDLE ALT="" SRC="img186.gif">, depends
+only on the two policies and not at all on the environment's dynamics.
+<P>
+<P>
+<P>
+<b> Exercise <IMG  ALIGN=BOTTOM ALT="" SRC="img187.gif">.<IMG  ALIGN=BOTTOM ALT="" SRC="img188.gif"></b>  
+<P>
+What is the Monte Carlo estimate analogous to (<A HREF="node6.html#eqweightedMC">5.3</A>) for
+<i> action</i> values, given returns generated using <IMG  ALIGN=BOTTOM ALT="" SRC="img189.gif">?
+<P>
+<BR> <HR><A NAME=tex2html89 HREF="node7.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.ai.mit.edu/latex2html/next_motif.gif"></A>   <A NAME=tex2html87 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.ai.mit.edu/latex2html/up_motif.gif"></A>   <A NAME=tex2html81 HREF="node5.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.ai.mit.edu/latex2html/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html90 HREF="node7.html">5.6 Off-Policy Monte Carlo </A>
+<B>Up:</B> <A NAME=tex2html88 HREF="node1.html">5 Monte Carlo Methods</A>
+<B> Previous:</B> <A NAME=tex2html82 HREF="node5.html">5.4 On-Policy Monte Carlo </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Richard Sutton <BR>
+Fri May 30 13:20:35 EDT 1997</I>
+</ADDRESS>
+</BODY>
+

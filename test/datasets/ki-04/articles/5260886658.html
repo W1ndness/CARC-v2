@@ -1,0 +1,340 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5260886658.html
+	</FILE>
+	<URL>
+		http://wwwbs.informatik.htw-dresden.de/svortrag/ai95/Bindrich/kerberos.html
+	</URL>
+	<TITLE>
+		Kerberos Authentikation
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Kerberos Authentikation Kerberos Autentifikation Inhalt: 1 Grundlegende Prinzipien 1.1 Was ist Kerberos? 1.2 Software Komponenten 1.3 Funktionsweise 1.4 Datenbank 2 Kerberos in Windows NT 5 2.1 Komponenten des NT Sicherheitsmodells 2.2 Kerberos Autentifikation in Win NT 2.3 Kerberos Protokoll und Win NT Autorisation 1 Grundlegende Prinzipien 1.1 Was ist Kerberos? Kerberos ist in der Griechischen Mythologie der dreik&ouml;pfige Wachhund an den Pforten zur Unterwelt, aber im folgenden soll es nicht um Griechische Mythologie sondern um die Autentifikation von Client und Servern in offenen Netzwerken gehen. Kerberos f&uuml;r offene Netzwerke wurde von Miller und Neuman entwickelt. Das entscheidende Grundprinzip lautet: Jeder glaubt an das Urteil von Kerberos bei der Autentifikation. Das hei&szlig;t jeder vertraut auf einen Dritten, an der eigentlichen Arbeit unbeteiligten. Der wesentliche Bestandteil von Kerberos ist die Datenbank. In ihr sind alle Clients und deren private keys gespeichert. Ein private key ist eine gro&szlig;e Zahl, die nur dem Client selbst und Kerberos bekannt ist. Ist der Client ein Nutzer, ist der private key sein verschl&uuml;sseltes Pa&szlig;wort. Autentifikation ist nur die Best&auml;tigung, da&szlig; der in einer Anfrage genannte Client auch der ist, f&uuml;r den er sich ausgibt. Hierbei spielen die Rechte desjenigen keine Rolle. (Bei der Autorisation spielen die Rechte die entscheidende Rolle.) Jeder Client (gemeint ist hier sowohl der User als auch der Server) hat einen eindeutigen Kerberos-Namen. Dieser Kerberos-Name besteht aus einem Namen (bei Usern der Login-Name, bei Servern der Service-Name), einer Instanz (dient zur Unterscheidung des Hauptnamens, z. B. bei Personen mit Administrator und Normalen Login) und einem Bereich (damit ist die administratorische Einrichtung gemeint). Der allgemeine Aufbau sieht folgenderma&szlig;en aus: name.instanz@bereich Es werden drei unterschiedliche Stufen der Sicherheit angeboten. 1. Nur zu Beginn einer jeden Kommunikation wird die Authentizit&auml;t gepr&uuml;ft. Bei allen weiteren Kommunikationen wird davon ausgegangen, da&szlig; die Nachricht von dieser Netzadresse von dem richtigen Partner kommt. 2. Jede Nachricht wird durch Autentifikation &uuml;berpr&uuml;ft. Hierbei handelt es sich um die sogenannte save massage. 3. Zus&auml;tzlich zu 2. wird die Nachricht selbst gesch&uuml;tzt. Dies geschieht durch Verschl&uuml;sselung. Die sogenannte private massage wird unter anderem durch Kerberos selbst genutzt, wenn Pa&szlig;worte &uuml;ber das Netz &uuml;bertragen werden m&uuml;ssen. 1.2 Software Komponenten Kerberos application library bietet ein Interface zwischen Programmanwendern und Programmservern, z. B. Routinen zum Erstellen oder Lesen von Autentifikationsanfragen, Routinen zum Erstellen von save oder private massages. Encryption library basiert auf dem Data Encryption Standard. Sie bietet unterschiedliche Methoden der Verschl&uuml;sselung (unterschiedlich f&uuml;r hohe Sicherheit oder gro&szlig;e Geschwindigkeit) und ist ein unabh&auml;ngiges Modul, das dadurch durch andere Module ersetzt werden kann. Database library ist ein weiterer Bestandteil der Software Komponenten. Sie wird vor allem von den database administration progams genutzt. Auch diese Bibliothek ist ersetzbar. Database administration programs bieten alle ben&ouml;tigten Tools zur Administration der Datenbank. Administration server ist das Lese- und Schreibinterface zu der Datenbank. Er l&auml;uft nur auf dem Rechner, auf dem auch die Kerberos Datenbank l&auml;uft, wohingegen die Clients des Servers auf jeden beliebigen Rechner laufen kann. Authentication server (Kerberos Server) dient zur Authentication von allen Nutzern und zur Generierung von Session Keys. Er f&uuml;hrt nur Leseoperationen auf der Kerberos Datenbank aus und kann auf jeder Maschine laufen, wo es eine Kopie (read only) der original Kerberos Datenbank gespeichert ist. Database propagation software hat die Aufgabe, der Verteilung von Kopien der Kerberos Datenbank. Es ist m&ouml;glich, Kopien der Datenbank und des authentication servers auf vielen verschiedenen Rechnern laufen zu haben (Ausfallsicherheit bei nur einem Rechner mit der Datenbank Kontra Sicherheit bei der Verbreitung von Kopien der Datenbank). Jede sogenannte Slave-Machine erh&auml;lt in regelm&auml;&szlig;igen Abst&auml;nden Updates von der Master Datenbank. Applications sind z. B. Programme f&uuml;r das Einloggen in Kerberos, f&uuml;r das &Auml;ndern von Pa&szlig;worten oder das Anzeigen oder Zerst&ouml;ren von Tickets. 1.3 Funktionsweise Die Funktionsweise von Kerberos basiert auf Needham und Schroeders key distribution protocol. Die Arbeitsweise gliedert sich in drei Phasen zur Autentifikation: Nutzer erh&auml;lt Beglaubigungsschreiben Anfrage nach Autentifikation f&uuml;r einen speziellen Service Nutzer zeigt Beglaubigung dem End-Server Es gibt zwei Arten von Beglaubigungen: Tickets und Autentifikatoren. Tickets dienen der sicheren Identifikation und stellen au&szlig;erdem sicher, da&szlig; die Person, die das Ticket benutzt dieselbe ist, der das Ticket ausgestellt wurde. Ein Autentifikator enth&auml;lt zus&auml;tzliche Informationen, welche best&auml;tigt, da&szlig; der Client derselbe ist, f&uuml;r welchen das Ticket ausgestellt wurde. Ein Ticket enth&auml;lt: Name des Servers Name des Client Internetadresse des Client Zeitstempel Zeitdauer der G&uuml;ltigkeit Session key Alle Daten werden mit dem private key des Servers verschl&uuml;sselt. Ein Ticket ist mehrmals verwendbar (vom Client zu dem angegebenen Server). Ein Autentifikator kann nur einmal verwendet werden, aber der Client stellt diesen selber her. Er enth&auml;lt: Name des Client Internetadresse des Client aktuelle Urzeit Diese Daten werden mit dem Session key, welcher Teil des Tickets ist, verschl&uuml;sselt. Erhalt eines Tickets Als erstes sendet der Client seinen Namen und den Namen des ticket granting servers an Kerberos. Kerberos &uuml;berpr&uuml;ft diese Informationen. Falls sie richtig sind, generiert er einen Session key, welcher sp&auml;ter f&uuml;r die Kommunikation zwischen Client und dem ticket granting server genutzt werden wird. Als n&auml;chstes erstellt Kerberos ein Ticket, wobei der Name des Servers der Name des angeforderten ticket granting servers ist. Das Ticket wird mit dem Private key des TGS verschl&uuml;sselt. Dieses Ticket sendet Kerberos dann, gemeinsam mit dem generierten Session key, zur&uuml;ck zu dem Client, wobei die gesamte Sendung mit dem Schl&uuml;ssel des Client verschl&uuml;sselt wurde. Handelt es sich bei dem Client um einen User, wird er nach Erhalt der Antwortsendung von Kerberos aufgefordert sein Pa&szlig;wort einzugeben. Aus diesem Pa&szlig;wort wird der Private key des Users ermittelt, um die Sendung von Kerberos zu entschl&uuml;sseln. In allen anderen F&auml;llen ist der Private key dem Client bekannt. Erhalt eines Tickets f&uuml;r einen speziellen Server Um einen speziellen Service in Anspruch nehmen zu k&ouml;nnen, braucht der Client ein spezielles Ticket f&uuml;r diesen Server. Dieses Ticket bekommt er von dem ticket granting server. Dazu sendet er den Servernamen, das Ticket f&uuml;r den TGS und einen selbst erstellten Autentifikator, welcher mit dem Session key (g&uuml;ltig f&uuml;r Kommunikationen zwischen Client und TGS) verschl&uuml;sselt wurde, an den ticket granting server. Dieser &uuml;berpr&uuml;ft die Informationen (zuerst entschl&uuml;sseln des Tickets mit eigenem Private key und anschlie&szlig;endes entschl&uuml;sseln des Autentifikators mit dem im Ticket enthaltenen Session key). Wenn alle Informationen g&uuml;ltig sind, generiert TGS einen neuen Session key f&uuml;r die Kommunikation zwischen Client und angefordertem Server und anschlie&szlig;end ein neues Ticket (verschl&uuml;sselt mit dem Private key des angeforderten Servers). Die Lebenszeit dieses Tickets ist das Minimum zwischen der Lebenszeit des Tickets f&uuml;r TGS und der Standard Lebenszeit eines neuen Tickets. Ticket und neuer Session key werden verschl&uuml;sselt mit dem Session key von Client und TGS zur&uuml;ck an den Client geschickt. Anfrage an einen Server Um einen Service des Servers in Anspruch zu nehmen, mu&szlig; der Client sich selbstverst&auml;ndlich bei dem Server autentifizieren. Dies tut er mit dem Erhaltenen Ticket und einem selbst erstellten Autentifikator, verschl&uuml;sselt mit dem Session key. Der Server entschl&uuml;sselt die Sendung und &uuml;berpr&uuml;ft deren Inhalt. Falls alles o. k. ist, l&auml;&szlig;t er die Anfrage zu. Alle Uhren eines Netzwerkes m&uuml;ssen synchronisiert sein, da Anfragen von einem Client mit einem Zeitstempel, der zu alt ist oder in der Zukunft liegt zur&uuml;ckgewiesen wird. Au&szlig;erdem werden auch Anfragen mit einem Zeitstempel, der schon mal benutzt wurde nicht zugelassen. M&ouml;chte nun auch der Client &uuml;ber die Autentit&auml;t des Servers sicher sein, sendet der Server den um eins erh&ouml;hten Zeitstempel des Client an ihn zur&uuml;ck. Diese Nachricht wird mit dem gemeinsamen Session key verschl&uuml;sselt. 1.4 Datenbank Ein entscheidender Punkt f&uuml;r die Sicherheit von Kerberos ist die Sicherheit der Kerberos Datenbank. Ein schreibender Zugang zu dieser ist nur durch einen administrativen Service, dem Kerberos Database Management Service (KDMS) m&ouml;glich. Jede &Auml;nderung ist nur auf der Master Datenbank erlaubt und KDMS l&auml;uft nur auf dem Rechner mit der Master Datenbank. KDMS hat zwei Hauptaufgaben: Bearbeitung von Anfragen zur Pa&szlig;wort&auml;nderung Hinzuf&uuml;gen neuer Nutzer Jedesmal, wenn ein Dienst des KDMS angefordert wird, ist eine zus&auml;tzliche Autentifikation notwendig, d. h. die nochmalige Eingabe des Pa&szlig;wortes. Dies f&uuml;hrt zu der Sicherheit, da&szlig; falls doch einmal ein Nutzer seine Workstation verl&auml;&szlig;t ohne sich abzumelden, es nicht m&ouml;glich ist von einem zuf&auml;llig vorbeikommenden das Pa&szlig;wort zu &auml;ndern. Folgender Ablauf wird zur &Uuml;berpr&uuml;fung durchgef&uuml;hrt: Zuerst wird der Name des Anfragenden mit dem, dessen Pa&szlig;wort ge&auml;ndert werden soll, verglichen. Stimmen dies Namen nicht &uuml;berein, folgt ein Vergleich mit allen Namen der Zugangskontrolliste. Alle Anfragen an diesen Service, ob erfolgreich oder nicht, werden protokolliert. Wie bereits erw&auml;hnt, kann es von der Master Datenbank auch noch Kopien geben. Dies ist ein kritischer Punkt, da hierzu die &Uuml;bertragung der Datenbankinhalte &uuml;ber das Netz erfolgen mu&szlig; und auch die Frage der Konsistenz der Kopien steht. Allerdings gibt es auch Vorteile. Falls die Master Datenbank mal ausfallen sollte, gibt es im Netz immer noch Stellen, die ein Autentifikation durchf&uuml;hren k&ouml;nnen, so f&auml;llt f&uuml;r diese Zeit nur der Service des Pa&szlig;wort&auml;nderns aus. Au&szlig;erdem kann es bei nur einen Autentifikationsservices zu einem Engpa&szlig; bei der Bearbeitung von Anfragen kommen. Auf folgende Art und Weise soll die Konsistenz aller Kerberos Datenbanken erreicht werden: Die Master Datenbank sendet in regelm&auml;&szlig;igen Intervallen Updates zu den Slave Datenbanken. Zuerst ermittelt die Masterdatenbank eine Pr&uuml;fsumme. Diese sendet sie dann, verschl&uuml;sselt mit dem Master Datenbank key (nur Master Datenbank und Kopien bekannt), den Kopien. Danach wird das Update &uuml;bertragen. Die Kopie &uuml;berpr&uuml;ft die Pr&uuml;fsumme und falls sie korrekt ist, wird das Update genutzt. Nat&uuml;rlich werden alle Pa&szlig;worte nur mit dem Master Datenbank key verschl&uuml;sselt &uuml;bertragen. 2 Kerberos in Windows NT 5 F&uuml;r die Sicherheit in Windows NT 5 Dom&auml;nen wird das Kerberos Version 5 Autentifikationsprotokoll und ein Active Directory verwendet. Die Implementation von Kerberos basiert hierbei auf RFC1510, wobei Microsoft zus&auml;tzliche Erweiterungen implementiert hat. Kerberos ist nur eines der in Win NT 5 enthaltenen Sicherheitsprotokolle. Andere sind u. a.: NTLM f&uuml;r die Kompatibilit&auml;t mit &auml;lteren Versionen von NT SSL und IETF Standard Transport Layer Security Simple Protected Negotiation IP security 2.1 Komponenten des NT Sicherheitsmodells Das NT Sicherheitsmodell basiert auf 3 wesentlichen Komponenten: jede Workstation und jeder Server besitzt einen trust path (Vertrauens Pfad) zu einem Domain Controler (DC); trust path wird durch eine autentifizierte RPC Verbindung beim Netlogon eingerichtet; Sicherheitskan&auml;le stellen Verbindungen zu anderen Dom&auml;nen des Netzwerkes her (interdomain trust relationships); Sicherheitkanal werden zur &Uuml;berpr&uuml;fung und dem Erhalt von Sicherheitsrelevanten Daten (einschlie&szlig;lich von Security Identifieres) genutzt jede Operation wird mit den Ausf&uuml;hrungsrechten des den Dienst anfordernden Clients ausgef&uuml;hrt; dies basiert auf den security access token, welcher durch die Local Security Authority erstellt wurde; wird durch alle Win NT Dienste unterst&uuml;tzt. Win NT Kernel unterst&uuml;tzt objektorientierte Zugangskontrolle; dies geschieht durch die &Uuml;berpr&uuml;fung der SID im access token mit den garantierten Rechten definiert in der access control list (ACL); jedes Objekt besitzt eigene ACL; eine &Uuml;berpr&uuml;fung erfolgt bei jedem Zugriff auf das Objekt 2.2 Kerberos Autentifikation in Win NT Der prinzipielle Ablauf bei der Autentifikation l&auml;uft wie im ersten Abschnitt beschrieben ist ab. Win NT hat dies nur durch einen public key erweitert. Verf&uuml;gbar ist Kerberos f&uuml;r DCOM, autentifizierte RPC und f&uuml;r jede Anwendung, die SSPI benutzt. SSPI ist ein Win32 Sicherheitinterface, welches unter Win NT seit der Version 3.5 verf&uuml;gbar ist und auch von Win 95 unterst&uuml;tzt wird. SSPI nutzt die selben Architektur-Konzpte, wie Generic Security Services API, so m&uuml;ssen Dienste keine Details des Sicherheitsprotokolls wissen, um es nutzten zu k&ouml;nnen. Jeder Domain Conroler bietet ein Kerberos Key Distribution Center (KDC) und ein Active Directory an. KDC und Active Directory sind priviligierte Prozesse, beide gehen mit geheimen Informationen um (z. B. Pa&szlig;worte). Das Aktive Directory regelt das Update von Kopien der DB, das Erstellen von Kopien der DB, erstellen neuer Nutzer, &auml;ndern von User-, Gruppenzugeh&ouml;rigkeiten, &auml;ndern von Pa&szlig;worten .... Das Ticket enth&auml;lt zus&auml;tzlich Autorisationsdaten. 2.3 Kerberos Protokoll und Win NT Autorisation Die Impersonifizierung ben&ouml;tigt Informationen &uuml;ber User- und Gruppenmitglieder SIDs. SIDs werden von einer Dom&auml;ne mit Vertrauensverh&auml;ltnis ausgegeben. Bei der Verwendung von NTLM erh&auml;lt der Server diese SIDs direkt von dem DC unter Verwendung des Netlogon Secure Chanels. Wird dagegen Kerberos verwendet, enth&auml;lt das Ticket zus&auml;tzlich diese Informationen. Bereits beim ersten Login werden Autoristationsdaten an das Ticket f&uuml;r den Ticket Granting Server angeh&auml;ngt. Die Autoristationsdaten werden f&uuml;r die Session Tickets einfach kopiert, oder bei einem mehrdom&auml;nen Netzwerk k&ouml;nnen auch weitere Gruppenmitglieder SIDs durch den KDC angeh&auml;ngt werden. In alten Netzwerken stellt NTLM ein gro&szlig;es Sicherheitsrisiko dar. Das Ziel sollte daher sein NTLM in reinen NT 5 Netzwerken auszuschalten. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<HTML>
+<HEAD>
+   <TITLE>Kerberos Authentikation</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><B><FONT SIZE=+2>Kerberos Autentifikation</FONT></B></CENTER>
+
+<P><BR>
+<BR>
+<BR>
+<P><B><I><FONT SIZE=+1>Inhalt:</FONT></I></B>
+<P><A HREF="#1">1 Grundlegende Prinzipien</A>
+<BR><FONT SIZE=+0><A HREF="#1.1">1.1 Was ist Kerberos?</A></FONT>
+<BR><FONT SIZE=+0><A HREF="#1.2">1.2 Software Komponenten</A></FONT>
+<BR><FONT SIZE=+0><A HREF="#1.3">1.3 Funktionsweise</A></FONT>
+<BR><FONT SIZE=+0><A HREF="#1.4">1.4 Datenbank</A></FONT>
+<P><A HREF="#2">2 Kerberos in Windows NT 5</A>
+<BR><FONT SIZE=+0><A HREF="#2.1">2.1 Komponenten des NT Sicherheitsmodells</A></FONT>
+<BR><FONT SIZE=+0><A HREF="#2.2">2.2 Kerberos Autentifikation in Win NT</A></FONT>
+<BR><FONT SIZE=+0><A HREF="#2.3">2.3 Kerberos Protokoll und Win NT Autorisation</A></FONT>
+<BR>&nbsp;
+<BR>&nbsp;
+<P><A NAME="1"></A><B><I><FONT SIZE=+1>1 Grundlegende Prinzipien</FONT></I></B>
+<P><A NAME="1.1"></A><B><I>1.1 Was ist Kerberos?</I></B>
+<P>Kerberos ist in der Griechischen Mythologie der dreik&ouml;pfige Wachhund
+an den Pforten zur Unterwelt, aber im folgenden soll es nicht um Griechische
+Mythologie sondern um die Autentifikation von Client und Servern in offenen
+Netzwerken gehen.
+<P>Kerberos f&uuml;r offene Netzwerke wurde von Miller und Neuman entwickelt.
+Das entscheidende Grundprinzip lautet: Jeder glaubt an das Urteil von Kerberos
+bei der Autentifikation. Das hei&szlig;t jeder vertraut auf einen Dritten,
+an der eigentlichen Arbeit unbeteiligten. Der wesentliche Bestandteil von
+Kerberos ist die Datenbank. In ihr sind alle Clients und deren private
+keys gespeichert. Ein private key ist eine gro&szlig;e Zahl, die nur dem
+Client selbst und Kerberos bekannt ist. Ist der Client ein Nutzer, ist
+der private key sein verschl&uuml;sseltes Pa&szlig;wort.
+<P>Autentifikation ist nur die Best&auml;tigung, da&szlig; der in einer
+Anfrage genannte Client auch der ist, f&uuml;r den er sich ausgibt. Hierbei
+spielen die Rechte desjenigen keine Rolle. (Bei der Autorisation spielen
+die Rechte die entscheidende Rolle.)
+<P>Jeder Client (gemeint ist hier sowohl der User als auch der Server)
+hat einen eindeutigen Kerberos-Namen. Dieser Kerberos-Name besteht aus
+einem Namen (bei Usern der Login-Name, bei Servern der Service-Name), einer
+Instanz (dient zur Unterscheidung des Hauptnamens, z. B. bei Personen mit
+Administrator und Normalen Login) und einem Bereich (damit ist die administratorische
+Einrichtung gemeint). Der allgemeine Aufbau sieht folgenderma&szlig;en
+aus:
+<CENTER>
+<P>name.instanz@bereich</CENTER>
+
+<P>Es werden drei unterschiedliche Stufen der Sicherheit angeboten.
+<P>1. Nur zu Beginn einer jeden Kommunikation wird die Authentizit&auml;t
+gepr&uuml;ft. Bei allen weiteren Kommunikationen wird davon ausgegangen,
+da&szlig; die Nachricht von dieser Netzadresse von dem richtigen Partner
+kommt.
+<P>2. Jede Nachricht wird durch Autentifikation &uuml;berpr&uuml;ft. Hierbei
+handelt es sich um die sogenannte save massage.
+<P>3. Zus&auml;tzlich zu 2. wird die Nachricht selbst gesch&uuml;tzt. Dies
+geschieht durch Verschl&uuml;sselung. Die sogenannte private massage
+wird unter anderem durch Kerberos selbst genutzt, wenn Pa&szlig;worte &uuml;ber
+das Netz &uuml;bertragen werden m&uuml;ssen.
+<P><A NAME="1.2"></A><B><I>1.2 Software Komponenten</I></B>
+<P><U>Kerberos application library</U> bietet ein Interface zwischen Programmanwendern
+und Programmservern, z. B. Routinen zum Erstellen oder Lesen von Autentifikationsanfragen,
+Routinen zum Erstellen von save oder private massages.
+<P><U>Encryption library</U> basiert auf dem Data Encryption Standard.
+Sie bietet unterschiedliche Methoden der Verschl&uuml;sselung (unterschiedlich
+f&uuml;r hohe Sicherheit oder gro&szlig;e Geschwindigkeit) und ist ein
+unabh&auml;ngiges Modul, das dadurch durch andere Module ersetzt werden
+kann.
+<P><U>Database library</U> ist ein weiterer Bestandteil der Software Komponenten.
+Sie wird vor allem von den database administration progams genutzt. Auch
+diese Bibliothek ist ersetzbar.
+<P><U>Database administration programs</U> bieten alle ben&ouml;tigten
+Tools zur Administration der Datenbank.
+<P><U>Administration server</U> ist das Lese- und Schreibinterface zu der
+Datenbank. Er l&auml;uft nur auf dem Rechner, auf dem auch die Kerberos
+Datenbank l&auml;uft, wohingegen die Clients des Servers auf jeden beliebigen
+Rechner laufen kann.
+<P><U>Authentication server</U> (Kerberos Server) dient zur Authentication
+von allen Nutzern und zur Generierung von Session Keys. Er f&uuml;hrt nur
+Leseoperationen auf der Kerberos Datenbank aus und kann auf jeder Maschine
+laufen, wo es eine Kopie (read only) der original Kerberos Datenbank gespeichert
+ist.
+<P><U>Database propagation software</U> hat die Aufgabe, der Verteilung
+von Kopien der Kerberos Datenbank. Es ist m&ouml;glich, Kopien der Datenbank
+und des authentication servers auf vielen verschiedenen Rechnern laufen
+zu haben (Ausfallsicherheit bei nur einem Rechner mit der Datenbank Kontra
+Sicherheit bei der Verbreitung von Kopien der Datenbank). Jede sogenannte
+Slave-Machine erh&auml;lt in regelm&auml;&szlig;igen Abst&auml;nden Updates
+von der Master Datenbank.
+<P><U>Applications</U> sind z. B. Programme f&uuml;r das Einloggen in Kerberos,
+f&uuml;r das &Auml;ndern von Pa&szlig;worten oder das Anzeigen oder Zerst&ouml;ren
+von Tickets.
+<P><A NAME="1.3"></A><B><I>1.3 Funktionsweise</I></B>
+<P>Die Funktionsweise von Kerberos basiert auf Needham und Schroeders
+key distribution protocol. Die Arbeitsweise gliedert sich in drei Phasen
+zur Autentifikation:
+<UL>
+<LI>
+Nutzer erh&auml;lt Beglaubigungsschreiben</LI>
+
+<LI>
+Anfrage nach Autentifikation f&uuml;r einen speziellen Service</LI>
+
+<LI>
+Nutzer zeigt Beglaubigung dem End-Server</LI>
+</UL>
+Es gibt zwei Arten von Beglaubigungen: Tickets und Autentifikatoren. Tickets
+dienen der sicheren Identifikation und stellen au&szlig;erdem sicher, da&szlig;
+die Person, die das Ticket benutzt dieselbe ist, der das Ticket ausgestellt
+wurde. Ein Autentifikator enth&auml;lt zus&auml;tzliche Informationen,
+welche best&auml;tigt, da&szlig; der Client derselbe ist, f&uuml;r welchen
+das Ticket ausgestellt wurde.
+<P>Ein Ticket enth&auml;lt:
+<UL>
+<LI>
+Name des Servers</LI>
+
+<LI>
+Name des Client</LI>
+
+<LI>
+Internetadresse des Client</LI>
+
+<LI>
+Zeitstempel</LI>
+
+<LI>
+Zeitdauer der G&uuml;ltigkeit</LI>
+
+<LI>
+Session key</LI>
+</UL>
+Alle Daten werden mit dem private key des Servers verschl&uuml;sselt. Ein
+Ticket ist mehrmals verwendbar (vom Client zu dem angegebenen Server).
+<P>Ein Autentifikator kann nur einmal verwendet werden, aber der Client
+stellt diesen selber her. Er enth&auml;lt:
+<UL>
+<LI>
+Name des Client</LI>
+
+<LI>
+Internetadresse des Client</LI>
+
+<LI>
+aktuelle Urzeit</LI>
+</UL>
+Diese Daten werden mit dem Session key, welcher Teil des Tickets ist, verschl&uuml;sselt.
+<P><U>Erhalt eines Tickets</U>
+<P><IMG SRC="Image3.gif" HEIGHT=88 WIDTH=335>
+<P>Als erstes sendet der Client seinen Namen und den Namen des ticket granting
+servers an Kerberos. Kerberos &uuml;berpr&uuml;ft diese Informationen.
+Falls sie richtig sind, generiert er einen Session key, welcher sp&auml;ter
+f&uuml;r die Kommunikation zwischen Client und dem ticket granting server
+genutzt werden wird. Als n&auml;chstes erstellt Kerberos ein Ticket, wobei
+der Name des Servers der Name des angeforderten ticket granting servers
+ist. Das Ticket wird mit dem Private key des TGS verschl&uuml;sselt. Dieses
+Ticket sendet Kerberos dann, gemeinsam mit dem generierten Session key,
+zur&uuml;ck zu dem Client, wobei die gesamte Sendung mit dem Schl&uuml;ssel
+des Client verschl&uuml;sselt wurde.
+<P>Handelt es sich bei dem Client um einen User, wird er nach Erhalt der
+Antwortsendung von Kerberos aufgefordert sein Pa&szlig;wort einzugeben.
+Aus diesem Pa&szlig;wort wird der Private key des Users ermittelt, um die
+Sendung von Kerberos zu entschl&uuml;sseln. In allen anderen F&auml;llen
+ist der Private key dem Client bekannt.
+<P><U>Erhalt eines Tickets f&uuml;r einen speziellen Server</U>
+<P><IMG SRC="Image4.gif" HEIGHT=121 WIDTH=377>
+<P>Um einen speziellen Service in Anspruch nehmen zu k&ouml;nnen, braucht
+der Client ein spezielles Ticket f&uuml;r diesen Server. Dieses Ticket
+bekommt er von dem ticket granting server. Dazu sendet er den Servernamen,
+das Ticket f&uuml;r den TGS und einen selbst erstellten Autentifikator,
+welcher mit dem Session key (g&uuml;ltig f&uuml;r Kommunikationen zwischen
+Client und TGS) verschl&uuml;sselt wurde, an den ticket granting server.
+Dieser &uuml;berpr&uuml;ft die Informationen (zuerst entschl&uuml;sseln
+des Tickets mit eigenem Private key und anschlie&szlig;endes entschl&uuml;sseln
+des Autentifikators mit dem im Ticket enthaltenen Session key). Wenn alle
+Informationen g&uuml;ltig sind, generiert TGS einen neuen Session key f&uuml;r
+die Kommunikation zwischen Client und angefordertem Server und anschlie&szlig;end
+ein neues Ticket (verschl&uuml;sselt mit dem Private key des angeforderten
+Servers). Die Lebenszeit dieses Tickets ist das Minimum zwischen der Lebenszeit
+des Tickets f&uuml;r TGS und der Standard Lebenszeit eines neuen Tickets.
+Ticket und neuer Session key werden verschl&uuml;sselt mit dem Session
+key von Client und TGS zur&uuml;ck an den Client geschickt.
+<P><U>Anfrage an einen Server</U>
+<P><IMG SRC="Image5.gif" HEIGHT=101 WIDTH=295>
+<P>Um einen Service des Servers in Anspruch zu nehmen, mu&szlig; der Client
+sich selbstverst&auml;ndlich bei dem Server autentifizieren. Dies tut er
+mit dem Erhaltenen Ticket und einem selbst erstellten Autentifikator, verschl&uuml;sselt
+mit dem Session key. Der Server entschl&uuml;sselt die Sendung und &uuml;berpr&uuml;ft
+deren Inhalt. Falls alles o. k. ist, l&auml;&szlig;t er die Anfrage zu.
+Alle Uhren eines Netzwerkes m&uuml;ssen synchronisiert sein, da Anfragen
+von einem Client mit einem Zeitstempel, der zu alt ist oder in der Zukunft
+liegt zur&uuml;ckgewiesen wird. Au&szlig;erdem werden auch Anfragen mit
+einem Zeitstempel, der schon mal benutzt wurde nicht zugelassen.
+<P>M&ouml;chte nun auch der Client &uuml;ber die Autentit&auml;t des Servers
+sicher sein, sendet der Server den um eins erh&ouml;hten Zeitstempel des
+Client an ihn zur&uuml;ck. Diese Nachricht wird mit dem gemeinsamen Session
+key verschl&uuml;sselt.
+<P><A NAME="1.4"></A><B><I>1.4 Datenbank</I></B>
+<P>Ein entscheidender Punkt f&uuml;r die Sicherheit von Kerberos ist die
+Sicherheit der Kerberos Datenbank. Ein schreibender Zugang zu dieser ist
+nur durch einen administrativen Service, dem Kerberos Database Management
+Service (KDMS) m&ouml;glich. Jede &Auml;nderung ist nur auf der Master
+Datenbank erlaubt und KDMS l&auml;uft nur auf dem Rechner mit der Master
+Datenbank.
+<BR>KDMS hat zwei Hauptaufgaben:
+<UL>
+<LI>
+Bearbeitung von Anfragen zur Pa&szlig;wort&auml;nderung</LI>
+
+<LI>
+Hinzuf&uuml;gen neuer Nutzer</LI>
+</UL>
+Jedesmal, wenn ein Dienst des KDMS angefordert wird, ist eine zus&auml;tzliche
+Autentifikation notwendig, d. h. die nochmalige Eingabe des Pa&szlig;wortes.
+Dies f&uuml;hrt zu der Sicherheit, da&szlig; falls doch einmal ein Nutzer
+seine Workstation verl&auml;&szlig;t ohne sich abzumelden, es nicht m&ouml;glich
+ist von einem zuf&auml;llig vorbeikommenden das Pa&szlig;wort zu &auml;ndern.
+<P>Folgender Ablauf wird zur &Uuml;berpr&uuml;fung durchgef&uuml;hrt: Zuerst
+wird der Name des Anfragenden mit dem, dessen Pa&szlig;wort ge&auml;ndert
+werden soll, verglichen. Stimmen dies Namen nicht &uuml;berein, folgt ein
+Vergleich mit allen Namen der Zugangskontrolliste.
+<P>Alle Anfragen an diesen Service, ob erfolgreich oder nicht, werden protokolliert.
+<P>Wie bereits erw&auml;hnt, kann es von der Master Datenbank auch noch
+Kopien geben. Dies ist ein kritischer Punkt, da hierzu die &Uuml;bertragung
+der Datenbankinhalte &uuml;ber das Netz erfolgen mu&szlig; und auch die
+Frage der Konsistenz der Kopien steht. Allerdings gibt es auch Vorteile.
+Falls die Master Datenbank mal ausfallen sollte, gibt es im Netz immer
+noch Stellen, die ein Autentifikation durchf&uuml;hren k&ouml;nnen, so
+f&auml;llt f&uuml;r diese Zeit nur der Service des Pa&szlig;wort&auml;nderns
+aus. Au&szlig;erdem kann es bei nur einen Autentifikationsservices zu einem
+Engpa&szlig; bei der Bearbeitung von Anfragen kommen.
+<P>Auf folgende Art und Weise soll die Konsistenz aller Kerberos Datenbanken
+erreicht werden: Die Master Datenbank sendet in regelm&auml;&szlig;igen
+Intervallen Updates zu den Slave Datenbanken. Zuerst ermittelt die Masterdatenbank
+eine Pr&uuml;fsumme. Diese sendet sie dann, verschl&uuml;sselt mit dem
+Master Datenbank key (nur Master Datenbank und Kopien bekannt), den Kopien.
+Danach wird das Update &uuml;bertragen. Die Kopie &uuml;berpr&uuml;ft die
+Pr&uuml;fsumme und falls sie korrekt ist, wird das Update genutzt. Nat&uuml;rlich
+werden alle Pa&szlig;worte nur mit dem Master Datenbank key verschl&uuml;sselt
+&uuml;bertragen.
+<BR>&nbsp;
+<P><A NAME="2"></A><B><I><FONT SIZE=+1>2 Kerberos in Windows NT 5</FONT></I></B>
+<BR>&nbsp;
+<P>F&uuml;r die Sicherheit in Windows NT 5 Dom&auml;nen wird das Kerberos
+Version 5 Autentifikationsprotokoll und ein Active Directory verwendet.
+Die Implementation von Kerberos basiert hierbei auf RFC1510, wobei Microsoft
+zus&auml;tzliche Erweiterungen implementiert hat. Kerberos ist nur eines
+der in Win NT 5 enthaltenen Sicherheitsprotokolle. Andere sind u. a.:
+<UL>
+<LI>
+NTLM f&uuml;r die Kompatibilit&auml;t mit &auml;lteren Versionen von NT</LI>
+
+<LI>
+SSL und IETF Standard Transport Layer Security</LI>
+
+<LI>
+Simple Protected Negotiation</LI>
+
+<LI>
+IP security</LI>
+</UL>
+<A NAME="2.1"></A><B><I>2.1 Komponenten des NT Sicherheitsmodells</I></B>
+<P>Das NT Sicherheitsmodell basiert auf 3 wesentlichen Komponenten:
+<OL>
+<LI>
+jede Workstation und jeder Server besitzt einen trust path (Vertrauens
+Pfad) zu einem Domain Controler (DC); trust path wird durch eine autentifizierte
+RPC Verbindung beim Netlogon eingerichtet; Sicherheitskan&auml;le stellen
+Verbindungen zu anderen Dom&auml;nen des Netzwerkes her (interdomain trust
+relationships); Sicherheitkanal werden zur &Uuml;berpr&uuml;fung und dem
+Erhalt von Sicherheitsrelevanten Daten (einschlie&szlig;lich von Security
+Identifieres) genutzt</LI>
+
+<LI VALUE="1">
+jede Operation wird mit den Ausf&uuml;hrungsrechten des den Dienst anfordernden
+Clients ausgef&uuml;hrt; dies basiert auf den security access token, welcher
+durch die Local Security Authority erstellt wurde; wird durch alle Win
+NT Dienste unterst&uuml;tzt.</LI>
+
+<LI VALUE="1">
+Win NT Kernel unterst&uuml;tzt objektorientierte Zugangskontrolle; dies
+geschieht durch die &Uuml;berpr&uuml;fung der SID im access token mit den
+garantierten Rechten definiert in der access control list (ACL); jedes
+Objekt besitzt eigene ACL; eine &Uuml;berpr&uuml;fung erfolgt bei jedem
+Zugriff auf das Objekt</LI>
+</OL>
+<A NAME="2.2"></A><B><I>2.2 Kerberos Autentifikation in Win NT</I></B>
+<P>Der prinzipielle Ablauf bei der Autentifikation l&auml;uft wie im ersten
+Abschnitt beschrieben ist ab. Win NT hat dies nur durch einen public key
+erweitert.
+<P>Verf&uuml;gbar ist Kerberos f&uuml;r DCOM, autentifizierte RPC und f&uuml;r
+jede Anwendung, die SSPI benutzt. SSPI ist ein Win32 Sicherheitinterface,
+welches unter Win NT seit der Version 3.5 verf&uuml;gbar ist und auch von
+Win 95 unterst&uuml;tzt wird. SSPI nutzt die selben Architektur-Konzpte,
+wie Generic Security Services API, so m&uuml;ssen Dienste keine Details
+des Sicherheitsprotokolls wissen, um es nutzten zu k&ouml;nnen.
+<P>Jeder Domain Conroler bietet ein Kerberos Key Distribution Center (KDC)
+und ein Active Directory an. KDC und Active Directory sind priviligierte
+Prozesse, beide gehen mit geheimen Informationen um (z. B. Pa&szlig;worte).
+<P>Das Aktive Directory regelt das Update von Kopien der DB, das Erstellen
+von Kopien der DB, erstellen neuer Nutzer, &auml;ndern von User-, Gruppenzugeh&ouml;rigkeiten,
+&auml;ndern von Pa&szlig;worten .... Das Ticket enth&auml;lt zus&auml;tzlich
+Autorisationsdaten.
+<P><A NAME="2.3"></A><B><I>2.3 Kerberos Protokoll und Win NT Autorisation</I></B>
+<P>Die Impersonifizierung ben&ouml;tigt Informationen &uuml;ber User- und
+Gruppenmitglieder SIDs. SIDs werden von einer Dom&auml;ne mit Vertrauensverh&auml;ltnis
+ausgegeben. Bei der Verwendung von NTLM erh&auml;lt der Server diese SIDs
+direkt von dem DC unter Verwendung des Netlogon Secure Chanels. Wird dagegen
+Kerberos verwendet, enth&auml;lt das Ticket zus&auml;tzlich diese Informationen.
+Bereits beim ersten Login werden Autoristationsdaten an das Ticket f&uuml;r
+den Ticket Granting Server angeh&auml;ngt. Die Autoristationsdaten werden
+f&uuml;r die Session Tickets einfach kopiert, oder bei einem mehrdom&auml;nen
+Netzwerk k&ouml;nnen auch weitere Gruppenmitglieder SIDs durch den KDC
+angeh&auml;ngt werden.
+<P>In alten Netzwerken stellt NTLM ein gro&szlig;es Sicherheitsrisiko dar.
+Das Ziel sollte daher sein NTLM in reinen NT 5 Netzwerken auszuschalten.
+</BODY>
+</HTML>
+

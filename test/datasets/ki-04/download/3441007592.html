@@ -1,0 +1,516 @@
+<!-- <DOCUMENT>
+	<FILE>
+		3441007592.html
+	</FILE>
+	<URL>
+		http://www.insecure.org/nmap/nmap_download.html
+	</URL>
+	<TITLE>
+		Nmap Download -- Free Stealth Port Scanner For Network Exploration & Security Audits. Runs on Linux/Windows/UNIX/Solaris/FreeBSD/OpenBSD
+	</TITLE>
+	<GENRE>
+		download
+	</GENRE>
+	<PLAINTEXT>
+ Nmap Download -- Free Stealth Port Scanner For Network Exploration & Security Audits. Runs on Linux/Windows/UNIX/Solaris/FreeBSD/OpenBSD Nmap Security Scanner Intro Docs Download Security Tools Good Reading Security Lists Nmap Hackers Nmap Dev Bugtraq Full Disclosure Pen Test Vuln Dev Basics More News Links Exploit World Advertising About/Contact Credits Introduction Documentation Propaganda Download OS Detection Portability In The News Related Projects Thanks To Downloading Nmap Nmap and NmapFE (the graphical X Window front end) are available in several versions and formats. Recent source releases and binary packages are described below. Older version are available from the dist directory . The "stable" versions are for more conservative users, while "devel" packages are for developers and "bleeding-edge" types. GPG-signed MD5 checksums for integrity checking are available from the Nmap-hackers and Nmap-dev mailing lists. Subscription information and a web archive are available at seclists.org . The most important changes (features, bugfixes, etc) in each Nmap version are described in the ChangeLog . Be sure to read the documentation ! Nmap is distributed with source code under the terms of the GNU General Public License . It includes a slightly modified version of the Libpcap packet capturing libraries and the PCRE perl-compatible regular expression library. Some of the Nmap downloads and images are graciously hosted by VA Software's Source Forge : Source Distribution This is the traditional compile-it-yourself format. The Nmap tarball compiles uder UNIX (including Linux, Solaris, Free/Net/OpenBSD, and Mac OS X) and Windows. It includes NmapFE, the UNIX X Window frontend. Nmapwin is the recommended Windows GUI (developed by Jens Vogt). Note that Nmap is now offered in bzip2 format. If you don't have bzip2 nor feel like downloading it, gzip'ed tarballs are still available below or in the dist directory . Here are the UNIX instructions for tarball compilation/installation: bzip2 -cd nmap-VERSION.tar.bz2 | tar xvf - cd nmap-VERSION ./configure make su root make install If you are using the gzip-compressed version, substitute 'gzip' for 'bzip2' in the command above. After a default as-root 'make install', Nmap should be available as /usr/local/bin/nmap. The UNIX frontend is /usr/local/bin/nmapfe. For Windows source compilation, see the README-WIN32 file in the tarball. Nmapwin source compilation instructions are coming soon. Mac OS X users: If you wish to compile from source (as opposed to binaries later on this page), and the normal "./configure" line above does not work for you , try "./configure CPP=/usr/bin/cpp". You also need to install the free Apple Developer Tools [ instructions ]. If you think the "configure" script is looping, be sure your computer's clock/date is set correctly and wait at least 10 minutes for completion before reporting it. If you still have trouble, let me know . Latest Stable Nmap Tarball: nmap-3.50.tar.bz2 (or gzip compressed: nmap-3.50.tgz ) nmap-3.15BETA3.tar.bz2 --> Latest Devel Nmap Tarball: Currently none -- use stable Latest Nmapwin Source: nmapwin_1.3.0_src.zip Linux RPM Source and Binaries Many popular Linux distributions (Redhat, Mandrake, Suse, etc) use the RPM package management system. Note that the RPMs don't link to OpenSSL for version detection . X86 (PC) users can install the latest version of Nmap in seconds with these commands: rpm -vhU http://download.insecure.org/nmap/dist/nmap-3.50-1.i386.rpm rpm -vhU http://download.insecure.org/nmap/dist/nmap-frontend-3.50-1.i386.rpm Or you can download the RPMs yourself: Latest Stable X86 Nmap RPM: nmap-3.50-1.i386.rpm Latest Stable X86 NmapFE RPM: nmap-frontend-3.50-1.i386.rpm Latest Stable Source RPM (includes NmapFE): nmap-3.50-1.src.rpm nmap-3.15BETA3-1.i386.rpm --> Latest Development X86 Nmap RPM: Currently none -- use stable nmap-frontend-3.15BETA3-1.i386.rpm --> Latest Development X86 NmapFE RPM: Currently none -- use stable nmap-3.15BETA3-1.src.rpm --> Latest Development Source RPM (includes NmapFE): Currently none -- use stable Windows (95/98/NT/ME/2K/XP) Thanks to the hard work of Ryan Permeh (from eEye ) and Andy Lutomirski, the base Nmap package now builds and functions under Windows! Note that Windows support is not yet as stable or fast as the traditional UNIX version. Command-line zipfile : Every major "stable" Nmap release comes with Windows command-line binaries and associated files in a Zip archive. No graphical interface is included, so you need to run nmap.exe from a DOS/command window. See the screen shot above. Or you can download and install a superior command shell such as those included with the free Cygwin system . Here are the step-by-step instructions for installing and executing the Nmap .Zip binaries: Download the binaries: Latest stable Nmap command-line zipfile: nmap-3.50-win32.zip nmap-3.15BETA3-win32.zip --> Latest development Nmap command-line zipfile: Currently none -- use stable Uncompress the zip-file into the directory you want Nmap to reside in. An example would be C:\Program Files\ . A directory called nmap-VERSION should be created, which includes the Nmap executable and data files. If you do not have a Zip decompression program, there is one (called unzip) in Cygwin , or you can download Winzip or PKZIP from http://www.winzip.com and http://www.pkware.com respectively. These companies may try to direct you to costly software, but you should be able to find a free version. Consider applying the Nmap performance registry changes by clicking on nmap_performance.reg in the new Nmap directory. This increases the number of ephermal ports reserved for user applications (such as Nmap) and decreases the amount of time before a closed connection can be reused. Nmap requires the free WinPcap packet capture library. Obtain and install the latest version from http://winpcap.polito.it . They distribute an executable installer which makes this easy. At the time of this writing, the latest version is 3.01 and is known to work. Downloading the newest version available is recommended. After installing Nmap using the steps above, it can be executed as follows: Make sure the user you are logged in as has administrative privileges in the box (should be in the administrators group). Open a command/DOS Window. On Windows XP, this is in Start Menu -> All Programs -> Accessories -> Command Prompt. That path may vary by Windows version, but it should always be available from the Start menu. Opening a Cygwin window (if you installed it) by clicking on the Cygwin icon on the desktop is fine too, although the necessary commands differ slightly from those shown below. Change to the directory you installed Nmap into. Assuming the example directory name used in the install section above, type: c: cd "\program files\nmap-VERSION" (replace VERSION with the Nmap version number) Execute nmap.exe by typing a command such as nmap -A -T4 scanme.insecure.org . Here is a screen shot . Nmapwin installer : As an alternative to the command-line version of Nmap above, you can try the excellent NmapWin GUI created by Jens Vogt. This is (slightly) easier to install and provides a pretty graphical interface to Nmap. Unfortunately it is rather out of date , still using Nmap 3.00 from July 2002. So for now, the command-line version above is recommended. But if you really prefer this GUI, follow these instructions instead of the ones above: Download the latest NmapWin installer: nmapwin_1.3.1.exe Run the executable (installer program) and follow on-screen prompts Reboot (this is Windows, after all!) Click on the pretty Nmapwin desktop icon. Troubleshooting If you have trouble using either Windows version of Nmap (strange error/compile/install/runtime messages), try the following: Does the error say "INSTMSIA.EXE not found"? Then download and run it from here . If the error asks for "InstMsiW.exe" instead, get it here . You might want to try installing the Windows Network Monitor Driver Protocol . Check for error messages in the Windows event log (On at least WinXP, the Event Viewer can be opened by running "eventvwr"). Consider using the .zip version of Nmap instead of Nmapwin (or vice versa). Consider manually installing/reinstalling the latest version of Winpcap Perhaps someone else has reported the problem. Try reading recent Nmap-dev list archives . If one of the above solutions work, please let me know so that I can work on an automatic solution. If Nmap still doesn't work for you, please mail nmap-dev@insecure.org with a thorough description of the problem as well as the Windows flavor and Nmap version your are using. Other Operating Systems Many other operating systems support Nmap so well that I have no need to create and distribute binary packages myself. You can choose to use the packages below, or compile the source distribution , which is often newer. Solaris Steven Christensen does an excellent job maintaining Nmap (and many other) packages for Solaris at Sunfreeware.Com . Debian GNU/Linux LaMont Jones does a fabulous job maintaining the Nmap .deb packages. The proper upgrade/install command is "apt-get install nmap". Or you can obtain package info at the following URLs: Latest Debian "stable" Nmap: http://packages.debian.org/stable/net/nmap.html Latest Debian development ("unstable") Nmap: http://packages.debian.org/unstable/net/nmap.html Mac OS X Many Mac OS X users obtain Nmap along with many other UNIX tools from the Fink project . An alternative Mac OS X porting project that includes Nmap is DarwinPorts . Thanks to Eric Hall for maintaining the Nmap DarwinPort. If you compile the source distribution instead, be sure to read the Mac OS X note in that section. FreeBSD David O'Brien and Dominic Marks do a superb job keeping the FreeBSD "ports collection" version of Nmap up-to-date! The latest versions are available here . OpenBSD Nmap is included in the OpenBSD ports collection. Further information and instructions are available here . The basic instructions are: If you do not already have a copy of the ports tree, obtain it via CVS using these instructions . As root, execute the following command (replace /usr/ports with your local ports directory if it is different): cd /usr/ports/net/nmap && make install clean NetBSD NetBSD has packaged Nmap for an enormous number of platforms , from normal i386 to Playstation2, powerpc, vax, sparc, mips, amiga, arm, and platforms I have never even heard of! Instructions for dealing with the NetBSD package system are available here . HP-UX HP-UX Nmap binaries are available at The HP-UX Porting and Archive Center . At the time of this writing, the latest version available is 2.53 (very old). Nmap Site Navigation Introduction Documentation Propaganda Download OS Detection Portability In The News Related Projects Thanks To [ Nmap | Tools | Lists | Reading | News | About/Contact | Advertising | Privacy Policy ] 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Nmap Download -- Free Stealth Port Scanner For Network Exploration & Security Audits.  Runs on Linux/Windows/UNIX/Solaris/FreeBSD/OpenBSD</TITLE>
+<META name="description" content="Download Nmap Free Stealth Port Scanner For Network Exploration & Hacking. Runs on Linux,Windows,UNIX,Solaris,FreeBSD,OpenBSD,etc.">
+<META name="keywords" content="Nmap,Free,Hacking,Stealth,Port Scanner,Portscanner,Port Scanners,Security,Download,Network,Linux,Windows,UNIX,Solaris,Freebsd,OpenBSD,tools,tool,Open Source">
+
+<link REL="SHORTCUT ICON" HREF="http://images.insecure.org/images/tiny-eyeicon.png" TYPE="image/png">
+</HEAD>
+<BODY BGCOLOR="#2A0D45" TEXT="#000000" BACKGROUND="http://images.insecure.org/images/bg/purple.gif">
+
+<TABLE CELLPADDING="0" WIDTH="100%" CELLSPACING="0">
+<TR><TD ALIGN="left"><A HREF="http://www.insecure.org/"><IMG BORDER=0 ALT=""
+SRC="http://images.insecure.org/images/Insecurelogo-eye-90x168.gif" HEIGHT=90 WIDTH=168></A></TD>
+<TD VALIGN="bottom" ALIGN="right">
+<!-- Begin Banner Code -->
+<IFRAME SRC="http://cgi.insecure.org/cgi-bin/pro/pro.pl?iframe" MARGINWIDTH=0
+MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=NO WIDTH=728
+HEIGHT=90 >
+<SCRIPT LANGUAGE="JavaScript"><!--
+random = parseInt(Math.random()*10000)
+banner = '<A HREF="http://cgi.insecure.org/cgi-bin/pro/pro.pl?banner=NonSSI;'
+banner += 'page=' + random + '" >';
+banner += '<IMG SRC="http://cgi.insecure.org/cgi-bin/pro/pro.pl?'
+banner += 'page=' + random + '" '
+banner += ' ALT="Click Here!" BORDER=0></A>'
+document.write(banner)
+// --></SCRIPT>
+<NOSCRIPT>
+<A HREF="http://cgi.insecure.org/cgi-bin/pro/pro.pl?banner=NonSSI;page=01">
+<IMG SRC="http://cgi.insecure.org/cgi-bin/pro/pro.pl?page=01"
+     ALT="Click Here!" BORDER=0></A>
+</NOSCRIPT>
+</IFRAME>
+<!-- End Banner Code -->
+
+</TD></TR></TABLE>
+<TABLE WIDTH="100%" CELLPADDING="0" CELLSPACING="0"><TR><TD
+ALIGN="left" WIDTH="130" VALIGN="top">
+
+<FONT COLOR="#FFFFFF">
+<BR><B><A HREF="http://www.insecure.org/nmap/index.html"><FONT COLOR="#FFFFFF">Nmap Security Scanner</FONT></A></B><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://www.insecure.org/nmap/index.html"><FONT COLOR="#FFFFFF">Intro</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://www.insecure.org/nmap/nmap_documentation.html"><FONT COLOR="#FFFFFF">Docs</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8
+HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://www.insecure.org/nmap/nmap_download.html"><FONT COLOR="#FFFFFF">Download</FONT></A><BR>
+<B><A HREF="http://www.insecure.org/tools.html"><FONT COLOR="#FFFFFF">Security Tools</FONT></A></B><BR>
+<B><A HREF="http://www.insecure.org/reading.html"><FONT COLOR="#FFFFFF">Good Reading</FONT></A></B><BR>
+<B><A HREF="http://seclists.org/"><FONT COLOR="#FFFFFF">Security Lists</FONT></A></B><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/#nmap-hackers"><FONT COLOR="#FFFFFF">Nmap Hackers</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/#nmap-dev"><FONT COLOR="#FFFFFF">Nmap Dev</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/#bugtraq"><FONT COLOR="#FFFFFF">Bugtraq</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/#fulldisclosure"><FONT COLOR="#FFFFFF">Full Disclosure</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/#pen-test"><FONT COLOR="#FFFFFF">Pen Test</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/#vuln-dev"><FONT COLOR="#FFFFFF">Vuln Dev</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/#security-basics"><FONT COLOR="#FFFFFF">Basics</FONT></A><BR>
+<IMG ALT="*" SRC="http://www.insecure.org/images/white-purple-bullet.gif" ALT="" WIDTH=8 HEIGHT=8 HSPACE=1 VSPACE=3><A HREF="http://seclists.org/"><FONT COLOR="#FFFFFF">More</FONT></A><BR>
+<B><A HREF="http://www.insecure.org/"><FONT COLOR="#FFFFFF">News</FONT></A></B><BR>
+<B><A HREF="http://www.insecure.org/links.html"><FONT COLOR="#FFFFFF"><!-- Exceptional -->Links</FONT></A></B><BR>
+<B><A HREF="http://www.insecure.org/sploits.html"><FONT COLOR="#FFFFFF">Exploit World</FONT></A></B><BR>
+<B><A HREF="http://www.insecure.org/advertising.html"><FONT COLOR="#FFFFFF">Advertising</FONT></A></B><BR>
+<B><A HREF="http://www.insecure.org/myworld.html"><FONT COLOR="#FFFFFF">About/Contact</FONT></A></B><BR>
+<B><A HREF="http://www.insecure.org/credits.html"><FONT COLOR="#FFFFFF">Credits</FONT></A></B><BR>
+<BR>
+<!-- Search Google -->
+<FORM method=GET action=http://www.google.com/custom>
+<INPUT TYPE=text name=q size=16 maxlength=255 value="">
+
+ <INPUT type=hidden name=cof VALUE="S:http://www.insecure.org;GL:0;AH:left;LH:90;L:http://images.insecure.org/images/Insecurelogo-eye-90x168.gif;LW:168;AWFID:dc4a11c4dadfc794;">
+<input type=hidden name=domains value="insecure.org"><br><input type=hidden name=hl value="xx-hacker"><input type=hidden name=sitesearch value="insecure.org">
+<INPUT type=submit name=sa VALUE="Search">
+</FORM>
+<!-- Search Google -->
+</FONT>
+</TD>
+<TD BGCOLOR="#FFFFFF" VALIGN="top" ALIGN="left"><IMG
+SRC="http://www.insecure.org/images/topleftcurve.gif"><TABLE CELLPADDING="4"><TR><TD BGCOLOR="#FFFFFF">
+
+
+<CENTER>
+
+<TABLE WIDTH="100%" CELLSPACING="5"><TR VALIGN="top"><TD VALIGN="top"><A HREF="http://images.insecure.org/nmap/images/nmapfe-349-insecurescan.gif"><IMG WIDTH=150 HEIGHT=150 SRC="http://images.insecure.org/nmap/images/nmapfe-349-insecurescan_150x150.gif"></A></TD>
+<TD VALIGN="top">
+<!-- Begin Banner Code -->
+<!-- Modified random image selection code -- original version at 
+     http://www.bravenet.com/reviews/archives/tips.php?view=8 -->
+
+<SCRIPT LANGUAGE="JavaScript"> 
+<!--
+var imagenumber = 11 ; 
+var randomnumber = Math.random() ; 
+var rand1 = Math.round( (imagenumber-1) * randomnumber) + 1 ; 
+images = new Array 
+images[1] = "images/nmap_bnr2.jpg" 
+images[2] = "images/nmap_bnr_euroboy.jpg" 
+images[3] = "images/nmap_bnr_ai.jpg" 
+images[4] = "images/nmap_bnr_kyra1.gif" 
+images[5] = "images/nmap_bnr_kyra2.gif" 
+images[6] = "images/nmap_bnr_kyra3.gif" 
+images[7] = "images/nmap_bnr_kyra4.gif" 
+images[8] = "images/nmap_bnr_kyra5.gif" 
+images[9] = "images/nmap_bnr_i_amgod3.jpg" 
+images[10] = "images/nmap_bnr_mouse.gif" 
+images[11] = "images/nmap_bnr_m4rc3l0-2.jpg" 
+
+var myimage = images[rand1] 
+var mylink = "/nmap/"
+document.write('<A HREF="' + mylink + '"><IMG src="http://images.insecure.org/nmap/' + myimage + '" BORDER=0></A>') 
+//  --> 
+</SCRIPT> 
+<NOSCRIPT>
+<A HREF="/nmap/"><IMG SRC="images/nmap_bnr_euroboy.jpg" BORDER=0 HEIGHT=60 WIDTH=468></A>
+</NOSCRIPT>
+<table cellspacing="0" class=testcls border=1 bgcolor="#FFFFFF" width=468>
+<tr>
+
+<td><A HREF="index.html"><font size="+1">
+
+<B>Introduction</B></font></td>
+
+
+<td><A HREF="nmap_documentation.html"><font size="+1">
+
+<B>Documentation</B></font></td>
+
+
+<td><A HREF="nmap_propaganda.html"><font size="+1">
+
+<B>Propaganda</B></font></td>
+</tr><tr>
+
+
+<td bgcolor="#2A0D45"><font color="#FFFFFF" size="+1">
+
+<B>Download</B></font></td>
+
+
+<td><A HREF="nmap-fingerprinting-article.html"><font size="+1">
+
+<B>OS Detection</B></font></td>
+
+
+<td><A HREF="nmap_portability.html"><font size="+1">
+
+<B>Portability</B></font></td>
+</tr><tr>
+
+
+<td><A HREF="nmap_inthenews.html"><font size="+1">
+
+<B>In The News</B></font></td>
+
+
+<td><A HREF="nmap_relatedprojects.html"><font size="+1">
+
+<B>Related Projects</B></font></td>
+
+
+<td><A HREF="nmap_thanksto.html"><font size="+1">
+
+<B>Thanks To</B></font></td>
+
+</tr></table>
+
+
+</TD>
+<TD VALIGN="top"><A HREF="http://images.insecure.org/nmap/images/nmap-349-demovscan.gif"><IMG WIDTH=150 HEIGHT=150 SRC="http://images.insecure.org/nmap/images/nmap-349-insecurescan-squarecrop_150x150.gif"></A></TD>
+</TR></TABLE>
+</CENTER>
+
+
+<A NAME="intro">
+<TABLE WIDTH="100%"><TR BGCOLOR="#2A0D45"><TH ALIGN="CENTER"><B><FONT
+COLOR="#FFFFFF">Downloading Nmap</FONT></B></TH></TR></TABLE>
+<BR>
+
+Nmap and NmapFE (the graphical X Window front end) are available in
+several versions and formats.  Recent source releases and binary
+packages are described below.  Older version are available from the <A
+HREF="http://download.insecure.org/nmap/dist/?M=D">dist directory</A>.
+The "stable" versions are for more conservative users,
+while "devel" packages are for developers and "bleeding-edge" types.
+GPG-signed MD5 checksums for integrity checking are available from the
+Nmap-hackers and Nmap-dev mailing lists.  Subscription information and
+a web archive are available at <A
+HREF="http://seclists.org">seclists.org</A>.  The most
+important changes (features, bugfixes, etc) in each Nmap version are
+described in the <A HREF="nmap_changelog.html">ChangeLog</A>.  Be sure
+to read the <A HREF="nmap_documentation.html">documentation</A>!
+<P>
+
+<P>Nmap is distributed with source code under the terms of the <A
+HREF="copying.html">GNU General Public License</A>.  It includes a
+slightly modified version of the <A
+HREF="http://www.tcpdump.org">Libpcap</A> packet capturing libraries
+and the <A HREF="http://www.pcre.org/">PCRE</A> perl-compatible
+regular expression library.
+
+<TABLE><TR><TD valign=center>Some of the Nmap downloads and images are
+graciously hosted by <A HREF="http://www.vasoftware.com">VA
+Software's</A> <A HREF="http://www.sf.net">Source Forge</A>:</TD><TD
+valign="top"> <A href="http://sourceforge.net"><IMG BORDER=0
+src="http://sourceforge.net/sflogo.php?group_id=1508&type=1"
+width="88" height="31" border="0" alt=""></A> </TD></TR></TABLE>
+
+<A NAME="source">
+<TABLE WIDTH="100%"><TR BGCOLOR="#2A0D45"><TH ALIGN="CENTER"><B><FONT
+COLOR="#FFFFFF">Source Distribution</FONT></B></TH></TR></TABLE>
+
+<P>This is the traditional compile-it-yourself format.  The Nmap
+tarball compiles uder UNIX (including Linux, Solaris,
+Free/Net/OpenBSD, and Mac OS X) and Windows.  It includes NmapFE, the UNIX X
+Window frontend.  Nmapwin is the recommended Windows GUI
+(developed by Jens Vogt).
+
+<P>Note that Nmap is now offered in <A
+HREF="http://sources.redhat.com/bzip2/">bzip2</A> format.  If you
+don't have bzip2 nor feel like downloading it, gzip'ed tarballs are
+still available below or in the <A
+HREF="http://download.insecure.org/nmap/dist/?M=D">dist directory</A>.
+
+<P>Here are the UNIX instructions for tarball compilation/installation:
+<PRE>
+bzip2 -cd nmap-VERSION.tar.bz2 | tar xvf -
+cd nmap-VERSION
+./configure
+make
+su root
+make install
+</PRE>
+If you are using the gzip-compressed version, substitute 'gzip' for
+'bzip2' in the command above.  After a default as-root 'make install',
+Nmap should be available as /usr/local/bin/nmap.  The UNIX frontend is /usr/local/bin/nmapfe.
+
+<P>For Windows source compilation, see the README-WIN32 file in the
+tarball.  Nmapwin source compilation instructions are coming soon.
+<P>Mac OS X users: If you wish to compile from source (as opposed to
+binaries later on this page), <b>and the normal "./configure" line above does
+not work for you</b>, try "./configure CPP=/usr/bin/cpp". You also need to
+install the free <A
+HREF="http://developer.apple.com/tools/index.html">Apple Developer
+Tools</A> [<A
+HREF="http://seclists.org/lists/nmap-dev/2003/Jul-Sep/0132.html">instructions</A>]. If you think the "configure" script is looping, be sure
+your computer's clock/date is set correctly and wait at least 10
+minutes for completion before reporting it.  If you still have trouble, <A HREF="mailto:fyodor@insecure.org">let me
+know</A>.
+
+<P>
+Latest Stable Nmap Tarball: <A HREF="http://download.insecure.org/nmap/dist/nmap-3.50.tar.bz2">nmap-3.50.tar.bz2</A> (or gzip compressed: <A HREF="http://download.insecure.org/nmap/dist/nmap-3.50.tgz">nmap-3.50.tgz</A>)<BR>
+<!-- Latest Devel Nmap Tarball: <A HREF="http://download.insecure.org/nmap/dist/nmap-3.15BETA3.tar.bz2">nmap-3.15BETA3.tar.bz2</A><BR> -->
+Latest Devel Nmap Tarball: <I>Currently none</I> -- use stable <BR>
+Latest Nmapwin Source: <A HREF="http://download.insecure.org/nmap/dist/nmapwin_1.3.0_src.zip">nmapwin_1.3.0_src.zip</A><BR>
+<P>
+<A NAME="source">
+<TABLE WIDTH="100%"><TR BGCOLOR="#2A0D45"><TH ALIGN="CENTER"><B><FONT
+COLOR="#FFFFFF">Linux RPM Source and Binaries</FONT></B></TH></TR></TABLE>
+<BR>
+<P>Many popular Linux distributions (Redhat, Mandrake, Suse, etc) use
+the <A HREF="http://www.rpm.org">RPM</A> package management system.
+Note that the RPMs don't link to OpenSSL for <A
+HREF="versionscan.html">version detection</a>. X86 (PC)
+users can install the latest version of Nmap in seconds with these
+commands:
+<PRE>
+rpm -vhU http://download.insecure.org/nmap/dist/nmap-3.50-1.i386.rpm
+rpm -vhU http://download.insecure.org/nmap/dist/nmap-frontend-3.50-1.i386.rpm
+</PRE>
+Or you can download the RPMs yourself:
+<P>
+Latest Stable X86 Nmap RPM: <A HREF="http://download.insecure.org/nmap/dist/nmap-3.50-1.i386.rpm">nmap-3.50-1.i386.rpm</A><BR>
+Latest Stable X86 NmapFE RPM: <A HREF="http://download.insecure.org/nmap/dist/nmap-frontend-3.50-1.i386.rpm">nmap-frontend-3.50-1.i386.rpm</A><BR>
+Latest Stable Source RPM (includes NmapFE): <A HREF="http://download.insecure.org/nmap/dist/nmap-3.50-1.src.rpm">nmap-3.50-1.src.rpm</A><BR>
+<!-- Latest Development X86 Nmap RPM: <A HREF="http://download.insecure.org/nmap/dist/nmap-3.15BETA3-1.i386.rpm">nmap-3.15BETA3-1.i386.rpm</A><BR> -->
+Latest Development X86 Nmap RPM: <I>Currently none</I> -- use stable<BR>
+<!-- Latest Development X86 NmapFE RPM: <A HREF="http://download.insecure.org/nmap/dist/nmap-frontend-3.15BETA3-1.i386.rpm">nmap-frontend-3.15BETA3-1.i386.rpm</A><BR> -->
+Latest Development X86 NmapFE RPM: <I>Currently none</I> -- use stable<BR>
+<!-- Latest Development Source RPM (includes NmapFE):  <A HREF="http://download.insecure.org/nmap/dist/nmap-3.15BETA3-1.src.rpm">nmap-3.15BETA3-1.src.rpm</A><BR> -->
+Latest Development Source RPM (includes NmapFE): <I>Currently none</I> -- use stable<BR>
+
+<P>
+<A NAME="windows">
+<TABLE WIDTH="100%"><TR BGCOLOR="#2A0D45"><TH ALIGN="CENTER"><B><FONT
+COLOR="#FFFFFF">Windows (95/98/NT/ME/2K/XP)</FONT></B></TH></TR></TABLE>
+<P>
+<TABLE CELLSPACING=10>
+<TR><TD VALIGN=top>
+<A HREF="/nmap/images/nmap-349-windows-demo.gif"><IMG HEIGHT=157 WIDTH=334 SRC="http://images.insecure.org/nmap/images/nmap-349-windows-demo-small.gif"></A>
+</TD><TD VALIGN=top>
+Thanks to the hard work of Ryan Permeh (from <A
+HREF="http://www.eeye.com">eEye</A>) and Andy Lutomirski, the base
+Nmap package now builds and functions under Windows!  Note that Windows
+support is not yet as stable or
+fast as the traditional UNIX version.
+</TD></TR>
+</TABLE>
+
+<P><B>Command-line zipfile</B>:
+
+<P>Every major "stable" Nmap release comes with Windows command-line
+binaries and associated files in a Zip archive. No graphical interface
+is included, so you need to run nmap.exe from a DOS/command window.
+See the screen shot above.  Or you can download and install a superior
+command shell such as those included with the free <A HREF="http://www.cygwin.com">Cygwin system</A>. Here are the step-by-step instructions for installing and executing the Nmap .Zip binaries:
+<OL>
+<LI>Download the binaries:
+<P>Latest stable Nmap command-line zipfile: <A HREF="http://download.insecure.org/nmap/dist/nmap-3.50-win32.zip">nmap-3.50-win32.zip</A><BR>
+<!-- Latest development Nmap command-line zipfile: <A HREF="http://download.insecure.org/nmap/dist/nmap-3.15BETA3-win32.zip">nmap-3.15BETA3-win32.zip</A><BR> -->
+Latest development Nmap command-line zipfile: <I>Currently none</I> -- use stable
+<LI>Uncompress the zip-file into the directory you want Nmap to reside
+in. An example would be <tt>C:\Program Files\</tt>. A directory called
+nmap-VERSION should be created, which includes the Nmap executable and
+data files. If you do not have a Zip decompression program, there is
+one (called unzip) in <A HREF="http://www.cygwin.com">Cygwin</A>, or
+you can download Winzip or PKZIP from <A HREF="http://www.winzip.com">http://www.winzip.com</A> and <A HREF="http://www.pkware.com">http://www.pkware.com</A> respectively. These companies may try to direct you to costly software, but you should be able to find a free version.
+<LI>Consider applying the Nmap performance registry changes by clicking on nmap_performance.reg in the new Nmap directory. This increases the number of ephermal ports reserved for user applications (such as Nmap) and decreases the amount of time before a closed connection can be reused.
+<LI>Nmap requires the free WinPcap packet capture library. Obtain and install the latest version from <A HREF="http://winpcap.polito.it">http://winpcap.polito.it</A>. They distribute an executable installer which makes this easy. At the time of this writing, the latest version is 3.01 and is known to work. Downloading the newest version available is recommended.
+</OL>
+
+<P>After installing Nmap using the steps above, it can be executed as follows:
+<OL>
+<LI>Make sure the user you are logged in as has administrative privileges in the box (should be in the <tt>administrators</tt> group).</LI>
+<LI>Open a command/DOS Window. On Windows XP, this is in Start Menu -> All Programs -> Accessories -> Command Prompt. That path may vary by Windows version, but it should always be available from the Start menu. Opening a Cygwin window (if you installed it) by clicking on the Cygwin icon on the desktop is fine too, although the necessary commands differ slightly from those shown below.</LI>
+<LI>Change to the directory you installed Nmap into. Assuming the example directory name used in the install section above, type:
+<pre>
+c:
+cd "\program files\nmap-VERSION" (replace VERSION with the Nmap version number)
+</pre>
+<LI>Execute nmap.exe by typing a command such as <tt>nmap -A -T4 scanme.insecure.org</tt>.  Here is a <A HREF=http://images.insecure.org/nmap/images/nmap-349-windows-demo.gif">screen shot</A>.
+</OL>
+
+<P><B>Nmapwin installer</B>:<BR><BR>
+<table>
+<tr><td><a HREF="http://images.insecure.org/nmap/images/nmapwin-screenshot-big.png"><img HEIGHT=185 WIDTH=208 SRC="http://images.insecure.org/nmap/images/nmapwin-screenshot-small.png"></a></td><td valign="top">
+As an <i>alternative</i> to the command-line version of Nmap above, you can try the excellent NmapWin GUI created by Jens Vogt.  This is (slightly) easier to install and provides a pretty graphical interface to Nmap.  Unfortunately it is rather <b>out of date</b>, still using Nmap 3.00 from July 2002.  So for now, the command-line version above is recommended.  But if you really prefer this GUI, follow these instructions instead of the ones above:
+<OL>
+<LI>Download the latest NmapWin installer: <A HREF="http://download.insecure.org/nmap/dist/nmapwin_1.3.1.exe">nmapwin_1.3.1.exe</A>
+<LI>Run the executable (installer program) and follow on-screen prompts
+<LI>Reboot (this is Windows, after all!)
+<LI>Click on the pretty Nmapwin desktop icon.
+</OL>
+</td></tr></table>
+
+<P><B>Troubleshooting</B>
+<P>If you have trouble using either Windows version of Nmap (strange
+error/compile/install/runtime messages), try the following:
+<UL>
+<LI>Does the error say "INSTMSIA.EXE not found"?  Then download and
+run it from <A
+HREF="http://download.microsoft.com/download/WindowsInstaller/Install/2.0/W9XMe/EN-US/InstMsiA.exe">here</A>.
+If the error asks for "InstMsiW.exe" instead, get it <A HREF="http://download.microsoft.com/download/WindowsInstaller/Install/2.0/NT45/EN-US/InstMsiW.exe">here</A>.
+<LI>You might want to try <A
+HREF="http://seclists.org/lists/nmap-dev/2002/Oct-Dec/0027.html">installing
+the Windows Network Monitor Driver Protocol</A>.
+<LI>Check for error messages in the Windows event log (On at least WinXP, the
+Event Viewer can be opened by running "eventvwr").
+<LI>Consider using the .zip version of Nmap instead of Nmapwin (or
+vice versa).
+<LI>Consider manually installing/reinstalling the latest version of <A HREF="http://netgroup-serv.polito.it/winpcap/">Winpcap</A><LI>Perhaps someone else has reported the problem.  Try reading
+recent Nmap-dev <A HREF="http://seclists.org/#nmap-dev">list archives</A>.
+</UL>
+<P>If one of the above solutions work, please <A
+HREF="mailto:fyodor@insecure.org">let me know</A> so that I can work
+on an automatic solution.  If Nmap still doesn't work for you, please
+mail nmap-dev@insecure.org with a thorough description of the problem
+as well as the Windows flavor and Nmap version your are using.
+
+
+<P><A NAME="other">
+<TABLE WIDTH="100%"><TR BGCOLOR="#2A0D45"><TH ALIGN="CENTER"><B><FONT
+COLOR="#FFFFFF">Other Operating Systems</FONT></B></TH></TR></TABLE>
+
+<P>Many other operating systems support Nmap so well that I have no need
+to create and distribute binary packages myself.  You can choose to
+use the packages below, or compile the <A HREF="#source">source
+distribution</A>, which is often newer.
+
+<P><B>Solaris</B>
+<P>Steven Christensen does an excellent job maintaining Nmap (and many other) packages for Solaris at <A HREF="http://www.sunfreeware.com">Sunfreeware.Com</A>.
+<P><B>Debian GNU/Linux</B>
+<P>LaMont Jones does a fabulous job maintaining the Nmap .deb
+packages.  The proper upgrade/install command is "apt-get&nbsp;install&nbsp;nmap".  Or you can obtain package info at the following URLs:
+<P>Latest Debian "stable" Nmap: <A HREF="http://packages.debian.org/stable/net/nmap.html">http://packages.debian.org/stable/net/nmap.html</A><BR>
+Latest Debian development ("unstable") Nmap: <A HREF="http://packages.debian.org/unstable/net/nmap.html">http://packages.debian.org/unstable/net/nmap.html</A><BR>
+<P><B>Mac OS X</B>
+<P>Many Mac OS X users obtain Nmap along with many other UNIX tools
+from the <A HREF="http://fink.sourceforge.net/index.php">Fink
+project</A>.  An alternative Mac OS X porting project that includes
+Nmap is <A HREF="http://darwinports.opendarwin.org/">DarwinPorts</A>.
+Thanks to Eric Hall for maintaining the Nmap DarwinPort.  If you compile
+the <A HREF="#source">source distribution</A> instead, be sure to read
+the Mac OS X note in that section.
+<P><B>FreeBSD</B>
+<P>David O'Brien and Dominic Marks do a superb job keeping the FreeBSD "ports collection" version of Nmap up-to-date!  The latest versions are available <A HREF="http://www.freebsd.org/cgi/ports.cgi?query=nmap&stype=all">here</A>.
+<P><B>OpenBSD</B>
+<P>Nmap is included in the <A HREF="http://www.openbsd.org">OpenBSD</A> ports collection.  Further
+information and instructions are available <A
+HREF="http://www.openbsd.org/ports.html">here</A>.  The basic instructions are:
+<OL>
+<LI>If you do not already have a copy of the ports tree, obtain it via CVS using <A HREF="http://www.openbsd.org/faq/faq8.html#CVS">these instructions</A>.
+<LI>As root, execute the following command (replace /usr/ports with your local ports directory if it is different):
+<PRE>
+cd /usr/ports/net/nmap && make install clean
+</PRE>
+</OL>
+<P><B>NetBSD</B>
+<P><A HREF="http://www.netbsd.org">NetBSD</A> has packaged Nmap for an <A
+HREF="ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/net/nmap/README.html">enormous
+number of platforms</A>, from normal i386 to Playstation2, powerpc,
+vax, sparc, mips, amiga, arm, and platforms I have never even heard
+of!  Instructions for dealing with the NetBSD package system are
+available <A
+HREF="http://www.netbsd.org/Documentation/pkgsrc/using.html#id2956484">here</A>.
+
+<P><B>HP-UX</B>
+<P>HP-UX Nmap binaries are available at <A
+HREF="http://gatekeep.cs.utah.edu/hppd/hpux/Networking/Admin/">The
+HP-UX Porting and Archive Center</A>.  At the time of this writing,
+the latest version available is 2.53 (very old).
+
+<BR><BR>
+<TABLE WIDTH="100%"><TR BGCOLOR="#2A0D45"><TH
+ALIGN="CENTER"><B><FONT COLOR="#FFFFFF">Nmap Site Navigation</FONT></B></TH></TR></TABLE>
+<CENTER>
+<table cellspacing="0" class=testcls border=1 bgcolor="#FFFFFF" width=468>
+<tr>
+
+<td><A HREF="index.html"><font size="+1">
+
+<B>Introduction</B></font></td>
+
+
+<td><A HREF="nmap_documentation.html"><font size="+1">
+
+<B>Documentation</B></font></td>
+
+
+<td><A HREF="nmap_propaganda.html"><font size="+1">
+
+<B>Propaganda</B></font></td>
+</tr><tr>
+
+
+<td bgcolor="#2A0D45"><font color="#FFFFFF" size="+1">
+
+<B>Download</B></font></td>
+
+
+<td><A HREF="nmap-fingerprinting-article.html"><font size="+1">
+
+<B>OS Detection</B></font></td>
+
+
+<td><A HREF="nmap_portability.html"><font size="+1">
+
+<B>Portability</B></font></td>
+</tr><tr>
+
+
+<td><A HREF="nmap_inthenews.html"><font size="+1">
+
+<B>In The News</B></font></td>
+
+
+<td><A HREF="nmap_relatedprojects.html"><font size="+1">
+
+<B>Related Projects</B></font></td>
+
+
+<td><A HREF="nmap_thanksto.html"><font size="+1">
+
+<B>Thanks To</B></font></td>
+
+</tr></table>
+
+
+</CENTER>
+
+</TD></TR></TABLE>
+</TD></TR>
+</TABLE>
+<FONT COLOR="#FFFFFF">
+<CENTER>[  <A HREF="http://www.insecure.org/nmap/index.html"><FONT COLOR="#FFFFFF">Nmap</FONT></A> |
+           <A HREF="http://www.insecure.org/tools.html"><FONT COLOR="#FFFFFF">Tools</FONT></A> |
+           <A HREF="http://seclists.org/"><FONT COLOR="#FFFFFF">Lists</FONT></A> |
+           <A HREF="http://www.insecure.org/reading.html"><FONT COLOR="#FFFFFF">Reading</FONT></A> |
+           <A HREF="http://www.insecure.org/"><FONT COLOR="#FFFFFF">News</FONT></A> |
+           <A HREF="http://www.insecure.org/myworld.html"><FONT COLOR="#FFFFFF">About/Contact</FONT></A> |
+           <A HREF="http://www.insecure.org/advertising.html"><FONT COLOR="#FFFFFF">Advertising</FONT></A> |
+           <A HREF="http://www.insecure.org/privacy.html"><FONT COLOR="#FFFFFF">Privacy Policy</FONT></A> 
+]<BR>
+</CENTER>
+</FONT>
+
+</BODY>
+</HTML>
+
+
+

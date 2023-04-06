@@ -1,0 +1,353 @@
+<!-- <DOCUMENT>
+	<FILE>
+		4534772075.html
+	</FILE>
+	<URL>
+		http://www.fftw.org/links.html
+	</URL>
+	<TITLE>
+		FFT Links
+	</TITLE>
+	<GENRE>
+		linklists
+	</GENRE>
+	<PLAINTEXT>
+ FFT Links Go back to the FFTW home page. Introduction There are many other places that you can go on the Web to learn more about Fourier Transforms in general and FFTs in particular. Since searching for " FFT " on Alta Vista will yield far too many links, most of them useless (although Google has improved matters somewhat), we decided to list a few of the better ones here. Another good place to go when you have signal-processing and/or FFT-related questions is Usenet , and in particular the comp.dsp (digital signal processing), sci.math.num-analysis (numerical analysis and scientific computation), or sci.image.processing (image processing) groups. Let us know if you think there are other links that we should include. Last updated: 18 January 2004. FFT Source Code The following are places where you can download source code for FFTs. (There are so many FFT implementations available that we mostly link to sites that are themselves collections of code or links.) The FFTW Home Page : A fast C library for performing the FFT in one or more dimensions, including parallel and real-data transforms. Of course, we have to include ourselves in this list! FFT Sources : This is the list of all the codes that we included in benchFFT , along with links to where they may be downloaded. It is one of the more complete FFT-software listings available. J&ouml;rg's "Ugly" Page : J&ouml;rg Arndt has gathered a menagerie of FFT links and source code, including much of the software that we used in our benchmark. (Somewhat chaotically organized.) An FFT Page maintained by Steve Kifowit , focusing primarily on Fortran code. D. J. Bernstein has written an optimized C FFT for the Pentium and UltraSPARC. (Its output is permuted and it is limited to N &lt;= 8192, but this doesn't prevent it from being used e.g. for convolutions. It includes convolution routines for real and complex data.) (See also pfftw .) PD FFT Page : A collection of several public-domain FFT codes and other links. NFFT is a free library for non-equispaced discrete Fourier transforms, based on FFTW. ccSHT is a free library for spherical-Harmonic transforms (FFT analogue on a unit sphere), based on FFTW. Benchmarks Sites to help you decide which FFT implementation to use. Our benchFFT package compares performance of many FFT implementations in both C and Fortran (and we have posted speed and accuracy results from a number of machines). Greg Allen has published benchmarks of Altivec FFTs . The FFT Processor Information Page by Bevan Baas compares a lot of special-purpose FFT hardware . Explanatory Material Tutorials and introductions to Fourier transforms and FFTs, in no particular order. There is a survey and history of FFT algorithms and related information in the free Wikipedia collaborative encyclopedia. Numerical Recipes , which is readable on-line , has a decent introduction to Fourier transforms, DFTs , and FFTs (albeit somewhat dated). For a good description of the FFT literature c. 1997 (with many references), see C. S. Burrus's " Notes on the FFT " (our mirror of the now-missing original). The Scientist's and Engineer's Guide to Digital Signal Processing is an entire DSP book free online by Steven W. Smith. The Picture Book of Fourier Transforms by Kevin Cowtan gives an interesting graphical tutorial on the interpretation of 2D FFT output, with a special emphasis on crystallography. There is also a tutorial on Fourier transforms, the convolution theorem, and other material. DFT Introduction by Paul Bourke, describing the discrete Fourier transform in terms of the continuous transform, with examples of the transforms of various functions. Also has introductions to two-dimensional FFTs , digital filters , image filtering , and other related topics . Don Cross' DFT Page : A brief introduction to the Discrete Fourier Transform and the most basic FFT algorithm, maintained by Don Cross . Also has a little source code. --> A biography of Jean Fourier can be found at the excellent MacTutor History of Mathematics Archive A page on Jean Fourier is maintained by Douglas Nunn , with both historical and mathematical information (as well as more links). --> A short paper on Fourier transforms, giving an overview of some of their uses and properties, was placed on-line by Forrest Hoffman . A brief essay by David Mazel on how sinusoids are used to represent arbitrary functions in the Fourier basis, along with a short introduction to the Fourier transform. --> The FFT Demystified is a site by Adrian Hey covering many introductory and not-so-introductory aspects of FFT algorithms. The book Numerical Computing with MATLAB online has a tutorial on Fourier analysis based on Matlab's fft function (which uses FFTW ). A mostly non-mathematical introduction to Fourier transforms at the site of a DSP company with the (hopefully non-descriptive) name of Bores . DSP Dimension , by Stephan M. Bernsee, contains tutorials and other links for Fourier analysis and DSP, focusing on audio processing. dspGuru is a site that is trying to collect various tutorials, FAQs, and other information related to digital signal processing (and FFTs). Another Fourier-transform tutorial has been posted by the Univ. of Strathclyde, containing basic information about DFTs, FFTs, windowing, and interpretation of spectra. A "graphical interpretation" of the DFT and FFT, by Steve Mann. Scanned copies of the original Cooley &amp; Tukey FFT paper , placed online by Charles Chiu Integrate your function times a complex exponential... Read the lyrics and listen to Fourier's Song . The FFT Laboratory site has a neat Java applet for experimenting with the DFT. Miscellaneous FFT Links The AURORA project explores a variety of scientific-computing topics, including FFTs that use SIMD instructions such as Altivec and SSE. Among other things, they have developed variants of FFTW for the AMD 3DNow! and the Intel SSE/SSE2 instruction sets (see also FFTW 3.0). SPIRAL is a project to express FFTs and related algorithms (e.g. Walsh-Hadamard transforms) in terms of a generalized Tensor Product Language (TPL), from which source code, matrix representations, etcetera, can be generated. There is a Parallel FFT group at the Univ. of Houston . The AHPCC Parallel FFT Homepage has some information on parallel FFTs, often specific to their computing center. --> For something a bit farther out, look at Alan Edelman's new algorithm to compute the DFT of very large data sets on parallel architectures. gmeteor is a flexible program for generating optimal FIR filters with an arbitrary frequency response. Other Sites of Interest Netlib is a famous repository of free numerical software. Another source for software is the Scientific Applications for Linux (SAL) page. It indexes and describes code libraries, end-user programs, and web pages. Cilk is an awesome way to write parallel programs on shared-memory machines. For message passing, MPI isn't bad. The Beowulf Project is one good way to build your own parallel machine. NA-Net has a useful weekly digest on topics related to numerical analysis. PhiPAC and ATLAS are projects applying auto-optimization and code-generation techniques to produce fast BLAS matrix routines (somewhat similar in spirit to FFTW). VSIP is an attempt by a consortium of academic, government, and industry participants to create a standard API for vector, signal, and image-processing. --> Go back to the FFTW home page. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML><HEAD>
+<META name="description"
+      content="descriptions and links for many sources of FFT code and related information on the Web.">
+<LINK REL="icon" HREF="fftw-16.png" TYPE="image/png">
+<LINK REL="SHORTCUT ICON" HREF="favicon.ico">
+<TITLE>FFT Links</TITLE>
+<LINK rel="Bookmark" title="FFTW Home Page" href="index.html">
+<LINK rel="Contents" href="index.html">
+
+<LINK REL="STYLESHEET" HREF="fftw.css" TYPE="text/css"></HEAD>
+<BODY text="#000000" bgcolor="#FFFFFF">
+
+<IMG ALIGN=right SRC="fftw-logo-thumb.gif" WIDTH="82" HEIGHT="27" ALT="FFTW Logo">
+<br>Go <a href="index.html">back</a> to the FFTW home page.
+<BR CLEAR=right>
+<hr>
+
+<h1>Introduction</h1>
+
+There are many other places that you can go on the Web to learn more
+about Fourier Transforms in general and <abbr title="Fast Fourier
+Transforms">FFTs</abbr> in particular.  Since searching for "<abbr
+title="Fast Fourier Transform">FFT</abbr>" on <a
+href="http://www.altavista.com/" title="Alta Vista search engine">Alta
+Vista</a> will yield far too many links, most of them useless
+(although <a href="http://www.google.com/">Google</a> has
+improved matters somewhat), we decided to list a few of the better
+ones here.
+
+<p>Another good place to go when you have signal-processing and/or
+FFT-related questions is <b>Usenet</b>, and in particular the <a
+href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=comp.dsp">comp.dsp</a>
+(digital signal processing), <a
+href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=sci.math.num-analysis">sci.math.num-analysis</a>
+(numerical analysis and scientific computation), or <a
+href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=sci.image.processing">sci.image.processing</a>
+(image processing) groups.
+
+<p><A HREF="mailto:fftw@fftw.org">Let us know</A> if you
+think there are other links that we should include.
+
+<!-- ************************************************************* -->
+<!-- ******************* UPDATE THE FOLLOWING: ******************* -->
+<!-- ************************************************************* -->
+
+<i>Last updated: 18 January 2004.</i>
+
+<!-- ************************************************************* -->
+<!-- ************************************************************* -->
+<!-- ************************************************************* -->
+
+<h1>FFT Source Code</h1>
+
+The following are places where you can download source code for FFTs.
+(There are so many FFT implementations available that we mostly link to
+sites that are themselves collections of code or links.)
+
+<P><UL>
+
+<LI><A HREF="http://www.fftw.org">The <abbr title="Fastest
+Fourier Transform in the West">FFTW</abbr> Home Page</A>: A fast C
+library for performing the FFT in one or more dimensions, including
+parallel and real-data transforms.  Of course, we have to include
+ourselves in this list!
+
+<LI><A HREF="benchfft/ffts.html">FFT
+Sources</A>: This is the list of all the codes that we included in
+<a href="benchfft/">benchFFT</a>, along with links to where they may be downloaded.  It is one
+of the more complete FFT-software listings available.
+
+<LI><A HREF="http://www.jjj.de/fft/fftpage.html">J&ouml;rg's "Ugly"
+Page</A>: J&ouml;rg Arndt has gathered a menagerie of FFT links and
+source code, including much of the software that we used in our
+benchmark.  (Somewhat chaotically organized.)
+
+<LI>An <a
+href="http://ourworld.compuserve.com/homepages/steve_kifowit/fft.htm">FFT
+Page</a> maintained by <a href="mailto:kifowit@math.niu.edu" title="email Steve Kifowit">Steve
+Kifowit</a>, focusing primarily on Fortran code.
+
+<LI><a href="http://cr.yp.to/djb.html" title="Bernstein's home
+page">D. J. Bernstein</a> has written an <a
+href="http://cr.yp.to/djbfft.html" title="Bernstein's FFT web
+page">optimized C FFT</a> for the Pentium and UltraSPARC.  (Its output
+is permuted and it is limited to N &lt;= 8192, but this doesn't
+prevent it from being used e.g. for convolutions.  It includes
+convolution routines for real and complex data.)  (See also <a
+href="http://www.fftw.org/download.html#pfftw">pfftw</a>.)
+
+<LI><A HREF="http://risc2.numis.nwu.edu/ftp/pub/transforms/"><abbr title="Public
+Domain">PD</abbr> FFT Page</A>: A collection of several public-domain
+FFT codes and other links.
+
+<li><a href="http://www.math.mu-luebeck.de/potts/nfft/">NFFT</a> is a
+free library for non-equispaced discrete Fourier transforms, based on
+FFTW.  <a href="http://crd.lbl.gov/~cmc/ccSHTlib/doc/">ccSHT</a> is a free
+library for spherical-Harmonic transforms (FFT analogue on a unit sphere),
+based on FFTW.
+
+</UL>
+
+<h1>Benchmarks</h1>
+
+Sites to help you decide which FFT implementation to use.
+
+<P><UL>
+
+<li>Our <a href="http://www.fftw.org/benchfft/">benchFFT</a> package
+compares performance of many FFT implementations in both C and Fortran
+(and we have posted <a href="speed/">speed</a> and <a
+href="accuracy/">accuracy</a> results from a number of machines).
+
+<li>Greg Allen has published <a href="http://www.findsabrina.org/altivec/">benchmarks of Altivec FFTs</a>.
+
+<li>The <a href="http://www-star.stanford.edu/~bbaas/fftinfo.html">FFT
+Processor Information Page</a> by <a
+href="http://www-star.stanford.edu/~bbaas/">Bevan Baas</a> compares a
+lot of special-purpose FFT <b>hardware</b>.
+
+</UL>
+
+<h1>Explanatory Material</h1>
+
+Tutorials and introductions to Fourier transforms and FFTs, in no
+particular order.
+
+<P><UL>
+
+<li>There is a <a
+href="http://www.wikipedia.org/wiki/Fast_Fourier_transform">survey and
+history of FFT algorithms</a> and related information in the free <a
+href="http://www.wikipedia.org">Wikipedia</a> collaborative
+encyclopedia.
+
+<LI><a href="http://www.nr.com/" title="Numerical Recipes home
+page"><i>Numerical Recipes</i></a>, which is <a
+href="http://www.library.cornell.edu/nr/bookcpdf.html" title="Numerical
+Recipes in C on-line book">readable on-line</a>, has a decent <a
+href="http://www.library.cornell.edu/nr/bookcpdf/c12-0.pdf" title="NR
+introduction to Fourier transforms">introduction</a> to Fourier
+transforms, <a href="http://www.library.cornell.edu/nr/bookcpdf/c12-1.pdf"
+title"NR section on the DFT">DFTs</a>, and <a
+href="http://www.library.cornell.edu/nr/bookcpdf/c12-2.pdf" title="NR
+section introducing the FFT algorithm">FFTs</a> (albeit somewhat dated).
+
+<LI>For a good description of the FFT literature <i>c.</i> 1997 (with many
+references), see C. S. Burrus's "<a
+href="burrus-notes.html">Notes on the
+FFT</a>" (our mirror of the now-missing original).
+
+<li>The <a href="http://www.dspguide.com/pdfbook.htm"><i>Scientist's and
+Engineer's Guide to Digital Signal Processing</i></a> is an entire DSP
+book free online by Steven W. Smith.
+
+<LI>The <a
+href="http://www.ysbl.york.ac.uk/~cowtan/fourier/fourier.html">Picture
+Book of Fourier Transforms</a> by Kevin Cowtan gives an interesting
+graphical tutorial on the interpretation of 2D FFT output, with a
+special emphasis on crystallography.  There is also a tutorial on
+Fourier transforms, the convolution theorem, and other material.
+
+<li><a
+href="http://astronomy.swin.edu.au/~pbourke/analysis/dft/">DFT
+Introduction</a> by Paul Bourke, describing the discrete Fourier
+transform in terms of the continuous transform, with examples of the
+transforms of various functions.  Also has introductions to <a
+href="http://astronomy.swin.edu.au/~pbourke/analysis/fft2d/">two-dimensional
+FFTs</a>, <a
+href="http://astronomy.swin.edu.au/~pbourke/analysis/filter/">digital
+filters</a>, <a
+href="http://astronomy.swin.edu.au/~pbourke/analysis/imagefilter/">image
+filtering</a>, and <a
+href="http://astronomy.swin.edu.au/~pbourke/analysis/">other related
+topics</a>.
+
+<!-- (broken link)
+<LI><A HREF="http://www.intersrv.com/~dcross/fft.html">Don Cross' DFT
+Page</A>: A brief introduction to the Discrete Fourier Transform and
+the most basic FFT algorithm, maintained by <A
+HREF="mailto:dcross@intersrv.com" title="email Don Cross">Don
+Cross</A>. Also has a little source code.
+-->
+
+<LI>A <a
+href="http://www-gap.dcs.st-and.ac.uk/~history/Mathematicians/Fourier.html">biography
+of Jean Fourier</a> can be found at the excellent <a
+href="http://www-gap.dcs.st-and.ac.uk/~history/">MacTutor History of
+Mathematics Archive</a>
+
+<!-- (broken link)
+<LI>A page on <A HREF="http://capella.dur.ac.uk/doug/fourier.html"
+title="Douglas Nunn's Fourier Page">Jean Fourier</A> is maintained by
+<A HREF="mailto:d.j.e.nunn@durham.ac.uk" title="email Douglas
+Nunn">Douglas Nunn</A>, with both historical and mathematical
+information (as well as more links).
+-->
+
+<LI>A <a
+href="http://utcsl.phys.utk.edu/~forrest/papers/fourier/index.html">short
+paper</a> on Fourier transforms, giving an overview of some of their
+uses and properties, was placed on-line by <a
+href="http://utcsl.phys.utk.edu/~forrest/" title="Hoffman's home
+page">Forrest Hoffman</a>.
+
+<!-- (broken link)
+<li>A <a href="http://bass.gmu.edu/~mazel/fourier/four1.htm">brief
+essay</a> by David Mazel on how sinusoids are used to represent
+arbitrary functions in the Fourier basis, along with a short <a
+href="http://bass.gmu.edu/~mazel/fourier/ftrans/ftrans.htm">introduction</a>
+to the Fourier transform.
+-->
+
+<LI><a href="http://www.eptools.com/tn/T0001/INDEX.HTM">The FFT
+Demystified</a> is a site by <a
+href="mailto:ahey@iee.org">Adrian Hey</a> covering many introductory
+and not-so-introductory aspects of FFT algorithms.
+
+<li>The book <a href="http://www.mathworks.com/moler"><i>Numerical
+Computing with MATLAB</i></a> online has a tutorial on <a
+href="http://www.mathworks.com/moler/fourier.pdf">Fourier analysis</a> based on Matlab's <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/ref/fft.shtml"><code>fft</code></a> function (which <a href="http://www.mathworks.com/company/newsletter/clevescorner/winter01_cleve.shtml">uses FFTW</a>).
+
+<LI>A mostly non-mathematical <a
+href="http://www.bores.com/courses/intro/freq/">introduction to
+Fourier transforms</a> at the site of a DSP company with the
+(hopefully non-descriptive) name of <a
+href="http://www.bores.com/">Bores</a>.
+
+<li><a href="http://www.dspdimension.com/">DSP Dimension</a>, by
+Stephan M. Bernsee, contains tutorials and other links for Fourier
+analysis and DSP, focusing on audio processing.
+
+<li><a href="http://www.dspguru.com/">dspGuru</a> is a site that is
+trying to collect various tutorials, FAQs, and other information
+related to digital signal processing (and FFTs).
+
+<li><a href="http://www.spd.eee.strath.ac.uk/~interact/FFT/">Another
+Fourier-transform tutorial</a> has been posted by the Univ. of
+Strathclyde, containing basic information about DFTs, FFTs, windowing, and
+interpretation of spectra.
+
+<li>A <a
+href="http://wearcam.org/ece431/course_material/fourierop_and_dit.htm">"graphical interpretation"</a> of the DFT and FFT, by Steve Mann.
+
+<li>Scanned copies of the <a href="http://www.ph.utexas.edu/~itiq/chiu/cooley/">original Cooley &amp; Tukey FFT paper</a>, placed online by <a href="http://www.ph.utexas.edu/~chiu/">Charles Chiu</a>
+
+<li><i>Integrate your function times a complex exponential...</i> Read
+the lyrics and listen to <a
+href="http://eceserv0.ece.wisc.edu/~sethares/mp3s/fourier.html">Fourier's
+Song</a>.
+
+<LI>The <A
+HREF="http://sepwww.stanford.edu/oldsep/hale/FftLab.html">FFT
+Laboratory</A> site has a neat <A
+HREF="http://java.sun.com/" title="Sun Java home page">Java</A> applet for experimenting with
+the DFT.
+
+</UL>
+
+<h1>Miscellaneous FFT Links</h1>
+
+<UL>
+
+<LI><A HREF="http://www.math.tuwien.ac.at/ascot/">The AURORA
+project</A> explores a variety of scientific-computing topics,
+including FFTs that use SIMD instructions such as Altivec and SSE.
+Among other things, they have developed variants of FFTW for the
+AMD 3DNow! and the Intel SSE/SSE2 instruction sets (see also FFTW 3.0).
+
+<LI><a href="http://www.ece.cmu.edu/~spiral/">SPIRAL</a> is a project
+to express FFTs and related algorithms (e.g. Walsh-Hadamard
+transforms) in terms of a generalized Tensor Product Language (TPL),
+from which source code, matrix representations, etcetera, can be
+generated.
+
+<LI>There is a <a href="http://www.cs.uh.edu/~mirkovic/fft/parfft.htm">Parallel FFT group</a> at the <a href="http://www.cs.uh.edu/">Univ. of Houston</a>. 
+
+<!-- <A HREF="http://www.ahpcc.unm.edu/~bennett/fft/fft.html">The AHPCC
+Parallel FFT Homepage</A> has some information on parallel FFTs,
+often specific to their computing center. -->
+
+<LI>For something a bit farther out, look at <A
+HREF="http://www-math.mit.edu/~edelman/" title="Alan Edelman's home page">Alan Edelman's</A> new <A
+HREF="ftp://theory.lcs.mit.edu/pub/people/edelman/scicom/fft.ps" title="paper on Edelman's FFT algorithm">algorithm</A>
+to compute the <abbr title="Discrete Fourier Transform">DFT</abbr> of very large data sets on parallel architectures.
+
+<li><a href="http://gmeteor.sourceforge.net/">gmeteor</a> is a
+flexible program for generating optimal FIR filters with an arbitrary
+frequency response.
+
+</UL>
+
+<h1>Other Sites of Interest</h1>
+
+<UL>
+
+<LI><A HREF="http://www.netlib.org/">Netlib</A> is a famous repository
+of free numerical software.
+
+<li>Another source for software is the <a
+href="http://SAL.KachinaTech.COM/">Scientific Applications for
+Linux</a> (SAL) page.  It indexes and describes code libraries,
+end-user programs, and web pages.
+
+<LI><A HREF="http://supertech.lcs.mit.edu/cilk/">Cilk</A> is an
+awesome way to write parallel programs on shared-memory machines. For
+message passing, <A HREF="http://www-unix.mcs.anl.gov/mpi/">MPI</A>
+isn't bad. The <A HREF="http://www.beowulf.org/">Beowulf Project</A> is
+one good way to build your own parallel machine.
+
+<LI><A HREF="http://www.netlib.org/na-net/">NA-Net</A> has a useful
+weekly digest on topics related to numerical analysis.
+
+<li>
+<a href="http://www.icsi.berkeley.edu/~bilmes/phipac/">PhiPAC</a> and <a
+href="http://math-atlas.sourceforge.net/">ATLAS</a> are projects applying
+auto-optimization and code-generation techniques to produce fast <abbr
+title="Basic Linear Algebra Subroutines">BLAS</abbr> matrix routines
+(somewhat similar in spirit to FFTW).
+
+<!--
+
+<li><a href="http://www.vsipl.org">VSIP</a> is an attempt by a
+consortium of academic, government, and industry participants to
+create a standard API for vector, signal, and image-processing.
+
+-->
+
+</UL>
+
+<hr>Go <a href="index.html">back</a> to the FFTW home page.
+
+</BODY>
+</HTML>
+

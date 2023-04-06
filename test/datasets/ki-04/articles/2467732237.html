@@ -1,0 +1,103 @@
+<!-- <DOCUMENT>
+	<FILE>
+		2467732237.html
+	</FILE>
+	<URL>
+		http://www.fon.hum.uva.nl/Service/Statistics/Sign_Test.html
+	</URL>
+	<TITLE>
+		IFA Services: Statistics, Sign Test
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ IFA Services: Statistics, Sign Test Return to Statistics The Sign Test Example: n+ 12, n- 3, p n+ n- Characteristics: Crudest and most insensitive test. It is also the most convincing and easiest to apply. The level of significance can almost be estimated without the help of a calculator or table. If the Sign-test indicates a significant difference, and another test does not, you should seriously rethink whether the other test is valid. H0: The median value of the distribution is m (generally m = 0), values larger (+) and smaller (-) than the median are equally likely. When matched pairs are used, the probability of observing (A, B) is equal to that of observing (B, A) and the value of A-B has median value 0. Assumptions: None other than H0. Scale: Ordinal, but sometimes nominal when it is used as a binomial test Procedure: Label observations as +/-, positive/negative, greater/smaller, left/right, black/white, male/female, or whatever dichotomy you want to use and count the number of times each label is observed. n+ is the number of times a "+" is observed and n- the number of times a "-" is observed. Ignore all zero or equal observations. Level of Significance: n+ and n- are binomial distributed with p = q = 1/2 and N = (n+) + (n-). If k is the smaller of (n+) and (n-) then: p N !/(i!*( N -i)!)}/4 (with k! = k*(k-1)*(k-2)*...*1 is the factorial of k and 0! = 1) Approximation: If (n+) + (n-) = N > 25, then Z = (| n+ - n- | - 1)/sqrt( N ) can be approximated with a Standard Normal distribution . In our example, we calculate the exact probabilities upto N = 100. For N > 30, the Student t-test can be used. However, the Wilcoxon Matched-Pairs Signed-Ranks test is a better alternative. Remarks: The Sign-test answers the question: How often? , whereas other tests answer the question How much? . It must be kept in mind that these two questions might have different answers. When the problem concerns the sizes of the differences , the Wilcoxon Matched-Pairs Signed-Ranks Test should be preferred. This test is also distribution free, but it is much more sensitive than the Sign-test. Finally, the Sign-test is an almost ideal quick-and-dirty test that can be used to browse datasets or to check the results of other tests (e.g., as in: "All six subjects show an increase, so why does your test insist that p > 0.05?"). Return to: Statistics 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<head>
+<title>IFA Services: Statistics, Sign Test</title>
+</head>
+<body>
+ <a href=/Service/Statistics.html>
+Return to Statistics</a>
+<hr>
+<h1>The Sign Test</h1> 
+Example:<p>
+<b>n+ 12, n- 3, 
+   p <= 0.0352</b><p>
+<FORM ACTION=/Service/Statistics/Sign_Test.html METHOD=POST>
+<p> 
+n+ <INPUT NAME="positive" size="20" value=12>
+  <INPUT TYPE=submit VALUE="Submit" ALIGN=center>
+<br>
+n- <INPUT NAME="negative" size="20" value=3>
+  <INPUT TYPE=reset ALIGN=center>
+</FORM>
+<hr>
+<i>Characteristics:</i><br>
+Crudest and most insensitive test. It is also the most convincing and
+easiest to apply. The level of significance can almost be estimated
+without the help of a calculator or table. If the Sign-test indicates a
+significant difference, and another test does not, you should seriously
+rethink whether the other test is valid.
+<p><i>H0:</i><br>
+The median value of the distribution is <i>m</i> (generally <i>m</i> = 0), 
+values larger (+) and smaller (-) than the median are equally likely.<br> 
+When matched pairs are used, the probability of observing (A, B) is
+equal to that of observing (B, A) and the value of A-B has median value 0.
+
+<p><i>Assumptions:</i><br>
+None other than H0.
+
+<p><i>Scale:</i><br>
+Ordinal, but sometimes nominal when it is used as a binomial test
+
+<p><i>Procedure:</i><br>
+Label observations as +/-, positive/negative, greater/smaller, left/right, 
+black/white, male/female, or whatever dichotomy you want to use and count the 
+number of times each label is observed. n+ is the number of times a "+" is 
+observed and n- the number of times a "-" is observed. 
+Ignore all <i>zero</i> or <i>equal</i> observations.
+
+<p><i>Level of Significance:</i><br>
+n+ and n- are 
+<a href=/Service/Statistics/Binomial_distribution.html>
+binomial distributed</a> with <i>p</i> = <i>q</i> = 1/2
+and <i>N</i> = (n+) + (n-).<br>
+If k is the smaller of (n+) and (n-) then:<br>
+p <= 2 * Sum (i=0 to k) {<i>N</i>!/(i!*(<i>N</i>-i)!)}/4<br>
+(with k! = k*(k-1)*(k-2)*...*1 is the factorial of k and 0! = 1)
+
+<p><i>Approximation:</i><br>
+If (n+) + (n-) = <i>N</i> > 25, then 
+<i>Z</i> = (| n+ - n- | - 1)/sqrt( <i>N</i> ) 
+can be approximated with a 
+<a href=/Service/Statistics/Normal-Z_distribution.html>
+Standard Normal distribution</a>. In our example, we calculate the exact 
+probabilities upto <i>N</i> = 100.<br>
+For <i>N</i> > 30, the 
+<a href="/Service/Statistics/Student_t_Test.html">
+Student t-test</a> can be used. However, the 
+<a href="/Service/Statistics/Signed_Rank_Test.html">
+Wilcoxon Matched-Pairs Signed-Ranks</a> test is a better alternative.
+
+<p><i>Remarks:</i><br>
+The Sign-test answers the question: <i>How often?</i>, whereas other
+tests answer the question <i>How much?</i>. It must be kept in mind that
+these two questions might have different answers.<br>
+When the problem concerns the <em>sizes</em> of the <em>differences</em>, 
+the <a href=/Service/Statistics/Signed_Rank_Test.html>
+Wilcoxon Matched-Pairs Signed-Ranks Test</a> should be preferred. This test 
+is also distribution free, but it is much more sensitive than the Sign-test.<br> 
+Finally, the Sign-test is an almost ideal <i>quick-and-dirty</i> test that 
+can be used to browse datasets or to check the results of other tests 
+(e.g., as in: "All six subjects show an increase, so why does your test
+insist that p > 0.05?"). 
+<p>
+<hr>
+<a href=/Service/Statistics.html>
+Return to: Statistics</a>
+</body>
+

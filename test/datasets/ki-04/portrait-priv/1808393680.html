@@ -1,0 +1,936 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1808393680.html
+	</FILE>
+	<URL>
+		http://www.cs.wisc.edu/~david/
+	</URL>
+	<TITLE>
+		David Wood's Home Page
+	</TITLE>
+	<GENRE>
+		portrait-priv
+	</GENRE>
+	<PLAINTEXT>
+ David Wood's Home Page David A. Wood Professor and Romnes Fellow Departments of Computer Sciences and Electrical and Computer Engineering University of Wisconsin-Madison 1210 West Dayton Street Madison , WI 53706-1685 USA E-mail: david@cs.wisc.edu URL: http://www.cs.wisc.edu/~david Telephone: 608-263-7463 Administrator: 608-265-3402 (Carrie Pritchard, pritchar@cs.wisc.edu ) Department: 608-262-1204 Fax: 608-262-9777 Ph.D.: (Computer Sciences) University of California, Berkeley, 1990 Research Interests: computer architecture, parallel computing, memory systems, and performance evaluation. Table of Contents Research Information Course Information Current and Former Students Misc. Information On-line Research Papers Research Information Research Projects: Wisconsin Multifacet Memory System Performance Tools (WARTS) Wisconsin Wind Tunnel (WWT) (now completed) Research Summary My main research goals lie in developing cost-effective computer architectures that take advantage of rapidly changing technologies. My research program has two major thrusts: evaluating the performance, feasibility, and correctness of new architectures, and developing new tools and techniques to facilitate this evaluation. My current work is mostly part of the Wisconsin Multifacet Project that I co-lead with Mark Hill . Multifacet proposes to perform research to improve the performance of the multiprocessor servers that form the computational infrastructure for Internet web servers, databases, and other demanding applications. It broadly examines applying prediction and speculation--heretofore limited to processor cores--throughout the multiprocessor system. Relative to scientific workloads, we find commercial applications use fewer processors and suffer many more sharing misses that must be satifisfied by other processors. Both aspects suggest that extending snooping cache coherence might be more attractive than switching to directory protocols. Our initial results seeks to extend snooping by reducing traffic using multicasts snooping or enabling implementation on more interconnection networks using logical timestamps . Other recent work includes specifying coherence protocols and understanding database performance. Prior to Multifacet, I worked primarily on the Wisconsin Wind Tunnel Project , which focused on trade-offs for designing cost-effect parallel machines supporting shared memory. Courses I Teach: CS/ECE 354 - Machine Organization and Programming CS/ECE 552 - Introduction to Computer Architecture CS/ECE 752 - Advanced Computer Architecture I CS/ECE 755 - VLSI Systems Design CS/ECE 757 - Advanced Computer Architecture II Current and Former Students Current Graduate Students: Carl Mauer Kevin Moore Alaa Alameldeen Brad Beckmann Ph.D. Graduates: Daniel Sorin Ph.D. December 2002, Using Lightweight Checkpoint/Recovery to Improve the Availability and Designability of Shared Memory Multiprocessors , first employment: Duke University. Babak Falsafi , Ph.D. December 1997, Fine-Grain Protocol Execution Mechanisms & Scheduling Policies on SMP Clusters , first employment: Purdue University. Ph.D. Graduates: An-Chow Lai (Purdue), first employment: Intel Steve Reinhardt , Ph.D. December 1996, Mechanisms for Distributed Shared Memory , first employment: University of Michigan. Ph.D. Graduates: Wei-Fen Lin, 2002, first employment: Sun Microsystems, Inc. Alvy Lebeck , Ph.D. December 1995, Tools and Techniques for Memory System Design and Analysis , first employment: Duke University. Ph.D. Graduates: Mithuna Thottethodi, 2002, first employment: Purdue University. Srikanth Srinivasan, 2001, first employment: Intel MRL. Chia-Lin Yang, 2000, first employment: National Taiwan University. Misc: Tenure Strategies: Or how to survive the first six years of academic life This is a talk I have given on strategies for obtaining tenure. This talk borrowed liberally from others including David Patterson and Mary Jane Irwin. Slides in PDF or Handouts in PDF . Directions to my office A Short Note on Conference Etiquette David A. Wood Consulting On-line Research Papers 2003 Token Coherence: A New Framework for Shared-Memory Multiprocessors , Milo M.K. Martin, Mark D. Hill and David A. Wood, IEEE Micro Special Issue: Micro's Top Picks from Microarchitecture Conferences, November-December 2003. Paper: pdf Original ISCA03 Paper: pdf Addressing Workload Variability in Architectural Simulations , Alaa R. Alameldeen and David A. Wood, IEEE Micro Special Issue: Micro's Top Picks from Microarchitecture Conferences, November-December 2003. Paper: pdf Original HPCA03 Paper: pdf TLC: Transmission Line Caches , Bradford M. Beckmann and David A. Wood, 36th International Symposium on Microarchitecture (MICRO), December 2003. Paper: pdf Talk: pdf and ppt (available in December 2003) Token Coherence: Decoupling Performance and Correctness , Milo M. K. Martin, Mark D. Hill, and David A. Wood, International Symposium on Computer Architecture (ISCA), June 2003. Paper: pdf Reference: ACM Talk: pdf , ppt Shorter IEEE Micro Top Picks Paper: pdf Using Destination-Set Prediction to Improve the Latency/Bandwidth Tradeoff in Shared Memory Multiprocessors , Milo M. K. Martin, Pacia J. Harper, Daniel J. Sorin, Mark D. Hill, and David A. Wood, International Symposium on Computer Architecture (ISCA), June 2003. Paper: pdf Reference: ACM Talk: pdf , ppt Simulating a $ 2M Commercial Server on a $ 2K PC , Alaa R. Alameldeen, Milo M.K. Martin, Carl J. Mauer, Kevin E. Moore, Min Xu, Daniel J. Sorin, Mark D. Hill and David A. Wood, IEEE Computer, February 2003. Paper: pdf Talk: ppt Variability in Architectural Simulations of Multi-threaded Workloads , Alaa R. Alameldeen and David A. Wood, 9th International Symposium on High Performance Computer Architecture (HPCA), February 2003. Paper: pdf Talk: ppt Memory System Behavior of Java-Based Middleware , Martin Karlsson, Kevin E. Moore, Erik Hagersten and David A. Wood, 9th International Symposium on High Performance Computer Architecture (HPCA), February 2003. Paper: pdf Talk: pdf , ppt Dynamic Verification of End-to-End Multiprocessor Invariants , Daniel J. Sorin, Mark D. Hill, and David A. Wood, International Conference on Dependable Systems and Networks (DSN, formerly FTCC), June 2003. Paper: pdf Talk: ppt Cache with dynamic control of sub-block fetching, Douglas C. Burger and David A. Wood, U.S. Patent No 6,557,080 issued April 29, 2003. 2002 Full-System Timing-First Simulation , Carl J. Mauer, Mark D. Hill, and David A. Wood, ACM SIGMETRICS, June 2002. Paper: pdf Reference: ACM Talk: pdf and ppt Specifying and Verifying a Broadcast and a Multicast Snooping Cache Coherence Protocol , Daniel J. Sorin, Manoj Plakal, Anne E. Condon, Mark D. Hill, Milo M. K. Martin and David A. Wood, IEEE Transactions on Parallel and Distributed Systems, June 2002 (vol 13, number 6). (Previously available as Dept. of Computer Sciences Technical Report CS-TR-2000-1412, March 2000.) Paper: pdf Online protocol examples in html SafetyNet: Improving the Availability of Shared Memory Multiprocessors with Global Checkpoint/Recovery , Daniel J. Sorin, Milo M. K. Martin, Mark D. Hill, and David A. Wood, International Symposium on Computer Architecture (ISCA), May 2002. Paper: pdf Reference: IEEE Talk: ppt Memory Characterization of the ECperf Benchmark , Martin Karlsson, Kevin E. Moore, Erik Hagersten, and David A. Wood, Workload on Memory Performance Issues (WMPI), 2002. Paper: pdf . Evaluating Non-deterministic Multi-threaded Commercial Workloads , Alaa R. Alameldeen, Carl J. Mauer, Min Xu, Pacia J. Harper, Milo M.K. Martin, Daniel J. Sorin, Mark D. Hill and David A. Wood, Workshop On Computer Architecture Evaluation using Commercial Workloads (CAECW), February 2002. Paper: pdf Talk: pdf and ppt Bandwidth Adaptive Snooping , Milo M. K. Martin, Daniel J. Sorin, Mark D. Hill, and David A. Wood, 8th International Symposium on High Performance Computer Architecture (HPCA), February 2002. Paper: pdf Talk: pdf and ppt 2000 Timestamp Snooping: An Approach for Extending SMPs , Milo M. K. Martin, Daniel J. Sorin, Anastassia Ailamaki, Alaa R. Alameldeen, Ross M. Dickson, Carl J. Mauer, Kevin E. Moore, Manoj Plakal, Mark D. Hill, and David A. Wood, Ninth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS), November 2000. Paper: pdf and ps Reference: ACM Talk: pdf Fast Checkpoint/Recovery to Support Kilo-Instruction Speculation and Hardware Fault Tolerance , Daniel J. Sorin, Milo M. K. Martin, Mark D. Hill, and David A. Wood, Dept. of Computer Sciences Technical Report CS-TR-2000-1420, October 2000. Technical Report: pdf and ps Fast and Portable Parallel Architecture Simulators: Wisconsin Wind Tunnel II , Shubhendu S. Mukherjee, Steven K. Reinhardt, Babak Falsafi, Mike Litzkow, Steven Huss-Lederman, Mark D. Hill, James R. Larus, and David A. Wood, IEEE Concurrency, October-December 2000. Paper: pdf . 1999 Cachable interface control registers for high speed data transfer, David A. Wood, Steven K. Reinhardt, Shubhendu S. Mukherjee, Babak Falsafi, Mark D. Hill, and Robert W. Pfile, United States Patent 5,951,657 issued September 14, 1999. Methods and apparatus for substantially memory-less coherence transformer for connecting computer node coherence domains, Erik E. Hagersten, Mark D. Hill, and David A. Wood, U.S. Patent No. 5,940,860 issued August 17, 1999. DBMSs on a modern processor: Where does time go? , Anastassia Ailamaki, David J. DeWitt, Mark D. Hill, and David A. Wood, International Conference on Very Large Databases (VLDB), September 1999. Paper: pdf and ps Talk: ppt Multicast Snooping: A New Coherence Method Using a Multicast Address Network , E. Ender Bilir, Ross M. Dickson, Ying Hu, Manoj Plakal, Daniel J. Sorin, Mark D. Hill, and David A. Wood. International Symposium on Computer Architecture (ISCA), May 1999. Paper: pdf and ps Reference: ACM Talk: pdf and ps Hybrid NUMA COMA caching system and methods for selecting between caching modes, David A. Wood and Erik E. Hagersten, U.S. Patent No. 5,893,144, April 6, 1999. Parallel Dispatch Queue: A Queue-Based Programming Abstraction To Parallelize Fine-Grain Communication Protocols Babak Falsafi and David A. Wood (Proceedings of the 5th International Symposium on High-Performance Computer Architecture (HPCA-5), 1999). Method and apparatus for a coherence transformer for connecting computer system coherence domains, Erik E. Hagersten, Mark D. Hill, and David A. Wood, U.S. Patent No. 5,860,109, Jan 12, 1999. 1998 Hardware Support for Flexible Distributed Shared Memory, Steven K. Reinhardt, Robert Pfile, and David A. Wood, (IEEE Transactions on Computers, Vol. 47, No. 10, October 1998, pp. 1056-1072). Method and apparatus for a coherence transformer with limited memory for connecting computer system coherence domains, Erik E. Hagersten, Mark D. Hill, and David A. Wood, U.S. Patent No. 5,829,034, October 27, 1998. Sirocco: Cost-Effective Fine-Grain Distributed Shared Memory, Ioannis Schoinas, Babak Falsafi, Mark D. Hill, James R. Larus, David A. Wood (International Conference on Parallel Architectures and Compilation Techniques (PACT), Oct 1998). Analytical Evaluation of Shared-Memory Parallel Systems with ILP Processors, Daniel Sorin, Sarita Adve, Vijay Pai, Mary Vernon, David Wood. Proceedings of the 25th International Symposium on Computer Architecture (ISCA), June 1998. Reflections on "Tempest and Typhoon: User-level Shared Memory", Steven K. Reinhardt, James R. Larus, and David A. Wood, In 25 years of the International Symposia of Computer Architecture: Selected Papers, ed. Gurindar Sohi, pp. 98-101, 1998. 1997 Reactive NUMA: A Design for Unifying S-COMA with CC-NUMA, Babak Falsafi and David A. Wood, ACM/IEEE International Symposium on Computer Architecture (ISCA), June 1997. Relaxed Consistency and Coherence Granularity in DSM Systems: A Performance Evaluation, Yuanyuan Zhou, Liviu Iftode, Jaswinder Pal Singh, Kai Li, Brian R. Toonen, Ioannis Schoinas, Mark D. Hill, David A. Wood, ACM Symposium on Principles and Practices of Parallel Programming, June 1997. Wisconsin Wind Tunnel II: A Fast and Portable Parallel Architecture Simulator Shubhendu S. Mukherjee, Steven K. Reinhardt, Babak Falsafi, Mike Litzkow, Steve Huss-Lederman, Mark D. Hill, James R. Larus, and David A. Wood, 1997 Workshop on Performance Analysis and its Impact on Design (PAID-97), June 1997. Modeling Cost/Performance of a Parallel Computer Simulator, Babak Falsafi and David A. Wood, ACM Transactions on Modeling and Computer Simulation, January 1997. Active Memory: A New Abstraction For Memory System Simulation Alvin R. Lebeck and David A. Wood, ACM Transactions on Modeling and Computer Simulation, January 1997. Scheduling Communication on an SMP Node Parallel Machine, Babak Falsafi and David A. Wood, IEEE International Symposium on High Performance Computer Architecture (HPCA), February 1997. 1996 Decoupled Hardware Support for Distributed Shared Memory Steven K. Reinhardt, Robert W. Pfile, and David A. Wood, ACM/IEEE International Symposium on Computer Architecture (ISCA), May 1996 Coherent Network Interfaces for Fine-Grain Communication Shubhendu S. Mukherjee and Babak Falsafi and Mark D. Hill and David A. Wood, ACM/IEEE International Symposium on Computer Architecture (ISCA), May 1996 Synchronization Hardware for Networks of Workstations: Performance vs. Cost Rahmat S. Hyder and David A. Wood, ACM/IEEE International Conference on Supercomputing (ICS), May 1996 Paging Tradeoffs in Distributed Shared-Memory Multiprocessors, Douglas Burger, Rahmat Hyder, Barton Miller, and David A. Wood, Journal of SuperComputing, vol. 10, pp. 87-104, 1996. 1995 Dynamic Self-Invalidation: Reducing Coherence Overhead in Shared-Memory Multiprocessors Alvin R. Lebeck and David A. Wood, ACM/IEEE International Symposium on Computer Architecture (ISCA), June 1995 Active Memory: A New Abstraction For Memory System Simulation Alvin R. Lebeck and David A. Wood, Proceedings of the 1995 ACM Sigmetrics Conference on Measurement and Modeling of Data, May 1995. Accuracy vs. Performance in Parallel Simulation of Interconnection Networks , Douglas C. Burger and David A. Wood. In the proceedings of the 9th International Parallel Processing Symposium, April, 1995. Cost-Effective Parallel Computing, David A. Wood and Mark D. Hill, IEEE Computer, Vol 28. No. 2, February 1995, pp. 69-72. 1994 Application-Specific Protocols for User-Level Shared Memory, Babak Falsafi, Alvin Lebeck, Steven Reinhardt, Ioannis Schoinas, Mark Hill, James Larus, Anne Rogers, and David Wood, In Proceedings of Supercomputing '94. Fine-grain Access Control for Distributed Shared Memory, Ioannis Schoinas, Babak Falsafi, Alvin Lebeck, Steven Reinhardt, James Larus, and David Wood, Proceedings of ASPLOS VI. Tempest and Typhoon: User-Level Shared Memory, Steven Reinhardt, James Larus, and David Wood, Proceedings of Int'l Symposium on Computer Architecture, 1994. Cache Profiling and the SPEC Benchmarks: A Case Study, Alvin R. Lebeck and David A. Wood, pages 15-26, IEEE COMPUTER, October 1994 The Wisconsin Wind Tunnel Project: An Annotated Bibliography, Mark D. Hill, James R. Larus, David A. Wood, Computer Architecture News, v. 22, n. 5, December 1994. On-line version revised frequently. 1993 Cooperative Shared Memory: Software and Hardware for Scalable Multiprocessors, Mark D. Hill, James R. Larus, Steven K. Reinhardt, David A. Wood, ACM Transactions on Computer Systems (TOCS), November 1993. Mechanisms for Cooperative Shared Memory, David A. Wood, Satish Chandra, Babak Falsafi, Mark D. Hill, James R. Larus, Alvin R. Lebeck, James Lewis, Shubhendu Mukherjee, Sabbarao Palacharla, Steven K. Reinhardt, 20th International Symposium on Computer Architecture, pp. 156-168, May 1993. The Wisconsin Wind Tunnel: Virtual Prototyping of Parallel Computers, Steven K. Reinhardt, Mark D. Hill, James R. Larus, Alvin R. Lebeck, James Lewis, David A. Wood, Proceedings of the 1993 ACM Sigmetrics Conference on Measurement and Modeling of Data, pp. 48-60, May 1993. Kernel Support for the Wisconsin Wind Tunnel, Steven K. Reinhardt, Babak Falsafi, and David A. Wood, Proceedings of the Second Usenix Symposium on Microkernels and Other Kernel Architectures, pp. 73-89, September 1993, Wisconsin Architectural Research Tool Set (WARTS), Mark D. Hill, James R. Larus, Alvin R. Lebeck, Madhusudhan Talluri, David A. Wood, Computer Architecture News (CAN), August 1993. Computer Sciences Department College of Letters and Science University of Wisconsin - Madison INFORMATION ~ PEOPLE ~ GRADS ~ UNDERGRADS ~ RESEARCH ~ RESOURCES 5355a Computer Sciences and Statistics ~ 1210 West Dayton Street, Madison, WI 53706 cs@cs.wisc.edu ~ voice: 608-262-1204 ~ fax: 608-262-9777 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="/csheader/cs.css"> 
+<title> David Wood's Home Page </title>
+</head>
+<SCRIPT>
+ // Copyright message
+  function copyright_notice() {
+   alert("Please respect the copyrights.\nPermission to copy without fee all or part of this material is granted\nprovided that the copies are not made or distributed for direct\ncommercial advantage.  To copy otherwise, or to republish, requires\na fee and/or specific permission of the ACM/IEEE.")
+   }
+</SCRIPT>
+
+<body>
+<img src="http://www.cs.wisc.edu/csheader/hed_all.gif" 
+ width="600" height="66" border="0"
+ALT="University of Wisconsin Computer Sciences Header Map (repeated with 
+textual links if page includes departmental footer)" usemap="#head_map">
+<map name="head_map"> 
+<area shape="rect" coords="339,45,410,66" href="/resources.html" ALT = "Useful Resources"> 
+<area shape="rect" coords="273,44,335,66" href="/research.html"  ALT = "Research at UW-Madison CS Dept" > 
+<area shape="rect" coords="189,45,267,66" href="/ugrads.html"    ALT = "UW-Madison CS Undergraduate Program"> 
+<area shape="rect" coords="139,43,183,66" href="/graduates.html" ALT = "UW-Madison CS Graduate Program"> 
+<area shape="rect" coords="82,44,132,66"  href="/people.html"    ALT = "UW-Madison CS People"> 
+<area shape="rect" coords="0,44,78,66"    href="/information.html" ALT= "Useful Information" > 
+<area shape="rect" coords="400,12,458,41" href="/events.html"  ALT = "Current Seminars in the CS Department"> 
+<area shape="rect" coords="459,11,564,40" href="/search.html"  ALT = "Search Our Site"> 
+<area shape="rect" coords="566,12,600,39" href="/csl/"  ALT = "UW-Madison CS Computer Systems Laboratory"> 
+<area shape="rect" coords="0,12,385,40"   href="/"      ALT = "UW-Madison Computer Sciences Department Home Page"> 
+<area shape="rect" coords="5,0,385,11"    href="http://www.wisc.edu/" ALT = "UW-Madison Home Page"> 
+</map> 
+
+<TABLE border=0 cellspacing=5 cellpadding=10>
+<TR>
+<TD><IMG ALIGN=left HSPACE=30 SRC="http://www.cs.wisc.edu/~pubs/pictures/facstaf
+f/wood-large.jpg"></TD>
+<TD><B><font size=+3>David A. Wood</font></B><BR>
+<P>
+Professor and Romnes Fellow<BR>
+Departments of <A HREF="http://www.cs.wisc.edu/">Computer Sciences</A><BR>
+and <A HREF="http://www.engr.wisc.edu/ece/index.html">Electrical and Computer Engineering</A><BR>
+<A HREF="http://wiscinfo.wisc.edu/">University of Wisconsin-Madison</A><BR>
+<A HREF="http://www.wisc.edu:80/ath/vinfo/cmap/frames/i11.html">1210 West Dayton
+ Street</A><BR>
+ <A HREF="http://www.ci.madison.wi.us/">Madison</A>,
+ <A HREF="http://badger.state.wi.us/">WI</A>
+ 53706-1685 USA<BR>
+ <BR>
+ E-mail: <A HREF="mailto:david@cs.wisc.edu">david@cs.wisc.edu</A><BR>
+ URL:    <A HREF="http://www.cs.wisc.edu/~david">http://www.cs.wisc.edu/~david</A><BR>
+ Telephone:     608-263-7463<BR>
+ Administrator: 608-265-3402 (Carrie Pritchard, <A HREF="mailto:pritchar@cs.wisc.edu">pritchar@cs.wisc.edu</A>)<BR>
+ Department:    608-262-1204<BR>
+ Fax:           608-262-9777<BR>
+ </TD></TR>
+ </TABLE>
+<b>Ph.D.:</b>(Computer Sciences) University of California, Berkeley, 1990
+<br>
+<b>Research Interests:</b> computer architecture, parallel computing, memory systems, and performance evaluation. 
+
+<p>
+<hr>
+<p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#research">Research Information</a>
+<li><a href="#courses">Course Information</a>
+<li><a href="#students">Current and Former Students</a>
+<li><a href="#misc">Misc. Information</a>
+<li><a href="#papers">On-line Research Papers</a>
+</ul>
+
+
+<p>
+<hr>
+<p>
+<h2><A name="research">Research Information</a></h2>
+<p>
+<h3>Research Projects:</h3>
+<ul>
+<li> <a href="http://www.cs.wisc.edu/multifacet">Wisconsin Multifacet</a>
+<li> <a href="http://www.cs.wisc.edu/~larus/warts.html">Memory System Performance Tools (WARTS)</a>
+<li> <a href="http://www.cs.wisc.edu/~wwt">Wisconsin Wind Tunnel (WWT)</a> 
+ <font color=red>(now completed)</font>
+</ul>
+<h3> Research Summary</A> </h3> 
+
+My main research goals lie in developing cost-effective computer
+architectures that take advantage of rapidly changing technologies.  My
+research program has two major thrusts:  
+<ul>
+<li> evaluating the performance,
+feasibility, and correctness of new architectures, and
+<li> developing new tools and techniques to facilitate this evaluation.
+</ul>
+<P>
+My current work is mostly part of the <A
+HREF="http://www.cs.wisc.edu/multifacet">Wisconsin
+Multifacet Project</A> that I co-lead with <A
+HREF="http://www.cs.wisc.edu/~markhill/markhill.html">Mark Hill</A>.
+Multifacet proposes to perform research to improve the performance of
+the multiprocessor servers that form the computational infrastructure
+for Internet web servers, databases, and other demanding applications. It
+broadly examines applying prediction and speculation--heretofore limited
+to processor cores--throughout the multiprocessor system.  Relative to
+scientific workloads, we find commercial applications use fewer processors
+and suffer many more sharing misses that must be satifisfied by other
+processors.  Both aspects suggest that extending snooping cache coherence
+might be more attractive than switching to directory protocols.  Our
+initial results seeks to extend snooping by <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca99_multicast.pdf">
+reducing traffic using multicasts
+snooping</A> or <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/asplos2000_timestamp_snooping.pdf">enabling
+implementation on more interconnection networks using logical
+timestamps</A>.
+
+<P>
+Other recent work includes
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/tr1412_lamport.pdf">
+specifying coherence protocols</A> and
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/vldb99_dbms_eval.pdf">
+understanding database performance.</A> 
+Prior to Multifacet, I worked primarily on the <A
+HREF="http://www.cs.wisc.edu/~wwt">Wisconsin Wind Tunnel Project</A>,
+which focused on trade-offs for designing cost-effect parallel machines
+supporting shared memory.
+<P>
+<p>
+<HR>
+
+<p>
+<h2><a name="courses">Courses I Teach:</a></h2>
+<p>
+<ul>
+<li>
+<a href="http://www.cs.wisc.edu/~david/cs354/cs354.html">
+CS/ECE 354 - Machine Organization and Programming</a>
+<li>
+<a href="http://www.cs.wisc.edu/~david/cs552/cs552.html">
+CS/ECE 552 - Introduction to Computer Architecture</a>
+<li>
+<a href="http://www.cs.wisc.edu/~david/cs752/cs752.html">
+CS/ECE 752 - Advanced Computer Architecture I</a>
+<li>
+<a href="http://www.cs.wisc.edu/~david/cs755/cs755.html">
+CS/ECE 755 - VLSI Systems Design</a>
+<li>
+<a href="http://www.cs.wisc.edu/~david/cs757/cs757.html">
+CS/ECE 757 - Advanced Computer Architecture II</a>
+</ul>
+
+<p>
+<hr>
+<p>
+<h2><a name="students">Current and Former Students</a></h2>
+<h3>Current Graduate Students:</h3>
+<ul>
+<li> <a href="http://www.cs.wisc.edu/~cmauer/">Carl Mauer</a>
+<li> <a href="http://www.cs.wisc.edu/~kmoore/">Kevin Moore</a>
+<li> <a href="http://www.cs.wisc.edu/~alaa/">Alaa Alameldeen</a>
+<li> <a href="http://www.cs.wisc.edu/~beckmann/">Brad Beckmann</a>
+</ul>
+<p>
+<h3>Ph.D. Graduates:</h3>
+<ul>
+<li> <a href="http://www.ee.duke.edu/~sorin/">Daniel Sorin</a>
+<ul>
+Ph.D. December 2002,<br>
+<a href="http://www.cs.wisc.edu/multifacet/theses/daniel_sorin_phd.pdf">
+Using Lightweight Checkpoint/Recovery to Improve the Availability and Designability of Shared Memory Multiprocessors</a>,<br>
+first employment: Duke University.
+
+</ul>
+<li> <a href="http://www.ece.cmu.edu/~babak">Babak Falsafi</a>,
+<ul>
+Ph.D. December 1997, <br>
+<a href="ftp://ftp.cs.wisc.edu/wwt/theses/falsafi.pdf">Fine-Grain Protocol Execution Mechanisms & Scheduling Policies on SMP Clusters</a>,<br>
+first employment: Purdue University.
+<br>Ph.D. Graduates:
+<ul>
+<li>An-Chow Lai (Purdue), first employment: Intel
+</ul>
+</ul>
+<li> <a href="http://www.eecs.umich.edu/~stever">Steve Reinhardt</a>,
+<ul>
+Ph.D. December 1996,<br>
+<a href="ftp://ftp.cs.wisc.edu/wwt/theses/reinhardt-2side.pdf">Mechanisms for Distributed Shared Memory</A>,<br>
+first employment: University of Michigan.
+<br>Ph.D. Graduates:
+<ul>
+<li>Wei-Fen Lin, 2002, first employment: Sun Microsystems, Inc.
+</ul>
+</ul>
+<li> <a href="http://www.cs.duke.edu/~alvy">Alvy Lebeck</a>,
+<ul>
+Ph.D. December 1995,<br>
+<a href="ftp://ftp.cs.wisc.edu/wwt/theses/lebeck.pdf">Tools and Techniques for Memory System Design and Analysis</a>,
+<br>
+first employment: Duke University.
+<br>Ph.D. Graduates:
+<ul>
+<li>Mithuna Thottethodi, 2002, first employment: Purdue University.
+<li>Srikanth Srinivasan, 2001, first employment: Intel MRL.
+<li>Chia-Lin Yang, 2000, first employment: National Taiwan University.
+</ul>
+</ul>
+</ul>
+
+<p>
+<hr>
+<p>
+<h2><a name="misc">Misc:</a></h3>
+<ul>
+<li>
+<A HREF="http://www.cs.wisc.edu/~david/tenure.pdf">
+Tenure Strategies: Or how to survive the first six years of academic life</a><br>
+This is a talk I have given on strategies for obtaining tenure.  This talk 
+borrowed liberally from others including David Patterson and Mary
+Jane Irwin. <br>
+<A HREF="http://www.cs.wisc.edu/~david/tenure.pdf">Slides in PDF</A> or 
+<A HREF="http://www.cs.wisc.edu/~david/tenure-4up.pdf">Handouts in PDF</A>.
+<li>
+<A HREF="http://www.cs.wisc.edu/~david/directions.html">Directions
+to my office</A>
+<li>
+<A HREF="http://www.cs.wisc.edu/~markhill/conference-etiquette.html">A
+Short Note on Conference Etiquette</A>
+<li>
+<A HREF="http://www.cs.wisc.edu/~david/daw.html">
+David A. Wood Consulting</A>
+</ul>
+
+
+<p>
+<hr>
+<p>
+<H2><a name="papers"> On-line Research Papers </A></H2>
+<UL>
+<h3><A NAME="year2003">2003</A></h3>
+<ul>
+
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/ieeemicro03_token.pdf"><CITE>
+Token Coherence: A New Framework for Shared-Memory Multiprocessors</CITE></A>, <br>
+Milo M.K. Martin, Mark D. Hill and David A. Wood, <br>
+IEEE Micro Special Issue: Micro's Top Picks from Microarchitecture Conferences, 
+November-December 2003. <br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/ieeemicro03_token.pdf">pdf</A><br> 
+Original ISCA03 Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_token_coherence.pdf">pdf</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/ieeemicro03_variability.pdf"><CITE>
+Addressing Workload Variability in Architectural Simulations</CITE></A>, <br>
+Alaa R. Alameldeen and David A. Wood, <br>
+IEEE Micro Special Issue: Micro's Top Picks from Microarchitecture Conferences, 
+November-December 2003. <br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/ieeemicro03_variability.pdf">pdf</A><br>
+Original HPCA03 Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_variability.pdf">pdf</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/micro03_tlc.pdf">
+<CITE>TLC: Transmission Line Caches</CITE></A>, <br>
+Bradford M. Beckmann and David A. Wood, <br>
+36th International Symposium on Microarchitecture (MICRO),
+December 2003.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/micro03_tlc.pdf">pdf</A> <br>
+Talk:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/micro03_tlc.pdf">pdf</A> and
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/micro03_tlc.ppt">ppt</A>
+(available in December 2003)
+<p>
+<li><A HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_token_coherence.pdf"><CITE>Token Coherence: Decoupling Performance and Correctness</CITE></a>,<br>
+Milo M. K. Martin, Mark D. Hill, and David A. Wood, <br>
+International Symposium on Computer Architecture (ISCA), June 2003.<br>
+Paper:  <A HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_token_coherence.pdf">pdf</A><br>
+Reference:
+<A HREF="http://doi.acm.org/10.1145/859618.859640">ACM</A> <br>
+Talk:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_token_coherence_talk.pdf">pdf</A>,
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_token_coherence.ppt">ppt</A> <br>
+Shorter IEEE Micro Top Picks Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/ieeemicro03_token.pdf">pdf</A><br><p>
+<li><A HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_destination_set_prediction.pdf"><CITE>Using Destination-Set Prediction to Improve the Latency/Bandwidth Tradeoff in Shared Memory Multiprocessors</CITE></a>,<br>
+Milo M. K. Martin, Pacia J. Harper, Daniel J. Sorin, Mark D. Hill, and David A. Wood, <br>
+International Symposium on Computer Architecture (ISCA), June 2003.<br>
+Paper: <A HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_destination_set_prediction.pdf">pdf</A><br>
+Reference:
+<A HREF="http://doi.acm.org/10.1145/859618.859642">ACM</A> <br>
+Talk:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_destination_set_prediction_talk.pdf">pdf</A>,
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca03_destination_set_prediction.ppt">ppt</A>
+
+
+
+
+
+
+
+
+
+
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/computer03_simulation.pdf"><CITE>
+Simulating a $2M Commercial Server on a $2K PC</CITE></A>, <br>
+Alaa R. Alameldeen, Milo M.K. Martin, Carl J. Mauer, Kevin E. Moore, Min Xu, Daniel J. Sorin, Mark D. Hill and David A. Wood, <br>
+IEEE Computer, February 2003. <br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/computer03_simulation.pdf">pdf</A><br>
+Talk:
+<A HREF="http://www.cs.wisc.edu/multifacet/papers/computer03_simulation.ppt">ppt</A>
+
+
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_variability.pdf">
+<CITE>Variability in Architectural Simulations of Multi-threaded Workloads</CITE></A>, <br>
+Alaa R. Alameldeen and David A. Wood, <br>
+9th International Symposium on High Performance Computer Architecture (HPCA),
+February 2003.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_variability.pdf">pdf</A><br>
+Talk:
+<A HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_variability_talk.ppt">ppt</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_ecperf.pdf">
+<CITE>Memory System Behavior of Java-Based Middleware</CITE></A>, <br>
+Martin Karlsson, Kevin E. Moore, Erik Hagersten and David A. Wood, <br>
+9th International Symposium on High Performance Computer Architecture (HPCA),
+February 2003.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_ecperf.pdf">pdf</A><br>
+Talk: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_ecperf_slides.pdf">pdf</A>, <A onClick=copyright_notice() HREF="http://www.cs.wisc.edu/multifacet/papers/hpca03_ecperf.ppt">ppt</A><br>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/dsn03_dynamic_verification.pdf">
+<CITE>Dynamic Verification of End-to-End Multiprocessor Invariants</CITE></A>, <br>
+Daniel J. Sorin, Mark D. Hill, and David A. Wood, <br>
+International Conference on Dependable Systems and Networks (DSN, formerly FTCC), June 2003.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/dsn03_dynamic_verification.pdf">pdf</A><br>
+Talk:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/dsn03_dynamic_verification.ppt">ppt</A>
+<p>
+<li>
+<A HREF="http://www.delphion.com/details?patent_number=6557080"><cite>
+Cache with dynamic control of sub-block fetching,
+</cite></A><br>
+Douglas C. Burger and David A. Wood,<br>
+U.S. Patent No 6,557,080 issued April 29, 2003.
+<p>
+
+
+</ul>
+<h3><A NAME="year2002">2002</A></h3>
+<ul>
+
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/sigmetrics02_tfsim.pdf"><CITE>
+Full-System Timing-First Simulation</CITE></A>, <br>
+Carl J. Mauer, Mark D. Hill, and David A. Wood, <br>
+ACM SIGMETRICS, June 2002.<br>
+Paper: <A onClick=ieee_copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/sigmetrics02_tfsim.pdf">pdf</A><br>
+Reference:
+<A HREF="http://doi.acm.org/10.1145/511334.511349">ACM</A> <br>
+Talk:
+<A HREF="http://www.cs.wisc.edu/multifacet/papers/sigmetrics02_tfsim_talk.pdf">pdf</A> and
+<A HREF="http://www.cs.wisc.edu/multifacet/papers/sigmetrics02_tfsim_talk.ppt">ppt</A>
+<p>
+<li><A onClick=ieee_copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/tpds02_lamport.pdf">
+<CITE>Specifying and Verifying a Broadcast and a Multicast Snooping Cache Coherence Protocol</CITE></A>, <br>
+Daniel J. Sorin, Manoj Plakal, Anne E. Condon, Mark D. Hill, Milo M. K. Martin and David A. Wood, <br>
+IEEE Transactions on Parallel and Distributed Systems, June 2002 (vol 13, number 6).<br>
+(Previously available as Dept. of Computer Sciences Technical Report
+CS-TR-2000-1412, March 2000.)<br>
+Paper: <A onClick=ieee_copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/tpds02_lamport.pdf">pdf</A><br>
+Online protocol examples in <A
+HREF="http://www.cs.wisc.edu/multifacet/public/ieeetpds2002/">html</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca02_safetynet.pdf">
+<CITE>SafetyNet: Improving the Availability of
+Shared Memory Multiprocessors with Global Checkpoint/Recovery</CITE></A>, <br>
+Daniel J. Sorin, Milo M. K. Martin, Mark D. Hill, and David A. Wood, <br>
+International Symposium on Computer Architecture (ISCA), May 2002.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca02_safetynet.pdf">pdf</A><br>
+Reference:
+<A HREF="http://csdl.computer.org/comp/proceedings/isca/2002/1605/00/16050123abs.htm">IEEE</A> <br>
+Talk:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca02_safetynet_talk.ppt">ppt</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/WMPI02_ECperfSEQ12.pdf"><CITE>
+Memory Characterization of the ECperf Benchmark</CITE></A>, <br>
+Martin Karlsson, Kevin E. Moore, Erik Hagersten, and David A. Wood,<br>
+Workload on Memory Performance Issues (WMPI), 2002.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/WMPI02_ECperfSEQ12.pdf">pdf</A>.
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/caecw02_workloads.pdf">
+<CITE>Evaluating Non-deterministic Multi-threaded Commercial Workloads</CITE></A>, <br>
+Alaa R. Alameldeen, Carl J. Mauer, Min Xu, Pacia J. Harper, Milo M.K. Martin, Daniel J. Sorin, Mark D. Hill and David A. Wood,<br>
+Workshop On Computer Architecture Evaluation using Commercial Workloads (CAECW), February 2002.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/caecw02_workloads.pdf">pdf</A><br>
+Talk:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/caecw02_workloads_talk.pdf">pdf</A> and
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/caecw02_workloads_talk.ppt">ppt</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca02_bash.pdf">
+<CITE>Bandwidth Adaptive Snooping</CITE></A>, <br>
+Milo M. K. Martin, Daniel J. Sorin, Mark D. Hill, and David A. Wood, <br>
+8th International Symposium on High Performance Computer Architecture (HPCA),
+February 2002.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca02_bash.pdf">pdf</A><br>
+Talk:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca02_bash_talk.pdf">pdf</A> and
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/hpca02_bash_talk.ppt">ppt</A>
+<p>
+
+</ul>
+<h3><A NAME="year2000">2000</A></h3>
+<ul>
+
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/asplos2000_timestamp_snooping.pdf">
+<CITE>Timestamp Snooping: An Approach for Extending SMPs</CITE></A>, <br>
+Milo M. K. Martin, Daniel J. Sorin, Anastassia Ailamaki, Alaa R. Alameldeen,
+Ross M. Dickson, Carl J. Mauer, Kevin E. Moore, Manoj Plakal, Mark D. Hill,
+and David A. Wood, <br>
+Ninth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS), November 2000.<br>
+Paper: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/asplos2000_timestamp_snooping.pdf">pdf</A>
+and <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/asplos2000_timestamp_snooping.ps">ps</A> <br>
+Reference:
+<A HREF="http://doi.acm.org/10.1145/378993.378998">ACM</A> <br>
+Talk: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/asplos2000_timestamp_snooping_talk.pdf">pdf</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/tr1420_mvm.pdf">
+<CITE>Fast Checkpoint/Recovery to Support Kilo-Instruction Speculation and Hardware Fault Tolerance</CITE></A>, <br>
+Daniel J. Sorin, Milo M. K. Martin, Mark D. Hill, and David A. Wood, <br>
+Dept. of Computer Sciences Technical Report CS-TR-2000-1420, October 2000. <br>
+Technical Report:  <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/tr1420_mvm.pdf">pdf</A>
+and <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/tr1420_mvm.ps">ps</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="ftp://ftp.cs.wisc.edu/wwt/concurrency00_wwt2.pdf"><CITE>
+Fast and Portable Parallel Architecture Simulators: Wisconsin Wind Tunnel II</CITE></A>, <br>
+Shubhendu S. Mukherjee, Steven K. Reinhardt, Babak Falsafi, Mike
+Litzkow, Steven Huss-Lederman, Mark D. Hill, James R. Larus, and David
+A. Wood, <br>
+IEEE Concurrency, October-December 2000. <br>
+Paper: <A onClick=copyright_notice()
+HREF="ftp://ftp.cs.wisc.edu/wwt/concurrency00_wwt2.pdf">pdf</A>.
+<p>
+
+</ul>
+
+<h3><A NAME="year1999">1999</A></h3>
+<ul>
+<li>
+<A HREF="http://www.delphion.com/details?patent_number=5951657"><cite>
+Cachable interface control registers for high speed data transfer,
+</cite></A><br>
+David A. Wood, Steven K. Reinhardt, Shubhendu S. Mukherjee,
+Babak Falsafi, Mark D. Hill, and Robert W. Pfile,<br>
+United States Patent 5,951,657 issued September 14, 1999.
+<p>
+
+<li>
+<A HREF="http://www.delphion.com/details?patent_number=5940860"><cite>
+Methods and apparatus for substantially memory-less coherence transformer
+for connecting computer node coherence domains,
+</cite></A><br>
+Erik E. Hagersten, Mark D. Hill, and David A. Wood,<br>
+U.S. Patent No. 5,940,860 issued August 17, 1999.
+<p>
+
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/vldb99_dbms_eval.pdf">
+<CITE>DBMSs on a modern processor: Where does time go?</CITE></A>, <br>
+Anastassia Ailamaki, David J. DeWitt, Mark D. Hill, and David A. Wood, <br>
+International Conference on Very Large Databases (VLDB), September 1999. <br>
+Paper:  <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/vldb99_dbms_eval.pdf">pdf</A>
+and <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/vldb99_dbms_eval.ps">ps</A>  <br>
+Talk: <A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/vldb99_dbms_eval_talk.ppt">ppt</A>
+<p>
+<li><A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca99_multicast.pdf">
+<CITE>Multicast Snooping: A New Coherence Method Using a Multicast Address Network</CITE></A>, <br>
+E. Ender Bilir, Ross M. Dickson, Ying Hu, Manoj Plakal, Daniel J. Sorin, Mark D. Hill, and David A. Wood.   <br>
+International Symposium on Computer Architecture (ISCA), May 1999. <br>
+Paper:
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca99_multicast.pdf">pdf</A> and
+<A onClick=copyright_notice()
+HREF="http://www.cs.wisc.edu/multifacet/papers/isca99_multicast.ps">ps</A> <br>
+Reference:
+<A HREF="http://doi.acm.org/10.1145/300979.301004">ACM</A> <br>
+Talk:
+<A HREF="http://www.cs.wisc.edu/multifacet/papers/isca99_multicast_talk.pdf">pdf</A> and
+<A HREF="http://www.cs.wisc.edu/multifacet/papers/isca99_multicast_talk.ps">ps</A>
+<p>
+
+<li>
+<A HREF="http://www.delphion.com/details?patent_number=5893144">
+<cite>
+Hybrid NUMA COMA caching system and methods for selecting between caching modes,</cite></A><br>
+David A. Wood and Erik E. Hagersten,<br>
+U.S. Patent No. 5,893,144, April 6, 1999.
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/hpca99_pdq.pdf">
+<cite>
+Parallel Dispatch Queue: A Queue-Based Programming Abstraction To 
+Parallelize Fine-Grain Communication Protocols
+</cite>
+</A><br>
+Babak Falsafi and David A. Wood<br>
+(Proceedings of the 5th International Symposium on
+High-Performance Computer Architecture (HPCA-5), 1999).
+<p>
+<A HREF="http://www.delphion.com/details?patent_number=5860109">
+<cite>
+Method and apparatus for a coherence transformer for connecting computer system coherence domains, </cite></A><br>
+Erik E. Hagersten, Mark D. Hill, and David A. Wood,<br>
+U.S. Patent No. 5,860,109, Jan 12, 1999.
+<P>
+</ul>
+<h3> 1998 </h3>
+<ul>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/toc98_decoupled.pdf">
+<cite>
+Hardware Support for Flexible Distributed Shared Memory,</cite></A><br>
+Steven K. Reinhardt, Robert Pfile, and David A. Wood,<br>
+(IEEE Transactions on Computers, Vol. 47, No. 10, October 1998,
+pp. 1056-1072).
+<P>
+<A HREF="http://www.delphion.com/details?patent_number=5829034">
+<cite>
+Method and apparatus for a coherence transformer with limited memory for connecting computer system coherence domains, </cite></A><br>
+Erik E. Hagersten, Mark D. Hill, and David A. Wood,<br>
+U.S. Patent No. 5,829,034, October 27, 1998.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/pact98.pdf">
+<cite>
+Sirocco: Cost-Effective Fine-Grain Distributed Shared Memory,</cite></A><br>
+Ioannis Schoinas, Babak Falsafi,
+Mark D. Hill, James R. Larus, David A. Wood<br>
+(International Conference on Parallel Architectures and Compilation
+Techniques (PACT), Oct 1998).
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca98_model.pdf">
+<cite>
+Analytical Evaluation of Shared-Memory Parallel Systems
+with ILP Processors,</cite></A><br>
+Daniel Sorin, Sarita Adve, Vijay Pai, Mary Vernon, David Wood.<br>
+Proceedings of the 25th International Symposium
+on Computer Architecture (ISCA), June 1998.
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca94_retrospective.pdf">
+<cite>
+Reflections on "Tempest and Typhoon: User-level Shared Memory",
+</cite></A><br>
+Steven K. Reinhardt, James R. Larus, and David A. Wood,<br>
+In 25 years of the International Symposia of Computer Architecture:
+Selected Papers, ed. Gurindar Sohi, pp. 98-101, 1998.
+<p>
+
+</ul>
+<h3> 1997 </h3>
+<ul>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca97.pdf">
+<cite>
+Reactive NUMA: A Design for Unifying S-COMA with CC-NUMA,</cite></A><br>
+Babak Falsafi and David A. Wood,<br>
+ACM/IEEE International Symposium on Computer Architecture (ISCA),
+June 1997.
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/ppopp97_grain.pdf">
+<cite>
+Relaxed Consistency and Coherence Granularity in DSM Systems:
+A Performance Evaluation,</cite></A><br>
+Yuanyuan Zhou, Liviu Iftode, Jaswinder Pal Singh, Kai Li, Brian R. Toonen,
+Ioannis Schoinas, Mark D. Hill, David A. Wood,<br>
+ACM Symposium on Principles and Practices of Parallel Programming,
+June 1997.
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/paid97_wwt2.pdf">
+<cite>
+Wisconsin Wind Tunnel II: A Fast and Portable Parallel Architecture 
+Simulator</cite></A><br>
+Shubhendu S. Mukherjee, Steven K. Reinhardt, Babak Falsafi, Mike Litzkow,
+Steve Huss-Lederman, Mark D. Hill, James R. Larus, and David A. Wood,<br>
+1997 Workshop on Performance Analysis and its Impact on Design (PAID-97),
+June 1997.
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/tomacs97_perf.pdf">
+<cite>
+Modeling Cost/Performance of a Parallel Computer Simulator,</cite></A><br>
+Babak Falsafi and David A. Wood,<br>
+ACM Transactions on Modeling
+and Computer Simulation, January 1997.
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/tomacs97_am.pdf">
+<cite>
+Active Memory: A New Abstraction For Memory System Simulation
+</cite>
+</A><br>
+Alvin R. Lebeck and David A. Wood, <br>
+ACM Transactions on Modeling and Computer Simulation, January 1997.
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/hpca97.pdf">
+<cite>
+Scheduling Communication on an SMP Node Parallel Machine,</cite></A><br>
+Babak Falsafi and David A. Wood,<br>
+IEEE International Symposium on High Performance Computer
+Architecture (HPCA), February 1997.
+<p>
+
+</ul>
+<h3> 1996 </h3>
+<ul>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca96_dcpld.pdf">
+<cite>
+Decoupled Hardware Support for Distributed Shared Memory
+</cite>
+</A><br>
+Steven K. Reinhardt, Robert W. Pfile, and
+David A. Wood,<br>
+ACM/IEEE International Symposium on Computer Architecture (ISCA), 
+May 1996
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca96_cni.pdf">
+<cite>
+Coherent Network Interfaces for Fine-Grain Communication
+</cite>
+</A><br>
+Shubhendu S. Mukherjee and Babak Falsafi and Mark D. Hill and
+David A. Wood,<br>
+ACM/IEEE International Symposium on Computer Architecture (ISCA), 
+May 1996
+<P>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/ics96_synch.pdf">
+<cite>
+Synchronization Hardware for Networks of Workstations: Performance vs. Cost
+</cite>
+</A><br>
+Rahmat S. Hyder and David A. Wood,<br>
+ACM/IEEE International Conference on Supercomputing (ICS), 
+May 1996
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/jsc96_paging.pdf">
+<cite>
+Paging Tradeoffs in Distributed Shared-Memory Multiprocessors,
+</cite>
+</A><br>
+Douglas Burger, Rahmat Hyder, Barton Miller, and David A. Wood,<br>
+Journal of SuperComputing, vol. 10, pp. 87-104, 1996.
+<p>
+
+</ul>
+<h3> 1995 </h3>
+<ul>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca95_dsi.pdf">
+<cite>
+Dynamic Self-Invalidation: Reducing Coherence Overhead in Shared-Memory Multiprocessors
+</cite>
+</A><br>
+Alvin R. Lebeck and David A. Wood,<br>
+ACM/IEEE International Symposium on Computer Architecture (ISCA), 
+June 1995
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/sigmetrics95_am.pdf">
+<cite>
+Active Memory: A New Abstraction For Memory System Simulation
+</cite>
+</A><br>
+Alvin R. Lebeck and David A. Wood,<br>
+Proceedings of the 1995 ACM Sigmetrics Conference
+on Measurement and Modeling of Data, May 1995.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/ipps95_netsim.pdf">
+<cite>Accuracy vs. Performance in Parallel Simulation of Interconnection Networks</cite></A>,<br>
+Douglas C. Burger and David A. Wood.<br>
+In the proceedings of the 9th International Parallel Processing Symposium, April, 1995.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/computer95_cost.pdf">
+<cite>
+Cost-Effective Parallel Computing,
+</cite>
+</A><br>
+David A. Wood and Mark D. Hill,<br>
+IEEE Computer, Vol 28. No. 2, February 1995, pp. 69-72.
+<p>
+
+</ul>
+<h3> 1994 </h3>
+<ul>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/sc94_protocols.pdf">
+<CITE>
+Application-Specific Protocols for User-Level Shared Memory,
+</CITE>
+</A><br>
+Babak Falsafi, Alvin Lebeck, Steven Reinhardt, Ioannis Schoinas,
+Mark Hill, James Larus, Anne Rogers, and David Wood,<br>
+In Proceedings of Supercomputing '94.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/asplos6_fine_grain.pdf">
+<CITE>
+Fine-grain Access Control for Distributed Shared Memory,
+</CITE>
+</A><br>
+Ioannis Schoinas, Babak Falsafi, Alvin Lebeck, Steven Reinhardt,
+James Larus, and David Wood,<br>
+Proceedings of ASPLOS VI.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca94_typhoon.pdf">
+<CITE>
+Tempest and Typhoon: User-Level Shared Memory,
+</CITE>
+</A><br>
+Steven Reinhardt, James Larus, and David Wood,<br>
+Proceedings of Int'l Symposium on Computer Architecture, 1994.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="http://www.cs.duke.edu/~alvy/papers/cprof.pdf">
+<cite>
+Cache Profiling and the SPEC Benchmarks: A Case Study,
+</cite>
+</A><br>
+Alvin R. Lebeck and David A. Wood,<br>
+pages 15-26,
+IEEE COMPUTER,
+October 1994
+<p>
+
+<li>
+<A HREF="ftp://ftp.cs.wisc.edu/wwt/annobib.pdf">
+<CITE>
+The Wisconsin Wind Tunnel Project: An Annotated Bibliography,
+</CITE>
+</A><br>
+Mark D. Hill, James R. Larus, David A. Wood,<br>
+Computer Architecture News, v. 22, n. 5, December 1994.
+On-line version revised frequently.
+<p>
+
+</ul>
+<h3> 1993 </h3>
+<ul>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/tocs93_csm.pdf">
+<CITE>
+Cooperative Shared Memory: Software and Hardware for Scalable Multiprocessors,
+</CITE>
+</A><br>
+Mark D. Hill, James R. Larus, Steven K. Reinhardt, David A. Wood,<br>
+ACM Transactions on Computer Systems (TOCS), November 1993.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/isca93_mechanisms.pdf">
+<CITE>
+Mechanisms for Cooperative Shared Memory,
+</CITE>
+</A><br>
+David A. Wood, Satish Chandra, Babak Falsafi, Mark D. Hill, James R. Larus, 
+Alvin R. Lebeck, James Lewis,
+Shubhendu Mukherjee, Sabbarao Palacharla, Steven K. Reinhardt,<br>
+20th International Symposium on Computer Architecture,
+pp. 156-168, May 1993.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/sigmetrics93_wwt.pdf">
+<CITE>
+The Wisconsin Wind Tunnel: Virtual Prototyping of Parallel Computers,
+</CITE>
+</A><br>
+Steven K. Reinhardt, Mark D. Hill, James R. Larus, Alvin R. Lebeck, 
+James Lewis, David A. Wood,<br>
+Proceedings of the 1993 ACM Sigmetrics Conference
+on Measurement and Modeling of Data, pp. 48-60, May 1993.
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/wwt/usenix93_kernel.pdf">
+<CITE>
+    Kernel Support for the Wisconsin Wind Tunnel,
+</CITE>
+</A><br>
+Steven K. Reinhardt, Babak Falsafi, and David A. Wood,<br>
+Proceedings of the Second Usenix Symposium on Microkernels and Other Kernel Architectures,
+pp. 73-89, September 1993,
+<p>
+
+<li>
+<A onClick=copyright_notice() HREF="ftp://ftp.cs.wisc.edu/markhill/Papers/can93_warts.pdf">
+<CITE>
+Wisconsin Architectural Research Tool Set (WARTS),
+</CITE>
+</A><br>
+Mark D. Hill, James R. Larus, Alvin R. Lebeck, Madhusudhan Talluri,
+David A. Wood,<br>
+Computer Architecture News (CAN), August 1993.
+</ul>
+<HR>
+
+
+
+<center>
+  <p align="center"><font color="#663300">
+    <a href="/"><b><font size="3">
+    Computer Sciences Department</font></b></a><br>
+    <a href="http://www.ls.wisc.edu/"><b><font size="3">
+    College of Letters and Science</font></b></a><br>
+    <a href="http://www.wisc.edu/"><b><font size="3">
+    University of Wisconsin - Madison</a></font></b></font><br>
+    <br>
+    <font face="Arial, Helvetica, sans-serif" size="2">
+      <a href="/information.html">INFORMATION</a> 
+    ~ <a href="/people.html">PEOPLE</a>
+    ~ <a href="/graduates.html">GRADS</a>
+    ~ <a href="/ugrads.html">UNDERGRADS</a>
+    ~ <a href="/research.html">RESEARCH</a> 
+    ~ <a href="/resources.html">RESOURCES</a><br>
+    </font><font face="Arial, Helvetica, sans-serif"><b><font size="2"><br>
+    5355a Computer Sciences and Statistics ~ 1210 West Dayton Street, Madison, 
+    WI 53706<br>
+    <a href="mailto:cs@cs.wisc.edu">cs@cs.wisc.edu</a> ~ voice: 608-262-1204 ~ 
+    fax: 608-262-9777 </font></b></font></p>
+</center>
+
+</body>
+</html>
+

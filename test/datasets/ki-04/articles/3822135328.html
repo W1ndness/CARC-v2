@@ -1,0 +1,74 @@
+<!-- <DOCUMENT>
+	<FILE>
+		3822135328.html
+	</FILE>
+	<URL>
+		http://www-engr.sjsu.edu/~knapp/HCIRDFSC/FS/combine.htm
+	</URL>
+	<TITLE>
+		Feature Combination
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Feature Combination Feature Combination For completeness, we should note that an alternative to selecting a subset of features is to combine the features to generate a smaller but more effective feature set. * The classic procedure is to form linear combinations, so that if x is the original d-dimensional feature vector and W is an d-by-m matrix, then the new m-dimensional feature vector y is given by y = W' x . The problem is to find the matrix W. A frequently proposed &quot;solution&quot; to this problem is to use principal components analysis , or PCA . Here one forms the covariance matrix C for the example feature vectors, and finds the eigenvalues and eigenvectors of C. The m eigenvectors having the largest eigenvalues are then used as the columns of W. ** PCA can be shown to be optimal in a least-squares sense for representing the example feature vectors. Unfortunately, it usually does not provide the best linear combination of features for discriminating between the different classes. A more appropriate alternative is to use multiple discriminant analysis or MDA (see Duda and Hart ). A full exposition of MDA is beyond the scope of these notes. However, the two-class case is simple. In this case, it turns out that W is the d-by-1 vector w given by w = C -1 ( m 1 - m 2 ) , where m 1 is the mean vector for Class 1 and m 2 is the mean vector for Class 2. The resulting single feature y = w ' x is often called Fisher's linear discriminant . Unfortunately, MDA does not provide additional features if this feature turns out to be inadequate. __________ * In essence, this is what the use of a &quot;hidden layer&quot; accomplishes in feedforward neural networks. Feature combination is also sometimes called feature extraction , the idea being that the combination draws together or &quot;extracts&quot; the meaningful features from the primitive features. ** A more modern approach is to perform a singular-value decomposition of the matrix of example feature vectors. However, this alternative suffers from the same shortcomings as classical PCA. Back to Stepwise Up to Feature Selection 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<HTML>
+<HEAD>
+    <TITLE>Feature Combination</TITLE>
+</HEAD>
+<BODY>
+<H1><CENTER>Feature Combination</CENTER>
+</H1>
+For completeness, we should note that an alternative to selecting a subset
+of features is to combine the features to generate a smaller but more effective
+feature set.<A HREF="#footnote">*</A> The classic procedure is to form linear
+combinations, so that if <STRONG>x</STRONG> is the original d-dimensional
+feature vector and W is an d-by-m matrix, then the new m-dimensional feature
+vector <STRONG>y</STRONG> is given by <BR>
+<P><CENTER><STRONG>y</STRONG> = W' <STRONG>x</STRONG> .</CENTER>
+<P>The problem is to find the matrix W.<BR>
+<BR>
+A frequently proposed &quot;solution&quot; to this problem is to use <STRONG>principal
+components analysis</STRONG>, or <STRONG>PCA</STRONG>. Here one forms the
+covariance matrix C for the example feature vectors, and finds the eigenvalues
+and eigenvectors of C. The m eigenvectors having the largest eigenvalues
+are then used as the columns of W. <A HREF="#PCA">**</A><BR>
+<BR>
+PCA can be shown to be optimal in a least-squares sense for <STRONG>representing</STRONG>
+the example feature vectors. Unfortunately, it usually does not provide
+the best linear combination of features for <B>discriminating</B> between
+the different classes. A more appropriate alternative is to use <STRONG>multiple
+discriminant analysis</STRONG> or <STRONG>MDA</STRONG> (see <A HREF="../FSC_refs.htm#Duda73">Duda
+and Hart</A>). A full exposition of MDA is beyond the scope of these notes.
+However, the two-class case is simple. In this case, it turns out that W
+is the d-by-1 vector <STRONG>w</STRONG> given by <BR>
+<P><CENTER><STRONG>w</STRONG> = C<SUP>-1</SUP> (<STRONG>m</STRONG><SUB>1</SUB>
+- <STRONG>m</STRONG><SUB>2</SUB>) ,</CENTER>
+<P>where <STRONG>m</STRONG><SUB>1</SUB> is the mean vector for Class 1 and
+<STRONG>m</STRONG><SUB>2</SUB> is the mean vector for Class 2. The resulting
+single feature y = <STRONG>w</STRONG>' <STRONG>x</STRONG> is often called
+<STRONG>Fisher's linear discriminant</STRONG>. Unfortunately, MDA does not
+provide additional features if this feature turns out to be inadequate.<BR>
+<BR>
+<A NAME="footnote"></A>__________<BR>
+* In essence, this is what the use of a &quot;hidden layer&quot; accomplishes
+in feedforward neural networks. Feature combination is also sometimes called
+<STRONG>feature extraction</STRONG>, the idea being that the combination
+draws together or &quot;extracts&quot; the meaningful features from the
+primitive features.<BR>
+<A NAME="PCA"></A><BR>
+** A more modern approach is to perform a <STRONG>singular-value decomposition</STRONG>
+of the matrix of example feature vectors. However, this alternative suffers
+from the same shortcomings as classical PCA.<BR>
+<BR>
+<A HREF="stepwise.htm"><IMG SRC="../FSC_Figs/Button_Left-Arrow.gif" WIDTH=
+"40" HEIGHT="40" ALIGN="MIDDLE" NATURALSIZEFLAG="3"></A> Back to Stepwise
+<A HREF="FS_home.htm"><IMG SRC="../FSC_Figs/Button_Up-Arrow.gif" ALIGN=
+"MIDDLE" WIDTH="41" HEIGHT="40" NATURALSIZEFLAG="3"></A>Up to Feature Selection
+</BODY>
+</HTML>
+

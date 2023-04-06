@@ -1,0 +1,1321 @@
+<!-- <DOCUMENT>
+	<FILE>
+		2446038027.html
+	</FILE>
+	<URL>
+		http://www.cpan.org/ports/
+	</URL>
+	<TITLE>
+		CPAN/ports
+	</TITLE>
+	<GENRE>
+		download
+	</GENRE>
+	<PLAINTEXT>
+ CPAN/ports 1998,1999,2000,2001,2002,2003 All Rights Reserved. The CPAN Logo provided by J.C. Thorpe. You may distribute this document either under the Artistic License (comes with Perl) or the GNU Public License, whichever suits you. You are not allowed to remove or alter these comments. --> Perl Ports (Binary Distributions) CPAN /ports [Acorn] [AIX] [Amiga] [Apple] [Atari] [AtheOS] [BeOS] [BSD] [BSD/OS] [Coherent] [Compaq] [Concurrent] [Cygwin] [DG/UX] [Digital] [DEC OSF/1] [Digital UNIX] [DYNIX/ptx] [EMC] [Embedix] [EPOC] [FreeBSD] [Fujitsu-Siemens] [Guardian] [HP] [HP-UX] [IBM] [IRIX] [Japanese] [JPerl] [Linux] [LynxOS] [Macintosh] [Mac OS] [Mac OS X] [MachTen] [Minix] [MinGW] [MiNT] [MPE/iX] [MS-DOS] [MVS] [NetBSD] [NetWare] [NEWS-OS] [NextStep] [Novell] [NonStop] [NonStop-UX] [OpenBSD] [ODT] [OpenVMS] [Open UNIX] [OS/2] [OS/390] [OS/400] [OSF/1] [OSR] [Plan 9] [Pocket PC] [PowerMAX] [Psion] [QNX] [Reliant UNIX] [RISCOS] [SCO] [Sequent] [SGI] [Sharp] [Siemens] [SINIX] [Solaris] [SONY] [Sun] [Symbian] [Stratus] [Tandem] [Tru64] [Ultrix] [UNIX] [U/WIN] [Unixware] [VMS] [VOS] [Win32] [WinCE] [Windows 3.1] [Windows 95/98/Me/NT/2000/XP] [z/OS] No known ports for [Inferno] [OS1100] [PalmOS] [PRIMOS] [VxWorks] Note that CPAN does not build these packages: we just provide the hyperlinks. So please don't ask to build a package for you: you have access to the plaftorm, not us. Also, this page lists operating systems, not hardware platforms: therefore Perl packages for, say, Linux PDAs or SONY Playstation, or XBox, or Tivo, or toasters, or so forth running Linux are not "ports" as such. There are, of course, exceptions to the above: if for some reason getting packages for the particular platform is hard (of example not that many people have the compiler environment for the platform, or there is no common repository for sharing packages), CPAN can consider hosting packages for such platforms. But if there is a commonly known repository to get packages in that particular platform, please first prefer uploading your Perl package there one instead of CPAN, because that common repository is where the users will go first. We can add a link to this page pointing to that common repository, of course. Note that this page is exceptional in CPAN in that we list some shareware and commercial software when it comes to Perl editors, IDEs, and SDKs. Anywhere else in CPAN we strongly disapprove any non-free (as in beer) software. Corrections? Additions? Suggestions? Please contact cpan@perl.org . Other questions? See the CPAN FAQ . Copyright Jarkko Hietaniemi &lt;jhi@iki.fi&gt; 1998-2003 All Rights Reserved. This document contains pointers to binary distributions of Perl. However: Use The Source If you are on a UNIX, I strongly suggest that you compile Perl yourself from the source code distribution . This way you always get the latest Perl and you can configure Perl as you like and you avoid the security risks inherent in installing binary distributions. If you are on Windows or MacOS, and you do not think you have any special needs, you will probably be perfectly happy with a binary build. See also the disclaimer . If you have UNIX, or Windows, MS-DOS, VMS, Amiga, QNX, Plan9, MPE/iX, OS/390, BeOS, and a C compilation environment, you should be all set for compilation, the source code kit contains the compilation instructions. For Macintosh you need a little bit more . If your platform is something else, read on. Some architectures also have available binary distributions for the most useful and popular Perl modules (such as Tk , MD5 , GD ). Some of the Perl binary distributions include such module distributions. For some architectures I also list sites that have other useful (but unrelated-to-Perl) software available. You can for example try finding C compilers ( gcc/egcs is available on many platforms) or archival and compression tools ( what to do about .tar.gz , for example). [Perl Frequently Asked Questions, with Answers] [CPAN FAQ] AIX Starting from AIX 4.3.3 Perl 5 ships standard with AIX. (Perl 5.8.0 with AIX 5L V5.2, 5.6.0 with AIX 5L V5.1, 5.005_03 with AIX 4.3.3.) Bull Freeware Has also binary module distributions. Self-extracting LPP format. Also a lot of other software available. University of Vienna (a mirror of the above) A prebuilt version by Rich Megginson, a special installer is used. The IBM SP/2 used to ship with Perl 5.001e , a truly ancient version. Amiga Perl from Aminet (also other software available) Apple Mac OS Classic (pre- X ) Mac OS X Atari MiNT FreeMiNT (Perl 5.6.0 ) AtheOS As of Perl 5.7.2 the AtheOS support is part of the standard Perl, but in case you want a binary package (also other software available) BeOS As of BeOS 5.0 or late March 2000, Perl 5.005_03 is available as a standard but optional component. Starting from Perl 5.005 the BeOS support has been integrated to the Perl standard source code distribution . But if you insist on a potentially obsolete binary: BeOS BeBits has a lot of other software. BSD [ BSD/OS ][ Darwin (OS X) ][ FreeBSD ][ NetBSD ][ OpenBSD ] BSDI BSD/OS Perl has always been a standard component of BSD/OS. As of BSD/OS 4.1 or December 1999, Perl 5.005_03 is included. Coherent LanDiBase Also other software available. Cygwin The easiest way to install Perl in Cygwin is simply to use the standard Cygwin installation utility . Just follow the link and click on the "Install Cygwin now" icon. It will first ask questions about where to install and from where to install, and then you'll get to select what to install/update. DEC OSF/1 / Digital UNIX / Tru64 DEC OSF/1 Data General DG/UX Since DG/UX R4.20MU04 ships with Perl 5. NIS on OS depends on a dgadm.pl library, one needs to be careful before overwriting /usr/bin/perl if upgrading. Perl 5.6.1 (or newer) source is known to compile fine on DG/UX. Data General Data General is now a division of EMC. DG/UX Digital UNIX Digital UNIX Sequent DYNIX/ptx As of DYNIX/ptx 4.5.0 or September 1999, Perl 5.005_03 is a standard component. Perl 5.6.1 (or newer) source is known to compile fine on DYNIX/ptx. FreeBSD Since September 1998 or FreeBSD 3.2 Perl 5 has been a standard component. FreeBSD applications Tandem/Compaq/HP Guardian Guardian , Perl 5.004 HP/Compaq/Digital/Tandem Guardian HP-UX MPE/iX NonStop OpenVMS Tru64 (formerly known as Digital UNIX formerly known as DEC OSF/1) Ultrix Windows NT HP-UX Starting from mid-October 2001 Perl 5.6.1 is shipped as a standard part of HP-UX 11.00 installation. You can get also Perl 5.8.0 from the HP-UX Porting And Archive Centre [UK] . 5.8.0: [Canada] [Netherlands] [United Kingdom] [USA Utah] Recent Perl binaries for HP-UX 10.20 and 11.00 in compressed tar (no depots) including recent versions of modules like DBI and Tk. All Perls are prepared to build DBD-Oracle (Perl needs to be linked with certain libraries). This site has a lot of HP-UX Perl related information. A prebuilt version by Rich Megginson, a special installer is used. You can also get Perl from the HP-UX Developer's Resource: Perl 5.6.1 for HP-UX 11.00 IBM AIX AS/400 OS/390 (MVS) SGI IRIX Starting from IRIX 6.4 Perl 5 ships standard with IRIX. (Perl 5.004_04 with IRIX 6.5, but see below for fresher versions.) Distributions from SGI -- but not supported by SGI. In tardist format. University of Florida Depot tar.gz format. Also module distributions available. A lot of other software available. Japanese (No, Japanese is not a new operating system. We just list "Japanized" versions of Perl here.) JPerl JPerl is a port of the Perl 5 that can handle the Japanese legacy encodings Japanese EUC and Shift-JIS (aka MS-Kanji). NOTE! As of Perl 5.8.0 it is suggested that instead of JPerl (which is based on a quite old release of Perl) you should just use Perl 5.8.0, since it can do all that JPerl did, and more. With the source code kit of Perl 5.8.0 comes the README.jp file, which details the capabilities. When Perl 5.8.0 gets installed, the file gets installed as perljp , so perldoc or man or equivalents should be able to find it. JPerl Perl 5.005 binaries for MS-Windows and MS-DOS (DJGPP) JPerl source code patches (for Perls 5.004...5.005_03) MacJPerl For Macintosh there is a port of MacPerl to Japanese. Linux ActiveState RPM , ActiveState formats Prebuilt Perls by Rich Megginson, a special installer is used. SiePerl for Linux by Siemens, contains several modules Many people ask for "Perl for RedHat / SuSE / Mandrake / Debian / Slackware / Gentoo / LinuxPPC / OpenLinux / TurboLinux / RockLinux / Yellow Dog Linux / LFS / WhateverLinuxDistribution?" Well... If your Linux distribution doesn't already contain a reasonably recent Perl release (as of November 2003, Perl 5.8.2 and 5.6.2 are just out), are you certain you have chosen a good distribution? A distribution that contains essential tools like Perl? A distribution that keeps its packages up-to-date? For a long time I tried maintaining the links to the Perl distributions of at least the major Linux distributions but that turned out to be rather frustrating exercise because the vendors/organizations seem to be restructuring their sites constantly. You have Linux, which means that you have a full compilation environment, which means you can use the source code . Perl is known to be a standard component of the following distributions: Debian: 5.005_03 since Debian 2.2, 5.004_04 since 2.1 RedHat: 5.005_03 since RedHat 6.0 or April 19, 1999 Slackware: 5.004_04 since Slackware 2.5 or June 1998 SuSE: 5.6.1 as of SuSE 7.3 There are Perl IDEs available for Linux. Firstly, there are the usual UNIX IDEs. Then there are various IDEs originating from Win32 but also available in Linux: Perl Builder from Solutionsoft PerlDevKit from ActiveState PerlEdit from IndigoStar visiPerl+ from Help Consulting The SciTE editor works on both X (gtk+) and Win32 . The multiplatform Eclipse IDE framework has Perl plugins available through the EPIC project. LynxOS Starting from Perl 5.005 the LynxOS support has been integrated to the Perl standard source code distribution . But if you insist on a potentially obsolete binary: LynxOS Macintosh Mac OS Classic (pre- X ) MacPerl support is included in perl, in releases later than 5.6.1. The current release of MacPerl is based on 5.6.1. Mac OS 8.1 or better is required, although the previous version (5.2.0r4) and the MPW tool may be used on Mac OS 7.5.5 or better. For older Mac OS versions, see MacPerl 4.1.8, all in the ports/mac/ directory. MacPerl home page MacPerl Development home page MacPerl 5.6.1r2 Web Installer (recommended) MacPerl 5.6.1r2 Full Installer MacPerl may be built using freely available tools. Binary distributions for various Perl modules are also available . The MacPerl application comes with a simple 32k text editor/IDE. The MPW Perl tool can use the MPW shell which has no 32k limit. BBEdit and BBEdit Lite are text editors with Perl modes (works both for Mac OS Classic and Mac OS X). Also the shareware Alpha editor has Perl mode. MacJPerl MacJPerl is (as of August 2002) based on older port of MacPerl (which was based on Perl 5.004), and the JPerl patches (which were based on Perl 5.005). Mac OS X Mac OS X ships with Perl as a standard component ( Perl 5.6.0 as of OS X 10.2, 5.8.1-RC3 as of OS X 10.3 ). If you want to build Perl yourself, you need to get the Mac OS X Developer Tools which has among other things gcc. To get the Mac OS X Developer Tools you can sign up as an Apple Developer (free registration). Server Logistics Mac OS X Perl 5.8.0 (and other nice software) Apple copy of the above (and more UNIX goodies from Apple) BBEdit is a nice Perl environment for Mac OS X (BBEdit Lite is free, but the full version costs money). mi is a fast coloring freeware editor (previously known as MMKEdit). The Perlidex is a simple Perl IDE for Mac OS X. Tenon MachTen Power MachTen and CodeBuilder (PPC-based Macintoshes) Professional MachTen (68k-based Macintoshes) MinGW MinGW is a collection of header files and import libraries that allow one to use GCC and produce native Windows32 programs. (no known MinGW build) ( MinGW in general) Minix 32-bit Minix No docs included for space considerations, Perl 5.004_04 . MPE/iX First of all, go to the Perl/iX home page. Starting from Perl 5.005 the MPE/iX support has been integrated to the Perl standard source code distribution. But if you insist on a potentially obsolete binary: MPE/iX MiNT FreeMiNT MS-DOS Starting from Perl 5.005 the MS-DOS support has been integrated to the Perl standard source code distribution. But if you insist on a binary: Several possibilities exist, the most recommendable listed first. DJGPP Perl for MS-DOS Instructions for the 2nd alternative, using the OS/2 Perl. The 3rd alternative: the simplest and the least flexible one. There is also a Japanese port of Perl for DOS (DJGPP) . NetBSD Perl 5 package NetBSD packages system Novell NetWare NetWare sources for Perl 5.8 has been integrated with the Perl standard source code distribution. The Perl for NetWare binaries are available on the Novell NDK site site and at the following location, too: http://www.cpan.org/ports/netware/ (you probably are already there). Once you subscribe to the NDK you can download many other NDK components. The NDK site contains useful documentation and installation instructions. For information on how to build modules and related information, please visit the NDK site or refer to the README that are part of the standard distribution. mod_perl, perl MySQL and other extensions to Perl are available as part of the NDK Perl 5.8 download. Additional Perl modules that are not part of the NetWare binaries can be downloaded from CPAN. Sony NEWS-OS NEWS-OS 6.1 software, including Perl 5.6.0 [en] NextStep Quad-fat (Intel + Motorola + Sparc + PA-Risc) OpenBSD Perl has always been a standard component of formal OpenBSD releases. OpenBSD 2.7 ships with Perl 5.6. OpenBSD ports Tandem/Compaq NonStop/NonStop-UX Starting from Perl 5.8.0 the NonStop-UX support is integrated to the Perl standard source code distribution. International Tandem Users' Group , Perl 5.001m , a really obsolete version (July 1995). If you want a never one, ask someone at the ITUG, or try compiling from the standard source . OS1100 (No known Perl binary distributions) (No known Perl ports at all, to be more exact.) IBM OS/2 The OS/2 port works also for MS-DOS and Win31 . FileList Kind of a micro-README. All the files IBM OS/400 PASE README for Perl 5.8.0 Perl 5.8.0 binary and libraries ILE README.AS400 for Perl 5.005_02 Perl 5.005_02 binary and libraries Perl 5.005_02 sources (ILE) Perl 5.005_03, Perl-DBD, Perl-DBI, and several other development and programming tools are available as iSeries Tools for Developers PRPQ 5799-PTL . PalmOS (No known Perl binary distributions) (No known Perl ports at all, to be more exact.) Plan 9 Go to the Bell labs Plan 9 site and click on the "Additional Software", which will have among other things a Perl 5.8.0 . Note that you'll have to accept the Plan 9 license before getting to the additional software. PowerMAX Starting from Perl 5.005 the PowerMAX support has been integrated to the Perl standard source code distribution . But if you insist on a binary: PowerMAX , includes several modules. Also other software available. PrimOS (No known Perl binary distributions) (No known Perl ports at all, to be more exact.) EPOC Release 5 ER5 works in the Psion 5mx, the Psion 7, the Psion netBook the Psion netPad, and the Ericsson MC 218. EPOC Though in principle Symbian (ER6) is the same OS as EPOC, unfortunately the above port will not run on Symbian platforms. QNX QNX Community Software (an ISO CD-ROM image, includes Perl 5.6.1 ) Sharp Embedix Perl 5.8.0 for Sharp Zaurus SL-5500 (rom ver 2.39), OS Embedix, release 1, IPK format, from Peter J. Mason Fujitsu-Siemens ReliantUNIX (Formerly known as SINIX) Since SINIX 5.43 or 1997 Perl 5.003 has shipped as a standard component. That is really old, you will either want to compile from the sources or use the following: ReliantUNIX , pkgadd format. From Fujitsu-Siemens but not supported by Fujitsu-Siemens. Also modules available. (Perl 5.004_04 ) Acorn RISCOS Please note that this is the Acorn RISCOS, not the MIPS RISC-OS (for the latter, just use the source code distribution ). Acorn RISCOS 5.005_02 for Archimedes 5.005_02 for RISC PC HENSA contains a lot of other software. SCO All the following are as of late March 2000 Perl 5.005_03 . ODT3 (3.2v4.2) (COFF) [build notes for Perl 5.005_03] OpenServer 5 (ELF) Unixware 2 (ELF) Unixware 7 / Open UNIX 8 (ELF) Look for skunkperl . Also a lot of other software available. Open Unix 8 SGI IRIX Sequent DYNIX/ptx Sun Solaris Starting from Solaris 8 Perl 5 ships standard with Solaris. (Perl 5.005_03 with Solaris 8 (SunOS 5.8), and SunOS 5.9 ("Solaris 9") includes Perl 5.6.1 .) ActiveState pkgadd , ActiveState formats SiePerl for Solaris by Siemens, contains several modules Sun Freeware pkgadd format. Also a lot of other software available. University of Florida Depot. tar.gz format. Also module distributions available. A lot of other software available. Prebuilt Perls by Rich Megginson, a special installer is used. Stratus VOS Tandem/Compaq Guardian NonStop Tru64 (Formerly known as Digital UNIX formerly known as DEC OSF/1) Starting from Tru64 V5.0 Perl 5 ships standard with Tru64 as /usr/bin/perl , but the runtime support (modules and documentation) are in a separate optional subset. (As of Tru64 V5.0 5.004_04, but 5.005_03 is on the supplementary freeware CD-ROM.) A prebuilt version by Rich Megginson, a special installer is used. Ultrix pmax Perl 5.003 vax Perl 5.003 UNIX Traditionally UNIX was synonymous with C and a C compiler. You should be able to take any platform that calls itself UNIX and compile Perl on it without problems from the source code . (If this fails, your vendor is likely to be cheating you by not supplying you with a fully functional ANSI-capable compiler. They call this an "unbundled" compiler and "progress", too, by giving the customer "more options", in other words, making you pay more.) Therefore, nowadays, for various reasons, people do ask for binary distributions. [AIX] [BSD/OS] [Coherent] [Data General] [DEC OSF/1] [DG/UX] [Digital UNIX] [DYNIX/ptx] [FreeBSD] [HP-UX] [IRIX] [Linux] [MachTen] [Mac OS X] [NetBSD] [NEWS-OS] [NextStep] [NonStop] [OpenBSD] [OSF/1] [PowerMAX] [SCO] [SINIX] [ReliantUNIX] [Solaris] [Tru64] [Ultrix] [Unixware] Many of the UNIX text editors can be thought as IDEs : [GNU Emacs] [nvi] [Vile] [vim] [XEMacs] For debugging Perl, there is of course the standard Perl debugger itself . If the command line is not your bag, there are various graphical frontends: DDD (Data Display Debugger) (requires Motif/lesstif) ptkdb (requires the Tk extension) PerlDbGUI (requires the Tk extension) If you are on x86 Linux, you might also want to try the various available IDEs . See also the EPIC project for Eclipse Perl plugins. U/WIN Perl for U/WIN (Perl 5.004 ) ( U/WIN in general ) VMS Since September 1995 VMS 6.2 Perl has been on the Freeware CD (part of the standard installation). As of Freeware 5.0 the Perl release is 5.005_03 . There are also builds by vmsperl folks (non-Compaq) builds available at Both VAX and Alpha are catered for. Perl On VMS Stratus VOS Starting from Perl 5.005_03 the VOS support has been integrated to the Perl standard source code distribution. Since June 2002, Stratus supplies a fully-supported copy of Perl 5.6.1 in Release 2.0.1 of their GNU C++ &amp; GNU Tools product, which runs on the Continuum product line and requires VOS Release 14.5.0 or later. If you do not wish to build Perl from source, or cannot meet the prerequisites for this product, or need a newer release of Perl, you can obtain binaries of Perl from Stratus: Stratus , save.evf.gz format. From Stratus but not supported by Stratus, runs on all Stratus platforms and many releases, but is not fully functional (because of the incomplete POSIX support it uses) (available from the same place). (Perl 5.8.0 as of August 2002) Also other software available. Stratus , save.evf.gz format. From Stratus but not supported by Stratus, runs on Stratus Continuum (HP PA-RISC) and VOS Release 14.3.0 or later, fully functional. (Perl 5.8.0 as of August 2002) Also other software available. VxWorks (No known Perl binary distributions) (No known Perl ports at all, to be more exact.) WinCE / Pocket PC WinCE (also many other UNIX tools ported to WinCE available) Windows 3.1 Instructions for installation. Win95 / Win98 / WinME / WinNT / Win2000/W2K / WinXP (Win32) Starting from Perl 5.005 the Win32 support has been integrated to the Perl standard source code distribution . But if you insist on a binary: ActivePerl (Perl for Win32, Perl for ISAPI, PerlScript, Perl Package Manager) Apache/Perl (binaries for both Perl-5.6/Apache-1.0/mod_perl-1 and Perl-5.8/Apache-2/mod_perl-2) DeveloperSide.Net (compiled under VS.NET and includes the latest versions of Apache2, PHP, MySQL, OpenSSL, mod_perl, Apache::ASP, and a few other components) IndigoPerl (Perl for Win32, integrated Apache webserver, GUI Package Manager) SiePerl for Win32 by Siemens, contains several modules Prebuilt Perls by Rich Megginson, a special installer is used. These two are very obsolete and no more maintained or updated. Use only if you know that you need these. Perl ( 5.004 ) for Win32 for x86 Contains many useful additional modules. README Perl ( 5.004 ) for Win32 for Alpha Identical to the x86 one, except for the target CPU. README If you want to compile Perl for Win32 yourself, only the Microsoft Visual C/C++ is actively supported, but if you want to pay for your compiler the also Borland C++ Builder Studio should work reasonably well. MinGW is a free option that also has been known to work. The Open Watcom , the Digital Mars the, and lcc compiler are available (the last one for non-commercial use only), but there are no reports of Perl being built with them (patches welcomed by perl5-porters ). (Especially) if you are accustomed to Windows you might be interested in various IDEs for Perl, in alphabetical order: Eclipse multiplatform IDE has Perl plugins Komodo from ActiveState (Windows and Linux) Open Perl IDE (Windows) Perl Builder from Solutionsoft (Windows and Linux) PerlDevKit from ActiveState (Windows and Linux) PerlEdit from IndigoStar (Windows and Linux) Perl Oasis from Johan Lindström (Windows) PerlWiz from Arctan Computer Ventures (Windows) SciTE from the SCIntilla project (Windows and X/gtk+) visiPerl+ from Help Consulting (Windows) or editors (Perl programs are just plain text so any editor will do). [CodeWright] [Elvis] [GNU Emacs] [Epsilon] [gVim] [MicroEmacs] [MultiEdit] [nvi] [PFE] [SlickEdit] [UltraEdit] [Vile] [vim] [XEMacs] or shell environments (the first three are full UNIX tool environments, tcsh and zsh are just the shell). [Cygwin bash] [MKS ksh] [U/WIN sh] [tcsh] (csh/tcsh book) [zsh] (zsh in general) See also the EPIC project for Eclipse Perl plugins. There is a Windows port of Perl 5 to Japanese encodings (EUC and Shift-JIS): JPerl MinGW is a collection of header files and import libraries that allow one to use GCC and produce native Windows32 programs. These are ports of UNIX-like environments for Win32, which are useful for compiling Perl (and at least Cygwin contains Perl as an installable package). Cygwin U/WIN IBM z/OS (OS/390) Since OS/390 R2.3 Perl 5.004_03 shipped as a standard component. Starting from Perl 5.005_02 the OS/390 (also known as OS/390, also known as Open Edition, also known as MVS) support has been integrated to the Perl standard source code distribution. NOTE! As of November 2003, the Perl 5.8.1 source builds and tests at better than 99% on z/OS (OS/390). (The previous 5.6.x versions, don't work well on EBCDIC platforms.) See also the following: a big (36 MB source and 37 MB binaries ) package of open source software ( including Perl 5.00503 ) for z/OS, from the larger collection in ... Tools and Toys : Ported Tools for z/OS, includes Perl 5.6.1 Disclaimer The inclusion or exclusion of any site, application, or product does not represent any special endorsement or discrimination, nor is any attempt at comprehensiveness made, just an educated guess at which ones could possibly be useful. Installing software is always a security risk, installing binary distributions doubly so. None of the CPAN maintainers, Perl developers or contributors, or any entities publishing this list in any media, will be liable for any damage caused by the transfer, storage, installation, or use of these distributions. It's your risk alone. The same in legalese: IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. THIS SOFTWARE IS PROVIDED ON AN ``AS IS'' BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS. Corrections? Additions? Suggestions? Please contact cpan@perl.org . Other questions? See the CPAN FAQ . Copyright Jarkko Hietaniemi &lt;jhi@iki.fi&gt; 1998-2002 All Rights Reserved. CPAN master site hosted by 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<?xml version='1.0' encoding='iso-8859-1'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>CPAN/ports</title>
+<!-- Copyright Jarkko Hietaniemi <jhi@iki.fi> 1998,1999,2000,2001,2002,2003
+     All Rights Reserved.
+     The CPAN Logo provided by J.C. Thorpe.
+     You may distribute this document either under the Artistic License
+     (comes with Perl) or the GNU Public License, whichever suits you.
+
+     You are not allowed to remove or alter these comments. -->
+<!-- $Id: index.html,v 1.424 2004/01/13 15:35:09 jhi Exp $ -->
+<link rev="made" href="mailto:cpan@perl.org"></link>
+<style type="text/css">
+<!--
+
+body	{
+  color:		black;
+  background:		white;
+  margin-left:		2%;
+  margin-right:		2%;
+}
+
+h1	{
+  text-align:		center;
+}
+
+img     {
+  vertical-align:      	50%;
+  border:       	0;
+}
+
+.left	{
+  text-align:		left;
+  float:		none;
+}
+
+.center	{
+  text-align:		center;
+  float:		none;
+}
+
+.right	{
+  text-align:		right;
+  float:		none;
+}
+
+-->
+</style>
+</head>
+<body>
+
+<table width="100%">
+ <tr>
+  <td>
+   <div class="left">
+    <img src="../misc/jpg/cpan.jpg"
+         alt="[CPAN Logo]" height="121" width="250"/>
+   </div>
+  </td>
+  <td>
+   <div class="right">
+    <h1><a id="top" name="top">Perl Ports (Binary Distributions)</a></h1>
+   </div>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  </td>
+  <td>
+   <p class="right">
+    <a href="../index.html">CPAN</a>/ports
+   </p>
+  </td>
+ </tr>
+</table>
+
+<hr/>
+
+    <p>
+    <a href="#acorn">[Acorn]</a>
+    <a href="#aix">[AIX]</a>
+    <a href="#amiga">[Amiga]</a>
+    <a href="#apple">[Apple]</a>
+    <a href="#atari">[Atari]</a>
+    <a href="#atheos">[AtheOS]</a>
+    <a href="#beos">[BeOS]</a>
+    <a href="#bsd">[BSD]</a>
+    <a href="#bsdi">[BSD/OS]</a>
+    <a href="#coherent">[Coherent]</a>
+    <a href="#hp">[Compaq]</a>
+    <a href="#powermax">[Concurrent]</a>
+    <a href="#cygwin">[Cygwin]</a>
+    <a href="#dgux">[DG/UX]</a>
+    <a href="#hp">[Digital]</a>
+    <a href="#tru64">[DEC&nbsp;OSF/1]</a>
+    <a href="#tru64">[Digital&nbsp;UNIX]</a>
+    <a href="#dynixptx">[DYNIX/ptx]</a>
+    <a href="#dg">[EMC]</a>
+    <a href="#sharp">[Embedix]</a>
+    <a href="#epoc">[EPOC]</a>
+    <a href="#freebsd">[FreeBSD]</a>
+    <a href="#reliant">[Fujitsu-Siemens]</a>
+    <a href="#guardian">[Guardian]</a> 
+    <a href="#hp">[HP]</a>
+    <a href="#hpux">[HP-UX]</a>
+    <a href="#ibm">[IBM]</a>
+    <a href="#irix">[IRIX]</a>
+    <a href="#japanese">[Japanese]</a>
+    <a href="#jperl">[JPerl]</a>
+    <a href="#linux">[Linux]</a>
+    <a href="#lynxos">[LynxOS]</a>
+    <a href="#mac">[Macintosh]</a>
+    <a href="#macosclassic">[Mac&nbsp;OS]</a>
+    <a href="#macosx">[Mac&nbsp;OS&nbsp;X]</a>
+    <a href="#machten">[MachTen]</a>
+    <a href="#minix">[Minix]</a>
+    <a href="#mingw">[MinGW]</a>
+    <a href="#atari">[MiNT]</a>
+    <a href="#mpeix">[MPE/iX]</a>
+    <a href="#msdos">[MS-DOS]</a>
+    <a href="#zos">[MVS]</a>
+    <a href="#netbsd">[NetBSD]</a>
+    <a href="#netware">[NetWare]</a>
+    <a href="#newsos">[NEWS-OS]</a>
+    <a href="#next">[NextStep]</a>
+    <a href="#netware">[Novell]</a>
+    <a href="#nonstop">[NonStop]</a>
+    <a href="#nonstop">[NonStop-UX]</a>
+    <a href="#openbsd">[OpenBSD]</a>
+    <a href="#sco">[ODT]</a>
+    <a href="#vms">[OpenVMS]</a>
+    <a href="#sco">[Open&nbsp;UNIX]</a>
+    <a href="#os2">[OS/2]</a>
+    <a href="#zos">[OS/390]</a>
+    <a href="#os400">[OS/400]</a>
+    <a href="#tru64">[OSF/1]</a>
+    <a href="#sco">[OSR]</a>
+    <a href="#plan9">[Plan&nbsp;9]</a>
+    <a href="#wince">[Pocket&nbsp;PC]</a>
+    <a href="#powermax">[PowerMAX]</a>
+    <a href="#epoc">[Psion]</a>
+    <a href="#qnx">[QNX]</a>
+    <a href="#reliant">[Reliant&nbsp;UNIX]</a>
+    <a href="#acorn">[RISCOS]</a>
+    <a href="#sco">[SCO]</a>
+    <a href="#sequent">[Sequent]</a>
+    <a href="#irix">[SGI]</a>
+    <a href="#sharp">[Sharp]</a>
+    <a href="#reliant">[Siemens]</a>
+    <a href="#reliant">[SINIX]</a>
+    <a href="#solaris">[Solaris]</a>
+    <a href="#newsos">[SONY]</a>
+    <a href="#solaris">[Sun]</a>
+    <a href="#epoc">[Symbian]</a>
+    <a href="#stratus">[Stratus]</a>
+    <a href="#tandem">[Tandem]</a> 
+    <a href="#tru64">[Tru64]</a>
+    <a href="#ultrix">[Ultrix]</a>
+    <a href="#unix">[UNIX]</a>
+    <a href="#uwin">[U/WIN]</a>
+    <a href="#sco">[Unixware]</a>
+    <a href="#vms">[VMS]</a>
+    <a href="#vos">[VOS]</a>
+    <a href="#win32">[Win32]</a>
+    <a href="#wince">[WinCE]</a>
+    <a href="#win31">[Windows&nbsp;3.1]</a>
+    <a href="#win32">[Windows&nbsp;95/98/Me/NT/2000/XP]</a>
+    <a href="#zos">[z/OS]</a>
+    </p>
+
+<p>
+No known ports for
+    [Inferno]
+    [OS1100]
+    [PalmOS]
+    [PRIMOS]
+    [VxWorks]
+</p>
+
+<hr/>
+
+<p>
+Note that CPAN does not build these packages: we just provide the
+hyperlinks.  So please don't ask to build a package for you: you have
+access to the plaftorm, not us.  Also, this page lists operating
+systems, not hardware platforms: therefore Perl packages for, say,
+Linux PDAs or SONY Playstation, or XBox, or Tivo, or toasters, or so
+forth running Linux are not "ports" as such.</p>
+
+<p>There are, of course, exceptions to the above: if for some reason
+getting packages for the particular platform is hard (of example not
+that many people have the compiler environment for the platform, or
+there is no common repository for sharing packages), CPAN can consider
+hosting packages for such platforms.  But if there is a commonly known
+repository to get packages in that particular platform, please first
+prefer uploading your Perl package there one instead of CPAN, because
+that common repository is where the users will go first.  We can add a
+link to this page pointing to that common repository, of course.
+</p>
+
+<p>
+Note that this page is exceptional in CPAN in that we list some
+shareware and commercial software when it comes to Perl editors,
+IDEs, and SDKs.  Anywhere else in CPAN we strongly disapprove any non-free
+(as in beer) software.</p>
+
+<p>
+Corrections?  Additions?  Suggestions?  Please contact
+<a href="mailto:cpan@perl.org">cpan@perl.org</a>.
+Other questions?  See the
+<a href="../misc/cpan-faq.html">CPAN FAQ</a>.
+</p>
+
+<p>
+<small>Copyright Jarkko Hietaniemi <tt>&lt;jhi@iki.fi&gt;</tt> 1998-2003
+All Rights Reserved.</small>
+</p>
+
+<hr/>
+
+<p>
+
+This document contains pointers to binary distributions of Perl.
+However:
+
+</p>
+
+<h2><a id="usethesource" name="usethesource">Use The Source</a></h2>
+
+<p>
+
+<strong>If you are on a UNIX, I strongly suggest that you compile Perl
+yourself from the <a href="../src/5.0/stable.tar.gz">source code
+distribution</a>.  This way you always get the latest Perl and you can
+configure Perl as you like and you avoid the security risks inherent
+in installing binary distributions.</strong>
+
+If you are on Windows or MacOS, and you do not think you have any
+special needs, you will probably be perfectly happy with a binary
+build.
+
+See also the <a href="#disclaimer">disclaimer</a>.  If you have UNIX,
+or Windows, MS-DOS, VMS, Amiga, QNX, Plan9, MPE/iX, OS/390, BeOS, and a
+C compilation environment, you should be all set for compilation, the
+source code kit contains the compilation instructions.  For Macintosh
+you need a little bit <a href="#mac">more</a>.  If your platform is
+something else, read on.
+
+</p><p>
+
+Some architectures also have available binary distributions for the
+most useful and popular Perl modules (such as <code>Tk</code>,
+<code>MD5</code>, <code>GD</code>).  Some of the Perl binary
+distributions include such module distributions.  For some
+architectures I also list sites that have other useful (but
+unrelated-to-Perl) software available.  You can for example try
+finding C compilers (<code>gcc/egcs</code> is available on many
+platforms) or archival and compression tools (<a
+href="../ENDINGS">what to do about</a> <code>.tar.gz</code>, for
+example).
+
+</p>
+
+<p>
+<a href="../doc/FAQs/FAQ/html/index.html">[Perl Frequently Asked Questions, with Answers]</a>
+<a href="../misc/cpan-faq.html">[CPAN FAQ]</a>
+</p>
+
+<hr/>
+
+<h2><a id="aix" name="aix">AIX</a></h2>
+    <p>Starting from AIX 4.3.3 Perl 5 ships standard with AIX. <i>(Perl 5.8.0 with AIX 5L V5.2, 5.6.0 with AIX 5L V5.1, 5.005_03 with AIX 4.3.3.)</i></p>
+    <ul>
+        <li><a href="http://www.bullfreeware.com/">Bull Freeware</a> Has also binary module distributions.    Self-extracting <code>LPP</code> format.  Also a lot of other software available.</li>
+	<li><a href="http://ftp.univie.ac.at/aix/out/">University of Vienna</a> (a mirror of the above)</li>
+	<li><a href="http://people.netscape.com/richm/nsPerl/">A prebuilt version</a> by Rich Megginson, a special installer is used.</li>
+    </ul>
+    <p>The IBM SP/2 used to ship with Perl <b>5.001e</b>, a truly ancient
+    version.</p>
+
+<h2><a id="amiga" name="amiga">Amiga</a></h2>
+    <ul>
+        <li><a href="http://aminet.net/aminet/aminet.cgi?string=perl">Perl</a> from <a href="http://aminet.net/aminet/">Aminet</a> (also other software available)</li>
+   </ul>
+
+<h2><a id="apple" name="apple">Apple</a></h2>
+    <ul>
+	<li><a href="#macosclassic">Mac OS Classic (pre-<b>X</b>)</a></li>
+	<li><a href="#macosx">Mac OS X</a></li>
+    </ul>
+
+<h2><a id="atari" name="atari">Atari MiNT</a></h2>
+    <ul>
+        <li><a href="http://freemint.de/en/?dvl">FreeMiNT (Perl <b>5.6.0</b>)</a></li>
+    </ul>
+
+<h2><a id="atheos" name="atheos">AtheOS</a></h2>
+
+<p>As of Perl 5.7.2 the <a href="http://www.atheos.cx/">AtheOS</a>
+support is part of the standard Perl, but in case you want a
+<a href="http://www.atheos.cx/download/list.php3?current+pack">
+binary package</a> (also other software available)</p>
+
+<h2><a id="beos" name="beos">BeOS</a></h2>
+    <p>As of BeOS 5.0 or late March 2000, Perl <b>5.005_03</b> is
+    available as a standard but optional component.</p>
+    <p>
+      Starting from Perl 5.005 the BeOS
+      support has been integrated to the Perl standard <a href="#usethesource">
+      source code distribution</a>.  But if you insist on a potentially
+      obsolete binary:
+    </p>
+    <ul>
+	<li><a href="beos/">BeOS</a></li>
+	<li><a href="http://www.bebits.com/">BeBits</a> has a lot of other software.</li>
+    </ul>
+
+<h2><a id="bsd" name="bsd">BSD</a></h2>
+    <p>[<a href="#bsdi">BSD/OS</a>][<a href="#macosx">Darwin (OS X)</a>][<a href="#freebsd">FreeBSD</a>][<a href="#netbsd">NetBSD</a>][<a href="#openbsd">OpenBSD</a>]</p>
+
+<h2><a id="bsdi" name="bsdi">BSDI BSD/OS</a></h2>
+    <p>Perl has always been a standard component of BSD/OS.
+    As of BSD/OS 4.1 or December 1999, Perl <b>5.005_03</b> is included.</p>
+
+<h2><a id="coherent" name="coherent">Coherent</a></h2>
+
+   <ul>
+   <li><a href="http://www.landibase.com/coherent.html">LanDiBase</a>
+   Also other software available.</li>
+   </ul>
+
+<h2><a id="cygwin" name="cygwin">Cygwin</a></h2>
+
+    <p>The easiest way to install Perl in Cygwin is simply to use
+    the standard Cygwin <a href="http://www.cygwin.com/">installation
+    utility</a>.  Just follow the link and click on the
+    "Install Cygwin now" icon.  It will first ask questions
+    about where to install and from where to install, and
+    then you'll get to select what to install/update.</p>
+
+<h2><a id="decosf1" name="decosf1">DEC OSF/1 / Digital UNIX / Tru64</a></h2>
+
+    <ul>
+    <li><a href="#tru64">DEC OSF/1</a></li>
+    </ul>
+
+<h2><a id="dgux" name="dgux">Data General DG/UX</a></h2>
+    <p>Since DG/UX R4.20MU04 ships with Perl 5.
+    NIS on OS depends on a <tt>dgadm.pl</tt> library,
+    one needs to be careful before overwriting <tt>/usr/bin/perl</tt>
+    if upgrading.</p>
+
+    <p><a href="#usethesource">Perl <b>5.6.1</b> (or newer)</a>
+    source is known to compile fine on DG/UX.</p>
+
+<h2><a id="dg" name="dg">Data General</a></h2>
+
+    <p>Data General is now a division of EMC.</p>
+    <ul>
+    <li><a href="#dgux">DG/UX</a></li>
+    </ul>
+
+<h2><a id="dunix" name="dunix">Digital UNIX</a></h2>
+
+    <ul>
+    <li><a href="#tru64">Digital UNIX</a></li>
+    </ul>
+
+<h2><a id="dynixptx" name="dynixptx">Sequent DYNIX/ptx</a></h2>
+    <p>As of DYNIX/ptx 4.5.0 or September 1999, Perl <b>5.005_03</b> is
+    a standard component.</p>
+
+    <p><a href="#usethesource">Perl <b>5.6.1</b> (or newer) source</a>
+    is known to compile fine on DYNIX/ptx.</p>
+
+<h2><a id="freebsd" name="freebsd">FreeBSD</a></h2>
+    <p>Since September 1998 or FreeBSD 3.2 Perl 5 has been
+    a standard component.</p>
+    <!-- multiplexer called for -->
+    <ul>
+	<li><a href="http://www.freebsd.org/applications.html">FreeBSD applications</a></li>
+    </ul>
+
+<h2><a id="guardian" name="guardian">Tandem/Compaq/HP Guardian</a></h2>
+    <ul>
+	<li><a href="tandem/">Guardian</a>, Perl <b>5.004</b></li>
+    </ul>
+
+<h2><a id="hp" name="hp">HP/Compaq/Digital/Tandem</a></h2>
+
+    <ul>
+    <li><a href="#guardian">Guardian</a></li>
+    <li><a href="#hpux">HP-UX</a></li>
+    <li><a href="#mpeix">MPE/iX</a></li>
+    <li><a href="#nonstop">NonStop</a></li>
+    <li><a href="#vms">OpenVMS</a></li>
+    <li><a href="#tru64">Tru64</a> (formerly known as Digital UNIX formerly known as DEC OSF/1)</li>
+    <li><a href="#ultrix">Ultrix</a></li>
+    <li><a href="#win32">Windows NT</a></li>
+    </ul>
+
+<h2><a id="hpux" name="hpux">HP-UX</a></h2>
+
+    <p>Starting from mid-October 2001 Perl 5.6.1 is shipped
+    as a standard part of HP-UX 11.00 installation.</p>
+
+    <p>
+    You can get also Perl <b>5.8.0</b> from the
+    <a href="http://hpux.connect.org.uk/hppd/hpux/Languages/perl-5.8.0/">HP-UX Porting And Archive Centre [UK]</a>.
+    </p>
+
+    <p>5.8.0:
+    <a href="http://hpux.ee.ualberta.ca/hppd/hpux/Languages/perl-5.8.0/">[Canada]</a>
+    <a href="http://hpux.its.tudelft.nl/hppd/hpux/Languages/perl-5.8.0/">[Netherlands]</a>
+    <a href="http://hpux.connect.org.uk/hppd/hpux/Languages/perl-5.8.0/">[United&nbsp;Kingdom]</a>
+    <a href="http://hpux.cs.utah.edu/hppd/hpux/Languages/perl-5.8.0/">[USA&nbsp;Utah]</a>
+    </p>
+    <p>
+    <a href="https://www.beepz.com/personal/merijn/">Recent Perl binaries</a>
+    for HP-UX 10.20 and 11.00 in compressed tar (no depots) including recent 
+    versions of modules like DBI and Tk.  All Perls are prepared to build
+    DBD-Oracle (Perl needs to be linked with certain libraries).
+    This site has a lot of HP-UX Perl related information.
+    </p>
+    <p>
+    <a href="http://people.netscape.com/richm/nsPerl/">A prebuilt version</a> by Rich Megginson, a special installer is used.
+    </p>
+
+    <p>You can also get Perl from the HP-UX Developer's Resource:</p>
+    <ul>
+    <li><a href="http://www.software.hp.com/cgi-bin/swdepot_parser.cgi/cgi/displayProductInfo.pl?productNumber=PERL">
+    Perl <b>5.6.1</b> for HP-UX 11.00</a></li>
+    </ul>
+
+<h2><a id="ibm" name="ibm">IBM</a></h2>
+
+    <ul>
+    <li><a href="#aix">AIX</a></li>
+    <li><a href="#os400">AS/400</a></li>
+    <li><a href="#zos">OS/390</a> (MVS)</li>
+    </ul>
+
+<h2><a id="irix" name="irix">SGI IRIX</a></h2>
+    <p>Starting from IRIX 6.4 Perl 5 ships standard with IRIX. <i>(Perl 5.004_04 with IRIX 6.5, but see below for fresher versions.)</i></p>
+    <ul>
+	<li><a href="http://reality.exsgi.org/scotth/info/perl5.html">Distributions</a> from SGI -- but not supported by SGI.  In <code>tardist</code> format.</li>
+      <li><a href="http://www.cise.ufl.edu/depot/">University of Florida Depot</a>  <code>tar.gz</code> format.  Also module distributions available.  A lot of other software available.</li>
+    </ul>
+
+<h2><a id="japanese" name="japanese">Japanese</a></h2>
+
+    <p>
+    (No, Japanese is not a new operating system.  We just list
+     "Japanized" versions of Perl here.)
+    </p>
+    <h3><a id="jperl" name="jperl">JPerl</a></h3>
+    <p>
+    JPerl is a port of the Perl 5 that can handle the Japanese legacy
+    encodings Japanese EUC and Shift-JIS (aka MS-Kanji).
+    </p>
+    <p>
+    <b>NOTE!</b>
+    As of Perl 5.8.0 it is suggested that instead of JPerl (which
+    is based on a quite old release of Perl) you should just use
+    Perl 5.8.0, since it can do all that JPerl did, and more.
+    With the source code kit of Perl 5.8.0 comes the README.jp file,
+    which details the capabilities.  When Perl 5.8.0 gets installed,
+    the file gets installed as <tt>perljp</tt>, so <tt>perldoc</tt>
+    or <tt>man</tt> or equivalents should be able to find it.
+    </p>
+    <ul>
+    <li><a href="http://homepage2.nifty.com/kipp/perl/jperl/index.html">JPerl</a> Perl 5.005 binaries for MS-Windows and MS-DOS (DJGPP)</li>
+    <li><a href="../src/5.0/jperl/Hirofumi_Watanabe/">JPerl</a> <b>source code patches</b> (for Perls 5.004...5.005_03)</li>
+    </ul>
+
+    <h3>MacJPerl</h3>
+    <p>
+    For Macintosh there is a <a href="#macjperl">port</a> of MacPerl to Japanese.
+    </p>
+
+<h2><a id="linux" name="linux">Linux</a></h2>
+    <!-- multiplexers called for -->
+    <ul>
+      <li><a href="http://www.activestate.com/Products/ActivePerl/">ActiveState</a> <code>RPM</code>, <code>ActiveState</code> formats</li>
+      <li><a href="http://people.netscape.com/richm/nsPerl/">Prebuilt Perls </a> by Rich Megginson, a special installer is used.</li>
+      <li><a href="../authors/id/G/GR/GRAHAMC/">SiePerl</a> for Linux by Siemens, contains several modules</li>
+    </ul>
+    <div>
+    <p><small>
+    Many people ask for <i>"Perl for RedHat / SuSE / Mandrake / Debian / 
+    Slackware / Gentoo / LinuxPPC / OpenLinux / TurboLinux / RockLinux / Yellow
+    Dog Linux / LFS / WhateverLinuxDistribution?"</i> Well...
+    </small></p>
+    <ol>
+    <li><small>
+    If your Linux distribution doesn't already contain a
+    reasonably recent Perl release (as of November 2003, Perl 5.8.2
+    and 5.6.2 are just out), are you certain you have chosen a good
+    distribution?  A distribution that contains essential tools like Perl?
+    A distribution that keeps its packages up-to-date?</small></li>
+    <li><small>For a long time I <b>tried</b> maintaining the links to the Perl
+    distributions of at least the major Linux distributions but that
+    turned out to be rather frustrating exercise
+    because the vendors/organizations
+    seem to be restructuring their sites constantly.</small></li>
+    <li>
+    <small>You
+    have Linux, which means that you have a full compilation
+    environment, which means you can <a href="#usethesource">use the
+    source code</a>.</small></li>
+    </ol>
+    <p><small>
+    Perl is known to be a standard component of the following distributions:
+    </small></p>
+    <ul>
+      <li><small>Debian: <b>5.005_03</b> since Debian 2.2, <b>5.004_04</b> since 2.1</small></li>
+      <li><small>RedHat: <b>5.005_03</b> since RedHat 6.0 or April 19, 1999</small></li>
+      <li><small>Slackware: <b>5.004_04</b> since Slackware 2.5 or June 1998</small></li>
+      <li><small>SuSE: <b>5.6.1</b> as of SuSE 7.3</small></li>
+    </ul>
+    </div>
+    <p>
+    There are Perl IDEs <a name="linuxides">available</a> for Linux.
+    Firstly, there are the <a href="#unixides">usual</a> UNIX IDEs.
+    Then there are various IDEs originating from Win32 but also
+    available in Linux:
+    </p> 
+    <ul>
+    <li><a href="http://www.solutionsoft.com/perl.htm">Perl Builder</a> from Solutionsoft</li>
+    <li><a href="http://www.activestate.com/Products/Perl_Dev_Kit/">PerlDevKit</a> from ActiveState</li>
+    <li><a href="http://www.indigostar.com/perledit.html">PerlEdit</a> from IndigoStar</li>
+    <li><a href="http://www.helpconsulting.net/visiperl/index.html">visiPerl+</a> from Help Consulting</li>
+    </ul>
+    
+    <p>The <a href="http://www.scintilla.org/SciTE.html">SciTE</a> editor
+    works on both X (gtk+) and <a href="#win32">Win32</a>.</p>
+
+    <p>
+    The multiplatform <a href="http://www.eclipse.org/">Eclipse</a> IDE
+    framework has Perl plugins available
+    through the <a name="epic" href="http://e-p-i-c.sourceforge.net/">EPIC</a> project.
+    </p>
+
+<h2><a id="lynxos" name="lynxos">LynxOS</a></h2>
+    <p>
+      Starting from Perl 5.005 the LynxOS
+      support has been integrated to the Perl standard <a href="#usethesource">
+      source code distribution</a>.  But if you insist on a potentially
+      obsolete binary:
+    </p>
+    <ul>
+	<li><a href="lynxos/">LynxOS</a></li>
+    </ul>
+
+<h2><a id="mac" name="mac">Macintosh</a></h2>
+
+    <h3><a id="macosclassic" name="macosclassic">Mac OS Classic (pre-<b>X</b>)</a></h3>
+    <p>
+    MacPerl support is included in perl, in releases later than 5.6.1.
+    The current release of MacPerl is based on 5.6.1.  Mac OS
+    8.1 or better is required, although the previous version (5.2.0r4)
+    and the MPW tool may be used on Mac OS 7.5.5 or better.  For older
+    Mac OS versions, see MacPerl 4.1.8, all in the
+    <a href="mac/">ports/mac/</a> directory.
+    </p>
+
+    <ul>
+        <li><a href="http://www.macperl.org/">MacPerl</a> home page</li>
+        <li><a href="http://dev.macperl.org/">MacPerl Development</a> home page</li>
+        <li><a href="mac/MacPerl-5.6.1r2_web.bin">MacPerl 5.6.1r2 Web Installer</a> (recommended)</li>
+        <li><a href="mac/MacPerl-5.6.1r2_full.bin">MacPerl 5.6.1r2 Full Installer</a></li>
+    </ul>
+
+    <p>
+    MacPerl may be <a href="http://dev.macperl.org/?build">built</a>
+    using freely available tools.
+    </p>
+
+    <p>
+    Binary distributions for various Perl modules are also
+    <a href="http://dev.macperl.org/cgi-bin/mmp.plx">available</a>.
+    </p>
+
+    <p>
+    The MacPerl application comes with a simple 32k text editor/IDE.
+    The MPW Perl tool can use the MPW shell which has no 32k limit.
+    <a id="bbedit" name="bbedit" href="http://www.barebones.com/support/bbedit/index.shtml">BBEdit and BBEdit Lite</a>
+    are text editors with Perl modes (works both for Mac OS Classic
+    and Mac OS X). Also the shareware
+    <a href="http://www.his.com/~jguyer/Alpha/index.html">Alpha</a>
+    editor has Perl mode.
+    </p>
+
+    <h3><a id="macjperl" name="macjperl">MacJPerl</a></h3>
+
+    <p>
+    <a href="http://world.std.com/~habilis/macjperl/">MacJPerl</a>
+    is (as of August 2002) based on older port of MacPerl (which was
+    based on Perl 5.004), and the <a href="#jperl">JPerl</a> patches
+    (which were based on Perl 5.005).
+    </p>
+
+    <h3><a id="macosx" name="macosx">Mac OS X</a></h3>
+    <p>
+    Mac OS X ships with Perl as a standard component (<i>Perl <b>5.6.0</b>
+    as of OS X 10.2, 5.8.1-RC3 as of OS X 10.3</i>).
+    If you want to build Perl yourself, you need to
+    get the Mac OS X Developer Tools which has among other things gcc.
+    To get the Mac OS X Developer Tools you can sign up as an <a href="http://developer.apple.com/">Apple Developer</a> (free registration).
+    </p>
+    <ul>
+    <li><a href="http://www.serverlogistics.com/downloads-osx.php">Server Logistics</a> Mac OS X Perl 5.8.0 (and other nice software)</li>
+    <li><a href="http://www.apple.com/downloads/macosx/unix_open_source/perl.html">Apple</a> copy of the above (and more <a href="http://www.apple.com/downloads/macosx/unix_open_source/index.html">UNIX goodies</a> from Apple)</li>
+    </ul>
+    <ul>
+    <li><a href="http://www.barebones.com/support/bbedit/index.shtml">BBEdit</a> is a nice Perl environment for Mac OS X (BBEdit Lite is free, but the full version costs money).</li>
+    <li><a href="http://www.mimikaki.net/en/">mi</a> is a fast coloring freeware editor (previously known as MMKEdit).</li>
+    <li>The <a href="http://homepage.mac.com/goldfish1/perlidex.html">Perlidex</a>
+    is a simple Perl IDE for Mac OS X.</li>
+    </ul>
+
+<h2><a id="machten" name="machten">Tenon MachTen</a></h2>
+    <ul>
+      <li><a href="ftp://ftp.tenon.com/pub/applications/PPC/scriptors/">Power MachTen and CodeBuilder (PPC-based Macintoshes)</a></li>
+      <li><a href="ftp://ftp.tenon.com/pub/applications/68k/scriptors/">Professional MachTen (68k-based Macintoshes)</a></li>
+    </ul>
+
+<h2><a id="mingw" name="mingw">MinGW</a></h2>
+    <p>
+    MinGW is a collection of header files and import libraries that
+    allow one to use GCC and produce native Windows32 programs.
+    </p>
+    <ul>
+    <li>(no known MinGW build) (<a href="http://www.mingw.org/">MinGW</a> in general)</li>
+    </ul>
+
+<h2><a id="minix" name="minix">Minix</a></h2>
+    <ul>
+      <li><a href="ftp://minix1.hampshire.edu/pub/contrib/perl.tar.Z">32-bit Minix</a> No docs included for space considerations, <b>Perl 5.004_04</b>.</li>
+    </ul>
+
+<h2><a id="mpeix" name="mpeix">MPE/iX</a></h2>
+    <p>
+      First of all, go to the <a href="http://www.bixby.org/mark/perlix.html">Perl/iX</a> home page.
+      Starting from Perl 5.005 the MPE/iX
+      support has been integrated to the Perl standard source
+      code distribution.  But if you insist on a potentially obsolete binary:
+    </p>
+    <ul>
+	<li><a href="mpe/">MPE/iX</a></li>
+    </ul>
+
+<h2>MiNT</h2>
+
+    <ul>
+        <li><a href="#atari">FreeMiNT</a></li>
+    </ul>
+
+<h2><a id="msdos" name="msdos">MS-DOS</a></h2>
+
+    <p>
+      Starting from Perl 5.005 the MS-DOS
+      support has been integrated to the Perl standard source
+      code distribution.  But if you insist on a binary:
+    </p>
+    <p>
+    Several <a href="msdos/README.txt">possibilities</a>
+    exist, the most recommendable listed first.
+    </p>
+
+    <ul>
+	<li><a href="msdos/LMOLNAR/">DJGPP Perl for MS-DOS</a></li>
+	<li><a href="msdos/dosperlp.txt">Instructions</a> for the 2nd alternative, using the <a href="#os2">OS/2</a> Perl.</li>
+	<li><a href="msdos/dosperl.zip">The 3rd alternative: the simplest and the least flexible one.</a></li>
+    </ul>
+
+    <p>
+    There is also a <a href="#jperl">Japanese port of Perl for DOS (DJGPP)</a>.
+    </p>
+
+<h2><a id="netbsd" name="netbsd">NetBSD</a></h2>
+    <!-- multiplexer called for -->
+    <ul>
+	<li><a href="ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/lang/perl5/README.html">Perl 5 package</a></li>
+	<li><a href="http://www.netbsd.org/Documentation/software/">NetBSD packages system</a></li>
+    </ul>
+
+<h2><a id="netware" name="netware">Novell NetWare</a></h2>
+
+<p>NetWare sources for Perl 5.8 has been integrated with the Perl
+standard source code distribution.</p>
+
+<p>The Perl for NetWare binaries are available on the
+<a href="http://developer.novell.com/ndk/perl5.htm">Novell NDK site</a>
+site and at the following
+location, too: <a href="http://www.cpan.org/ports/netware/">http://www.cpan.org/ports/netware/</a> (you probably are already there).  Once you subscribe to
+the NDK you can download many other NDK components.  The NDK site
+contains useful documentation and installation instructions.</p>
+
+<p>For information on how to build modules and related information,
+please visit <a href="http://developer.novell.com/ndk/perl5.htm">the
+NDK site</a> or refer to the <a
+href="http://www.cpan.org/ports/netware/README.netware">README</a>
+that are part of the standard distribution.</p>
+
+<p>mod_perl, perl MySQL and other extensions to Perl are available as
+part of the NDK Perl 5.8 download. Additional Perl modules that are
+not part of the NetWare binaries can be downloaded from CPAN.</p>
+
+<h2><a id="newsos" name="newsos">Sony NEWS-OS</a></h2>
+    <ul>
+      <li>NEWS-OS 6.1 software, including Perl 5.6.0 <a href="http://www.sigma.tosho-u.ac.jp/FTP/newsos.6.1.html">[en]</a></li>
+    </ul>
+
+<h2><a id="next" name="next">NextStep</a></h2>
+    <ul>
+      <li><a href="ftp://next-ftp.peak.org/next/apps/devtools/perl/">Quad-fat</a> (Intel + Motorola + Sparc + PA-Risc)</li>
+    </ul>
+
+<h2><a id="openbsd" name="openbsd">OpenBSD</a></h2>
+    <p>Perl has always been a standard component of formal OpenBSD releases.
+    OpenBSD 2.7 ships with Perl 5.6.</p>
+    <ul>
+      <li><a href="http://www.openbsd.org/ports.html">OpenBSD ports</a></li>
+    </ul>
+
+<h2><a id="nonstop" name="nonstop">Tandem/Compaq NonStop/NonStop-UX</a></h2>
+    <p>
+      Starting from Perl 5.8.0 the NonStop-UX
+      support is integrated to the Perl standard
+      source code distribution.
+    </p>
+    <p>
+	<a href="http://www.itug.org/member/services/software/unix/perl5.tar">International Tandem Users' Group</a>, Perl <b>5.001m</b>, a really obsolete version (July 1995).  If you want a never one, ask someone at the ITUG, or try compiling <a href="#usethesource">from the standard source</a>.
+    </p>
+
+<h2><a id="OS1100" name="OS1100">OS1100</a></h2>
+    <p>
+	<i>(No known Perl binary distributions)</i>
+    </p>
+    <p>
+	<i>(No known Perl ports at all, to be more exact.)</i>
+    </p>
+
+<h2><a id="os2" name="os2">IBM OS/2</a></h2>
+
+    <p>
+    The OS/2 port works also for
+    <a href="#msdos">MS-DOS</a> and <a href="#win31">Win31</a>.
+    </p>
+
+    <ul>
+	<li><a href="os2/README.1st">FileList</a> Kind of a micro-README.</li>
+	<li><a href="os2/">All the files</a></li>
+    </ul>
+
+<h2><a id="os400" name="os400">IBM OS/400</a></h2>
+
+    <ul>
+        <li>PASE
+            <ul>
+                <li><a href="os400/README.os400">README</a> for Perl 5.8.0</li>
+                <li><a href="os400/perl-5.8.0@18380-os400.tgz">Perl 5.8.0 binary and libraries</a></li>
+            </ul>
+        </li>
+	<li>ILE
+            <ul>
+                <li><a href="os400/old/README.AS400">README.AS400</a> for Perl 5.005_02</li>
+                <li><a href="os400/old/perlpgm.savf.gz">Perl 5.005_02 binary and libraries</a></li>
+                <li><a href="os400/old/p500502.savf.gz">Perl 5.005_02 sources (ILE)</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>
+    Perl 5.005_03, Perl-DBD, Perl-DBI, and several other
+    development and programming tools are available as
+    iSeries Tools for Developers
+    <a href="http://www.ibm.com/eserver/iseries/developer/factory/tools/">PRPQ 5799-PTL</a>.
+    </p>
+
+<h2><a id="PalmOS" name="PalmOS">PalmOS</a></h2>
+    <p>
+	<i>(No known Perl binary distributions)</i>
+    </p>
+    <p>
+	<i>(No known Perl ports at all, to be more exact.)</i>
+    </p>
+
+<h2><a id="plan9" name="plan9">Plan 9</a></h2>
+    <p>
+	Go to the
+	<a href="http://plan9.bell-labs.com/plan9dist/">Bell labs Plan 9 site</a>
+	and click on the "Additional Software", which will have among
+	other things a Perl <b>5.8.0</b>.  Note that you'll have to accept
+	the Plan 9 license before getting to the additional software.
+    </p>
+
+<h2><a id="powermax" name="powermax">PowerMAX</a></h2>
+
+    <p>
+      Starting from Perl 5.005 the PowerMAX
+      support has been integrated to the Perl standard <a href="#usethesource">
+      source code distribution</a>.  But if you insist on a binary:
+    </p>
+    <ul>
+      <li><a href="ftp://ftp.ccur.com/rtsw/">PowerMAX</a>, includes several modules.  Also other software available.</li>
+    </ul>
+
+<h2><a id="PrimOS" name="PrimOS">PrimOS</a></h2>
+    <p>
+	<i>(No known Perl binary distributions)</i>
+    </p>
+    <p>
+	<i>(No known Perl ports at all, to be more exact.)</i>
+    </p>
+
+<h2><a id="epoc" name="epoc">EPOC Release 5</a></h2>
+
+    <p>ER5 works in the Psion 5mx, the Psion 7, the Psion netBook
+       the Psion netPad, and the Ericsson MC 218.</p>
+
+    <ul>
+      <li><a href="http://www.oflebbe.de/oflebbe/perl/">EPOC</a></li>
+    </ul>
+
+    <p>Though in principle Symbian (ER6) is the same OS as EPOC,
+    unfortunately the above port will not run on Symbian platforms.</p>
+
+<h2><a id="qnx" name="qnx">QNX</a></h2>
+
+    <ul>
+      <li><a href="http://www.qnx.com/developer/download/contrib/">QNX Community Software</a> (an ISO CD-ROM image, includes Perl <b>5.6.1</b>)</li>
+    </ul>
+
+<h2><a id="sharp" name="sharp">Sharp Embedix</a></h2>
+    <ul>
+      <li><a href="sharp/Perl_5.8.0_arm.ipk">Perl 5.8.0</a> for Sharp Zaurus SL-5500 (rom ver 2.39), OS Embedix, release 1, <code>IPK</code> format, from Peter J. Mason</li>
+    </ul>
+
+<h2><a id="reliant" name="reliant">Fujitsu-Siemens ReliantUNIX</a></h2>
+    <p>(Formerly known as SINIX)</p>
+    <p>Since SINIX 5.43 or 1997 Perl <b>5.003</b> has shipped as
+    a standard component.
+    That is really old, you will either want
+    <a href="#usethesource">to compile from the sources</a>
+    or use the following:</p>
+    <ul>
+      <li><a href="ftp://ftp.fujitsu-siemens.com/pub/pd/perl/">ReliantUNIX</a>, <code>pkgadd</code> format.  From Fujitsu-Siemens but not supported by Fujitsu-Siemens.  Also modules available. (Perl <b>5.004_04</b>)</li>
+    </ul>
+
+<h2><a id="acorn" name="acorn">Acorn RISCOS</a></h2>
+    <p>Please note that this is the Acorn RISCOS, not the MIPS RISC-OS (for the latter, just use the <a href="../src/5.0/stable.tar.gz">source code distribution</a>).</p>
+    <ul>
+	<li><a href="acorn/">Acorn RISCOS</a>
+	<ul>
+	  <li><a href="acorn/perl_112_archimedes.zip">5.005_02 for Archimedes</a></li>
+	  <li><a href="acorn/perl_112_riscpc.zip">5.005_02 for RISC PC</a></li>
+	</ul>
+	</li>
+	<li><a href="http://www.mirror.ac.uk/platforms/misc/riscos">HENSA</a> contains a lot of other software.</li>
+    </ul>
+
+<h2><a id="sco" name="sco">SCO</a></h2>
+    <p>All the following are as of late March 2000 Perl <b>5.005_03</b>.</p>
+    <ul>
+      <li><a href="ftp://ftp2.caldera.com/pub/skunkware/odt3/Updates/perl5.005_03.dist.tar.Z">ODT3 (3.2v4.2)</a> (COFF) <a href="ftp://ftp2.caldera.com/pub/skunkware/odt3/Updates/perl5.005_03.ODT_BUILD">[build notes for Perl 5.005_03]</a> </li>
+      <li><a href="ftp://ftp2.caldera.com/pub/skunkware/osr5/interp/perl/">OpenServer 5</a> (ELF)</li>
+      <li><a href="ftp://ftp2.caldera.com/pub/skunkware/uw2/interp/perl/">Unixware 2</a> (ELF)</li>
+      <li><a href="ftp://ftp2.caldera.com/pub/skunkware/uw7/Packages/">Unixware 7 / Open UNIX 8</a> (ELF) Look for <b>skunkperl</b>.  Also a lot of other software available.</li>
+      <li><a href="ftp://ftp2.caldera.com/pub/skunkware/ou8/interp/perl/">Open Unix 8</a></li>
+    </ul>
+
+<h2><a id="sgi" name="sgi">SGI</a></h2>
+
+    <ul>
+    <li><a href="#irix">IRIX</a></li>
+    </ul>
+
+<h2><a id="sequent" name="sequent">Sequent</a></h2>
+
+    <ul>
+    <li><a href="#dynixptx">DYNIX/ptx</a></li>
+    </ul>
+
+<h2><a id="solaris" name="solaris">Sun Solaris</a></h2>
+
+    <p>Starting from Solaris 8 Perl 5 ships standard with Solaris. <i>(Perl <b>5.005_03</b> with Solaris 8 (SunOS 5.8), and SunOS 5.9 ("Solaris 9") includes Perl <b>5.6.1</b>.)</i></p>
+    <ul>
+      <li><a href="http://www.activestate.com/Products/ActivePerl/">ActiveState</a> <code>pkgadd</code>, <code>ActiveState</code> formats</li>
+      <li><a href="../authors/id/G/GR/GRAHAMC/">SiePerl</a> for Solaris by Siemens, contains several modules</li>
+      <li><a href="http://www.sunfreeware.com/">Sun Freeware</a>  <code>pkgadd</code> format.  Also a lot of other software available.</li>
+      <li><a href="http://www.cise.ufl.edu/depot/software-solaris-index.shtml">University of Florida Depot.</a> <code>tar.gz</code> format.  Also module distributions available.  A lot of other software available.</li>
+      <li><a href="http://people.netscape.com/richm/nsPerl/">Prebuilt Perls </a> by Rich Megginson, a special installer is used.</li>
+    </ul>
+
+<h2><a id="stratus" name="stratus">Stratus</a></h2>
+
+    <ul>
+    <li><a href="#vos">VOS</a></li>
+    </ul>
+
+<h2><a id="tandem" name="tandem">Tandem/Compaq</a></h2>
+    <ul>
+	<li><a href="#guardian">Guardian</a></li>
+	<li><a href="#nonstop">NonStop</a></li>
+    </ul>
+
+<h2><a id="tru64" name="tru64">Tru64</a></h2>
+
+    <p>
+    <i>(Formerly known as Digital UNIX formerly known as DEC OSF/1)</i>
+    </p>
+    <p>
+    Starting from Tru64 V5.0 Perl 5 ships standard with Tru64 as
+    <tt>/usr/bin/perl</tt>, but the runtime support (modules and documentation)
+    are in a separate optional subset.
+    <i>(As of Tru64 V5.0 5.004_04, but 5.005_03 is on the supplementary
+    freeware CD-ROM.)</i>
+    </p>
+    <p>
+    <a href="http://people.netscape.com/richm/nsPerl/">A prebuilt version</a> by Rich Megginson, a special installer is used.
+    </p>
+
+<h2><a id="ultrix" name="ultrix">Ultrix</a></h2>
+    <ul>
+        <li><a href="ftp://ftp.uni-stuttgart.de/sw/pmax_ul43/perl-5.003/">pmax</a> Perl <b>5.003</b></li>
+        <li><a href="ftp://ftp.uni-stuttgart.de/sw/vax_ul4/perl-5.003/">vax</a> Perl <b>5.003</b></li>
+    </ul>
+
+<h2><a id="unix" name="unix">UNIX</a></h2>
+
+    <p>
+    Traditionally UNIX was synonymous with C and a C
+    compiler.  You should be able to take any platform that calls itself
+    UNIX and compile Perl on it without problems from the
+    <a href="../src/5.0/stable.tar.gz">source code</a>.
+    (If this fails, your vendor is likely to be cheating you
+    by not supplying you with a fully functional ANSI-capable
+    compiler.  They call this an "unbundled" compiler
+    and "progress", too, by giving the customer "more options",
+    in other words, making you pay more.)
+    Therefore, nowadays, for various reasons, people
+    do ask for binary distributions.
+    </p>
+
+    <p>
+    <a href="#aix">[AIX]</a>
+    <a href="#bsdi">[BSD/OS]</a>
+    <a href="#coherent">[Coherent]</a>
+    <a href="#dg">[Data&nbsp;General]</a>
+    <a href="#tru64">[DEC&nbsp;OSF/1]</a>
+    <a href="#dgux">[DG/UX]</a>
+    <a href="#tru64">[Digital&nbsp;UNIX]</a>
+    <a href="#dynixptx">[DYNIX/ptx]</a>
+    <a href="#freebsd">[FreeBSD]</a>
+    <a href="#hpux">[HP-UX]</a>
+    <a href="#irix">[IRIX]</a>
+    <a href="#linux">[Linux]</a>
+    <a href="#machten">[MachTen]</a>
+    <a href="#macosx">[Mac&nbsp;OS&nbsp;X]</a>
+    <a href="#netbsd">[NetBSD]</a>
+    <a href="#newsos">[NEWS-OS]</a>
+    <a href="#next">[NextStep]</a>
+    <a href="#nonstop">[NonStop]</a>
+    <a href="#openbsd">[OpenBSD]</a>
+    <a href="#tru64">[OSF/1]</a>
+    <a href="#powermax">[PowerMAX]</a>
+    <a href="#sco">[SCO]</a>
+    <a href="#reliant">[SINIX]</a>
+    <a href="#reliant">[ReliantUNIX]</a>
+    <a href="#solaris">[Solaris]</a>
+    <a href="#tru64">[Tru64]</a>
+    <a href="#ultrix">[Ultrix]</a>
+    <a href="#sco">[Unixware]</a>
+    </p>
+
+    <p>
+    Many of the UNIX text editors can be thought as <a name="unixides">IDEs</a>:
+    <a href="http://www.gnu.org/software/emacs/">[GNU Emacs]</a>
+    <a href="http://www.bostic.com/vi/">[nvi]</a>
+    <a href="http://dickey.his.com/vile/vile.html">[Vile]</a>
+    <a href="http://www.vim.org/">[vim]</a>
+    <a href="http://www.xemacs.org/Download/index.html">[XEMacs]</a>
+    </p>
+
+    <p>For <a name="unixdebug">debugging</a> Perl,
+    there is of course the standard Perl debugger
+    <a href="http://www.perldoc.com/perl5.8.0/pod/perldebtut.html">itself</a>.
+    If the command line is not your bag, there are various graphical frontends:
+    </p>
+    <ul>
+    <li><a href="http://www.gnu.org/software/ddd/">DDD</a> (Data Display Debugger) (requires Motif/lesstif)</li>
+    <li><a href="http://world.std.com/~aep/ptkdb/">ptkdb</a> (requires the Tk extension)</li>
+    <li><a href="http://members.tripod.com/~CurtMcKelvey/perldbgui/">PerlDbGUI</a> (requires the Tk extension)</li>
+    </ul>
+    <p>If you are on x86 Linux, you might also want to try the various
+    available <a href="#linuxides">IDEs</a>.</p>
+
+    <p>See also the <a href="http://e-p-i-c.sourceforge.net/">EPIC</a>
+    project for Eclipse Perl plugins.</p>
+
+<h2><a id="uwin" name="uwin">U/WIN</a></h2>
+
+    <ul>
+      <li><a href="http://emudev.kesoftware.com/Releases/2.0/InstallUWIN/uwinoptionpack.html">Perl for U/WIN</a> (Perl <b>5.004</b>)  (<a href="http://www.research.att.com/sw/tools/uwin/">U/WIN in general</a>)</li>
+    </ul>
+
+<h2><a id="vms" name="vms">VMS</a></h2>
+    <p>Since September 1995 VMS 6.2 Perl has been on
+    the Freeware CD (part of the standard installation).
+    As of Freeware 5.0 the Perl release is <b>5.005_03</b>.
+
+    There are also builds by vmsperl folks (non-Compaq) builds available at</p>
+    <ul>
+      <li><a href="http://www.sidhe.org/vmsperl/prebuilt.html">Both VAX and Alpha are catered for.</a></li>
+      <li><a href="http://www.sidhe.org/vmsperl/">Perl On VMS</a></li>
+    </ul>
+
+<h2><a id="vos" name="vos">Stratus VOS</a></h2>
+    <p>
+    Starting from Perl 5.005_03 the VOS support has been integrated to the Perl
+    standard source code distribution.  Since June 2002, Stratus supplies a
+    fully-supported copy of Perl 5.6.1 in Release 2.0.1 of their GNU C++ &amp; GNU
+    Tools product, which runs on the Continuum product line and requires VOS
+    Release 14.5.0 or later.  If you do not wish to build Perl from source, or
+    cannot meet the prerequisites for this product, or need a newer release of
+    Perl, you can obtain binaries of Perl from Stratus:
+    </p>
+    <ul>
+      <li><a href="ftp://ftp.stratus.com/pub/vos/posix/alpha/alpha.html">Stratus</a>, <code>save.evf.gz</code> format.  From Stratus but not supported by Stratus,
+runs on all Stratus platforms and many releases, but is not fully functional (because of the incomplete POSIX support it uses) (available from the same place).  (Perl <b>5.8.0</b> as of August 2002)  Also other software available.</li>
+      <li><a href="ftp://ftp.stratus.com/pub/vos/posix/ga/ga.html">Stratus</a>, <code>save.evf.gz</code> format.  From Stratus but not supported by Stratus, runs on Stratus Continuum (HP PA-RISC) and VOS Release 14.3.0 or later, fully functional.  (Perl <b>5.8.0</b> as of August 2002)  Also other software available.</li>
+    </ul>
+
+<h2><a id="vxworks" name="vxworks">VxWorks</a></h2>
+    <p>
+	<i>(No known Perl binary distributions)</i>
+    </p>
+    <p>
+	<i>(No known Perl ports at all, to be more exact.)</i>
+    </p>
+
+<h2><a id="wince" name="wince">WinCE / Pocket PC</a></h2>
+    <ul>
+    <li><a href="http://www.rainer-keuchel.de/software.html">WinCE</a> (also many other UNIX tools ported to WinCE available)</li>
+    </ul>
+
+<h2><a id="win31" name="win31">Windows 3.1</a></h2>
+    <ul>
+	<li><a href="win31/winperlp.txt">Instructions</a> for installation.</li>
+    </ul>
+
+<h2><a id="win32" name="win32">Win95 / Win98 / WinME / WinNT / Win2000/W2K / WinXP (Win32)</a></h2>
+    <p>
+      Starting from Perl 5.005 the Win32
+      support has been integrated to the Perl standard <a href="#usethesource">
+      source code distribution</a>.  But if you insist on a binary:
+    </p>
+    <ul>
+      <li><a href="http://www.activestate.com/ActivePerl/">ActivePerl</a> (Perl for Win32, Perl for ISAPI, PerlScript, Perl Package Manager)</li>
+
+      <li><a href="http://www.apache.org/dyn/closer.cgi/perl/win32-bin/">Apache/Perl</a> (binaries for both Perl-5.6/Apache-1.0/mod_perl-1 and Perl-5.8/Apache-2/mod_perl-2)</li>
+      <li><a href="http://www.devside.net/">DeveloperSide.Net</a> (compiled under VS.NET and includes the latest versions of Apache2, PHP, MySQL, OpenSSL, mod_perl, Apache::ASP, and a few other components)</li>
+      <li><a href="http://www.indigostar.com/indigoperl.htm">IndigoPerl</a> (Perl for Win32, integrated Apache webserver, GUI Package Manager)</li>
+
+      <li><a href="../authors/id/G/GR/GRAHAMC/">SiePerl</a> for Win32 by Siemens, contains several modules</li>
+      <li><a href="http://people.netscape.com/richm/nsPerl/">Prebuilt Perls</a> by Rich Megginson, a special installer is used.</li>
+    </ul>
+
+      <p><b>These two are very obsolete and no more maintained or updated.
+      Use only if you know that you need these.</b></p>
+      <ul>
+      <li><a href="win32/Standard/x86/perl5.00402-bindist04-bc.zip">Perl (<b>5.004</b>) for Win32 for x86</a> Contains many useful additional modules.
+      <a href="win32/Standard/x86/perl5.00402-bindist04-bc.readme">README</a></li>
+      <li><a href="win32/Standard/alpha/perl5.00402-bindist04-msvcAlpha.tar.gz">Perl (<b>5.004</b>) for Win32 for Alpha</a> Identical to the x86 one, except for the target CPU.
+      <a href="win32/Standard/alpha/perl5.00402-bindist04-msvcAlpha.readme">README</a></li>
+    </ul>
+
+    <p>
+    If you want to compile Perl for Win32 yourself, only the
+    Microsoft Visual C/C++ is actively supported, but if you want
+    to pay for your compiler the also Borland C++ Builder Studio
+    should work reasonably well.  <a href="#mingw">MinGW</a> is
+    a free option that also has been known to work.
+    The <a href="http://www.openwatcom.org/">Open Watcom</a>,
+    the <a href="http://www.digitalmars.com/">Digital Mars</a> the,
+    and <a href="http://www.cs.virginia.edu/~lcc-win32/">lcc</a> compiler
+    are available (the last one for non-commercial use only), but there are
+    no reports of Perl being built with them (patches welcomed by <a href="mailto:perl5-porters@perl.org">perl5-porters</a>).
+    </p>
+
+    <p>
+    (Especially) if you are accustomed to Windows you might be
+    interested in various <a name="winides">IDEs</a> for Perl,
+    in alphabetical order:
+    </p>
+    <ul>
+    <li><a href="http://www.eclipse.org/">Eclipse</a> multiplatform IDE has <a href="http://e-p-i-c.sourceforge.net/">Perl plugins</a></li>
+    <li><a href="http://www.ActiveState.com/Products/Komodo/">Komodo</a> from ActiveState (Windows and Linux)</li>
+    <li><a href="http://open-perl-ide.sourceforge.net/">Open Perl IDE</a> (Windows)</li>
+    <li><a href="http://www.solutionsoft.com/perl.htm">Perl Builder</a> from Solutionsoft (Windows and Linux)</li>
+    <li><a href="http://www.activestate.com/Products/Perl_Dev_Kit/">PerlDevKit</a> from ActiveState (Windows and Linux)</li>
+    <li><a href="http://www.indigostar.com/perledit.html">PerlEdit</a> from IndigoStar (Windows and Linux)</li>
+    <li><a href="http://www.bahnhof.se/~johanl/perl/Oasis/">Perl Oasis</a> from Johan Lindström (Windows)</li>
+    <li><a href="http://www.perlwiz.biz">PerlWiz</a> from Arctan Computer Ventures (Windows)</li>
+    <li><a href="http://www.scintilla.org/SciTE.html">SciTE</a> from the SCIntilla project (Windows and X/gtk+)</li>
+    <li><a href="http://www.helpconsulting.net/visiperl/index.html">visiPerl+</a> from Help Consulting (Windows)</li>
+    </ul>
+
+    <p>
+    or editors (Perl programs are just plain text so any editor will do).
+    </p>
+    <p>
+    <a href="http://www.codewright.com/">[CodeWright]</a>
+    <a href="ftp://ftp.cs.pdx.edu/pub/elvis/">[Elvis]</a>
+    <a href="http://www.gnu.org/software/emacs/windows/ntemacs.html">[GNU Emacs]</a>
+    <a href="http://www.lugaru.com/">[Epsilon]</a>
+    <a href="http://www.vim.org/download.php#pc">[gVim]</a>
+    <a href="http://uemacs.tripod.com/">[MicroEmacs]</a>
+    <a href="http://www.MultiEdit.com/">[MultiEdit]</a>
+    <a href="http://www.bostic.com/vi/">[nvi]</a>
+    <a href="http://www.simtel.net/product.php?url_fb_product_page=11983">[PFE]</a>
+    <a href="http://www.slickedit.com/">[SlickEdit]</a>
+    <a href="http://www.ultraedit.com/">[UltraEdit]</a>
+    <a href="http://dickey.his.com/vile/vile.html">[Vile]</a>
+    <a href="http://www.vim.org/">[vim]</a>
+    <a href="http://www.xemacs.org/Download/index.html">[XEMacs]</a>
+    </p>
+
+    <p>
+    or shell environments (the first three are full UNIX tool environments,
+    tcsh and zsh are just the shell).
+    </p>
+    <p>
+    <a href="http://www.cygwin.com/">[Cygwin bash]</a>
+    <a href="http://www.mks.com/">[MKS ksh]</a>
+    <a href="http://www.research.att.com/sw/tools/uwin/">[U/WIN sh]</a>
+    <a href="ftp://ftp.astron.com/pub/tcsh/">[tcsh]</a>
+    <a href="http://www.kitebird.com/csh-tcsh-book/">(csh/tcsh book)</a>
+    <a href="ftp://ftp.blarg.net/users/amol/zsh/">[zsh]</a>
+    <a href="http://www.zsh.org/">(zsh in general)</a>
+    </p>
+
+    <p>See also the <a href="http://e-p-i-c.sourceforge.net/">EPIC</a>
+    project for <a href="http://www.eclipse.org/">Eclipse</a> Perl plugins.</p>
+
+    <p>
+    There is a Windows port of Perl 5 to Japanese encodings (EUC and Shift-JIS):
+    </p>
+    <ul>
+    <li><a href="#jperl">JPerl</a></li>
+    </ul>
+
+    <p>
+    <a href="#mingw">MinGW</a> is a collection of header files
+    and import libraries that
+    allow one to use GCC and produce native Windows32 programs.
+    </p>
+
+    <p>
+    These are ports of UNIX-like environments for Win32,
+    which are useful for compiling Perl (and at least
+    Cygwin contains Perl as an installable package).
+    </p>
+    <ul>
+    <li><a href="#cygwin">Cygwin</a></li>
+    <li><a href="#uwin">U/WIN</a></li>
+    </ul>
+
+<h2><a id="zos" name="zos">IBM z/OS (OS/390)</a></h2>
+    <p>Since OS/390 R2.3 Perl <b>5.004_03</b> shipped as a standard
+    component.</p>
+    <p>
+      Starting from Perl 5.005_02 the OS/390 (also known as OS/390,
+      also known as Open Edition, also known as MVS) support has been
+      integrated to the Perl standard source code distribution.
+    </p>
+
+    <p>
+    <b>NOTE!</b>
+    As of November 2003, the <a href="#usethesource">Perl <b>5.8.1</b>
+    source</a> builds and tests at better than 99% on z/OS (OS/390).
+    (The previous 5.6.x versions, don't work well on EBCDIC platforms.)
+    </p>
+
+    <p>See also the following:</p>
+    <ul>
+    <li>a big (36 MB <a href="ftp://ftp.software.ibm.com/s390/zos/tools/redbook_5944/5944src.tar">source</a> and 37 MB <a href="ftp://ftp.software.ibm.com/s390/zos/tools/redbook_5944/5944bin.tar.Z">binaries</a>) <a href="http://www-1.ibm.com/servers/eserver/zseries/zos/unix/bpxa1ty1.html#opensrc">package</a> of open source software (<a href="ftp://ftp.software.ibm.com/s390/zos/tools/redbook_5944/README.txt">including</a> Perl <b>5.00503</b>) for z/OS, from the larger collection in ...</li>
+    <li><a href="http://www-1.ibm.com/servers/eserver/zseries/zos/unix/bpxa1ty1.html">Tools and Toys</a>: Ported Tools for z/OS, includes Perl 5.6.1</li>
+    </ul>
+
+<hr/>
+
+<h1><a id="disclaimer" name="disclaimer">Disclaimer</a></h1>
+
+<p>
+
+The inclusion or exclusion of any site, application, or product does
+not represent any special endorsement or discrimination, nor is any
+attempt at comprehensiveness made, just an educated guess at which
+ones could possibly be useful.
+
+</p><p>
+
+<strong>
+Installing software is always a security risk, installing binary
+distributions doubly so.
+</strong>
+
+</p><p>
+
+None of the CPAN maintainers, Perl developers or contributors, or any
+entities publishing this list in any media, will be liable for any
+damage caused by the transfer, storage, installation, or use of these
+distributions.  It's your risk alone.
+
+</p><p>
+
+The same in legalese:
+
+</p><p>
+
+<em>
+IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY
+FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY
+DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+</em>
+
+</p><p>
+
+<em>
+THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NON-INFRINGEMENT. THIS SOFTWARE IS PROVIDED ON AN ``AS IS'' BASIS, AND
+THE AUTHORS AND DISTRIBUTORS HAVE NO OBLIGATION TO PROVIDE
+MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+</em>
+
+</p>
+
+<hr/>
+
+<p>
+Corrections?  Additions?  Suggestions?  Please contact
+<a href="mailto:cpan@perl.org">cpan@perl.org</a>.
+Other questions?  See the
+<a href="../misc/cpan-faq.html">CPAN FAQ</a>.
+</p>
+
+<p>
+<small>Copyright Jarkko Hietaniemi <tt>&lt;jhi@iki.fi&gt;</tt> 1998-2002
+All Rights Reserved.</small>
+</p>
+
+<hr/>
+
+<table width="100%">
+<tr>
+
+<td>
+<div class="left">
+<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww.cpan.org%2Fports%2Findex.html">
+<img src="../misc/gif/valid-xhtml10.gif" alt="[Valid XHTML 1.0]" height="31" width="88"/></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.cpan.org%2Fports%2Findex.html">
+<img src="../misc/gif/vcss.gif" alt="[Valid CSS]" height="31" width="88"/></a>
+</div>
+</td>
+<td>
+<div class="right">
+
+<table width="100%">
+
+<tr>
+<td class="right">
+<small>
+CPAN master site hosted by
+</small>
+</td>
+</tr>
+<tr>
+<td class="right">
+<a href="http://www.csc.fi/suomi/funet/verkko.html.en/"><img src="../misc/gif/funet.gif" alt="FUNET" height="25" width="88"/></a>
+</td>
+</tr>
+</table>
+
+</div>
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

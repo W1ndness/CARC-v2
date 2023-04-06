@@ -1,0 +1,579 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5421912830.html
+	</FILE>
+	<URL>
+		http://www.csse.monash.edu.au/~lloyd/tildeAlgDS/Dynamic/Edit/
+	</URL>
+	<TITLE>
+		Dynamic Programming Algorithm, Edit Distance
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Dynamic Programming Algorithm, Edit Distance Dynamic Programming Algorithm (DPA) for Edit-Distance LA home Algorithms glossary Dynamic P' Edit dist' Hirschberg's Bioinformatics The words `computer' and `commuter' are very similar, and a change of just one letter, p-&gt;m will change the first word into the second. The word `sport' can be changed into `sort' by the deletion of the `p', or equivalently, `sort' can be changed into `sport' by the insertion of `p'. The edit distance of two strings, s1 and s2, is defined as the minimum number of point mutations required to change s1 into s2, where a point mutation is one of: change a letter, insert a letter or delete a letter The following recurrence relations define the edit distance, d(s1,s2), of two strings s1 and s2: d('', '') = 0 -- '' = empty string d(s, '') = d('', s) = |s| -- i.e. length of s d(s1+ch1, s2+ch2) = min( d(s1, s2) + if ch1=ch2 then 0 else 1 fi, d(s1+ch1, s2) + 1, d(s1, s2+ch2) + 1 ) The first two rules above are obviously true, so it is only necessary consider the last one. Here, neither string is the empty string, so each has a last character, ch1 and ch2 respectively. Somehow, ch1 and ch2 have to be explained in an edit of s1+ch1 into s2+ch2. If ch1 equals ch2, they can be matched for no penalty, i.e. 0, and the overall edit distance is d(s1,s2). If ch1 differs from ch2, then ch1 could be changed into ch2, i.e. 1, giving an overall cost d(s1,s2)+1. Another possibility is to delete ch1 and edit s1 into s2+ch2, d(s1,s2+ch2)+1. The last possibility is to edit s1+ch1 into s2 and then insert ch2, d(s1+ch1,s2)+1. There are no other alternatives. We take the least expensive, i.e. min, of these alternatives. The recurrence relations imply an obvious ternary-recursive routine. This is not a good idea because it is exponentially slow, and impractical for strings of more than a very few characters. Examination of the relations reveals that d(s1,s2) depends only on d(s1',s2') where s1' is shorter than s1, or s2' is shorter than s2, or both. This allows the dynamic programming technique to be used. A two-dimensional matrix, m[0..|s1|,0..|s2|] is used to hold the edit distance values: m[i,j] = d(s1[1..i], s2[1..j]) m[0,0] = 0 m[i,0] = i, i=1..|s1| m[0,j] = j, j=1..|s2| m[i,j] = min(m[i-1,j-1] + if s1[i]=s2[j] then 0 else 1 fi, m[i-1, j] + 1, m[i, j-1] + 1 ), i=1..|s1|, j=1..|s2| m[,] can be computed row by row . Row m[i,] depends only on row m[i-1,]. The time complexity of this algorithm is O(|s1|*|s2|). If s1 and s2 have a `similar' length, about `n' say, this complexity is O(n 2 ), much better than exponential! YOU NEED A BROWSER WITH NETSC@PE'S JAVASCRIPT ON! &copy; L . A l l i s o n Try `go', change the strings and experiment: Complexity The time-complexity of the algorithm is O(|s1|*|s2|), i.e. O(n 2 ) if the lengths of both strings is about `n'. The space-complexity is also O(n 2 ) if the whole of the matrix is kept for a trace-back to find an optimal alignment. If only the value of the edit distance is needed, only two rows of the matrix need be allocated; they can be &quot;recycled&quot;, and the space complexity is then O(|s1|), i.e. O(n). Variations The costs of the point mutations can be varied to be numbers other than 0 or 1. Linear gap-costs are sometimes used where a run of insertions (or deletions) of length `x', has a cost of `ax+b', for constants `a' and `b'. If b&gt;0, this penalises numerous short runs of insertions and deletions. Longest Common Subsequence The longest common subsequence (LCS) of two sequences, s1 and s2, is a subsequence of both s1 and of s2 of maximum possible length. The more alike that s1 and s2 are, the longer is their LCS. Other Algorithms There are faster algorithms for the edit distance problem, and for similar problems. Some of these algorithms are fast if certain conditions hold, e.g. the strings are similar, or dissimilar, or the alphabet is large, etc.. Ukkonen (1983) gave an algorithm with worst case time complexity O(n*d), and the average complexity is O(n+d 2 ), where n is the length of the strings, and d is their edit distance. This is fast for similar strings where d is small, i.e. when d&lt;&lt;n. Applications File Revision The Unix command diff f1 f2 finds the difference between files f1 and f2, producing an edit script to convert f1 into f2. If two (or more) computers share copies of a large file F, and someone on machine-1 edits F=F.bak , making a few changes, to give F.new , it might be very expensive and/or slow to transmit the whole revised file F.new to machine-2. However, diff F.bak F.new will give a small edit script which can be transmitted quickly to machine-2 where the local copy of the file can be updated to equal F.new . diff treats a whole line as a &quot;character&quot; and uses a special edit-distance algorithm that is fast when the &quot;alphabet&quot; is large and there are few chance matches between elements of the two strings (files). In contrast, there are many chance character-matches in DNA where the alphabet size is just 4, {A,C,G,T}. Try ` man diff ' to see the manual entry for diff. Remote Screen Update Problem If a computer program on machine-1 is being used by someone from a screen on (distant) machine-2, e.g. via rlogin etc., then machine-1 may need to update the screen on machine-2 as the computation proceeds. One approach is for the program (on machine-1) to keep a &quot;picture&quot; of what the screen currently is (on machine-2) and another picture of what it should become. The differences can be found (by an algorithm related to edit-distance) and the differences transmitted ... saving on transmission band-width. Spelling Correction Algorithms related to the edit distance may be used in spelling correctors. If a text contains a word, w, that is not in the dictionary, a `close' word, i.e. one with a small edit distance to w, may be suggested as a correction. Transposition errors are common in written text. A transposition can be treated as a deletion plus an insertion, but a simple variation on the algorithm can treat a transposition as a single point mutation. Plagiarism Detection The edit distance provides an indication of similarity that might be too close in some situations ... think about it. Molecular Biology Example An example of a DNA sequence from `Genebank' can be found [ here ]. The simple edit distance algorithm would normally be run on sequences of at most a few thousand bases. The edit distance gives an indication of how `close' two strings are. Similar measures are used to compute a distance between DNA sequences (strings over {A,C,G,T}, or protein sequences (over an alphabet of 20 amino acids), for various purposes, e.g.: to find genes or proteins that may have shared functions or properties to infer family relationships and evolutionary trees over different organisms Speech Recognition Algorithms similar to those for the edit-distance problem are used in some speech recognition systems: find a close match between a new utterance and one in a library of classified utterances. Notes V. I. Levenshtein. Binary codes capable of correcting deletions, insertions and reversals . Doklady Akademii Nauk SSSR 163 (4) p845-848, 1965, also Soviet Physics Doklady 10 (8) p707-710, Feb 1966. Discovered the basic DPA for edit distance. S. B. Needleman and C. D. Wunsch. A general method applicable to the search for similarities in the amino acid sequence of two proteins . Jrnl Molec. Biol. 48 p443-453, 1970. Defined a similarity score on molecular-biology sequences, with an O(n 2 ) algorithm that is closely related to those discussed here. Hirschberg (1975) presented a method of recovering an alignment (of an LCS) in O(n 2 ) time but in only linear, O(n)-space; see [ here ]. E. Ukkonen On approximate string matching . Proc. Int. Conf. on Foundations of Comp. Theory, Springer-Verlag, LNCS 158 p487-495, 1983. Worst case O(nd)-time, average case O(n+d 2 )-time algorithm for edit-distance, where d is the edit-distance between the two strings. See also exact , as opposed to approximate, (sub-)string [ matching ]. More research information on &quot;the&quot; DPA and Bioinformatics [ here ]. If your programming language does not support 2-dimensional arrays, and requires arrays or strings to indexed from zero upwards, some home-grown address translation will be needed to program the DPA defined above. Exercises Give a DPA for the longest common subsequence problem (LCS). Modify the edit distance DPA to that it treats a transposition as a single point-mutation. &copy; L. A., Department of Computer Science, UWA 1984, and (HTML) School of Computer Sci. &amp; SWE, Monash University 1999 Interesting: Linux free op' sys' OpenOffice free office suite ver1.1 now available The GIMP free photoshop Moving to Linux: Kiss the Blue Screen of Death Goodbye! --> Darwin Awards III Survival of the Fittest The Ig Nobel Prizes: The Annals of Improbable Research --> Non Campus Mentis including Florence of Arabia --> Denmark < < < &copy; L. Allison http://www.csse.monash.edu.au/~lloyd/ (or as otherwise indicated), School of Computer Science and Software Engineering, Monash University, Australia 3168 . Created with &quot;vi (Linux + Solaris)&quot;, charset=iso-8859-1 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<HTML>
+<HEAD> <TITLE>Dynamic Programming Algorithm, Edit Distance</TITLE>
+<META Name="description" Content="Dynamic Programming Algorithm for Edit Distance">
+<META Name="keywords" Content="Dynamic Programming Algorithm DPA Edit Distance String Search DataBase Data-Bases Longest Common Subsequence LCSS LCS Homology Sequence Similarity Sequence Analysis Algorithms Data Structures Spelling Correction">
+<!-- DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN" -->
+<!--        GENERATOR = vi (Linux + Solaris) -->
+<META NAME="GENERATOR" CONTENT="vi (Linux + Solaris)">
+<!-- L.Allison, School of Comp. Sci. and SWE, Monash Uni, Australia 3168 -->
+<!--              Content-Type = text/html;         charset=iso-8859-1 -->
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+</HEAD>
+
+<BODY BGCOLOR="#DDDDDD" TEXT="#000000" LINK="#0000FF" VLINK="#400090" ONLOAD="if(top!=self)top.location=self.location;">
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="100%">
+<TR><TD ALIGN="center">
+
+
+
+<H3>Dynamic Programming Algorithm (DPA) for Edit-Distance</H3>
+
+
+</TD></TR>
+</TABLE>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="100%">
+<TR><TD ALIGN="center" VALIGN="top" WIDTH="15%">
+
+  <TABLE BORDER="1" CELLSPACING="0" CELLPADDING="2"> <!-- left column -->
+  <TR><TD>
+
+    <A HREF="http://www.csse.monash.edu.au/~lloyd/" TARGET="_top">LA&nbsp;home</A><BR>
+
+<!-- Left  extras for children  NB. relative to children -->
+<A HREF="../../">Algorithms</A><BR>
+&nbsp;<A HREF="../../Glossary/">glossary</A><BR>
+&nbsp;<A HREF="../">Dynamic&nbsp;P'</A><BR>
+&nbsp;&nbsp;<A HREF="../Edit/">Edit&nbsp;dist'</A><BR>
+&nbsp;&nbsp;<A HREF="../Hirsch/">Hirschberg's</A><BR>
+
+<!-- Left Extras Here -->
+<BR>
+<A HREF="../../../tildeStrings/" TARGET="_top">Bioinformatics</A><BR>
+  </TD></TR>
+  </TABLE>
+
+</TD><TD ALIGN="left" VALIGN="top" WIDTH="70%">
+
+
+
+
+<P>The words `computer' and `commuter' are very similar,
+and a <EM>change</EM> of just one letter,
+p-&gt;m will change the first word into the second.
+The word `sport' can be changed
+into     `sort'
+by the <EM>deletion</EM> of the `p',
+or equivalently, `sort' can be changed into `sport'
+by the <EM>insertion</EM> of `p'.
+</P>
+<P>The <EM>edit distance</EM> of two strings, s1 and s2,
+is defined as the <EM>minimum</EM> number of <EM>point mutations</EM>
+required to change s1 into s2,
+where a point mutation is one of:
+<OL>
+<LI>change a letter,</LI>
+<LI>insert a letter or</LI>
+<LI>delete a letter</LI>
+</OL>
+</P>
+
+<P>The following recurrence relations define the edit distance, d(s1,s2),
+of two strings s1 and s2:
+<DL><DD><PRE>
+d('', '') = 0               -- '' = empty string
+d(s, '')  = d('', s) = |s|  -- i.e. length of s
+d(s1+ch1, s2+ch2)
+  = min( d(s1, s2) + if ch1=ch2 then 0 else 1 fi,
+         d(s1+ch1, s2) + 1,
+         d(s1, s2+ch2) + 1 )
+</PRE></DD></DL>
+The first two rules above are obviously true,
+so it is only necessary consider the last one.
+Here, neither string is the empty string,
+so each has a last character, ch1 and ch2 respectively.
+Somehow, ch1 and ch2 have to be explained in an <EM>edit</EM> of
+s1+ch1 into s2+ch2.
+If ch1 equals ch2, they can be <EM>matched</EM> for no penalty, i.e. 0,
+and the overall edit distance is d(s1,s2).
+If ch1 differs from ch2, then ch1 <EM>could</EM> be changed into ch2, i.e. 1,
+giving an overall cost d(s1,s2)+1.
+Another possibility is to delete ch1 and edit s1 into s2+ch2,
+d(s1,s2+ch2)+1.
+The last possibility is to edit s1+ch1 into s2 and then insert ch2,
+d(s1+ch1,s2)+1.
+There are no other alternatives.
+We take the least expensive, i.e. min, of these alternatives.
+</P>
+
+<P>The recurrence relations imply an obvious ternary-recursive routine.
+This is <EM>not</EM> a good idea because it is exponentially slow,
+and impractical for strings of more than a very few characters.
+</P>
+
+<P>Examination of the relations reveals
+that d(s1,s2) depends only on d(s1',s2') where
+s1' is shorter than s1, or s2' is shorter than s2, or both.
+This allows the <EM>dynamic programming</EM> technique to be used.
+</P>
+<P>A two-dimensional matrix, m[0..|s1|,0..|s2|] is used to hold
+the edit distance values:
+<DL><DD><PRE>
+m[i,j] = d(s1[1..i], s2[1..j])
+
+m[0,0] = 0
+m[i,0] = i,  i=1..|s1|
+m[0,j] = j,  j=1..|s2|
+
+m[i,j] = min(m[i-1,j-1]
+             + if s1[i]=s2[j] then 0 else 1 fi,
+             m[i-1, j] + 1,
+             m[i, j-1] + 1 ),  i=1..|s1|, j=1..|s2|
+</PRE></DD></DL>
+m[,] can be computed <EM>row by row</EM>.
+Row m[i,] depends only on row m[i-1,].
+The time complexity of this algorithm is O(|s1|*|s2|).
+If s1 and s2 have a `similar' length, about `n' say,
+this complexity is O(n<SUP>2</SUP>), much better than exponential!
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function DPA(s1, s2)
+ { var m = new Array();
+   var i, j;
+   for(i=0; i < s1.length + 1; i++) m[i] = new Array(); // i.e. 2-D array
+
+   m[0][0] = 0; // boundary conditions
+
+   for(j=1; j <= s2.length; j++)
+      m[0][j] = m[0][j-1]-0 + 1; // boundary conditions
+
+   for(i=1; i <= s1.length; i++)                            // outer loop
+    { m[i][0] = m[i-1][0]-0 + 1; // boundary conditions
+
+      for(j=1; j <= s2.length; j++)                         // inner loop
+       { var diag = m[i-1][j-1];
+         if( s1.charAt(i-1) != s2.charAt(j-1) ) diag++;
+
+         m[i][j] = Math.min( diag,               // match or change
+                   Math.min( m[i-1][j]-0 + 1,    // deletion
+                             m[i][j-1]-0 + 1 ) ) // insertion
+       }//for j
+    }//for i
+
+   traceBack('', '', '', m, s1.length, s2.length, s1, s2);
+   return m[s1.length][s2.length];
+ }//DPA
+
+function traceBack(row1, row2, row3, m, i, j, s1, s2)
+// recover the alignment of s1 and s2
+ { if(i > 0 && j > 0)
+    { var diag = m[i-1][j-1],  diagCh = '|';
+      if( s1.charAt(i-1) != s2.charAt(j-1) ) { diag++; diagCh = ' '; }
+
+      if( m[i][j] == diag )//LAllison comp sci monash uni au
+         traceBack(s1.charAt(i-1)+row1, diagCh+row2, s2.charAt(j-1)+row3,
+                   m, i-1, j-1, s1, s2);    // change or match
+      else if( m[i][j] == m[i-1][j]-0 + 1 ) // delete
+         traceBack(s1.charAt(i-1)+row1, ' '+row2, '-'+row3,
+                   m, i-1, j, s1, s2);
+      else
+         traceBack('-'+row1, ' '+row2, s2.charAt(j-1)+row3,
+                   m, i, j-1, s1, s2);      // insertion
+    }
+   else if(i > 0)
+      traceBack(s1.charAt(i-1)+row1, ' '+row2, '-'+row3, m, i-1, j, s1, s2);
+   else if(j > 0)
+      traceBack('-'+row1, ' '+row2, s2.charAt(j-1)+row3, m, i, j-1, s1, s2);
+   else // i==0 and j==0
+      document.DPAform.displayArea.value += row1+'\n'+row2+'\n'+row3+'\n';
+ }//traceBack
+
+
+function DPAdr()
+ { var s1 = document.DPAform.str1.value;
+   var s2 = document.DPAform.str2.value;
+   if(s1.length > 22)//nosilla l inu hsanom essc dna awu sc
+    { document.DPAform.displayArea.value = 's1 too long'; return; }
+   if(s2.length > 22)
+    { document.DPAform.displayArea.value = 's2 too long'; return; }
+
+   document.DPAform.displayArea.value = '';
+   var ds1s2 = DPA(s1, s2);
+   document.DPAform.displayArea.value += 'd(s1,s2)=' + ds1s2 + '\n';
+ }//DPAdr
+
+// -->
+</SCRIPT>
+<NOSCRIPT><P><STRONG>YOU NEED A BROWSER WITH NETSC@PE'S
+JAVASCRIPT <BLINK>ON!</BLINK></STRONG></P>
+</NOSCRIPT>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=3 ALIGN="right">
+<TR><TD ALIGN="center"><FONT SIZE="2">&copy;<BR>L<BR>.<BR>A<BR>l<BR>l<BR>i<BR>s<BR>o<BR>n<BR></FONT></TD></TR></TABLE>
+<DL><DT>Try `go', change the strings and experiment:</DT>
+<DD>
+<FORM NAME="DPAform">
+  <INPUT TYPE="text" SIZE=40 NAME="str1" VALUE="appropriate meaning"><BR>
+  <INPUT TYPE="text" SIZE=40 NAME="str2" VALUE="approximate matching">
+  <INPUT TYPE="button" VALUE="go" ONCLICK="DPAdr();"><BR>
+  <TEXTAREA NAME="displayArea" ROWS=6 COLS=40> </TEXTAREA>
+</FORM>
+</DD></DL><BR CLEAR="all">
+
+
+<H3>Complexity</H3>
+
+<P>The time-complexity of the algorithm is O(|s1|*|s2|),
+i.e. O(n<SUP>2</SUP>) if the lengths of both strings is about `n'.
+The space-complexity is also O(n<SUP>2</SUP>)
+<I>if</I> the whole of the matrix is kept for a trace-back
+to find an optimal alignment.
+If only the value of the edit distance is needed,
+only two rows of the matrix need be allocated;
+they can be &quot;recycled&quot;,
+and the space complexity is then O(|s1|), i.e. O(n).
+</P>
+
+
+<H3>Variations</H3>
+
+<P>The <EM>costs</EM> of the point mutations can be varied
+to be numbers other than 0 or 1.
+<EM>Linear gap-costs</EM> are sometimes used
+where a run of insertions (or deletions) of length `x',
+has a cost of `ax+b', for constants `a' and `b'.
+If b&gt;0, this penalises numerous short runs of insertions and deletions.
+</P>
+
+<H4>Longest Common Subsequence</H4>
+
+<P>The longest common subsequence (LCS)
+of two sequences, s1 and s2, is a subsequence of both s1 and of s2
+of maximum possible length.
+The more alike that s1 and s2 are, the longer is their LCS.
+</P>
+
+<H4>Other Algorithms</H4>
+
+<P>There are faster algorithms for the edit distance problem,
+and for similar problems.
+Some of these algorithms are fast if certain conditions hold,
+e.g. the strings are similar, or dissimilar, or the alphabet is large, etc..
+</P>
+
+<P>Ukkonen (1983) gave an algorithm with worst case time complexity O(n*d),
+and the average complexity is O(n+d<SUP>2</SUP>),
+where n is the length of the strings, and d is their edit distance.
+This is fast for similar strings where d is small, i.e. when d&lt;&lt;n.
+</P>
+
+
+<H3>Applications</H3>
+
+<H4>File Revision</H4>
+
+<P>The Unix command
+<CODE>diff f1 f2</CODE> finds the <EM>difference</EM> between
+files f1 and f2, producing an <EM>edit script</EM> to convert f1 into f2.
+If two (or more) computers share copies of a large file F,
+and someone on machine-1 edits
+<CODE>F=F.bak</CODE>, making a few changes, to give <CODE>F.new</CODE>,
+it might be very expensive and/or slow to transmit the whole
+revised file <CODE>F.new</CODE> to machine-2.
+However, <NOBR><CODE>diff F.bak F.new</CODE></NOBR>
+will give a <EM>small</EM> edit script which can be transmitted quickly
+to machine-2 where the local copy of the file can be updated to equal
+<CODE>F.new</CODE>.
+</P>
+
+<P><CODE>diff</CODE> treats a whole line as a &quot;character&quot;
+and uses a special edit-distance algorithm that is fast
+when the &quot;alphabet&quot; is large and there are few chance matches
+between elements of the two strings (files).
+In contrast, there are many chance character-matches in DNA where the
+alphabet size is just 4, {A,C,G,T}.
+</P>
+
+<P>Try `<CODE>man diff</CODE>' to see the manual entry for diff.
+</P>
+
+<H4>Remote Screen Update Problem</H4>
+
+<P>If a computer program on machine-1 is
+being used by someone from a screen on (distant) machine-2,
+e.g.&nbsp;via <CODE>rlogin</CODE> etc.,
+then machine-1 may need to update the screen on machine-2 as
+the computation proceeds.
+One approach is for the program (on machine-1) to keep
+a &quot;picture&quot; of what the screen currently is (on machine-2)
+and another picture of what it should become.
+The differences can be found (by an algorithm related to edit-distance)
+and the differences transmitted<CODE>...</CODE>
+saving on transmission band-width.
+</P>
+
+<H4>Spelling Correction</H4>
+
+<P>Algorithms related to the edit distance may be used in spelling correctors.
+If a text contains a word, w, that is not in the dictionary,
+a `close' word, i.e. one with a small edit distance to w,
+may be suggested as a correction.
+</P>
+
+<P>Transposition errors are common in written text.
+A transposition can be treated as a deletion plus an insertion,
+but a simple variation on the algorithm can treat
+a transposition as a single point mutation.
+</P>
+
+<H4>Plagiarism Detection</H4>
+
+<P>The edit distance provides an indication of similarity
+that might be too close in some situations ...
+think about it.
+</P>
+
+<H4>Molecular Biology</H4>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=3 WIDTH=30% ALIGN="right">
+<TR><TD>
+<H4>Example</H4>
+<P>An example of a DNA sequence from `Genebank'
+can be found
+[<A HREF="../HUMHBB/">here</A>].
+The simple edit distance algorithm would normally be run
+on sequences of <EM>at most</EM> a few thousand bases.
+</P>
+</TD></TR></TABLE>
+
+<P>The edit distance gives an indication of how `close' two strings are.
+Similar measures are used to compute a distance between
+DNA sequences (strings over {A,C,G,T}, or
+protein sequences (over an alphabet of 20 amino acids),
+for various purposes, e.g.:
+<OL>
+<LI>to find genes or proteins that may have shared functions or properties</LI>
+<LI>to infer family relationships and evolutionary trees over
+  different organisms</LI>
+</OL>
+</P>
+
+<H4>Speech Recognition</H4>
+
+<P>Algorithms similar to those for the edit-distance problem
+are used in some speech recognition systems:
+find a close match between a new utterance and one in
+a library of classified utterances.
+</P>
+
+
+<H3>Notes</H3>
+
+<OL>
+<LI>V. I. Levenshtein. <I>Binary codes capable of correcting deletions,
+insertions and reversals</I>.
+Doklady Akademii Nauk SSSR <B>163</B>(4) p845-848, 1965,<BR>
+also
+Soviet Physics Doklady <B>10</B>(8) p707-710, Feb 1966.<BR>
+<FONT SIZE=-1>Discovered the basic DPA for edit distance.</FONT>
+</LI>
+
+<LI>S. B. Needleman and C. D. Wunsch.
+<I>A general method applicable to the search for similarities in the
+amino acid sequence of two proteins</I>.
+Jrnl Molec. Biol. <B>48</B> p443-453, 1970.<BR>
+<FONT SIZE=-1>Defined a similarity <EM>score</EM>
+on molecular-biology sequences, with an O(n<SUP>2</SUP>) algorithm
+that is closely related to those discussed here.</FONT>
+</LI>
+
+<LI>Hirschberg (1975) presented a method of recovering an alignment (of an LCS)
+in O(n<SUP>2</SUP>) time but in only linear, O(n)-space; see
+[<A HREF="../Hirsch/">here</A>].
+</LI>
+
+<LI>E. Ukkonen
+<I>On approximate string matching</I>.
+Proc. Int. Conf. on Foundations of Comp. Theory,
+Springer-Verlag, LNCS <B>158</B> p487-495, 1983.<BR>
+<FONT SIZE=-1>Worst case O(nd)-time, average case O(n+d<SUP>2</SUP>)-time
+algorithm for edit-distance, where d is the edit-distance between
+the two strings.</FONT>
+</LI>
+
+<LI>See also <EM>exact</EM>, as opposed to approximate, (sub-)string
+[<A HREF="../../Strings/">matching</A>].
+</LI>
+
+<LI>More research information on &quot;the&quot; DPA and Bioinformatics
+[<A HREF="../../../tildeStrings/#Alignment" TARGET="_blank">here</A>].
+</LI>
+
+<LI>If your programming language does not support 2-dimensional arrays,
+and requires arrays or strings to indexed from zero upwards,
+some home-grown address translation will be needed to program
+the DPA defined above.
+</LI>
+</OL>
+
+
+<H3>Exercises</H3>
+
+<OL>
+<LI>Give a DPA for the longest common subsequence problem (LCS).
+</LI>
+
+<LI>Modify the edit distance DPA to that it treats a transposition
+as a single point-mutation.
+</LI>
+</OL>
+
+<HR SIZE="2" NOSHADE>
+&copy; L. A., Department of Computer Science, UWA 1984,
+and (HTML)
+School of Computer Sci. &amp; SWE, Monash University 1999<BR>
+
+
+
+</TD><TD ALIGN="center" VALIGN="top" WIDTH="15%">
+
+
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="2"> <!-- right column -->
+<TR><TD>
+
+
+
+
+Interesting:<BR>
+
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#FFFFDD" WIDTH="100%">
+<TR><TD>
+<FONT SIZE="+2"><A HREF="http://www.linux.org/" TARGET="_top">Linux</A></FONT><BR>
+free op' sys'<BR>
+
+<FONT SIZE="+2"><A HREF="http://www.openoffice.org/" TARGET="_top">OpenOffice</A></FONT><BR>
+free office suite<BR>
+ver1.1 now available<BR>
+
+<FONT SIZE="+2"><A HREF="http://www.gimp.org/" TARGET="_top">The GIMP</A></FONT><BR>
+free photoshop<BR>
+</TD></TR></TABLE>
+
+
+
+
+<BR>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#FFDDDD" WIDTH="100%">
+<TR><TD>
+
+<!--
+<FONT SIZE="+2"><A HREF="http://www.amazon.com/exec/obidos/ISBN=0321159985/fourwheeldriveinA/" TARGET="_top" onMouseOver="status = 'Kiss the Blue Screen of Death Goodbye!'; return true;">Moving to Linux:</A></FONT><BR>Kiss the Blue Screen of Death Goodbye!<BR>
+-->
+
+<FONT SIZE="+2"><A HREF="http://www.amazon.com/exec/obidos/ISBN=0525947736/fourwheeldriveinA/" TARGET="_top" onMouseOver="status = '(very) Unnatural Selection, laugh, cry or be grateful?'; return true;">Darwin Awards&nbsp;III</A></FONT><BR><I>Survival of the Fittest</I><BR>
+
+<!--
+<FONT SIZE="+2"><A HREF="http://www.amazon.com/exec/obidos/ISBN=0525947531/fourwheeldriveinA/" TARGET="_top" onMouseOver="status = 'research at its best'; return true;">The Ig Nobel Prizes:</A></FONT><BR>The Annals of Improbable Research<BR>
+-->
+
+<!--
+<FONT SIZE="+2"><A HREF="http://www.amazon.com/exec/obidos/ISBN=0761122745/fourwheeldriveinA/" TARGET="_top" onMouseOver="status = 'A very funny book - History from the Stoned Age, via Florence of Arabia, to the Berlin Mall.'; return true;">Non Campus Mentis</A></FONT><BR>including Florence of Arabia<BR>
+-->
+
+</TD></TR></TABLE>
+
+
+
+
+
+<BR>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#DDDDFF" WIDTH="100%">
+<TR><TD><FONT SIZE="+2">
+   <A HREF="http://www.tekno.dk/subpage.php3?article=969&survey=14&language=uk&front=1" TARGET="_top">Denmark</A>
+</FONT></TD></TR></TABLE>
+
+
+
+
+
+
+    <!-- check for a recent-enough web-browser version -->
+    <B><SCRIPT LANGUAGE="JavaScript">
+    <!--
+       var isOldBrowser = true,
+           versionStr   = navigator.appVersion,
+           appCodeName  = navigator.appCodeName.toLowerCase();
+       if( appCodeName.indexOf('mozilla') >= 0  &&
+           versionStr != null && versionStr.length > 0 )
+        { var criticalVersion = 4.7; // recommended by m0n@sh uni .au
+          var version = criticalVersion-0.001,  i,  numDot = 0,  stillOK = true;
+          for( i = 0; i < versionStr.length; i++ ) // seek a number
+           { if( versionStr.charAt(i) == '.' )
+              { numDot ++ ;  stillOK = numDot < 2; }
+             else
+                stillOK = versionStr.charAt(i) >= '0' && versionStr.charAt(i) <= '9';
+             if( ! stillOK ) break; // ...charAt(i) is bad
+           }//for
+          if( i > numDot ) // i>0, have a valid number in version[0..i-1]
+             version = new Number( versionStr.substring(0,i) ) - 0;
+          isOldBrowser = version < criticalVersion;
+        }//if
+       if( isOldBrowser )
+        { document.writeln( '<' + 'BR>Upgrade your old web ' );
+          document.writeln( '<' + 'A HREF="http://browsers.net' + 'scape.com/browsers/main.tmpl">[browser]<' + '/A>' );
+          document.writeln( '<' + 'A HREF="http://www.moz' + 'illa.org/">[now]<' + '/A>!<' + 'BR>' );
+        }//if
+    // -->
+    </SCRIPT></B>
+
+
+
+<!-- Right extras for children  NB. relative to children -->
+
+<!-- Right Extras Here -->
+  </TD></TR>
+  </TABLE>
+
+</TD></TR>
+</TABLE>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="2" WIDTH="100%">
+<TR><TD ALIGN="center">
+  <HR SIZE="4" NOSHADE>
+  <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="1">
+  <TR><TD>
+    <ADDRESS><A HREF="http://www.csse.monash.edu.au/~lloyd/README.html" TARGET="_top">&copy;</A>
+    L. Allison &nbsp;
+    <A HREF="http://www.csse.monash.edu.au/~lloyd/" TARGET="_top">http://www.csse.monash.edu.au/~lloyd/</A> &nbsp;
+    <FONT SIZE="-1"><NOBR>(or as otherwise indicated),</NOBR></FONT><BR>
+    School of Computer Science and Software Engineering,
+    <NOBR>Monash University,</NOBR>
+    <NOBR>Australia 3168</NOBR><A HREF="./">.</A>
+    </ADDRESS>
+    <FONT SIZE="-1">
+    Created with &quot;vi (Linux + Solaris)&quot;, &nbsp;  charset=iso-8859-1
+    </FONT>
+  </TD></TR>
+  </TABLE>
+  <HR SIZE="4" NOSHADE>
+</TD></TR>
+</TABLE>
+
+
+</BODY>
+</HTML>
+

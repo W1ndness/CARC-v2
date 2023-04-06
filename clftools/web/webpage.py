@@ -34,7 +34,7 @@ class Webpage:
         cleaner = Cleaner()
         self.html = cleaner.clean_html(self.html)
         self.dom = etree.HTML(self.html)
-        self.soup = BeautifulSoup(self.html, 'lxml')
+        self.soup = BeautifulSoup(self.html, 'html.parser')
 
         self.all_texts = None
         self.node_texts = None

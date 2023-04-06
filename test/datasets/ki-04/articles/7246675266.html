@@ -1,0 +1,1197 @@
+<!-- <DOCUMENT>
+	<FILE>
+		7246675266.html
+	</FILE>
+	<URL>
+		http://www.iiia.csic.es/Projects/cbr/ABC/abc-report.html
+	</URL>
+	<TITLE>
+		The ABC of adaptation_ Towards a software architecture for adaptation-centered CBR systems
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ The ABC of adaptation: Towards a software architecture for adaptation-centered CBR systems The ABC of adaptation: Towards a software architecture for adaptation-centered CBR systems Enric Plaza and Josep-Llu&#237; s Arcos IIIA - Artificial Intelligence Research Institute CSIC - Spanish Council for Scientific Research Campus UAB, 08193 Bellaterra, Catalonia, Spain. Vox: +34-93-5809570, Fax: +34-93-5809661 {enric,arcos}@iiia.csic.es http://www.iiia.csic.es Nov 12, 1999 IIIA-RR-99-22 - November 1999, IIIA Research Report N. 22 A shorter version of this article has been published: E. Plaza, J.-L. Arcos (2000), "Towards a software architecture for case-based reasoning systems", Foundations of Intelligent Systems, 12th International Symposium, ISMIS 2000. Ras, Z. W. and Ohsuga, S., (Eds.), Lecture Notes in Computer Science 1932. http://www.springer.de/cgi-bin/search_book.pl?isbn=3-540-41094-5 Abstract We present a software architecture model of adaptation in CBR. A software architecture is defined by its components and their connectors. We present a software architecture for CBR systems based on three components (a task description, a domain model, and adaptors) connected by a type of connectors called bridges. Adaptors are basic inference components that perform specific transformations to cases. Two kinds of adaptors are introduced: domain adaptors ( d-adaptors ) and case-based adaptors ( c-adaptors ). Adaptors are applied to a given problem, performing search until a sequence of adaptor instantiations is found such that a solution is achieved. Thus, in the ABC architecture adaptation is viewed as a search process on the space of adaptors. We describe how the ABC components have been used in the SaxEx application, a CBR system for generating expressive musical phrases. 1 Introduction The goal of software architectures is learning from system developing experience in order to provide the abstract recurring patterns for improving further system development. As such, software architectures contribution is mainly methodological in providing a way to specify systems. In this paper we present a software architecture for adaptation in CBR-called Adaptors-Bridges-Connectors software architecture ( ABC )-based on the notion of connectors and inspired on object-oriented and component-based methodologies. The three main elements of the ABC software architecture are (i) a task description-characterizing the goal that a CBR system pursues; (ii) a domain model-characterizing the ontology and properties of the knowledge content; and (iii) a library of adaptors-performing transformations to case-specific models. These three elements are connected with a special kind of connectors called bridges. Problem solving in ABC is considered as the construction of a case-specific model . ABC follows the ``problem solving as modeling'' view, that is to say, solving a problem consists of building a model specific to the problem that satisfies the task requirements. In this view, a knowledge system uses a domain model to enlarge the input model until a complete and correct case-specific model is built-where ``complete and correct'' are with respect to the requirements of the task. We have considered two kinds of adaptors: domain adaptors ( d-adaptors ) and case-based adaptors ( c-adaptors ). D-adaptors use some domain-specific knowledge to transform the case-specific model (in a way specified by the adaptor's competence). C-adaptors also transform the case-specific model but use domain knowledge that includes precedent cases retrieved from case memory. Adaptors are applied to the case-specific model, performing search until a sequence of adaptor instantiations is found such that transforms the initial case-specific model into a correct case-specific model that satisfies the task goals. Thus, adaptation is viewed as a search process on the space of adaptors. Since new adaptors can be applied to the first adapted object, several search strategies (such as depth-first, breadth-first, and beam search) are possible. We will show how the ABC theory has been applied in the SaxEx application, a complex real-world case-based reasoning system for generating expressive performances of melodies based on examples of human performances that are represented as structured cases. 1.1 A software architecture approach Software engineering is actively developing methodologies for software reuse based on components, design patterns and software architectures. The aim of these approaches is to learn to reuse the effort spent in developing (designing and implementing) software systems. While component-based software focuses on reuse of implementation, design patterns and software architectures focus on reuse of the design results. It is a long term goal to develop such methodology for CBR systems, and a first step is the collection of case experiences developing CBR systems as done in the CBR-Product Experience Base CBR-PEB 1 . A second step is developing a vocabulary to describe CBR system designs. In this paper we propose a draft of such a description scheme based on software architectures. Specifically, in this paper we will present a summary of our current approach and a specific example of applying it to the phase of reuse and adaptation in CBR. In general terms, a software architecture describes the (i) components, (ii) connectors, and (iii) a configuration of how the components should be connected [ 9 ]. We can consider CBR systems as a specific variant of knowledge systems that furthermore use experiential knowledge [ 5 ]. Because of this we have taken UPML, a software architecture being developed for reuse of knowledge systems, and we are developing a variant adequate for CBR systems. The Unified Problem-solving Method Development Language UPML is currently in development by the IBROW 3 consortium, and the first version is currently released [ 8 ]. Although UPML can still have future modifications we expect them to be minor and maintain stable the core ideas. A software engineering concept of interest, from the CBR stance, are connectors, and a specific kind of connectors called ``component adaptors''. A connector is a device that specifies, in an abstract way, the interaction process and properties between two components, denoted X \leftrightarrows Y. In general, however, it may be the case that their interaction protocols are not (directly) compatible. In this situation, a kind of connector called an component adaptor [ 17 ] is needed to bridge the differences in interaction protocol between two objects. The most common kind of component adaptor is a wrapper W, denoted X \leftrightarrows W(Y). A wrapped component W(Y) can now interact with the X component. What is hidden here is that there is a new component Z interacting with Y using its protocol (Z \leftrightarrows Y). Since it also interacts with X in its own protocol the wrapper effect is that of an intermediary or a broker: X \leftrightarrows (Z \leftrightarrows Y). A second kind of adaptor is one that produces a new component from Y given X, namely A(Y,X) Æ Y ¢ such that X \leftrightarrows Y ¢ . In what follows we propose to view case reuse (adaptation) in the light of software component reuse and come up with a software architecture adequate for this objective. The organization of this paper is as follows. In Section 2 we present the ABC architecture. Section 3 describes how two different families of adaptors (c-adaptors and d-adaptors) are incorporated in the Noos language. Section 4 shows the use of c-adaptors and d-adaptors in the SaxEx application. Finally, in Section 5 we present the conclusions and discuss related work. 2 The ABC architecture The three main elements of the ABC software architecture are (i) a task description, (ii) a domain model, and (iii) a library of adaptors. Figure 1 shows these three elements connected with a special kind of connector called bridge. In addition, the problem to be solved is called input in the figure and for simplicity we will include the case base into the domain model element. More specifically, we will consider that each solved problem is a model per se, and we will call it case-specific model -in other words, it is the model of an episode of solving that problem [ 5 ]. These three elements are taken from UPML where the main goal is the reuse of Problem Solving Methods (PSMs); since our goal is the reuse of cases we propose the specific architectural variation where adaptors play the role of PSMs. This transformation makes sense since PSMs are the components that perform the inferences for a knowledge system to build the case-specific model of the problem (i.e. the ``solution'' to the problem). In our approach the final case-specific model is build by the adaptors that transform the case-specific model imported from the case(s) retrieved from the case-base. Figure Figure 1: The ABC software architecture consists of three elements: a task description, a domain model, and a library of adaptors. These three elements are connected by connectors called bridges. The problem to be solved is called input in this picture. Tasks, domain models, and adaptors are conceptually distinct entities, although in practice CBR systems use an implicit description of the task and domain knowledge is tightly integrated with the CBR engine. From a methodological stance, however, it is better to consider they separate and possibly coming from distinct sources. For instance, concerning domain models, current work on ontologies 2 provide shared and reusable components that can be in principle very useful to CBR development. In a similar manner, specification of tasks is also being studied [ 15 ] to provide a vocabulary capable of describing tasks across a range of different domains of application, i.e. independent of the domain-specific vocabulary. For instance, a task description of diagnosis [ 8 ] is specified in terms of findings and hypothesis . A bridge is then needed to connect in a meaningful way task descriptions and domain models. For instance, in a medical diagnosis domain the bridge from the task description to the domain model maps findings and hypothesis to the terms manifestation and cause respectively. Therefore the methodological approach we are endorsing takes two main aspects of knowledge modeling techniques: explicit representation and conceptual separation of tasks, domain knowledge, and adaptors. From UPML software architecture [ 8 ] we adopt the bridge connectors among ABC architecture components but we change the main elements of the architecture for CBR systems. In the rest of this section we make explicit those components, while in later sections we show a particular adaptation engine developed following this methodology. Before considering in detail the components of the ABC software architecture a point needs to be clarified. It may seem ABC deals only with the adaptation phase of CBR and not with the retrieval phase. In a certain way this is true, but we are not dismissing or ignoring case retrieval. The ABC software architecture focuses on case reuse and the rest of the CBR phases (retrieve, reuse, repair, and retain) is abstracted away, simply being considered part of the knowledge contained in the domain model. For instance, the SaxEx system shown in section &#167; 4 has two main processes before adaptation: given an input case-specific model SaxEx uses domain knowledge (two musical theories) to analyze it and build a more complex case-specific model-however in the ABC architecture this process is just considered part of the domain model. Also, since ABC does not specify control then it is not reflected that the musical analysis being performed previously to retrieval and adaptation. Concerning retrieval of cases (and subparts of cases, also considered cases in SaxEx ) we consider that the set of case-specific models (the case base) is part of the domain model and we also consider that the criteria for assessing similitude and relevance of these precedent cases for the current problem is knowledge contained in the domain model. 2.1 The ABC components Tasks A task provides a way to characterize what a CBR system is intended to achieve. Task Description consist of a task name and pragmatics (author, explanation, URL, last change date) ontology (the vocabulary) specification goals (expressions characterizing the output case-models) preconditions (expressions characterizing valid input case-models) assumptions (expressions characterizing requirements on domain knowledge) The main elements for characterizing a task are goals, preconditions and assumptions. These elements are described in some logical language, the option of which is open to the designer. Preconditions state constraints to be satisfied by the problems to be solved (input case models). Goals specify properties to be satisfied by the solved problem, i.e. by the output case-specific model. Finally assumptions determine assumptions made by the task description upon the content of the domain model. Domain Models Domain models are specified using a specific vocabulary (domain ontology) and is characterized by properties, assumptions, and domain knowledge. Domain Model Description consist of a domain model name and pragmatics (author, explanation, URL, last change date) ontology (the vocabulary) specification properties (meta-expressions characterizing domain knowledge) domain knowledge (expressions describing knowledge) assumptions (expressions characterizing assumptions on domain model) Properties and assumptions both are used to characterize the knowledge content of a KB. These characteristics can be directly inferred from the domain knowledge or can be derived from requirements introduced by other components of the specification. While properties deal with characteristics of the knowledge content assumptions deal with external requirements like the environment of the system. As before, properties, assumptions, and domain knowledge are expressed in a specific formal language of choice. Task-domain bridge The td-bridge is a connector that translates (refines) the task specification to a particular domain specified in domain-model. This bridge may add assumptions (on domain knowledge) to ensure that the translation result is valid. The only formal requirement is the union of both task and domain specifications is logically consistent. Adaptors An adaptor is a special kind of connector between case-specific models-i.e. between ``models of cases''. Adaptor Description consist of an adaptor name and pragmatics (author, explanation, URL, last change date, ontology (the vocabulary) specification preconditions (expressions characterizing valid input case-models) assumptions (expressions characterizing domain knowledge needed by the adaptor to succeed) competence (expressions characterizing the output case-models) The preconditions of an adaptor specify the requirements to be satisfied by the input case-specific model for the adaptor's result be a valid one. The competence is a description of the transformation resulting from the application of the adaptor. Finally, the assumptions express the kind of domain knowledge the adaptor requires in order to be able to function. These assumptions may enlarge the requirements on domain knowledge already specified by the task. Since the case base is considered as a specific type of domain knowledge, case-based adaptation is considered to be realized by adaptors that use the experiential knowledge of the case base. Case-based adaptors are later discussed on &#167; 3 . Figure Figure 2: The adaptor is a connector between ``models of cases'', here called case-specific models. Task-Adaptor bridge The ta-bridge works like the tb-bridge above but now is connecting the task goals with the adaptors competence. Since the task goals specify the conditions for a problem to be correctly and completely solved the problem solving process is finished when an adaptor with a corresponding competence is available. There are different ways to realize the ta-bridge depending on the strategy used to implement adaptors. A common strategy is designing a component library of adaptors. Moreover, depending on the complexity of the application domain the designers may implement one-shot adaptors-i.e. adaptors with a competence that directly fulfills the task goals. In more complex situations, the ``total'' adaptor need to be constructed from the elementary components in the adaptor library to fit the needs of each particular problem. Section 4 below show that this is the implementation we have chosen for the SaxEx system. In this setting, adaptation is then a search problem over the space of adaptors whose goal is finding a combination of adaptor instantiations such that the final competence satisfies, via the bridge, the task goals. From the software architecture stance what is formally required to establish a ta-bridge is only that the adaptor competence logically implies the task goals. The ABC architecture does not establish control constraints on the implementation nor distinguishes the situations where the adaptors already exist or have to be constructed from elementary adaptor components (and whether this construction is automated or performed by hand). Adaptor-Domain bridge The da-bridge connects the assumptions upon domain knowledge specified by the adaptor with the domain model, in a similar way to how td-bridge maps task assumptions to the domain model. Some requirements of PSM upon domain models have already been established by connecting method with task and task with a domain. Now we only need to map the knowledge requirements that are exclusively for the method. 2.2 ABC and CBR systems design The very idea of software architectures is learning from system developing experience in order to provide the abstract recurring patterns for improving further system development. As such, software architectures contribution in mainly methodological in providing a way to specify systems. If we consider existing CBR systems and the ABC architecture we can observe that ABC is making explicit issues that CBR system developers already know but treat implicitly when developing new systems and that they are not explicit either on the actual CBR system. Let's take the task of a CBR system, for instance. The specific task a CBR system has always to be specified, albeit informally, in the system design phase. The ABC approach considers this a specification of the task but also provides a specific way to relate that specification to each other component of the architecture: preconditions relate to the input problem, assumptions relates with the availability of knowledge, and goals relate to the search process performed by the CBR system. Furthermore, let us consider domain knowledge. Some CBR systems use cases (and similarity) as the unique source of knowledge available to solve problems-e.g. instance-based learning approaches. However, a great number of CBR systems use domain knowledge, for different purposes and in different ways, in addition to cases. Commonly, this domain knowledge is not described as such, but it is described by explaining the implementation of the CBR system. In other words, what is described is the representation used to encode it (rules, constraints) and the role it plays in the system implementation (mainly concerning control issues). It is our personal opinion that a clarification of the role of domain knowledge in CBR systems is needed to improve the understanding of CBR and the development of CBR systems. As a result of focusing on the adaptation process, ABC suggests that retrieval (and similarity assessment) is also a type of domain knowledge. In our approach, solving a problem is constructing a case-specific model of the ``input problem''-as was established in the knowledge-level description of CBR [ 5 ]. A software architecture is a much refined level of description, so solving a problem in ABC involves building a case-specific model that satisfies the task description goals. Domain knowledge is used to perform the inference necessary to build this model 3 . The ABC architecture does not deal with control aspects of the implementation, thus the order in which domain-specific inference and case retrieval are performed is unspecified. In the next section we show an example of the use of adaptors in a particular CBR system. Since the SaxEx system is already implemented we are not fully using ABC : we are focusing on improving SaxEx 's adaptation process so we will use the top half of Figure 1 . In other words, we have added an explicit specification of tasks, adaptors, and ta-bridges. The lower half of Fig. 1 is implicit in the system, e.g. there is no da-bridge in SaxEx but we have used the da-bridge during the design phase to establish the knowledge needed-in the form of new musical knowledge that had to be added for the adaptors to work. Other CBR systems can take a similar approach towards using the ABC architecture: some parts of it are used in the system design phase but they are not explicitly present in the final system implementation. 3 Implementing Adaptors We will considered two kinds of adaptors: domain adaptors ( d-adaptors ) and case-based adaptors ( c-adaptors ). ``Transformational adaptation'' is realized by d-adaptors, i.e. by adaptors that use some domain-specific knowledge to transform the case-specific model (in a way specified by the adaptor's competence ). Moreover, that domain knowledge is the one explicitly required by the adaptor's assumptions . ``Derivational replay'' is realized by c-adaptors. Case-based adaptors also transform the case-specific model but use some domain knowledge that includes a precedent case retrieved from case memory 4 . In the simplest scenario there is only on retrieved case, but in CBR systems where parts of cases are also cases each part can be adapted in a case-based way by c-adaptors. Derivational replay in planning is one example and the SaxEx system below is another example. As shown below, adaptation in the SaxEx system combines d-adaptors and c-adaptors. The main issue to go from a specification like ABC to an actual implementation is deciding how is 1) the representation of components and bridges, and 2) the control scheme. We are implementing adaptors in Noos , a representation language designed for supporting knowledge modeling approaches to problem solving and learning [ 4 ] in which different CBR systems have been built, including SaxEx . In Noos cases are represented as feature terms [ 13 ], a formalism for representing structured cases in which any subpart of a case (feature term) is also a term-and thus is also a case. Inference is provided by problem solving methods (PSMs) that use domain knowledge to build models (or parts of models). A problem is solved when a a case-specific model is completed, and then it is retained in the case base. Retrieval is performed by specialized PSMs, retrieval methods, that use domain knowledge or heuristic principles to search the case base. Concerning the control scheme, Noos inference is on demand, i.e. follows a lazy evaluation strategy. The chain of control is thus backwards: retrieval methods determine the features of a case that they need, thus forcing the evaluation of the PSMs that infer those features needed that were not part of the input problem model. Moreover, c-adaptors use retrieval methods so the retrieval process is in fact directed by the adaptation strategy. The main ABC elements incorporated in Noos are i) an explicit description of a task, ii) adaptors, iii) and ta-bridges. Since the rest of the ABC elements is obviated, some parts of this elements need not be represented explicitly: the reason being that Noos will not be reasoning about them. Thus, a task holds only goals and preconditions, while adaptors holds only competence and preconditions. Assumptions are not present since we are not representing td-bridges nor da-bridges. The contents of these slots (goals, competence, preconditions) are expressed by feature terms. Satisfaction is represented as feature term subsumption (\sqsubseteq), thus a case-specific model C satisfies an adaptor preconditions A P i when A P i \sqsubseteq C (A P i subsumes C). The overall adaptation process is realized following an ``Adaptation as Search'' strategy. The initial state is the case-specific model of the problem; this begins with the information given as input, but the domain PSMs can enlarge this model performing inference as needed. The goal state is a complete and correct case-specific model C F that satisfies the task goals T G . The ta-bridge provides a translation from the task description vocabulary to the domain vocabulary used in adaptors and case specific models. Thus, the task goals expressed in domain vocabulary are obtained applying the bridge B TA to the task goals B TA (T G ) and therefore a solution is defined as a case-specific model C F such that B TA (T G ) \sqsubseteq C F . Adaptors are applied to the case-specific model, performing search until a sequence of adaptor instantiations is found such that transforms the initial case-specific model into C F . A classical means ends analysis technique is used with the adaptors, where preconditions establish if the adaptor is applicable to a particular case-specific model, and competence establishes the goals or subgoals achievable by instantiating the adaptor. Since Noos provides automatic backtracking, selection of adaptors and adaptor instantiation following several search strategies -such as depth-first, breadth-first, and beam search- can be easily implemented for a particular CBR system. An interesting issue left for future work is performing a case-based search of adaptor selection and instantiation: since adaptors are feature terms, they are stored in memory by Noos and they are thus amenable to be retrieved. This case-based adaptation process would be able to use both c-adaptors and d-adaptors, unifying ``transformational'' and ``generative'' adaptation in a case-based reuse of cases. 4 Adaptors in SaxEx SaxEx reuse process uses both c-adaptors and d-adaptors, thus unifying ``transformational'' and ``generative'' adaptation. Currently, the reuse process has a first phase using c-adaptors and a second one using d-adaptors. We need now to summarize the SaxEx system in order to later focus on the use of the adaptors. Figure Figure 3: The transformations of the case-specific model of the current problem in SaxEx . First, domain knowledge adds musical analysis models; then adaptors generate an expressive score; next SMS manipulates the sound track to add the expressivity features; and finally the reusable parts of the case-specific model are stores in the case base. SaxEx [ 3 ] is a system for generating expressive performances of melodies based on examples of human performances (for the moment SaxEx is focused in tenor saxophone interpretations of standard jazz ballads). SaxEx consists of two modules: a) a SMS module of sound analysis and synthesis, and b) a CBR module implemented on Noos . The input of SaxEx is musical phrase with a sound track and a score in Midi format. Thus the input case-specific model is C(sound,score), where the sound track is analyzed by SMS while the score is translated by Noos to feature terms. Domain knowledge consists of two musical theories: Narmour's implication/realization (IR) model [ 12 ] and Lerdahl and Jackendoff's generative theory of tonal music (GTTM) [ 11 ]. Noos employs IR and GTTM to construct two complementary models of the musical structure of the phrase. While the IR model holds an analysis of melodic surface, the GTTM model is concentrated on the hierarchical structures associated with a piece. Thus, an enlarged case-specific model is constructed: C(sound, score, ir, gttm). Models IR and GTTM are highly relational models that infer the most relevant relations among notes and groups of notes (see Fig. 3 ). These relational structure is then used by retrieval methods to find in the case base other (parts of) phrases that share some musical structure. The musical structure to be shared is declared in the form of patterns that are used by perspectives [ 1 ] to extract and retrieve the parts of relevant musical phrases. A retrieved case has a complete case-specific model C(score, ir, gttm, expression, performance) where i) expression is a symbolic description of the expressive parameters-such as dynamics, rubato, vibrato, and articulation-applied to each note; and ii) performance is a sound track with expressive performance. The goal of SaxEx is now to infer by CBR the expression model, and later pass it to SMS that will perform the specified changes in the sound track outputting a new expressive performance . The expression model holds knowledge such as: sound amplitude (dynamics); note anticipations/delays (rubato); note durations (rubato); attack and release times (rubato and articulation); vibrato frequency and vibrato amplitude of notes; articulation mode of each note (from legato to staccato); and note attacks (allowing effects such as reaching the pitch of a note starting from a lower pitch or increasing the noise component of the sound). Retrieval and the first phase of adaptation (using c-adaptors) are closely coupled. In this phase, SaxEx uses c-adaptors considering one note, and finishes after treating all notes in the phrase. C-adaptors use perspectives to extract a particular context around the note consisting of the closer notes, where ``closer'' means those notes related to the current note either on the score or on the IR and GTTM models. Retrieval methods instantiate their patterns on these contexts and use perspectives to find cases that satisfy them. The c-adaptor uses the retrieved (portions of) cases to determine the expressivity features of the current note based on the expressivity patterns of retrieved cases. There is one c-adaptor for each expressivity parameter. Examples of c-adaptors are majority , minority , strict majority and strict minority , continuity , non-continuity , and random . For instance, the majority c-adaptor chooses the values that were applied in the majority of precedents, while the continuity c-adaptor gives priority to precedent notes belonging to the same musical subphrase in the case base. The reuse strategy determines which adapter is used for each situation: musical expression being more an art than a science there is clearly no unique correct solution for the adaptation process. Reuse strategy can also be interactively set by SaxEx 's user, as shown in [ 2 ]. Although the first phase of the reuse process focuses on individual notes it takes into account its immediate context as given by musical knowledge. However, there are other considerations that can be only observed taking a broader view and taking into account groups of notes. Thus, the task description goals of SaxEx specify conditions that have to be satisfied by the expressive features of note groups. These goals establish two kinds of main criteria: smoothness and variation. Moreover this criteria are established both over single expressive features (e.g. pitch, attack) and over the relationships among expressive features (e.g. the relation between pitch and attack). Smoothness and variation are basically contradictory: the first tends to iron out strong variations, while the second, variation, is against repetition of structures and thus strengthens variations. The resulting expressive performance deals with the trade-offs among them with the aim of striking an overall balance pleasant to the ear. Moreover, the criterion used in each part of the musical piece depends on the musical model. For instance, according to the melodic structure of a given melody, rough changes can be enforced in some notes and prevented in other. The ta-bridge instantiates these goals for the current problem in new feature terms that describe the states to be achieved; these descriptions are in terms of the vocabulary used in adaptors and the domain model. Those descriptions that are not satisfied by the current case-specific model are matched with d-adapter's competence to select those applicable. Each adaptor selected is then instantiated on the current case-specific model and produces a new model where the incorrections have been straighten out. Notice that adaptors work on note groups, so the same adaptor may be instantiated on a number of occasions over different sequences of the musical phrase. An example of d-adaptor (based on ``smoothness'') is RAA that works upon a repetitive sequence of notes where attack time has been advanced-the anticipation of the note attack produces an expressive effect that is destroyed by the iteration of the same effect. The result produced by the RAA d-adaptor is a new sequence where the attack is maintained in the first note and less advanced in the rest of notes. There is a family of similar adaptors whose effect is, for specific situations, increasing or decreasing the value of an expressive feature upon a sequence of notes. A second example of d-adaptor (based on ``variation'') is ND that works upon a sequence of descending notes where dynamics and articulation is the same-because of this, the passage will be perceived as mechanical. The result produced by the ND d-adaptor is a new sequence where dynamics is successively decreased and the first note is emphasized (changing articulation and attack mode). Since Noos has a lazy and on demand evaluation mode, the actual control flux follows an order opposite to the order in which we have explained the different phases and steps. At the start we have the input and the task specification that is not satisfied-causing the activation of adaptors. Since d-adaptors use the expressive features of notes, and they are not in the input, the c-adaptors are activated. Finally, since c-adaptors use musical concepts, the corresponding domain knowledge (embodied in PSMs) will be activated. This activation chain has nodes where more than one option is available, so in fact Noos spawns an activation tree performing backtracking on choice nodes. Choice and backtracking is not chronological, since a language of preferences is used to specify a partial order upon alternatives at choice points. Preferences are also part of the domain knowledge and they are the basic mechanism used to control adaptor selection at all points. When the adaptation process finishes, the expressive model is passed to the SMS module starting the synthesis procedure and generating an expressive interpretation (a sound file) that can be listened and judged by the user. 5 Discussion and Related work A conceptual framework for describing CBR systems is Richter's knowledge containers [ 14 ]. An approach towards a formal model of transformational adaptation based on the knowledge containers framework is presented in [ 6 ]. The purpose of Bergmann and Wilke's paper is to characterize when properties such as soundness and completeness can be formally proven to hold in transformational adaptation. Interestingly, their approach centered on adaptation also seems to downplay the importance of retrieval (and similarity) in CBR systems, in a similar way as the ABC architecture conceives of retrieval as a part of domain knowledge. In our approach it is up to the designer of a CBR system to decide whether completeness is required or possible. Moreover, the designer may decide to use a logical language for specifying a ABC architecture and then formally prove that certain formal properties hold. For an approach of using UPML with automated reuse see [ 7 ]. It is an interesting question whether the knowledge containers framework could be refined to provide a software architecture with the containers as components-in which case appropriate connectors should be defined. There are several lines of research relevant to the work presented here that we will presently summarize. As already mentioned, the CBR-Product Experience Base CBR-PEB developed by Klaus-Dieter Althoff, Prof. Dr. Michael M. Richter is a complementary and necessary effort for CBR methodology. The objective of CBR-PEB is to archive a collection of experience situations in building CBR system. The vocabulary used by CBR-PEB is of a descriptive nature but too shallow for certain purposes. Our main goal in this paper is to argue that concepts from software engineering, such software architectures, and concepts from knowledge modeling, such as bridges and adaptors, can be suitably adapted to the CBR field and provide a vocabulary in which describe CBR systems. It is clear that a real methodology for developing CBR systems can only be achieved by a community of researchers and practitioners that work upon both sides: 1) the theoretical side for developing and refining a descriptive language and vocabulary, and 2) the empirical side that applies the theoretical concepts to real systems and provides the necessary feedback to improve (or reject) the theoretical side. Thus, an article as this one can never propose a methodology, but merely propose a starting point. Acknowledgments This research has been supported by the Esprit Long Term Research Project 27169: IBROW 3 An Intelligent Brokering Service for Knowledge-Component Reuse  on the World-Wide Web , and the CICYT Project SMASH : Systems of Multiagents for Medical Services in Hospitals . References [ 1 ] Josep Llu&#237;s Arcos and Ramon L&#243;pez de M&#225;ntaras. Perspectives: a declarative bias mechanism for case retrieval. In David Leake and Enric Plaza, editors, Case-Based Reasoning. Research and Development , number 1266 in Lecture Notes in Artificial Intelligence, pages 279-290. Springer-Verlag, 1997. [ 2 ] Josep Llu&#237;s Arcos and Ramon L&#243;pez de M&#225;ntaras. An interactive cbr approach to generate expressive music. Submitted , 1999. [ 3 ] Josep Llu&#237;s Arcos, Ramon L&#243;pez de M&#225;ntaras, and Xavier Serra. Saxex : a case-based reasoning system for generating expressive musical performances. Journal of New Music Research , 27 (3):194-210, 1998. [ 4 ] Josep Llu&#237;s Arcos and Enric Plaza. Inference and reflection in the object-centered representation language Noos. Journal of Future Generation Computer Systems , 12:173-188, 1996. [ 5 ] Eva Armengol and Enric Plaza. A knowledge level model of case-based learning. In S. Wess, K.D. Althoff, and M. Richter, editors, Topics in Case-Based Reasoning , number 837 in Lecture Notes in Artificial Intelligence, pages 53-64. Springer-Verlag, 1993. [ 6 ] R. Bergmann and W. Wilke. Towards a new formal model of transformational adaptation in case-based reasoning. In European Conference on Artificial Intelligence (ECAI'98) , 1998. [ 7 ] D. Fensel and V. R. Benjamins. Key issues for automated problem-solving methods reuse. In Proceedings of the 13th European Conference on Artificial Intelligence (ECAI-98) , pages 63-67, 1998. [ 8 ] D. Fensel, V. R. Benjamins, M. Gaspari S. Decker, R. Groenboom, W. Grosso, M. Musen, E. Motta, E. Plaza, G. Schreiber, R. Studer, and B. Wielinga. The component model of upml in a nutshell. In Proceedings of the International Workshop on Knowledge Acquisition KAW'98 , 1998. [ 9 ] D. Garland and D. Perry (Eds.). Special issue on software architectures. IEEE Transactions on Software Engineering , 1995. [ 10 ] T. R. Gruber. A translation approach to portable ontology specifications. Knowledge Acquisition , (5):188-220, 1993. [ 11 ] Fred Lerdahl and Ray Jackendoff. An overview of hierarchical structure in music. In Stephan M. Schwanaver and David A. Levitt, editors, Machine Models of Music , pages 289-312. The MIT Press, 1993. Reproduced from Music Perception. [ 12 ] Eugene Narmour. The Analysis and cognition of basic melodic structures : the implication-realization model . University of Chicago Press, 1990. [ 13 ] Enric Plaza. Cases as terms: A feature term approach to the structured representation of cases. In Manuela Veloso and Agnar Aamodt, editors, Case-Based Reasoning, ICCBR-95 , number 1010 in Lecture Notes in Artificial Intelligence, pages 265-276. Springer-Verlag, 1995. [ 14 ] M. M. Richter. The knowledge contained in similarity measures. invited talk to iccbr-95, 1995. http://wwwagr.informatik.uni-kl.de/ lsa/CBR/. [ 15 ] K. Seta, M. Ikeda, T. Shima, O. Kakusho, and R. Mizoguchi. Clepe: a task ontology based conceptual level programming environment. Trans. of IEICE , (9), 1999. [ 16 ] G van Heijst, A T Schreiber, and B J Wielinga. Using explicit ontologies in knowledg based systems development. International Journal on Human-Computer Studies , 6(46), 1997. [ 17 ] Daniel M. Yellin and Robert E. Strom. Protocol specifications and component adaptors. ACM Transactions on Programming Languages and Systems , 19(2):292-333, 1997. Footnotes: 1 Developed by Klaus-Dieter Althoff and Prof. Dr. Michael M. Richter, located at URL http://demolab.iese.fhg.de:8080/ 2 Seminal work on ontologies was developed in the Knowledge Sharing Initiative [ 10 ]. Currently, the HPKB Project is continuing this effort; the High Performance Knowledge Bases website is at http://www.teknowledge.com/HPKB/ . European work related to KADS is reported on [ 16 ] 3 Some CBR papers distinguish between primary and derived feature cases. Primary features are those appearing on the ``input case'' and derived features are inferred by the system from primary features. In our approach, inference uses domain knowledge (including cases) to build a model of the problem. 4 Recall that, for the ABC architecture, the base of cases is also part and parcel of the domain model. File translated from T E X by T T H , version 2.25. On 12 Nov 1999, 11:55. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<META NAME="GENERATOR" CONTENT="TtH 2.25">
+                                                                             
+
+<title> The ABC of adaptation: Towards a software architecture for 
+    adaptation-centered CBR systems</title>
+ 
+<H1 align=center>The <font face="helvetica">ABC</font>&nbsp;of adaptation: 
+Towards a software architecture for 
+    adaptation-centered CBR systems </H1>
+    
+<H3 align=center>  Enric Plaza and Josep-Llu&#237; s Arcos        <br>
+        IIIA - Artificial Intelligence Research Institute<br>
+        CSIC - Spanish Council for Scientific Research<br>
+        Campus UAB, 08193 Bellaterra, Catalonia, Spain.<br>
+        Vox: +34-93-5809570, Fax: +34-93-5809661<br>
+        <tt>{enric,arcos}@iiia.csic.es</tt><br>
+        <tt>http://www.iiia.csic.es</tt>  </H3>
+
+<H3 align=center>Nov 12, 1999
+  </H3>   
+  
+  <HR>
+<p>
+ IIIA-RR-99-22 <em>-  November 1999, IIIA Research Report N. 22 </em>
+ <P>
+ A shorter version of this article has been published: <BR>
+
+E. Plaza, J.-L. Arcos (2000), "Towards a software architecture for case-based reasoning systems", 
+<B>Foundations of Intelligent Systems, 12th International Symposium, ISMIS 
+2000.</B> Ras, Z. W. and Ohsuga, S., (Eds.), Lecture Notes in Computer 
+Science 1932. 
+<TT><A
+HREF="http://www.springer.de/cgi-bin/search_book.pl%3Fisbn%3D3-540-41094-5">
+http://www.springer.de/cgi-bin/search_book.pl?isbn=3-540-41094-5</A></TT>
+
+
+ 
+
+<p><HR>
+
+<H2> Abstract</H2>
+        We present a software architecture model of adaptation in CBR.  A 
+software 
+    architecture is defined by its components and their connectors.  We 
+present 
+    a software architecture for CBR systems based on three components (a 
+task 
+    description, a domain model, and adaptors) connected by a type of 
+    connectors called bridges.
+    Adaptors are basic inference components that perform specific
+    transformations to cases.
+    Two kinds of adaptors are introduced: domain adaptors 
+(<i>d-adaptors</i>) and
+    case-based adaptors (<i>c-adaptors</i>).
+    Adaptors are applied to a given problem, performing search until a 
+    sequence of adaptor instantiations is found such that a solution 
+    is achieved.
+    Thus, in the <font face="helvetica">ABC</font>&nbsp;architecture 
+adaptation is viewed as a search process 
+    on the space of adaptors.
+    We describe how the <font face="helvetica">ABC</font>&nbsp;components 
+have been used in the <font face="helvetica">SaxEx</font>&nbsp;
+    application, a CBR system for generating expressive musical phrases.
+<p>
+<p>
+        <H2><A NAME="tth_sEc1">
+1</A>&nbsp;&nbsp;Introduction</H2>
+
+<p>
+The goal of software architectures is learning from system developing 
+experience in order to provide the abstract recurring patterns for 
+improving further system development.  As such, software architectures 
+contribution is mainly methodological in providing a way to specify 
+systems.
+In this paper we present a software architecture for adaptation in 
+CBR-called Adaptors-Bridges-Connectors software 
+architecture (<font face="helvetica">ABC</font>)-based on the notion of 
+connectors and inspired on 
+object-oriented and component-based methodologies.
+
+<p>
+The three main elements of the <font 
+face="helvetica">ABC</font>&nbsp;software architecture are (i) a task 
+description-characterizing the goal that a CBR system pursues; (ii) a 
+domain model-characterizing the ontology and properties of the knowledge 
+content; and (iii) a library of adaptors-performing transformations to 
+case-specific models.  These three elements are connected with a special 
+kind of connectors called bridges.
+
+<p>
+Problem solving in <font face="helvetica">ABC</font>&nbsp;is considered as 
+the construction of a 
+<i>case-specific model</i>.  <font 
+face="helvetica">ABC</font>&nbsp;follows the ``problem solving as 
+modeling'' view, that is to say, solving a problem consists of building a 
+model specific to the problem that satisfies the task requirements.  In 
+this view, a knowledge system uses a domain model to enlarge the input 
+model until a complete and correct case-specific model is built-where 
+``complete and correct'' are with respect to the requirements of the task.
+
+<p>
+We have considered two kinds of adaptors: domain adaptors 
+(<i>d-adaptors</i>) and case-based adaptors (<i>c-adaptors</i>).  
+<i>D-adaptors</i> use some domain-specific knowledge to transform the 
+case-specific model (in a way specified by the adaptor's 
+competence).  <i>C-adaptors</i> also transform the case-specific 
+model but use domain knowledge that includes precedent cases retrieved 
+from 
+case memory.
+
+<p>
+Adaptors are applied to the case-specific model, performing search until a 
+sequence of adaptor instantiations is found such that transforms the 
+initial case-specific model into a correct case-specific model that 
+satisfies the task goals.  Thus, adaptation is viewed as a search process 
+on the space of adaptors.  Since new adaptors can be applied to the first 
+adapted object, several search strategies (such as depth-first, 
+breadth-first, and beam search) are possible.
+  
+<p>
+    We will show how the <font face="helvetica">ABC</font>&nbsp;theory has 
+been applied in the <font face="helvetica">SaxEx</font>&nbsp;
+application, a complex real-world case-based reasoning system for 
+generating expressive performances of melodies based on examples of human 
+performances that are represented as structured cases.
+
+<p>
+      <H3><A NAME="tth_sEc1.1">
+1.1</A>&nbsp;&nbsp;A software architecture approach</H3><A NAME="sec.arch">
+</A>
+
+<p>
+Software engineering is actively developing methodologies for software 
+reuse based on components, design patterns and software architectures.  
+The aim of these approaches is to learn to reuse the effort spent in 
+developing (designing and implementing) software systems.  While 
+component-based software focuses on reuse of implementation, design 
+patterns and software architectures focus on reuse of the design 
+results.  It is a long term goal to develop such methodology for CBR 
+systems, and a first step is the collection of case experiences 
+developing CBR systems as done in the CBR-Product Experience Base 
+CBR-PEB<a href="#tthFtNtAAB" name=tthFrefAAB><sup>1</sup></a>.  A 
+second step is developing a vocabulary to describe CBR 
+system designs. In this paper we propose a draft of such a 
+description scheme based on software architectures. Specifically, in 
+this paper we will present a summary of our current approach and a 
+specific example of applying it to the phase of reuse and adaptation 
+in CBR.
+
+<p>
+In general terms, a <i>software architecture</i> describes the (i) 
+components, (ii) connectors, and (iii) a configuration of how the 
+components should be connected [<a href="#Garland" 
+name=CITEGarland>9</a>]. We can consider CBR 
+systems as a specific variant of knowledge systems that furthermore 
+use experiential knowledge [<a href="#Armengol93" 
+name=CITEArmengol93>5</a>]. Because of this we have 
+taken  UPML, a software architecture being developed for reuse of 
+knowledge systems, and we are developing a variant adequate for CBR 
+systems. The Unified Problem-solving Method Development Language UPML 
+is currently in development by the <font face="helvetica">IBROW</font> 
+<sup><font face="helvetica">3</font></sup>&nbsp;consortium, and the first 
+version is currently released [<a href="#upml" name=CITEupml>8</a>]. 
+Although UPML can still 
+have future modifications we expect them to be minor and maintain 
+stable the core ideas.
+
+<p>
+A software engineering concept of interest, from the CBR stance, are 
+connectors, and a specific kind of connectors called ``component 
+adaptors''.  A 
+connector is a device that specifies, in an abstract way, the 
+interaction process and properties between two components, denoted X 
+\leftrightarrows Y.  In general, however, it may be the case that 
+their interaction protocols are not (directly) compatible.  In this 
+situation, a kind of connector called an <i>component adaptor</i> 
+[<a href="#Yellin:1997:PSCA" name=CITEYellin:1997:PSCA>17</a>] is needed 
+to bridge the differences in 
+interaction protocol between two objects.  The most common kind of 
+component adaptor is a wrapper W, denoted X \leftrightarrows W(Y).  
+A wrapped component W(Y) can now interact with the X component.  
+What is hidden here is that there is a new component Z interacting 
+with Y using its protocol (Z \leftrightarrows Y).  Since it also 
+interacts with X in its own protocol the wrapper effect is that of 
+an intermediary or a broker: X \leftrightarrows (Z \leftrightarrows Y).  A 
+second kind of adaptor is one that produces a new component 
+from Y given X, namely A(Y,X) <font face=symbol>Æ</font
+> Y<font face=symbol>¢</font
+> such that X \leftrightarrows Y<font face=symbol>¢</font
+>. In what follows we propose to view case reuse 
+(adaptation) in the light of software component reuse and come up 
+with a software architecture adequate for this objective.
+
+<p>
+The organization of this paper is as follows.  In Section&nbsp;2 we 
+present the 
+<font face="helvetica">ABC</font>&nbsp;architecture.  Section&nbsp;3 
+describes how two different families of 
+adaptors (c-adaptors and d-adaptors) are incorporated in the <font 
+face="helvetica">Noos</font>&nbsp;
+language.  Section&nbsp;4 shows the use of c-adaptors and d-adaptors in 
+the 
+<font face="helvetica">SaxEx</font>&nbsp;application.  Finally, in 
+Section&nbsp;5 we present the conclusions and 
+discuss related work.
+
+<p>
+        <H2><A NAME="tth_sEc2">
+2</A>&nbsp;&nbsp;The <font 
+face="helvetica">ABC</font>&nbsp;architecture</H2><A NAME="sec.abc">
+</A>
+
+<p>
+The three main elements of the <font 
+face="helvetica">ABC</font>&nbsp;software architecture are (i) a 
+task description, (ii) a domain model, and (iii) a library of adaptors.  
+Figure <A href="#fig:abc">1</A> shows these three elements connected with 
+a special 
+kind of connector called bridge.  In addition, the problem to be solved is 
+called <font face="helvetica">input</font> in the figure and for 
+simplicity we will include the 
+case base into the domain model element.  More specifically, we will 
+consider that each solved problem is a model per se, and we will call it 
+<i>case-specific model</i>-in other words, it is the model of an 
+episode of solving that problem [<a href="#Armengol93" 
+name=CITEArmengol93>5</a>].
+
+<p>
+These three elements are taken from UPML where the main goal is the 
+reuse of Problem Solving Methods (PSMs); since our goal is the 
+<i>reuse of cases</i> we propose the specific architectural 
+variation where adaptors play the role of PSMs.  This transformation 
+makes sense since PSMs are the components that perform the inferences 
+for a knowledge system to build the <i>case-specific model</i> of 
+the problem (i.e. the ``solution'' to the problem).  In our approach 
+the final case-specific model is build by the adaptors that transform 
+the <i>case-specific model</i> imported from the case(s) retrieved 
+from the case-base.
+
+<p>
+
+<p><A NAME="tth_fIg1">
+</A>     <center>    <a href="abc-triangle.jpg">Figure</a>     
+<center>      Figure 1: The <font 
+face="helvetica">ABC</font>&nbsp;software architecture consists of three 
+    elements: a task description, a domain model, and a library of 
+adaptors. 
+    These three elements are connected by connectors called bridges. 
+    The problem to be solved is called <font face="helvetica">input</font> 
+in this picture.</center>
+    <A NAME="fig:abc">
+</A>
+</center><p>
+<p>
+Tasks, domain models, and adaptors are conceptually distinct entities, 
+although in practice CBR systems use an implicit description of the 
+task and domain knowledge is tightly integrated with the CBR engine.  
+From a methodological stance, however, it is better to consider they 
+separate and possibly coming from distinct sources.  For instance, 
+concerning domain models, current work on ontologies<a href="#tthFtNtAAC" 
+name=tthFrefAAC><sup>2</sup></a> provide shared and reusable 
+components that can be in principle very useful to CBR development.
+
+<p>
+In a similar manner, specification of tasks is also being studied 
+[<a href="#Mizoguchi" name=CITEMizoguchi>15</a>] to provide a vocabulary 
+capable of describing tasks 
+across a range of different domains of application, i.e. independent 
+of the domain-specific vocabulary.  For instance, a task description 
+of diagnosis [<a href="#upml" name=CITEupml>8</a>] is specified in terms 
+of <font face="helvetica">findings</font> 
+and <font face="helvetica">hypothesis</font>.  A <i>bridge</i> is then 
+needed to connect 
+in a meaningful way task descriptions and domain models.  For 
+instance, in a medical diagnosis domain the bridge from the task 
+description to the domain model maps <font 
+face="helvetica">findings</font> and 
+<font face="helvetica">hypothesis</font> to the terms <font 
+face="helvetica">manifestation</font> and 
+<font face="helvetica">cause</font> respectively.
+
+<p>
+Therefore the methodological approach we are endorsing takes two main 
+aspects of knowledge modeling techniques: explicit representation and 
+conceptual separation of tasks, domain knowledge, and adaptors. From 
+UPML software architecture [<a href="#upml" name=CITEupml>8</a>] we adopt 
+the bridge 
+connectors among <font face="helvetica">ABC</font>&nbsp;architecture 
+components but we change the main 
+elements of the architecture for CBR systems. In the rest of this 
+section we make explicit those components, while in later sections we 
+show a particular adaptation engine developed following this 
+methodology.
+
+<p>
+Before considering in detail the components of the <font 
+face="helvetica">ABC</font>&nbsp;software 
+architecture a point needs to be clarified.  It may seem <font 
+face="helvetica">ABC</font>&nbsp;deals 
+only with the adaptation phase of CBR and not with the retrieval 
+phase.  In a certain way this is true, but we are not dismissing or 
+ignoring case retrieval.  The <font 
+face="helvetica">ABC</font>&nbsp;software architecture focuses on 
+<i>case reuse</i> and the rest of the CBR phases (retrieve, reuse, 
+repair, and retain) is abstracted away, simply being considered part 
+of the knowledge contained in the domain model.  For instance, the 
+<font face="helvetica">SaxEx</font>&nbsp;system shown in section 
+&#167;&nbsp;<A href="#sec.saxex">4</A> has two main processes 
+before adaptation: given an input case-specific model <font 
+face="helvetica">SaxEx</font>&nbsp;uses 
+domain knowledge (two musical theories) to analyze it and build 
+a more complex case-specific model-however in the <font 
+face="helvetica">ABC</font>&nbsp;architecture 
+this process is just considered part of the domain model.  Also, since 
+<font face="helvetica">ABC</font>&nbsp;does not specify control then it is 
+not reflected that the 
+musical analysis being performed previously to retrieval and 
+adaptation.  Concerning retrieval of cases (and subparts of cases, 
+also considered cases in <font face="helvetica">SaxEx</font>) we consider 
+that the set of 
+case-specific models (the case base) is part of the domain model and 
+we also consider that the criteria for assessing similitude and 
+relevance of these precedent cases for the current problem is 
+knowledge contained in the domain model.
+ 
+<p>
+      <H3><A NAME="tth_sEc2.1">
+2.1</A>&nbsp;&nbsp;The <font 
+face="helvetica">ABC</font>&nbsp;components</H3><A 
+NAME="subsec.components">
+</A>
+
+<p>
+
+<H3>Tasks</H3><A NAME="subsec.task">
+</A>
+
+<p>
+A task provides a way to characterize what a CBR system is intended to 
+achieve. 
+
+<p>
+<font size="-1">    
+<b>Task Description&nbsp;&nbsp;</b> consist of a <em>task name</em> and
+    
+<OL type="1">
+<p>
+        
+<li>  pragmatics (author, explanation, URL, last change date)
+        
+<li>  ontology (the vocabulary)
+        
+<li>  specification
+    
+<UL>
+<p>
+            
+<li>  goals (expressions characterizing the output case-models)
+    
+<p>
+        
+<li>  preconditions (expressions characterizing valid input 
+        case-models)
+    
+<p>
+        
+<li>   assumptions (expressions characterizing requirements on 
+        domain knowledge)
+    </UL>
+<p>
+        </OL> </font>  The main elements for characterizing a task are 
+goals, 
+preconditions and assumptions. These elements are described in some 
+logical language, the option of which is open to the designer. 
+Preconditions state constraints to be satisfied by the problems to be 
+solved (input case models). Goals specify properties to be satisfied 
+by the solved problem, i.e. by the output case-specific model. Finally 
+assumptions determine assumptions made by the task description upon 
+the  content of the domain model.
+
+<p>
+
+<H3>Domain Models</H3><A NAME="subsec.domain">
+</A>
+
+<p>
+Domain models are specified using a specific vocabulary (domain 
+ontology) and is characterized by properties, assumptions, and 
+domain knowledge. 
+
+<p>
+<font size="-1">
+<b>Domain Model Description&nbsp;&nbsp;</b> consist of a <em>domain model 
+name</em> and
+
+<OL type="1">
+<p>
+    
+<li>  pragmatics (author, explanation, URL, last change date) 
+    
+<li>  ontology (the vocabulary)
+    
+<li>  specification
+
+<UL>
+<p>
+    
+<li>  properties (meta-expressions characterizing domain 
+    knowledge)
+    
+<li>  domain knowledge (expressions describing knowledge)
+    
+<li>  assumptions (expressions characterizing assumptions on 
+    domain model)
+</UL>
+<p>
+</OL> </font>   Properties and assumptions both are used to characterize 
+the knowledge 
+content of a KB. These characteristics can be directly inferred from 
+the domain knowledge or can be derived from requirements introduced by 
+other components of the specification.  While properties deal with 
+characteristics of the knowledge content assumptions deal with 
+external requirements like the environment of the system.  As before, 
+properties, assumptions, and domain knowledge are expressed in a 
+specific formal language of choice.
+
+<p>
+
+<H3>Task-domain bridge</H3>
+
+<p>
+The <i>td-bridge</i> is a connector that translates (refines) the 
+task specification to a particular domain specified in domain-model.  
+This bridge may add assumptions (on domain knowledge) to ensure that 
+the translation result is valid. The only formal requirement is the 
+union of both task and domain specifications is logically consistent.
+
+<p>
+
+<H3>Adaptors</H3><A NAME="subsec.adaptor">
+</A>
+
+<p>
+An adaptor is a special kind of connector between case-specific 
+models-i.e. between ``models of cases''. 
+
+<p>
+<font size="-1">
+<b>Adaptor Description&nbsp;&nbsp;</b> consist of an <em>adaptor name</em> 
+and
+
+<OL type="1">
+<p>
+    
+<li>  pragmatics (author, explanation, URL, last change date, 
+    
+<li>  ontology (the vocabulary)
+    
+<li>  specification
+    
+<UL>
+<p>
+        
+<li>  preconditions (expressions characterizing valid input 
+    case-models)    
+        
+<li>  assumptions (expressions characterizing domain 
+        knowledge needed by the adaptor to succeed)    
+	
+<li> competence (expressions characterizing the output 
+	case-models)
+
+<p>
+    </UL>    </OL> </font>  The preconditions of an adaptor specify the 
+requirements to be 
+satisfied by the input case-specific model for the adaptor's result be 
+a valid one.  The competence is a description of the transformation 
+resulting from the application of the adaptor.  Finally, the 
+assumptions express the kind of domain knowledge the adaptor requires 
+in order to be able to function.  These assumptions may enlarge the 
+requirements on domain knowledge already specified by the task.  Since 
+the case base is considered as a specific type of domain knowledge, 
+case-based adaptation is considered to be realized by adaptors that 
+use the experiential knowledge of the case base.  Case-based adaptors 
+are later discussed on &#167;&nbsp;<A href="#sec.adaptors">3</A>.
+
+<p>
+
+<p><A NAME="tth_fIg2">
+</A>     <center>    <a href="adaptor.jpg">Figure</a>     <center>      
+Figure 2: The adaptor is a connector between ``models of cases'', here 
+called 
+    case-specific models.</center>
+    <A NAME="fig:adaptor">
+</A>
+</center><p>
+<p>
+
+<H3>Task-Adaptor bridge</H3>
+
+<p>
+The <i>ta-bridge</i> works like the tb-bridge above but now is 
+connecting the task goals with the adaptors competence.  Since the task 
+goals specify the conditions for a problem to be correctly and 
+completely solved the problem solving process is finished when an 
+adaptor with a corresponding competence is available. 
+
+<p>
+There are different ways to realize the ta-bridge depending on the 
+strategy used to implement adaptors.  A common strategy is designing a 
+component library of adaptors.  Moreover, depending on the complexity 
+of the application domain the designers may implement one-shot 
+adaptors-i.e. adaptors with a competence that directly fulfills the 
+task goals.  In more complex situations, the ``total'' adaptor need to 
+be constructed from the elementary components in the adaptor library 
+to fit the needs of each particular problem.  Section <A 
+href="#sec.saxex">4</A> 
+below show that this is the implementation we have chosen for the 
+<font face="helvetica">SaxEx</font>&nbsp;system. In this setting, 
+adaptation is then a search problem 
+over the space of adaptors whose goal is finding a combination of 
+adaptor instantiations such that the final competence satisfies, via 
+the bridge, the task goals.
+
+<p>
+From the software architecture stance what is formally required to 
+establish a ta-bridge is only that the adaptor competence logically 
+implies the task goals. The <font 
+face="helvetica">ABC</font>&nbsp;architecture does not establish 
+control constraints on the implementation nor distinguishes the 
+situations where the adaptors already exist or have to be constructed 
+from elementary adaptor components (and whether this construction is 
+automated or performed by hand).
+
+<p>
+    
+<H3>Adaptor-Domain bridge</H3>
+
+<p>
+The <i>da-bridge</i> connects the assumptions upon domain knowledge 
+specified by the adaptor with the domain model, in a similar way to 
+how td-bridge maps task assumptions to the domain model. 
+Some requirements of PSM upon domain models have already been 
+established by connecting method with task and task with a domain.  
+Now we only need to map the knowledge requirements that are 
+exclusively for the method.
+
+<p>
+      <H3><A NAME="tth_sEc2.2">
+2.2</A>&nbsp;&nbsp;<font face="helvetica">ABC</font>&nbsp;and CBR systems 
+design</H3>
+
+<p>
+The very idea of software architectures is learning from system 
+developing experience in order to provide the abstract recurring 
+patterns for improving further system development.  As such, software 
+architectures contribution in mainly methodological in providing a way 
+to specify systems.  If we consider existing CBR systems and the <font 
+face="helvetica">ABC</font>&nbsp;
+architecture we can observe that <font face="helvetica">ABC</font>&nbsp;is 
+making explicit issues that 
+CBR system developers already know but treat implicitly when developing 
+new systems and that they are not explicit either on the actual CBR 
+system.  Let's take the task of a CBR system, for instance.  The 
+specific task a CBR system has always to be specified, albeit 
+informally, in the system design phase. The <font 
+face="helvetica">ABC</font>&nbsp;approach considers this 
+a specification of the task but also provides a specific way to relate 
+that 
+specification to  each other component of the architecture: 
+preconditions relate to the input problem, assumptions relates with 
+the availability of knowledge, and goals relate to the search process 
+performed by the CBR system.
+
+<p>
+Furthermore, let us consider domain knowledge.  Some CBR systems use 
+cases (and similarity) as the unique source of knowledge available to 
+solve problems-e.g. instance-based learning approaches.  However, a 
+great number of CBR systems use domain knowledge, for different 
+purposes and in different ways, in addition to cases. Commonly, this 
+domain knowledge is not described as such, but it is described by 
+explaining the implementation of the CBR system. In other words, what 
+is described is the representation used to encode it (rules, 
+constraints) and the role it plays in the system implementation 
+(mainly concerning control issues). It is our personal opinion that a 
+clarification of the role of domain knowledge in CBR systems is needed 
+to improve the understanding of CBR and the development of CBR systems.
+
+<p>
+As a result of focusing on the adaptation process, <font 
+face="helvetica">ABC</font>&nbsp;suggests that 
+retrieval (and similarity assessment) is also a type of domain 
+knowledge.  In our approach, solving a problem is constructing a 
+case-specific model of the ``input problem''-as was established in 
+the knowledge-level description of CBR [<a href="#Armengol93" 
+name=CITEArmengol93>5</a>].  A software 
+architecture is a much refined level of description, so solving a 
+problem in <font face="helvetica">ABC</font>&nbsp;involves building a 
+case-specific model that satisfies 
+the task description goals.  Domain knowledge is used to perform the 
+inference necessary to build this model<a href="#tthFtNtAAD" 
+name=tthFrefAAD><sup>3</sup></a>. The <font 
+face="helvetica">ABC</font>&nbsp;architecture does not deal with 
+control aspects of the implementation, thus the order in which 
+domain-specific inference and case retrieval are performed is 
+unspecified. 
+
+<p>
+In the next section we show an example of the use of adaptors in a 
+particular CBR system.  Since the <font 
+face="helvetica">SaxEx</font>&nbsp;system is already 
+implemented we are not fully using <font face="helvetica">ABC</font>: we 
+are focusing on improving 
+<font face="helvetica">SaxEx</font>'s adaptation process so we will use 
+the top half of Figure 
+<A href="#fig:abc">1</A>.  In other words, we have added an explicit 
+specification of tasks, adaptors, and ta-bridges.  The lower half of 
+Fig.  <A href="#fig:abc">1</A> is implicit in the system, e.g. there is no 
+da-bridge in <font face="helvetica">SaxEx</font>&nbsp;but we have used the 
+da-bridge during the design 
+phase to establish the knowledge needed-in the form of new 
+musical knowledge that had to be added for the adaptors to 
+work.  Other CBR systems can take a similar approach towards using the 
+<font face="helvetica">ABC</font>&nbsp;architecture: some parts of it are 
+used in the system design 
+phase but they are not explicitly present in the final system 
+implementation.
+
+<p>
+        <H2><A NAME="tth_sEc3">
+3</A>&nbsp;&nbsp;Implementing Adaptors</H2><A NAME="sec.adaptors">
+</A>
+
+<p>
+We will considered two kinds of adaptors: domain adaptors 
+(<i>d-adaptors</i>) and case-based adaptors (<i>c-adaptors</i>).  
+``Transformational adaptation'' is realized by d-adaptors, i.e. 
+by adaptors that use some domain-specific knowledge to transform the 
+case-specific model (in a way specified by the adaptor's 
+<font face="helvetica">competence</font>).  Moreover, that domain 
+knowledge is the one 
+explicitly required by the adaptor's <font 
+face="helvetica">assumptions</font>.
+
+<p>
+``Derivational replay'' is realized by c-adaptors.  Case-based 
+adaptors also transform the case-specific model but use some domain 
+knowledge that includes a precedent case retrieved from case 
+memory<a href="#tthFtNtAAE" name=tthFrefAAE><sup>4</sup></a>.  In the 
+simplest 
+scenario there is only on retrieved case, but in CBR systems where 
+parts of cases are also cases each part can be adapted in a case-based 
+way by c-adaptors.  Derivational replay in planning is one example and 
+the <font face="helvetica">SaxEx</font>&nbsp;system below is another 
+example.  As shown below, 
+adaptation in the <font face="helvetica">SaxEx</font>&nbsp;system combines 
+d-adaptors and c-adaptors.
+
+<p>
+The main issue to go from a specification like <font 
+face="helvetica">ABC</font>&nbsp;to an actual 
+implementation is deciding how is 1) the representation of components 
+and bridges, and 2) the control scheme.  We are implementing adaptors 
+in <font face="helvetica">Noos</font>, a representation language designed 
+for supporting knowledge 
+modeling approaches to problem solving and learning [<a href="#Arcos96a" 
+name=CITEArcos96a>4</a>] in 
+which different CBR systems have been built, including <font 
+face="helvetica">SaxEx</font>.  
+In <font face="helvetica">Noos</font>&nbsp;cases are represented as 
+feature terms [<a href="#Plaza95" name=CITEPlaza95>13</a>], a 
+formalism for representing structured cases in which any subpart of a 
+case (feature term) is also a term-and thus is also a case.  
+Inference is provided by problem solving methods (PSMs) that use 
+domain knowledge to build models (or parts of models).  A problem is 
+solved when a a case-specific model is completed, and then it is 
+retained in the case base.  Retrieval is performed by specialized 
+PSMs, retrieval methods, that use domain knowledge or heuristic 
+principles to search the case base.  Concerning the control scheme, 
+<font face="helvetica">Noos</font>&nbsp;inference is on demand, i.e. 
+follows a lazy evaluation 
+strategy. The chain of control is thus backwards: retrieval methods 
+determine the features of a case that they need, thus forcing the 
+evaluation of the PSMs that infer those features needed that were not 
+part of the input problem model. Moreover, c-adaptors use retrieval 
+methods so  the retrieval process is in fact directed by the 
+adaptation strategy.
+
+<p>
+The main <font face="helvetica">ABC</font>&nbsp;elements incorporated in 
+<font face="helvetica">Noos</font>&nbsp;are i) an explicit 
+description of a task, ii) adaptors, iii) and ta-bridges.  Since the 
+rest of the <font face="helvetica">ABC</font>&nbsp;elements is obviated, 
+some parts of this elements 
+need not be represented explicitly: the reason being that <font 
+face="helvetica">Noos</font>&nbsp;will 
+not be reasoning about them.  Thus, a task holds only goals and 
+preconditions, while adaptors holds only competence and preconditions.  
+Assumptions are not present since we are not representing td-bridges 
+nor da-bridges.  The contents of these slots (goals, competence, 
+preconditions) are expressed by feature terms.  Satisfaction is 
+represented as feature term subsumption (\sqsubseteq), thus a 
+case-specific model C satisfies an adaptor preconditions 
+A<sub>P</sub><sup>i</sup> when 
+A<sub>P</sub><sup>i</sup> \sqsubseteq C (A<sub>P</sub><sup>i</sup> 
+subsumes C).
+
+<p>
+The overall adaptation process is realized following an ``Adaptation as 
+Search'' strategy.  The initial state is the case-specific model of 
+the problem; this begins with the information given as input, but the 
+domain PSMs can enlarge this model performing inference as needed.  
+The goal state is a complete and correct case-specific model C<sub>F</sub> 
+that satisfies the task goals T<sub>G</sub>.  The ta-bridge provides a 
+translation from the task description vocabulary to the domain 
+vocabulary used in adaptors and case specific models.  Thus, the task 
+goals expressed in domain vocabulary are obtained applying the bridge 
+B<sub>TA</sub> to the task goals B<sub>TA</sub>(T<sub>G</sub>) and 
+therefore a solution is 
+defined as a case-specific model C<sub>F</sub> such that
+B<sub>TA</sub>(T<sub>G</sub>) \sqsubseteq C<sub>F</sub>.
+
+<p>
+Adaptors are applied to the case-specific model, performing search 
+until a sequence of adaptor instantiations is found such that 
+transforms the initial case-specific model into C<sub>F</sub>.  A 
+classical 
+means ends analysis technique is used with the adaptors, where 
+<i>preconditions</i> establish if the adaptor is applicable to a 
+particular case-specific model, and <i>competence</i> establishes 
+the goals or subgoals achievable by instantiating the adaptor.  Since 
+<font face="helvetica">Noos</font>&nbsp;provides automatic backtracking, 
+selection of adaptors and 
+adaptor instantiation following several search strategies -such as 
+depth-first, breadth-first, and beam search- can be easily 
+implemented for a particular CBR system.  An interesting issue left 
+for future work is performing a case-based search of adaptor selection 
+and instantiation: since adaptors are feature terms, they are stored 
+in memory by <font face="helvetica">Noos</font>&nbsp;and they are thus 
+amenable to be retrieved.  This 
+case-based adaptation process would be able to use both c-adaptors and 
+d-adaptors, unifying ``transformational'' and ``generative'' 
+adaptation in a case-based reuse of cases.
+
+<p>
+        <H2><A NAME="tth_sEc4">
+4</A>&nbsp;&nbsp;Adaptors in <font face="helvetica">SaxEx</font></H2><A 
+NAME="sec.saxex">
+</A>
+
+<p>
+<font face="helvetica">SaxEx</font>&nbsp;reuse process  uses both 
+c-adaptors and d-adaptors, thus unifying 
+``transformational'' and ``generative'' adaptation. Currently, 
+the reuse process has a  first phase using c-adaptors and 
+a second one using d-adaptors. We need now to summarize the <font 
+face="helvetica">SaxEx</font>&nbsp;
+system in order to later focus on the use of the adaptors.
+
+<p>
+
+<p><A NAME="tth_fIg3">
+</A>     <center>    <a href="case-model.jpg">Figure</a>     <center>      
+Figure 3: The transformations of the case-specific model of the 
+    current problem in <font face="helvetica">SaxEx</font>. First, domain 
+knowledge adds musical 
+    analysis models; then adaptors generate an expressive score; next 
+    SMS manipulates the sound track to  add the expressivity features; 
+    and finally the reusable parts of the case-specific model are 
+    stores in the case base.</center>
+    <A NAME="fig:case-model">
+</A>
+</center><p>
+<p>
+<font face="helvetica">SaxEx</font>&nbsp;[<a href="#saxex" 
+name=CITEsaxex>3</a>] is a system for generating expressive performances of
+melodies based on examples of human performances (for the moment <font 
+face="helvetica">SaxEx</font>&nbsp;is 
+focused in tenor saxophone interpretations of standard jazz ballads).  
+<font face="helvetica">SaxEx</font>&nbsp;consists of two modules: a) a SMS 
+module of sound analysis and 
+synthesis, and b) a CBR module implemented on <font 
+face="helvetica">Noos</font>.
+The input of <font face="helvetica">SaxEx</font>&nbsp;is musical phrase 
+with a sound track and a score in 
+Midi format.  Thus the input case-specific model is C(sound,score), where 
+the <i>sound</i> track is analyzed by SMS while the <i>score</i> is 
+translated by <font face="helvetica">Noos</font>&nbsp;to feature terms.
+Domain knowledge consists of two musical theories: 
+Narmour's implication/realization (IR) model [<a href="#Narmour90" 
+name=CITENarmour90>12</a>]  and Lerdahl and 
+Jackendoff's generative theory of tonal music (GTTM) [<a href="#Lerdahl93" 
+name=CITELerdahl93>11</a>].  
+<font face="helvetica">Noos</font>&nbsp;employs IR and GTTM to construct 
+two complementary models of the musical 
+structure of the phrase. While the IR model holds an analysis of melodic 
+surface, 
+the GTTM model is concentrated on the hierarchical structures associated 
+with a piece.
+
+<p>
+Thus, an enlarged case-specific model is constructed: C(sound, score, ir, 
+gttm).  Models IR and GTTM are highly relational models that 
+infer the most relevant relations among notes and groups of notes (see 
+Fig.&nbsp;<A href="#fig:case-model">3</A>).  These relational structure is 
+then used by 
+retrieval methods to find in the case base other (parts of) phrases 
+that share some musical structure.  The musical structure to be shared 
+is declared in the form of <i>patterns</i> that are used by 
+perspectives [<a href="#Arcos97b" name=CITEArcos97b>1</a>] to extract and 
+retrieve the parts of 
+relevant musical phrases. 
+A retrieved case has a complete case-specific model C(score, ir, gttm, 
+expression, performance) where i) <i>expression</i> is a symbolic 
+description of the expressive parameters-such as dynamics, rubato, 
+vibrato, and articulation-applied to each note; and ii) 
+<i>performance</i> is a sound track with expressive performance.
+The goal of <font face="helvetica">SaxEx</font>&nbsp;is now to infer by 
+CBR the <i>expression</i> model, 
+and later pass it to SMS that will perform the specified changes in the 
+sound track outputting a new expressive <i>performance</i>.
+
+<p>
+The expression model holds knowledge such as: sound amplitude (dynamics); 
+note anticipations/delays (rubato); note durations (rubato); attack and 
+release times (rubato and articulation); vibrato frequency and vibrato 
+amplitude of notes; articulation mode of each note (from legato to 
+staccato); and note attacks (allowing effects such as reaching the pitch 
+of 
+a note starting from a lower pitch or increasing the noise component of 
+the 
+sound).
+
+<p>
+Retrieval and the first phase of adaptation (using c-adaptors) are closely 
+coupled.  In this phase, <font face="helvetica">SaxEx</font>&nbsp;uses 
+c-adaptors considering one note, and 
+finishes after treating all notes in the phrase.  C-adaptors use 
+perspectives to extract a particular context around the note consisting of 
+the closer notes, where ``closer'' means those notes related to the 
+current 
+note either on the score or on the IR and GTTM models.  Retrieval methods 
+instantiate their patterns on these contexts and use perspectives to find 
+cases that satisfy them.  The c-adaptor uses the retrieved (portions of) 
+cases to determine the expressivity features of the current note based on 
+the expressivity patterns of retrieved cases.  
+There is one c-adaptor for each expressivity parameter.  Examples of 
+c-adaptors are <font face="helvetica">majority</font>, <font 
+face="helvetica">minority</font>, <font face="helvetica">strict 
+majority</font> and <font face="helvetica">strict minority</font>, <font 
+face="helvetica">continuity</font>, 
+<font face="helvetica">non-continuity</font>, and <font 
+face="helvetica">random</font>.
+For instance, the <font face="helvetica">majority</font> c-adaptor chooses 
+the values that were 
+applied in the majority of precedents, while the <font 
+face="helvetica">continuity</font> 
+c-adaptor gives priority to precedent notes belonging to the same musical 
+subphrase in the case base.
+The reuse strategy determines which adapter is used for each situation: 
+musical expression being more an art than a science there is clearly no 
+unique correct solution for the adaptation process.  Reuse strategy can 
+also be interactively set by <font face="helvetica">SaxEx</font>'s user, 
+as shown in [<a href="#int-cbr" name=CITEint-cbr>2</a>].
+
+<p>
+Although the first phase of the reuse process focuses on individual 
+notes it takes into account its immediate context as given by musical 
+knowledge.  However, there are other considerations that can be only 
+observed taking a broader view and taking into account groups of 
+notes.  Thus, the task description goals of <font 
+face="helvetica">SaxEx</font>&nbsp;specify conditions 
+that have to be satisfied by the expressive features of note groups.  
+These goals establish two kinds of main criteria: smoothness and 
+variation.  Moreover this criteria are established both over single 
+expressive features (e.g. pitch, attack) and over the relationships 
+among expressive features (e.g. the relation between pitch and attack).  
+Smoothness and variation are basically contradictory: the first tends 
+to iron out strong variations, while the second, variation, is against 
+repetition of structures and thus strengthens variations.  The 
+resulting expressive performance deals with the trade-offs among them 
+with the aim of striking an overall balance pleasant to the ear.  
+Moreover, the criterion used in each part of the musical piece depends 
+on the musical model. 
+For instance, according to the melodic structure of a given melody, rough 
+changes can be enforced in some notes and prevented in other.
+
+<p>
+The ta-bridge instantiates these goals for the current problem in new 
+feature terms that describe the states to be achieved; these 
+descriptions are in terms of the vocabulary used in adaptors and the 
+domain model.  Those descriptions that are not satisfied by the 
+current case-specific model are matched with d-adapter's competence to 
+select those applicable.  Each adaptor selected is then instantiated 
+on the current case-specific model and produces a new model where the 
+incorrections have been straighten out.  Notice that adaptors work on 
+note groups, so the same adaptor may be instantiated on a number of 
+occasions over different sequences of the musical phrase.  
+
+<p>
+An example of d-adaptor (based on ``smoothness'') is RAA that works upon a 
+repetitive sequence of notes where attack time has been advanced-the 
+anticipation of the note attack produces an expressive effect that is 
+destroyed by the iteration of the same effect.  The result produced by the 
+RAA d-adaptor is a new sequence where the attack is maintained in the 
+first 
+note and less advanced in the rest of notes.
+There is a family of similar adaptors whose effect is, for specific 
+situations, increasing or decreasing the value of an expressive feature 
+upon a sequence of notes.
+A second example of d-adaptor (based on ``variation'') is ND that works 
+upon a sequence of descending notes where dynamics and articulation 
+is the same-because of this, the passage will be perceived as mechanical. 
+The result produced by the ND d-adaptor is a new sequence where 
+dynamics is successively decreased and the first note is emphasized 
+(changing articulation and attack mode).
+
+<p>
+Since <font face="helvetica">Noos</font>&nbsp;has a lazy and on demand 
+evaluation mode, the actual control flux 
+follows an order opposite to the order in which we have explained the 
+different phases and steps. At the start we have the input and the 
+task specification that is not satisfied-causing the activation of 
+adaptors. Since d-adaptors use the expressive features of notes, and 
+they are not in the input, the c-adaptors are activated. Finally, since 
+c-adaptors use musical concepts, the corresponding domain 
+knowledge (embodied in PSMs) will be activated. This activation chain 
+has nodes where more than one option is available, so in fact <font 
+face="helvetica">Noos</font>&nbsp;
+spawns an activation tree performing backtracking on choice nodes. 
+Choice and backtracking is not chronological, since a language of 
+<i>preferences</i> is used to specify a partial order upon 
+alternatives at choice points. Preferences are also part of the domain 
+knowledge and they are the basic mechanism used to control adaptor 
+selection at all points.
+
+<p>
+When the adaptation process finishes, the expressive model is passed to 
+the 
+SMS module starting the synthesis procedure and generating an expressive 
+interpretation (a sound file) that can be listened and judged by the 
+user.
+
+<p>
+        <H2><A NAME="tth_sEc5">
+5</A>&nbsp;&nbsp;Discussion and Related work</H2>
+
+<p>
+A conceptual framework for describing CBR systems is Richter's 
+knowledge containers [<a href="#richter95" name=CITErichter95>14</a>].  An 
+approach towards a formal 
+model of transformational adaptation based on the knowledge containers 
+framework is presented in [<a href="#BergmannWilke98" 
+name=CITEBergmannWilke98>6</a>].  The purpose of 
+Bergmann and Wilke's paper is to characterize when properties such as 
+soundness and completeness can be formally proven to hold in 
+transformational adaptation.  Interestingly, their approach centered 
+on adaptation also seems to downplay the importance of retrieval (and 
+similarity) in CBR systems, in a similar way as the <font 
+face="helvetica">ABC</font>&nbsp;architecture 
+conceives of retrieval as a part of domain knowledge.  In our approach 
+it is up to the designer of a CBR system to decide whether 
+completeness is required or possible. Moreover, the designer may 
+decide to use a logical language for specifying a <font 
+face="helvetica">ABC</font>&nbsp;architecture 
+and then formally prove that certain formal properties hold. For an 
+approach of using UPML with automated reuse see [<a href="#Auto-PSM-Reuse" 
+name=CITEAuto-PSM-Reuse>7</a>]. 
+It is an interesting question whether the knowledge containers framework 
+could be refined to provide a software architecture with the 
+containers as components-in which case appropriate connectors should 
+be defined.
+
+<p>
+There are several lines of research relevant to the work presented 
+here that we will presently summarize.  As already mentioned, the 
+CBR-Product Experience Base CBR-PEB developed by Klaus-Dieter Althoff, 
+Prof.  Dr.  Michael M. Richter is a complementary and necessary effort 
+for CBR methodology.  The objective of CBR-PEB is to archive a 
+collection of experience situations in building CBR system.  The 
+vocabulary used by CBR-PEB is of a descriptive nature but too shallow 
+for certain purposes.  Our main goal in this paper is to argue that 
+concepts from software engineering, such software architectures, and 
+concepts from knowledge modeling, such as bridges and adaptors, can be 
+suitably adapted to the CBR field and provide a vocabulary in which 
+describe CBR systems. It is clear that a real methodology for 
+developing CBR systems can only be achieved by a community of 
+researchers and practitioners that work upon both sides: 1) the 
+theoretical side for developing and refining a descriptive language 
+and vocabulary, and 2) the empirical side that applies the theoretical 
+concepts to real systems and provides the necessary feedback to 
+improve (or reject) the theoretical side. Thus, an article as this 
+one can never propose a methodology, but merely propose a starting 
+point. 
+
+<p>
+
+<H3>Acknowledgments</H3><A NAME="ack">
+</A>
+
+<p>
+This research has been supported by the Esprit Long Term Research 
+Project 27169: <font face="helvetica">IBROW</font> <sup><font 
+face="helvetica">3</font></sup>&nbsp;<i>An Intelligent Brokering Service 
+for 
+Knowledge-Component Reuse  on the World-Wide Web</i>, and the CICYT 
+Project <font face="helvetica">SMASH</font>: <i> Systems of Multiagents 
+for Medical 
+Services in Hospitals</i>.
+
+<p>
+<H2>References</H2>
+<DL compact>
+
+<p>
+<dt>[<a href="#CITEArcos97b" name=Arcos97b>1</a>]</dt><dd>
+Josep&nbsp;Llu&#237;s Arcos and Ramon L&#243;pez de M&#225;ntaras.
+ Perspectives: a declarative bias mechanism for case retrieval.
+ In David Leake and Enric Plaza, editors, <em>Case-Based Reasoning.
+  Research and Development</em>, number 1266 in Lecture Notes in Artificial
+  Intelligence, pages 279-290. Springer-Verlag, 1997.
+
+<p>
+<dt>[<a href="#CITEint-cbr" name=int-cbr>2</a>]</dt><dd>
+Josep&nbsp;Llu&#237;s Arcos and Ramon L&#243;pez de M&#225;ntaras.
+ An interactive cbr approach to generate expressive music.
+ <em>Submitted</em>, 1999.
+
+<p>
+<dt>[<a href="#CITEsaxex" name=saxex>3</a>]</dt><dd>
+Josep&nbsp;Llu&#237;s Arcos, Ramon L&#243;pez de M&#225;ntaras, and Xavier 
+Serra.
+ Saxex : a case-based reasoning system for generating expressive
+  musical performances.
+ <em>Journal of New Music Research</em>, 27 (3):194-210, 1998.
+
+<p>
+<dt>[<a href="#CITEArcos96a" name=Arcos96a>4</a>]</dt><dd>
+Josep&nbsp;Llu&#237;s Arcos and Enric Plaza.
+ Inference and reflection in the object-centered representation
+  language Noos.
+ <em>Journal of Future Generation Computer Systems</em>, 12:173-188,
+  1996.
+
+<p>
+<dt>[<a href="#CITEArmengol93" name=Armengol93>5</a>]</dt><dd>
+Eva Armengol and Enric Plaza.
+ A knowledge level model of case-based learning.
+ In S.&nbsp;Wess, K.D. Althoff, and M.&nbsp;Richter, editors, <em>Topics in
+  Case-Based Reasoning</em>, number 837 in Lecture Notes in Artificial
+  Intelligence, pages 53-64. Springer-Verlag, 1993.
+
+<p>
+<dt>[<a href="#CITEBergmannWilke98" name=BergmannWilke98>6</a>]</dt><dd>
+R.&nbsp;Bergmann and W.&nbsp;Wilke.
+ Towards a new formal model of transformational adaptation in
+  case-based reasoning.
+ In <em>European Conference on Artificial Intelligence (ECAI'98)</em>,
+  1998.
+
+<p>
+<dt>[<a href="#CITEAuto-PSM-Reuse" name=Auto-PSM-Reuse>7</a>]</dt><dd>
+D.&nbsp;Fensel and V.&nbsp;R. Benjamins.
+ Key issues for automated problem-solving methods reuse.
+ In <em>Proceedings of the 13th European Conference on Artificial
+  Intelligence (ECAI-98)</em>, pages 63-67, 1998.
+
+<p>
+<dt>[<a href="#CITEupml" name=upml>8</a>]</dt><dd>
+D.&nbsp;Fensel, V.&nbsp;R. Benjamins, M.&nbsp;Gaspari S.&nbsp;Decker, 
+R.&nbsp;Groenboom, W.&nbsp;Grosso,
+  M.&nbsp;Musen, E.&nbsp;Motta, E.&nbsp;Plaza, G.&nbsp;Schreiber, 
+R.&nbsp;Studer, and B.&nbsp;Wielinga.
+ The component model of upml in a nutshell.
+ In <em>Proceedings of the International Workshop on Knowledge
+  Acquisition KAW'98</em>, 1998.
+
+<p>
+<dt>[<a href="#CITEGarland" name=Garland>9</a>]</dt><dd>
+D.&nbsp;Garland and D.&nbsp;Perry (Eds.).
+ Special issue on software architectures.
+ <em>IEEE Transactions on Software Engineering</em>, 1995.
+
+<p>
+<dt>[<a href="#CITEGruber" name=Gruber>10</a>]</dt><dd>
+T.&nbsp;R. Gruber.
+ A translation approach to portable ontology specifications.
+ <em>Knowledge Acquisition</em>, (5):188-220, 1993.
+
+<p>
+<dt>[<a href="#CITELerdahl93" name=Lerdahl93>11</a>]</dt><dd>
+Fred Lerdahl and Ray Jackendoff.
+ An overview of hierarchical structure in music.
+ In Stephan&nbsp;M. Schwanaver and David&nbsp;A. Levitt, editors, 
+<em>Machine
+  Models of Music</em>, pages 289-312. The MIT Press, 1993.
+ Reproduced from Music Perception.
+
+<p>
+<dt>[<a href="#CITENarmour90" name=Narmour90>12</a>]</dt><dd>
+Eugene Narmour.
+ <em>The Analysis and cognition of basic melodic structures : the
+  implication-realization model</em>.
+ University of Chicago Press, 1990.
+
+<p>
+<dt>[<a href="#CITEPlaza95" name=Plaza95>13</a>]</dt><dd>
+Enric Plaza.
+ Cases as terms: A feature term approach to the structured
+  representation of cases.
+ In Manuela Veloso and Agnar Aamodt, editors, <em>Case-Based
+  Reasoning, ICCBR-95</em>, number 1010 in Lecture Notes in Artificial
+  Intelligence, pages 265-276. Springer-Verlag, 1995.
+
+<p>
+<dt>[<a href="#CITErichter95" name=richter95>14</a>]</dt><dd>
+M.&nbsp;M. Richter.
+ The knowledge contained in similarity measures. invited talk to
+  iccbr-95, 1995.
+ http://wwwagr.informatik.uni-kl.de/&nbsp;lsa/CBR/.
+
+<p>
+<dt>[<a href="#CITEMizoguchi" name=Mizoguchi>15</a>]</dt><dd>
+K.&nbsp;Seta, M.&nbsp;Ikeda, T.&nbsp;Shima, O.&nbsp;Kakusho, and 
+R.&nbsp;Mizoguchi.
+ Clepe: a task ontology based conceptual level programming
+  environment.
+ <em>Trans. of IEICE</em>, (9), 1999.
+
+<p>
+<dt>[<a href="#CITEheijst" name=heijst>16</a>]</dt><dd>
+G&nbsp;van Heijst, A&nbsp;T Schreiber, and B&nbsp;J Wielinga.
+ Using explicit ontologies in knowledg based systems development.
+ <em>International Journal on Human-Computer Studies</em>, 6(46), 1997.
+
+<p>
+<dt>[<a href="#CITEYellin:1997:PSCA" name=Yellin:1997:PSCA>17</a>]</dt><dd>
+Daniel&nbsp;M. Yellin and Robert&nbsp;E. Strom.
+ Protocol specifications and component adaptors.
+ <em>ACM Transactions on Programming Languages and Systems</em>,
+  19(2):292-333, 1997.
+
+<p>
+</DL><hr><H3>Footnotes:</H3>
+
+<p><a name=tthFtNtAAB></a><a href="#tthFrefAAB"><sup>1</sup></a> Developed 
+by Klaus-Dieter Althoff and Prof.  Dr.  
+Michael M. Richter, located at URL 
+<font 
+face="helvetica"><A HREF="http://demolab.iese.fhg.de:8080/">http://demolab.iese.fhg.de:8080/</A></font>
+
+<p><a name=tthFtNtAAC></a><a href="#tthFrefAAC"><sup>2</sup></a> Seminal 
+work on ontologies was developed in the Knowledge Sharing Initiative 
+[<a href="#Gruber" name=CITEGruber>10</a>].  Currently, the HPKB Project 
+is continuing this effort; 
+the High Performance Knowledge Bases website is at 
+<font face="helvetica">http://www.teknowledge.com/HPKB/</font>.  European 
+work related to 
+KADS is reported on [<a href="#heijst" name=CITEheijst>16</a>]
+<p><a name=tthFtNtAAD></a><a href="#tthFrefAAD"><sup>3</sup></a> Some CBR 
+papers 
+distinguish between primary and derived feature cases.  Primary 
+features are those appearing on the ``input case'' and derived 
+features are inferred by the system from primary features.  In our 
+approach, inference uses domain knowledge (including cases) to build 
+a model of the problem.
+<p><a name=tthFtNtAAE></a><a href="#tthFrefAAE"><sup>4</sup></a> Recall 
+that, for the <font face="helvetica">ABC</font>&nbsp;architecture, the 
+base of 
+cases is also part and parcel of the domain model.
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X 
+by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font 
+size="-1">T</font></sub>H</a>, version 2.25.<br>On 12 Nov 1999, 
+11:55.</small>
+</HTML>
+

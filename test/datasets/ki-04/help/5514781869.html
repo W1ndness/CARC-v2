@@ -1,0 +1,209 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5514781869.html
+	</FILE>
+	<URL>
+		http://www.scriptarchive.com/faq/wwwboard.html
+	</URL>
+	<TITLE>
+		Matt's Script Archive: WWWBoard: Frequently Asked Questions
+	</TITLE>
+	<GENRE>
+		help
+	</GENRE>
+	<PLAINTEXT>
+ Matt's Script Archive: WWWBoard: Frequently Asked Questions Matt's Script Archive: WWWBoard: Frequently Asked Questions View All FAQs @ MSA Other sites by Matt: FormMail.com - hosted form processor CGI Resource Index - 3,000+ CGI Scripts! PHP Resource Index - 650+ PHP Scripts! Web Hosting Index - web hosting solutions chumpsoft, inc. - online survey software Matt's Script Archive FormMail Guestbook phpQuestionnaire WWWBoard Readme Download Demo &gt; FAQ Simple Search Counter TextCounter Random Text TextClock Free for all Links Random Link HTTP Cookie Library Countdown Random Image SSI Random Image TextCounter C++ TextClock C++ WWWBoard Frequently Asked Questions 1. WWWAdmin Just Won't Work! 2. WWWAdmin works, but the password parts don't! 3. Does WWWBoard run on Windows NT4.0? 4. I think my WWWBoard was hacked, how so? 1. WWWAdmin Just Won't Work! One possibility is that you have your base messages in a directory other than messages/ If this is the case, go through the wwwadmin.pl and change all of the messages/ references to the correct directory. Also, if you have changed the way that messages appear on the main page, it could affect the way that WWWAdmin tries to read WWWBoard html files and then it might not properly work. 2. WWWAdmin works, but the password parts don't! Short Answer: This is most likely because you do not have the crypt function available to use or the crypt function on your OS us different than the one on the machine I created these scripts on. Long Answer: Here are some fixes: FreeBSD Changes: From: Ron Crisco To: mattw@worldwidemart.com Subject: FIXED - WWWBOARD wwwadmin.pl password problem The problem was the difference in FreeBSD's crypt. The default passwd.txt file (password WebBoard) should be: WebAdmin: $ 1 $ ae $ eVdFF2d.W9C3JSO3qluZ70 And the wwwadmin.pl file must be changed, too. Three occurrences of substr( $ passwd, 0, 2) were changed to substr( $ passwd, 3, 2) Red Hat Commercial Linux 2.0 I was told by Mark Reynolds that under Red Hat Commercial Linux 2.0 with a Kernel 1.2.13 on a i586 he had to change the password.txt file to read: WebAdmin:aeb/uHhRv6x2LQvxyii4Azf1 Systems Not Supporting Crypt (Macintosh, Windows, etc..): Near line 521 in wwwadmin.pl, you will see a block of code which looks like: $ test_passwd = crypt( $ FORM{'password'}, substr( $ passwd, 0, 2)); if ( $ test_passwd eq $ passwd && $ FORM{'username'} eq $ username) { open(PASSWD,"> $ basedir/ $ passwd_file") || &error(no_change); $ new_password = crypt( $ FORM{'passwd_1'}, substr( $ passwd, 0, 2)); ... Change this to: if ( $ FORM{'password'} eq $ passwd && $ FORM{'username'} eq $ username) { open(PASSWD,"> $ basedir/ $ passwd_file") || &error(no_change); $ new_password = $ FORM{'passwd_1'}; ... Then, on line 678 (almost the end) you will find a block of code: $ test_passwd = crypt( $ FORM{'password'}, substr( $ passwd, 0, 2)); if (!( $ test_passwd eq $ passwd && $ FORM{'username'} eq $ username)) { &error(bad_combo); } Change this to: if (!( $ FORM{'password'} eq $ passwd && $ FORM{'username'} eq $ username)) { &error(bad_combo); } Then, open up passwd.txt (or whatever you renamed your password file to) and change the line from: WebAdmin:aepTOqxOi4i8U To: WebAdmin:WebBoard Or whatever you want your new username:password combination to be. 3. Does WWWBoard run on Windows NT4.0? Short Answer: WWWBoard was originally written to run on a Unix based system, but it can be modified to run on other platforms. Long Answer: I have received the following two messages about converting WWWBoard to NT. It doesn't sound difficult, however I do not guarauntee that either of the following solutions will work for you: Date: Sun, 16 Mar 1997 16:03:26 -0400 From: Jon Robison Subject: WWWBoard on NT - One Solution I would like to offer the solution I found. On systems using Win Nt 4.0 Server, with IIS, and using Perl.exe associated with .pl files rather than PerlIS, the following is the only change needed: For the $ basedir variable, use double backslashes. i.e., mine is set to: "c:\\inetsrv\\wwwroot\\..........\\wwwboard" This was the only change needed beyond ensuring read/write permission for both the main board directory (wwwboard) and it subdirectory /messages. From: Steve Whan Subject: WWWBoard on NT 4.0 We only had to make two types of fixes: 1) $ basedir = "q:\\InetPub\\wwwroot\\live\\buysell"; 2) The OPEN statements now look like this: open(NEWFILE,"> $ basedir\\ $ mesgdir\\ $ num\. $ ext") || die $ !; 4. I think my WWWBoard was hacked, how so? Short Answer: WWWBoard doesn't have the tightest security. If you are you are using version 2.0 ALPHA 2, upgrade to ALPHA 2.1, as I fixed a couple major problems. Long Answer: WWWBoard 2.0 ALPHA 2 did not check the value of the followup field, and some people found an exploit that would clobber specific messages, or overload the size of the HTML file and fill up the disk using this exploit. This has been fixed in version 2.0 ALPHA 2.1, and can be fixed simply by finding lines 133 - 135 (in the standard distribution of ALPHA 2.0) which look like: if ( $ FORM{'followup'}) { $ followup = "1"; @followup_num = split(/,/, $ FORM{'followup'}); and adding the following afterwards which refuses to allow any form that has a followup number duplicated or non-numeric to be posted: # Changes based in part on information contained in BugTraq archives # message 'WWWBoard Vulnerability' posted by Samuel Sparling Nov-09-1998. # Also requires that each followup number is in fact a number, to # prevent message clobbering. local(%fcheck); foreach $ fn (@followup_num) { if ( $ fn !~ /^\d+ $ / || $ fcheck{ $ fn}) { &error('followup_data'); } $ fcheck{ $ fn} = 1; } @followup_num = keys %fcheck; Another common trick is for people to test dictionary attacks against the well-known location of passwd.txt. In order to help secure the board further you can choose a password that is not easily guessed (not a word) or even move your password file to a new location (and change the appropriate filename in wwwadmin.pl). Useful Web Resources: HostingMetro.com Cheap Cpanel web hosting as low as $ 3.99/month! Research Hotels and Vacations Free unbiased reviews, articles and great deals ... [ Linking to MSA | Advertising Opportunities ] Matt Wright - mattw@scriptarchive.com &copy; 1995 - 2002 Matt's Script Archive, Inc. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html>
+ <head>
+  <title>Matt's Script Archive: WWWBoard: Frequently Asked Questions</title>
+  <link rel="stylesheet" type="text/css" href="/msa.css">
+ </head>
+<body bgcolor=#FFFFFF text=#000000 link=#7777AA vlink=#7777AA leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+   <tr bgcolor=#DBE5EC><td><table border=0 cellpadding=0 cellspacing=0 width=800><tr><td width=300 nowrap><a href="/"><img src="/images/msalogo.gif" width=200 height=80 border=0 alt="MSA - Matt's Script Archive"></a></td>
+       <td width=500><script type="text/javascript"><!--
+google_ad_client = "pub-4999353868066414";
+google_alternate_ad_url = "http://www.scriptarchive.com/content/fyh_468.html";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_color_border = "000000";
+google_color_bg = "ECF1F4";
+google_color_link = "D14848";
+google_color_url = "D14848";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></td></tr></table></td></tr>
+   <tr><td class=LocationText><table border=0 cellpadding=1 cellspacing=0 width=798><tr><td>&nbsp;<a href="/index.html" class=ProgramLink>Matt's Script Archive:</a> <a href="/wwwboard.html" class=ProgramLink>WWWBoard:</a> <b>Frequently Asked Questions</b></td><td align=right><b><a href="/faq/">View All FAQs @ MSA</a></b></td></tr></table></td></tr>
+
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+   <tr><td bgcolor=#DBE5EC width=168 valign=top nowrap class=DescriptionText>
+&nbsp;<br>        <table border=0 cellpadding=0 cellspacing=0 width=160>
+        <tr><td class=DescriptionText>&nbsp; <b>Other sites by Matt:</b></td></tr>
+        <tr><td class=lhBox>&nbsp;<a href="http://www.formmail.com/" class=AdvertSide><b>FormMail.com</b></a><br>
+&nbsp;&nbsp;&nbsp;- <a href="http://www.formmail.com/" style="color: #000000; text-decoration: none;">hosted form processor</a><br>
+&nbsp;<a href="http://cgi.resourceindex.com" class=AdvertSide><b>CGI Resource Index</b></a><br>
+&nbsp;&nbsp;&nbsp;- <a href="http://cgi.resourceindex.com/" style="color: #000000; text-decoration: none;">3,000+ CGI Scripts!</a><br>
+&nbsp;<a href="http://php.resourceindex.com" class=AdvertSide><b>PHP Resource Index</b></a><br>
+&nbsp;&nbsp;&nbsp;- <a href="http://php.resourceindex.com/" style="color: #000000; text-decoration: none;">650+ PHP Scripts!</a><br>
+&nbsp;<a href="http://webhosting.resourceindex.com" class=AdvertSide><b>Web Hosting Index</b></a><br>
+&nbsp;&nbsp;&nbsp;- <a href="http://webhosting.resourceindex.com/" style="color: #000000; text-decoration: none;">web hosting solutions</a><br>
+&nbsp;<a href="http://www.chumpsoft.com/" class=AdvertSide><b>chumpsoft, inc.</b></a><br>
+&nbsp;&nbsp;&nbsp;- <a href="http://www.chumpsoft.com/" style="color: #000000; text-decoration: none;">online survey software</a></td></tr></table>
+<hr size=1 noshade><table border=0 cellpadding=0 cellspacing=0 width=165><tr><td class=DescriptionText>
+ &nbsp; <b><a href="/index.html"><b>Matt's Script Archive</b></a></b><br>
+ &nbsp; &nbsp; <a href="/formmail.html">FormMail</a><br>
+ &nbsp; &nbsp; <a href="/guestbook.html">Guestbook</a><br>
+ &nbsp; &nbsp; <a href="http://www.scriptarchive.com/MercuryAd/mAdClick.cgi?p_id=133&st_id=12&zt_id=32&pt_id=54" onMouseover="window.status='http://www.chumpsoft.com/products/phpq/'; return true" onMouseout="window.status=''; return true" class=ExternLink>phpQuestionnaire</a><br> &nbsp; &nbsp; <b><a href="/wwwboard.html">WWWBoard</a></b><br>
+ &nbsp; &nbsp; &nbsp; <a href="/readme/wwwboard.html">Readme</a><br>
+ &nbsp; &nbsp; &nbsp; <a href="/download.cgi?s=wwwboard">Download</a><br>
+ &nbsp; &nbsp; &nbsp; <a href="/demos/wwwboard/wwwboard.html">Demo</a><br>
+ &nbsp; &nbsp; &nbsp; <b style="background-color: #ECF1F4;">&gt;&nbsp;FAQ&nbsp;</b><br>
+ &nbsp; &nbsp; <a href="/search.html">Simple Search</a><br>
+ &nbsp; &nbsp; <a href="/counter.html">Counter</a><br>
+ &nbsp; &nbsp; <a href="/textcounter.html">TextCounter</a><br>
+ &nbsp; &nbsp; <a href="/rand_text.html">Random Text</a><br>
+ &nbsp; &nbsp; <a href="/textclock.html">TextClock</a><br>
+ &nbsp; &nbsp; <a href="/links.html">Free for all Links</a><br>
+ &nbsp; &nbsp; <a href="/rand_link.html">Random Link</a><br>
+ &nbsp; &nbsp; <a href="/cookielib.html">HTTP Cookie Library</a><br>
+ &nbsp; &nbsp; <a href="/countdown.html">Countdown</a><br>
+ &nbsp; &nbsp; <a href="/rand_image.html">Random Image</a><br>
+ &nbsp; &nbsp; <a href="/ssi_image.html">SSI Random Image</a><br>
+ &nbsp; &nbsp; <a href="/textcounter_cpp.html">TextCounter C++</a><br>
+ &nbsp; &nbsp; <a href="/textclock_cpp.html">TextClock C++</a><br>
+</td></tr></table><hr size=1 noshade>
+    
+</td><td width=1 class=LeftVertical><img src="/images/dot.gif" width=1 height=1 border=0 alt=""></td><td width=502 valign=top nowrap>
+<table border=0 cellpadding=0 cellspacing=0 width=502>
+ <tr><td class=pSectionTitle><b class=DetailHeader>WWWBoard Frequently Asked Questions</b></td></tr>
+ <tr><td class=DetailTextBox>
+&nbsp; &nbsp; 1. <a href="#q1" class=PageLink>WWWAdmin Just Won't Work!</a><br>
+&nbsp; &nbsp; 2. <a href="#q2" class=PageLink>WWWAdmin works, but the password parts don't!</a><br>
+&nbsp; &nbsp; 3. <a href="#q3" class=PageLink>Does WWWBoard run on Windows NT4.0?</a><br>
+&nbsp; &nbsp; 4. <a href="#q4" class=PageLink>I think my WWWBoard was hacked, how so?</a></td></tr>
+
+ <tr><td class=pSectionTitle><a name="q1" class=DetailHeader>1. WWWAdmin Just Won't Work!</a></td></tr>
+ <tr><td class=DetailTextBox>One possibility is that you have your base messages in a directory other than messages/ If this is the case, go through the wwwadmin.pl and change all of the messages/ references to the correct directory.<br><br>
+Also, if you have changed the way that messages appear on the main page, it could affect the way that WWWAdmin tries to read WWWBoard html files and then it might not properly work.</td></tr>
+
+ <tr><td class=pSectionTitle><a name="q2" class=DetailHeader>2. WWWAdmin works, but the password parts don't!</a></td></tr>
+ <tr><td class=DetailTextBox><b>Short Answer:</b><br><br>
+This is most likely because you do not have the crypt function available to use or the crypt function on your OS us different than the one on the machine I created these scripts on.<br><br>
+<b>Long Answer:</b><br><br>
+Here are some fixes:<br><br>
+<b>FreeBSD Changes:</b><br> 
+<tt>From: Ron Crisco <br>
+To: mattw@worldwidemart.com<br>
+Subject: FIXED - WWWBOARD wwwadmin.pl password problem<br><br>
+The problem was the difference in FreeBSD's crypt.
+The default passwd.txt file (password WebBoard) should be:<br><br>
+    WebAdmin:$1$ae$eVdFF2d.W9C3JSO3qluZ70<br><br>
+And the wwwadmin.pl file must be changed, too.<br><br>
+Three occurrences of<br><br>
+    substr($passwd, 0, 2)<br><br>
+were changed to<br><br>
+    substr($passwd, 3, 2)</tt><br><br>
+<b>Red Hat Commercial Linux 2.0</b><br> 
+I was told by Mark Reynolds that under Red Hat Commercial Linux 2.0 with a Kernel 1.2.13 on a i586 he had to change the password.txt file to read:<br><br>
+<tt>WebAdmin:aeb/uHhRv6x2LQvxyii4Azf1</tt><br><br>
+<b>Systems Not Supporting Crypt (Macintosh, Windows, etc..):</b><br>
+Near line 521 in wwwadmin.pl, you will see a block of code which looks like:<br><br>
+   <tt>$test_passwd = crypt($FORM{'password'}, substr($passwd, 0, 2));<br>
+   if ($test_passwd eq $passwd && $FORM{'username'} eq $username) {<br>
+      open(PASSWD,">$basedir/$passwd_file") || &error(no_change);<br>
+      $new_password = crypt($FORM{'passwd_1'}, substr($passwd, 0, 2));<br>
+...</tt><br><br>
+Change this to:<br><br>
+   <tt>if ($FORM{'password'} eq $passwd && $FORM{'username'} eq $username) {<br>
+      open(PASSWD,">$basedir/$passwd_file") || &error(no_change);<br>
+      $new_password = $FORM{'passwd_1'};<br>
+...</tt><br><br>
+Then, on line 678 (almost the end) you will find a block of code:<br><br>
+   <tt>$test_passwd = crypt($FORM{'password'}, substr($passwd, 0, 2));<br>
+   if (!($test_passwd eq $passwd && $FORM{'username'} eq $username)) {<br>
+      &error(bad_combo);<br>
+   }</tt><br><br>
+Change this to:<br><br>
+   <tt>if (!($FORM{'password'} eq $passwd && $FORM{'username'} eq $username)) {<br>
+      &error(bad_combo);<br>
+   }</tt><br><br>
+Then, open up passwd.txt (or whatever you renamed your password file to) and change the line from:<br><br>
+<tt>WebAdmin:aepTOqxOi4i8U</tt><br><br>
+To:<br><br>
+<tt>WebAdmin:WebBoard</tt><br><br>
+Or whatever you want your new username:password combination to be.</td></tr>
+
+ <tr><td class=pSectionTitle><a name="q3" class=DetailHeader>3. Does WWWBoard run on Windows NT4.0?</a></td></tr>
+ <tr><td class=DetailTextBox><b>Short Answer:</b><br><br>
+WWWBoard was originally written to run on a Unix based system, but it can be modified to run on other platforms.<br><br>
+<b>Long Answer:</b><br><br>
+I have received the following two messages about converting WWWBoard to NT. It doesn't sound difficult, however I do not guarauntee that either of the following solutions will work for you:<br><br>
+ <tt>Date: Sun, 16 Mar 1997 16:03:26 -0400<br>
+ From: Jon Robison<br>
+ Subject: WWWBoard on NT - One Solution<br><br>
+I would like to offer the solution I found.<br><br>
+ On systems using Win Nt 4.0 Server, with IIS, and using<br>
+ Perl.exe associated with .pl files rather than PerlIS, the<br>
+ following is the only change needed:<br><br>
+ For the $basedir variable, use double backslashes. i.e., mine<br>
+ is set to: "c:\\inetsrv\\wwwroot\\..........\\wwwboard"<br><br>
+ This was the only change needed beyond ensuring read/write<br>
+ permission for both the main board directory (wwwboard) and<br>
+ it subdirectory /messages.<br><br>
+From: Steve Whan <br>
+Subject: WWWBoard on NT 4.0<br><br>
+We only had to make two types of fixes:<br><br>
+1) $basedir = "q:\\InetPub\\wwwroot\\live\\buysell";<br>
+2) The OPEN statements now look like this: <br>
+open(NEWFILE,">$basedir\\$mesgdir\\$num\.$ext") || die $!;</td></tr>
+
+ <tr><td class=pSectionTitle><a name="q4" class=DetailHeader>4. I think my WWWBoard was hacked, how so?</a></td></tr>
+ <tr><td class=DetailTextBox>
+<b>Short Answer:</b><br><br>
+WWWBoard doesn't have the tightest security. If you are you are using version 2.0 ALPHA 2, upgrade to ALPHA 2.1, as I fixed a couple major problems.
+<br><br>
+<b>Long Answer:</b>
+<br><br>
+WWWBoard 2.0 ALPHA 2 did not check the value of the followup field, and some people found an exploit that would clobber specific messages, or overload the size of the HTML file and fill up the disk using this exploit. This has been fixed in version 2.0 ALPHA 2.1, and can be fixed simply by finding lines 133 - 135 (in the standard distribution of ALPHA 2.0) which look like:
+<br><br>
+   <tt>if ($FORM{'followup'}) {<br>
+      $followup = "1";<br>
+      @followup_num = split(/,/,$FORM{'followup'});</tt>
+<br><br>
+and adding the following afterwards which refuses to allow any form that has a followup number duplicated or non-numeric to be posted:
+<br><br>
+      <tt># Changes based in part on information contained in BugTraq archives<br>
+      # message 'WWWBoard Vulnerability' posted by Samuel Sparling Nov-09-1998.<br>
+      # Also requires that each followup number is in fact a number, to <br>
+      # prevent message clobbering.<br><br>
+
+      local(%fcheck);<br>
+      foreach $fn (@followup_num) {<br>
+         if ($fn !~ /^\d+$/ || $fcheck{$fn}) { &error('followup_data'); }<br>
+         $fcheck{$fn} = 1;<br>
+      }<br>
+      @followup_num = keys %fcheck;</tt>
+<br><br>
+Another common trick is for people to test dictionary attacks against the well-known location of passwd.txt. In order to help secure the board further you can choose a password that is not easily guessed (not a word) or even move your password file to a new location (and change the appropriate filename in wwwadmin.pl). 
+</td></tr>
+
+
+</table><br>
+</td><td width=1 class=RightVertical><img src="/images/dot.gif" width=1 height=1 border=0 alt=""></td><td width=168 colspan=2 valign=top bgcolor=#DBE5EC class=Descri
+ptionText>&nbsp;<br><table border=0 cellpadding=0 cellspacing=0 width=160><tr><td class=DescriptionText>&nbsp;<b>Useful Web Resources:</b></td></tr><tr><td class=lhBox><a href="http://www.hostingmetro.com/" class=DetailAdHeader>HostingMetro.com</a><br>Cheap Cpanel web hosting as low as $3.99/month!<br><br><a href="http://www.tripadvisor.com" class=DetailAdHeader>Research Hotels and Vacations</a><br>Free unbiased reviews, articles and great deals ...<br><br></td></tr></table></td><td width=100% bgcolor=#DBE5EC class=SmallestText><img src="/images/dot.gif" width=1 height=1 border=0 alt=""></td></tr></table>
+
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+   <tr><td class=LocationText><table border=0 cellpadding=1 cellspacing=0 width=798><tr><td align=right class=DescriptionText>[ <a href="/images/" class=BottomLink>Linking to MSA</a> | <a href="/ads/" class=BottomLink>Advertising Opportunities</a> ]</td></tr></table></td></tr>
+   <tr bgcolor=#DBE5EC><td><table border=0 cellpadding=1 cellspacing=0 width=798 height=30><tr><td width=500 align=right></td><td align=right valign=bottom class=DescriptionText><a href="http://www.mattwright.com">Matt Wright</a> - <a href="mailto:mattw@scriptarchive.com">mattw@scriptarchive.com</a><br>&copy; 1995 - 2002 Matt's Script Archive, Inc.</td></tr></table></td></tr>
+  </table>
+ </body>
+</html>
+
+

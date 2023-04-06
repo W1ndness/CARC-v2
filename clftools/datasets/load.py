@@ -1,7 +1,14 @@
+import multiprocessing
+
 from clftools.web.secrawler import SearchEngineCrawler
 from clftools.web.webpage import Webpage
+from clftools import constants
 import asyncio
 import os
+from tqdm import tqdm
+import threading
+import joblib
+from joblib import Parallel, delayed
 
 
 def crawl_from_url(keyword: str, depth: int = 20):
@@ -29,12 +36,21 @@ def read_from_path(base_dir, endswith_html, preprocessing_func=None):
             if preprocessing_func is not None:
                 doc = preprocessing_func(doc)
             html_docs.append(doc)
-    return [Webpage(html_doc=doc) for doc in html_docs]
+
+    def process(doc):
+        return Webpage(html_doc=doc)
+
+    ret = Parallel(n_jobs=constants.N_JOBS,
+                   backend="threading",
+                   verbose=2,
+                   batch_size='auto',
+                   pre_dispatch='2*n_jobs')(delayed(process)(doc) for doc in html_docs)
+    return ret
 
 
 def load_labels(base_dir, endswith_html):
     labels = []
-    for cur_dir, dirs, files in os.walk(base_dir):
+    for cur_dir, dirs, files in tqdm(os.walk(base_dir)):
         if endswith_html:
             for file in files:
                 if file.endswith('.html'):
@@ -42,4 +58,3 @@ def load_labels(base_dir, endswith_html):
         else:
             labels.extend([cur_dir] * len(files))
     return labels
-

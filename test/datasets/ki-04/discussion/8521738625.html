@@ -1,0 +1,344 @@
+<!-- <DOCUMENT>
+	<FILE>
+		8521738625.html
+	</FILE>
+	<URL>
+		http://www.cs.helsinki.fi/linux/linux-kernel/2002-52/0055.html
+	</URL>
+	<TITLE>
+		Linux-kernel mailing list archive 2002-52,: [Patch] Kernel configuration in kernel, kernel 2.4.20
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ Linux-kernel mailing list archive 2002-52,: [Patch] Kernel configuration in kernel, kernel 2.4.20 [Patch] Kernel configuration in kernel, kernel 2.4.20 Paul Rolland ( rol@as2917.net ) Sun, 29 Dec 2002 18:08:08 +0100 Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] Next message: James Simmons: "Re: radeonfb.c has lots of undefined symbols" Previous message: rwhron@earthlink.net: "Re: [2.5.53] So sloowwwww......" Next in thread: J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20" Reply: J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20" Reply: Peter T. Breuer: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20" Hello, Tired of keeping copy of the kernel .config file, I decided to create a kernel patch to have a /proc/config/config.gz entry that would be created at boot time and that would allow a : zcat /proc/config/config.gz to recover the .config file used to create the kernel. Juste below is a patch, created against a 2.4.19, but that can also be applied to a 2.4.20 (with a few warning). Result is : 1 [17:53] rol@donald:~&gt; ls -l /proc/config/ total 0 -r--r--r-- 1 root root 0 Dec 29 18:00 config.gz -r--r--r-- 1 root root 0 Dec 29 18:00 version Feedback welcome, Regards, Paul Rolland, rol@as2917.net diff -urN linux-2.4.19/drivers/char/Config.in linux/drivers/char/Config.in --- linux-2.4.19/drivers/char/Config.in Thu Dec 19 13:48:19 2002 +++ linux/drivers/char/Config.in Thu Dec 19 13:47:19 2002 @@ -4,6 +4,7 @@ mainmenu_option next_comment comment 'Character devices' +bool 'Linux Kernel Configuration Driver' CONFIG_CONFIG bool 'Virtual terminal' CONFIG_VT if [ " $ CONFIG_VT" = "y" ]; then bool ' Support for console on virtual terminal' CONFIG_VT_CONSOLE diff -urN linux-2.4.19/drivers/char/Makefile linux/drivers/char/Makefile --- linux-2.4.19/drivers/char/Makefile Thu Dec 19 13:48:32 2002 +++ linux/drivers/char/Makefile Thu Dec 19 15:17:31 2002 @@ -136,6 +136,7 @@ KEYBD = dummy_keyb.o endif +obj- $ (CONFIG_CONFIG) += config.o obj- $ (CONFIG_VT) += vt.o vc_screen.o consolemap.o consolemap_deftbl.o $ (CONSOLE) selection.o obj- $ (CONFIG_SERIAL) += $ (SERIAL) obj- $ (CONFIG_SERIAL_HCDP) += hcdp_serial.o @@ -287,3 +288,14 @@ qtronixmap.c: qtronixmap.map set -e ; loadkeys --mktable $ &lt; | sed -e 's/^static *//' &gt; $ @ + +config.o: config.h + +config.h: config.txt.gz + @cc -o dotHmaker dotHmaker.c + @./dotHmaker + +config.txt.gz:: + @cp ../../.config config.txt + @gzip -f config.txt + diff -urN linux-2.4.19/drivers/char/config.c linux/drivers/char/config.c --- linux-2.4.19/drivers/char/config.c Thu Jan 1 00:00:00 1970 +++ linux/drivers/char/config.c Thu Dec 19 13:47:24 2002 @@ -0,0 +1,156 @@ +/* + * Linux Configuration Driver + * (c) 2002 Paul Rolland + * + * This driver is intended to give access to the .config file that was + * used to compile the kernel. + * It does include a gzip'd copy of the file, which can be access thru + * /proc/config/config.gz + * + */ + +#define CONFIG_VERSION "1.0" + +#include &lt;linux/module.h&gt; +#include &lt;linux/config.h&gt; +#include &lt;linux/sched.h&gt; +#include &lt;linux/smp_lock.h&gt; + +#include &lt;linux/types.h&gt; +#include &lt;linux/errno.h&gt; +#include &lt;linux/miscdevice.h&gt; +#include &lt;linux/slab.h&gt; +#include &lt;linux/ioport.h&gt; +#include &lt;linux/fcntl.h&gt; +#include &lt;linux/mc146818rtc.h&gt; +#include &lt;linux/init.h&gt; +#include &lt;linux/proc_fs.h&gt; +#include &lt;linux/spinlock.h&gt; + +#include &lt;asm/io.h&gt; +#include &lt;asm/uaccess.h&gt; +#include &lt;asm/system.h&gt; + +#include "config.h" + +static int config_read_proc(char * page, char ** start, off_t off, + int count, int *eof, void *data); + + +#ifndef CONFIG_PROC_FS +#warn Attention +static int config_read_proc( char *buffer, char **start, off_t offset, + int size, int *eof, void *data) { return 0; } +#else + +/* This macro frees the machine specific function from bounds checking and + * this like that... */ +#define PRINT_PROC(fmt,args...) \ + do { \ + *len += sprintf( buffer+*len, fmt, ##args ); \ + if (*begin + *len &gt; offset + size) \ + return( 0 ); \ + if (*begin + *len &lt; offset) { \ + *begin += *len; \ + *len = 0; \ + } \ + } while(0) + + +static int config_version_infos(char *buffer, int *len, off_t *begin, + off_t offset, int size) +{ + PRINT_PROC("Linux Kernel Configuration driver version %s\n", CONFIG_VERSION); + PRINT_PROC("(c) P. Rolland - Dec 2002\n"); + + return(1); +} + +static int config_gz_infos(char *buffer, int *len, off_t *begin, off_t offset, + int size) +{ + int i; + + for (i=0; i&lt;CONFIG_SIZE; i++) { + PRINT_PROC("%c", config_gz[i]); + } + + return(1); +} + +static int config_read_proc( char *buffer, char **start, off_t offset, + int size, int *eof, void *data ) +{ + int len = 0; + off_t begin = 0; + + *eof = config_version_infos(buffer, &amp;len, &amp;begin, offset, size); + + if (offset &gt;= begin + len) + return(0); + *start = buffer + (offset - begin); + return( size &lt; begin + len - offset ? size : begin + len - offset ); +} + +static int config_gz_read_proc( char *buffer, char **start, off_t offset, + int size, int *eof, void *data ) +{ + int len = 0; + off_t begin = 0; + + *eof = config_gz_infos(buffer, &amp;len, &amp;begin, offset, size); + + if (offset &gt;= begin + len) + return(0); + *start = buffer + (offset - begin); + return( size &lt; begin + len - offset ? size : begin + len - offset ); +} + +static int __init config_init(void) +{ + struct proc_dir_entry * entry; + + entry = create_proc_entry("config", S_IRUGO|S_IXUGO|S_IFDIR, NULL); + if (entry == NULL) { + printk(KERN_ERR "config: can't create /proc/config\n"); + return(-ENOMEM); + } + + if (!create_proc_read_entry("config/version",0,0,config_read_proc,NULL)) { + printk(KERN_ERR "config: can't create /proc/config/version\n"); + return(-ENOMEM); + } + if (!create_proc_read_entry("config/config.gz",0,0,config_gz_read_proc,NULL)) { + printk(KERN_ERR "config: can't create /proc/config/config.gz\n"); + return(-ENOMEM); + } + + printk(KERN_INFO "Linux Kernel Configuration driver v" CONFIG_VERSION " (c)Paul Rolland\n"); + return(0); +} + +static void __exit config_cleanup_module (void) +{ + remove_proc_entry( "config/version", 0 ); + remove_proc_entry( "config/config.gz", 0 ); + remove_proc_entry( "config", 0 ); +} + +module_init(config_init); +module_exit(config_cleanup_module); + +#endif /* CONFIG_PROC_FS */ + +MODULE_AUTHOR("Paul Rolland"); +MODULE_DESCRIPTION("Driver for accessing kernel configuration"); +MODULE_LICENSE("GPL"); + +EXPORT_NO_SYMBOLS; + +/* + * Local variables: + * c-indent-level: 4 + * tab-width: 4 + * End: + */ + diff -urN linux-2.4.19/drivers/char/dotHmaker.c linux/drivers/char/dotHmaker.c --- linux-2.4.19/drivers/char/dotHmaker.c Thu Jan 1 00:00:00 1970 +++ linux/drivers/char/dotHmaker.c Thu Dec 19 13:47:24 2002 @@ -0,0 +1,57 @@ +#include &lt;stdio.h&gt; + +int main(void) +{ + FILE * in; + FILE * out; + int i; + unsigned char buf; + + int size = 0; + + in = fopen("config.txt.gz", "r"); + if (in == NULL) { + printf("Unable to open config.txt.gz\n"); + exit(-1); + } /* endif */ + + out = fopen("config.h", "w"); + if (out == NULL) { + printf("Unable to create config.h\n"); + exit(-1); + } /* endif */ + + fprintf(out, "/*\n"); + fprintf(out, " * Automagically generated file, please don't edit !\n"); + fprintf(out, " */\n"); + fprintf(out, "\n"); + fprintf(out, "static char config_gz[] = \\\n"); + + i = 0; + + fread(&amp;buf, sizeof(unsigned char), 1, in); + while (!feof(in)) { + if (i == 0) { + fprintf(out, " \""); + } /* endif */ + fprintf(out, "\\x%x", buf); + size ++; + i ++; + if (i == 10) { + i = 0; + fprintf(out, "\"\\\n"); + } /* endif */ + fread(&amp;buf, sizeof(unsigned char), 1, in); + } /* endwhile */ + + if (i != 0) { + fprintf(out, "\";\n"); + } /* endif */ + fprintf(out, "\n"); + fprintf(out, "#define CONFIG_SIZE %d\n\n", size); + + fclose(in); + fclose(out); + + exit(0); +} - To unsubscribe from this list: send the line "unsubscribe linux-kernel" in the body of a message to majordomo@vger.kernel.org More majordomo info at http://vger.kernel.org/majordomo-info.html Please read the FAQ at http://www.tux.org/lkml/ Next message: James Simmons: "Re: radeonfb.c has lots of undefined symbols" Previous message: rwhron@earthlink.net: "Re: [2.5.53] So sloowwwww......" Next in thread: J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20" Reply: J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20" Reply: Peter T. Breuer: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20" 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!-- received="Sun Dec 29 19:10:02 2002 EET" -->
+<!-- sent="Sun, 29 Dec 2002 18:08:08 +0100" -->
+<!-- name="Paul Rolland" -->
+<!-- email="rol@as2917.net" -->
+<!-- subject="[Patch] Kernel configuration in kernel, kernel 2.4.20" -->
+<!-- id="200212291808.08302.rol@as2917.net" -->
+<!-- inreplyto="" -->
+<title>Linux-kernel mailing list archive 2002-52,: [Patch] Kernel configuration in kernel, kernel 2.4.20</title>
+<body bgcolor="#FFFFFF"><font face="Arial,Helvetica">
+<h1>[Patch] Kernel configuration in kernel, kernel 2.4.20</h1>
+<b>Paul Rolland</b> (<a href="mailto:rol@as2917.net"><i>rol@as2917.net</i></a>)<br>
+<i>Sun, 29 Dec 2002 18:08:08 +0100</i>
+<p>
+<ul>
+<li> <b>Messages sorted by:</b> <a href="date.html#55">[ date ]</a><a href="index.html#55">[ thread ]</a><a href="subject.html#55">[ subject ]</a><a href="author.html#55">[ author ]</a>
+<!-- next="start" -->
+<li> <b>Next message:</b> <a href="0056.html">James Simmons: "Re: radeonfb.c has lots of undefined symbols"</a>
+<li> <b>Previous message:</b> <a href="0054.html">rwhron@earthlink.net: "Re: [2.5.53] So sloowwwww......"</a>
+<!-- nextthread="start" -->
+<li> <b>Next in thread:</b> <a href="0107.html">J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20"</a>
+<li> <b>Reply:</b> <a href="0107.html">J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20"</a>
+<li> <b>Reply:</b> <a href="0124.html">Peter T. Breuer: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20"</a>
+<!-- reply="end" -->
+</ul>
+<hr>
+<!-- body="start" -->
+Hello,<br>
+<p>
+Tired of keeping copy of the kernel .config file, I decided to create a kernel<br>
+patch to have a <br>
+/proc/config/config.gz<br>
+entry that would be created at boot time and that would<br>
+allow a :<br>
+zcat /proc/config/config.gz<br>
+to recover the .config file used to create the kernel.<br>
+<p>
+Juste below is a patch, created against a 2.4.19, but that can also be<br>
+applied to a 2.4.20 (with a few warning).<br>
+Result is :<br>
+1 [17:53] rol@donald:~&gt; ls -l /proc/config/<br>
+total 0<br>
+-r--r--r--    1 root     root            0 Dec 29 18:00 config.gz<br>
+-r--r--r--    1 root     root            0 Dec 29 18:00 version<br>
+<p>
+Feedback welcome,<br>
+Regards,<br>
+Paul Rolland, <a href="mailto:rol@as2917.net">rol@as2917.net</a><br>
+<p>
+diff -urN linux-2.4.19/drivers/char/Config.in linux/drivers/char/Config.in<br>
+--- linux-2.4.19/drivers/char/Config.in Thu Dec 19 13:48:19 2002<br>
++++ linux/drivers/char/Config.in        Thu Dec 19 13:47:19 2002<br>
+@@ -4,6 +4,7 @@<br>
+ mainmenu_option next_comment<br>
+ comment 'Character devices'<br>
+ <br>
++bool 'Linux Kernel Configuration Driver' CONFIG_CONFIG<br>
+ bool 'Virtual terminal' CONFIG_VT<br>
+ if [ "$CONFIG_VT" = "y" ]; then<br>
+    bool '  Support for console on virtual terminal' CONFIG_VT_CONSOLE<br>
+diff -urN linux-2.4.19/drivers/char/Makefile linux/drivers/char/Makefile<br>
+--- linux-2.4.19/drivers/char/Makefile  Thu Dec 19 13:48:32 2002<br>
++++ linux/drivers/char/Makefile Thu Dec 19 15:17:31 2002<br>
+@@ -136,6 +136,7 @@<br>
+   KEYBD = dummy_keyb.o<br>
+ endif<br>
+ <br>
++obj-$(CONFIG_CONFIG) += config.o<br>
+ obj-$(CONFIG_VT) += vt.o vc_screen.o consolemap.o consolemap_deftbl.o $(CONSOLE) selection.o<br>
+ obj-$(CONFIG_SERIAL) += $(SERIAL)<br>
+ obj-$(CONFIG_SERIAL_HCDP) += hcdp_serial.o<br>
+@@ -287,3 +288,14 @@<br>
+ <br>
+ qtronixmap.c: qtronixmap.map<br>
+        set -e ; loadkeys --mktable $&lt; | sed -e 's/^static *//' &gt; $@<br>
++<br>
++config.o: config.h<br>
++<br>
++config.h: config.txt.gz<br>
++       @cc -o dotHmaker dotHmaker.c<br>
++       @./dotHmaker<br>
++<br>
++config.txt.gz::<br>
++       @cp ../../.config config.txt<br>
++       @gzip -f config.txt<br>
++<br>
+diff -urN linux-2.4.19/drivers/char/config.c linux/drivers/char/config.c<br>
+--- linux-2.4.19/drivers/char/config.c  Thu Jan  1 00:00:00 1970<br>
++++ linux/drivers/char/config.c Thu Dec 19 13:47:24 2002<br>
+@@ -0,0 +1,156 @@<br>
++/*<br>
++ * Linux Configuration Driver<br>
++ * (c) 2002 Paul Rolland<br>
++ *<br>
++ * This driver is intended to give access to the .config file that was<br>
++ * used to compile the kernel.<br>
++ * It does include a gzip'd copy of the file, which can be access thru<br>
++ * /proc/config/config.gz<br>
++ *<br>
++ */<br>
++<br>
++#define CONFIG_VERSION         "1.0"<br>
++<br>
++#include &lt;linux/module.h&gt;<br>
++#include &lt;linux/config.h&gt;<br>
++#include &lt;linux/sched.h&gt;<br>
++#include &lt;linux/smp_lock.h&gt;<br>
++<br>
++#include &lt;linux/types.h&gt;<br>
++#include &lt;linux/errno.h&gt;<br>
++#include &lt;linux/miscdevice.h&gt;<br>
++#include &lt;linux/slab.h&gt;<br>
++#include &lt;linux/ioport.h&gt;<br>
++#include &lt;linux/fcntl.h&gt;<br>
++#include &lt;linux/mc146818rtc.h&gt;<br>
++#include &lt;linux/init.h&gt;<br>
++#include &lt;linux/proc_fs.h&gt;<br>
++#include &lt;linux/spinlock.h&gt;<br>
++<br>
++#include &lt;asm/io.h&gt;<br>
++#include &lt;asm/uaccess.h&gt;<br>
++#include &lt;asm/system.h&gt;<br>
++<br>
++#include "config.h"<br>
++<br>
++static int config_read_proc(char * page, char ** start, off_t off,<br>
++                            int count, int *eof, void *data);<br>
++<br>
++<br>
++#ifndef CONFIG_PROC_FS<br>
++#warn Attention<br>
++static int config_read_proc( char *buffer, char **start, off_t offset,<br>
++                           int size, int *eof, void *data) { return 0; }<br>
++#else<br>
++<br>
++/* This macro frees the machine specific function from bounds checking and<br>
++ * this like that... */<br>
++#define        PRINT_PROC(fmt,args...)                                 \<br>
++        do {                                                   \<br>
++          *len += sprintf( buffer+*len, fmt, ##args );         \<br>
++          if (*begin + *len &gt; offset + size)                   \<br>
++            return( 0 );                                       \<br>
++          if (*begin + *len &lt; offset) {                                \<br>
++            *begin += *len;                                    \<br>
++            *len = 0;                                          \<br>
++           }                                                   \<br>
++         } while(0)<br>
++<br>
++<br>
++static int config_version_infos(char *buffer, int *len, off_t *begin,<br>
++                                off_t offset, int size)<br>
++{<br>
++  PRINT_PROC("Linux Kernel Configuration driver version %s\n", CONFIG_VERSION);<br>
++  PRINT_PROC("(c) P. Rolland - Dec 2002\n");<br>
++<br>
++  return(1);<br>
++}<br>
++<br>
++static int config_gz_infos(char *buffer, int *len, off_t *begin, off_t offset, <br>
++                           int size)<br>
++{<br>
++  int i;<br>
++ <br>
++  for (i=0; i&lt;CONFIG_SIZE; i++) {<br>
++    PRINT_PROC("%c", config_gz[i]);<br>
++  }<br>
++<br>
++  return(1);<br>
++}<br>
++<br>
++static int config_read_proc( char *buffer, char **start, off_t offset,<br>
++                            int size, int *eof, void *data )<br>
++{<br>
++  int len = 0;<br>
++  off_t begin = 0;<br>
++<br>
++  *eof = config_version_infos(buffer, &amp;len, &amp;begin, offset, size);<br>
++<br>
++  if (offset &gt;= begin + len)<br>
++    return(0);<br>
++  *start = buffer + (offset - begin);<br>
++  return( size &lt; begin + len - offset ? size : begin + len - offset );<br>
++}<br>
++<br>
++static int config_gz_read_proc( char *buffer, char **start, off_t offset,<br>
++                                int size, int *eof, void *data )<br>
++{<br>
++  int len = 0;<br>
++  off_t begin = 0;<br>
++<br>
++  *eof = config_gz_infos(buffer, &amp;len, &amp;begin, offset, size);<br>
++<br>
++  if (offset &gt;= begin + len)<br>
++    return(0);<br>
++  *start = buffer + (offset - begin);<br>
++  return( size &lt; begin + len - offset ? size : begin + len - offset );<br>
++}<br>
++<br>
++static int __init config_init(void)<br>
++{<br>
++  struct proc_dir_entry * entry;<br>
++<br>
++  entry = create_proc_entry("config", S_IRUGO|S_IXUGO|S_IFDIR, NULL);<br>
++  if (entry == NULL) {<br>
++    printk(KERN_ERR "config: can't create /proc/config\n");<br>
++    return(-ENOMEM);<br>
++  }<br>
++<br>
++  if (!create_proc_read_entry("config/version",0,0,config_read_proc,NULL)) {<br>
++    printk(KERN_ERR "config: can't create /proc/config/version\n");<br>
++    return(-ENOMEM);<br>
++  }<br>
++  if (!create_proc_read_entry("config/config.gz",0,0,config_gz_read_proc,NULL)) {<br>
++    printk(KERN_ERR "config: can't create /proc/config/config.gz\n");<br>
++    return(-ENOMEM);<br>
++  }<br>
++<br>
++  printk(KERN_INFO "Linux Kernel Configuration driver v" CONFIG_VERSION " (c)Paul Rolland\n");<br>
++  return(0);<br>
++}<br>
++<br>
++static void __exit config_cleanup_module (void)<br>
++{<br>
++  remove_proc_entry( "config/version", 0 );<br>
++  remove_proc_entry( "config/config.gz", 0 );<br>
++  remove_proc_entry( "config", 0 );<br>
++}<br>
++<br>
++module_init(config_init);<br>
++module_exit(config_cleanup_module);<br>
++<br>
++#endif /* CONFIG_PROC_FS */<br>
++<br>
++MODULE_AUTHOR("Paul Rolland");<br>
++MODULE_DESCRIPTION("Driver for accessing kernel configuration");<br>
++MODULE_LICENSE("GPL");<br>
++<br>
++EXPORT_NO_SYMBOLS;<br>
++<br>
++/*<br>
++ * Local variables:<br>
++ *  c-indent-level: 4<br>
++ *  tab-width: 4<br>
++ * End:<br>
++ */<br>
++<br>
+diff -urN linux-2.4.19/drivers/char/dotHmaker.c linux/drivers/char/dotHmaker.c<br>
+--- linux-2.4.19/drivers/char/dotHmaker.c       Thu Jan  1 00:00:00 1970<br>
++++ linux/drivers/char/dotHmaker.c      Thu Dec 19 13:47:24 2002<br>
+@@ -0,0 +1,57 @@<br>
++#include &lt;stdio.h&gt;<br>
++<br>
++int main(void)<br>
++{<br>
++  FILE * in;<br>
++  FILE * out;<br>
++  int i;<br>
++  unsigned char buf;<br>
++<br>
++  int size = 0;<br>
++<br>
++  in = fopen("config.txt.gz", "r");<br>
++  if (in == NULL) {<br>
++    printf("Unable to open config.txt.gz\n");<br>
++    exit(-1);<br>
++  } /* endif */<br>
++<br>
++  out = fopen("config.h", "w");<br>
++  if (out == NULL) {<br>
++    printf("Unable to create config.h\n");<br>
++    exit(-1);<br>
++  } /* endif */<br>
++<br>
++  fprintf(out, "/*\n");<br>
++  fprintf(out, " * Automagically generated file, please don't edit !\n");<br>
++  fprintf(out, " */\n");<br>
++  fprintf(out, "\n");<br>
++  fprintf(out, "static char config_gz[] = \\\n");<br>
++<br>
++  i = 0;<br>
++<br>
++  fread(&amp;buf, sizeof(unsigned char), 1, in);<br>
++  while (!feof(in)) {<br>
++    if (i == 0) {<br>
++      fprintf(out, "  \"");<br>
++    } /* endif */<br>
++    fprintf(out, "\\x%x", buf);<br>
++    size ++;<br>
++    i ++;<br>
++    if (i == 10) {<br>
++      i = 0;<br>
++      fprintf(out, "\"\\\n");<br>
++    } /* endif */<br>
++    fread(&amp;buf, sizeof(unsigned char), 1, in);<br>
++  } /* endwhile */<br>
++<br>
++  if (i != 0) {<br>
++    fprintf(out, "\";\n");<br>
++  } /* endif */<br>
++  fprintf(out, "\n");<br>
++  fprintf(out, "#define CONFIG_SIZE %d\n\n", size);<br>
++<br>
++  fclose(in);<br>
++  fclose(out);<br>
++<br>
++  exit(0);<br>
++}<br>
+-<br>
+To unsubscribe from this list: send the line "unsubscribe linux-kernel" in<br>
+the body of a message to majordomo@vger.kernel.org<br>
+More majordomo info at  <a href="http://vger.kernel.org/majordomo-info.html">http://vger.kernel.org/majordomo-info.html</a><br>
+Please read the FAQ at  <a href="http://www.tux.org/lkml/">http://www.tux.org/lkml/</a><br>
+<!-- body="end" -->
+<hr>
+<p>
+<ul>
+<!-- next="start" -->
+<li> <b>Next message:</b> <a href="0056.html">James Simmons: "Re: radeonfb.c has lots of undefined symbols"</a>
+<li> <b>Previous message:</b> <a href="0054.html">rwhron@earthlink.net: "Re: [2.5.53] So sloowwwww......"</a>
+<!-- nextthread="start" -->
+<li> <b>Next in thread:</b> <a href="0107.html">J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20"</a>
+<li> <b>Reply:</b> <a href="0107.html">J.A. Magallon: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20"</a>
+<li> <b>Reply:</b> <a href="0124.html">Peter T. Breuer: "Re: [Patch] Kernel configuration in kernel, kernel 2.4.20"</a>
+<!-- reply="end" -->
+</ul>
+</font></body>
+

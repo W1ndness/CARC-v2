@@ -1,0 +1,83 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5380463942.html
+	</FILE>
+	<URL>
+		http://jedlik.phy.bme.hu/~gerjanos/HMM/node12.html#SECTION00243120000000000000
+	</URL>
+	<TITLE>
+		Gradient based method
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Gradient based method Next: gradient wrt transition probabilities Up: Maximum Likelihood (ML) criterion Previous: Baum-Welch Algorithm Gradient based method In the gradient based method, any parameter of the HMM is updated according to the standard formula, &#160; where J is a quantity to be minimized. We define in this case, &#160; Since the minimization of is equivalent to the maximization of , eqn. 1.19 yields the required optimization criterion, ML. But the problem is to find the derivative for any parameter of the model. This can be easily done by relating J to model parameters via . As a key step to do so, using the eqns. 1.7 and 1.9 we can obtain, &#160; Differentiating the last equality in eqn. 1.20 wrt an arbitrary parameter , &#160; Eqn. 1.22 gives , if we know which can be found using eqn. 1.21 . However this derivative is specific to the actual parameter concerned. Since there are two main parameter sets in the HMM, namely transition probabilities and observation probabilities , we can find the derivative for each of the parameter sets and hence the gradient, . gradient wrt transition probabilities gradient wrt observation probabilities Narada Warakagoda Fri May 10 20:35:10 MET DST 1996 Home Page 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<head> <body bgcolor="#ffffff" text="000000">
+<TITLE>Gradient based method</TITLE>
+<META NAME="description" CONTENT="Gradient based method">
+<META NAME="keywords" CONTENT="hoved">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html203" HREF="node13.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next_motif.gif"></A> <A NAME="tex2html201" HREF="node10.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up_motif.gif"></A> <A NAME="tex2html197" HREF="node11.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="previous_motif.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html204" HREF="node13.html">gradient wrt transition probabilities</A>
+<B>Up:</B> <A NAME="tex2html202" HREF="node10.html">Maximum Likelihood (ML) criterion</A>
+<B> Previous:</B> <A NAME="tex2html198" HREF="node11.html">Baum-Welch Algorithm</A>
+<BR> <P>
+<H4><A NAME="SECTION00243120000000000000"><B>Gradient based method</B></A></H4>
+<P>
+In the gradient based method, any parameter  <IMG WIDTH=12 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline2856" SRC="img82.gif"  >  of the HMM
+ <IMG WIDTH=8 HEIGHT=12 ALIGN=BOTTOM ALT="tex2html_wrap_inline2676" SRC="img29.gif"  >  is updated according to the standard formula,
+<P>
+<P><A NAME="eqstar">&#160;</A> <IMG WIDTH=500 HEIGHT=43 ALIGN=BOTTOM ALT="equation485" SRC="img83.gif"  > <P>
+<P>
+where <I>J</I> is a quantity to be minimized. We define in this case, 
+<P><A NAME="eqml1">&#160;</A> <IMG WIDTH=505 HEIGHT=18 ALIGN=BOTTOM ALT="equation493" SRC="img84.gif"  > <P>
+Since the minimization of  <IMG WIDTH=71 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline2864" SRC="img85.gif"  >  is equivalent to the maximization of
+ <IMG WIDTH=28 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline2808" SRC="img64.gif"  > , eqn.<A HREF="node12.html#eqstar">1.19</A> yields the required optimization criterion,
+ML. But the problem is to find the derivative  <IMG WIDTH=19 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline2868" SRC="img86.gif"  >  for any parameter  <IMG WIDTH=12 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline2856" SRC="img82.gif"  >  of the model. This can
+be easily done by relating <I>J</I> to model parameters via  <IMG WIDTH=28 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline2808" SRC="img64.gif"  > . As a
+key step to do so,  using the  eqns.<A HREF="node7.html#eqm_10_dash">1.7</A> and <A HREF="node10.html#eqml">1.9</A>
+we can obtain,
+<P>
+<P><A NAME="eqml2">&#160;</A> <IMG WIDTH=503 HEIGHT=49 ALIGN=BOTTOM ALT="equation507" SRC="img87.gif"  > <P>
+<P>
+Differentiating the last equality in eqn. <A HREF="node12.html#eqml1">1.20</A> wrt an arbitrary
+parameter  <IMG WIDTH=12 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline2856" SRC="img82.gif"  > ,
+<P>
+<P><A NAME="eqml3">&#160;</A> <IMG WIDTH=500 HEIGHT=40 ALIGN=BOTTOM ALT="equation520" SRC="img88.gif"  > <P>
+<P>
+ Eqn.<A HREF="node12.html#eqml3">1.22</A> gives  <IMG WIDTH=19 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline2868" SRC="img86.gif"  > , if we
+ know  <IMG WIDTH=33 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline2882" SRC="img89.gif"  >  which can be found
+ using eqn.<A HREF="node12.html#eqml2">1.21</A>. However this derivative  is specific to the
+ actual parameter concerned. Since there are two main parameter sets in
+ the HMM, namely transition probabilities  <IMG WIDTH=129 HEIGHT=26 ALIGN=MIDDLE ALT="tex2html_wrap_inline2884" SRC="img90.gif"  >  and observation probabilities  <IMG WIDTH=240 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline2886" SRC="img91.gif"  > , we can find the derivative
+  <IMG WIDTH=33 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline2882" SRC="img89.gif"  >   for each of the parameter
+ sets and hence the gradient,  <IMG WIDTH=19 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline2868" SRC="img86.gif"  > .
+<P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME="tex2html205" HREF="node13.html#SECTION00243121000000000000"><B>gradient wrt transition probabilities</B></A>
+<LI> <A NAME="tex2html206" HREF="node14.html#SECTION00243122000000000000"><B>gradient wrt observation probabilities</B></A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Narada Warakagoda <BR>
+Fri May 10 20:35:10 MET DST 1996</I>
+</ADDRESS>
+</ADDRESS>
+</BODY>
+<hr>
+<center>
+<a href="http://jedlik.phy.bme.hu/~gerjanos" target="_top">Home Page</a></center>
+</HTML>
+

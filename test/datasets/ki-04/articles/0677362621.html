@@ -1,0 +1,979 @@
+<!-- <DOCUMENT>
+	<FILE>
+		0677362621.html
+	</FILE>
+	<URL>
+		http://www.searchtools.com/robots/goodurls.html
+	</URL>
+	<TITLE>
+		Simple URLs for Search Engine Robots: SearchTools Report
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Simple URLs for Search Engine Robots: SearchTools Report Home Guide Tools List News Background Search About Us Search Tools Reports Generating Simple URLs for Search Engines Search engines generally use robot crawlers to locate searchable pages on web sites and intranets ( robots are also called crawlers , spiders , gatherers or harvesters ). These robots, which use the same requests and responses as web browsers, read pages and follow links on those pages to locate every page on the specified servers. Dynamic URLs Search engine robots follow standard links with slashes, but dynamic pages, generated from databases or content management systems, have dynamic URLs with question marks (?) and other command punctuation such as &amp;, %, + and $ . Here's an example of a dynamic URL which queries a database with specific parameters to generate a page: http://store.britannica.com/escalate/store/CategoryPage? pls=britannica&bc=britannica&clist=03258f0014009f&cc =eb_online&startNum=0&rangeNum=15 All those elements in the URL? They're parameters to the program that generates the page. You probably don't even need most of them. Here is a theoretical version of that URL rewritten in a simple form: http://store.britannica.com/Cat/B-online/03258f0014009f/s0-e15/ If you look at Amazon's URLs, you'll see they contain no indication to a robot that they're pointing into a database, but of course they are. Problems with Dynamic URLs Some public search engines and most site and intranet search engines will index URLs with dynamic URLS, but others will not. And because it's difficult to link to these pages, they will be penalized by engines which use link analysis to improve relevance ranking, such as Google's PageRank algorithm. In Summer 2003, Google had very few dynamic URL pages in the first 10 pages of results for test searches. When pages are hidden behind a form, they are even less accessible to search spiders. For example, Internet Yellow Pages sites often require users to type a business name and city. For a search engine to index these pages requires special-case programming to fill in those fields. Most webwide search engines will simply skip the content. This is sometimes referred to as the &quot;deep web&quot; or the &quot;invisible web&quot; -- valuable content pages that are invisible to search engine robots, (internal and external), do not get indexed and therefore can't be found by potential customers and users. Search engine robot writers are concerned about their robot programs getting lost on web sites with infinite listings. Search engine developers call these &quot;spider traps&quot; or &quot;black holes&quot; -- sites where each page has links to many more programmatically-generated pages, without any useful content on them. The classic example is a calendar that keeps going forward through the 21st Century, although it has no events set after this year. This can cause the search engine to waste time and effort, or even crash your server. Readable URLs are good for more than being found by local and webwide search engine robots. Humans feel more comfortable with consistent and intuitive paths, recognizing the date or product name in the URL. Finally, by abstracting the public version of the URL, it will not be dependent on the backend software. If your site changes from Perl to Java or from CFM to .Net, the URLs will not change, so all links to your pages will remain live. Static Page Generation or URL Rewriting? The simplest solution is to generate static pages from your dynamic data and store them in the file system, linking to them using simple URLs. Site visitors and robots can access these files easily. This also removes a load from your back end database, as it does not have to gather content every time someone wants to view a page. This process is particularly appropriate for web sites or sections with archival data, such as journal back issues, old press releases, information on obsolete products, and so on. For rapidly-changing information, such as news, product pages with inventory, special offers, or web conferencing, you should set up automatic conversion system. Most servers have a filter that can translate incoming URLs with slashes to internal URLs with question marks -- this is called URL rewriting . For either system, you must make sure that of the rewritten pages has at least one incoming link. Search engine robots will follow these links, and index your page. If you have database access forms, dynamic menus, Java, JavaScript or Flash links, you should set up a system to generate listings with entries for everything in your database. This can be chronological, alphabetical, but product ID, or any other order that suits you. Search engine robots can only follow links they can find, so be sure to keep this listing up to date. URL Rewriting and Relative Link Problems Pages which include images and links to other pages should use relative links from the root rather than from the current page. This is because the browser sends a request for each image by putting together the host and domain name ( www.example.com ) with the relative link ( images/design44.gif ). This is based on the Unix file name conventions of current directory, child and parent (../) directories. Because URL rewriting mimics directory path structures, it confuses the browsers. If your original file linked to the local images directory, then rewritten the link would break. Original URL for this page www.example.com/prod=?int+7=2&amp;2&amp;4 Rewritten URL looks like this www.example.com/prod/int/7/224/ If the relative link to the dynamic location images directory would be: dyn/images/design44.gif in the rewritten path, this would be interpreted as www.example.com/prod/int/7/224/dyn/images/design44.gif instead of the correct path, which would be something like this: www.example.com/dyn/images/design44.gif Because the path to the images subdirectory is wrong, the image is lost. Solution One: Use Absolute Links To avoid confusion, use links that start at the host root, that means paths which all start at the main directory of your site. A slash at the start tells the browser that it should not try to find things in the local directory, but just put the host name and the path together. The disadvantage is that if you move or change the directory hierarchy, you'll need to change every link which includes that path. Using the same example above, change the relative (local) link within the generated page from this: images/design44.gif to an absolute link that points at the correct directory: / dyn/images/design44.gif Similarly, a link to a page in a related directory (either static or rewritten) perpetualmotion/moreinfo.html Would require the entire path: / prod/int/perpetualmotion/moreinfo.html Note that if you change the directory name from &quot;prod&quot; to &quot;products&quot; or take the &quot;int&quot; directory out of the hierarchy, you'll have to change every one of those URLs. Solution Two: Rewrite the Links Dynamically Using a mechanism like URL rewriting, you can generate a path to the correct directory and program your server to create absolute links within the pages as it's generating them. For example, if all the images are in the directory www.example.com/ dyn/images/ You could create a variable with the path &quot;/ dyn/images/ &quot; and the server would put that before all the relative urls to images . Checking URLs on Your Site Perform a sanity check - make sure that your site does not generate infinite information. For example, if you have a calendar, see if it shows pages for years far in the future. If it does, set limits. Generate pages or Choose and implement a URL rewriting system - see below for articles and products. Check relative links for images and other pages. Create automatic link list pages so there are links to the pages generated dynamically. Test with your browser. Test with a robot You can use a linkchecker, local search crawler or site mapping tool to make sure these URLs work properly, don't have duplicates, and don't generate infinite loops. Articles About URL Rewriting Search Engines and Dynamic Pages (members only) SearchEngineWatch.com, updated April, 2003 by Danny Sullivan Very clear description of the process of rewriting URLs for getting pages indexed by public search engines, and includes links to articles and rewrite tools. Towards Next Generation URLs Port 80 Software Archive, March 27, 2003 by Thomas A. Powell & Joe Lima Helpful explanation of how to address problems with URLs, from domain name spelling through generating static pages and rewriting query strings. Making Dynamic and E-Commerce Sites Search Engine Friendly SearchDay (SearchEngineWatch), October 29, 2002 by Catherine Seda A report from a panel at the Search Engine Strategies 2002 conference provides strong justification for simplifying URLs, and strategies to work around the problem when the dynamic URLs must remain. Using ForceType For Nicer Page URLs DevArticles.com, June 5 2002 by Joe O'Donnell Apache's ForceType directive doesn't require access to the main configuration file, rather it uses a local &quot;.htaccess&quot; file for rewriting the URLs. The article includes excellent examples for implementing this with PHP. Making "clean" URLs with Apache and PHP evolt.org, March 29, 2002 by stef Gives some context for dynamic sites, describes a solution using both Apache ForceType and PHP. Comments offer some interesting thoughts about the value of stable URLs. Search Engine Friendly URLs (Part II) evolt.org, November 5, 2001 by Bruce Heerssen Describes how to generate dynamic absolute path links using PHP. How to Succeed with URLs A List Apart; October 21, 2001 by Till Quack Using the Apache .htaccess to direct requests to a PHP script which converts the URL to an array, ready to send the query to the database or other dynamic source. Includes helpful comments, checks for static pages, default index pages, skipping password-protected URLs, and handling non-matching requests. Also covers security protections, showing how to strip inappropriate hacking commands from URLs. Search Engine Friendly URLs with PHP and Apache evolt.org, August 21 2001 by Garrett Coakley Very simple and easy to understand introduction. Optimization for Dynamic Web Sites Spider Food site, August 13, 2001 Overview, with examples, of the value of converting dynamic URLs to static ones. Search Engine-Friendly URLs PromotionBase SitePoint, August 10, 2001 by Chris Beasley Three ways to convert dynamic URLs to simple URLs using PHP with Apache on Linux. These include using the $ PATH_INFO variable, the .htaccess error handling, or Apache's .htaccess ForceType directive, using the path text to filter certain URLs to the PHP application handler. Invite Search Engine Spiders Into Your Dynamic Web Site Web Developer's Journal; February 28, 2001 by Larisa Thomason Nice introduction to simple URL rewriting, useful warning about relative link problems. Building Dynamic Pages With Search Engines in Mind PHPBuilder.com, June 2000 by Tim Perdue Details of a PHP setup which can scale up to 200,000 pages and 150,000 page views per day. Automatic generation of the page header also includes meta tags. In this example, the pages are arranged by country, state, city and topic, so the URLs generate those parameters for the database queries. Comments recommend sending a success HTTP status header before every page returned: Header(&quot;HTTP/1.1 200 OK&quot;); running as an Apache modules vs. CGI on Windows, use of the ForceType directive, and Apache 2 compatibility. URLs! URLs! URLs! A List Apart; June 30, 2000 by Bill Humphries Recommends creating a simple system for URLs and mapping them to the backend. Describes using Apache's mod_rewrite component, optionally using .htaccess. URL Rewriting Tools Apache Apache mod_rewrite documentation - canonical documentation A Users Guide to URL Rewriting with the Apache Webserver - useful but does not quite explain the general case. Module mod_rewrite Tutorial - Part 3 explains how to convert dynamic URLs to simple ones Search Engine Friendly URLs with mod_rewrite - (April 2003) - simple instructions, very clear. Perl Using the environment variables Path_Info and Script_Name provides access to the dynamic URL including the &quot;query string&quot; (the part after the question mark). Converting the query information into a single code and adding it to the path creates a static URL. PHP see articles above, especially the one on Using ForceType , and PortalPageFilter below Microsoft IIS and Active Server Pages (ASP) These filters recognize slash-delimited URLs and convert them to internal formats before the server gets them. ASPSpiderBait - package converts the PATH_INFO part of an HTTP header request: the user doesn't see the punctuation, just placeholder letters. The filter replaces the placeholders with punctuation them before the server can see them. $ 100 per server. ISAPI_Rewrite - IIS ISAPI filter written in C/C++, simple rule for dynamic conversion. Lite version is free, Full version, single server, $ 46, enterprise license, $ 418 IISRewrite - IIS filter, works much like mod_rewrite, examples include converting dynamic to simple URLs. $ 199.00 per server PortalPageFilter - a high-priority C++ ISAPI filter for ASP XQASP - high-performance NT IIS C++ or Unix Java filter for ASP. $ 99 to $ 2,100 depending on scope ColdFusion (CFM) May have an option to reconfigure the setup, replacing the ? with a / Use the Fusebox framework, &lt;cf_formurl2attributessearch&gt; tag. Lotus Domino Servers Web Site rules and global Web settings Lotus Domino Administrator 6 Help WebSTAR, AppleShareIP, etc. (Macintosh OS 9 and OS X) Welcome module by Andreas Pardeike (included in WebSTAR 4.5 and 5) Page Updated 2003-07-29 Home Guide Tools Listing News Background Search About Us SearchTools.com Copyright &copy; 2002-2003 Search Tools Consulting 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html>
+
+
+
+	<head>
+
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+
+		<title>Simple URLs for Search Engine Robots: SearchTools Report</title>
+
+		
+
+	<meta name="description" 
+
+				content="Describes problems with dynamic URLs, solutions, relative link issues, checklist for site conversion.  Links to articles and products for web servers, mainly Apache with PHP and IIS with ASP.">
+
+		<meta name="keywords" content="Good URLs for Robot Indexing">
+
+		<meta name="Author" content="Avi Rappoport, Search Tools Consulting">
+
+	
+
+<meta name="DC.date.modified" content="2003-07-29">
+
+	
+
+<meta name="DC.date.created" content="2002-06-21">
+
+</head>
+
+
+
+<body bgcolor="white">
+
+<center>
+
+  <!-- #BeginLibraryItem "/Library/navtop.lbi" -->
+
+<p>
+
+<table border="0" width="86%" height="28" bgcolor="#ccccff" align="center">
+
+  <tr> 
+
+    <td> 
+
+      <center>
+
+        <a href="../index.html"><b>Home</b></a> 
+
+      </center>
+
+    </td>
+
+    <td> 
+
+      <center>
+
+        <a href="../guide/index.html"><b>Guide</b></a> 
+
+      </center>
+
+    </td>
+
+    <td> 
+
+      <center>
+
+        <a href="../tools/tools.html"><b>Tools List</b></a> 
+
+      </center>
+
+    </td>
+
+    <td> 
+
+      <center>
+
+        <a href="../news.html"><b>News</b></a> 
+
+      </center>
+
+    </td>
+
+    <td>
+
+      <div align="center"><b><a href="../info/index.html">Background</a></b></div>
+
+    </td>
+
+    <td> 
+
+      <center>
+
+        <a href="../search/search.html"><b>Search</b></a> 
+
+      </center>
+
+    </td>
+
+    <td> 
+
+      <center>
+
+        <a href="../about/index.html"><b>About Us</b></a> 
+
+      </center>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<div align="center"><p> <hr> <p></p></div>
+
+<!-- #EndLibraryItem --><h3>Search Tools Reports</h3>
+
+  <h2>Generating Simple URLs for Search Engines 
+
+	<hr> </h2>
+
+</center>
+
+
+
+<blockquote> 
+
+  <p align="left">Search engines generally use robot crawlers to locate searchable 
+
+    pages on web sites and intranets (<em>robots</em> are also called <em>crawlers</em>, 
+
+    <em>spiders</em>, <em>gatherers</em> or <em>harvesters</em>). These robots, 
+
+    which use the same requests and responses as web browsers, read pages and 
+
+    follow links on those pages to locate every page on the specified servers. 
+
+  </p>
+
+  <h4 align="left"> Dynamic URLs</h4>
+
+  <blockquote> 
+
+    <p>Search engine robots follow standard links with slashes, but dynamic pages, 
+
+      generated from databases or content management systems, have dynamic URLs 
+
+      with question marks (?) and other command punctuation such as &amp;, %, 
+
+      + and $. </p>
+
+    <p>Here's an example of a dynamic URL which queries a database with specific 
+
+      parameters to generate a page:</p>
+
+    <blockquote> 
+
+      <p><a href="http://store.britannica.com/escalate/store/CategoryPage?pls=britannica&bc=britannica&clist=03258f0014009f&cc=eb_online&startNum=0&rangeNum=15">http://store.britannica.com/escalate/store/CategoryPage?<br>
+
+        pls=britannica&bc=britannica&clist=03258f0014009f&cc<br>
+
+        =eb_online&startNum=0&rangeNum=15</a></p>
+
+    </blockquote>
+
+    <p>All those elements in the URL? They're parameters to the program that generates 
+
+      the page. You probably don't even need most of them.</p>
+
+    <p>Here is a theoretical version of that URL rewritten in a simple form: </p>
+
+    <blockquote> 
+
+      <p><code>http://store.britannica.com/Cat/B-online/03258f0014009f/s0-e15/</code></p>
+
+    </blockquote>
+
+    <p>If you look at Amazon's URLs, you'll see they contain no indication to 
+
+      a robot that they're pointing into a database, but of course they are.</p>
+
+  </blockquote>
+
+  <h4>Problems with Dynamic URLs</h4>
+
+  <blockquote> 
+
+    <p>Some public search engines and most site and intranet search engines will 
+
+      index URLs with dynamic URLS, but others will not. And because it's difficult 
+
+      to link to these pages, they will be penalized by engines which use link 
+
+      analysis to improve relevance ranking, such as Google's PageRank algorithm. 
+
+      <em>In Summer 2003, Google had very few dynamic URL pages in the first 10 
+
+      pages of results for test searches.</em> </p>
+
+    <p>When pages are hidden behind a form, they are even less accessible to search 
+
+      spiders. For example, Internet Yellow Pages sites often require users to 
+
+      type a business name and city. For a search engine to index these pages 
+
+      requires special-case programming to fill in those fields. Most webwide 
+
+      search engines will simply skip the content. This is sometimes referred 
+
+      to as the &quot;deep web&quot; or the &quot;invisible web&quot; -- valuable 
+
+      content pages that are invisible to search engine robots, (internal and 
+
+      external), do not get indexed and therefore can't be found by potential 
+
+      customers and users.</p>
+
+    <p>Search engine robot writers are concerned about their robot programs getting 
+
+      lost on web sites with infinite listings. Search engine developers call 
+
+      these &quot;spider traps&quot; or &quot;black holes&quot; -- sites where 
+
+      each page has links to many more programmatically-generated pages, without 
+
+      any useful content on them. The classic example is a calendar that keeps 
+
+      going forward through the 21st Century, although it has no events set after 
+
+      this year. This can cause the search engine to waste time and effort, or 
+
+      even crash your server.</p>
+
+    <p>Readable URLs are good for more than being found by local and webwide search 
+
+      engine robots. Humans feel more comfortable with consistent and intuitive 
+
+      paths, recognizing the date or product name in the URL. </p>
+
+    <p>Finally, by abstracting the public version of the URL, it will not be dependent 
+
+      on the backend software. If your site changes from Perl to Java or from 
+
+      CFM to .Net, the URLs will not change, so all links to your pages will remain 
+
+      live. </p>
+
+  </blockquote>
+
+  <h4 align="left">Static Page Generation or URL Rewriting?</h4>
+
+  <blockquote> 
+
+    <p>The simplest solution is to generate static pages from your dynamic data 
+
+      and store them in the file system, linking to them using simple URLs. Site 
+
+      visitors and robots can access these files easily. This also removes a load 
+
+      from your back end database, as it does not have to gather content every 
+
+      time someone wants to view a page. This process is particularly appropriate 
+
+      for web sites or sections with archival data, such as journal back issues, 
+
+      old press releases, information on obsolete products, and so on. </p>
+
+    <p>For rapidly-changing information, such as news, product pages with inventory, 
+
+      special offers, or web conferencing, you should set up automatic conversion 
+
+      system. Most servers have a filter that can translate incoming URLs with 
+
+      slashes to internal URLs with question marks -- this is called <dfn>URL 
+
+      rewriting</dfn>. </p>
+
+    <p>For either system, you must make sure that of the rewritten pages has at 
+
+      least one incoming link. Search engine robots will follow these links, and 
+
+      index your page. </p>
+
+    <p>If you have database access forms, dynamic menus, Java, JavaScript or Flash 
+
+      links, you should set up a system to generate listings with entries for 
+
+      everything in your database. This can be chronological, alphabetical, but 
+
+      product ID, or any other order that suits you. Search engine robots can 
+
+      only follow links they can find, so be sure to keep this listing up to date.</p>
+
+  </blockquote>
+
+  <h4>URL Rewriting and Relative Link Problems</h4>
+
+  <blockquote> 
+
+    <p>Pages which include images and links to other pages should use relative 
+
+      links from the root rather than from the current page. This is because the 
+
+      browser sends a request for each image by putting together the host and 
+
+      domain name (<code>www.example.com</code>) with the <dfn>relative link</dfn> 
+
+      (<code>images/design44.gif</code>). This is based on the Unix file name 
+
+      conventions of current directory, child and parent (../) directories. Because 
+
+      URL rewriting mimics directory path structures, it confuses the browsers.</p>
+
+    <p> If your original file linked to the local <code>images</code> directory, 
+
+      then rewritten the link would break. </p>
+
+    <p>Original URL for this page</p>
+
+    <blockquote> 
+
+      <p><code>www.example.com/prod=?int+7=2&amp;2&amp;4</code></p>
+
+    </blockquote>
+
+    <p>Rewritten URL looks like this</p>
+
+    <blockquote> 
+
+      <p><code>www.example.com/prod/int/7/224/</code></p>
+
+    </blockquote>
+
+    <p>If the relative link to the dynamic location images directory would be:</p>
+
+    <blockquote> 
+
+      <p><code>dyn/images/design44.gif</code></p>
+
+    </blockquote>
+
+    <p>in the rewritten path, this would be interpreted as</p>
+
+    <blockquote> 
+
+      <p><code>www.example.com/prod/int/7/224/dyn/images/design44.gif</code> </p>
+
+    </blockquote>
+
+    <p>instead of the correct path, which would be something like this:</p>
+
+    <blockquote> 
+
+      <p><code>www.example.com/dyn/images/design44.gif</code> </p>
+
+    </blockquote>
+
+    <p> Because the path to the images subdirectory is wrong, the image is lost.</p>
+
+    <h4>Solution One: Use Absolute Links</h4>
+
+    <p>To avoid confusion, use links that start at the host root, that means paths 
+
+      which all start at the main directory of your site. A slash at the start 
+
+      tells the browser that it should not try to find things in the local directory, 
+
+      but just put the host name and the path together. The disadvantage is that 
+
+      if you move or change the directory hierarchy, you'll need to change every 
+
+      link which includes that path.</p>
+
+    <p>Using the same example above, change the relative (local) link within the 
+
+      generated page from this:</p>
+
+    <blockquote> 
+
+      <p><code>images/design44.gif</code> </p>
+
+    </blockquote>
+
+    <p> to an absolute link that points at the correct directory:</p>
+
+    <blockquote> 
+
+      <p><code><b>/</b>dyn/images/design44.gif</code></p>
+
+    </blockquote>
+
+    <p>Similarly, a link to a page in a related directory (either static or rewritten)</p>
+
+    <blockquote> 
+
+      <p><code>perpetualmotion/moreinfo.html</code></p>
+
+    </blockquote>
+
+    <p>Would require the entire path:</p>
+
+    <blockquote> 
+
+      <p><code><b>/</b>prod/int/perpetualmotion/moreinfo.html</code></p>
+
+    </blockquote>
+
+    <p>Note that if you change the directory name from &quot;prod&quot; to &quot;products&quot; 
+
+      or take the &quot;int&quot; directory out of the hierarchy, you'll have 
+
+      to change every one of those URLs.</p>
+
+    <h4>Solution Two: Rewrite the Links Dynamically</h4>
+
+    <p>Using a mechanism like URL rewriting, you can generate a path to the correct 
+
+      directory and program your server to create absolute links within the pages 
+
+      as it's generating them. </p>
+
+    <p>For example, if all the images are in the directory </p>
+
+    <blockquote> 
+
+      <p>www.example.com/<code>dyn/images/</code></p>
+
+    </blockquote>
+
+    <p>You could create a variable with the path &quot;/<code>dyn/images/</code>&quot; 
+
+      and the server would put that before all the relative urls to <code>images</code>.</p>
+
+  </blockquote>
+
+  <h4 align="left">Checking URLs on Your Site</h4>
+
+</blockquote>
+
+<ol>
+
+  <ol>
+
+    <li>Perform a <b>sanity check</b> - make sure that your site does not generate 
+
+      infinite information. For example, if you have a calendar, see if it shows 
+
+      pages for years far in the future. If it does, set limits.<br>
+
+    </li>
+
+    <li><b>Generate pages</b> or <b>Choose and implement a URL rewriting system</b> 
+
+      - see below for articles and products.<br>
+
+      <br>
+
+    </li>
+
+    <li>Check <b>relative links</b> for images and other pages.<br>
+
+      <br>
+
+    </li>
+
+    <li>Create <b>automatic link list pages</b> so there are links to the pages 
+
+      generated dynamically.<br>
+
+      <br>
+
+    </li>
+
+    <li> <b>Test</b> with your browser.<br>
+
+      <br>
+
+    </li>
+
+    <li><b>Test with a robot</b> You can use a linkchecker, local search crawler 
+
+      or site mapping tool to make sure these URLs work properly, don't have duplicates, 
+
+      and don't generate infinite loops.<br>
+
+    </li>
+
+  </ol>
+
+</ol>
+
+<blockquote> 
+
+  <h4>Articles About URL Rewriting<a href="http://evolt.org/article/Search_Engine_Friendly_URLs_Part_II/17/17171/index.html"><br>
+
+    </a></h4>
+
+  <ul>
+
+    <li><a href="http://www.searchenginewatch.com/subscribers/more/dynamic.html">Search 
+
+      Engines and Dynamic Pages</a><strong> (members only)</strong> <i>SearchEngineWatch.com, 
+
+      updated April, 2003 by Danny Sullivan</i> <img src="../images/new.gif" alt="new" width="28" height="11"><br>
+
+      Very clear description of the process of rewriting URLs for getting pages 
+
+      indexed by public search engines, and includes links to articles and rewrite 
+
+      tools.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://www.port80software.com/support/articles/nextgenerationurls">Towards 
+
+      Next Generation URLs</a> <em>Port 80 Software Archive, March 27, 2003 by 
+
+      Thomas A. Powell & Joe Lima </em><em> <img src="../images/new.gif" alt="new" width="28" height="11"></em><br>
+
+      Helpful explanation of how to address problems with URLs, from domain name 
+
+      spelling through generating static pages and rewriting query strings.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://searchenginewatch.com/searchday/article.php/2161081">Making 
+
+      Dynamic and E-Commerce Sites Search Engine Friendly</a> <em>SearchDay (SearchEngineWatch), 
+
+      October 29, 2002 by Catherine Seda <img src="../images/new.gif" alt="new" width="28" height="11"><br>
+
+      </em>A report from a panel at the Search Engine Strategies 2002 conference 
+
+      provides strong justification for simplifying URLs, and strategies to work 
+
+      around the problem when the dynamic URLs must remain.<br>
+
+      <br>
+
+    </li>
+
+    <li><a name="ftda" id="ftda"></a><a href="http://www.devarticles.com/art/1/143">Using 
+
+      ForceType For Nicer Page URLs</a> <em>DevArticles.com, June 5 2002 by Joe 
+
+      O'Donnell <img src="../images/new.gif" alt="new" width="28" height="11"></em><br>
+
+      Apache's ForceType directive doesn't require access to the main configuration 
+
+      file, rather it uses a local &quot;.htaccess&quot; file for rewriting the 
+
+      URLs. The article includes excellent examples for implementing this with 
+
+      PHP. <br>
+
+      <br>
+
+    </li>
+
+    <li> <a href="http://evolt.org/article/Making_clean_URLs_with_Apache_and_PHP/18/22880/index.html">Making 
+
+      "clean" URLs with Apache and PHP</a> <i>evolt.org, March 29, 2002 by stef 
+
+      <br>
+
+      </i>Gives some context for dynamic sites, describes a solution using both 
+
+      Apache ForceType and PHP. Comments offer some interesting thoughts about 
+
+      the value of stable URLs.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://evolt.org/article/Search_Engine_Friendly_URLs_Part_II/17/17171/index.html">Search 
+
+      Engine Friendly URLs (Part II)</a> <i>evolt.org, November 5, 2001 by Bruce 
+
+      Heerssen</i><br>
+
+      Describes how to generate dynamic absolute path links using PHP.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://www.alistapart.com/stories/succeed/">How to Succeed with 
+
+      URLs</a> <i>A List Apart; October 21, 2001 by Till Quack</i><br>
+
+      Using the Apache .htaccess to direct requests to a PHP script which converts 
+
+      the URL to an array, ready to send the query to the database or other dynamic 
+
+      source. Includes helpful comments, checks for static pages, default index 
+
+      pages, skipping password-protected URLs, and handling non-matching requests. 
+
+      Also covers security protections, showing how to strip inappropriate hacking 
+
+      commands from URLs.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://www.evolt.org/article/Search_Engine_Friendly_URLs_with_PHP_and_Apache/17/15049/index.html%22">Search 
+
+      Engine Friendly URLs with PHP and Apache</a> <i>evolt.org, August 21 2001 
+
+      by Garrett Coakley</i><br>
+
+      Very simple and easy to understand introduction.<br>
+
+      <br>
+
+    </li>
+
+    <li> <a href="http://spider-food.net/dynamic-page-optimization.html">Optimization 
+
+      for Dynamic Web Sites</a> <i>Spider Food site, August 13, 2001<br>
+
+      </i>Overview, with examples, of the value of converting dynamic URLs to 
+
+      static ones.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://www.promotionbase.com/article/485"> Search Engine-Friendly 
+
+      URLs</a> <i>PromotionBase SitePoint, August 10, 2001 by Chris Beasley </i><br>
+
+      Three ways to convert dynamic URLs to simple URLs using PHP with Apache 
+
+      on Linux. These include using the $PATH_INFO variable, the .htaccess error 
+
+      handling, or Apache's .htaccess ForceType directive, using the path text 
+
+      to filter certain URLs to the PHP application handler.<br>
+
+      <a href="http://www.evolt.org/article/Search_Engine_Friendly_URLs_with_PHP_and_Apache/17/15049/index.html%22"><br>
+
+      </a></li>
+
+    <li><a href="http://www.webdevelopersjournal.com/articles/spider_dynamic_site.html">Invite 
+
+      Search Engine Spiders Into Your Dynamic Web Site</a> <i>Web Developer's 
+
+      Journal; February 28, 2001 by Larisa Thomason</i><br>
+
+      Nice introduction to simple URL rewriting, useful warning about relative 
+
+      link problems.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://www.phpbuilder.com/columns/tim20000526.php3"> Building 
+
+      Dynamic Pages With Search Engines in Mind</a> <i>PHPBuilder.com, June 2000 
+
+      by Tim Perdue</i><br>
+
+      Details of a PHP setup which can scale up to 200,000 pages and 150,000 page 
+
+      views per day. Automatic generation of the page header also includes meta 
+
+      tags. In this example, the pages are arranged by country, state, city and 
+
+      topic, so the URLs generate those parameters for the database queries. Comments 
+
+      recommend sending a success HTTP status header before every page returned: 
+
+      <code>Header(&quot;HTTP/1.1 200 OK&quot;);</code> running as an Apache modules 
+
+      vs. CGI on Windows, use of the ForceType directive, and Apache 2 compatibility.<br>
+
+      <br>
+
+    </li>
+
+    <li><a href="http://alistapart.com/stories/urls/">URLs! URLs! URLs!</a> <i>A 
+
+      List Apart; June 30, 2000 by Bill Humphries</i><br>
+
+      Recommends creating a simple system for URLs and mapping them to the backend. 
+
+      Describes using Apache's <b>mod_rewrite</b> component, optionally using 
+
+      <b>.htaccess. </b><br>
+
+    </li>
+
+  </ul>
+
+  <h4> URL Rewriting Tools</h4>
+
+  <ul>
+
+    <li> <b>Apache</b> 
+
+      <ul>
+
+        <li><a href="http://www.apache.org/docs/mod/mod_rewrite.html">Apache mod_rewrite 
+
+          documentation</a> - canonical documentation</li>
+
+        <li><a href="http://www.engelschall.com/pw/apache/rewriteguide/">A Users 
+
+          Guide to URL Rewriting with the Apache Webserver</a> - useful but does 
+
+          not quite explain the general case.</li>
+
+        <li><a href="http://www.promotiondata.com/sections.php?op=viewarticle&artid=1">Module 
+
+          mod_rewrite Tutorial</a> - Part 3 explains how to convert dynamic URLs 
+
+          to simple ones</li>
+
+        <li><a href="http://www.devarticles.com/art/1/506">Search Engine Friendly 
+
+          URLs with mod_rewrite</a> - <img src="../images/new.gif" alt="new" width="28" height="11"> 
+
+          (April 2003) - simple instructions, very clear.</li>
+
+      </ul>
+
+    </li>
+
+    <li><strong>Perl</strong> 
+
+      <ul>
+
+        <li>Using the environment variables Path_Info and Script_Name provides 
+
+          access to the dynamic URL including the &quot;query string&quot; (the 
+
+          part after the question mark). Converting the query information into 
+
+          a single code and adding it to the path creates a static URL.</li>
+
+      </ul>
+
+    </li>
+
+    <li><b>PHP</b> 
+
+      <ul>
+
+        <li>see articles above, especially the one on <a href="#ftda">Using ForceType</a>, 
+
+          and PortalPageFilter below</li>
+
+      </ul>
+
+    </li>
+
+    <li><b>Microsoft IIS and Active Server Pages (ASP) </b><br>
+
+      These filters recognize slash-delimited URLs and convert them to internal 
+
+      formats before the server gets them. 
+
+      <ul>
+
+        <li><a href="http://www.webanalyst.com.au/Products/ASPSpiderBait.htm">ASPSpiderBait</a> 
+
+          - package converts the PATH_INFO part of an HTTP header request: the 
+
+          user doesn't see the punctuation, just placeholder letters. The filter 
+
+          replaces the placeholders with punctuation them before the server can 
+
+          see them. $100 per server.</li>
+
+        <li><a href="http://www.isapirewrite.com/">ISAPI_Rewrite</a> - IIS ISAPI 
+
+          filter written in C/C++, simple rule for dynamic conversion. Lite version 
+
+          is free, Full version, single server, $46, enterprise license, $418</li>
+
+        <li><a href="http://www.qwerksoft.com/products/iisrewrite/">IISRewrite</a> 
+
+          - IIS filter, works much like mod_rewrite, examples include converting 
+
+          dynamic to simple URLs. $199.00 per server</li>
+
+        <li><a href="http://www.alphasierrapapa.com/products/portalpagefilter/">PortalPageFilter</a> 
+
+          - a high-priority C++ ISAPI filter for ASP</li>
+
+        <li><a href="http://www.xde.net/product_xqasp.htm">XQASP</a> - high-performance 
+
+          NT IIS C++ or Unix Java filter for ASP. $99 to $2,100 depending on scope</li>
+
+      </ul>
+
+    </li>
+
+    <li><b>ColdFusion (CFM) </b> 
+
+      <ul>
+
+        <li>May have an option to reconfigure the setup, replacing the ? with 
+
+          a /</li>
+
+        <li>Use the <a href="http://www.fusebox.org/">Fusebox</a> framework, <code>&lt;cf_formurl2attributessearch&gt;</code> 
+
+          tag. </li>
+
+      </ul>
+
+    </li>
+
+    <li><strong>Lotus Domino Servers</strong> 
+
+      <ul>
+
+        <li><a href="http://www-12.lotus.com/ldd/doc/domino_notes/Rnext/help6_admin.nsf/0/d9a27003749ea70985256c1d00397b7a?OpenDocument?OpenDocument">Web 
+
+          Site rules and global Web settings</a> <em>Lotus Domino Administrator 
+
+          6 Help</em> </li>
+
+      </ul>
+
+    </li>
+
+    <li><b>WebSTAR, AppleShareIP, etc. (Macintosh OS 9 and OS X) </b> 
+
+      <ul>
+
+        <li><a href="http://welcome.pardeike.net/pages/rulesexamples.html#f">Welcome</a> 
+
+          module by Andreas Pardeike (included in WebSTAR 4.5 and 5)</li>
+
+      </ul>
+
+    </li>
+
+  </ul>
+
+</blockquote>
+
+<h5 align="right">Page Updated 2003-07-29</h5>
+
+<!-- #BeginLibraryItem "/Library/navb02.lbi" --><hr align="center">
+
+  <p></p>
+
+  <p> 
+
+  <div align="center"> 
+
+    
+
+  <div align="center"> 
+
+    <table border="0" width="86%" height="28" bgcolor="#ccccff">
+
+      <tr> 
+
+        <td> 
+
+          <center>
+
+            <a href="../index.html"><b>Home</b></a> 
+
+          </center>
+
+        </td>
+
+        <td> 
+
+          <center>
+
+            <a href="../guide/index.html"><b>Guide</b></a> 
+
+          </center>
+
+        </td>
+
+        <td> 
+
+          <center>
+
+            <a href="../tools/tools.html"><b>Tools Listing</b></a> 
+
+          </center>
+
+        </td>
+
+        <td> 
+
+          <center>
+
+            <a href="../news.html"><b>News</b></a> 
+
+          </center>
+
+        </td>
+
+        <td> 
+
+          <div align="center"><b><a href="../info/index.html">Background</a></b></div>
+
+        </td>
+
+        <td> 
+
+          <center>
+
+            <a href="../search/search.html"><b>Search</b></a> 
+
+          </center>
+
+        </td>
+
+        <td> 
+
+          <center>
+
+            <a href="../about/index.html"><b>About Us</b></a> 
+
+          </center>
+
+        </td>
+
+      </tr>
+
+    </table>
+
+  </div>
+
+    
+
+  <h5 align="center">SearchTools.com<br>
+
+	Copyright &copy; 2002-2003 <a href="../about/consulting.html">Search Tools 
+
+	Consulting</a> </h5>
+
+  </div>
+
+  <!-- #EndLibraryItem --></body>
+
+
+
+</html>
+
+

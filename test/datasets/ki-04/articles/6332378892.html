@@ -1,0 +1,677 @@
+<!-- <DOCUMENT>
+	<FILE>
+		6332378892.html
+	</FILE>
+	<URL>
+		http://developers.slashdot.org/article.pl?sid=02/03/30/056233
+	</URL>
+	<TITLE>
+		Slashdot _ Open Source Computer Algebra Systems
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Slashdot | Open Source Computer Algebra Systems OSDN : Browse SourceForge - Shop ThinkGeek - freshmeat Downloads - Newsletters - Personals Search &raquo; X Login Why Login? Why Subscribe? Sections Main Apache Apple 2 more Askslashdot 6 more Books BSD 1 more Developers Games 8 more Interviews Science 1 more YRO 2 more Help FAQ Bugs Stories Old Stories Old Polls Topics Hall of Fame Submit Story About Supporters Code Awards Services Tech Jobs Advertising PriceGrabber Personals Open Source Computer Algebra Systems Posted by timothy on Sat Mar 30, '02 06:19 AM from the add-divide-multiply-sum dept. timdaly writes "A while back Slashdot had an article decrying the lack of a good open source computer algebra system . That is changing. There is a conference scheduled for the end of May to define the development model and strategy for future work. Students of math, science and engineering will find this valuable. If you're tired of hacking open source editors and want something with a real technical challenge this is the area for you." Slashdot Login Nickname: Password: [ Create a new account ] Related Links timdaly lack of a good open source computer algebra system conference More on Programming Also by timothy Developers &middot; Announcing Cooperative Linux &middot; freedesktop.org xlibs 1.0 Released &middot; Open Source Operating System For Smart Cards &middot; Man Page Project Can Now Use Official POSIX Docs &middot; Are 64-bit Binaries Slower than 32-bit Binaries? &middot; Perens on Patents &middot; Effect of Using 64-bit Pointers? &middot; MySQL Official GUI Interface &middot; Creating A Mobile News Portal &middot; Crack the Code and Win a Million Bucks This discussion has been archived. No new comments can be posted. Open Source Computer Algebra Systems | Log in/Create an Account | Top | 36 comments | Search Discussion Threshold: -1: 36 comments 0: 36 comments 1: 28 comments 2: 11 comments 3: 3 comments 4: 1 comments 5: 0 comments Flat Nested No Comments Threaded Oldest First Newest First Highest Scores First Oldest First (Ignore Threads) Newest First (Ignore Threads) The Fine Print: The following comments are owned by whoever posted them. We are not responsible for them in any way. what will it include? (Score:1) by abdulla (523920) on Saturday March 30, @06:32AM ( #3253025 ) (Last Journal: Wednesday April 23, @06:01AM ) maybe i'm not understanding it properly, but will this be a large maths library? if so what will it include exactly?" Re:what will it include? by timdaly (Score:1) Saturday March 30, @12:02PM Re:what will it include? by njdj (Score:2) Saturday March 30, @04:47PM Re:Maxima by timdaly (Score:1) Saturday March 30, @05:07PM GiNaC (Score:1) by sultanoslack (320583) on Saturday March 30, @07:41AM ( #3253120 ) ( http://www.slackorama.net ) Well, though it stands for GiNaC is Not a CAS (Computer Algebre System). GiNaC [ginac.de], which is a library for advanced symbolic calculations certainly would make a fine backend for a CAS. It's a pretty powerful tool wainging for an interface. Re:GiNaC, C++ and Aldor by timdaly (Score:2) Saturday March 30, @01:15PM Bad Idea (Score:2, Insightful) by cperciva (102828) on Saturday March 30, @10:34AM ( #3253698 ) ( http://www.daemonology.net/ ) A computer algebra system which is built in a bazaar is a Bad Idea. With an operating system, it isn't all that critical if it crashes occasionally. Ok, it's a nuisance... but it won't go unnoticed, and someone will track down why it's crashing, and it will get fixed. Computer algebra systems are rather more prone to undiscovered errors. It's very easy, for example, to write a long integer multiplication routine which works perfectly for integers less than 2^20 digits long, but starts to fail (deterministically, but without obvious pattern) for very rare inputs above that size. In a bazaar, where code is accepted from anyone, you're very likely to see this sort of buggy code get introduced. With a closed (commercial) or pseudo-closed (not necessarily commercial, but within a university where everyone has scrutinized each other's credentials) environment, such errors are far less likely to exist. Computational mathematicians are paranoid about such errors; computational mathematicians will not introduce a piece of code unless they can *prove* that it will work. Given enough eyes, all detected bugs will be fixed; but actually detecting those bugs in the first place is far from certain. Re:Bad Idea (Score:4, Insightful) by swillden (191260) on Saturday March 30, @11:25AM ( #3253912 ) Computer algebra systems are rather more prone to undiscovered errors. [...] In a bazaar, where code is accepted from anyone, you're very likely to see this sort of buggy code get introduced. With a closed (commercial) or pseudo-closed (not necessarily commercial, but within a university where everyone has scrutinized each other's credentials) environment, such errors are far less likely to exist. [...] computational mathematicians will not introduce a piece of code unless they can *prove* that it will work. Given enough eyes, all detected bugs will be fixed; but actually detecting those bugs in the first place is far from certain. No offense, but you don't understand the open source process. I know of no open source project anywhere in which "code is accepted from anyone". Patches can be offered by anyone, but there are gatekeepers that decide what is and is not allowed into the source tree. For a project like this, I would expect the gatekeepers to be computational mathematicians and I would expect that they would reject out of hand any non-trivial submission that isn't accompanied by a formal proof of correctness. Further, it wouldn't surprise me if *this* project used some extensive and formal peer review process, so that before (or maybe after) the gatekeeper accepts a submission there's oversight from a group of other mathematicians. I think open source is *perfect* for this sort of application. It's certainly much more likely to produce correct code than a closed source shop where only a small number of people can review the code and there are marketing people trying to push the product out the door. [ Parent ] Re:Bad Idea by cperciva (Score:2) Saturday March 30, @12:36PM Re:Bad Idea by swillden (Score:2) Saturday March 30, @05:51PM Re:Bad Idea by timdaly (Score:1) Saturday March 30, @11:41AM Re:Bad Idea by xerofud (Score:1) Sunday April 07, @01:35AM Re:Bad Idea by mmusn (Score:2) Monday April 01, @01:03AM 2 replies beneath your current threshold. MAXIMA (Score:1) by Jess (11386) &lt; gehinjcNO@SPAMalum.mit.edu &gt; on Saturday March 30, @11:28AM ( #3253933 ) There is alread an open source (GPL) computer algebra and calculus system available, called MAXIMA. It's based on MACSYMA. For more info check out: http://maxima.sourceforge.net [sourceforge.net] I've used it for some basic things, and it seems to be quite powerful. Not as full-featured as MAPLE or Mathematica, but covers most of the common needs for a CAS. Re: MAXIMA by DGolden (Score:1) Sunday March 31, @02:37PM Re: MAXIMA by sir99 (Score:1) Tuesday April 02, @11:13AM RPMS (redhat 7.2) of mathematics packages (Score:3, Informative) by rdieter (112462) &lt; `rdieter' `at' `math.unl.edu' &gt; on Saturday March 30, @12:51PM ( #3254365 ) ( http://www.math.unl.edu/~rdieter/ | Last Journal: Friday June 21, @02:57PM ) I have a collection of self-built RPMS for mathematics packages to try out if you like. Included are: drgenius, gap, geomview, gtkmathview, Macaulay2, maxima (a minor pain 'cause it depends on lisp), and others available at http://www.math.unl.edu/~rdieter [unl.edu]. Enjoy. Hmmm.... (Score:1) by redhatbox (569534) &lt; redhatbox AT myrealbox DOT com &gt; on Saturday March 30, @07:46PM ( #3257212 ) I think they call it "FORTRAN", or something like that... ;) (yes, it's a joke) Re:Hmmm.... by fparnold (Score:1) Thursday April 04, @12:03PM Lisp &amp;&amp; Prolog (Score:1) by NeuroMorphus (463324) &lt; .neuromorphus. .at. .yahoo.com. &gt; on Sunday March 31, @02:12AM ( #3258971 ) ( http://slashdot.org/ ) LISP and Prolog anyone? 1 reply beneath your current threshold. Frontends to computer algebra systems (Score:1) by Joris van der Hoeven (566677) on Sunday March 31, @05:48PM ( #3262111 ) ( http://www.math.u-psud.fr/~vdhoeven ) For anyone interested in free computer algebra systems, I would like to point to GNU TeXmacs [texmacs.org], whose version 1.0 has just been released. This program can be used as a frontend for most free computer algebra systems. Please contact us if you want to help us supporting other systems or improving the current interfaces (or adding interfaces to other scientific computation systems). Mathemagix (Score:2, Interesting) by Joris van der Hoeven (566677) on Sunday March 31, @05:53PM ( #3262141 ) ( http://www.math.u-psud.fr/~vdhoeven ) We plan to write a compiler for a new computer algebra system called mathemagix [www.mathemagix]. We are searching potential contributors or people who would just like to give us some useful suggestions; the development is still in a very early stage due to my work on TeXmacs. 2 replies beneath your current threshold. Maxima (Score:2) by mmusn (567069) on Monday April 01, @01:10AM ( #3264343 ) Let me put in another word for Maxima. It is based on Macsyma, and it is very powerful. Still, people have learned quite a bit about algorithms, software engineering, and software reuse since Macsyma, Maple, and Mathematica were originally implemented, and it might well be worth thinking about having another go at a modern computer algebra system. I suspect that implementing it in something like ML or Haskell might help a lot with correctness and extensibility. Re:Development model (Score:1) by timdaly (539918) on Saturday March 30, @11:54AM ( #3254063 ) There is a subtle point here. There will be many different computer algebra systems presented and they each have a community.I don't expect there will be an uber-system that converges them. But it is well worth discussing the future directions and shared concerns (like a common front-end (e.g. TeXmacs)), common test suites, common graphics packages. I also expect the license issues to be wonderfully warmth-generating :-) [ Parent ] Re:Development model by Anonymous Coward (Score:1) Saturday March 30, @04:26PM Re: GAP by timdaly (Score:1) Saturday March 30, @04:52PM 1 reply beneath your current threshold. Re:Development model by joto (Score:3) Saturday March 30, @05:24PM Re:Development model by Anonymous Coward (Score:1) Sunday March 31, @12:26AM 2 replies beneath your current threshold. Ad astra per aspera. [To the stars by aspiration.] All trademarks and copyrights on this page are owned by their respective owners. Comments are owned by the Poster. The Rest &copy; 1997-2003 OSDN . [ home | awards | contribute story | older articles | OSDN | advertise | self serve ad system | about | terms of service | privacy | faq | rss ] 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML><HEAD><TITLE>Slashdot | Open Source Computer Algebra Systems</TITLE>
+
+<META NAME="DESCRIPTION" CONTENT="Open Source Computer Algebra Systems -- article related to Programming."><LINK REL="top"       TITLE="News for nerds, stuff that matters" HREF="//slashdot.org/" >
+<LINK REL="search"    TITLE="Search Slashdot" HREF="//developers.slashdot.org/search.pl">
+<LINK REL="alternate" TITLE="Slashdot RSS" HREF="//slashdot.org/index.rss" TYPE="application/rss+xml">
+<LINK REL="alternate" TITLE="Slashdot (Developers) RSS" HREF="//developers.slashdot.org/developers.rss" TYPE="application/rss+xml">
+<LINK REL="parent"    TITLE="Developers" HREF="//developers.slashdot.org/">
+<LINK REL="author"    HREF="//developers.slashdot.org/search.pl?op=stories&amp;author=36799">
+<LINK REL="shortcut icon" HREF="/favicon.ico" TYPE="image/x-icon">
+</HEAD>
+<BODY BGCOLOR="#000000"
+	TEXT="#000000"
+	LINK="#336699" VLINK="#000000"
+	TOPMARGIN="0" LEFTMARGIN="0"
+	MARGINWIDTH="0" MARGINHEIGHT="0">
+
+<!-- begin OSDN Navbar -->
+<table width="100%" border="0" cellpadding="2" cellspacing="0" bgcolor="#cccccc" style="border-top: 1px #999999 solid; border-bottom: 5px #000000 solid">
+      <tr>
+              <td valign="middle" nowrap style="border-bottom: 2px #999999 solid" width="100%"><font face="arial, sans-serif" size="-2"><a href="http://www.osdn.com" title="OSDN - The Open Source Development Network" style="text-decoration:none"><font face="verdana" color="#336699">&nbsp;<b>OSDN</b></font></a>&nbsp;:&nbsp;<a href="http://sf.net" style="text-decoration: none">Browse SourceForge</a>&nbsp;-&nbsp;<a href="http://thinkgeek.com" style="text-decoration: none">Shop ThinkGeek</a>&nbsp;-&nbsp;<a href="http://freshmeat.net" style="text-decoration: none">freshmeat Downloads</a>&nbsp;-&nbsp;<a href="http://newsletters.osdn.com" style="text-decoration: none">Newsletters</a>&nbsp;-&nbsp;<a href="http://osdn.com/personals" style="text-decoration: none">Personals</a></font></td>
+              <td valign="middle" style=" border-bottom: 2px #999999 solid" nowrap><b><a href="http://osdn.com/osdnsearch.pl" style="text-decoration: none"><font size="-2" face="verdana">Search&nbsp;&raquo;&nbsp;</font></a></b></td>
+              <td valign="middle" style="border-bottom: 2px solid #999999" nowrap><b><a href="//developers.slashdot.org/users.pl?op=savemiscopts&amp;opt_osdn_navbar=0" style="text-decoration: none;"><font size="-2" face="verdana" color="#666666">&nbsp;X&nbsp;</font></a></b></td>
+      </tr>
+</table>
+<!-- end OSDN Navbar -->
+
+
+<!-- advertisement code. -->
+<CENTER>
+<!-- no position created for position 1 -->
+</CENTER>
+<!-- end ad code -->
+
+
+<TABLE CELLPADDING="5" WIDTH="100%"><TR><TD>
+<TABLE CELLPADDING="0" CELLSPACING="0" BORDER="0" WIDTH="99%" ALIGN="CENTER" BGCOLOR="#FFFFFF">
+	<TR VALIGN="MIDDLE">
+		<TD VALIGN="TOP" ALIGN="LEFT"><A HREF="//slashdot.org"><IMG SRC="//images.slashdot.org/title.gif" WIDTH="275" HEIGHT="72" ALT="Welcome to Slashdot" TITLE="Welcome to Slashdot" BORDER="0"></A></TD>
+			
+				<TD><A HREF="//slashdot.org/search.pl?topic=95"><IMG
+                SRC="//images.slashdot.org/topics/topicinternet.gif"
+                WIDTH="70" HEIGHT="73"
+                BORDER="0" ALT="The Internet" TITLE="The Internet"></A>
+</TD><TD><A HREF="//slashdot.org/search.pl?topic=156"><IMG
+                SRC="//images.slashdot.org/topics/topicprogramming.gif"
+                WIDTH="80" HEIGHT="48"
+                BORDER="0" ALT="Programming" TITLE="Programming"></A>
+</TD><TD><A HREF="//slashdot.org/search.pl?topic=160"><IMG
+                SRC="//images.slashdot.org/topics/topicspace.gif"
+                WIDTH="73" HEIGHT="59"
+                BORDER="0" ALT="Space" TITLE="Space"></A>
+</TD><TD><A HREF="//slashdot.org/search.pl?topic=106"><IMG
+                SRC="//images.slashdot.org/topics/topiclinux.gif"
+                WIDTH="60" HEIGHT="70"
+                BORDER="0" ALT="Linux" TITLE="Linux"></A>
+</TD><TD><A HREF="//slashdot.org/search.pl?topic=141"><IMG
+                SRC="//images.slashdot.org/topics/topicmusic.gif"
+                WIDTH="60" HEIGHT="49"
+                BORDER="0" ALT="Music" TITLE="Music"></A>
+</TD>
+			
+	</TR></TABLE>
+<TABLE WIDTH="99%" ALIGN="CENTER" CELLPADDING="0" CELLSPACING="0" BORDER="0" BGCOLOR="#FFFFFF">
+<TR>
+<TD VALIGN="top" ROWSPAN="5">
+
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" ALIGN="LEFT" width=100%>
+<TR>
+<TD>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" ALIGN="LEFT" width=100%>
+                                                                               
+   <TR>
+      <TD bgcolor=#336699><FONT color=#FFFFFF>&nbsp;<A HREF="//developers.slashdot.org/users.pl"><FONT color="#FFFFFF">Login</FONT></A></FONT></TD>
+   </TR>
+   <TR>
+      <TD><NOBR>
+         <FONT size=2>
+         &nbsp;<A HREF="//developers.slashdot.org/faq/accounts.shtml#ac050">Why Login?</A><BR>
+         &nbsp;<A HREF="//developers.slashdot.org/faq/subscriptions.shtml">Why Subscribe?</A><BR><BR>
+         </FONT>
+      </NOBR></TD>
+   </TR>
+
+   <TR>
+      <TD bgcolor="#336699"><FONT color="#FFFFFF">&nbsp;Sections</FONT></TD>
+   </TR>
+<TR><TD ><FONT SIZE="2">&nbsp;<A HREF="//slashdot.org">Main</A></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//apache.slashdot.org">Apache</A></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//apple.slashdot.org">Apple</A></FONT><BR>&nbsp;&nbsp;<font size="1"><B>2 more</B></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//ask.slashdot.org">Askslashdot</A></FONT><BR>&nbsp;&nbsp;<font size="1"><B>6 more</B></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//books.slashdot.org">Books</A></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//bsd.slashdot.org">BSD</A></FONT><BR>&nbsp;&nbsp;<font size="1"><B>1 more</B></FONT></TD></TR>
+<TR><TD BGCOLOR=#E0E0E0><FONT SIZE="3">
+
+&nbsp;<B><A HREF="//developers.slashdot.org">Developers</B></A></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//games.slashdot.org">Games</A></FONT><BR>&nbsp;&nbsp;<font size="1"><B>8 more</B></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//interviews.slashdot.org">Interviews</A></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//science.slashdot.org">Science</A></FONT><BR>&nbsp;&nbsp;<font size="1"><B>1 more</B></FONT></TD></TR>
+<TR><TD ><FONT SIZE="2"> 
+&nbsp;<A HREF="//yro.slashdot.org">YRO</A></FONT><BR>&nbsp;&nbsp;<font size="1"><B>2 more</B></FONT></TD></TR>
+<!-- /TABLE --></TD></TR>
+<TR><TD>&nbsp;</TD></TR>
+   <TR>
+      <TD bgcolor="#336699"><FONT color="#FFFFFF">&nbsp;Help</FONT></TD>
+   </TR>
+   <TR>
+      <TD><NOBR><FONT size=2>
+      &nbsp;<A HREF="//developers.slashdot.org/faq/">FAQ</A><BR>
+      &nbsp;<A HREF="http://sourceforge.net/tracker/?func=add&group_id=4421&atid=104421">Bugs</A><BR><BR>
+      </FONT></NOBR></TD>
+   </TR>
+   <TR>
+      <TD bgcolor="#336699"><FONT color="#FFFFFF">&nbsp;Stories</FONT></TD>
+   </TR>
+   <TR>
+      <TD><NOBR><FONT size=2>
+      &nbsp;<A HREF="//developers.slashdot.org/search.pl">Old Stories</A><BR>
+      &nbsp;<A HREF="//polls.slashdot.org">Old Polls</A><BR> 
+      &nbsp;<A HREF="//developers.slashdot.org/topics.shtml">Topics</A><BR> 
+      &nbsp;<A HREF="//developers.slashdot.org/hof.shtml">Hall of Fame</A><BR> 
+      &nbsp;<A HREF="//developers.slashdot.org/submit.pl">Submit Story</A><BR><BR>
+      </FONT></NOBR></TD>
+   </TR>
+   <TR>
+       <TD bgcolor="#336699">&nbsp;<A HREF="//developers.slashdot.org/about.shtml"><FONT color="#FFFFFF">About</FONT></A></TD>
+   </TR>
+   <TR>
+       <TD><NOBR><FONT size=2>
+       &nbsp;<A HREF="//developers.slashdot.org/supporters.shtml">Supporters</A><BR>
+       &nbsp;<A HREF="//developers.slashdot.org/code.shtml">Code</A><BR>
+       &nbsp;<A HREF="//developers.slashdot.org/awards.shtml">Awards</A><BR><BR>
+       </font></NOBR></TD>
+   </TR>
+   <TR>
+       <TD bgcolor="#336699"><FONT color="#FFFFFF">&nbsp;Services</FONT></TD>
+   </TR>
+   <TR>
+       <TD><NOBR><FONT size=2>
+       &nbsp;<A HREF="//developers.slashdot.org/relocate.pl?id=d33ed6aa8842f781bdf99a7bdbda911f">Tech Jobs</A><BR>
+       &nbsp;<A HREF="http://www.osdn.com/advertising/">Advertising</A><BR>
+       &nbsp;<A HREF="http://osdn.pricegrabber.com/">PriceGrabber</A><BR>
+       &nbsp;<A HREF="http://www.osdn.com/personals/">Personals</A><BR><BR>
+       </FONT></NOBR></TD>
+   </TR>
+</TABLE>
+</TD>
+<TD>&nbsp;</TD>
+</TR>
+</TABLE>
+
+
+
+	</TD>
+
+	<TD ALIGN="LEFT" VALIGN="TOP" WIDTH="100%" HEIGHT="1">
+<FONT COLOR="#000000"><TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0"><TR><TD
+	VALIGN="TOP" BGCOLOR="#336699"><IMG
+	SRC="//images.slashdot.org/slc.gif"
+	WIDTH="13" HEIGHT="16" ALT="" ALIGN="TOP"><FONT
+	FACE="arial,helvetica" SIZE="4" COLOR="#FFFFFF"><B>Open Source Computer Algebra Systems</B></FONT></TD>
+</TR></TABLE>
+<TABLE ALIGN="RIGHT"><TR><TD ALIGN="RIGHT">
+
+	<A HREF="//developers.slashdot.org/search.pl?topic=156">
+		
+		<IMG
+			SRC="//images.slashdot.org/topics/topicprogramming.gif"
+			WIDTH="80" HEIGHT="48" BORDER="0"
+			HSPACE="20" VSPACE="10"
+			ALT="Programming"
+			TITLE="Programming"></A><BR>
+
+
+	
+</TD></TR></TABLE>
+<B>Posted by
+<A HREF="http://www.monkey.org/~timothy/">timothy</A>
+on Sat Mar 30, '02 06:19 AM</B><BR>
+<FONT SIZE="2"><B>from the add-divide-multiply-sum dept.</B></FONT><BR>
+<A HREF="mailto:daly@idsi.net">timdaly</A> writes <i>"A while back Slashdot had an article decrying
+the <a href="http://slashdot.org/askslashdot/00/02/27/1343255.shtml">lack of a good open source computer algebra
+system</a>. That is changing. There is a <A HREF="http://www.lapcs.univ-lyon1.fr/~nthiery/CalculFormelLibre/workshop.html">
+conference</A> scheduled for the end of May to define the development model and strategy for future work. Students of math, science and engineering will find this valuable. If you're tired of hacking open source editors and want something with a real technical challenge this is the area for you."</i>
+
+
+
+
+
+
+	<P><script LANGUAGE="JAVASCRIPT">
+<!--
+now = new Date();
+tail = now.getTime();
+AltText = "'Click Here'";
+document.write("<A HREF='http://ads.osdn.com/?ad_id=1661&alloc_id=4317&site_id=1&request_id=1391830&op=click&page=%2farticle%2epl' TARGET=_top>");
+document.write("<IMG SRC='http://ads.osdn.com/?ad_id=1661&alloc_id=4317&site_id=1&request_id=1391830&");
+document.write(tail);
+document.write("' WIDTH=300 HEIGHT=250 BORDER=0 ALT=");
+document.write(AltText);
+document.write("></A><BR>");
+//-->
+</SCRIPT>
+<noscript>
+<a HREF="http://ads.osdn.com/?ad_id=1661&alloc_id=4317&site_id=1&request_id=1391830&op=click&page=%2farticle%2epl" TARGET=_top><img SRC="http://ads.osdn.com/?ad_id=1661&alloc_id=4317&site_id=1&request_id=1391830" WIDTH=300 HEIGHT=250 BORDER=0 ALT="Click Here"></a><br>
+</noscript>
+<iframe width=0 height=1 border=0 frameborder=0></iframe>
+
+<P>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="RIGHT" VALIGN="TOP" WIDTH="230" HEIGHT="1">
+
+<CENTER>
+
+
+	<TABLE WIDTH="220" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+		<TR VALIGN="TOP" BGCOLOR="#336699">
+			<TD><FONT FACE="arial,helvetica" SIZE="4" COLOR="#FFFFFF"><B>Slashdot Login</B></FONT></TD>
+		</TR>
+		<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="2" COLOR="#000000">
+
+
+			<FORM ACTION="/users.pl" METHOD="POST">
+<B>Nickname:</B><BR>
+<INPUT TYPE="TEXT" NAME="unickname" SIZE="20" VALUE=""><BR>
+<B>Password:</B><BR>
+<INPUT TYPE="HIDDEN" NAME="returnto" VALUE="http://developers.slashdot.org/article.pl?sid=02/03/30/056233">
+<INPUT TYPE="HIDDEN" NAME="op" VALUE="userlogin">
+<INPUT TYPE="PASSWORD" NAME="upasswd" SIZE="20"><BR>
+<INPUT TYPE="SUBMIT" NAME="userlogin" VALUE="Log in">
+</FORM>
+
+<P>[ <B><A HREF="/users.pl?op=newuserform">Create a new account</A></B> ]
+		
+
+</FONT>
+			</TD></TR></TABLE>
+
+</CENTER>
+<P>
+
+<IMG SRC="//images.slashdot.org/pix.gif" WIDTH="230" HEIGHT="1" BORDER="0"><CENTER>
+
+
+	<TABLE WIDTH="220" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+		<TR VALIGN="TOP" BGCOLOR="#336699">
+			<TD><FONT FACE="arial,helvetica" SIZE="4" COLOR="#FFFFFF"><B>Related Links</B></FONT></TD>
+		</TR>
+		<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="2" COLOR="#000000">
+
+<LI><A HREF="mailto:daly@idsi.net">timdaly</A></LI>
+<LI><A href="http://slashdot.org/askslashdot/00/02/27/1343255.shtml">lack of a good open source computer algebra
+system</A></LI>
+<LI><A HREF="http://www.lapcs.univ-lyon1.fr/~nthiery/CalculFormelLibre/workshop.html">
+conference</A></LI>
+<LI><A HREF="//slashdot.org/search.pl?topic=156">More on Programming</A></LI>
+<LI><A HREF="//slashdot.org/search.pl?op=stories&amp;author=36799">Also by timothy</A></LI>
+
+</FONT>
+			</TD></TR></TABLE>
+
+</CENTER>
+<P><CENTER>
+
+
+	<TABLE WIDTH="220" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+		<TR VALIGN="TOP" BGCOLOR="#336699">
+			<TD><FONT FACE="arial,helvetica" SIZE="4" COLOR="#FFFFFF"><B>Developers</B></FONT></TD>
+		</TR>
+		<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="2" COLOR="#000000">
+
+&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/25/2124237">Announcing Cooperative Linux</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/25/1833253">freedesktop.org xlibs 1.0 Released</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/25/0048229">Open Source Operating System For Smart Cards</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/24/1942239">Man Page Project Can Now Use Official POSIX Docs</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/23/220205">Are 64-bit Binaries Slower than 32-bit Binaries?</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/23/150208">Perens on Patents</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/21/2344253">Effect of Using 64-bit Pointers?</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/21/1947205">MySQL Official GUI Interface</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/21/163202">Creating A Mobile News Portal</A><BR>&middot; <A HREF="//developers.slashdot.org/article.pl?sid=04/01/20/1311205">Crack the Code and Win a Million Bucks</A><BR>
+
+</FONT>
+			</TD></TR></TABLE>
+
+</CENTER>
+<P>
+
+</TD>
+</TR>
+
+<TR>
+<TD COLSPAN="3">
+
+
+
+
+</TD></TR>
+<TR>
+<TD COLSPAN="3"><TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="2">
+
+<TR><TD BGCOLOR="#336699"><FONT COLOR="#FFFFFF" SIZE="2">
+			
+
+		
+			
+				This discussion has been archived.
+				No new comments can be posted.
+			
+		
+	
+</FONT></TD></TR><TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="2">
+
+	<TR><TD BGCOLOR="#336699" ALIGN="CENTER">
+		<FONT SIZE="2" COLOR="#FFFFFF">
+
+		<A HREF="//slashdot.org/article.pl?sid=02/03/30/056233"><FONT COLOR="#FFFFFF">Open Source Computer Algebra Systems</FONT></A>
+
+
+	|
+
+
+		<A HREF="//developers.slashdot.org/users.pl">
+			<FONT COLOR="#FFFFFF">Log in/Create an Account</FONT>
+		</A>
+
+
+		| <A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=0"><FONT COLOR="#FFFFFF">Top</FONT></A>
+
+
+
+
+
+		| <B>36</B> comments
+
+
+
+
+
+
+		| <A HREF="//developers.slashdot.org/search.pl?op=comments&amp;sid=30294">
+<FONT COLOR="#FFFFFF">Search Discussion</FONT></A></FONT>
+	</TD></TR>
+
+	<TR><TD BGCOLOR="#E0E0E0" ALIGN="CENTER">
+		<FORM ACTION="//developers.slashdot.org/comments.pl">
+		<FONT SIZE="2">
+		<INPUT TYPE="HIDDEN" NAME="sid" VALUE="30294">
+		<INPUT TYPE="HIDDEN" NAME="cid" VALUE="0">
+		<INPUT TYPE="HIDDEN" NAME="pid" VALUE="0">
+		<INPUT TYPE="HIDDEN" NAME="startat" VALUE="">
+
+		Threshold: <SELECT NAME="threshold">
+	<OPTION VALUE="-1">-1: 36 comments</OPTION>
+	<OPTION VALUE="0">0: 36 comments</OPTION>
+	<OPTION VALUE="1" SELECTED>1: 28 comments</OPTION>
+	<OPTION VALUE="2">2: 11 comments</OPTION>
+	<OPTION VALUE="3">3: 3 comments</OPTION>
+	<OPTION VALUE="4">4: 1 comments</OPTION>
+	<OPTION VALUE="5">5: 0 comments</OPTION>
+</SELECT><SELECT NAME="mode">
+	<OPTION VALUE="flat">Flat</OPTION>
+	<OPTION VALUE="nested">Nested</OPTION>
+	<OPTION VALUE="nocomment">No Comments</OPTION>
+	<OPTION VALUE="thread" SELECTED>Threaded</OPTION>
+</SELECT><SELECT NAME="commentsort">
+	<OPTION VALUE="0" SELECTED>Oldest First</OPTION>
+	<OPTION VALUE="1">Newest First</OPTION>
+	<OPTION VALUE="3">Highest Scores First</OPTION>
+	<OPTION VALUE="4">Oldest First (Ignore Threads)</OPTION>
+	<OPTION VALUE="5">Newest First (Ignore Threads)</OPTION>
+</SELECT>
+
+	
+
+		<INPUT TYPE="submit" NAME="op" VALUE="Change">
+		
+		</FONT>
+		</FORM>
+	</TD></TR>
+	<TR><TD BGCOLOR="#336699" ALIGN="CENTER">
+		<FONT COLOR="#FFFFFF" SIZE="1">
+<B>The Fine Print:</B>
+The following comments are owned by whoever posted them.
+We are not responsible for them in any way.
+</FONT></TD></TR><TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3253025"><B>what will it include?</B></A> (Score:1)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~abdulla">abdulla (523920)</A> 
+				on Saturday March 30, @06:32AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3253025">#3253025</A>)
+				<BR><FONT SIZE="-1">(Last Journal: <A HREF="//slashdot.org/~abdulla/journal/">Wednesday April 23, @06:01AM</A>)</FONT> 
+			</TD></TR>
+			<TR><TD>
+				maybe i'm not understanding it properly, but will this be a large maths library? if so what will it include exactly?"
+			</TD></TR>
+<TR><TD><UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253025#3254098">Re:what will it include?</A> by timdaly <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Saturday March 30, @12:02PM </FONT>
+<UL></UL></LI><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253025#3255984">Re:what will it include?</A> by njdj <FONT SIZE="-1">(Score:2)</FONT>  <FONT SIZE="-1">Saturday March 30, @04:47PM </FONT>
+<UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3255984#3256146">Re:Maxima</A> by timdaly <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Saturday March 30, @05:07PM </FONT>
+<UL></UL></LI></UL></LI></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3253120"><B>GiNaC</B></A> (Score:1)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~sultanoslack">sultanoslack (320583)</A> 
+				on Saturday March 30, @07:41AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3253120">#3253120</A>)
+				<BR><FONT SIZE="-1">(<A HREF="http://www.slackorama.net">http://www.slackorama.net</A>)</FONT> 
+			</TD></TR>
+			<TR><TD>
+				Well, though it stands for <I>GiNaC is Not a CAS</I> (Computer Algebre System).  <A HREF="http://www.ginac.de/">GiNaC</A> [ginac.de], which is a library for advanced symbolic calculations certainly would make a fine backend for a CAS.  It's a pretty powerful tool wainging for an interface.
+			</TD></TR>
+<TR><TD><UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253120#3254504">Re:GiNaC, C++ and Aldor</A> by timdaly <FONT SIZE="-1">(Score:2)</FONT>  <FONT SIZE="-1">Saturday March 30, @01:15PM </FONT>
+<UL></UL></LI></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3253698"><B>Bad Idea</B></A> (Score:2, Insightful)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~cperciva">cperciva (102828)</A> 
+				on Saturday March 30, @10:34AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3253698">#3253698</A>)
+				<BR><FONT SIZE="-1">(<A HREF="http://www.daemonology.net/">http://www.daemonology.net/</A>)</FONT> 
+			</TD></TR>
+			<TR><TD>
+				A computer algebra system which is built in a bazaar is a Bad Idea.<BR><BR>With an operating system, it isn't all that critical if it crashes occasionally.  Ok, it's a nuisance... but it won't go unnoticed, and someone will track down why it's crashing, and it will get fixed.<BR><BR>Computer algebra systems are rather more prone to undiscovered errors.  It's very easy, for example, to write a long integer multiplication routine which works perfectly for integers less than 2^20 digits long, but starts to fail (deterministically, but without obvious pattern) for very rare inputs above that size.  In a bazaar, where code is accepted from anyone, you're very likely to see this sort of buggy code get introduced.<BR><BR>With a closed (commercial) or pseudo-closed (not necessarily commercial, but within a university where everyone has scrutinized each other's credentials) environment, such errors are far less likely to exist.  Computational mathematicians are paranoid about such errors; computational mathematicians will not introduce a piece of code unless they can *prove* that it will work.<BR><BR>Given enough eyes, all detected bugs will be fixed; but actually detecting those bugs in the first place is far from certain.
+			</TD></TR>
+<TR><TD><UL><TABLE>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3253912"><B>Re:Bad Idea</B></A> (Score:4, Insightful)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~swillden">swillden (191260)</A> 
+				on Saturday March 30, @11:25AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3253912">#3253912</A>)
+				 
+			</TD></TR>
+			<TR><TD>
+				<P> <I>Computer algebra systems are rather more prone to undiscovered errors. [...] In a bazaar, where code is accepted from anyone, you're very likely to see this sort of buggy code get introduced.</I>
+
+<P> <I>With a closed (commercial) or pseudo-closed (not necessarily commercial, but within a university where everyone has scrutinized each other's credentials) environment, such errors are far less likely to exist. [...] computational mathematicians will not introduce a piece of code unless they can *prove* that it will work.</I>
+
+<P> <I>Given enough eyes, all detected bugs will be fixed; but actually detecting those bugs in the first place is far from certain.</I>
+
+<P>No offense, but you don't understand the open source process.  I know of no open source project anywhere in which "code is accepted from anyone".  Patches can be offered by anyone, but there are gatekeepers that decide what is and is not allowed into the source tree.  For a project like this, I would expect the gatekeepers to be computational mathematicians and I would expect that they would reject out of hand any non-trivial submission that isn't accompanied by a formal proof of correctness.
+
+<P>Further, it wouldn't surprise me if *this* project used some extensive and formal peer review process, so that before (or maybe after) the gatekeeper accepts a submission there's oversight from a group of other mathematicians.
+
+<P>I think open source is *perfect* for this sort of application.  It's certainly much more likely to produce correct code than a closed source shop where only a small number of people can review the code and there are marketing people trying to push the product out the door.
+			</TD></TR>
+				<TR><TD>
+					<FONT SIZE="2">
+					[ <A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;cid=3253698">Parent</A>
+ ]
+					</FONT>
+				</TD></TR>
+				<TR><TD>
+</TABLE><UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253912#3254284">Re:Bad Idea</A> by cperciva <FONT SIZE="-1">(Score:2)</FONT>  <FONT SIZE="-1">Saturday March 30, @12:36PM </FONT>
+<UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3254284#3256442">Re:Bad Idea</A> by swillden <FONT SIZE="-1">(Score:2)</FONT>  <FONT SIZE="-1">Saturday March 30, @05:51PM </FONT>
+<UL></UL></LI></UL></LI></UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253698#3254000">Re:Bad Idea</A> by timdaly <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Saturday March 30, @11:41AM </FONT>
+<UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3254000#3297832">Re:Bad Idea</A> by xerofud <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Sunday April 07, @01:35AM </FONT>
+<UL></UL></LI></UL></LI><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253698#3264317">Re:Bad Idea</A> by mmusn <FONT SIZE="-1">(Score:2)</FONT>  <FONT SIZE="-1">Monday April 01, @01:03AM </FONT>
+<UL></UL></LI><LI><FONT SIZE="2"><B><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=-1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253698">2 replies</A>
+ beneath your current threshold.</B></FONT></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3253933"><B> MAXIMA</B></A> (Score:1)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~Jess">Jess (11386)</A>  &lt;<A HREF="mailto:gehinjcNO%40SPAMalum.mit.edu">gehinjcNO@SPAMalum.mit.edu</A>&gt;
+				on Saturday March 30, @11:28AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3253933">#3253933</A>)
+				 
+			</TD></TR>
+			<TR><TD>
+				There is alread an open source (GPL) computer algebra and calculus system available, called MAXIMA.  It's based on MACSYMA.
+<P>
+For more info check out:
+<A HREF="http://maxima.sourceforge.net/">
+http://maxima.sourceforge.net</A> [sourceforge.net]
+<P>
+I've used it for some basic things, and it seems to be quite powerful.  Not as full-featured as MAPLE or Mathematica, but covers most of the common needs for a CAS.
+			</TD></TR>
+<TR><TD><UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3253933#3261333">Re: MAXIMA</A> by DGolden <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Sunday March 31, @02:37PM </FONT>
+<UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3261333#3270438">Re: MAXIMA</A> by sir99 <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Tuesday April 02, @11:13AM </FONT>
+<UL></UL></LI></UL></LI></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3254365"><B>RPMS (redhat 7.2) of mathematics packages</B></A> (Score:3, Informative)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~rdieter">rdieter (112462)</A>  &lt;<A HREF="mailto:%60rdieter'%20%60at'%20%60math.unl.edu'">`rdieter' `at' `math.unl.edu'</A>&gt;
+				on Saturday March 30, @12:51PM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3254365">#3254365</A>)
+				<BR><FONT SIZE="-1">(<A HREF="http://www.math.unl.edu/~rdieter/">http://www.math.unl.edu/~rdieter/</A> | Last Journal: <A HREF="//slashdot.org/~rdieter/journal/">Friday June 21, @02:57PM</A>)</FONT> 
+			</TD></TR>
+			<TR><TD>
+				I have a collection of self-built RPMS for mathematics packages to try out if you like.  Included are: drgenius, gap, geomview, gtkmathview, Macaulay2, maxima (a minor pain 'cause it depends on lisp), and others available at  
+<A HREF="http://www.math.unl.edu/~rdieter">
+http://www.math.unl.edu/~rdieter</A> [unl.edu].  Enjoy.
+			</TD></TR>
+<TR><TD><UL></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3257212"><B>Hmmm....</B></A> (Score:1)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~redhatbox">redhatbox (569534)</A>  &lt;<A HREF="mailto:redhatbox%20AT%20myrealbox%20DOT%20com">redhatbox AT myrealbox DOT com</A>&gt;
+				on Saturday March 30, @07:46PM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3257212">#3257212</A>)
+				 
+			</TD></TR>
+			<TR><TD>
+				<BR>I think they call it "FORTRAN", or something like that... ;)<BR><BR><I>(yes, it's a joke)</I> <BR><BR>
+			</TD></TR>
+<TR><TD><UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3257212#3284919">Re:Hmmm....</A> by fparnold <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Thursday April 04, @12:03PM </FONT>
+<UL></UL></LI></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3258971"><B>Lisp &amp;&amp; Prolog</B></A> (Score:1)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~NeuroMorphus">NeuroMorphus (463324)</A>  &lt;<A HREF="mailto:.neuromorphus.%20.at.%20.yahoo.com.">.neuromorphus. .at. .yahoo.com.</A>&gt;
+				on Sunday March 31, @02:12AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3258971">#3258971</A>)
+				<BR><FONT SIZE="-1">(<A HREF="http://slashdot.org/">http://slashdot.org/</A>)</FONT> 
+			</TD></TR>
+			<TR><TD>
+				LISP and Prolog anyone?<BR>
+			</TD></TR>
+<TR><TD><UL><LI><FONT SIZE="2"><B><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=-1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3258971">1 reply</A>
+ beneath your current threshold.</B></FONT></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3262111"><B>Frontends to computer algebra systems</B></A> (Score:1)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~Joris%20van%20der%20Hoeven">Joris van der Hoeven (566677)</A> 
+				on Sunday March 31, @05:48PM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3262111">#3262111</A>)
+				<BR><FONT SIZE="-1">(<A HREF="http://www.math.u-psud.fr/~vdhoeven">http://www.math.u-psud.fr/~vdhoeven</A>)</FONT> 
+			</TD></TR>
+			<TR><TD>
+				For anyone interested in free computer algebra systems, I would like to point to <A HREF="http://www.texmacs.org/">GNU TeXmacs</A> [texmacs.org], whose version 1.0 has just been released. This program can be used as a frontend for most free computer algebra systems. Please contact us if you want to help us supporting other systems or improving the current interfaces (or adding interfaces to other scientific computation systems).
+			</TD></TR>
+<TR><TD><UL></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3262141"><B>Mathemagix</B></A> (Score:2, Interesting)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~Joris%20van%20der%20Hoeven">Joris van der Hoeven (566677)</A> 
+				on Sunday March 31, @05:53PM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3262141">#3262141</A>)
+				<BR><FONT SIZE="-1">(<A HREF="http://www.math.u-psud.fr/~vdhoeven">http://www.math.u-psud.fr/~vdhoeven</A>)</FONT> 
+			</TD></TR>
+			<TR><TD>
+				We plan to write a compiler for a new computer algebra system called <A HREF="http://www.mathemagix/">mathemagix</A> [www.mathemagix].
+We are searching potential contributors or
+people who would just like to give us some
+useful suggestions; the development is still
+in a very early stage due to my work on TeXmacs.
+			</TD></TR>
+<TR><TD><UL><LI><FONT SIZE="2"><B><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=-1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3262141">2 replies</A>
+ beneath your current threshold.</B></FONT></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3264343"><B>Maxima</B></A> (Score:2)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~mmusn">mmusn (567069)</A> 
+				on Monday April 01, @01:10AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3264343">#3264343</A>)
+				 
+			</TD></TR>
+			<TR><TD>
+				Let me put in another word for Maxima.  It is based on Macsyma, and it is very powerful.  
+<P>
+Still, people have learned quite a bit about algorithms, software engineering, and software reuse since Macsyma, Maple, and Mathematica were originally implemented, and it might well be worth thinking about having another go at a modern computer algebra system.  I suspect that implementing it in something like ML or Haskell might help a lot with correctness and extensibility.
+			</TD></TR>
+<TR><TD><UL></UL></TD></TR>			<TR><TD BGCOLOR="#E0E0E0">
+				<FONT SIZE="3" COLOR="#000000">
+				<A NAME="3254063"><B>Re:Development model</B></A> (Score:1)
+				</FONT>
+				<BR>by <A HREF="//slashdot.org/~timdaly">timdaly (539918)</A> 
+				on Saturday March 30, @11:54AM (<A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;cid=3254063">#3254063</A>)
+				 
+			</TD></TR>
+			<TR><TD>
+				There is a subtle point here. There will be many<BR>different computer algebra systems presented and<BR>they each have a community.I don't expect there<BR>will be an uber-system that converges them. But<BR>it is well worth discussing the future directions<BR>and shared concerns (like a common front-end (e.g.<BR>TeXmacs)), common test suites, common graphics<BR>packages. I also expect the license issues to<BR>be wonderfully warmth-generating :-)
+			</TD></TR>
+				<TR><TD>
+					<FONT SIZE="2">
+					[ <A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;cid=3253021">Parent</A>
+ ]
+					</FONT>
+				</TD></TR>
+				<TR><TD>
+<TR><TD><UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3254063#3255819">Re:Development model</A> by Anonymous Coward <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Saturday March 30, @04:26PM </FONT>
+<UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3255819#3256025">Re: GAP</A> by timdaly <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Saturday March 30, @04:52PM </FONT>
+<UL></UL></LI><LI><FONT SIZE="2"><B><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=-1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3255819">1 reply</A>
+ beneath your current threshold.</B></FONT></UL></LI><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3254063#3256252">Re:Development model</A> by joto <FONT SIZE="-1">(Score:3)</FONT>  <FONT SIZE="-1">Saturday March 30, @05:24PM </FONT>
+<UL><LI><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=3256252#3258508">Re:Development model</A> by Anonymous Coward <FONT SIZE="-1">(Score:1)</FONT>  <FONT SIZE="-1">Sunday March 31, @12:26AM </FONT>
+<UL></UL></LI></UL></LI></UL></TD></TR><TR><TD BGCOLOR="#E0E0E0"><LI><FONT SIZE="2"><B><A HREF="//developers.slashdot.org/comments.pl?sid=30294&amp;threshold=-1&amp;commentsort=0&amp;tid=156&amp;mode=thread&amp;pid=0">2 replies</A>
+ beneath your current threshold.</B></FONT></TD></TR>
+	
+	
+
+
+
+</TABLE></TR>
+<TD>&nbsp;</TD><TD>&nbsp;</TD><TD>&nbsp;</TD></TR>
+<TR><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>&nbsp;</TD></TR>
+
+
+</TABLE>
+
+<TABLE WIDTH="99%" BORDER="0" CELLPADDING="0" CELLSPACING="0" ALIGN="CENTER" BGCOLOR="#FFFFFF">
+	<TR>
+		<TD COLSPAN="4" ALIGN="CENTER"><IMG SRC="//images.slashdot.org/greendot.gif" ALT="" WIDTH="80%" HEIGHT="1" HSPACE="10" VSPACE="30"></TD>
+	</TR>
+	<TR>
+		<TD ALIGN="CENTER">
+<FONT SIZE="2" FACE="arial,helvetica">
+
+  <FORM METHOD="GET" ACTION="//developers.slashdot.org/search.pl">
+         <INPUT TYPE="TEXT" NAME="query" VALUE="" SIZE="20">
+        <INPUT TYPE="SUBMIT" VALUE="Search">
+  </FORM>
+
+  </FONT>
+</TD>
+		<TD BGCOLOR="#ffffff" WIDTH="25"> &nbsp; </TD>
+		<TD ALIGN="CENTER">
+
+<FONT SIZE="2" FACE="arial,helvetica"><I>Ad astra per aspera.
+	[To the stars by aspiration.]</I></FONT>
+
+		</TD></TR>
+		<TR><TD ALIGN="CENTER" COLSPAN="4">
+			<FONT size=1 color="#336699" face="arial,helvetica">
+
+
+<!-- image audit code -->
+<script LANGUAGE="JAVASCRIPT">
+<!--
+now = new Date();
+tail = now.getTime();
+document.write("<IMG SRC='http://images-aud.slashdot.org/pc.gif?l,");
+document.write(tail);
+document.write("' WIDTH=1 HEIGHT=1 BORDER=0 ALT=' '>");
+//-->
+</SCRIPT>
+<noscript>
+<IMG SRC='http://images-aud.slashdot.org/pc.gif?l,436' WIDTH=1 HEIGHT=1 BORDER=0 ALT=' '>
+</noscript>
+<!-- end audit code -->
+
+
+ All trademarks and copyrights on this
+  page are owned by their respective owners.  Comments
+  are owned by the Poster.
+  The Rest &copy; 1997-2003 <A href="http://www.osdn.com/">OSDN</A>.
+</FONT>
+             </TD>
+			</TR></TABLE>
+<CENTER>
+	<FONT SIZE="2" COLOR="#336699"> [
+		<A HREF="//developers.slashdot.org/"><FONT COLOR="#FFFFFF">home</FONT></A> |
+		<A HREF="//developers.slashdot.org/awards.shtml"><FONT COLOR="#FFFFFF">awards</FONT></A> |
+		<A HREF="//developers.slashdot.org/submit.pl"><FONT COLOR="#FFFFFF">contribute story</FONT></A> |
+		<A HREF="//developers.slashdot.org/search.pl"><FONT COLOR="#FFFFFF">older articles</FONT></A> |
+		<A HREF="http://www.osdn.com/"><FONT COLOR="#FFFFFF">OSDN</FONT></A> |
+		<A HREF="http://www.osdn.com/advertising/"><FONT COLOR="#FFFFFF">advertise</FONT></A> |
+		<A HREF="http://selfserve.osdn.com/introduction.html"><FONT COLOR="#FFFFFF">self serve ad system</FONT></A> |
+		<A HREF="//developers.slashdot.org/about.shtml"><FONT COLOR="#FFFFFF">about</FONT></A> |
+		<A HREF="http://www.osdn.com/terms.shtml"><FONT COLOR="#FFFFFF">terms of service</FONT></A> |
+		<A HREF="http://osdn.com/privacy.shtml"><FONT COLOR="#FFFFFF">privacy</FONT></A> |
+		<A HREF="//developers.slashdot.org/faq/"><FONT COLOR="#FFFFFF">faq</FONT></A> |
+		<A HREF="//developers.slashdot.org/developers.rss"><FONT COLOR="#FFFFFF">rss</FONT></A> ]
+	</FONT>
+</TD></TR></TABLE>
+</CENTER>
+</BODY>
+</HTML>

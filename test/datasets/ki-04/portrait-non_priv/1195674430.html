@@ -1,0 +1,265 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1195674430.html
+	</FILE>
+	<URL>
+		http://www.ds.arch.tue.nl/Research/CBR/
+	</URL>
+	<TITLE>
+		Design Systems - Research - Workshop
+	</TITLE>
+	<GENRE>
+		portrait-non_priv
+	</GENRE>
+	<PLAINTEXT>
+ Sorry, this site uses Scripting. You will have trouble accessing our pages with older browsers... Organised by the Design Systems group of the Eindhoven University of Technology November 13, 1998 Keynote speaker: Prof. Mary Lou Maher University of Sydney Department of Architectural and Design Science Mary Lou Maher is Co-Director of the Key Centry of Design Computing, and Professor of Design Computer, Associate Dean (research) and Course Coordinator (Computing). She joined the University of Sydney in 1990 after 5 years on the Faculty of the Department of Civil Engineering at Carnegie Mellon University (Pittsburgh, USA) and working with the Engineering Design Research Centre. She teaches and does research in computer-aided design and knowledge-based systems. She is a Fellow of the Australian Institution of Engineers, and a member of the American Society of Civil Engineers' Expert Systems and Artificial Intelligence Committee, the American Association of Artificial Intelligence, and the IEEE Computer Society. She is the editor or co-editor of several books on knowledge-based systems and author of over eighty papers. For more information about her you can visit her homepage at the University of Sydney: http://www.arch.usyd.edu.au/fac_arch/people/dads/Mary_Lou_Maher.html Copyright © 1998 - 2003. Design Systems. Eindhoven University of Technology. For questions, comments, or technical problems, please contact the webmaster . 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<SCRIPT LANGUAGE="JavaScript"><!--
+	var DSlblue = '"#0000D0"', DSblue = '"#000064"', DSred = '"#FF0000"';
+	var DSsubmenu, DSmain, DSmainno, DSsub, DSsubno, DSsetcurrentmenu;
+	var DSroot = '/';
+	function DSmenuitem(item, hassubdir, isdefault, target) {
+		this.item = item;
+		this.hassubdir = hassubdir;
+		this.isdefault = isdefault;
+		this.target = target;
+	}
+	function DSmenu(tag, itemarray, buttons) {
+		this.tag = tag;
+		this.current = -1;
+		this.hilited = -1;
+		this.itemarray = itemarray;
+		this.buttons = buttons;
+	}
+	function DSsetsub(sub) {
+		DSsubno = -1; DSsub = false;
+		for (i = 0; i < DSsubmenu.itemarray.length; i++) {
+			if (DSsubmenu.itemarray[i].item == sub) {
+				DSsubno = i;
+				DSsub = DSsubmenu.itemarray[DSsubno];
+				break;
+			}
+		}
+	}
+	var DSmainmenu = new DSmenu('mainmenu',
+		new Array(
+			new DSmenuitem('General',true,true),
+			new DSmenuitem('Research',true,false),
+			new DSmenuitem('Education',true,false),
+			new DSmenuitem('Specials',true,false)
+		), DSroot+'images/buttons/topmenu/');
+//--></SCRIPT>
+
+<NOSCRIPT>
+Sorry, this site uses Scripting. You will have trouble accessing our pages with older browsers...
+</NOSCRIPT>
+<STYLE TYPE="text/css"><!--
+	BODY { margin: 3px 5px 5px 3px; }
+	A:link { color: #0000D0 }
+	A:visited { color: #000064 }
+	A:hover { color: #FF0000 }
+	A:active { color: #008000 }
+	A.smalllink:link { color: #C000C0 }
+	A.smalllink:visited { color: #800080 }
+	A.smalllink:hover { color: #FF0000 }
+	A.smalllink:active { color: #008000 }
+//--></STYLE>
+<SCRIPT LANGUAGE="JavaScript"><!--
+	var DSonLoad;
+	function DSbody(sub, windowtitle, doctitle, nomargin) {
+		DSsetsub(sub);
+		document.write('<HTML>');
+		document.write('<HEAD>');
+		document.write('<TITLE>'+windowtitle+'</TITLE>');
+		document.write('</HEAD>');
+		document.write('<BODY BACKGROUND="/images/backgrounds/back_'+DSmain.item+'.gif" TEXT='+DSblue+' LINK='+DSlblue+' VLINK='+DSblue+' BGPROPERTIES="NOTFIXED"><BASEFONT FACE="ARIAL" SIZE=3><A NAME="Top"></A>');
+		document.write('<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH="100%">');
+		document.write('	<TR>');
+		document.write('		<TD WIDTH="190" HEIGHT="140" VALIGN="TOP">');
+		document.write('<A HREF="/'+DSmain.item+'"><IMG SRC="/images/buttons/topmenu/'+DSmain.item+'_cube.gif" HEIGHT=101 WIDTH=116 BORDER=0 ALT="Back to the '+DSmain.item+' page"></A><IMG SRC="/images/dummy.gif" WIDTH=74 HEIGHT=1 BORDER=0>');
+		if (DSsub) {
+			if (DSsub.isdefault)      lnk = '';
+			else if (DSsub.hassubdir) lnk = '/'+DSsub.item;
+			else                      lnk = '/'+DSsub.item+'.stm';
+			document.write('<BR><A HREF="'+DSroot+DSmain.item+lnk+'" onMouseOver="DShilite()" onMouseOut="DSlolite()"><IMG NAME="submenu" SRC="'+DSroot+'images/buttons/'+DSmain.item+'/'+DSsub.item+'.gif" BORDER=0 ALT="Back to the '+DSmain.item+' - '+DSsub.item+' page"></A>');
+		}
+		document.write('		</TD>');
+		document.write('		<TD VALIGN="MIDDLE" WIDTH="*">');
+		document.write(doctitle);
+		document.write('		</TD>');
+		document.write('	</TR>');
+		document.write('</TABLE>');
+		document.write('<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH="100%">');
+		document.write('	<TR>');
+		if (nomargin)
+			document.write('		<TD VALIGN="TOP" COLSPAN=3>');
+		else
+			document.write('		<TD WIDTH="130" VALIGN="TOP" ALIGN="RIGHT"><IMG SRC="/images/dummy.gif" WIDTH=130 HEIGHT=1 BORDER=0><BR>');
+	}
+	function DShilite() {
+	if (document.images) {
+		document.submenu.src = DSroot+'images/buttons/'+DSmain.item+'/'+DSsub.item+'_act.gif';
+	}}
+	function DSlolite() {
+	if (document.images) {
+		document.submenu.src = DSroot+'images/buttons/'+DSmain.item+'/'+DSsub.item+'.gif';
+	}}
+	function DSendMargin() {
+		document.write('		</TD><TD WIDTH="60"><IMG SRC="/images/dummy.gif" WIDTH=60 HEIGHT=1 BORDER=0></TD>');
+		document.write('		<TD VALIGN="TOP" WIDTH="*">');
+	}
+	function DSnoMargin() {
+		DSendMargin();
+	}
+	function DSnewMargin() {
+		document.write('		</TD>');
+		document.write('	</TR>');
+		document.write('	<TR><TD COLSPAN=3>&nbsp;</TD></TR>');
+		document.write('	<TR>');
+		document.write('		<TD WIDTH="130" VALIGN="TOP" ALIGN="RIGHT">');
+	}
+	function DSinsertLink(linktype,href,text,space,subtext,target,extras) {
+		if (space)
+			space = '<BR>';
+		else
+			space = '';
+		if (subtext)
+			subtext = '<BR>'+subtext;
+		else
+			subtext = '';
+		if (target)
+			target = ' TARGET="'+target+'"';
+		else
+			target = '';
+		if (extras)
+			extras = ' '+extras;
+		else
+			extras = '';
+		if (linktype == 2) {
+			classnm = ' CLASS="smalllink"';
+			fface1 = '';
+			fface2 = '';
+		} else {
+			classnm = '';
+			fface1 = '<B>';
+			fface2 = '</B>';
+		}
+		if (linktype == 1) {
+			fcolor1 = '<FONT COLOR='+DSred+'>';
+			fcolor2 = '</FONT>';
+			fcolor3 = DSred;
+		} else {
+			fcolor1 = '';
+			fcolor2 = '';
+			fcolor3 = DSblue;
+		}
+		if (href == '') {
+			document.write('<FONT COLOR='+fcolor3+'><I>'+fface1+text+fface2+'</I>'+subtext+space+'<BR></FONT>');
+		} else {
+			document.write('<A HREF="'+href+'"'+target+extras+'>'+fcolor1+fface1+text+fface2+fcolor2+'</A>'+subtext+space+'<BR>');
+		}
+	}
+	function DSlink(href,text,space,subtext,target,extras) {
+		DSinsertLink(0,href,text,space,subtext,target,extras);
+	}
+	function DSsmallLink(href,text,space,subtext,target,extras) {
+		DSinsertLink(2,href,text,space,subtext,target,extras);
+	}
+	function DSactiveLink(href,text,space,subtext,target,extras) {
+		DSinsertLink(1,href,text,space,subtext,target,extras);
+	}
+	function DSonLoadStandard() {
+		if (DSonLoad)
+			DSonLoad();
+	}
+	function DSshowImg(imgtag, imgfn) {
+		a = eval('document.'+imgtag);
+		a.src = imgfn;
+	}
+//--></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript"><!--
+	DSmainno = 1;
+	DSmain = DSmainmenu.itemarray[DSmainno];
+	DSsubmenu = new DSmenu('submenu',
+		new Array(
+			new DSmenuitem('program',true,false),
+			new DSmenuitem('publications',true,false),
+			new DSmenuitem('dsreports',true,false),
+//			new DSmenuitem('bibliography',false,false),
+			new DSmenuitem('projects',true,false),
+			new DSmenuitem('movies',true,false)
+		), DSroot + 'images/buttons/research/'
+	);
+//--></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript"><!--
+	DSbody('', 'Design Systems - Research - Workshop', '<H2>Workshop on Case Based Reasoning</H2>');
+	DSactiveLink('', 'Introduction', true);
+	DSlink('Programme.stm', 'Programme', true);
+	DSlink('Location.stm', 'Location', true);
+	DSlink('Registration.stm', 'Registration', true);
+	DSendMargin();
+//--></SCRIPT>
+
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+
+<h4 align="center">Organised by the Design Systems group of the<br>
+Eindhoven University of Technology</h4>
+
+<h3 align="center">November 13, 1998<br>
+Keynote speaker:</h3>
+
+<p align="center"><a
+href="http://www.arch.usyd.edu.au/fac_arch/people/dads/Mary_Lou_Maher.html"><img
+src="images/Mary.jpg" WIDTH="186" HEIGHT="172"></a></p>
+
+<h3 align="center">Prof. Mary Lou Maher</h3>
+
+<p align="center">University of Sydney<br>
+Department of Architectural and Design Science </p>
+
+<p>Mary Lou Maher is Co-Director of the Key Centry of Design Computing, and Professor of
+Design Computer,&nbsp; Associate Dean (research) and Course Coordinator (Computing). She
+joined the University of Sydney in 1990 after 5 years on the Faculty of the Department of
+Civil Engineering at Carnegie Mellon University (Pittsburgh, USA) and working with the
+Engineering Design Research Centre. She teaches and does research in computer-aided design
+and knowledge-based systems. She is a Fellow of the Australian Institution of Engineers,
+and a member of the American Society of Civil Engineers' Expert Systems and Artificial
+Intelligence Committee, the American Association of Artificial Intelligence, and the IEEE
+Computer Society. She is the editor or co-editor of several books on knowledge-based
+systems and author of over eighty papers.</p>
+
+<p>For more information about her you can visit her homepage at the University of Sydney:<br>
+<a href="http://www.arch.usyd.edu.au/fac_arch/people/dads/Mary_Lou_Maher.html">http://www.arch.usyd.edu.au/fac_arch/people/dads/Mary_Lou_Maher.html</a>
+</p>
+</body>
+</html>
+
+
+
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="100%">
+	<TR>
+		<TD COLSPAN="3" ALIGN="RIGHT" WIDTH="100%" NOWRAP><BR><BR>
+			<A HREF="/"><IMG SRC="/images/logos/logoweb.gif" ALT="Design Systems" WIDTH="282" HEIGHT="77" BORDER=0></A><BR><BR>
+			<FONT SIZE="-1">Copyright © 1998 - 2003. Design Systems.<BR>Eindhoven University of Technology.<BR><BR>
+			For questions, comments, or technical problems, please
+			<A NAME="mailwebm" HREF="/General/MailToWebmaster" TARGET="MailToWebmaster">contact the webmaster</A>.
+			</FONT>
+		</TD>
+	</TR>
+</TABLE>
+<SCRIPT LANGUAGE="JavaScript"><!--
+	if (DSonLoadStandard)
+		onLoad = DSonLoadStandard();
+//--></SCRIPT>
+
+

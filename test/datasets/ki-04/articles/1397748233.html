@@ -1,0 +1,136 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1397748233.html
+	</FILE>
+	<URL>
+		http://www.channelu.com/NeXT/NeXTFAQ-html/NeXTFAQ.179.html
+	</URL>
+	<TITLE>
+		The NEXTSTEP/OpenStep FAQ -- 9.2 to 9.3
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ The NEXTSTEP/OpenStep FAQ -- 9.2 to 9.3 The NEXTSTEP/OpenStep FAQ ! to the table of contents &lt; to the previous section: &gt; to the next section: 9.2 Is there any way to change the text in the title bar of a terminal window? There is no way of changing the title bar of a Terminal.app window in 2.x; in 3.x there is. Check Preferences (Title Bar): set CustomTitle, type in the title, and hit CR (or Set Window) and voila! [From: andre@ramsey.cs.laurentian.ca (Andre Roberge)] Actually, there is a way to change the title bar of a Terminal window in 2.x (at least in 2.1 which is what I am using). It is somewhat limited but it might be useful to some. The trick is to make a symbolic link between /bin/csh (or whichever shell one wishes to use) and a file in / named "Whatever_you_want_to_appear_in_the_title_bar". Then select this new "shell" in the terminal preference and, voila!, you'll have your terminal window with /Whatever_you..... in the title bar. You can edit Stuart's titlebar interactively from the "Window..." Inspector (Command-3). Stuart provides emulation of certain Operating System Command (OSC) sequences which can be used to modify the titlebar under subprocess control. Stuart can change the title of the current window from the command line. In Stuart is possible to get more descriptive titles by linking /usr/ucb/rsh to /usr/hosts/ . Then by adding /usr/hosts to your Stuart ShellPath you can then get the hostname into the title bar: $ dwrite StuartShellPaths :/usr/hosts You should then type in the hostname as the shell to invoke (disable the "Shell reads .login file" for this. You can also add hosts to your .Stuartrc file: Shell=golem.ps.uci.edu SourceDotLogin=NO WinLocX=545 WinLocY=563 Lines=24 | WinLocX=76 WinLocY=833 For the localhost, link /bin/csh to /usr/hosts/ , or even better /usr/local/bin/tcsh instead of using rsh. [From: Garance A Drosehn ] For what it's worth, I do this with a script called "telnet_to" and a (bash) function called "telnet_window". The function simply does a local soil_pars="-Lines 32 -Keypad YES -Reverse \ YES -Strict YES -TestExit YES"; soil -Shell "telnet_to $ 1" $ soil_pars and the script is just: #!bin/sh /usr/ucb/telnet $ * echo ' ' echo ' --> telnet exited, press enter to close window.' read -r Waste_Var exit 0 This has a number of advantages, not the least of which being that I can pop up a "telnet_window" to anywhere. I don't have to create links for each host (though I do create aliases for the most common hosts), and I can type "telnet_window" (or, e.g., "tel_aix") as a unix command. Also, if I lose the connection suddenly then the window stays around until I get a chance to see what happened. I use telnet instead of rsh because I generally connect to hosts which won't accept rsh's. (weiter mit 9.3 I can't get my pictures in OmniWeb ) This document was converted from LaTeX using Karl Ewald 's latex2html . 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<HTML><HEAD><TITLE>The NEXTSTEP/OpenStep FAQ -- 9.2 to 9.3</TITLE>
+</HEAD><BODY>
+<ADDRESS>The NEXTSTEP/OpenStep FAQ</ADDRESS><P>
+<TT>!</TT> <A HREF="NeXTFAQ.toc.html#9.2">to the <B>table of contents</B></A><BR>
+<TT>&lt;</TT> <A HREF="NeXTFAQ.178.html">to the previous section: <B></B></A><BR>
+<TT>&gt;</TT> <A HREF="NeXTFAQ.180.html">to the next section: <B></B></A><HR>
+<H2><A NAME="9.2">9.2 Is there any way to change the text in the title bar of a terminal 
+window?</A></H2>
+<P>
+There is no way of changing the title bar of a Terminal.app 
+window in 2.x; in 3.x there is.  Check Preferences (Title Bar): 
+set CustomTitle, type in the title, and hit CR (or Set Window) 
+and voila!   
+<P>
+<TT>[From: andre@ramsey.cs.laurentian.ca (Andre Roberge)]</TT>
+<P>
+Actually, there is a way to change the title bar of a <TT>Terminal</TT> 
+window in 2.x  (at least in 2.1 which is what I am using). It is 
+somewhat limited but it might be useful to some.   
+<P>
+The trick is to make a symbolic link between  <TT>/bin/csh</TT>  (or whichever
+shell one wishes to use) and a file in <TT>/</TT> named  
+"Whatever_you_want_to_appear_in_the_title_bar".  Then select this new
+"shell" in the terminal preference and, voila!, you'll have
+your terminal window with  <TT>/Whatever_you.....</TT> in the title bar. 
+<P>
+You can edit Stuart's titlebar interactively from the
+"Window..." Inspector (Command-3).  
+<P>
+Stuart provides emulation of certain Operating System Command (OSC)
+sequences which can be used to modify the titlebar under subprocess
+control.
+<P>
+Stuart can change the title of the current window from the command 
+line. In Stuart is possible to get more descriptive titles by linking
+<TT>/usr/ucb/rsh</TT> to <TT>/usr/hosts/<hostname></TT>. Then by adding <TT>/usr/hosts</TT> to
+your Stuart ShellPath you can then get the hostname into the title bar:      
+<P>
+
+<!begin verbatim>
+<LISTING>
+	$ dwrite StuartShellPaths <various dirs>:/usr/hosts
+
+</LISTING>
+<! end verbatim>
+	
+You should then type in the hostname as the shell to invoke (disable
+the "Shell reads .login file" for this. You can also add hosts to 
+your <TT>.Stuartrc</TT> file:   
+ 
+
+<!begin verbatim>
+<LISTING>
+	Shell=golem.ps.uci.edu
+	SourceDotLogin=NO
+	WinLocX=545
+	WinLocY=563
+	Lines=24
+	|
+	WinLocX=76
+	WinLocY=833
+
+</LISTING>
+<! end verbatim>
+<P>
+For the localhost, link <TT>/bin/csh</TT> to <TT>/usr/hosts/<name></TT>, or even 
+better <TT>/usr/local/bin/tcsh</TT> instead of using rsh. 
+<P>
+<TT>[From: Garance A Drosehn <gad@eclipse.its.rpi.edu>]</TT>
+<P>
+For what it's worth, I do this with a script called
+"telnet_to" and a (bash) function called
+"telnet_window".  The function simply does a   
+<P>
+
+<!begin verbatim>
+<LISTING>
+	local soil_pars="-Lines 32 -Keypad YES -Reverse \
+	YES -Strict YES -TestExit YES";
+	soil -Shell "telnet_to $1" $soil_pars
+
+</LISTING>
+<! end verbatim>
+<P>
+and the script is just:
+<P>
+
+<!begin verbatim>
+<LISTING>
+	#!bin/sh
+	/usr/ucb/telnet $*
+	echo ' '
+	echo '  -->   telnet exited, press enter to close window.'
+	read -r Waste_Var
+	exit 0
+
+</LISTING>
+<! end verbatim>
+<P>
+This has a number of advantages, not the least of which being that 
+I can pop up a "telnet_window" to anywhere.  I don't have to create 
+links for each host (though I do create aliases for the most common 
+hosts), and I can type "telnet_window" (or, e.g., "tel_aix") as a unix 
+command. 
+<P>
+Also, if I lose the connection suddenly then the window stays around
+until I get a chance to see what happened.  I use telnet instead of 
+rsh because I generally connect to hosts which won't accept rsh's.    
+<P>
+
+<HR>
+<UL><LI><A HREF="NeXTFAQ.180.html">(weiter mit <B>9.3 I can't get my pictures in OmniWeb <2.0.</B>)</A></UL>
+<HR>
+<I>This document was converted from LaTeX using <A
+HREF="http://www.informatik.tu-muenchen.de/~ewald/"
+>Karl Ewald</A>'s <B>latex2html</B>.</I>
+</BODY></HTML>
+

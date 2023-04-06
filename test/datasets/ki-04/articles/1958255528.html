@@ -1,0 +1,244 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1958255528.html
+	</FILE>
+	<URL>
+		http://java.sun.com/docs/white/langenv/Object.doc.html#343
+	</URL>
+	<TITLE>
+		The Java Language Environment: 3 - Java is Object Oriented
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ The Java Language Environment developers.sun.com &raquo; search tips | Search: in Developers' Site in Sun.com Developers Home &gt; Products & Technologies &gt; Java Technology &gt; Reference &gt; White Papers &gt; The Java Language Environment &gt; Profile and Registration | Why Register? White Paper The Java Language Environment Printable Page CONTENTS | PREV | NEXT INDEX --> The Java Language Environment Java is Object Oriented --> CHAPTER 3 My Object All Sublime I Will Achieve in Time Gilbert and Sullivan&#45;&#45; The Mikado To stay abreast of modern software development practices, Java is object oriented from the ground up . The point of designing an object-oriented language is not simply to jump on the latest programming fad. The object-oriented paradigm meshes well with the needs of client-server and distributed software. Benefits of object technology are rapidly becoming realized as more organizations move their applications to the distributed client-server model. Unfortunately, &#34;object oriented&#34; remains misunderstood, over-marketed as the silver bullet that will solve all our software ills, or takes on the trappings of a religion. The cynic&#39;s view of object-oriented programming is that it&#39;s just a new way to organize your source code. While there may be some merit to this view, it doesn&#39;t tell the whole story, because you can achieve results with object-oriented programming techniques that you can&#39;t with procedural techniques. An important characteristic that distinguishes objects from ordinary procedures or functions is that an object can have a lifetime greater than that of the object that created it. This aspect of objects is subtle and mostly overlooked. In the distributed client-server world, you now have the potential for objects to be created in one place, passed around networks, and stored elsewhere, possibly in databases, to be retrieved for future work. As an object-oriented language, Java draws on the best concepts and features of previous object-oriented languages, primarily Eiffel, SmallTalk, Objective C, and C++. Java goes beyond C++ in both extending the object model and removing the major complexities of C++. With the exception of its primitive data types, everything in Java is an object, and even the primitive types can be encapsulated within objects if the need arises. CONTENTS | PREV | NEXT INDEX --> Please send any comments or corrections to jdk-comments@java.sun.com Copyright &#169 1997 Sun Microsystems, Inc. All Rights Reserved. Company Info | About SDN | Press | Contact Us | Employment How to Buy | Licensing | Terms of Use | Privacy | Trademarks Copyright 1994-2004 Sun Microsystems, Inc. A Sun Developer Network Site Unless otherwise licensed, code in all technical manuals herein (including articles, FAQs, samples) is provided under this License . Content Feeds 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>The Java Language Environment</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<meta name="archiveFlag" content="false"/>
+<link rel="stylesheet" href="/css/default_developer.css" />
+<script type='text/JavaScript' src='/js/popUp.js'></script>
+</head>
+<!--stopindex-->
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" rightmargin="0" bgcolor="#ffffff">
+<a name="top"></a>
+<!-- BEGIN GENERIC MASTHEAD -->
+<!-- BEGIN VNV1 MASTHEAD COMPONENT, thinner variation for content pages -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="25" class="topnav">
+<form name="formsearch" action="http://developers.sun.com/jsp_utils/send_redirect.jsp" method="post">
+<tr>
+<td><a href="#mast"><img src="/im/a.gif" width="10" height="1" border="0" alt="Skip Masthead Links" /></a></td>
+<td><a href="http://developers.sun.com">developers.sun.com</a></td>
+<td width="100%">&nbsp;</td> 
+<td nowrap="nowrap"><span class="rightarrowblue">&raquo;</span>&nbsp;<a href="http://search.sun.com/search/developers/help.jsp">search tips</a>&nbsp;&nbsp;|&nbsp;&nbsp;<b>Search:</b>&nbsp;</td>
+<td><input name="qt" class="medium" size="7" value="" /></td>
+<td>&nbsp;</td>
+<td class="selectcell"><select class="globalsearch" name="myredir">
+<option value="http://search.sun.com/search/developers/index.jsp?qt=" selected>in Developers' Site</option>
+<option value="http://search.sun.com/search/suncom/index.jsp?qt=">in Sun.com</option>
+</select></td>
+<td>&nbsp;</td>
+<td valign="middle" align="left"><input type="submit" border="0" class="buttonred" value="&nbsp;&raquo;&nbsp;" onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" /></td>
+<td><img src="/im/a.gif" width="10" height="1" alt=" " /></td>
+</tr></form>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></td>
+<td valign="top" class="grey3"><a href="http://java.sun.com"><img src="/im/logo_java_grey.gif" width="180" height="53" border="0" alt=" " /></a></td>
+<td><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></td>
+<td class="sunblue" nowrap="nowrap"><div class="pad6"><a href="http://developers.sun.com"><img src="/im/masthead_the_source_java.gif" width="308" height="25" border="0" alt="The Source for Java Developers" /></a></div><img src="/im/a.gif" width="468" height="1" border="0" alt=" " /></td>
+<td class="sunblue" width="100%" valign="top" align="right"><div class="pad10"><a href="http://www.sun.com"><img src="/im/logo_sun_sdn.gif" width="72" height="33" border="0" alt="Sun Microsystems" /></a></div></td>
+<td><a name="mast"></a><a href="#skip2content"><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></a></td></tr>
+</table>
+</td></tr>
+</table>
+<span class="sp5">&nbsp;</span><br />
+<!-- END VNV1 MASTHEAD COMPONENT, thinner variation for content pages -->
+<!-- END GENERIC MASTHEAD -->
+<!-- BEGIN BREADCRUMB -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="vatop">
+<tr>
+<td>      
+<div class="breadcrumb">
+<a href="http://developers.sun.com/index.html">Developers Home</a> &gt; <a href="http://developers.sun.com/prodtech/index.html">Products & Technologies</a> &gt; <a href="http://java.sun.com/index.jsp">Java Technology</a> &gt; <a href="http://java.sun.com/reference/index.html">Reference</a> &gt; <a href="http://java.sun.com/reference/whitepapers/index.html">White Papers</a> &gt; <a href="http://java.sun.com/docs/white/langenv/index.html">The Java Language Environment</a> &gt;
+</div>
+</td>
+<td align="right" nowrap="nowrap">
+<div class="breadcrumb">
+<a href="http://developer.sun.com/user_registration/index.html">Profile and Registration</a> | 
+<a href="http://developer.sun.com/user_registration/whyregister.html">Why Register?</a>
+</div>
+</td>
+</tr>
+<tr><td colspan="2"><img src="/im/a.gif" width="770" height="1" border="0" alt=" " /></td></tr>
+</table>
+<span class="sp5">&nbsp;</span>
+<br />        
+<!-- END BREADCRUMB -->
+<!-- BEGIN PAGETITLE -->
+<div class="pagetitle2">White Paper</div>
+<div class="pagetitle">The Java Language Environment</div>
+<!-- END PAGETITLE -->
+<!-- BEGIN WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%">
+<tr><td width="100%" valign="top">
+<!-- BEGIN CENTRAL COLUMN COMPONENTS -->
+<!--startindex-->
+<!-- ============ -->
+<!-- MAIN CONTENT -->
+<!-- ============ -->
+<a name="skip2content"></a>
+<!--  BEGIN VCD4 BYLINE AND TOOLS  -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="smaller" valign="top"><em></em></td>
+<td width="10">&nbsp;</td>
+<td align="right" valign="bottom"><div class="sitelinks" style="padding:0px;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="bottom" align="right"><img src="/im/ic_print.gif" width="14" height="12" hspace="4" border="0" alt=" " /></td>
+<td valign="bottom" class="smaller" nowrap="nowrap"><a href="/jsp_utils/PrintPage.jsp" target="popup_name" onclick="openPopup('','popup_name',655,500,'no',1,0,1,0,0,0); return true;">Printable Page</a></td>
+</tr></table></div>
+</td></tr>
+</table>
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4">
+<tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!--  END VCD4 BYLINE AND TOOLS  -->
+<table width="100%"><tr>
+<td><!-- Bug in Communicator w/font: NavBar text disappears for Times 14pt pref. -->
+<!-- font size="-1" --> <a href="/docs/white/langenv/index.html">CONTENTS</a> | <a href="/docs/white/langenv/Simple.doc3.html">PREV</a>
+| <a href="/docs/white/langenv/Object.doc1.html">NEXT</a> <!-- | <a href="/docs/white/langenv/Readings.doc.html">INDEX</a>  -->
+<!-- /font --></td><td align=right><i>The Java Language Environment</i></td>
+</tr></table>
+<br>
+<a name="343"><!-- --></a>
+<h1>
+Java is Object Oriented
+</h1>
+<!--
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+-->
+<br>
+<a name="345"><!-- --></a>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<table border=0>
+<tr valign=bottom>
+<td valign=bottom>
+<br>
+<U><B><FONT FACE="ARIAL,HELVETICA,TIMES ROMAN">CHAPTER</FONT> 
+3 
+</B></U>
+</td>
+</tr>
+</table>
+<blockquote>
+<a name="347"><!-- --></a>
+<p>
+<a name="1341"><!-- --></a>
+My Object All Sublime<br>I Will Achieve in Time<p>
+<a name="1342"><!-- --></a>
+Gilbert and Sullivan&#45;&#45;<em>The Mikado</em><p>
+<a name="1344"><!-- --></a>
+<p>
+<a name="4059"><!-- --></a>
+To stay abreast of modern software development practices, Java is <em>object oriented </em>from the ground<em> </em>up<em>.</em> The point of designing an object-oriented language is not simply to jump on the latest programming fad. The object-oriented paradigm meshes well with the needs of client-server and distributed software. Benefits of object technology are rapidly becoming realized as more organizations move their applications to the distributed client-server model.<p>
+<a name="4119"><!-- --></a>
+Unfortunately, &#34;object oriented&#34; remains misunderstood, over-marketed as the silver bullet that will solve all our software ills, or takes on the trappings of a religion. The cynic&#39;s view of object-oriented programming is that it&#39;s just a new way to organize your source code. While there may be some merit to this view, it doesn&#39;t tell the whole story, because you can achieve results with object-oriented programming techniques that you can&#39;t with procedural techniques.<p>
+<a name="4487"><!-- --></a>
+An important characteristic that distinguishes objects from ordinary procedures or functions is that an object can have a lifetime greater than that of the object that created it. This aspect of objects is subtle and mostly overlooked. In the distributed client-server world, you now have the potential for objects to be created in one place, passed around networks, and stored elsewhere, possibly in databases, to be retrieved for future work.<p>
+<a name="4117"><!-- --></a>
+As an object-oriented language, Java draws on the best concepts and features of previous object-oriented languages, primarily Eiffel, SmallTalk, Objective C, and C++. Java goes beyond C++ in both extending the object model and removing the major complexities of C++. With the exception of its primitive data types, everything in Java is an object, and even the primitive types can be encapsulated within objects if the need arises.<p>
+</blockquote>
+<br>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<!-- Bug in Communicator w/font: NavBar text disappears for Times 14pt pref. -->
+<!-- font size="-1" --> <a href="/docs/white/langenv/index.html">CONTENTS</a> | <a href="/docs/white/langenv/Simple.doc3.html">PREV</a>
+| <a href="/docs/white/langenv/Object.doc1.html">NEXT</a> <!-- | <a href="/docs/white/langenv/Readings.doc.html">INDEX</a>  -->
+<!-- /font -->
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+Please send any comments or corrections to
+<a href="mailto:jdk-comments@java.sun.com">jdk-comments@java.sun.com</a><br>
+<font size="-1"><i><A HREF="/docs/white/html/Copyright.doc.html">Copyright</a> &#169 1997 Sun Microsystems, Inc. All Rights Reserved.</i></font>
+<!-- =================== -->
+<!-- END OF MAIN CONTENT -->
+<!-- =================== -->
+<!--stopindex-->
+<!-- END CENTRAL COLUMN COMPONENTS -->
+</td><td valign="top">
+<!-- BEGIN RIGHT COLUMN COMPONENTS -->
+<!-- END RIGHT COLUMN COMPONENTS -->
+</td></tr>
+<!-- BEGIN SPACER ROW -->
+<tr><td><img src="/im/a.gif" width="560" height="1" border="0" alt=" " /></td><td><img src="/im/a.gif" width="170" height="1" border="0" alt=" " /></td></tr>
+<!-- END SPACER ROW -->
+</table>
+<!-- END WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<!-- BEGIN VNV5 FOOTER  -->
+<table border="0" cellpadding="0" cellspacing="10" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="vatop">
+<tr>
+<td colspan="4" valign="top" class="grey3"><img src="http://developers.sun.com/im/a.gif" width="1" height="2" border="0" alt=" " /></td></tr>
+<tr>
+<td><img src="http://developers.sun.com/im/a.gif" width="190" height="1" border="0" alt=" " /><br />
+<a href="http://www.sun.com"><img src="http://developers.sun.com/im/logo_sun_small_sdn.gif" width="61" height="29" border="0" alt=" " vspace="5"/></a></td>
+<td width="100%" valign="top"><img src="http://developers.sun.com/im/a.gif" width="350" height="1" border="0" alt=" " /><br />
+<div class="footer">
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910015">Company Info</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910010">About SDN</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910011">Press</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/contact/index.jsp">Contact Us</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910014">Employment</a><br />
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910012">How to Buy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910009">Licensing</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910013">Terms of Use</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910016">Privacy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910017">Trademarks</a>
+<br /><span class="sp10">&nbsp;</span><br />
+<br /><span class="sp10">&nbsp;</span><br />
+Copyright 1994-2004 Sun Microsystems, Inc.
+</div></td>
+<td><img src="http://developers.sun.com/im/a.gif" width="40" height="1" border="0" alt=" " /></td>
+<td valign="top"><div class="footer"><b><a href="http://developers.sun.com/dispatcher.jsp?uid=6910010">A Sun Developer Network Site</a></b></div>
+<div class="footer">
+<img src="http://developers.sun.com/im/a.gif" width="170" height="1" border="0" alt=" " /><br />
+Unless otherwise licensed, code in all technical manuals herein (including articles, FAQs, samples) is provided under this <a href="http://developers.sun.com/dispatcher.jsp?uid=6910008">License</a>.
+<br /><span class="sp5">&nbsp;</span><br />
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910006"><img src="http://developers.sun.com/im/button_xml.gif" width="36" height="14" align="top" border="0" alt="XML" /></a>&nbsp;<a href="http://developers.sun.com/dispatcher.jsp?uid=6910007">Content Feeds</a>
+</div></td></tr>
+<tr><td colspan="4" valign="top" class="grey3"><img src="http://developers.sun.com/im/a.gif" width="1" height="2" border="0" alt=" " /></td></tr>
+</table>
+</td></tr>
+</table>
+<!-- END VNV5 FOOTER -->
+</body>
+</html>
+
+
+
+

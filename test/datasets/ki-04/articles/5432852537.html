@@ -1,0 +1,548 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5432852537.html
+	</FILE>
+	<URL>
+		http://www.cut-the-knot.org/do_you_know/Strings.shtml
+	</URL>
+	<TITLE>
+		Distance between strings
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Distance between strings . --> The September 11th Fund --> CTK Exchange Front Page Movie shortcuts Personal info Awards Reciprocal links Terms of use Privacy Policy Interactive Activities Cut The Knot! MSET99 Talk Games & Puzzles Arithmetic/Algebra Algebra --> Geometry Probability Eye Opener Analog Gadgets Inventor's Paradox Did you know?... Proofs Math as Language Things Impossible My Logo Math Poll Other Math sites Guest book News sites Recommend this site Distance Between Strings It's a nice feature of the latest word processor programs that they are capable of suggesting a replacement for a mistyped word. Spelling checkers know how to evaluated distance between a misspelled word and the words in its files. Words whose evaluated distance is the smallest are offered as candidates for replacement. The applet below helps you acquaint yourself with two possible distances between strings. These metric functions attempt to ascribe a numeric (actually, integer) value to the degree of dissimilarity between two strings. That the functions do indeed satisfy the metric axioms can be shown by induction . (Which is a good exercise too.) Hamming Distance The Hamming distance H is defined only for strings of the same length. For two strings s and t, H(s, t) is the number of places in which the two string differ, i.e., have different characters. Levenshtein Distance The Levenshtein (or edit ) distance is more sophisticated. It's defined for strings of arbitrary length. It counts the differences between two strings, where we would count a difference not only when strings have different characters but also when one has a character whereas the other does not. The formal definition follows. For a string s, let s(i) stand for its i th character. For two characters a and b, define r(a, b) = 0 if a = b. Let r(a, b) = 1, otherwise. Assume we are given two strings s and t of length n and m, respectively. We are going to fill an (n+1)&times;(m+1) array d with integers such that the low right corner element d(n+1, m+1) will furnish the required values of the Levenshtein distance L(s, t). The definition of entries of d is recursive. First set d(i, 0) = i, i = 0, 1,..., n, and d(0, j) = j, j = 0, 1, ..., m. For other pairs i, j use (1) d(i, j) = min(d(i-1, j)+1, d(i, j-1)+1, d(i-1, j-1) + r(s(i), t(j))) (Type your strings in the two edit controls at the bottom of the applet. Click "Do It!".) You can experiment with the applet to verify the triangle inequality before trying to prove it. You may try to discover other features of functions H and L. If strings s and t have the same length then both H(s, t) and L(s, t) are defined. Must they be equal? Copyright &copy; 1996-2004 Alexander Bogomolny Assume two strings s and t have the same length. Is it true that H(s, t) = L(s, t)? No, not necessarily. For example, as you can easily check, H("abc", "bca") = 3, whereas L("abc", "bca") = 2. Copyright &copy; 1996-2004 Alexander Bogomolny Both Hamming and Levenshtein functions are metrics . The only portion of the definitions that may appear non-trivial is the triangle inequality. We show it by induction. What do functions H and L stand for? H(s, t), by definition, is the number of places at which strings s and t differ. In other words, it takes H(s, t) changes to make string t out of string s. The triangle inequality H(s, t) H(s, r) + H(r, t) just asserts that changing s to t "via" r could not be worse than changing s into t directly. L(s, t) has a similar interpretation, although the allowed "changes" are more sophisticated, e.g. one is allowed to add or remove a character. These are known as edit operations . L(s, t) is the minimum number of edit operations that transform s into t. (As a matter of fact, this assertion requires a proof of its own, see below.) However, to edit s into t one may first edit s into r and then r into t. That such a change from s to t is not necessarily optimal is exactly the subject of the triangle inequality: L(s, t) L(s, r) + L(r, t). Now, why is L(s, t) is the minimum number of edit operations that transform s into t. Let's look more carefully at the definition: (1) d(i, j) = min(d(i-1, j)+1, d(i, j-1)+1, d(i-1, j-1) + r(s(i), t(j))) To estimate the effort needed to transform s(0, i) - the first i characters of s - into t(0, j) - the first j characters of t - consider the three terms in (1), which correspond to the following situations: Delete s(i) from s(0, i) and use d(i-1, j) operations to edit s(0, i-1) into t(0, j) . Use d(i, j-1) operations to edit s(0, i) into t(0, j-1) and then append t(j). Use d(i-1, j-1) operations to edit s(0, i-1) into t(0, j-1) and then replace s(i) with t(j), if necessary. If the three terms on the right in (1) are optimal, then the term on the left is also optimal, for, on the last step of editing, one can't do better than making a single change or not making any change at all. Copyright &copy; 1996-2004 Alexander Bogomolny 8504604 . --> --> Advertise --> --> Buy It Now! --> --> G o o g l e Web Search Latest on CTK Exchange Just For Fun! Magic T Posted by DoubleE 1 messages 05:07 PM, Jan-24-04 math problem no answer in sight Posted by Dmom 17 messages 01:00 PM, Jan-15-04 solving exponential equations Posted by Ray 5 messages 07:21 PM, Jan-25-04 ShadowFire's Ideas Posted by ShadowFire 4 messages 09:39 PM, Jan-24-04 Math OWNZ! SO does cut the knot! ^^ Posted by ShadowFire 0 messages 10:58 PM, Jan-22-04 Ceva in Circumscribed Quadrilateral Posted by darij 2 messages 09:05 AM, Jan-25-04 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html>
+<head>
+   <title>Distance between strings</title>
+   <meta name="Author" content="Alexander Bogomolny">
+   <meta name="copyright" content="1996-2004 Alexander Bogomolny">
+   <meta name="Description" content="Properties of distance. Distance between strings, Hamming distance, Levenshtein distance">
+   <meta name="KeyWords" content="metric,distance,triangle inequality, Distance between strings, Hamming distance, Levenshtein distance, induction,edit operation">
+
+</head>
+
+<body text="#000000" bgcolor="#c0dcc0" link="#4444aa" vlink="#8844aa" alink="#008080">
+<!-- This is the first common SSI file that starts
+     the basic three column table: bar - content - announcements
+     The file must appear in 4 incarnations depending on the depth
+     of directories of files into which this one will be included.
+
+     The file must be included immediately after <body>.
+-->
+
+<!-- no frame upgrade -->
+<table>
+
+<tr><td colspan=3>
+<a href="/everyones.shtml" onmouseover="window.status='Burglar Alarm'; return true;" onclick="return false;">                  <img src="/gifs/id_13.gif" alt border="0" WIDTH="1" HEIGHT="1"></a>
+</td></tr>
+
+<tr><td colspan=3>
+<!-- advertisement -->
+
+<!-- FASTCLICK.COM 728x90 and 468x60 BANNER CODE for cut-the-knot.com -->
+<p align="center">
+<script language="javascript" src="http://media.fastclick.net/w/get.media?sid=2853&m=1&tp=5&d=j&t=s"></script>
+<noscript><a href="http://media.fastclick.net/w/click.here?sid=2853&m=1&c=1" target="_top">
+<img src="http://media.fastclick.net/w/get.media?sid=2853&m=1&tp=5&d=s&c=1"
+width=728 height=90 border=1></a></noscript>
+</p>
+<!-- FASTCLICK.COM 728x90 and 468x60 BANNER CODE for cut-the-knot.com -->
+<!-- #include virtual="/topAdBurstShort.shtml"-->
+<!-- #include virtual="/topAd.shtml"-->
+
+<center><img src="/tbow_sh.gif" border=0 height=18 width=240></center>
+
+<!-- end of advertisement -->
+</td></tr>
+
+<!-- left navigation column -->
+<tr><td width=140 valign="top" background="/leftSep.gif">
+<table width=100% background="" cellpadding=0 cellspacing=0><tr><td align="left">
+
+<!--
+<table><tr><td align="center" width=118><font color="#aa0000">
+The September 11th Fund</font><br>
+<a href="https://september11fund.org/"><img src="/gifs/logo_nyct.gif" border=0></a>
+</td></tr></table>
+<br>-->
+
+<font face="Times New Roman" size=-1>
+
+<a href="/cgi-bin/dcforum/ctk.cgi" onMouseOver="self.status='A place to post questions and answers';return true" target=_top>CTK Exchange</a></br>
+
+<a href="/front.shtml" onMouseOver="self.status='Topics with short descriptions';return true" target=_top>
+Front Page</a><br>
+
+<a href="/shortcut.shtml" onMouseOver="self.status='Mathematics in the service of movie making';return true" target=_top>
+Movie shortcuts</a><br>
+
+<a href="/wanted.shtml" onMouseOver="self.status='Personal info';return true" target=_top>
+Personal info</a><br>
+
+<a href="/awards.shtml" onMouseOver="self.status='Awards and Acknowledgements';return true" target=_top>
+Awards</a><br>
+
+<a href="/ReciprocalMain.shtml" onMouseOver="self.status='Reciprocal links';return true" target=_top>
+Reciprocal links</a><br>
+
+<a href="/Terms.shtml" onMouseOver="self.status='Terms of use';return true" target=_top>
+Terms of use</a><br>
+
+<a href="/Privacy.shtml" onMouseOver="self.status='Your Privacy is paramount';return true" target=_top>
+Privacy Policy</a><br>
+
+<p>
+
+<a href="/Curriculum/index.shtml" onMouseOver="self.status='Try these interactive activities';return true" target=_top>
+Interactive Activities</a><br>
+
+<p>
+
+
+<a href="/ctk/index.shtml" onMouseOver="self.status='A monthly column for MAAOnline';return true" target=_top>
+Cut The Knot!</a><br>
+
+<a href="/Mset99/index.shtml">MSET99 Talk</a><br>
+<a href="/games.shtml" onMouseOver="self.status='Mathematics in disguise';return true" target=_top>
+Games & Puzzles</a><br>
+
+<a href="/algebra.shtml" onMouseOver="self.status='Topics from Arithmetic and Algebra';return true" target=_top>
+Arithmetic/Algebra</a><br>
+
+<!--
+<a href="/algebra.shtml" onMouseOver="self.status='Topics Algebra';return true" target=_top>
+Algebra</a><br>
+-->
+
+<a href="/geometry.shtml" onMouseOver="self.status='Selected topics from Geometry and Topology';return true" target=_top>Geometry</a><br>
+
+<a href="/probability.shtml" onMouseOver="self.status='A few choice topics from Probability';return true" target=_top>
+Probability</a><br>
+
+<a href="/pythagoras/tricky.shtml" onMouseOver="self.status='Eye Opener in more than one sense';return true" target=_top>Eye Opener</a><br>
+
+<a href="/pythagoras/ellipse.shtml" onMouseOver="self.status='Simulation of analog gadgets';return true" target=_top>Analog Gadgets</a><br>
+
+<a href="/Generalization/epairs.shtml" onMouseOver="self.status='Examples of generalization  in a variety of forms';return true" target=_top>Inventor's Paradox</a><br>
+
+<a href="/do_you_know/index.shtml" onMouseOver="self.status='There are so many surprising things';return true" target=_top>Did you know?...</a><br>
+
+<a href="/proofs/index.shtml" onMouseOver="self.status='Simple and interesting proofs';return true" target=_top>
+Proofs</a><br>
+
+<a href="/language/index.shtml" onMouseOver="self.status='Mathematics as a language';return true" target=_top>
+Math as Language</a><br>
+
+<a href="/impossible/index.shtml" onMouseOver="self.status='Some things are absolutely impossible';return true" target=_top>
+Things Impossible</a><br>
+
+<a href="/logo.shtml" onMouseOver="self.status='My logo: cut this knot';return true" >
+My Logo</a><br>
+
+<a href="/math_intro.shtml" onMouseOver="self.status='See whether you agree or disagree with what they think of math';return true" target=_top>
+Math Poll</a><br>
+
+<a href="/collection.shtml" onMouseOver="self.status='In all fairness: there are other good sites';return true" target=_top>
+Other Math sites</a><br>
+
+<a href="http://www.cut-the-knot.com/cgi-bin/dcforum/ctk.cgi?az=list&forum=DCForumID5&conf=DCConfID1" onMouseOver="self.status='Feel free to tell me what do you think';return true" target=_top>
+Guest book</a><br>
+
+<a href="/sites.shtml"  onMouseOver="self.status='Some news sites';return true" target=_top>
+News sites</a><br><br>
+
+<a href="/recommend.shtml"  onMouseOver="self.status='Tell a friend about it';return true" target=_top>
+Recommend this site</a><br><br>
+
+</font></td></tr></table>
+
+
+</td>
+<!-- end of left navigation column -->
+
+<!-- the content part -->
+<td valign="top">
+
+<!-- top tool bar =======-->
+
+<center><table cellpadding=0 cellspacing=0 border=0><tr>
+<td>
+<a href="/manifesto/index.shtml" onMouseOver="self.status='Manifesto: what CTK is about';return true" target=_top><img src="/bar_m.gif" width=64 height=19 alt="Manifesto: what CTK is about" border=0 hspace=0 vspace=0></a>
+</td><td>
+<a href="/SoftwareStore/SiteOnCD-ROM.shtml" onMouseOver="self.status='Mathematics Education Software Store';return true" target=_top><img src="/bar_cart.gif" width=35 height=19 alt="Let your children enjoy mathematics" border=0 hspace=0 vspace=0></a>
+</td>
+
+<td>
+<a href="/cgi-bin/search/search.pl" onMouseOver="self.status='Search CTK or the Web';return true" target=_top><img src="/bar_search.gif" width=48 height=19 alt="Search CTK" border=0 hspace=0 vspace=0></a>
+</td>
+
+<td>
+<a href="/books/index.shtml" onMouseOver="self.status='Math Bookstore on the Web';return true" target=_top><img src="/bar_books.gif" width=63 height=19 alt="Buying a book is a commitment to learning" border=0 hspace=0 vspace=0></a>
+</td><td>
+<a href="/content.shtml" onMouseOver="self.status='Table of the CTK contents';return true" target=_top><img src="/bar_toc.gif" width=36 height=19 alt="Table of content" border=0 hspace=0 vspace=0></a>
+</td><td>
+<a href="/SoftwareStore/SiteOnCD-ROM.shtml" onMouseOver="self.status='The whole site on CD-ROM for offline learning';return true" target=_top><img src="/bar_cd.gif" width=62 height=19 alt="The whole site on CD-ROM" border=0 hspace=0 vspace=0></a>
+
+</td><td>
+<a href="/glossary/atop.shtml" onMouseOver="self.status='Things you can find on CTK';return true" target=_top><img src="/bar_gloss.gif" width=57 height=19 alt="Things you can find on CTK" border=0 hspace=0 vspace=0></a>
+
+</td><td>
+<a href="/changes.shtml" onMouseOver="self.status='Chronology of updates';return true" target=_top><img src="/bar_upda.gif" width=83 height=19 alt="Chronology of updates" border=0 hspace=0 vspace=0></a>
+
+</td><td>
+<a href="/MailNotificationPage.shtml" onMouseOver="self.status='Email';return true" target=_top><img src="/bar_mail.gif" width=37 height=19 alt="Email to Cut The Knot" border=0 hspace=0 vspace=0></a>
+
+</td><td>
+<a href="/recommend.shtml" onMouseOver="self.status='Pass a word around';return true" target=_top><img src="/bar_rec.gif" width=79 height=19 alt="Recommend this page" border=0 hspace=0 vspace=0></a>
+
+</td></tr></table></center>
+
+<!--=======-->
+
+
+<center><table width=95%><tr><td>
+<center><h1>Distance Between Strings</h1></center>
+<p>It's a nice feature of the latest word processor programs that they are capable of suggesting
+a replacement for a mistyped word. Spelling checkers know how to evaluated distance between a misspelled word and the words in its files. Words whose evaluated distance is the smallest are offered as candidates for replacement. The applet below helps you acquaint yourself with two possible distances between strings. These metric functions attempt to ascribe a numeric (actually, integer) value to the degree of dissimilarity between two strings. That the functions do indeed satisfy the <a href="few_words.shtml#MetricSpace">metric axioms</a> can be shown by <a href="#induction">induction</a>. (Which is a good exercise too.)</p>
+<h3>Hamming Distance</h3>
+<p>The Hamming distance H is defined only for strings of the same length. For two strings s and t, <nobr>H(s, t)</nobr> is the number of places in which the two string differ, i.e., have different characters.</p>
+<h3>Levenshtein Distance</h3>
+<p>The Levenshtein (or <em>edit</em>) distance is more sophisticated. It's defined for strings of arbitrary length. It counts the differences between two strings, where we would count a difference not only when strings have different characters but also when one has a character whereas the other does not. The formal definition follows.</p>
+<p>For a string s, let s(i) stand for its i<sup>th</sup> character. For two characters a and b, define</p>
+
+<table><tr><td width=80>&nbsp;</td><td>
+r(a, b) = 0 if a = b. Let r(a, b) = 1, otherwise.
+</table>
+
+<p>Assume we are given two strings s and t of length n and m, respectively. We are going to fill an (n+1)&times;(m+1) array d with integers such that the low right corner element d(n+1,&nbsp;m+1) will furnish the required values of the Levenshtein distance <nobr>L(s, t).</nobr></p>
+
+<p>The definition of entries of d is recursive. First set <nobr>d(i, 0) = i,</nobr> <nobr>i = 0, 1,..., n,</nobr> and <nobr>d(0, j) = j,</nobr> <nobr>j = 0, 1, ..., m.</nobr> For other pairs <nobr>i, j</nobr> use</p>
+
+<table><tr><td width=80>(1)</td><td>
+d(i, j) = min(d(i-1, j)+1, d(i, j-1)+1, d(i-1, j-1) + r(s(i), t(j)))
+</table>
+
+<p><table><tr><td width=80>&nbsp;</td><td>
+<applet
+    code="Strings"
+    id=Strings
+    width=450
+    height=200>
+    <param name="fcolor" value="000000">
+    <param name="bcolor" value="c0dcc0">
+</applet>
+</table></p>
+
+<p>(Type your strings in the two edit controls at the bottom of the applet. Click "Do It!".)</p>
+
+<p>You can experiment with the applet to verify the triangle inequality before trying to prove it. You may try to discover other features of functions H and L. If strings s and t have the same length then both <nobr>H(s, t)</nobr> and <nobr>L(s, t)</nobr> are defined. <a href="#equal">Must they be equal?</a></p>
+
+<center><img src="../tbow_sh.gif" border=0 height=18 width=240></center>
+<p align=right>
+<a href="http://www.cut-the-knot.com/MailNotificationPage.shtml"><img src="../mail2.gif" border=1  height=40 width =40 ></a>
+<a href="../front.shtml"><img src="../home2.gif" border=1  height=40 width =40 ></a>
+<A HREF="../content.shtml"><IMG SRC="../gifs/content.gif" width="40" height="39"></A>
+<a href="../SoftwareStore/store.shtml"><img src="../SoftwareStore/cart.gif" width=40 height=40></a>
+<a href="far_near.shtml"><img src="../up.gif" border=1  height=40 width =40 ></a>
+<a href="../algebra.shtml"><img src="../algebra.gif" border=2 height=39 width=39></a>
+</p>
+
+<font size=-1>Copyright &copy; 1996-2004 <a href="http://www.cut-the-knot.org">Alexander Bogomolny</a></font>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<a name="equal">
+<p>Assume two strings s and t have the same length. Is it true that <nobr>H(s, t) = L(s, t)?</nobr> No, not necessarily. For example, as you can easily check, <nobr>H("abc", "bca") = 3,</nobr> whereas <nobr>L("abc", "bca") = 2.</nobr></p>
+
+<center><img src="../tbow_sh.gif" border=0 height=18 width=240></center>
+<p align=right>
+<a href="http://www.cut-the-knot.com/MailNotificationPage.shtml"><img src="../mail2.gif" border=1  height=40 width =40 ></a>
+<a href="../front.shtml"><img src="../home2.gif" border=1  height=40 width =40 ></a>
+<A HREF="../content.shtml"><IMG SRC="../gifs/content.gif" width="40" height="39"></A>
+<a href="../SoftwareStore/store.shtml"><img src="../SoftwareStore/cart.gif" width=40 height=40></a>
+<a href="far_near.shtml"><img src="../up.gif" border=1  height=40 width =40 ></a>
+<a href="../algebra.shtml"><img src="../algebra.gif" border=2 height=39 width=39></a>
+</p>
+
+<font size=-1>Copyright &copy; 1996-2004 <a href="http://www.cut-the-knot.org">Alexander Bogomolny</a></font>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<a name="induction">
+<p>Both Hamming and Levenshtein functions are <a href="few_words.shtml#distance">metrics</a>. The only portion of the definitions that may appear non-trivial is the triangle inequality. We show it by induction.</p>
+
+<p>What do functions H and L stand for? <nobr>H(s, t),</nobr> by definition, is the number of places at which strings s and t differ. In other words, it takes <nobr>H(s, t)</nobr> changes to make string t out of string s. The triangle inequality</p>
+
+<table><tr><td width=80>&nbsp;</td><td> 
+H(s, t) <img src="../gifs/le.gif" width=14 height=13> H(s, r) + H(r, t)
+</td></tr></table>
+
+<p>just asserts that changing s to t "via" r could not be worse than changing s into t directly.</p>
+
+<nobr>L(s, t)</nobr> has a similar interpretation, although the allowed "changes" are more sophisticated, e.g. one is allowed to add or remove a character. These are known as <EM>edit operations</EM>. <nobr>L(s, t)</nobr> is the minimum number of edit operations that transform s into t. (As a matter of fact, this assertion requires a proof of its own, see below.) However, to edit s into t one may first edit s into r and then r into t. That such a change from s to t is not necessarily optimal is exactly the subject of the triangle inequality:</p>
+
+<table><tr><td width=80>&nbsp;</td><td> 
+L(s, t) <img src="../gifs/le.gif" width=14 height=13> L(s, r) + L(r, t).
+</td></tr></table>
+
+<p>Now, why is L(s, t) is the minimum number of edit operations that transform s into t. Let's look more carefully at the definition:</p>
+
+<table><tr><td width=80>(1)</td><td>
+d(i, j) = min(d(i-1, j)+1, d(i, j-1)+1, d(i-1, j-1) + r(s(i), t(j)))
+</table>
+
+<p>To estimate the effort needed to transform s(0, i) - the first i characters of s - into t(0, j) - the first j characters of t - consider the three terms in (1), which correspond to the following situations:</p>
+
+<ol>
+<li><p>Delete s(i) from s(0, i) and use d(i-1, j) operations to edit <nobr>s(0, i-1)</nobr> into <nobr>t(0, j)</nobr>.</p>
+<li><p>Use <nobr>d(i, j-1)</nobr> operations to edit s(0, i) into t(0, j-1) and then append t(j).</p>
+<li><p>Use <nobr>d(i-1, j-1)</nobr> operations to edit s(0, i-1) into t(0, j-1) and then replace s(i) with t(j), if necessary.</p>
+</ol>
+
+<p>If the three terms on the right in (1) are optimal, then the term on the left is also optimal, for, on the last step of editing, one can't do better than making a single change or not making any change at all.</p> 
+
+<center><img src="../tbow_sh.gif" border=0 height=18 width=240></center>
+<p align=right>
+<a href="http://www.cut-the-knot.com/MailNotificationPage.shtml"><img src="../mail2.gif" border=1  height=40 width =40 ></a>
+<a href="../front.shtml"><img src="../home2.gif" border=1  height=40 width =40 ></a>
+<A HREF="../content.shtml"><IMG SRC="../gifs/content.gif" width="40" height="39"></A>
+<a href="../SoftwareStore/store.shtml"><img src="../SoftwareStore/cart.gif" width=40 height=40></a>
+<a href="far_near.shtml"><img src="../up.gif" border=1  height=40 width =40 ></a>
+<a href="../algebra.shtml"><img src="../algebra.gif" border=2 height=39 width=39></a>
+</p>
+
+<font size=-1>Copyright &copy; 1996-2004 <a href="http://www.cut-the-knot.org">Alexander Bogomolny</a></font>
+
+</td></tr></table></center>
+<p><table><tr><td bgcolor="#00aaaa">8504604</td></tr></table></p>
+
+<!-- This is the second common SSI file that ends
+     the basic three column table: bar - content - announcements
+     The file must appear in 4 incarnations depending on the depth
+     of directories of files into which this one will be included.
+
+     The file must be included immediately before </body>.
+-->
+
+</td>
+<!-- end of the content part -->
+
+
+<!-- <TD ALIGN="center" VALIGN="top" WIDTH=150 BGCOLOR="#c0dcc0" background="/rightSep.gif"> -->
+<TD ALIGN="center" VALIGN="top" WIDTH=150 BGCOLOR="#c0c0a0">
+
+<!--
+<a href="/MediaKit/MKUniq.shtml" onMouseOver="self.status='Media Kit';return true" target=_top><font size=2><b>&nbsp;Advertise</b></font></a>
+<br><br>
+-->
+
+<p>
+
+<!--
+<a href="http://cut-the-knot.links2go.com" onMouseOver="self.status='Directory of Math Resources';return true" target="newwin"><img src="/gifs/Links2Go.gif" width=127 height=23></a>
+<br>
+-->
+
+<!--
+<table background=""><tr><td align="center">
+<a href="http://www.mathtype.com/ecommerce/ordersystem.asp?reseller_id=55016"><img src="/gifs/ads/MathType.gif" width=108 height=93></a><br>
+Buy It Now!
+</td></tr></table>
+-->
+
+<!-- Search amazon.com -->
+<FORM METHOD="get" ACTION="http://www.amazon.com/exec/obidos/external-search/">
+<TABLE BORDER="1" CELLPADDING="5" cellspacing="0" bgcolor="#c0cdc0" width=100%>
+<TR><TD VALIGN="top" ALIGN="center"> 
+     <A HREF="http://www.amazon.com/exec/obidos/redirect-home/ctksoftwareinc" onMouseOver="self.status='Buy books at amazon.com';return true" target=_top>
+     <img src="/gifs/order_now_amazon.gif" width=80 height=40 align="left" vspace=2 border=0></A>
+</td></tr><tr><td> 
+     <INPUT TYPE= "text" NAME="keyword" SIZE=16 VALUE=" "><Br>
+     <INPUT TYPE= "hidden" NAME="tag" VALUE="ctksoftwareinc">
+     <INPUT TYPE="submit" VALUE="Search"> 
+</TD></TR> 
+</TABLE> 
+</FORM>
+
+<!-- Shop amazon.com -->
+
+<p><A HREF="http://www.amazon.com/exec/obidos/redirect?tag=ctksoftwareinc&path=subst/home/home.html">
+<img src="/gifs/ShopAmazon.gif" border=0></A></p>
+
+<!--
+<form action="http://search.britannica.com/bcom/search/results/1,5843,,00.html" target="Britannica.com" method="get">
+<table border="1" cellspacing="0" cellpadding="5" >
+<tr bgcolor="#336699">
+<td valign="top">
+<a href="http://search.britannica.com"onMouseOver="self.status='Search britannica.com';return true" target=_top><img src="/gifs/SearchBritannica.jpg" border=0 width="116" height="32"></a>
+</td></tr>
+<tr bgcolor="#336699"><td>
+<input type="text" name="p_query0" size="12" align="absmiddle"><br>
+<input type="submit" name="submit" value="Find"></td></tr>
+</table>
+</form>
+-->
+
+<!-- begin Powell's search --> 
+    <form method="post" action="http://www.powells.com/cgi-bin/partner"> 
+    <table bgcolor="#CC0000" cellspacing="0" border="1" width=100%><tr><td> 
+    <table cellpadding="0" cellspacing="0"><tr><td align="center"> 
+     <img src="/gifs/Powells.gif" width=120 height=75></td><tr> 
+    <tr><td align=center valign=middle><input size="16" name="searchfor" value=""></td></tr> 
+    <tr><td align=left valign=middle><input type="submit" name=_search value="Search"></td></tr>
+    </table></td></tr>
+    </table> 
+
+    <input type=hidden name=partner_id value=24261> 
+
+    <input type=hidden name=cgi value="search/search"> 
+    <input type=hidden name="searchtype" value="kw"> 
+    </form> 
+<!-- end Powell's search --> 
+
+<p>
+<!-- Search Google -->
+<center>
+<FORM method=GET action=http://www.google.com/custom>
+<TABLE cellspacing=0 border=0  WIDTH="100%">
+<tr valign=top><td>
+							<b><font face=times color=#0039b6 size=4>G</font><font face=times color=#c41200 size=4>o</font><font face=times 			color=#f3a518 size=4>o</font><font face=times color=#0039b6 size=4>g</font><font face=times color=#30a72f size=4>l</font><font face=times color=#c41200 size=4>e</font><br>Web Search</b>
+							</A>
+</td></tr>
+<tr><td>
+<INPUT TYPE=text name=q size=16 maxlength=255 value="">
+</td></tr>
+<tr><td>
+<INPUT type=submit name=sa VALUE="Search">
+<INPUT type=hidden name=cof VALUE="GIMP:#aa0099;T:#000000;BIMG:http://www.cut-the-knot.com/gifs/ctk_bk.gif;ALC:#008080;GFNT:#c0dcc0;LC:#4444aa;BGC:#c0dcc0;AH:center;VLC:#8844aa;GL:0;S:http://www.cut-the-knot.com;AWFID:369d88afebdef318;">
+</td></tr></TABLE>
+</FORM>
+</center>
+<!-- Search Google -->
+
+
+<!-- Latest from CTK Exchange -->
+
+<p>
+
+	<TABLE BORDER="0" WIDTH="100%" 
+   CELLPADDING="1" Cellspacing="0" bgcolor="#6699aa">
+	<tr><td><TABLE BORDER="0" WIDTH="100%" 
+	CELLPADDING="4" Cellspacing="0">
+	<tr bgcolor="#d2ccc0"><td>
+	<font size="1" face="verdana" color="#000000"><b>Latest on <a href="http://www.cut-the-knot.org/cgi-bin/dcforum/ctk.cgi" onMouseOver="self.status='A place to post questions and answers';return true" target=_top>CTK Exchange</a></b></font>
+	</td>
+	</tr>
+	
+	<tr bgcolor="#aaccff"><td>
+	<font size="1" face="verdana" color="#000000"><b><a href="http://www.cut-the-knot.org/htdocs/dcforum/DCForumID1/56.shtml">Just For Fun! Magic T</a></b>
+	<br>
+	<font size="1">Posted by DoubleE
+        <br>1 messages<br>
+	05:07&nbsp;PM, Jan-24-04</font></font><br>
+	</td>
+	</tr>
+	
+	<tr bgcolor="#d2ccc0"><td>
+	<font size="1" face="verdana" color="#000000"><b><a href="http://www.cut-the-knot.org/htdocs/dcforum/DCForumID2/80.shtml">math problem no answer in sight</a></b>
+	<br>
+	<font size="1">Posted by Dmom
+        <br>17 messages<br>
+	01:00&nbsp;PM, Jan-15-04</font></font><br>
+	</td>
+	</tr>
+	
+	<tr bgcolor="#aaccff"><td>
+	<font size="1" face="verdana" color="#000000"><b><a href="http://www.cut-the-knot.org/htdocs/dcforum/DCForumID3/163.shtml">solving exponential equations</a></b>
+	<br>
+	<font size="1">Posted by Ray
+        <br>5 messages<br>
+	07:21&nbsp;PM, Jan-25-04</font></font><br>
+	</td>
+	</tr>
+	
+	<tr bgcolor="#d2ccc0"><td>
+	<font size="1" face="verdana" color="#000000"><b><a href="http://www.cut-the-knot.org/htdocs/dcforum/DCForumID4/471.shtml">ShadowFire's Ideas</a></b>
+	<br>
+	<font size="1">Posted by ShadowFire
+        <br>4 messages<br>
+	09:39&nbsp;PM, Jan-24-04</font></font><br>
+	</td>
+	</tr>
+	
+	<tr bgcolor="#aaccff"><td>
+	<font size="1" face="verdana" color="#000000"><b><a href="http://www.cut-the-knot.org/htdocs/dcforum/DCForumID5/318.shtml">Math OWNZ! SO does cut the knot! ^^</a></b>
+	<br>
+	<font size="1">Posted by ShadowFire
+        <br>0 messages<br>
+	10:58&nbsp;PM, Jan-22-04</font></font><br>
+	</td>
+	</tr>
+	
+	<tr bgcolor="#d2ccc0"><td>
+	<font size="1" face="verdana" color="#000000"><b><a href="http://www.cut-the-knot.org/htdocs/dcforum/DCForumID6/419.shtml">Ceva in Circumscribed Quadrilateral</a></b>
+	<br>
+	<font size="1">Posted by darij
+        <br>2 messages<br>
+	09:05&nbsp;AM, Jan-25-04</font></font><br>
+	</td>
+	</tr>
+	</table></td></tr></table>
+
+<table border=1 cellpadding=2 width=145 NOSHADE><tr><td>
+
+<!-- #include virtual="/BurstCube.shtml" -->
+</td></tr></table>
+
+</TD></tr></table>
+
+
+<!-- #include virtual="/topAd.shtml" -->
+
+
+<!-- end of no frame upgrade -->
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
+
+

@@ -1,0 +1,1655 @@
+<!-- <DOCUMENT>
+	<FILE>
+		4475739283.html
+	</FILE>
+	<URL>
+		http://www.cs.brown.edu/people/rt/papers/ordal96/ordal96.html
+	</URL>
+	<TITLE>
+		Advances in the Theory and Practice of Graph Drawing
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Advances in the Theory and Practice of Graph Drawing Advances in the Theory and Practice of Graph Drawing Roberto Tamassia Department of Computer Science Brown University Providence, RI 02912-1910 rt@cs.brown.edu Abstract: The visualization of conceptual structures is a key component of support tools for complex applications in science and engineering. Foremost among the visual representations used are drawings of graphs and ordered sets. In this talk, we survey recent advances in the theory and practice of graph drawing. Specific topics include bounds and tradeoffs for drawing properties, three-dimensional representations, methods for constraint satisfaction, and experimental studies. Introduction &#160; In this paper, we survey selected research trends in graph drawing, and overview some recent results of the author and his collaborators. Graph drawing addresses the problem of constructing geometric representations of graphs, a key component of support tools for complex applications in science and engineering. Graph drawing is a young research field that has growth very rapidly in the last decade. One of its distinctive characteristics is to have furthered collaborative efforts between computer scientists, mathematicians, and applied researchers. A comprehensive bibliography on graph drawing algorithms [ 21 ] cites more than 300 papers written before 1993. Most papers on graph drawing are cited in geom.bib , the computational geometry BibTeX bibliography available from ftp://cs.usask.ca/pub/geometry/ (search for keyword ``graph drawing''). Surveys on various aspects of graph drawing appear in [ 24 , 32 , 41 , 44 , 74 , 75 , 78 , 82 , 83 ]. The proceedings of the annual Symposium on Graph Drawing are published by Springer-Verlag in the LNCS series [ 88 , 5 ]. Three special issues of journals dedicated to graph drawing have been recently assembled [ 14 , 26 , 25 ]. Additional special issues are planned for future Graph Drawing Symposia. The author maintains a WWW page ( http://www.cs.brown.edu/people/rt/gd.html ) with pointers to graph drawing resources on the Web. The rest of this paper is organized as follows: Section 3 overviews lower an upper bounds on fundamental drawing properties, such as area, and gives tradeoffs between them. Basic graph drawing terminology is reviewed in Section 2 . Three-dimensional drawings are discussed in Section 4 . Section 5 deals with methods for constraint satisfaction. Finally, experimental studies are reported in Section 6 . Graph Drawing Glossary &#160; First, we define some terminology on graphs pertinent to graph drawing: n : number of vertices of the (di)graph being considered. m : number of edges of the (di)graph being considered. d : maximum vertex degree (i.e., number of incident edges) of the (di)graph being considered. degree- k graph: graph with maximum degree . digraph: directed graph, i.e., graph with directed edges (drawn as arrows). acyclic digraph: without directed cycles. transitive edge: edge ( u , v ) of a digraph is transitive if there is a directed path from u to v not containing edge ( u , v ). reduced digraph: without transitive edges. source: vertex of a digraph without incoming edges. sink: vertex of a digraph without outgoing edges. st -digraph: acyclic digraph with exactly one source and one sink, joined by an edge (also called bipolar digraph). connected graph: any two vertices are joined by a path. biconnected graph: any two vertices are joined by two vertex-disjoint paths. triconnected graph: any two vertices are joined by three vertex-disjoint paths. tree: connected graph without cycles. rooted tree: directed tree with a distinguished vertex, called the root, such that each vertex lies on a directed path to the root. binary tree: rooted tree where each vertex has at most two incoming edges. layered (di)graph: the vertices are partitioned into sets, called layers. A rooted tree can be viewed as a layered digraph where the layers are sets of vertices at the same distance from the root. k -layered (di)graph: layered (di)graph with k layers. In a drawing of a graph, vertices are represented by points (or by geometric figures such as circles or rectangles) and edges are represented by curves such that any two edges intersect at most in a finite number of points. Except for Section 4 , which covers three-dimensional drawings, we consider drawings in the plane. The following types of drawings are defined: polyline drawing: each edge is a polygonal chain (Fig. 1 (a)). straight-line drawing: each edge is a straight-line segment (Fig. 1 (b)). orthogonal drawing: each edge is a chain of horizontal and vertical segments (Fig. 1 (c)). bend: in a polyline drawing, point where two segments part of the same edge meet (Fig. 1 (a)). crossing: point where two edges intersect (Fig. 1 (b)). grid drawing: polyline drawing such that vertices, crossings and bends have integer coordinates. planar drawing: no two edges cross (see Fig. 1 (d)). planar (di)graph: admits a planar drawing. embedded (di)graph: planar (di)graph with a prespecified topological embedding (i.e., set of faces), which must be preserved in the drawing. upward drawing: drawing of a digraph where each edge is monotonically nondecreasing in the vertical direction (see Fig. 1 (d)). upward planar digraph: admits an upward planar drawing. layered drawing: drawing of a layered graph such that vertices in the same layer are horizontally aligned (also called hierarchical drawing). face: a region of the plane bounded by vertices and edges of a planar drawing. convex drawing: planar straight-line drawing such that the boundary of each face is a convex polygon. visibility drawing: drawing of a graph based on a geometric visibility relation. E.g., the vertices might be drawn as horizontal segments, and the edges associated with vertically visible segments. proximity drawing: drawing of a graph based on a geometric proximity relation. E.g., a tree is drawn as the Euclidean minimum spanning tree of a set of points. dominance drawing: upward drawing of an acyclic digraph such that there exists a directed path from vertex u to vertex v if and only if and , where and denote the coordinates of a vertex. hv-drawing: upward orthogonal straight-line drawing of a binary tree such that the drawings of the subtrees of each node are separated by a horizontal or vertical line. &#160; Figure 1: &#160; Types of drawings: (a) polyline drawing of ; (b) straight-line drawing of ; (c) orthogonal drawing of ; (d) planar upward drawing of an acyclic digraph. Straight-line and orthogonal drawings are special cases of polyline drawings. Polyline drawings provide great flexibility since they can approximate drawings with curved edges. However, edges with more than two or three bends may be difficult to ``follow'' for the eye. Also, a system that supports editing of polyline drawings is more complicated than one limited to straight-line drawings. Hence, depending on the application, polyline or straight-line drawings may be preferred. If vertices are represented by points, orthogonal drawings exist only for graphs of maximum vertex degree 4. Bounds and Tradeoffs on Drawing Properties &#160; For various classes of graphs and drawing types, many universal/existential upper and lower bounds for specific drawing properties have been discovered. Such bounds typically exhibit trade-offs between drawing properties. A universal bound applies to all the graphs of a given class. An existential bound applies to infinitely many graphs of the class. Whenever we give bounds on the area or edge length, we assume that the drawing is constrained by some resolution rule that prevents it from being arbitrarily scaled down (e.g., requiring a grid drawing, or a minimum unit distance between any two vertices). Bounds on the Area Table 1 summarizes selected universal upper bounds and existential lower bounds on the area of drawings of graphs. &#160; Class of Graphs Drawing Type Area Ref. rooted tree upward planar straight-line grid [ 12 , 79 ] rooted tree strictly upward planar straight-line grid [ 12 ] degree- rooted tree upward planar polyline grid O ( n ) [ 38 ] binary tree upward planar orthogonal grid [ 38 ] tree planar straight-line grid [ 12 , 79 ] degree- tree planar polyline grid O ( n ) [ 38 ] degree-4 tree planar orthogonal grid O ( n ) [ 93 , 60 ] planar graph planar polyline grid [ 27 , 28 , 56 ] planar graph planar straight-line [ 40 ] planar graph planar straight-line grid [ 19 , 77 ] triconnected planar graph planar straight-line convex grid [ 56 ] planar graph planar orthogonal grid [ 3 , 56 , 81 , 86 ] planar degree-4 graph orthogonal grid [ 93 , 60 , 2 ] upward planar digraph upward planar grid straight-line [ 1 , 28 , 39 ] reduced planar st -digraph upward planar grid straight-line dominance [ 28 ] upward planar digraph upward planar grid polyline [ 27 , 28 ] general graph polyline grid Table 1: Universal upper bounds and existential lower bounds on the area of drawings of graphs. We denote with a an arbitrary constant such that . We denote with b and c fixed constants such that 1 &lt; b &lt; c . &#160; In general, the effect of bends on the area requirement is dual. On one hand, bends occupy space and hence negatively affect the area. On the other hand, bends may help in routing edges without using additional space. The following comments apply to Table 1 . Linear or almost-linear bounds on the area can be achieved for trees. See Table 4 for trade-offs between area and aspect-ratio in drawings of trees. Planar graphs admit planar drawings with quadratic area. However, the area requirement of planar straight-line drawings may be exponential if high angular resolution is also desired. Almost linear area can be instead achieved in nonplanar drawings of planar graphs, which have applications to VLSI circuits. Upward planar drawings provide an interesting trade-off between area and the total number of bends. Indeed, unless the digraph is reduced, the area can become exponential if a straight-line drawing is required. A quadratic area bound is achieved only at the expense of a linear number of bends. Bounds on the Angular Resolution Tabe 2 summarizes selected universal lower bounds and existential upper bounds on the angular resolution of drawings of graphs. &#160; Class of Graphs Drawing Type Angular Resolution Ref. general graph straight-line [ 35 ] planar graph straight-line [ 35 ] planar graph planar straight-line [ 40 , 65 ] Table 2: Universal lower bounds and existential upper bounds on the angular resolution of drawings of graphs. We denote with c a fixed constant such that c &gt; 1. &#160; Bounds on the Number of Bends Table 3 summarizes selected universal upper bounds and existential lower bounds on the total and maximum number of bends in orthogonal drawings. Some bounds are stated for or because the maximum number of bends is at least 2 for and at least 3 for the skeleton graph of an octahedron, in any planar orthogonal drawing &#160; Class of Graphs Drawing Type Total No. Bends Max No. Bends Ref. degree-4 graph orthogonal [ 3 ] planar degree-4 graph orthogonal planar [ 3 , 89 ] embedded degree-4 graph orthogonal planar [ 34 , 64 , 86 , 89 ] biconnected embedded degree-4 graph orthogonal planar [ 34 , 64 , 86 , 89 ] triconnected embedded degree-4 graph orthogonal planar [ 56 ] embedded degree-3 graph orthogonal planar [ 56 , 63 ] Table 3: Orthogonal drawings: universal upper bounds and existential lower bounds on the total and maximum number of bends. Notes: ; . &#160; Trade-Off Between Area and Aspect-Ratio &#160; The ability to construct area-efficient drawings is essential in practical visualization applications, where screen space is at a premium. However, achieving small area is not enough: e.g., it is easy to see that a drawing with high aspect-ratio may not be conveniently placed on a workstation screen, even if it has modest area. Hence, it is important to keep the aspect-ratio small. Ideally, one would like to obtain small area for any given aspect-ratio in a wide range. This would provide graphical user interfaces with the flexibility of fitting drawings in arbitrarily shaped windows. A variety of trade-offs for the area and aspect-ratio arise even when drawing graphs with a simple structure, such as trees. Table 4 summarizes selected universal bounds that can be simultaneously achieved on the area and the aspect-ratio of various types of drawings of trees. &#160; Class of Graphs Drawing Type Area Aspect-Ratio Ref. rooted tree upward planar straight-line layered grid O (1) [ 72 ] rooted tree upward planar straight-line grid [ 12 , 79 ] rooted degree- O (1) tree upward planar polyline grid O ( n ) [ 38 ] binary tree upward planar orthogonal grid [ 38 ] degree-4 tree orthogonal grid O ( n ) O (1) [ 93 , 60 ] degree-4 tree orthogonal grid, leaves on convex hull O (1) [ 7 ] Table 4: Universal upper bounds that can be simultaneously achieved for the area and aspect-ratio in drawings of trees. We denote with a an arbitrary constant such that . &#160; While upward planar straight-line drawings are the most natural way of visualizing rooted trees, the existing drawing techniques are unsatisfactory with respect to either the area requirement or the aspect ratio. The situation is similar for orthogonal drawings. Regarding polyline drawings, linear area can be achieved with a prescribed aspect ratio [ 38 ]. However, experiments show that this is done at the expense of a somehow aesthetically unappealing drawing. For non-upward drawings of trees, linear area and optimal aspect ratio are possible for planar orthogonal drawings, and a small (logarithmic) amount of extra area is needed if the leaves are constrained to be on the convex hull of the drawing (e.g., pins on the boundary of a VLSI circuit). However, the non-upward drawing methods do not seem to yield aesthetically pleasing drawings, and are suited more for VLSI layout than for visualization applications. Trade-Off Between Area and Angular Resolution Table 5 summarizes selected universal bounds that can be simultaneously achieved on the area and the angular resolution of drawings of graphs. &#160; Class of Graphs Drawing Type Area Angular Resolution Ref. planar graph straight-line [ 35 ] planar graph straight-line [ 35 ] planar graph planar straight-line grid [ 19 , 77 ] planar graph planar straight-line [ 65 ] planar graph planar polyline grid [ 56 ] Table 5: Universal asymptotic upper bounds for the area and lower bounds for the angular resolution that can be simultaneously achieved in drawings of graphs. We denote with b and c fixed constants such that b &gt;1 and c &gt;1. &#160; Universal lower bounds on the angular resolution exist that depend only on the degree of the graph. Also, substantially better bounds can be achieved by drawing a planar graph with bends or in a nonplanar way. Open Problems Determine the area requirement of (upward) planar straight-line drawings of trees. There is currently an gap between the known upper and lower bounds (Table 1 ). Determine the area requirement of orthogonal (or, more generally, polyline) nonplanar drawings of planar graphs. There is currently an gap between the known upper and lower bounds (Table 1 ). Close the gap between the universal lower bound and the existential upper bound on the angular resolution of straight-line drawings of general graphs (Table 2 ). Close the gap between the universal lower bound and the existential upper bound on the angular resolution of planar straight-line drawings of planar graphs (Table 2 ). Determine the best possible aspect-ratio and area that can be simultaneously achieved for (upward) planar straight-line and orthogonal drawings of trees (Table 4 ). Three Dimensional Drawings of Graphs &#160; Recent advances in hardware and software technology for computer graphics open the possibility of displaying three-dimensional (3D) visualizations on a variety of low-cost workstations, and a handful of researchers (and film makers ) have begun to explore the possibilities of displaying graphs using this new technology Previous research on 3D graph drawing has focused on the development of visualization systems (see, e.g., [ 73 , 76 ]). Much work needs to be done on the theoretical foundations of 3D graph drawing. Recent progress has been reported in [ 8 , 9 , 33 , 43 , 51 , 62 ]. 3D Convex Drawings A 3D convex drawing of a graph G is a realization of G by the skeleton of a 3D convex polytope (see Fig. 2 . The well-known Steinitz's theorem says that a graph admits a 3D convex drawing if and only if it is planar and triconnected [ 80 ] (see also Gr&#252;nbaum [ 42 ]), properties that can be verified in linear time (see, e.g., [ 48 , 49 ]). Interestingly, it is a simple exercise to derive from the published proofs of Steinitz's theorem a cubic-time method for constructing 3D convex drawings in the real-RAM model [ 71 ]. Unfortunately, this approach seems to require at least exponential volume and an exponential number of bits to implement. Indeed, Onn and Sturmfels [ 68 ] show how to construct a 3D convex grid drawing within a cube of side . &#160; Figure 2: Example of a 3D convex drawing. &#160; Maxwell [ 67 ] (see also [ 10 , 11 , 94 ]) describes a mapping that transforms a 2D convex drawings with a certain ``equilibrium stress property'' into a 3D convex drawing. Further results on this transformation are given by Hopcroft and Kahn [ 50 ]. Eades and Garvan [ 31 ] show how to construct 3D convex drawings by combining the above transformation with the 2D-drawing method of Tutte [ 91 , 92 ]. They also show that their drawings have exponential volume in the worst case. Smith (see [ 47 ]) claims a polynomial-time algorithm for constructing a 3D convex drawing inscribed in a sphere, with vertex coordinates represented by -bit numbers, for an n -vertex graph known to be inscribable (which can be tested in linear time, e.g., for planar triangulations, due to a result of Dillencourt and Smith [ 30 ]). Das and Goodrich [ 17 ] present a linear-time algorithm for constructing a 3D convex drawing of a maximal planar graph such that the vertex coordinates are rational numbers that can be represented with a polynomial number of bits. Chrobak, Goodrich and Tamassia [ 8 ] have recently shown how to construct in time a 3D convex drawing with O ( n ) volume such that the vertex coordinates are represented by -bit rational numbers and any two vertices are at distance at least one. Constraint Satisfaction in Graph Drawing &#160; Research in graph drawing has traditionally focused on algorithmic methods, where the drawing of the graph is generated according to a prespecified set of aesthetic criteria (such as planarity or area minimization) that are embodied in an algorithm. Although the algorithmic approach is computationally efficient, it does not naturally support constraints, i.e., requirements that the user may want to impose on the drawing of a specific graph (e.g., clustering or aligning a given set of vertices). Previous work has shown that only a rather limited constraint satisfaction capability can be added to existing drawing algorithms (see, e.g., [ 29 , 84 ]). Recently, several attempts have been made at developing languages for the specification of constraints and at devising techniques for graph drawing based on the resolution of systems of constraints (see, e.g., [ 20 , 55 , 66 ]). Eades and Lin [ 61 ] attempt at combining algorithmic and declarative methods in drawings of trees. Brandenburg presents a comprehensive approach to graph drawing based on graph grammars [ 4 ]. Visual Graph Drawing A visual approach to graph drawing, where the layout of a graph is pictorially specified ``by example,'' is proposed by Cruz, Garg and Tamassia [ 15 , 16 ]. Within this approach, a graph is stored in an object-oriented database, and its drawing is defined used recursive visual rules of the visual meta-language DOODLE [ 13 ]. The following types of drawings can be visually expressed in such a way that the system of constraints obtained from the application of the visual rules to the input graph can be solved in linear time: level drawings and box inclusion drawings of binary trees; -drawings of series-parallel digraphs [ 1 ]; polyline drawings [ 27 ], visibility drawings [ 85 ], and tessellation drawings [ 87 ] of upward planar digraphs (see Fig. 3 ). &#160; Figure 3: Drawings of a planar st -digraph: (a) tessellation drawing; (b) visibility drawing; (c) upward polyline drawing. &#160; In the rest of this section, we present visual programs for drawing a planar st -digraph, i.e., an embedded planar acyclic digraph with exactly one source and one sink, joined by an edge. Such digraphs play an important role in the theory of ordered sets since their transitive reductions are the covering digraphs of planar lattices [ 59 ]. Such visual programs can be easily modified to construct drawings of upward planar digraphs, which are known to be subgraphs of planar st -digraphs [ 58 , 27 ]. We show in Figure 4 a complete visual program for tessellation representations. We assume that the vertices, edges, and faces of the input planar st -digraph G are database objects, where for each object o the following attributes describing the embedding are stored: left face , right face , bottom vertex , and top vertex . Note that the value of each attribute is another database object. &#160; Figure 4: Visual rules for constucting a tessellation drawing of a planar st -digraph: (a) rule for a face; (b) special rule for the source vertex; (c) rule for a vertex; (d) rule for an edge. &#160; Each rule defines the visual representation of a database object of a certain class (vertex, edge, and face). For tessellation representations, this is a horizontal segment for a vertex, a vertical segment for a face, and a rectangle for an edge. The visual notation in the rule for an object o includes: geometric figures that give the visual representation of object o , such as circles, segments, and rectangles; references to the visual representation of other objects given by attributes of o , denoted with dashed boxes labeled by the attribute; landmarks of the visual representations of o and of other referenced objects, shown as small squares with labels (e.g., MS , the ``middle South'' landmark, denotes the middle point of the bottom edge of a rectangle); and landmarks of the coordinate system, shown with small circles (e.g., ORIGIN denotes point (0,0)); explicit constraints between landmarks, shown as arrows joining two landmarks with labels defining the constraint imposed on the coordinates of the landmarks (e.g., in rule (d), the dashed arrow with label max(1, )[h,v] is an explicit constraint specifying minimum horizontal and vertical distance 1 from the ``midpoint South'' MS to the ``midpoint East'' of the rectangle); implicit constraints between landmarks, given by their horizontal or vertical alignment (e.g., in rule (d), the ``midpoint East'' ME of the rectangle representing edge e and the ``top endpoint'' TE of the referenced visual representation of the right face of e must have the same x -coordinate because they are drawn vertically aligned). Complete visual programs for visibility representations and upward polyline drawings are shown in Figures 5 and 6 , respectively. In these two programs, the visual representation of the faces is a single point associated with landmark F . This point is invisible but contributes to the definition of the constraints. Also, the visual representation of an edge includes a visible portion (vertical segment for a visibility representation and polygonal chain with three segments for an upward polyline drawing) and an invisible portion drawn with a conventional ``transparent color'' (a rectangle or segment with shaded lines in the figures). &#160; Figure 5: Visual rules for constucting a tessellation drawing of a planar st -digraph: (a) rule for a face; (b) special rule for the source vertex; (c) rule for a vertex; (d) rule for an edge. &#160; &#160; Figure 6: Visual rules for constucting a tessellation drawing of a planar st -digraph: (a) rule for a face; (b) special rule for the source vertex; (c) rule for a vertex; (d) rule for an edge. &#160; Experimental Graph Drawing &#160; Many graph drawing algorithms have been implemented and used in practical applications. Most papers show sample outputs, and some also provide limited experimental results on small test suites (see, e.g., [ 18 , 36 , 37 , 53 , 55 , 57 ] and the experimental papers in [ 88 ]). However, in order to evaluate the practical performance of a graph drawing algorithm in visualization applications, it is essential to perform extensive experimentations with input graphs derived from the application domain. The performance of four planar straight-line drawing algorithms on 10,000 randomly generated maximal planar graphs is compared by Jones et al. [ 52 ]. Himsolt [ 45 ] presents a comparative study of twelve graph drawings algorithms based on various approaches. The experiments are conducted on 100 sample graphs with the graph drawing system GraphEd [ 46 ]. Many examples of drawings constructed by the algorithms are shown, and various objective and subjective evaluations on the aesthetic quality of the drawings produced are given. Brandenburg and Rohrer [ 6 ] compare five ``force-directed'' methods for constructing straight-line drawings of general undirected graphs. The algorithms are tested on a a wide collection of examples and with different settings of the force parameters. The quality measures evaluated are crossings, edge length, vertex distribution, and running time. They also identify tradeoffs between the running time and the aesthetic quality of the drawings produced. J&#252;nger and Mutzel [ 54 ] investigate crossing minimization strategies for straight-line drawings of 2-layer graphs, and compare the performance of eight popular heuristics for this problem. Experiments on Orthogonal Drawings In [ 22 , 23 ] Di Battista et al. present an extensive experimental study comparing four general-purpose graph drawing algorithms. The four algorithms, denoted Bend-Stretch , Column , Giotto , and Pair , take as input general graphs (with no restrictions whatsoever on the connectivity, planarity, etc.) and construct orthogonal grid drawings, which are widely used in software and database visualization applications. Algorithms Bend-Stretch and Giotto are based on a general approach where the drawing is incrementally specified in three phases: The first phase, planarization , determines the topology of the drawing. The second phase, orthogonalization , computes an orthogonal shape for the drawing. The third phase, compaction , produces the final drawing. This approach allows homogeneous treatment of a wide range of diagrammatic representations, aesthetics and constraints (see, e.g., [ 57 , 84 , 90 ]) and has been successfully used in industrial tools. The main difference between the two algorithms is in the orthogonalization phase: Algorithm Giotto uses a network-flow method that guarantees the minimum number of bends but has quadratic time-complexity [ 81 ]. Algorithm Bend-Stretch adopts the ``bend-stretching'' heuristic [ 86 ] that only guarantees a constant number of bends on each edge but runs in linear time. Algorithm Column is an extension of the orthogonal drawing algorithm by Biedl and Kant [ 3 ] to graphs of arbitrary vertex degree. The orthogonal grid drawing is incrementally constructed by adding the vertices one at a time. Namely, at each step a vertex v is added plus the edges connecting v to previously added vertices. Some columns of the grid are ``reserved'' to draw the remaining incident edges of v . Concerning the position of v , since one row is used for each vertex, the y -coordinate is immediately given by the order of visit of v , and the x -coordinate is the one of the reserved column of the incident edge of v that minimizes the number of bends introduced by the new edges. Algorithm Pair is an extension of the orthogonal drawing algorithm by Papakostas and Tollis [ 69 , 70 ] to graphs of arbitrary vertex degree. Examples of ``typical'' drawings generated by Bend-Stretch , Column , Giotto , and Pair are shown in Figures 7 . &#160; (a) (b) (c) (d) Figure 7: Drawings of the same 63-vertex graph produced by algorithms (a) Bend-Stretch , (b) Giotto , (c) Column , and (d) Pair , respectively. &#160; The test data (available on the Internet) are 11,582 graphs, ranging from 10 to 100 vertices, generated from a core set of 112 graphs used in ``real-life'' software engineering and database applications. The experiments provide a detailed quantitative evaluation of the performance of the four algorithms and show that they exhibit trade-offs between ``aesthetic'' properties (e.g., crossings, bends, edge length) and running time. For example, Fig. 8 shows the average area number of crossings, and CPU time. The observed practical behavior of the algorithms is consistent with their theoretical properties. Namely, Giotto outperforms the other algorithms for most quality measures but is considerably slower than Column and Pair . &#160; Figure 8: (a) Average area versus number of vertices. (b) Average number of crossings versus number of vertices. (c) Average CPU time (seconds) versus number of vertices. &#160; References 1 P. Bertolazzi, R. F. Cohen, G. Di Battista, R. Tamassia, and I. G. Tollis. How to draw a series-parallel digraph. Internat. J. Comput. Geom. Appl. , 4:385-402, 1994. 2 S. N. Bhatt and F. T. Leighton. A framework for solving VLSI graph layout problems. J. Comput. Syst. Sci. , 28:300-343, 1984. 3 T. Biedl and G. Kant. A better heuristic for orthogonal graph drawings. In Proc. 2nd Annu. European Sympos. Algorithms (ESA '94) , volume 855 of Lecture Notes in Computer Science , pages 24-35. Springer-Verlag, 1994. 4 F. J. Brandenburg. Designing graph drawings by layout graph grammars. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 416-427. Springer-Verlag, 1995. 5 F. J. Brandenburg, editor. Graph Drawing (Proc. GD '95) , volume 1027 of Lecture Notes in Computer Science . Springer-Verlag, 1996. 6 Franz J. Brandenburg and Christoph Rohrer. An experimental comparison of force-directed and randomized graph drawing algorithms. In F. J. Brandenburg, editor, Graph Drawing (Proc. GD '95) , volume 1027 of Lecture Notes in Computer Science . Springer-Verlag, 1996. 7 R. P. Brent and H. T. Kung. On the area of binary tree layouts. Inform. Process. Lett. , 11:521-534, 1980. 8 M. Chrobak, M. T. Goodrich, and R. Tamassia. Convex drawings of graphs in two and three dimensions. In Proc. 12th Annu. ACM Sympos. Comput. Geom. , pages 319-328, 1996. 9 R. F. Cohen, P. Eades, T. Lin, and F. Ruskey. Three-dimensional graph drawing. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 1-11. Springer-Verlag, 1995. 10 R. Connelly. Rigidity and energy. Invent. Math. , 66:11-33, 1982. 11 H. Crapo and W. Whitely. Statics of frameworks and motions of panel structures, a projective geometric introduction. Structural Topology , 6:42-82, 1982. 12 P. Crescenzi, G. Di Battista, and A. Piperno. A note on optimal area algorithms for upward drawings of binary trees. Comput. Geom. Theory Appl. , 2:187-200, 1992. 13 I. F. Cruz. DOODLE: A visual language for object-oriented databases. In Proc. ACM SIGMOD , pages 71-80, 1992. 14 I. F. Cruz and P. Eades, editors. Special Issue on Graph Visualization , volume 6:3 of J. Visual Languages and Computing . 1995. 15 I. F. Cruz and A. Garg. Drawing graphs by example efficiently: Trees and planar acyclic digraphs. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 404-415. Springer-Verlag, 1995. 16 I. F. Cruz, A. Garg, and R. Tamassia. Efficient constraint resolution in visual graph drawing. Manuscript, Dept. of Computer Sci., Brown University, 1996. 17 Gautam Das and Michael T. Goodrich. On the complexity of approximating and illuminating three-dimensional convex polyhedra. In Proc. 4th Workshop Algorithms Data Struct. , volume 955 of Lecture Notes in Computer Science , pages 74-85. Springer-Verlag, 1995. 18 R. Davidson and D. Harel. Drawing graphs nicely using simulated annealing. Technical report, Department of Applied Mathematics and Computer Science, The Weizmann Institute of Science, Rehovot, 1989. 19 H. de Fraysseix, J. Pach, and R. Pollack. How to draw a planar graph on a grid. Combinatorica , 10:41-51, 1990. 20 E. Dengler, M. Friedell, and J. Marks. Constraint-driven diagram layout. In Proc. IEEE Sympos. on Visual Languages (VL '93) , pages 330-335, 1993. 21 G. Di Battista, P. Eades, R. Tamassia, and I. G. Tollis. Algorithms for drawing graphs: an annotated bibliography. Comput. Geom. Theory Appl. , 4:235-282, 1994. 22 G. Di Battista, A. Garg, G. Liotta, R. Tamassia, E. Tassinari, and F. Vargiu. An experimental comparison of three graph drawing algorithms. In Proc. 11th Annu. ACM Sympos. Comput. Geom. , pages 306-315, 1995. 23 G. Di Battista, A. Garg, G. Liotta, R. Tamassia, E. Tassinari, and F. Vargiu. An experimental comparison of four graph drawing algorithms. Submitted to Computational Geometry: Theory and Applications , 1995. 24 G. Di Battista, W. Lenhart, and G. Liotta. Proximity drawability: a survey. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 328-339. Springer-Verlag, 1995. 25 G. Di Battista and R. Tamassia, editors. Special Issue on Geometric Representations of Graphs . Comput. Geom. Theory Appl. To appear. 26 G. Di Battista and R. Tamassia, editors. Special Issue on Graph Drawing . Algorithmica. To appear. 27 G. Di Battista and R. Tamassia. Algorithms for plane representations of acyclic digraphs. Theoret. Comput. Sci. , 61:175-198, 1988. 28 G. Di Battista, R. Tamassia, and I. G. Tollis. Area requirement and symmetry display of planar upward drawings. Discrete Comput. Geom. , 7:381-401, 1992. 29 G. Di Battista, R. Tamassia, and I. G. Tollis. Constrained visibility representations of graphs. Inform. Process. Lett. , 41:1-7, 1992. 30 M. B. Dillencourt and W. D. Smith. A linear-time algorithm for testing the inscribability of trivalent polyhedra. In Proc. 8th Annu. ACM Sympos. Comput. Geom. , pages 177-185, 1992. 31 P. Eades and P. Garvan. Drawing stressed planar graphs in three dimensions. In F. J. Brandenburg, editor, Graph Drawing (Proc. GD '95) , volume 1027 of Lecture Notes in Computer Science . Springer-Verlag, 1996. 32 P. Eades and X. Lin. How to draw a directed graph. In Proc. IEEE Workshop on Visual Languages (VL'89) , pages 13-17, 1989. 33 P. Eades, C. Stirk, and S. Whitesides. The techniques of Komolgorov and Bardzin for three dimensional orthogonal graph drawings. Manuscript, Dept. of Computer Sci., Univ. of Newcastle, 1995. 34 S. Even and G. Granot. Rectilinear planar drawings with few bends in each edge. Technical Report 797, Computer Science Dept., Technion, 1994. 35 M. Formann, T. Hagerup, J. Haralambides, M. Kaufmann, F. T. Leighton, A. Simvonis, E. Welzl, and G. Woeginger. Drawing graphs in the plane with high resolution. SIAM J. Comput. , 22:1035-1052, 1993. 36 T. Fruchterman and E. Reingold. Graph drawing by force-directed placement. Softw. - Pract. Exp. , 21(11):1129-1164, 1991. 37 E. R. Gansner, S. C. North, and K. P. Vo. DAG - A program that draws directed graphs. Softw. - Pract. Exp. , 18(11):1047-1062, 1988. 38 A. Garg, M. T. Goodrich, and R. Tamassia. Area-efficient upward tree drawings. In Proc. 9th Annu. ACM Sympos. Comput. Geom. , pages 359-368, 1993. 39 A. Garg and R. Tamassia. Efficient computation of planar straight-line upward drawings. In Graph Drawing '93 (Proc. ALCOM Workshop on Graph Drawing) , Paris, France, 1993. 40 A. Garg and R. Tamassia. Planar drawings and angular resolution: Algorithms and bounds. In Proc. 2nd Annu. European Sympos. Algorithms (ESA '94) , volume 855 of Lecture Notes in Computer Science , pages 12-23. Springer-Verlag, 1994. 41 A. Garg and R. Tamassia. Upward planarity testing. Order , 12:109-133, 1995. 42 B. Gr&#252;nbaum. Convex Polytopes . Wiley, New York, NY, 1967. 43 S. M. Hashemi and I. Rival. Upward drawings to fit surfaces. In Order, Algorithms, and Applications (Proc. ORDAL '94) , volume 831 of Lecture Notes in Computer Science , pages 53-58. Springer-Verlag, 1994. 44 X. He and M.-Y. Kao. Regular edge labelings and drawings of planar graphs. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 96-103. Springer-Verlag, 1995. 45 M. Himsolt. Comparing and evaluating layout algorithms within GraphEd. J. Visual Languages and Computing , 6(3), 1995. (special issue on Graph Visualization, edited by I. F. Cruz and P. Eades). 46 M. Himsolt. GraphEd: a graphical platform for the implementation of graph algorithms. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 182-193. Springer-Verlag, 1995. 47 C. D. Hodgson, I. Rivin, and W. D. Smith. A characterization of convex hyperbolic polyhedra and of convex polyhedra inscribed in the sphere. Bull. (New Series) of the AMS , 27(2):246-251, 1992. 48 J. Hopcroft and R. E. Tarjan. Dividing a graph into triconnected components. SIAM J. Comput. , 2:135-158, 1973. 49 J. Hopcroft and R. E. Tarjan. Efficient planarity testing. J. ACM , 21(4):549-568, 1974. 50 J. E. Hopcroft and P. J. Kahn. A paradigm for robust geometric algorithms. Algorithmica , 7:339-380, 1992. 51 T. J&#233;ron and C. Jard. 3D layout of reachability graphs of communicating processes. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 25-32. Springer-Verlag, 1995. 52 S. Jones, P. Eades, A. Moran, N. Ward, G. Delott, and R. Tamassia. A note on planar graph drawing algorithms. Technical Report 216, Department of Computer Science, University of Queensland, 1991. 53 M. Juenger and P. Mutzel. Maximum planar subgraphs and nice embeddings: Practical layout tools. Algorithmica . (special issue on Graph Drawing, edited by G. Di Battista and R. Tamassia, to appear). 54 Michael J&#252;nger and Petra Mutzel. Exact and heuristic algorithms for 2-layer straightline crossing minimization. In F. J. Brandenburg, editor, Graph Drawing (Proc. GD '95) , volume 1027 of Lecture Notes in Computer Science . Springer-Verlag, 1996. 55 T. Kamada. Visualizing Abstract Objects and Relations . World Scientific Series in Computer Science, 1989. 56 G. Kant. Drawing planar graphs using the canonical ordering. Algorithmica . (special issue on Graph Drawing, edited by G. Di Battista and R. Tamassia, to appear). 57 G. Kant. Algorithms for Drawing Planar Graphs . PhD thesis, Dept. Comput. Sci., Univ. Utrecht, Utrecht, Netherlands, 1993. 58 D. Kelly. Fundamentals of planar ordered sets. Discrete Math. , 63:197-216, 1987. 59 D. Kelly and I. Rival. Planar lattices. Canad. J. Math. , 27(3):636-665, 1975. 60 C. E. Leiserson. Area-efficient graph layouts (for VLSI). In Proc. 21st Annu. IEEE Sympos. Found. Comput. Sci. , pages 270-281, 1980. 61 T. Lin and P. Eades. Integration of declarative and algorithmic approaches for layout creation. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 376-387. Springer-Verlag, 1995. 62 Giuseppe Liotta and Giuseppe Di Battista. Computing proximity drawings of trees in the 3-dimemsional space. In Proc. 4th Workshop Algorithms Data Struct. , volume 955 of Lecture Notes in Computer Science , pages 239-250. Springer-Verlag, 1995. 63 Y. Liu, P. Marchioro, R. Petreschi, and B. Simeone. Theoretical results on at most 1-bend embeddability of graphs. Technical report, Dipartimento di Statistica, Univ. di Roma ``La Sapienza'', 1990. 64 Y. Liu, A. Morgana, and B. Simeone. General theoretical results on rectilinear embeddability of graphs. Acta Math. Appl. Sinica , 7:187-192, 1991. 65 S. Malitz and A. Papakostas. On the angular resolution of planar graphs. SIAM J. Discrete Math. , 7:172-183, 1994. 66 J. Marks. A formal specification for network diagrams that facilitates automated design. Journal of Visual Languages and Computing , 2:395-414, 1991. 67 J. C. Maxwell. On reciprocal figures and diagrams of forces. Phil. Mag. Ser. , 27:250-261, 1864. 68 S. Onn and B. Sturmfels. A quantitative Steinitz' theorem. Beitr&#228;ge zur Algebra und Geometrie / Contributions to Algebra and Geometry , 35:125-129, 1994. 69 A. Papakostas and I. G. Tollis. Improved algorithms and bounds for orthogonal drawings. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 40-51. Springer-Verlag, 1995. 70 A. Papakostas and I. G. Tollis. Improved algorithms and bounds for orthogonal drawings. Technical report, 1995. 71 F. P. Preparata and M. I. Shamos. Computational Geometry: An Introduction . Springer-Verlag, New York, NY, 1985. 72 E. Reingold and J. Tilford. Tidier drawing of trees. IEEE Trans. Softw. Eng. , SE-7(2):223-228, 1981. 73 S. P. Reiss. An engine for the 3D visualization of program information. J. Visual Languages and Computing , 6(3), 1995. (special issue on Graph Visualization, edited by I. F. Cruz and P. Eades). 74 I. Rival. Graphical data structures for ordered sets. In I. Rival, editor, Algorithms and Order , pages 3-31. Kluwer Academic Publishers, 1989. 75 I. Rival. Reading, drawing, and order. In I. G. Rosenberg and G. Sabidussi, editors, Algebras and Orders , pages 359-404. Kluwer Academic Publishers, 1993. 76 G. G. Robertson, J. D. Mackinlay, and S. K. Card. Cone trees: Animated 3d visualizations of hierarchical information. In Proc. CHI , pages 189-193, 1991. 77 W. Schnyder. Embedding planar graphs on the grid. In Proc. 1st ACM-SIAM Sympos. Discrete Algorithms , pages 138-148, 1990. 78 F. Shahrokhi, L. A. Sz&#233;kely, and I. Vrt'o. Crossing numbers of graphs, lower bound techniques and algorithms: a survey. In R. Tamassia and I. G. Tollis, editors, Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science , pages 131-142. Springer-Verlag, 1995. 79 Y. Shiloach. Arrangements of Planar Graphs on the Planar Lattice . PhD thesis, Weizmann Institute of Science, 1976. 80 E. Steinitz and H. Rademacher. Vorlesungen &#252;ber die Theorie der Polyeder . Julius Springer, Berlin, Germany, 1934. 81 R. Tamassia. On embedding a graph in the grid with the minimum number of bends. SIAM J. Comput. , 16(3):421-444, 1987. 82 R. Tamassia. Drawing algorithms for planar st-graphs. Australasian Journal of Combinatorics , 2:217-235, 1990. 83 R. Tamassia. Planar orthogonal drawings of graphs. In Proc. IEEE Internat. Sympos. on Circuits and Systems , 1990. 84 R. Tamassia, G. Di Battista, and C. Batini. Automatic graph drawing and readability of diagrams. IEEE Trans. Syst. Man Cybern. , SMC-18(1):61-79, 1988. 85 R. Tamassia and I. G. Tollis. A unified approach to visibility representations of planar graphs. Discrete Comput. Geom. , 1(4):321-341, 1986. 86 R. Tamassia and I. G. Tollis. Planar grid embedding in linear time. IEEE Trans. on Circuits and Systems , CAS-36(9):1230-1234, 1989. 87 R. Tamassia and I. G. Tollis. Tessellation representations of planar graphs. In Proc. 27th Allerton Conf. Commun. Control Comput. , pages 48-57, 1989. 88 R. Tamassia and I. G. Tollis, editors. Graph Drawing (Proc. GD '94) , volume 894 of Lecture Notes in Computer Science . Springer-Verlag, 1995. 89 R. Tamassia, I. G. Tollis, and J. S. Vitter. Lower bounds for planar orthogonal drawings of graphs. Inform. Process. Lett. , 39:35-40, 1991. 90 H. Trickey. Drag: A graph drawing system. In Proc. Internat. Conf. on Electronic Publishing , pages 171-182. Cambridge University Press, 1988. 91 W. T. Tutte. Convex representations of graphs. Proceedings London Mathematical Society , 10(3):304-320, 1960. 92 W. T. Tutte. How to draw a graph. Proceedings London Mathematical Society , 13(3):743-768, 1963. 93 L. Valiant. Universality considerations in VLSI circuits. IEEE Trans. Comput. , C-30(2):135-140, 1981. 94 W. Whitney. Motions and stresses of projected polyhedra. Structural Topology , 7:13-38, 1982. About this document ... Advances in the Theory and Practice of Graph Drawing This document was generated using the LaTeX 2 HTML translator Version 96.1 (Feb 5, 1996) Copyright &#169; 1993, 1994, 1995, 1996, Nikos Drakos , Computer Based Learning Unit, University of Leeds. The command line arguments were: latex2html -split 0 ordal96.tex . The translation was initiated by Roberto Tamassia on Thu Aug 1 13:38:15 EDT 1996 ...Drawing Research supported in part by the National Science Foundation under grant CCR-9423847 and by the U.S. Army Research Office under grant DAAH04-96-1-0013. ...makers An important plot element in the movie Jurassic Park involves a 3D virtual-reality traversal of a tree representing a Unix file system. Roberto Tamassia Thu Aug 1 13:38:15 EDT 1996 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE> Advances in the Theory and  Practice of Graph Drawing </TITLE>
+<META NAME="description" CONTENT=" Advances in the Theory and  Practice of Graph Drawing ">
+<META NAME="keywords" CONTENT="ordal96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="ordal96.css">
+</HEAD>
+<BODY LANG="EN">
+<P>
+<H1 ALIGN=CENTER>			Advances in the Theory and 
+<BR> Practice of Graph Drawing
+</H1>
+<H2 ALIGN=CENTER><A HREF="http://www.cs.brown.edu/people/rt/">Roberto Tamassia</A></H2>
+<P ALIGN=CENTER>
+<BR>
+<STRONG><A HREF="http://www.cs.brown.edu">Department of Computer Science</A>
+<BR> <A HREF="http://www.brown.edu">Brown University</A>
+<BR> Providence, RI 02912-1910
+<BR> <TT><A HREF="mailto:rt@cs.brown.edu">rt@cs.brown.edu</A>
+</EM></TT></STRONG></P><P>
+<P ALIGN=CENTER><STRONG></STRONG></P><P>
+<P>
+<H3 CLASS=ABSTRACT>Abstract:</H3>
+<P CLASS=ABSTRACT>The visualization of conceptual structures is a key component of
+support tools for complex applications in science and engineering.
+Foremost among the visual representations used are drawings of graphs
+and ordered sets.  In this talk, we survey recent advances in the
+theory and practice of graph drawing.  Specific topics include bounds
+and tradeoffs for drawing properties, three-dimensional
+representations, methods for constraint satisfaction, and experimental
+studies.
+<P>
+</P><P>
+<H1><A NAME="SECTION00010000000000000000">Introduction</A></H1>
+ <A NAME="seintro">&#160;</A>
+<P>
+In this paper, we survey selected research trends in graph drawing, and
+overview some recent results of the author and his collaborators.
+<P>
+Graph drawing addresses the problem of constructing geometric
+representations of graphs, a key component of support tools for complex
+applications in science and engineering.  Graph drawing is a young
+research field that has growth very rapidly in the last decade.  One of
+its distinctive characteristics is to have furthered collaborative
+efforts between computer scientists, mathematicians, and applied
+researchers.
+<P>
+A comprehensive bibliography on graph drawing
+algorithms&nbsp;[<A HREF="ordal96.html#dettadgab94">21</A>] cites more than 300 papers written
+before 1993.  Most papers on graph drawing are cited in <TT>geom.bib</TT>,
+the computational geometry BibTeX bibliography available from <A href="ftp://cs.usask.ca/pub/geometry/"><TT>
+ftp://cs.usask.ca/pub/geometry/</TT></A> (search for keyword ``graph
+drawing'').
+Surveys on various aspects of graph drawing appear in&nbsp;[<A HREF="ordal96.html#dllpds95">24</A>, <A HREF="ordal96.html#elhddg89">32</A>, <A HREF="ordal96.html#gtupt95">41</A>, <A HREF="ordal96.html#hkreldp95">44</A>, <A HREF="ordal96.html#rgdsos89">74</A>, <A HREF="ordal96.html#rrdo93">75</A>, <A HREF="ordal96.html#ssvcnglb95">78</A>, <A HREF="ordal96.html#tdapsg90">82</A>, <A HREF="ordal96.html#tpodg90">83</A>].
+<P>
+The proceedings of the annual Symposium on Graph Drawing are published
+by Springer-Verlag in the LNCS series&nbsp;[<A HREF="ordal96.html#ttgd94">88</A>, <A HREF="ordal96.html#bgd95">5</A>].  Three
+special issues of journals dedicated to graph drawing have been
+recently assembled&nbsp;[<A HREF="ordal96.html#cesigv95">14</A>, <A HREF="ordal96.html#dta">26</A>, <A HREF="ordal96.html#dtcgta">25</A>].  Additional special
+issues are planned for future Graph Drawing Symposia.
+<P>
+The author maintains a WWW page (<A
+href="http://www.cs.brown.edu/people/rt/gd.html"><TT>http://www.cs.brown.edu/people/rt/gd.html</TT></A>)
+with pointers to graph drawing resources on the Web.
+<P>
+The rest of this paper is organized as follows:
+Section&nbsp;<A HREF="ordal96.html#sebounds">3</A> overviews lower an upper bounds on fundamental
+drawing properties,  such as area, and gives tradeoffs between them.
+Basic graph drawing terminology is reviewed in Section&nbsp;<A HREF="ordal96.html#sedefs">2</A>.
+Three-dimensional drawings are discussed in Section&nbsp;<A HREF="ordal96.html#se3d">4</A>.
+Section&nbsp;<A HREF="ordal96.html#seconstr">5</A> deals with methods for constraint
+satisfaction.  Finally, experimental studies are reported in
+Section&nbsp;<A HREF="ordal96.html#seexp">6</A>.
+<P>
+<H1><A NAME="SECTION00020000000000000000">Graph Drawing Glossary</A></H1>
+ <A NAME="sedefs">&#160;</A>
+<P>
+First, we define some terminology on graphs pertinent to graph drawing:
+<P>
+<DL >
+<DT><STRONG><I>n</I>:</STRONG>
+<DD>
+number of vertices of the (di)graph being considered.
+<P>
+<DT><STRONG><I>m</I>:</STRONG>
+<DD>
+number of edges of the (di)graph being considered.
+<P>
+<DT><STRONG><I>d</I>:</STRONG>
+<DD>
+maximum vertex degree (i.e., number of incident edges) of the (di)graph being considered.
+<P>
+<DT><STRONG>degree-<I>k</I> graph:</STRONG>
+<DD>
+graph with maximum degree  <IMG WIDTH=42 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline1256" SRC="img7.gif"  > .
+<P>
+<DT><STRONG>digraph:</STRONG>
+<DD>
+directed graph, i.e., graph with directed edges (drawn
+as arrows).
+<P>
+<DT><STRONG>acyclic digraph:</STRONG>
+<DD>
+without directed cycles.
+<P>
+<DT><STRONG>transitive edge:</STRONG>
+<DD>
+edge (<I>u</I>,<I>v</I>) of a digraph is transitive if
+there is a directed path from <I>u</I> to <I>v</I> not containing edge (<I>u</I>,<I>v</I>).
+<P>
+<DT><STRONG>reduced digraph:</STRONG>
+<DD>
+without transitive edges.
+<P>
+<DT><STRONG>source:</STRONG>
+<DD>
+vertex of a digraph without incoming edges.
+<P>
+<DT><STRONG>sink:</STRONG>
+<DD>
+vertex of a digraph without outgoing edges.
+<P>
+<DT><STRONG><I>st</I>-digraph:</STRONG>
+<DD>
+acyclic digraph with exactly one source and one
+sink, joined by an edge (also called bipolar digraph).
+<P>
+<DT><STRONG>connected graph:</STRONG>
+<DD>
+any two vertices are joined by a path.
+<P>
+<DT><STRONG>biconnected graph:</STRONG>
+<DD>
+any two vertices are joined by two
+vertex-disjoint paths.
+<P>
+<DT><STRONG>triconnected graph:</STRONG>
+<DD>
+any two vertices are joined by three
+vertex-disjoint paths.
+<P>
+<DT><STRONG>tree:</STRONG>
+<DD>
+connected graph without cycles.
+<P>
+<DT><STRONG>rooted tree:</STRONG>
+<DD>
+directed tree with a distinguished vertex, called
+the root, such that each vertex lies
+on a directed path to the root.
+<P>
+<DT><STRONG>binary tree:</STRONG>
+<DD>
+rooted tree where each vertex has at most two
+incoming edges.
+<P>
+<DT><STRONG>layered (di)graph:</STRONG>
+<DD>
+the vertices are partitioned into sets,
+called layers.  A rooted tree can be viewed as a layered digraph where
+the layers are sets of vertices at the same distance from the root.
+<P>
+<DT><STRONG><I>k</I>-layered (di)graph:</STRONG>
+<DD>
+layered (di)graph with <I>k</I> layers.
+<P>
+ </DL>
+<P>
+In a drawing of a graph, vertices are represented by points (or by
+geometric figures such as circles or rectangles) and edges are
+represented by curves such that any two edges intersect at most in a
+finite number of points.  Except for Section&nbsp;<A HREF="ordal96.html#se3d">4</A>, which covers
+three-dimensional drawings, we consider drawings in the plane.
+The following types of drawings are defined:
+<P>
+<DL >
+<DT><STRONG>polyline drawing:</STRONG>
+<DD>
+each edge is a polygonal
+chain (Fig.&nbsp;<A HREF="ordal96.html#fidrawings">1</A>(a)).
+<P>
+<DT><STRONG>straight-line drawing:</STRONG>
+<DD>
+each edge is a
+straight-line segment (Fig.&nbsp;<A HREF="ordal96.html#fidrawings">1</A>(b)).
+<P>
+<DT><STRONG>orthogonal drawing:</STRONG>
+<DD>
+each edge is a chain of
+horizontal and vertical segments (Fig.&nbsp;<A HREF="ordal96.html#fidrawings">1</A>(c)).
+<P>
+<DT><STRONG>bend:</STRONG>
+<DD>
+in a polyline drawing, point where two segments part of
+the same edge meet (Fig.&nbsp;<A HREF="ordal96.html#fidrawings">1</A>(a)).
+<P>
+<DT><STRONG>crossing:</STRONG>
+<DD>
+point where two edges intersect (Fig.&nbsp;<A HREF="ordal96.html#fidrawings">1</A>(b)).
+<P>
+<DT><STRONG>grid drawing:</STRONG>
+<DD>
+polyline drawing such that vertices, crossings
+and bends have integer coordinates.
+<P>
+<DT><STRONG>planar drawing:</STRONG>
+<DD>
+no two edges cross (see
+Fig.&nbsp;<A HREF="ordal96.html#fidrawings">1</A>(d)).
+<P>
+<DT><STRONG>planar (di)graph:</STRONG>
+<DD>
+admits a planar drawing.
+<P>
+<DT><STRONG>embedded (di)graph:</STRONG>
+<DD>
+planar (di)graph with a prespecified
+topological embedding (i.e., set of faces), which must be preserved in
+the drawing.
+<P>
+<DT><STRONG>upward drawing:</STRONG>
+<DD>
+drawing of a digraph where each edge is
+monotonically nondecreasing in the vertical direction (see
+Fig.&nbsp;<A HREF="ordal96.html#fidrawings">1</A>(d)).
+<P>
+<DT><STRONG>upward planar digraph:</STRONG>
+<DD>
+admits an upward planar drawing.
+<P>
+<DT><STRONG>layered drawing:</STRONG>
+<DD>
+drawing of a layered graph such that vertices
+in the same layer are horizontally aligned  (also called hierarchical
+drawing).
+<P>
+<DT><STRONG>face:</STRONG>
+<DD>
+a region of the plane  bounded by vertices and edges of a
+planar drawing.
+<P>
+<DT><STRONG>convex drawing:</STRONG>
+<DD>
+planar straight-line drawing such that the
+boundary of each face  is a convex polygon.
+<P>
+<DT><STRONG>visibility drawing:</STRONG>
+<DD>
+drawing of a graph based on a geometric
+visibility relation.   E.g., the vertices might be drawn as horizontal
+segments, and the edges associated with vertically visible
+segments.
+<P>
+<DT><STRONG>proximity drawing:</STRONG>
+<DD>
+drawing of a graph based on a geometric
+proximity relation.   E.g., a tree is drawn as the Euclidean minimum
+spanning tree of a set of points.
+<P>
+<DT><STRONG>dominance drawing:</STRONG>
+<DD>
+upward drawing of an acyclic digraph such
+that there exists a directed path from vertex <I>u</I> to vertex <I>v</I> if and
+only if  <IMG WIDTH=91 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1280" SRC="img8.gif"  >  and  <IMG WIDTH=90 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1282" SRC="img9.gif"  > , where  <IMG WIDTH=27 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1284" SRC="img10.gif"  >  and  <IMG WIDTH=27 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1286" SRC="img11.gif"  > 
+denote the coordinates of a vertex.
+<P>
+<DT><STRONG>hv-drawing:</STRONG>
+<DD>
+upward orthogonal straight-line drawing of a binary
+tree such that the drawings of the subtrees of each node are separated
+by a horizontal or vertical line.
+<P>
+ </DL>
+<P>
+	<P><A NAME="454">&#160;</A> <IMG WIDTH=780 HEIGHT=257 ALIGN=BOTTOM ALT="figure79" SRC="img12.gif"  > <BR>
+<STRONG>Figure 1:</STRONG>  <A NAME="fidrawings">&#160;</A> Types of drawings: (a)
+	polyline drawing of  <IMG WIDTH=32 HEIGHT=26 ALIGN=MIDDLE ALT="tex2html_wrap_inline1190" SRC="img1.gif"  > ; (b) straight-line drawing of
+	 <IMG WIDTH=32 HEIGHT=26 ALIGN=MIDDLE ALT="tex2html_wrap_inline1190" SRC="img1.gif"  > ; (c) orthogonal drawing of  <IMG WIDTH=32 HEIGHT=26 ALIGN=MIDDLE ALT="tex2html_wrap_inline1190" SRC="img1.gif"  > ; (d) planar
+	upward drawing of an acyclic digraph. <BR>
+<P>
+<P>
+Straight-line and orthogonal drawings are special cases of polyline
+drawings.  Polyline drawings provide great flexibility since they can
+approximate drawings with curved edges.  However, edges with more than
+two or three bends may be difficult to ``follow'' for the eye.  Also, a
+system that supports editing of polyline drawings is more complicated
+than one limited to straight-line drawings.  Hence, depending on the
+application, polyline or straight-line drawings may be preferred.  If
+vertices are represented by points, orthogonal drawings exist only for
+graphs of maximum vertex degree&nbsp;4.
+<P>
+</EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM></EM><H1><A NAME="SECTION00030000000000000000">Bounds and Tradeoffs on Drawing Properties</A></H1>
+ <A NAME="sebounds">&#160;</A>
+<P>
+For various classes of graphs and drawing types, many
+universal/existential upper and lower bounds for specific drawing
+properties have been discovered.  Such bounds typically exhibit
+trade-offs between drawing properties.  A universal bound applies to
+all the graphs of a given class.  An existential bound applies to
+infinitely many graphs of the class.
+<P>
+Whenever we give bounds on the area or edge length, we assume that the
+drawing is constrained by some resolution rule that prevents it from
+being arbitrarily scaled down (e.g., requiring a grid drawing, or a
+minimum unit distance between any two vertices).
+<P>
+<H4><A NAME="SECTION00030010000000000000">Bounds on the Area</A></H4>
+<P>
+Table&nbsp;<A HREF="ordal96.html#taarea">1</A> summarizes selected universal upper
+bounds and existential lower bounds on the area of drawings of graphs.
+<P>
+<P><A NAME="455">&#160;</A>
+<P>
+<DIV ALIGN=CENTER><P ALIGN=CENTER><SMALL CLASS=SCRIPT>
+<TABLE COLS=5 BORDER FRAME=BOX RULES=GROUPS>
+<COLGROUP><COL ALIGN=RIGHT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=CENTER>
+<TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>
+Class of Graphs		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Drawing Type 	
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2> Area</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> Ref.
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>rooted tree		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar straight-line grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=35 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1308" SRC="img13.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  > 	
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#cdpnoaau92">12</A>, <A HREF="ordal96.html#sapgpl76">79</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>rooted tree		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> strictly upward planar straight-line grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=76 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1312" SRC="img15.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#cdpnoaau92">12</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>degree- <IMG WIDTH=45 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1316" SRC="img16.gif"  >   rooted
+tree			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar polyline grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=35 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1308" SRC="img13.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(<I>n</I>)		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#ggtaeutd93">38</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>binary tree		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar orthogonal grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>   <IMG WIDTH=102 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1322" SRC="img17.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=103 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1324" SRC="img18.gif"  > 	
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#ggtaeutd93">38</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>tree			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar straight-line grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=35 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1308" SRC="img13.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#cdpnoaau92">12</A>, <A HREF="ordal96.html#sapgpl76">79</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>degree- <IMG WIDTH=45 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1316" SRC="img16.gif"  >  tree	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar polyline grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=35 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1308" SRC="img13.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(<I>n</I>)		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#ggtaeutd93">38</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>degree-4 tree		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar orthogonal grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=35 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1308" SRC="img13.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(<I>n</I>)		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#vucvc81">93</A>, <A HREF="ordal96.html#laeglv80">60</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar polyline grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1340" SRC="img19.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#dtaprad88">27</A>, <A HREF="ordal96.html#dttarsdp92">28</A>, <A HREF="ordal96.html#kdpguc">56</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar straight-line
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=49 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1344" SRC="img21.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 			
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#gtpdara94">40</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar straight-line grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1340" SRC="img19.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#fpphdpgg90">19</A>, <A HREF="ordal96.html#sepgg90">77</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>triconnected planar
+graph			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar straight-line convex grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1340" SRC="img19.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#kdpguc">56</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar orthogonal grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1340" SRC="img19.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#bkbhogd94">3</A>, <A HREF="ordal96.html#kdpguc">56</A>, <A HREF="ordal96.html#teggmn87">81</A>, <A HREF="ordal96.html#ttpgelt89">86</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar degree-4 graph	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=76 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1312" SRC="img15.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=85 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1360" SRC="img22.gif"  > 	
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#vucvc81">93</A>, <A HREF="ordal96.html#laeglv80">60</A>, <A HREF="ordal96.html#blfsvgl84">2</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>upward planar digraph	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar grid straight-line
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1362" SRC="img23.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=41 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1364" SRC="img24.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#bcdtthdspd94">1</A>, <A HREF="ordal96.html#dttarsdp92">28</A>, <A HREF="ordal96.html#gtecpsl93">39</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>reduced planar <I>st</I>-digraph </TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar grid straight-line dominance
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1340" SRC="img19.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#dttarsdp92">28</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>upward planar digraph	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar grid polyline
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 		
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1340" SRC="img19.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#dtaprad88">27</A>, <A HREF="ordal96.html#dttarsdp92">28</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>general graph		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> polyline grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=68 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1376" SRC="img25.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=92 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1378" SRC="img26.gif"  > 	
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP></TD></TR>
+</TBODY>
+<CAPTION ALIGN=BOTTOM><STRONG>Table 1:</STRONG>  Universal upper bounds and existential lower bounds on the
+area of drawings of graphs.  We denote with <I>a</I> an arbitrary constant
+such that   <IMG WIDTH=72 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1198" SRC="img2.gif"  > .  We denote with <I>b</I> and <I>c</I> fixed constants
+such that 1 &lt; <I>b</I> &lt; <I>c</I>.
+<A NAME="taarea">&#160;</A>
+</CAPTION></TABLE>
+</SMALL>
+</P></DIV><P>
+<P>
+In general, the effect of bends on the area requirement is dual.  On
+one hand, bends occupy space and hence negatively affect the area. On
+the other hand, bends may help in routing edges without using
+additional space.
+<P>
+The following comments apply to Table&nbsp;<A HREF="ordal96.html#taarea">1</A>.  Linear or
+almost-linear bounds on the area can be achieved for trees.  See
+Table&nbsp;<A HREF="ordal96.html#tatrees">4</A> for trade-offs between area and aspect-ratio in
+drawings of trees.  Planar graphs admit planar drawings with quadratic
+area.  However, the area requirement of planar straight-line drawings
+may be exponential if high angular resolution is also desired.  Almost
+linear area can be instead achieved in nonplanar drawings of planar
+graphs, which have applications to <font size=-1><small>VLSI</small></font> circuits.  Upward planar
+drawings provide an interesting trade-off between area and the total
+number of bends.  Indeed, unless the digraph is reduced, the area can
+become exponential if a straight-line drawing is required.  A quadratic
+area bound is achieved only at the expense of a linear number of
+bends.
+<P>
+<H4><A NAME="SECTION00030020000000000000">Bounds on the Angular Resolution</A></H4>
+<P>
+Tabe&nbsp;<A HREF="ordal96.html#taresol2">2</A> summarizes selected universal lower bounds and
+existential upper bounds on the angular resolution of drawings of
+graphs.
+<P>
+<P><A NAME="456">&#160;</A>
+<P>
+<DIV ALIGN=CENTER><P ALIGN=CENTER><SMALL CLASS=SCRIPT>
+<P>
+<TABLE COLS=5 BORDER FRAME=BOX RULES=GROUPS>
+<COLGROUP><COL ALIGN=RIGHT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=CENTER><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT>
+<TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>
+Class of Graphs			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Drawing Type 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2> Angular Resolution</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Ref.
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>general graph					</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> straight-line
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>  <IMG WIDTH=42 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1384" SRC="img27.gif"  > 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=57 HEIGHT=35 ALIGN=MIDDLE ALT="tex2html_wrap_inline1386" SRC="img28.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> [<A HREF="ordal96.html#fhhklswwdgphr93">35</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph					</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> straight-line
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>  <IMG WIDTH=35 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1388" SRC="img29.gif"  > 				</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=37 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1390" SRC="img30.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> [<A HREF="ordal96.html#fhhklswwdgphr93">35</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph					</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar straight-line
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>  <IMG WIDTH=41 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1392" SRC="img31.gif"  > 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=74 HEIGHT=43 ALIGN=MIDDLE ALT="tex2html_wrap_inline1394" SRC="img32.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> [<A HREF="ordal96.html#gtpdara94">40</A>, <A HREF="ordal96.html#mparpg94">65</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD></TR>
+</TBODY>
+<CAPTION ALIGN=BOTTOM><STRONG>Table 2:</STRONG> Universal lower bounds and existential upper bounds on the
+angular resolution of drawings of graphs.  We denote with <I>c</I> a
+fixed constant such that <I>c</I> &gt; 1.
+<A NAME="taresol2">&#160;</A>
+</CAPTION></TABLE>
+</SMALL>
+</P></DIV><P><H4><A NAME="SECTION00030030000000000000">Bounds on the Number of Bends</A></H4>
+<P>
+Table&nbsp;<A HREF="ordal96.html#tabends">3</A> summarizes selected universal upper
+bounds and existential lower bounds on the total and maximum number of
+bends in orthogonal drawings.  Some bounds are stated for  <IMG WIDTH=42 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1216" SRC="img6.gif"  >  or
+ <IMG WIDTH=43 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline1212" SRC="img4.gif"  >  because the maximum number of bends is at least 2 for  <IMG WIDTH=21 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1400" SRC="img33.gif"  > 
+and at least 3 for the skeleton graph of an octahedron, in any planar
+orthogonal drawing
+<P>
+<P><A NAME="458">&#160;</A>
+<P>
+<DIV ALIGN=CENTER><P ALIGN=CENTER><SMALL CLASS=SCRIPT>
+<P>
+<TABLE COLS=7 BORDER FRAME=BOX RULES=GROUPS>
+<COLGROUP><COL ALIGN=RIGHT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=CENTER>
+<TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>
+Class of Graphs			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Drawing Type 	
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2> Total No. Bends</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2> Max No. Bends</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> Ref.
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>degree-4 graph <IMG WIDTH=5 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap1454" SRC="img34.gif"  > 		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal			
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=27 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1406" SRC="img36.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=67 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1408" SRC="img37.gif"  > 			
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1410" SRC="img38.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1412" SRC="img39.gif"  > 			
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#bkbhogd94">3</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar degree-4 graph <IMG WIDTH=5 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap1454" SRC="img34.gif"  > 	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal planar
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=67 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1414" SRC="img40.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=67 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1408" SRC="img37.gif"  > 			
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1410" SRC="img38.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1412" SRC="img39.gif"  > 			
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#bkbhogd94">3</A>, <A HREF="ordal96.html#ttvlbpod91">89</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>embedded degree-4 graph 	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal planar	
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=67 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1414" SRC="img40.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=76 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1424" SRC="img41.gif"  > 	
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1426" SRC="img42.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1428" SRC="img43.gif"  >  			
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#egrpdfb94">34</A>, <A HREF="ordal96.html#lmsgtrre91">64</A>, <A HREF="ordal96.html#ttpgelt89">86</A>, <A HREF="ordal96.html#ttvlbpod91">89</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>biconnected embedded degree-4
+graph 				</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal planar
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=67 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1414" SRC="img40.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=67 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1408" SRC="img37.gif"  > 			
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1426" SRC="img42.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1428" SRC="img43.gif"  > 			
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#egrpdfb94">34</A>, <A HREF="ordal96.html#lmsgtrre91">64</A>, <A HREF="ordal96.html#ttpgelt89">86</A>, <A HREF="ordal96.html#ttvlbpod91">89</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>triconnected embedded degree-4
+graph				</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal planar
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=115 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1438" SRC="img44.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=70 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1440" SRC="img45.gif"  >   	
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1410" SRC="img38.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=25 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1412" SRC="img39.gif"  >  			
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#kdpguc">56</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>embedded degree-3 graph <IMG WIDTH=5 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap1456" SRC="img35.gif"  >  	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal planar
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=68 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1446" SRC="img46.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=68 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1448" SRC="img47.gif"  >   	
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=24 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1450" SRC="img48.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=24 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1452" SRC="img49.gif"  >  			
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#kdpguc">56</A>, <A HREF="ordal96.html#lmpstrm1b90">63</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP></TD></TR>
+</TBODY>
+<CAPTION ALIGN=BOTTOM><STRONG>Table 3:</STRONG>  Orthogonal drawings: universal upper bounds and existential
+lower bounds on the total and maximum number of bends.
+Notes:  <IMG WIDTH=5 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap1454" SRC="img34.gif"  >   <IMG WIDTH=43 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline1212" SRC="img4.gif"  > ;    <IMG WIDTH=5 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap1456" SRC="img35.gif"  >   <IMG WIDTH=42 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1216" SRC="img6.gif"  > .
+<A NAME="tabends">&#160;</A>
+</CAPTION></TABLE>
+</SMALL>
+</P></DIV><P><H4><A NAME="SECTION00030040000000000000">Trade-Off Between Area and Aspect-Ratio</A></H4>
+<P>
+<A NAME="seratio">&#160;</A>
+<P>
+The ability to construct area-efficient drawings is essential in
+practical visualization applications, where screen space is at a
+premium.  However, achieving small area is not enough: e.g., it is easy
+to see that a drawing with high aspect-ratio may not be conveniently
+placed on a workstation screen, even if it has modest area.  Hence, it
+is important to keep the aspect-ratio small.  Ideally, one would like
+to obtain small area for any given aspect-ratio in a wide range.  This
+would provide graphical user interfaces with the flexibility of fitting
+drawings in arbitrarily shaped windows.
+<P>
+A variety of trade-offs for the area and aspect-ratio arise even when
+drawing graphs with a simple structure, such as trees.
+Table&nbsp;<A HREF="ordal96.html#tatrees">4</A> summarizes selected universal
+bounds that can be simultaneously achieved on the area and the
+aspect-ratio of various types of drawings of trees.
+<P>
+<P><A NAME="459">&#160;</A>
+<P>
+<DIV ALIGN=CENTER><P ALIGN=CENTER><SMALL CLASS=SCRIPT>
+<P>
+<TABLE COLS=5 BORDER FRAME=BOX RULES=GROUPS>
+<COLGROUP><COL ALIGN=RIGHT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=CENTER>
+<TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>
+Class of Graphs			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Drawing Type
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Area 				</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Aspect-Ratio
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> Ref.
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>rooted tree			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar straight-line layered grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(1)
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#rttdt81">72</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>rooted tree			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar straight-line grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  >  			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#cdpnoaau92">12</A>, <A HREF="ordal96.html#sapgpl76">79</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>rooted degree-<I>O</I>(1) tree	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar polyline grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(<I>n</I>)			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=45 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1316" SRC="img16.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#ggtaeutd93">38</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>binary tree		 	</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> upward planar orthogonal grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=103 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1324" SRC="img18.gif"  > 		</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=161 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1484" SRC="img50.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#ggtaeutd93">38</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>degree-4 tree			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(<I>n</I>)			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(1)
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#vucvc81">93</A>, <A HREF="ordal96.html#laeglv80">60</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>degree-4 tree			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> orthogonal grid, leaves on convex hull
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  > 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> <I>O</I>(1)
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#bkabtl80">7</A>]
+</TD></TR>
+</TBODY>
+<CAPTION ALIGN=BOTTOM><STRONG>Table 4:</STRONG>  Universal upper bounds that can be simultaneously achieved
+for the area and aspect-ratio in drawings of trees.
+We denote with <I>a</I> an arbitrary constant such that  <IMG WIDTH=72 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline1198" SRC="img2.gif"  > .
+<A NAME="tatrees">&#160;</A>
+</CAPTION></TABLE>
+</SMALL>
+</P></DIV><P>
+<P>
+While upward planar straight-line drawings are the most natural way of
+visualizing rooted trees, the existing drawing techniques are
+unsatisfactory with respect to either the area requirement or the
+aspect ratio.  The situation is similar for orthogonal drawings.
+Regarding polyline drawings, linear area can be achieved with a
+prescribed aspect ratio&nbsp;[<A HREF="ordal96.html#ggtaeutd93">38</A>].  However,
+experiments show that this is done at the expense of a somehow
+aesthetically unappealing drawing.
+<P>
+For non-upward drawings of trees, linear area and optimal aspect ratio
+are possible for planar orthogonal drawings, and a small (logarithmic)
+amount of extra area is needed if the leaves are constrained to be on
+the convex hull of the drawing (e.g., pins on the boundary of a
+<font size=-1><small>VLSI</small></font> circuit).  However, the non-upward drawing methods do
+not seem to yield aesthetically pleasing drawings, and are suited more
+for <font size=-1><small>VLSI</small></font> layout than for visualization applications.
+<P>
+<H4><A NAME="SECTION00030050000000000000">Trade-Off Between Area and Angular Resolution</A></H4>
+<P>
+Table&nbsp;<A HREF="ordal96.html#taresol">5</A> summarizes selected universal
+bounds that can be simultaneously achieved on the area and the angular
+resolution of drawings of graphs.
+<P>
+<P><A NAME="460">&#160;</A>
+<P>
+<DIV ALIGN=CENTER><P ALIGN=CENTER><SMALL CLASS=SCRIPT>
+<P>
+<TABLE COLS=5 BORDER FRAME=BOX RULES=GROUPS>
+<COLGROUP><COL ALIGN=RIGHT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=CENTER>
+<TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>
+Class of Graphs			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Drawing Type 
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Area 				</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Angular Resolution
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> Ref.
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> straight-line	
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=54 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1502" SRC="img51.gif"  >  			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=42 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1384" SRC="img27.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#fhhklswwdgphr93">35</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> straight-line
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=54 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1506" SRC="img52.gif"  >  			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=35 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1388" SRC="img29.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#fhhklswwdgphr93">35</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar straight-line grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1512" SRC="img53.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#fpphdpgg90">19</A>, <A HREF="ordal96.html#sepgg90">77</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar straight-line
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=43 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1362" SRC="img23.gif"  > 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=41 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1392" SRC="img31.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#mparpg94">65</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>planar graph 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> planar polyline grid
+</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=44 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1342" SRC="img20.gif"  > 			</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <IMG WIDTH=35 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1388" SRC="img29.gif"  > 
+</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> [<A HREF="ordal96.html#kdpguc">56</A>]
+</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP></TD></TR>
+</TBODY>
+<CAPTION ALIGN=BOTTOM><STRONG>Table 5:</STRONG>  Universal asymptotic upper bounds for the
+area and lower bounds for the angular resolution that can be
+simultaneously achieved in drawings of graphs.   We denote with <I>b</I> and <I>c</I>
+fixed constants such that <I>b</I>&gt;1 and <I>c</I>&gt;1.
+<A NAME="taresol">&#160;</A>
+</CAPTION></TABLE></SMALL>
+</P></DIV><P>
+<P>
+Universal lower bounds on the angular resolution exist that depend only
+on the degree of the graph.  Also, substantially better bounds can be
+achieved by drawing a planar graph with bends or in a nonplanar way.
+<P>
+<H4><A NAME="SECTION00030060000000000000">Open Problems</A></H4>
+<P>
+<UL><LI> Determine the area requirement of (upward) planar straight-line
+drawings of trees.   There is currently an  <IMG WIDTH=63 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1522" SRC="img54.gif"  >  gap between the
+known upper and lower bounds (Table&nbsp;<A HREF="ordal96.html#taarea">1</A>).<LI> Determine the area requirement of orthogonal (or, more generally,
+polyline) nonplanar drawings of planar graphs.  There is currently an
+ <IMG WIDTH=63 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1522" SRC="img54.gif"  >  gap between the known upper and lower bounds (Table&nbsp;<A HREF="ordal96.html#taarea">1</A>).<LI> Close the gap between the  <IMG WIDTH=42 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline1384" SRC="img27.gif"  >  universal lower
+bound and the  <IMG WIDTH=57 HEIGHT=35 ALIGN=MIDDLE ALT="tex2html_wrap_inline1386" SRC="img28.gif"  >  existential upper bound on the
+angular resolution of straight-line drawings of general graphs (Table&nbsp;<A HREF="ordal96.html#taresol2">2</A>).<LI> Close the gap between the  <IMG WIDTH=41 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1392" SRC="img31.gif"  >  universal lower
+bound and the  <IMG WIDTH=74 HEIGHT=43 ALIGN=MIDDLE ALT="tex2html_wrap_inline1394" SRC="img32.gif"  >  existential upper bound on
+the angular resolution of planar straight-line drawings of planar
+graphs (Table&nbsp;<A HREF="ordal96.html#taresol2">2</A>).<LI> Determine the best possible aspect-ratio and area that can be
+simultaneously achieved for (upward) planar straight-line and
+orthogonal drawings of trees (Table&nbsp;<A HREF="ordal96.html#tatrees">4</A>).
+<P>
+</UL><H1><A NAME="SECTION00040000000000000000">Three Dimensional Drawings of Graphs</A></H1>
+ <A NAME="se3d">&#160;</A>
+<P>
+Recent advances in hardware and software technology for computer
+graphics open the possibility of displaying three-dimensional (3D)
+visualizations on a variety of low-cost workstations,
+and a handful of researchers (and film makers<A NAME="tex2html8" HREF="#462"><IMG  ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.brown.edu/icons/latex2html/foot_motif.gif"></A>)
+have begun to explore the
+possibilities of displaying graphs using this new technology
+Previous research on
+3D graph drawing has focused on the development of visualization
+systems (see, e.g., [<A HREF="ordal96.html#re3vpi95">73</A>, <A HREF="ordal96.html#rmccta3v91">76</A>]).
+Much work needs to be done on the theoretical foundations of 3D graph
+drawing.  Recent progress has been reported
+in&nbsp;[<A HREF="ordal96.html#cgtcdgtt96">8</A>, <A HREF="ordal96.html#celrtdgd95">9</A>, <A HREF="ordal96.html#eswtkb3d95">33</A>, <A HREF="ordal96.html#hrudfs94">43</A>, <A HREF="ordal96.html#jj3dlrg95">51</A>, <A HREF="ordal96.html#ldcpdt395">62</A>].
+<P>
+<H4><A NAME="SECTION00040010000000000000">3D Convex Drawings</A></H4>
+<P>
+A 3D convex drawing of a graph <I>G</I> is a realization of <I>G</I> by the
+skeleton of a 3D convex polytope (see Fig.&nbsp;<A HREF="ordal96.html#fi3dconvex">2</A>.  The
+well-known Steinitz's theorem says that a graph admits a 3D convex
+drawing if and only if it is planar and triconnected&nbsp;[<A HREF="ordal96.html#srvudtd34">80</A>]
+(see also Gr&#252;nbaum&nbsp;[<A HREF="ordal96.html#gcp67">42</A>]), properties that can be verified
+in linear time (see, e.g., [<A HREF="ordal96.html#htdgtc73">48</A>, <A HREF="ordal96.html#htept74">49</A>]).
+Interestingly, it is a simple exercise to derive from the published
+proofs of Steinitz's theorem a cubic-time method for constructing 3D
+convex drawings in the real-RAM model&nbsp;[<A HREF="ordal96.html#pscgi85">71</A>].  Unfortunately,
+this approach seems to require at least exponential volume and an
+exponential number of bits to implement.  Indeed, Onn and
+Sturmfels&nbsp;[<A HREF="ordal96.html#osqst94">68</A>] show how to construct a 3D convex grid
+drawing within a cube of side  <IMG WIDTH=74 HEIGHT=36 ALIGN=MIDDLE ALT="tex2html_wrap_inline1538" SRC="img55.gif"  > .
+<P>
+	<P><A NAME="464">&#160;</A> <IMG WIDTH=330 HEIGHT=462 ALIGN=BOTTOM ALT="figure256" SRC="img56.gif"  > <BR>
+<STRONG>Figure 2:</STRONG>  Example of a 3D convex drawing.
+	<A NAME="fi3dconvex">&#160;</A>
+	<BR>
+<P>
+<P>
+Maxwell&nbsp;[<A HREF="ordal96.html#morfdf64">67</A>] (see
+also&nbsp;[<A HREF="ordal96.html#cre82">10</A>, <A HREF="ordal96.html#cwsfmps82">11</A>, <A HREF="ordal96.html#wmspp82">94</A>]) describes a mapping that
+transforms a 2D convex drawings with a certain ``equilibrium stress
+property'' into a 3D convex drawing.  Further results on this
+transformation are given by Hopcroft and Kahn&nbsp;[<A HREF="ordal96.html#hkprga92">50</A>].  Eades
+and Garvan&nbsp;[<A HREF="ordal96.html#egdspg96">31</A>] show how to construct 3D convex drawings
+by combining the above transformation with the 2D-drawing method of
+Tutte&nbsp;[<A HREF="ordal96.html#tcrg60">91</A>, <A HREF="ordal96.html#thdg63">92</A>].  They also show that their drawings
+have exponential volume in the worst case.  Smith
+(see&nbsp;[<A HREF="ordal96.html#hrscchp92">47</A>]) claims a polynomial-time algorithm for
+constructing a 3D convex drawing inscribed in a sphere, with vertex
+coordinates represented by  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  > -bit numbers, for an <I>n</I>-vertex
+graph known to be inscribable (which can be tested in linear time,
+e.g., for planar triangulations, due to a result of Dillencourt and
+Smith&nbsp;[<A HREF="ordal96.html#dsltati92">30</A>]).  Das and Goodrich&nbsp;[<A HREF="ordal96.html#dgcaitd95">17</A>] present
+a linear-time algorithm for constructing a 3D convex drawing of a
+maximal planar graph such that the vertex coordinates are rational
+numbers that can be represented with a polynomial number of bits.
+<P>
+Chrobak, Goodrich and Tamassia&nbsp;[<A HREF="ordal96.html#cgtcdgtt96">8</A>] have recently shown
+how to construct in  <IMG WIDTH=55 HEIGHT=31 ALIGN=MIDDLE ALT="tex2html_wrap_inline1544" SRC="img57.gif"  >  time a 3D convex drawing with <I>O</I>(<I>n</I>)
+volume such that the vertex coordinates are represented by  <IMG WIDTH=77 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1310" SRC="img14.gif"  > -bit rational numbers and any two vertices are at distance at least
+one.
+<P>
+<H1><A NAME="SECTION00050000000000000000">Constraint Satisfaction in Graph Drawing</A></H1>
+ <A NAME="seconstr">&#160;</A>
+<P>
+Research in graph drawing has traditionally focused on 
+algorithmic methods, where the drawing of the graph is generated
+according to a prespecified set of aesthetic criteria (such as
+planarity or area minimization) that are embodied in an algorithm.
+Although the algorithmic approach is computationally efficient, it does
+not naturally support constraints, i.e., requirements that the user may
+want to impose on the drawing of a specific graph (e.g., clustering or
+aligning a given set of vertices).  Previous work has shown that only a
+rather limited constraint satisfaction capability can be added to
+existing drawing algorithms (see, e.g.,
+[<A HREF="ordal96.html#dttcvrg92">29</A>, <A HREF="ordal96.html#tdbagdrd88">84</A>]).
+<P>
+Recently, several attempts have been made at developing languages for
+the specification of constraints and at devising techniques for graph
+drawing based on the resolution of systems of constraints (see, e.g.,
+[<A HREF="ordal96.html#dfmcddl93">20</A>, <A HREF="ordal96.html#kvaor89">55</A>, <A HREF="ordal96.html#mfsndt91">66</A>]).  Eades
+and Lin&nbsp;[<A HREF="ordal96.html#leidaal95">61</A>] attempt at combining algorithmic and
+declarative methods in drawings of trees.  Brandenburg presents a
+comprehensive approach to graph drawing based on graph
+grammars&nbsp;[<A HREF="ordal96.html#bdgdlg95">4</A>].
+<P>
+<H4><A NAME="SECTION00050010000000000000">Visual Graph Drawing</A></H4>
+<P>
+A visual approach to graph drawing, where the layout of a graph is
+pictorially specified ``by example,'' is proposed by Cruz, Garg and
+Tamassia&nbsp;[<A HREF="ordal96.html#cgdgeet95">15</A>, <A HREF="ordal96.html#cgtecrvg96">16</A>].  Within this approach, a
+graph is stored in an object-oriented database, and its drawing is
+defined used recursive visual rules of the visual meta-language <font size=-1><small>DOODLE</small></font>&nbsp;[<A HREF="ordal96.html#cdvloo92">13</A>].  The following types of drawings can be visually
+expressed in such a way that the system of constraints obtained from
+the application of the visual rules to the input graph can be solved in
+linear time:
+<P>
+<UL><LI> level drawings and box inclusion drawings of binary
+	trees;<LI>  <IMG WIDTH=12 HEIGHT=12 ALIGN=BOTTOM ALT="tex2html_wrap_inline1552" SRC="img58.gif"  > -drawings of series-parallel
+	digraphs&nbsp;[<A HREF="ordal96.html#bcdtthdspd94">1</A>];<LI> polyline drawings&nbsp;[<A HREF="ordal96.html#dtaprad88">27</A>], visibility
+	drawings&nbsp;[<A HREF="ordal96.html#ttuavrp86">85</A>], and tessellation
+	drawings&nbsp;[<A HREF="ordal96.html#tttrpg89">87</A>] of upward planar digraphs (see
+	Fig.&nbsp;<A HREF="ordal96.html#fiupdraw">3</A>).
+<P>
+</UL>
+<P>
+	<P><A NAME="466">&#160;</A> <IMG WIDTH=779 HEIGHT=489 ALIGN=BOTTOM ALT="figure287" SRC="img59.gif"  > <BR>
+<STRONG>Figure 3:</STRONG>  Drawings of a planar <I>st</I>-digraph:
+	(a) tessellation drawing; (b) visibility drawing;
+	(c) upward polyline drawing.
+	<A NAME="fiupdraw">&#160;</A>
+	<BR>
+<P>
+<P>
+In the rest of this section, we present visual programs for drawing a
+planar <I>st</I>-digraph, i.e., an embedded planar acyclic digraph with
+exactly one source and one sink, joined by an edge.  Such
+digraphs play an important role in the theory of ordered sets since
+their transitive reductions are the covering digraphs of planar
+lattices&nbsp;[<A HREF="ordal96.html#krpl75">59</A>].  Such visual programs can be easily modified
+to construct drawings of upward planar digraphs, which are known to be
+subgraphs of planar <I>st</I>-digraphs&nbsp;[<A HREF="ordal96.html#kfpos87">58</A>, <A HREF="ordal96.html#dtaprad88">27</A>].
+<P>
+We show in Figure&nbsp;<A HREF="ordal96.html#fiuptess">4</A> a complete visual program for
+tessellation representations.  We assume that the vertices, edges, and
+faces of the input planar <I>st</I>-digraph <I>G</I> are database objects,
+where for each object <I>o</I> the following attributes describing the
+embedding are stored:  left face  <IMG WIDTH=45 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1566" SRC="img60.gif"  > , right face  <IMG WIDTH=57 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1568" SRC="img61.gif"  > ,
+bottom vertex  <IMG WIDTH=42 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1570" SRC="img62.gif"  > , and top vertex  <IMG WIDTH=45 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1572" SRC="img63.gif"  > .  Note that the
+value of each attribute is another database object.
+<P>
+	<P><A NAME="472">&#160;</A> <IMG WIDTH=688 HEIGHT=870 ALIGN=BOTTOM ALT="figure302" SRC="img64.gif"  > <BR>
+<STRONG>Figure 4:</STRONG>  Visual rules for constucting a tessellation
+	drawing of a planar <I>st</I>-digraph:
+	(a) rule for a face;
+	(b) special rule for the source vertex;
+	(c) rule for a vertex;
+	(d) rule for an edge.
+	<A NAME="fiuptess">&#160;</A>
+	<BR>
+<P>
+<P>
+Each rule defines the visual representation of a database object of a
+certain class (vertex, edge, and face).  For tessellation
+representations, this is a horizontal segment for a vertex, a vertical
+segment for a face, and a rectangle for an edge.  The visual notation
+in the rule for an object <I>o</I> includes:
+<P>
+<UL><LI> geometric figures that give the visual representation of
+	object <I>o</I>, such as circles, segments, and rectangles;<LI> references to the visual representation of other objects
+	given by attributes of <I>o</I>, denoted with dashed boxes labeled
+	by the attribute;<LI> landmarks of the visual representations of <I>o</I> and of
+	other referenced objects, shown as small squares with labels
+	(e.g., <I>MS</I>, the ``middle South'' landmark, denotes the middle
+	point of the bottom edge of a rectangle); and<LI> landmarks of the coordinate system, shown with small circles
+	(e.g., <I>ORIGIN</I> denotes point (0,0));<LI> explicit constraints between landmarks, shown as arrows
+	joining two landmarks with labels defining the constraint
+	imposed on the coordinates of the landmarks (e.g., in rule (d),
+	the dashed arrow with label <I>max(1, <IMG WIDTH=12 HEIGHT=12 ALIGN=BOTTOM ALT="tex2html_wrap_inline1552" SRC="img58.gif"  > )[h,v]</I> is an
+	explicit constraint specifying minimum horizontal and vertical
+	distance 1 from the ``midpoint South'' <I>MS</I> to the
+	``midpoint East'' of the rectangle);<LI> implicit constraints between landmarks, given by their
+	horizontal or vertical alignment (e.g., in rule (d), the
+	``midpoint East'' <I>ME</I> of the rectangle representing edge
+	<I>e</I> and the ``top endpoint'' <I>TE</I> of the referenced visual
+	representation of the right face of <I>e</I>  <IMG WIDTH=56 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1592" SRC="img65.gif"  >  must have
+	the same <I>x</I>-coordinate because they are drawn vertically
+	aligned).
+<P>
+</UL>
+<P>
+Complete visual programs for visibility representations and upward
+polyline drawings are shown in Figures&nbsp;<A HREF="ordal96.html#fiupvis">5</A> and
+<A HREF="ordal96.html#fiuppoly">6</A>, respectively.  In these two programs, the visual
+representation of the faces is a single point associated with landmark
+<I>F</I>.  This point is invisible but contributes to the definition of
+the constraints.  Also, the visual representation of an edge includes a
+visible portion (vertical segment for a visibility representation and
+polygonal chain with three segments for an upward polyline drawing) and
+an invisible portion drawn with a conventional ``transparent color''
+(a rectangle or segment with shaded lines in the figures).
+<P>
+	<P><A NAME="474">&#160;</A> <IMG WIDTH=690 HEIGHT=842 ALIGN=BOTTOM ALT="figure317" SRC="img66.gif"  > <BR>
+<STRONG>Figure 5:</STRONG>  Visual rules for constucting a tessellation
+	drawing of a planar <I>st</I>-digraph:
+	(a) rule for a face;
+	(b) special rule for the source vertex;
+	(c) rule for a vertex;
+	(d) rule for an edge.
+	<A NAME="fiupvis">&#160;</A>
+	<BR>
+<P>
+<P>
+	<P><A NAME="476">&#160;</A> <IMG WIDTH=690 HEIGHT=883 ALIGN=BOTTOM ALT="figure321" SRC="img67.gif"  > <BR>
+<STRONG>Figure 6:</STRONG>  Visual rules for constucting a tessellation
+	drawing of a planar <I>st</I>-digraph:
+	(a) rule for a face;
+	(b) special rule for the source vertex;
+	(c) rule for a vertex;
+	(d) rule for an edge.
+	<A NAME="fiuppoly">&#160;</A>
+	<BR>
+<P><H1><A NAME="SECTION00060000000000000000">Experimental Graph Drawing</A></H1>
+ <A NAME="seexp">&#160;</A>
+<P>
+Many graph drawing algorithms have been implemented and used in
+practical applications.  Most papers show sample outputs, and some also
+provide limited experimental results on small test suites (see, e.g.,
+[<A HREF="ordal96.html#dhdgnus89">18</A>, <A HREF="ordal96.html#frgdfdp91">36</A>, <A HREF="ordal96.html#gnvdptdd88">37</A>, <A HREF="ordal96.html#jmpsnep">53</A>, <A HREF="ordal96.html#kvaor89">55</A>, <A HREF="ordal96.html#kadpg93">57</A>]
+and the experimental papers in&nbsp;[<A HREF="ordal96.html#ttgd94">88</A>]).  However, in order to
+evaluate the practical performance of a graph drawing algorithm in
+visualization applications, it is essential to perform extensive
+experimentations with input graphs derived from the application
+domain.
+<P>
+The performance of four planar straight-line drawing algorithms on
+10,000 randomly generated maximal planar graphs is compared
+by Jones et al.&nbsp;[<A HREF="ordal96.html#jemwdtnpgda91">52</A>].
+<P>
+Himsolt&nbsp;[<A HREF="ordal96.html#hcelag95">45</A>] presents a comparative study of twelve graph
+drawings algorithms based on various approaches.  The experiments are
+conducted on 100 sample graphs with the graph drawing system <EM>
+GraphEd</EM>&nbsp;[<A HREF="ordal96.html#hggpig95">46</A>].  Many examples of drawings constructed by
+the algorithms are shown, and various objective and subjective
+evaluations on the aesthetic quality of the drawings produced are
+given.
+<P>
+Brandenburg and Rohrer&nbsp;[<A HREF="ordal96.html#brecfdr96">6</A>] compare five
+``force-directed'' methods for constructing straight-line drawings of
+general undirected graphs.  The algorithms are tested on a a wide
+collection of examples and with different settings of the force
+parameters.  The quality measures evaluated are crossings, edge length,
+vertex distribution, and running time.  They also identify tradeoffs
+between the running time and the aesthetic quality of the drawings
+produced.
+<P>
+J&#252;nger and Mutzel&nbsp;[<A HREF="ordal96.html#jmeha2s96">54</A>] investigate crossing
+minimization strategies for straight-line drawings of 2-layer graphs,
+and compare the performance of eight popular heuristics for this
+problem.
+<P>
+<H4><A NAME="SECTION00060010000000000000">Experiments on Orthogonal Drawings</A></H4>
+<P>
+In&nbsp;[<A HREF="ordal96.html#dglttvectgd95">22</A>, <A HREF="ordal96.html#dglttvecfgd95">23</A>] Di Battista et al. present
+an extensive experimental study comparing four general-purpose graph
+drawing algorithms.   The four algorithms, denoted <I>Bend-Stretch</I>,
+<I>Column</I>, <I>Giotto</I>, and <I>Pair</I>, take as input general graphs
+(with no restrictions whatsoever on the connectivity, planarity, etc.)
+and construct orthogonal grid drawings, which are widely used in
+software and database visualization applications.
+<P>
+Algorithms&nbsp;<I>Bend-Stretch</I> and <I>Giotto</I> are based on a general approach where
+the drawing is incrementally specified in three phases: The first
+phase, <EM>planarization</EM>, determines the topology of the drawing. The
+second phase, <EM>orthogonalization</EM>, computes an orthogonal shape for
+the drawing. The third phase, <EM>compaction</EM>, produces the final
+drawing.  This approach allows homogeneous treatment of a wide range of
+diagrammatic representations, aesthetics and constraints&nbsp;(see, e.g.,
+[<A HREF="ordal96.html#kadpg93">57</A>, <A HREF="ordal96.html#tdbagdrd88">84</A>, <A HREF="ordal96.html#tdgds88">90</A>]) and has been successfully used
+in industrial tools.  The main difference between the two algorithms is
+in the orthogonalization phase:  Algorithm <I>Giotto</I> uses a network-flow
+method that guarantees the minimum number of bends but has quadratic
+time-complexity&nbsp;[<A HREF="ordal96.html#teggmn87">81</A>].  Algorithm <I>Bend-Stretch</I> adopts the
+``bend-stretching'' heuristic&nbsp;[<A HREF="ordal96.html#ttpgelt89">86</A>] that only guarantees a
+constant number of bends on each edge but runs in linear time.
+<P>
+Algorithm <I>Column</I> is an  extension of the orthogonal drawing algorithm
+by Biedl and Kant&nbsp;[<A HREF="ordal96.html#bkbhogd94">3</A>] to graphs of arbitrary vertex
+degree.  The orthogonal grid drawing is incrementally constructed by
+adding the vertices one at a time.  Namely, at each step a vertex <I>v</I>
+is added plus the edges connecting <I>v</I> to previously added vertices.
+Some columns of the grid are ``reserved'' to draw the remaining
+incident edges of <I>v</I>. Concerning the position of <I>v</I>, since one row is
+used for each vertex, the <I>y</I>-coordinate is immediately given by the
+order of visit of <I>v</I>, and the <I>x</I>-coordinate is the one of the
+reserved column of the incident edge of <I>v</I> that minimizes the number
+of bends introduced by the new edges.  Algorithm <I>Pair</I> is an
+extension of the orthogonal drawing algorithm by Papakostas and
+Tollis&nbsp;[<A HREF="ordal96.html#ptiabod95">69</A>, <A HREF="ordal96.html#ptiabod96">70</A>] to graphs of arbitrary vertex
+degree.
+<P>
+Examples of ``typical'' drawings generated by <I>Bend-Stretch</I>, <I>Column</I>, <I>Giotto</I>,
+and <I>Pair</I> are shown in Figures&nbsp;<A HREF="ordal96.html#fi63">7</A>.
+<P>
+	<P><A NAME="485">&#160;</A>
+<strong>(a)</strong> <IMG WIDTH=850 ALIGN=MIDDLE SRC="r-332-63-b.gif"> <P>
+<strong>(b)</strong> <IMG ALIGN=MIDDLE SRC="r-332-63-g.gif"> <P>
+<strong>(c)</strong> <IMG WIDTH=500 ALIGN=MIDDLE SRC="r-332-63-k.gif"> <P>
+<strong>(d)</strong> <IMG WIDTH=546 ALIGN=MIDDLE SRC="r-332-63-p-gen.gif"> <P>
+<STRONG>Figure 7:</STRONG> Drawings of the same 63-vertex graph produced by algorithms
+		<B>(a)</B>  <I>Bend-Stretch</I>, <B>(b)</B> <I>Giotto</I>, <B>(c)</B> <I>Column</I>, 
+		and <B>(d)</B> <I>Pair</I>, respectively.
+	<A NAME="fi63">&#160;</A><BR>
+<P>
+<P>
+The test data (available on the Internet) are 11,582 graphs, ranging
+from 10 to 100 vertices, generated from a core set of 112 graphs used
+in ``real-life'' software engineering and database applications.  The
+experiments provide a detailed quantitative evaluation of the
+performance of the four algorithms and show that they exhibit
+trade-offs between ``aesthetic'' properties (e.g., crossings, bends,
+edge length) and running time.  For example, Fig.&nbsp;<A HREF="ordal96.html#fiexp">8</A> shows
+the average area number of crossings, and CPU time.  The observed
+practical behavior of the algorithms is consistent with their
+theoretical properties.  Namely, <I>Giotto</I> outperforms the other
+algorithms for most quality measures but is considerably slower than
+<I>Column</I> and <I>Pair</I>.
+<P>
+	<P><A NAME="489">&#160;</A> <IMG WIDTH=840 HEIGHT=961 ALIGN=BOTTOM ALT="figure431" SRC="img69.gif"  > <BR>
+<STRONG>Figure 8:</STRONG> <B>(a)</B>&nbsp;Average area versus number of vertices.
+	<B>(b)</B>&nbsp;Average number of crossings versus number of vertices.
+	<B>(c)</B>&nbsp;Average CPU time (seconds) versus number of vertices.
+	<A NAME="fiexp">&#160;</A>
+	<BR>
+<P>
+<P>
+ <P><A NAME="SECTIONREF"><H2>References</H2></A><P>
+<DL COMPACT>
+<DT><A NAME="bcdtthdspd94"><STRONG>1</STRONG></A><DD>
+P.&nbsp;Bertolazzi, R.&nbsp;F. Cohen, G.&nbsp;Di Battista, R.&nbsp;Tamassia, and I.&nbsp;G. Tollis.
+How to draw a series-parallel digraph.
+<EM>Internat. J. Comput. Geom. Appl.</EM>, 4:385-402, 1994.
+<P>
+<DT><A NAME="blfsvgl84"><STRONG>2</STRONG></A><DD>
+S.&nbsp;N. Bhatt and F.&nbsp;T. Leighton.
+A framework for solving VLSI graph layout problems.
+<EM>J. Comput. Syst. Sci.</EM>, 28:300-343, 1984.
+<P>
+<DT><A NAME="bkbhogd94"><STRONG>3</STRONG></A><DD>
+T.&nbsp;Biedl and G.&nbsp;Kant.
+A better heuristic for orthogonal graph drawings.
+In <EM>Proc. 2nd Annu. European Sympos. Algorithms (ESA '94)</EM>,
+  volume 855 of <EM>Lecture Notes in Computer Science</EM>, pages 24-35.
+  Springer-Verlag, 1994.
+<P>
+<DT><A NAME="bdgdlg95"><STRONG>4</STRONG></A><DD>
+F.&nbsp;J. Brandenburg.
+Designing graph drawings by layout graph grammars.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  416-427. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="bgd95"><STRONG>5</STRONG></A><DD>
+F.&nbsp;J. Brandenburg, editor.
+<EM>Graph Drawing (Proc. GD '95)</EM>, volume 1027 of <EM>Lecture Notes
+  in Computer Science</EM>.
+Springer-Verlag, 1996.
+<P>
+<DT><A NAME="brecfdr96"><STRONG>6</STRONG></A><DD>
+Franz&nbsp;J. Brandenburg and Christoph Rohrer.
+An experimental comparison of force-directed and randomized graph
+  drawing algorithms.
+In F.&nbsp;J. Brandenburg, editor, <EM>Graph Drawing (Proc. GD '95)</EM>,
+  volume 1027 of <EM>Lecture Notes in Computer Science</EM>. Springer-Verlag,
+  1996.
+<P>
+<DT><A NAME="bkabtl80"><STRONG>7</STRONG></A><DD>
+R.&nbsp;P. Brent and H.&nbsp;T. Kung.
+On the area of binary tree layouts.
+<EM>Inform. Process. Lett.</EM>, 11:521-534, 1980.
+<P>
+<DT><A NAME="cgtcdgtt96"><STRONG>8</STRONG></A><DD>
+M.&nbsp;Chrobak, M.&nbsp;T. Goodrich, and R.&nbsp;Tamassia.
+Convex drawings of graphs in two and three dimensions.
+In <EM>Proc. 12th Annu. ACM Sympos. Comput. Geom.</EM>, pages 319-328,
+  1996.
+<P>
+<DT><A NAME="celrtdgd95"><STRONG>9</STRONG></A><DD>
+R.&nbsp;F. Cohen, P.&nbsp;Eades, T.&nbsp;Lin, and F.&nbsp;Ruskey.
+Three-dimensional graph drawing.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages 1-11.
+  Springer-Verlag, 1995.
+<P>
+<DT><A NAME="cre82"><STRONG>10</STRONG></A><DD>
+R.&nbsp;Connelly.
+Rigidity and energy.
+<EM>Invent. Math.</EM>, 66:11-33, 1982.
+<P>
+<DT><A NAME="cwsfmps82"><STRONG>11</STRONG></A><DD>
+H.&nbsp;Crapo and W.&nbsp;Whitely.
+Statics of frameworks and motions of panel structures, a projective
+  geometric introduction.
+<EM>Structural Topology</EM>, 6:42-82, 1982.
+<P>
+<DT><A NAME="cdpnoaau92"><STRONG>12</STRONG></A><DD>
+P.&nbsp;Crescenzi, G.&nbsp;Di Battista, and A.&nbsp;Piperno.
+A note on optimal area algorithms for upward drawings of binary
+  trees.
+<EM>Comput. Geom. Theory Appl.</EM>, 2:187-200, 1992.
+<P>
+<DT><A NAME="cdvloo92"><STRONG>13</STRONG></A><DD>
+I.&nbsp;F. Cruz.
+DOODLE: A visual language for object-oriented databases.
+In <EM>Proc. ACM SIGMOD</EM>, pages 71-80, 1992.
+<P>
+<DT><A NAME="cesigv95"><STRONG>14</STRONG></A><DD>
+I.&nbsp;F. Cruz and P.&nbsp;Eades, editors.
+<EM>Special Issue on Graph Visualization</EM>, volume 6:3 of <EM>J.
+  Visual Languages and Computing</EM>.
+1995.
+<P>
+<DT><A NAME="cgdgeet95"><STRONG>15</STRONG></A><DD>
+I.&nbsp;F. Cruz and A.&nbsp;Garg.
+Drawing graphs by example efficiently: Trees and planar acyclic
+  digraphs.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  404-415. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="cgtecrvg96"><STRONG>16</STRONG></A><DD>
+I.&nbsp;F. Cruz, A.&nbsp;Garg, and R.&nbsp;Tamassia.
+Efficient constraint resolution in visual graph drawing.
+Manuscript, Dept. of Computer Sci., Brown University, 1996.
+<P>
+<DT><A NAME="dgcaitd95"><STRONG>17</STRONG></A><DD>
+Gautam Das and Michael&nbsp;T. Goodrich.
+On the complexity of approximating and illuminating three-dimensional
+  convex polyhedra.
+In <EM>Proc. 4th Workshop Algorithms Data Struct.</EM>, volume 955 of
+  <EM>Lecture Notes in Computer Science</EM>, pages 74-85. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="dhdgnus89"><STRONG>18</STRONG></A><DD>
+R.&nbsp;Davidson and D.&nbsp;Harel.
+Drawing graphs nicely using simulated annealing.
+Technical report, Department of Applied Mathematics and Computer
+  Science, The Weizmann Institute of Science, Rehovot, 1989.
+<P>
+<DT><A NAME="fpphdpgg90"><STRONG>19</STRONG></A><DD>
+H.&nbsp;de&nbsp;Fraysseix, J.&nbsp;Pach, and R.&nbsp;Pollack.
+How to draw a planar graph on a grid.
+<EM>Combinatorica</EM>, 10:41-51, 1990.
+<P>
+<DT><A NAME="dfmcddl93"><STRONG>20</STRONG></A><DD>
+E.&nbsp;Dengler, M.&nbsp;Friedell, and J.&nbsp;Marks.
+Constraint-driven diagram layout.
+In <EM>Proc. IEEE Sympos. on Visual Languages (VL '93)</EM>, pages
+  330-335, 1993.
+<P>
+<DT><A NAME="dettadgab94"><STRONG>21</STRONG></A><DD>
+G.&nbsp;Di Battista, P.&nbsp;Eades, R.&nbsp;Tamassia, and I.&nbsp;G. Tollis.
+Algorithms for drawing graphs: an annotated bibliography.
+<EM>Comput. Geom. Theory Appl.</EM>, 4:235-282, 1994.
+<P>
+<DT><A NAME="dglttvectgd95"><STRONG>22</STRONG></A><DD>
+G.&nbsp;Di Battista, A.&nbsp;Garg, G.&nbsp;Liotta, R.&nbsp;Tamassia, E.&nbsp;Tassinari, and F.&nbsp;Vargiu.
+An experimental comparison of three graph drawing algorithms.
+In <EM>Proc. 11th Annu. ACM Sympos. Comput. Geom.</EM>, pages 306-315,
+  1995.
+<P>
+<DT><A NAME="dglttvecfgd95"><STRONG>23</STRONG></A><DD>
+G.&nbsp;Di Battista, A.&nbsp;Garg, G.&nbsp;Liotta, R.&nbsp;Tamassia, E.&nbsp;Tassinari, and F.&nbsp;Vargiu.
+An experimental comparison of four graph drawing algorithms.
+Submitted to <EM>Computational Geometry: Theory and Applications</EM>,
+  1995.
+<P>
+<DT><A NAME="dllpds95"><STRONG>24</STRONG></A><DD>
+G.&nbsp;Di Battista, W.&nbsp;Lenhart, and G.&nbsp;Liotta.
+Proximity drawability: a survey.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  328-339. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="dtcgta"><STRONG>25</STRONG></A><DD>
+G.&nbsp;Di Battista and R.&nbsp;Tamassia, editors.
+<EM>Special Issue on Geometric Representations of Graphs</EM>.
+Comput. Geom. Theory Appl.
+To appear.
+<P>
+<DT><A NAME="dta"><STRONG>26</STRONG></A><DD>
+G.&nbsp;Di Battista and R.&nbsp;Tamassia, editors.
+<EM>Special Issue on Graph Drawing</EM>.
+Algorithmica.
+To appear.
+<P>
+<DT><A NAME="dtaprad88"><STRONG>27</STRONG></A><DD>
+G.&nbsp;Di Battista and R.&nbsp;Tamassia.
+Algorithms for plane representations of acyclic digraphs.
+<EM>Theoret. Comput. Sci.</EM>, 61:175-198, 1988.
+<P>
+<DT><A NAME="dttarsdp92"><STRONG>28</STRONG></A><DD>
+G.&nbsp;Di Battista, R.&nbsp;Tamassia, and I.&nbsp;G. Tollis.
+Area requirement and symmetry display of planar upward drawings.
+<EM>Discrete Comput. Geom.</EM>, 7:381-401, 1992.
+<P>
+<DT><A NAME="dttcvrg92"><STRONG>29</STRONG></A><DD>
+G.&nbsp;Di Battista, R.&nbsp;Tamassia, and I.&nbsp;G. Tollis.
+Constrained visibility representations of graphs.
+<EM>Inform. Process. Lett.</EM>, 41:1-7, 1992.
+<P>
+<DT><A NAME="dsltati92"><STRONG>30</STRONG></A><DD>
+M.&nbsp;B. Dillencourt and W.&nbsp;D. Smith.
+A linear-time algorithm for testing the inscribability of trivalent
+  polyhedra.
+In <EM>Proc. 8th Annu. ACM Sympos. Comput. Geom.</EM>, pages 177-185,
+  1992.
+<P>
+<DT><A NAME="egdspg96"><STRONG>31</STRONG></A><DD>
+P.&nbsp;Eades and P.&nbsp;Garvan.
+Drawing stressed planar graphs in three dimensions.
+In F.&nbsp;J. Brandenburg, editor, <EM>Graph Drawing (Proc. GD '95)</EM>,
+  volume 1027 of <EM>Lecture Notes in Computer Science</EM>. Springer-Verlag,
+  1996.
+<P>
+<DT><A NAME="elhddg89"><STRONG>32</STRONG></A><DD>
+P.&nbsp;Eades and X.&nbsp;Lin.
+How to draw a directed graph.
+In <EM>Proc. IEEE Workshop on Visual Languages (VL'89)</EM>, pages
+  13-17, 1989.
+<P>
+<DT><A NAME="eswtkb3d95"><STRONG>33</STRONG></A><DD>
+P.&nbsp;Eades, C.&nbsp;Stirk, and S.&nbsp;Whitesides.
+The techniques of Komolgorov and Bardzin for three dimensional
+  orthogonal graph drawings.
+Manuscript, Dept. of Computer Sci., Univ. of Newcastle, 1995.
+<P>
+<DT><A NAME="egrpdfb94"><STRONG>34</STRONG></A><DD>
+S.&nbsp;Even and G.&nbsp;Granot.
+Rectilinear planar drawings with few bends in each edge.
+Technical Report 797, Computer Science Dept., Technion, 1994.
+<P>
+<DT><A NAME="fhhklswwdgphr93"><STRONG>35</STRONG></A><DD>
+M.&nbsp;Formann, T.&nbsp;Hagerup, J.&nbsp;Haralambides, M.&nbsp;Kaufmann, F.&nbsp;T. Leighton,
+  A.&nbsp;Simvonis, E.&nbsp;Welzl, and G.&nbsp;Woeginger.
+Drawing graphs in the plane with high resolution.
+<EM>SIAM J. Comput.</EM>, 22:1035-1052, 1993.
+<P>
+<DT><A NAME="frgdfdp91"><STRONG>36</STRONG></A><DD>
+T.&nbsp;Fruchterman and E.&nbsp;Reingold.
+Graph drawing by force-directed placement.
+<EM>Softw. - Pract. Exp.</EM>, 21(11):1129-1164, 1991.
+<P>
+<DT><A NAME="gnvdptdd88"><STRONG>37</STRONG></A><DD>
+E.&nbsp;R. Gansner, S.&nbsp;C. North, and K.&nbsp;P. Vo.
+DAG - A program that draws directed graphs.
+<EM>Softw. - Pract. Exp.</EM>, 18(11):1047-1062, 1988.
+<P>
+<DT><A NAME="ggtaeutd93"><STRONG>38</STRONG></A><DD>
+A.&nbsp;Garg, M.&nbsp;T. Goodrich, and R.&nbsp;Tamassia.
+Area-efficient upward tree drawings.
+In <EM>Proc. 9th Annu. ACM Sympos. Comput. Geom.</EM>, pages 359-368,
+  1993.
+<P>
+<DT><A NAME="gtecpsl93"><STRONG>39</STRONG></A><DD>
+A.&nbsp;Garg and R.&nbsp;Tamassia.
+Efficient computation of planar straight-line upward drawings.
+In <EM>Graph Drawing '93 (Proc. ALCOM Workshop on Graph Drawing)</EM>,
+  Paris, France, 1993.
+<P>
+<DT><A NAME="gtpdara94"><STRONG>40</STRONG></A><DD>
+A.&nbsp;Garg and R.&nbsp;Tamassia.
+Planar drawings and angular resolution: Algorithms and bounds.
+In <EM>Proc. 2nd Annu. European Sympos. Algorithms (ESA '94)</EM>,
+  volume 855 of <EM>Lecture Notes in Computer Science</EM>, pages 12-23.
+  Springer-Verlag, 1994.
+<P>
+<DT><A NAME="gtupt95"><STRONG>41</STRONG></A><DD>
+A.&nbsp;Garg and R.&nbsp;Tamassia.
+Upward planarity testing.
+<EM>Order</EM>, 12:109-133, 1995.
+<P>
+<DT><A NAME="gcp67"><STRONG>42</STRONG></A><DD>
+B.&nbsp;Gr&#252;nbaum.
+<EM>Convex Polytopes</EM>.
+Wiley, New York, NY, 1967.
+<P>
+<DT><A NAME="hrudfs94"><STRONG>43</STRONG></A><DD>
+S.&nbsp;M. Hashemi and I.&nbsp;Rival.
+Upward drawings to fit surfaces.
+In <EM>Order, Algorithms, and Applications (Proc. ORDAL '94)</EM>,
+  volume 831 of <EM>Lecture Notes in Computer Science</EM>, pages 53-58.
+  Springer-Verlag, 1994.
+<P>
+<DT><A NAME="hkreldp95"><STRONG>44</STRONG></A><DD>
+X.&nbsp;He and M.-Y. Kao.
+Regular edge labelings and drawings of planar graphs.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  96-103. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="hcelag95"><STRONG>45</STRONG></A><DD>
+M.&nbsp;Himsolt.
+Comparing and evaluating layout algorithms within GraphEd.
+<EM>J. Visual Languages and Computing</EM>, 6(3), 1995.
+(special issue on Graph Visualization, edited by I. F. Cruz and P.
+  Eades).
+<P>
+<DT><A NAME="hggpig95"><STRONG>46</STRONG></A><DD>
+M.&nbsp;Himsolt.
+GraphEd: a graphical platform for the implementation of graph
+  algorithms.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  182-193. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="hrscchp92"><STRONG>47</STRONG></A><DD>
+C.&nbsp;D. Hodgson, I.&nbsp;Rivin, and W.&nbsp;D. Smith.
+A characterization of convex hyperbolic polyhedra and of convex
+  polyhedra inscribed in the sphere.
+<EM>Bull. (New Series) of the AMS</EM>, 27(2):246-251, 1992.
+<P>
+<DT><A NAME="htdgtc73"><STRONG>48</STRONG></A><DD>
+J.&nbsp;Hopcroft and R.&nbsp;E. Tarjan.
+Dividing a graph into triconnected components.
+<EM>SIAM J. Comput.</EM>, 2:135-158, 1973.
+<P>
+<DT><A NAME="htept74"><STRONG>49</STRONG></A><DD>
+J.&nbsp;Hopcroft and R.&nbsp;E. Tarjan.
+Efficient planarity testing.
+<EM>J. ACM</EM>, 21(4):549-568, 1974.
+<P>
+<DT><A NAME="hkprga92"><STRONG>50</STRONG></A><DD>
+J.&nbsp;E. Hopcroft and P.&nbsp;J. Kahn.
+A paradigm for robust geometric algorithms.
+<EM>Algorithmica</EM>, 7:339-380, 1992.
+<P>
+<DT><A NAME="jj3dlrg95"><STRONG>51</STRONG></A><DD>
+T.&nbsp;J&#233;ron and C.&nbsp;Jard.
+3D layout of reachability graphs of communicating processes.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  25-32. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="jemwdtnpgda91"><STRONG>52</STRONG></A><DD>
+S.&nbsp;Jones, P.&nbsp;Eades, A.&nbsp;Moran, N.&nbsp;Ward, G.&nbsp;Delott, and R.&nbsp;Tamassia.
+A note on planar graph drawing algorithms.
+Technical Report 216, Department of Computer Science, University of
+  Queensland, 1991.
+<P>
+<DT><A NAME="jmpsnep"><STRONG>53</STRONG></A><DD>
+M.&nbsp;Juenger and P.&nbsp;Mutzel.
+Maximum planar subgraphs and nice embeddings: Practical layout tools.
+<EM>Algorithmica</EM>.
+(special issue on Graph Drawing, edited by G. Di Battista and R.
+  Tamassia, to appear).
+<P>
+<DT><A NAME="jmeha2s96"><STRONG>54</STRONG></A><DD>
+Michael J&#252;nger and Petra Mutzel.
+Exact and heuristic algorithms for 2-layer straightline crossing
+  minimization.
+In F.&nbsp;J. Brandenburg, editor, <EM>Graph Drawing (Proc. GD '95)</EM>,
+  volume 1027 of <EM>Lecture Notes in Computer Science</EM>. Springer-Verlag,
+  1996.
+<P>
+<DT><A NAME="kvaor89"><STRONG>55</STRONG></A><DD>
+T.&nbsp;Kamada.
+<EM>Visualizing Abstract Objects and Relations</EM>.
+World Scientific Series in Computer Science, 1989.
+<P>
+<DT><A NAME="kdpguc"><STRONG>56</STRONG></A><DD>
+G.&nbsp;Kant.
+Drawing planar graphs using the canonical ordering.
+<EM>Algorithmica</EM>.
+(special issue on Graph Drawing, edited by G. Di Battista and R.
+  Tamassia, to appear).
+<P>
+<DT><A NAME="kadpg93"><STRONG>57</STRONG></A><DD>
+G.&nbsp;Kant.
+<EM>Algorithms for Drawing Planar Graphs</EM>.
+PhD thesis, Dept. Comput. Sci., Univ. Utrecht, Utrecht, Netherlands,
+  1993.
+<P>
+<DT><A NAME="kfpos87"><STRONG>58</STRONG></A><DD>
+D.&nbsp;Kelly.
+Fundamentals of planar ordered sets.
+<EM>Discrete Math.</EM>, 63:197-216, 1987.
+<P>
+<DT><A NAME="krpl75"><STRONG>59</STRONG></A><DD>
+D.&nbsp;Kelly and I.&nbsp;Rival.
+Planar lattices.
+<EM>Canad. J. Math.</EM>, 27(3):636-665, 1975.
+<P>
+<DT><A NAME="laeglv80"><STRONG>60</STRONG></A><DD>
+C.&nbsp;E. Leiserson.
+Area-efficient graph layouts (for VLSI).
+In <EM>Proc. 21st Annu. IEEE Sympos. Found. Comput. Sci.</EM>, pages
+  270-281, 1980.
+<P>
+<DT><A NAME="leidaal95"><STRONG>61</STRONG></A><DD>
+T.&nbsp;Lin and P.&nbsp;Eades.
+Integration of declarative and algorithmic approaches for layout
+  creation.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  376-387. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="ldcpdt395"><STRONG>62</STRONG></A><DD>
+Giuseppe Liotta and Giuseppe Di Battista.
+Computing proximity drawings of trees in the 3-dimemsional space.
+In <EM>Proc. 4th Workshop Algorithms Data Struct.</EM>, volume 955 of
+  <EM>Lecture Notes in Computer Science</EM>, pages 239-250. Springer-Verlag,
+  1995.
+<P>
+<DT><A NAME="lmpstrm1b90"><STRONG>63</STRONG></A><DD>
+Y.&nbsp;Liu, P.&nbsp;Marchioro, R.&nbsp;Petreschi, and B.&nbsp;Simeone.
+Theoretical results on at most 1-bend embeddability of graphs.
+Technical report, Dipartimento di Statistica, Univ. di Roma ``La
+  Sapienza'', 1990.
+<P>
+<DT><A NAME="lmsgtrre91"><STRONG>64</STRONG></A><DD>
+Y.&nbsp;Liu, A.&nbsp;Morgana, and B.&nbsp;Simeone.
+General theoretical results on rectilinear embeddability of graphs.
+<EM>Acta Math. Appl. Sinica</EM>, 7:187-192, 1991.
+<P>
+<DT><A NAME="mparpg94"><STRONG>65</STRONG></A><DD>
+S.&nbsp;Malitz and A.&nbsp;Papakostas.
+On the angular resolution of planar graphs.
+<EM>SIAM J. Discrete Math.</EM>, 7:172-183, 1994.
+<P>
+<DT><A NAME="mfsndt91"><STRONG>66</STRONG></A><DD>
+J.&nbsp;Marks.
+A formal specification for network diagrams that facilitates
+  automated design.
+<EM>Journal of Visual Languages and Computing</EM>, 2:395-414, 1991.
+<P>
+<DT><A NAME="morfdf64"><STRONG>67</STRONG></A><DD>
+J.&nbsp;C. Maxwell.
+On reciprocal figures and diagrams of forces.
+<EM>Phil. Mag. Ser.</EM>, 27:250-261, 1864.
+<P>
+<DT><A NAME="osqst94"><STRONG>68</STRONG></A><DD>
+S.&nbsp;Onn and B.&nbsp;Sturmfels.
+A quantitative Steinitz' theorem.
+<EM>Beitr&#228;ge zur Algebra und Geometrie / Contributions to
+  Algebra and Geometry</EM>, 35:125-129, 1994.
+<P>
+<DT><A NAME="ptiabod95"><STRONG>69</STRONG></A><DD>
+A.&nbsp;Papakostas and I.&nbsp;G. Tollis.
+Improved algorithms and bounds for orthogonal drawings.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  40-51. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="ptiabod96"><STRONG>70</STRONG></A><DD>
+A.&nbsp;Papakostas and I.&nbsp;G. Tollis.
+Improved algorithms and bounds for orthogonal drawings.
+Technical report, 1995.
+<P>
+<DT><A NAME="pscgi85"><STRONG>71</STRONG></A><DD>
+F.&nbsp;P. Preparata and M.&nbsp;I. Shamos.
+<EM>Computational Geometry: An Introduction</EM>.
+Springer-Verlag, New York, NY, 1985.
+<P>
+<DT><A NAME="rttdt81"><STRONG>72</STRONG></A><DD>
+E.&nbsp;Reingold and J.&nbsp;Tilford.
+Tidier drawing of trees.
+<EM>IEEE Trans. Softw. Eng.</EM>, SE-7(2):223-228, 1981.
+<P>
+<DT><A NAME="re3vpi95"><STRONG>73</STRONG></A><DD>
+S.&nbsp;P. Reiss.
+An engine for the 3D visualization of program information.
+<EM>J. Visual Languages and Computing</EM>, 6(3), 1995.
+(special issue on Graph Visualization, edited by I. F. Cruz and P.
+  Eades).
+<P>
+<DT><A NAME="rgdsos89"><STRONG>74</STRONG></A><DD>
+I.&nbsp;Rival.
+Graphical data structures for ordered sets.
+In I.&nbsp;Rival, editor, <EM>Algorithms and Order</EM>, pages 3-31. Kluwer
+  Academic Publishers, 1989.
+<P>
+<DT><A NAME="rrdo93"><STRONG>75</STRONG></A><DD>
+I.&nbsp;Rival.
+Reading, drawing, and order.
+In I.&nbsp;G. Rosenberg and G.&nbsp;Sabidussi, editors, <EM>Algebras and
+  Orders</EM>, pages 359-404. Kluwer Academic Publishers, 1993.
+<P>
+<DT><A NAME="rmccta3v91"><STRONG>76</STRONG></A><DD>
+G.&nbsp;G. Robertson, J.&nbsp;D. Mackinlay, and S.&nbsp;K. Card.
+Cone trees: Animated 3d visualizations of hierarchical information.
+In <EM>Proc. CHI</EM>, pages 189-193, 1991.
+<P>
+<DT><A NAME="sepgg90"><STRONG>77</STRONG></A><DD>
+W.&nbsp;Schnyder.
+Embedding planar graphs on the grid.
+In <EM>Proc. 1st ACM-SIAM Sympos. Discrete Algorithms</EM>, pages
+  138-148, 1990.
+<P>
+<DT><A NAME="ssvcnglb95"><STRONG>78</STRONG></A><DD>
+F.&nbsp;Shahrokhi, L.&nbsp;A. Sz&#233;kely, and I.&nbsp;Vrt'o.
+Crossing numbers of graphs, lower bound techniques and algorithms: a
+  survey.
+In R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors, <EM>Graph Drawing (Proc.
+  GD '94)</EM>, volume 894 of <EM>Lecture Notes in Computer Science</EM>, pages
+  131-142. Springer-Verlag, 1995.
+<P>
+<DT><A NAME="sapgpl76"><STRONG>79</STRONG></A><DD>
+Y.&nbsp;Shiloach.
+<EM>Arrangements of Planar Graphs on the Planar Lattice</EM>.
+PhD thesis, Weizmann Institute of Science, 1976.
+<P>
+<DT><A NAME="srvudtd34"><STRONG>80</STRONG></A><DD>
+E.&nbsp;Steinitz and H.&nbsp;Rademacher.
+<EM>Vorlesungen &#252;ber die Theorie der Polyeder</EM>.
+Julius Springer, Berlin, Germany, 1934.
+<P>
+<DT><A NAME="teggmn87"><STRONG>81</STRONG></A><DD>
+R.&nbsp;Tamassia.
+On embedding a graph in the grid with the minimum number of bends.
+<EM>SIAM J. Comput.</EM>, 16(3):421-444, 1987.
+<P>
+<DT><A NAME="tdapsg90"><STRONG>82</STRONG></A><DD>
+R.&nbsp;Tamassia.
+Drawing algorithms for planar st-graphs.
+<EM>Australasian Journal of Combinatorics</EM>, 2:217-235, 1990.
+<P>
+<DT><A NAME="tpodg90"><STRONG>83</STRONG></A><DD>
+R.&nbsp;Tamassia.
+Planar orthogonal drawings of graphs.
+In <EM>Proc. IEEE Internat. Sympos. on Circuits and Systems</EM>, 1990.
+<P>
+<DT><A NAME="tdbagdrd88"><STRONG>84</STRONG></A><DD>
+R.&nbsp;Tamassia, G.&nbsp;Di Battista, and C.&nbsp;Batini.
+Automatic graph drawing and readability of diagrams.
+<EM>IEEE Trans. Syst. Man Cybern.</EM>, SMC-18(1):61-79, 1988.
+<P>
+<DT><A NAME="ttuavrp86"><STRONG>85</STRONG></A><DD>
+R.&nbsp;Tamassia and I.&nbsp;G. Tollis.
+A unified approach to visibility representations of planar graphs.
+<EM>Discrete Comput. Geom.</EM>, 1(4):321-341, 1986.
+<P>
+<DT><A NAME="ttpgelt89"><STRONG>86</STRONG></A><DD>
+R.&nbsp;Tamassia and I.&nbsp;G. Tollis.
+Planar grid embedding in linear time.
+<EM>IEEE Trans. on Circuits and Systems</EM>, CAS-36(9):1230-1234,
+  1989.
+<P>
+<DT><A NAME="tttrpg89"><STRONG>87</STRONG></A><DD>
+R.&nbsp;Tamassia and I.&nbsp;G. Tollis.
+Tessellation representations of planar graphs.
+In <EM>Proc. 27th Allerton Conf. Commun. Control Comput.</EM>, pages
+  48-57, 1989.
+<P>
+<DT><A NAME="ttgd94"><STRONG>88</STRONG></A><DD>
+R.&nbsp;Tamassia and I.&nbsp;G. Tollis, editors.
+<EM>Graph Drawing (Proc. GD '94)</EM>, volume 894 of <EM>Lecture Notes
+  in Computer Science</EM>.
+Springer-Verlag, 1995.
+<P>
+<DT><A NAME="ttvlbpod91"><STRONG>89</STRONG></A><DD>
+R.&nbsp;Tamassia, I.&nbsp;G. Tollis, and J.&nbsp;S. Vitter.
+Lower bounds for planar orthogonal drawings of graphs.
+<EM>Inform. Process. Lett.</EM>, 39:35-40, 1991.
+<P>
+<DT><A NAME="tdgds88"><STRONG>90</STRONG></A><DD>
+H.&nbsp;Trickey.
+Drag: A graph drawing system.
+In <EM>Proc. Internat. Conf. on Electronic Publishing</EM>, pages
+  171-182. Cambridge University Press, 1988.
+<P>
+<DT><A NAME="tcrg60"><STRONG>91</STRONG></A><DD>
+W.&nbsp;T. Tutte.
+Convex representations of graphs.
+<EM>Proceedings London Mathematical Society</EM>, 10(3):304-320, 1960.
+<P>
+<DT><A NAME="thdg63"><STRONG>92</STRONG></A><DD>
+W.&nbsp;T. Tutte.
+How to draw a graph.
+<EM>Proceedings London Mathematical Society</EM>, 13(3):743-768, 1963.
+<P>
+<DT><A NAME="vucvc81"><STRONG>93</STRONG></A><DD>
+L.&nbsp;Valiant.
+Universality considerations in VLSI circuits.
+<EM>IEEE Trans. Comput.</EM>, C-30(2):135-140, 1981.
+<P>
+<DT><A NAME="wmspp82"><STRONG>94</STRONG></A><DD>
+W.&nbsp;Whitney.
+Motions and stresses of projected polyhedra.
+<EM>Structural Topology</EM>, 7:13-38, 1982.
+</DL>
+<P>
+<H1><A NAME="SECTION00080000000000000000">  About this document ... </A></H1>
+<P>
+ <STRONG>			Advances in the Theory and 
+<BR> Practice of Graph Drawing
+</STRONG><P>
+This document was generated using the <A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 96.1 (Feb 5, 1996) Copyright &#169; 1993, 1994, 1995, 1996,  <A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, Computer Based Learning Unit, University of Leeds. <P> The command line arguments were: <BR>
+<STRONG>latex2html</STRONG> <tt>-split 0 ordal96.tex</tt>. <P>The translation was initiated by Roberto Tamassia on Thu Aug  1 13:38:15 EDT 1996<DL> <DT><A NAME="2">...Drawing</A><DD>Research supported in part by the National
+			Science Foundation under grant CCR-9423847 and
+			by the U.S. Army Research Office under grant
+			DAAH04-96-1-0013.
+<P>
+<PRE>
+</PRE><DT><A NAME="462">...makers</A><DD>An important plot element in
+the movie <I>Jurassic Park</I> involves a 3D virtual-reality traversal
+of a tree representing a Unix file system.
+<PRE>
+</PRE> </DL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Roberto Tamassia <BR>
+Thu Aug  1 13:38:15 EDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>
+

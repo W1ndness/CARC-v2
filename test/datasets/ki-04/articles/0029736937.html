@@ -1,0 +1,135 @@
+<!-- <DOCUMENT>
+	<FILE>
+		0029736937.html
+	</FILE>
+	<URL>
+		http://db.uwaterloo.ca/~alopez-o/cspap/lower_bound_text_retrieval/index.html
+	</URL>
+	<TITLE>
+		Lower Bounds for Searching in Streets and Generalized Streets
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Lower Bounds for Searching in Streets and Generalized Streets Alex Lopez-Ortiz Alex Lopez-Ortiz 3 45 2002-08-17T04:03:00Z 2002-08-17T04:03:00Z 1 177 1012 University of Waterloo 8 2 1242 9.3821 A Linear Lower Bound on Index Size for Text Retrieval. E. D. Demaine and A. L&oacute;pez-Ortiz. Proceedings of 12th Symposium on Discrete Algorithms (SODA 2001), Washington, DC, 2001. Invited to special issue of Journal of Algorithms on selected papers from SODA . PostScript file . Abstract. Most information-retrieval systems preprocess the data to produce an auxiliary index structure. Empirically, it has been observed that there is a tradeoff between query response time and the size of the index. When indexing a large corpus, such as the web, the size of the index is an important consideration. In this case it would be ideal to produce an index that is substantially smaller than the text. In this work we prove a linear lower bound on the size of any index that reports the location (if any) of a substring in the text in time proportional to the length of the pattern. In other words, an index supporting linear-time substring searches requires about as much space as the original text. Here ``time'' is measured in the number of bit probes to the text; an arbitrary amount of computation may be done on an arbitrary amount of the index. Our lower bound applies to inverted word indices as well. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=us-ascii">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./index_files/filelist.xml">
+<title> Lower Bounds for Searching in Streets and Generalized Streets </title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Alex Lopez-Ortiz</o:Author>
+  <o:LastAuthor>Alex Lopez-Ortiz</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>45</o:TotalTime>
+  <o:Created>2002-08-17T04:03:00Z</o:Created>
+  <o:LastSaved>2002-08-17T04:03:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>177</o:Words>
+  <o:Characters>1012</o:Characters>
+  <o:Company>University of Waterloo</o:Company>
+  <o:Lines>8</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1242</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=blue vlink=blue style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><b>A
+Linear Lower Bound on Index Size for Text Retrieval.</b> E. D. Demaine and A.
+L&oacute;pez-Ortiz. Proceedings of 12th <i>Symposium on Discrete Algorithms</i> (SODA
+2001), Washington, DC, 2001. Invited to special issue of Journal of Algorithms
+on selected papers from SODA<span style='mso-bidi-font-size:11.0pt'>. </span>PostScript
+<a href="paper.ps">file</a>. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b>Abstract.</b> Most
+information-retrieval systems preprocess the data to produce an auxiliary index
+structure. Empirically, it has been observed that there is a tradeoff between
+query response time and the size of the index. When indexing a large corpus,
+such as the web, the size of the index is an important consideration. In this
+case it would be ideal to produce an index that is substantially smaller than
+the text. <o:p></o:p></p>
+
+<p style='margin-left:.5in'>In this work we prove a linear lower bound on the
+size of any index that reports the location (if any) of a substring in the text
+in time proportional to the length of the pattern. In other words, an index
+supporting linear-time substring searches requires about as much space as the
+original text. Here ``time'' is measured in the number of bit probes to the
+text; an arbitrary amount of computation may be done on an arbitrary amount of
+the index. Our lower bound applies to inverted word indices as well. <o:p></o:p></p>
+
+<p class=MsoNormal style='margin-left:.5in;mso-layout-grid-align:none;
+text-autospace:none'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>
+

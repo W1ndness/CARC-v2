@@ -1,0 +1,470 @@
+<!-- <DOCUMENT>
+	<FILE>
+		2193577853.html
+	</FILE>
+	<URL>
+		http://www.washington.edu/pine/faq/
+	</URL>
+	<TITLE>
+		Pine Information Center--Pine FAQs
+	</TITLE>
+	<GENRE>
+		help
+	</GENRE>
+	<PLAINTEXT>
+ Pine Information Center--Pine FAQs Search | Directories | Reference Tools UW Home &gt; UWIN &gt; Computing and Networking &gt; Pine Information Center Search Pine Information Center Pine FAQs FAQ Topics Getting Help With Pine What is....? Pine Bugs Error Messages General Usage Questions Sending and Receiving Mail Attachments Usenet Newsreading Customization and Configuration Legal Issues Information for System Administrators, Developers, and the Technically Inclined Account Conversion and Transfer Security Pine Development Additional Pine FAQs 1. Getting Help with Pine 1.1 What documentation is available for Pine? 1.2 Whom should I ask for help with Pine? 2. What is ...? 2.1 What is PINE? 2.1.1 What PINE Does... 2.1.2 What PINE Does Not Do... 2.2 What is PICO? 2.3 What is PILOT? 2.4 What is MIME? 2.5 What is IMAP? 2.6 What is SMTP? 2.7 What is POP3? 3. Pine Bugs 3.1 Policy on Bugs 3.2 Why does Pine hang when I read a certain message? When I look at the message, I see that it has a Content-Location header. 4. Error Messages 4.1 What does "Folder Format Invalidated..." mean? 4.2 What happens when two Pine sessions access the same mailbox at the same time? 4.3 What does the message "locked, override in _XXX_ sec" mean? 4.4 What are the messages with the subject DON'T DELETE THIS MESSAGE--FOLDER INTERNAL DATA about? 4.4.1 What does the quell-folder-internal-msg feature do? 4.5 Why do I get the message "Invalid base64 string" when I try to authenticate to a Cyrus server? 5. General Usage Questions 5.1 Pine seems to ignore some of my command keystrokes - why? 5.2 Why are certain commands not available? 5.3 What are these .pine-debug files for? 5.3.1 Can I delete the .pine-debug files? 5.3.2 How do I change the number of .pine-debug files kept or prevent the .pine-debug files from being created? 5.4 Why does Pine repeatedly ask for my password after my intitial login? 5.5 Why is it that I have to exit and reopen Pine in order to receive new mail? 5.6 How do I do operations on multiple messages? (or, How do I use Pine's aggregate commands?) 5.7 Does Pine block messages? 5.8 Can I create directories to store Pine folders? 6. Sending and Receiving Mail 6.1 How do I send a message to multiple recipients without showing all their names? 6.2 Can I get a "return-receipt" when sending a message with Pine? 6.3 Can I eliminate the @host.domain from local addresses? 6.4 How can I tell immediately whether I have received new mail? 7. Attachments 7.1 How do I attach a file in Pine? 7.2 Why does Pine encode text attachments? 7.2.1 How can I send a text file without it being encoded? 7.2.2 Why does Pine use Base64 instead of UUencode? 7.3 How do I convert a Sun Mailtool attachment to MIME format? 7.4 How do I decode an attachment in a message I received that is in BinHex or UUencoded format? 7.5 How can someone without Pine decipher an attachment to a message I send? 7.6 How can I delete attachments? 7.7 Why doesn't "attached-to-ansi" printing work? 8. Usenet Newsreading 8.1 How can I use Pine for reading and posting Internet News? 8.2 How can I sort newsgroups by thread? 8.3 How do I mark all messages in a newsgroup as "read" or "deleted"? 8.4 How do I bring back (undelete) news messages I have deleted? 9. Customization and Configuration General 9.1 Where does Pine look for configuration information? 9.1.1 How can I get a fresh copy of my Pine configuration file? Server Config 9.2 Can I customize Pine on a per folder basis? 9.3 Can Pine be used with a POP server? User Settings 9.4 Why does my message index show From: instead of To: ? 9.5 How do I change my 'From:' line? 9.6 How do I define my own headers like Reply-To and Organization? 9.7 How can I have a signature automatically appended to my mail messages? Program Behavior 9.8 Can I reduce the frequent prompting to confirm an operation? 9.9 How can I filter messages into different incoming folders? 9.10 How do I control what is displayed in the FOLDER INDEX screen? 9.11 How can I control association of MIME-attachments with applications and filenames? 9.12 How can I read a ROT13 encoded message? 9.13 How can I make Pine work with a Wyse 60 terminal? 9.14 Does Pine offer color support? PC-Pine Specific 9.15 How can I perform spell checking with PC-Pine for Windows? 10. Legal Issues 10.1 Is Pine Open Source? 10.2 Weren't earlier Pine licenses less restrictive regarding redisribution of modified versions? 10.3 Can patch files be distributed by Pine users? 10.4 Are UW's "C-Client" libraries released under the same license as Pine? 11. Information for Systems Administrators, Developers, and the Technically Inclined 11.1 Can we use Pine/Pico/Pilot source code in commercial products? 11.2 What are the advantages of the various mailbox formats Pine supports? 11.3 Can Kerberos authentication be used with Pine? 11.4 How does folder locking work? 11.5 Where does Pine create lockfiles, and what should that directory's permissions be? 11.6 Why does Pine have problems with my filter's locking? 11.7 Why doesn't Pine recognize Content-Length header field? 11.8 How do I configure Pine to not leave mail in /usr/spool/mail? 11.9 Why did my messages disappear after I ran Pine? I can still see them in Pine, but not with any other program (e.g. my ISP's POP server). 11.10 Why do I get the message "Unparsable Date" when I read messages? 11.11 Why can't I compile Pine under SCO unix? 11.12 How can I set up Pine for rimap under Solaris 2.4 and NIS+? 11.13 What do I need to do when compiling Pine to let users change their ``From:'' line? 11.14 Where is the .pine-debug setting set at compile-time? 11.15 What do I need to do to configure specific servers for use with Pine? 11.16 What do I need to know about Pine file locking and what does the "mailbox vulnerable" error mean? 11.17 How do I convert mh to mbx folders? 12. Account Conversion and Transfer 12.1 How do I transfer messages from Pine on a Unix host to my PC? 12.2 How can I have all future messages sent to me automatically forwarded to another account? 12.3 "How can I forward messages I have already saved in Pine to another account? 12.3.1 While I'm transferring my messages ... how do I transfer my email addressbook? 12.4 How do I convert Berkeley Mail aliases to Pine Addressbook? 12.5 How do I convert Elm aliases to Pine Addressbook? 12.6 How do I convert from Pine Address Book to/from the equivalents in Eudora, Netscape, Pegasus, ... ? 12.7 How do I convert my Pine addressbook file to Mutt alias format? 13. Security 13.1 General Pine Security 13.2 How do I get a secure version of PC-Pine? 13.3 Is there a "remote exploit" bug in Pine's handling of mailcap entries? 13.4 Can I get a virus through email? 13.5 What should I do if I receive email about a computer virus? 13.6 On Win2k, why do I get errors when trying to validate my host name? 14. Pine Development 14.1 What is the latest version of Pine, and what's new in it? 14.2 When is the next release of Pine scheduled? 14.3 What are the results of the anonymous messages sent to the UW for tallying? 15. Additional Pine FAQs 15.1 Are there other Pine FAQs available? 15.2 Can I contribute to these FAQs? Search Pine Information Center Pine&reg; Information Center Comments? Modified: July 15, 2003 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!--Created by chtml  on Jan 2, 2004 11:12am-->
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <title>Pine Information Center--Pine FAQs</title>
+  <link rel="stylesheet" href="/home/home.css" type="text/css">
+ </head>
+<body>
+<a name="top"></a>
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="http://www.washington.edu/"><img id="toplogo" src="/home/graphics/UWlogo150p.gif" alt="University of Washington" border="0" /></a>
+
+<div id="toolbar">
+    &nbsp;<span class="l1text"><a href="/home/search.html">Search</a> |
+    <a href="/home/directories.html">Directories</a> |
+    <a href="http://www.lib.washington.edu/research/reftools.html">Reference
+    Tools</a></span></div>
+
+
+<!--Section Banner Table -->
+ 
+ 
+  
+  
+   
+   
+   
+  
+ 
+<div class="bannerwrapper">
+  <div id="topbanner" style="background: none green"><img src="/pine/incs/pinetopsmall.gif" alt="" /></div>
+</div>
+
+<div id="crumbs"><span class="l1text"><a href="/">UW Home</a> &gt; <a href="/uwin/">UWIN</a> &gt; <a href="/computing/">Computing and Networking</a> &gt; <a href="/pine/">Pine Information Center</a></span>&nbsp;</div>
+
+
+
+
+
+
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="right" valign="top">
+  <a class="navlink" href="/pine/search.html"> <img src="/home/graphics/arrow.gif" alt="| " height="13" width="18" border="0">Search Pine Information Center</a>
+</td>
+</tr>
+</table>
+
+<h2>Pine FAQs</h2>
+
+
+
+<HR>
+
+
+<FONT SIZE="+1">FAQ Topics</FONT>
+<OL>
+<LI><A HREF="#1">Getting Help With Pine</A></LI>
+<LI><A HREF="#2">What is....?</A></LI>
+<LI><A HREF="#3">Pine Bugs</A></LI>
+<LI><A HREF="#4">Error Messages</A></LI>
+<LI><A HREF="#5">General Usage Questions</A></LI>
+<LI><A HREF="#6">Sending and Receiving Mail</A></LI>
+<LI><A HREF="#7">Attachments</A></LI>
+<LI><A HREF="#8">Usenet Newsreading</A></LI>
+<LI><A HREF="#9">Customization and Configuration</A></LI>
+<LI><A HREF="#10">Legal Issues</A></LI>
+<LI><A HREF="#11">Information for System Administrators, Developers, and the Technically Inclined</A></LI>
+<LI><A HREF="#12">Account Conversion and Transfer</A></LI>
+<LI><A HREF="#13">Security</A></LI>
+<LI><A HREF="#14">Pine Development</A></LI>
+<LI><A HREF="#15">Additional Pine FAQs</A></LI>
+</OL>
+
+<HR>
+
+
+<a href="help.html#top" name="1"><strong>1. Getting Help with Pine</strong></a>
+    <UL>
+      <li><a href="help.html#1.1">1.1 What documentation is
+        available for Pine?</a></li>
+      <li><a href="help.html#1.2">1.2 Whom should I ask for help with Pine?</a></li>
+     </UL>
+
+
+ <a href="whatis.html#top" name="2"><strong>2. What is ...?</strong></a>
+    <ul>
+      <li><a href="whatis.html#2.1">2.1 What is PINE?</a>
+        <ul>
+          <li><a href="whatis.html#2.1.1"><small>2.1.1  What PINE
+            Does...</small></a></li>
+          <li><a href="whatis.html#2.1.2"><small>2.1.2  What PINE Does
+            Not Do...</small></a></li>
+        </ul>
+      </li>
+      <li><a href="whatis.html#2.2">2.2 What is PICO?</a></li>
+      <li><a href="whatis.html#2.3">2.3 What is PILOT?</a></li>
+      <li><a href="whatis.html#2.4">2.4 What is MIME?</a></li>
+      <li><a href="whatis.html#2.5">2.5 What is IMAP?</a></li>
+      <li><a href="whatis.html#2.6">2.6 What is SMTP?</font></a></li>
+      <li><a href="whatis.html#2.7">2.7 What is POP3?</a></li>
+     </ul>
+
+ <a href="bugs.html#top" name="3"><strong>3. Pine Bugs</strong></a>
+    <ul>
+      <li><a href="bugs.html#3.1">3.1 Policy on Bugs</a></li>
+      <li><a href="bugs.html#3.2">3.2  Why does Pine hang when I read a certain message?  When I look at the message, I see that it has a Content-Location header.
+
+    </ul>
+
+  <a href="errors.html#top" name="4"><strong>4. Error Messages</strong></a>
+    <ul>
+      <li><a href="errors.html#4.1">4.1 What does "Folder Format Invalidated..." mean?</a></li>
+      <li><a href="errors.html#4.2">4.2 What happens when two Pine sessions access the same mailbox at the same time?</a></li>
+      <li><a href="errors.html#4.3">4.3 What does the message "locked, override in _XXX_ sec" mean?</a></li>
+      <li><a href="errors.html#4.4">4.4 What are the messages  with the subject DON'T DELETE THIS MESSAGE--FOLDER INTERNAL DATA about?</a>
+        <ul>
+          <li><a href="errors.html#4.4.1"><small>4.4.1
+            What does the quell-folder-internal-msg feature
+          do?</small></a></li>
+        </ul>
+      <li><a href="errors.html#4.5">4.5 Why do I get the message "Invalid 
+         base64 string" when I try to authenticate to a Cyrus server? 
+      </UL>
+
+<a href="usage.html#top" name="5"><strong>5. General Usage Questions</strong></a>
+    <ul>
+      <li><a href="usage.html#5.1">5.1 Pine seems to ignore some of my command keystrokes - why?</a></li>
+      <li><a href="usage.html#5.2">5.2 Why are certain commands not available?</a></li>
+      <li><a href="usage.html#5.3">5.3 What are these .pine-debug files for?</a>
+        <ul>
+          <li><a href="usage.html#5.3.1"><small>5.3.1 Can I delete the .pine-debug files?</small></a></li>
+          <li><a href="usage.html#5.3.2"><small>5.3.2 How do I change the number of .pine-debug files kept or prevent the .pine-debug files from being created?</small></a></li>
+        </ul>
+      <li><a href="usage.html#5.4">5.4 Why does Pine repeatedly ask for my
+            password after my intitial login?</font></a></li>
+      <li><a href="usage.html#5.5">5.5 Why is it that I have to exit and
+            reopen Pine in order to receive new mail?</a></li>
+     <li><a href="usage.html#5.6">5.6 How do I do operations 
+        on multiple messages? (or, How do I use Pine's aggregate commands?)</a></li>
+    <li><a href="usage.html#5.7">5.7 Does Pine block messages?</a></li>  
+    <li><a href="usage.html#5.8">5.8 Can I create directories to store Pine
+        folders?</a></li>
+ </ul>
+
+
+
+<a href="sendreceive.html#top" name="6"><strong>6. Sending and Receiving
+Mail</strong></a>
+    <ul>
+      <li><a href="sendreceive.html#6.1">6.1 How do I send a message
+        to multiple recipients without showing all their names?</a></li>
+      <li><a href="sendreceive.html#6.2">6.2 Can I get a
+        "return-receipt" when sending a message with Pine?</a></li>
+      <li><a href="sendreceive.html#6.3">6.3 Can I eliminate the
+        @host.domain from local addresses?</a></li>
+      <li><a href="sendreceive.html#6.4">6.4 How can I tell immediately
+        whether I have received new mail?</a></li>
+     </ul>
+ 
+ <a href="attachments.html#top" name="7"><strong>7. Attachments</strong></a>
+    <ul>
+           <li><a href="attachments.html#7.1">7.1 How do I attach a 
+           file in Pine?</a>
+          <li><a href="attachments.html#7.2">7.2 Why does Pine
+            encode text attachments?</a>
+            <ul>
+              <li><a href="attachments.html#7.2.1"><small>7.2.1 How can
+                I send a text file without it being encoded?</small></a></li>
+          <li><a href="attachments.html#7.2.2"><small>7.2.2 Why does Pine
+           use
+           Base64 instead of UUencode?</small></a></li>
+        </ul>
+          <li><a href="attachments.html#7.3">7.3 How do I convert a
+            Sun Mailtool attachment to MIME format?</a></li>
+          <li><a href="attachments.html#7.4">7.4 How do I decode an
+            attachment in a message I received that is in BinHex or UUencoded
+            format?</a></li>
+          <li><a href="attachments.html#7.5">7.5 How can someone without
+            Pine decipher an attachment to a message I send?</a></li>
+          <li><a href="attachments.html#7.6">7.6 How can I delete
+            attachments?</a></li>
+          <li><a href="attachments.html#7.7">7.7 Why
+            doesn't "attached-to-ansi" printing work?</a></li>
+    </ul>
+
+ <a href="news.html#top" name="8"><strong>8. Usenet Newsreading</strong></a>
+
+    <ul>
+      <li><a href="news.html#8.1">8.1 How can I use Pine for reading and
+        posting Internet News?</a></li>
+      <li><a href="news.html#8.2">8.2  How can I sort newsgroups
+        by thread?</a></li>
+      <li><a href="news.html#8.3">8.3 How do I mark all
+        messages in a newsgroup as "read" or "deleted"?</a></li>
+      <li><a href="news.html#8.4">8.4 How do I bring back (undelete)
+        news messages I have deleted?</a></li>
+    </ul>
+  </li>
+
+<a href="config.html#top" name="9"><strong>9. Customization and Configuration</strong></a>
+	<P>
+	&nbsp;&nbsp;&nbsp;General
+        <ul>
+          <li><a href="config.html#9.1">9.1 Where does Pine look
+            for configuration information?</a>
+            <ul>
+              <li><a href="config.html#9.1.1"><small>9.1.1 How can I
+                get a fresh copy of my Pine configuration
+              file?</small></a></li>
+            </ul>
+          </li>
+        </ul>
+      &nbsp;&nbsp;&nbsp;Server Config
+        <ul>
+          <li><a href="config.html#9.2">9.2 Can I customize Pine on
+            a per folder basis?</a></li>
+          <li><a href="config.html#9.3">9.3 Can Pine be used with a POP
+            server?</a></li>
+        </ul>
+
+      &nbsp;&nbsp;&nbsp;User Settings
+        <ul>
+          <li><a href="config.html#9.4">9.4 Why does my message index
+            show <em>From:</em> instead of <em>To:</em>?</a></li>
+          <li><a href="config.html#9.5">9.5 How do I change my
+            'From:' line?</a></li>
+          <li><a href="config.html#9.6">9.6 How do I define my
+            own headers like Reply-To and Organization?</a></li>
+          <li><a href="config.html#9.7">9.7 How can I have a
+            signature automatically appended to my mail messages?</a></li>
+        </ul>
+      
+      <P>
+	&nbsp;&nbsp;&nbsp;Program Behavior
+        <ul>
+          <li><a href="config.html#9.8">9.8 Can I reduce the
+            frequent prompting to confirm an operation?</a></li>
+          <li><a href="config.html#9.9">9.9 How can I filter messages
+            into different incoming folders?</a></li>
+          <li><a href="config.html#9.10">9.10 How do I
+            control what is displayed in the FOLDER INDEX screen?</a></li>
+          <li><a href="config.html#9.11">9.11 How can I control association
+            of MIME-attachments with applications and filenames?</a></li>
+          <li><a href="config.html#9.12">9.12 How can I read a ROT13
+            encoded message?</a></li>
+          <li><a href="config.html#9.13">9.13 How can I make Pine work
+            with a Wyse 60 terminal?</a></li>
+         <li><a href="config.html#9.14">9.14 Does Pine offer color support?</a></li>
+        </ul>
+      <P>
+	&nbsp;&nbsp;&nbsp;PC-Pine Specific
+        <ul>
+          <li><a href="config.html#9.15">9.15 How can I perform spell
+            checking with PC-Pine for Windows?</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+
+ <a href="legal.html#top" name="10"><strong>10. Legal Issues</strong></a>
+    <ul>
+      <li><a href="legal.html#10.1">10.1 Is Pine Open Source?</a></li>
+      <li><a href="legal.html#10.2">10.2 Weren't earlier Pine licenses 
+       less restrictive regarding redisribution of modified versions?</a></li>
+      <li><a href="legal.html#10.3">10.3 Can patch files be distributed by 
+       Pine users?</a></li>
+      <li><a href="legal.html#10.4">10.4 Are UW's "C-Client" 
+      libraries released under the same license as Pine?</a></li>
+    </ul>
+
+<a href="sysadmins.html#top" name="11"><strong>11. Information for Systems 
+Administrators, Developers, and the Technically Inclined</strong></a>
+    <ul>
+      <li><a href="sysadmins.html#11.1">11.1 Can we use Pine/Pico/Pilot
+        source code in commercial products?</a></li>
+      <li><a href="sysadmins.html#11.2">11.2 What are the
+        advantages of the various mailbox formats Pine supports?</a></li>
+      <li><a href="sysadmins.html#11.3">11.3 Can Kerberos
+        authentication be used with Pine?</a></li>
+      <li><a href="sysadmins.html#11.4">11.4 How does folder locking
+        work?</a></li>
+      <li><a href="sysadmins.html#11.5">11.5 Where does Pine create
+        lockfiles, and what should that directory's permissions be?</a></li>
+      <li><a href="sysadmins.html#11.6">11.6 Why does Pine have
+        problems with my filter's locking?</a></li>
+      <li><a href="sysadmins.html#11.7">11.7 Why doesn't
+        Pine
+        recognize Content-Length header field?</a></li>
+      <li><a href="sysadmins.html#11.8">11.8 How do I configure Pine to
+        not leave mail in /usr/spool/mail?</a></li>
+      <li><a href="sysadmins.html#11.9">11.9 Why did my messages disappear 
+       after I ran Pine?  I can still see them in Pine, but not 
+       with any other program (e.g. my ISP's POP server).
+      <li><a href="sysadmins.html#11.10">11.10 Why do I get the
+        message "Unparsable Date" when I read messages?</a></li>
+      <li><a href="sysadmins.html#11.11">11.11 Why can't I compile Pine 
+        under SCO unix?</a></li>
+      <li><a href="sysadmins.html#11.12">11.12 How can I set up Pine
+        for rimap under Solaris 2.4 and NIS+?</a></li>
+      <li><a href="sysadmins.html#11.13">11.13 What do I need to
+        do when compiling Pine to let users change their ``From:''
+      line?</a></li>
+      <li><a href="sysadmins.html#11.14">11.14 Where is the
+        .pine-debug setting set at compile-time?</a></li>
+      <li><a href="sysadmins.html#11.15">11.15 What do I need to do to
+        configure specific servers for use with Pine?</a></li>
+      <li><a href="sysadmins.html#11.16">11.16 What do I need to
+        know about Pine file locking and what does the "mailbox vulnerable"
+        error mean?</a></li>
+       <li><a href="sysadmins.html#11.17">11.17 How do I convert mh to mbx 
+        folders?</a></li>
+    </ul>
+  </li>
+
+<a href="transfer.html#top" name="12"><strong>12. Account Conversion and
+    Transfer</strong></a>
+    <ul>
+      <li><a href="transfer.html#12.1">12.1 How do I transfer messages 
+       from Pine on a Unix host to my PC?</a></li>
+      <li><a href="transfer.html#12.2">12.2 How can I have all future
+        messages sent to me automatically forwarded to another
+      account?</a></li>
+      <li><a href="transfer.html#12.3">12.3 "How can I forward messages I
+        have already saved in Pine to another account?</a>
+        <ul>
+          <li><a href="transfer.html#12.3.1"><small>12.3.1 While I'm
+            transferring my messages ... how do I transfer my email
+            addressbook?</small></a></li>
+        </ul>
+      </li>
+      <li><a href="transfer.html#12.4">12.4 How do I convert Berkeley Mail
+        aliases to Pine Addressbook?</a></li>
+      <li><a href="transfer.html#12.5">12.5 How do I convert Elm aliases 
+        to Pine Addressbook?</a></li>
+      <li><a href="transfer.html#12.6">12.6 How do I convert from Pine 
+        Address Book to/from the equivalents in Eudora, Netscape, Pegasus, ... ?</a></li>
+      <li><a href="transfer.html#12.7">12.7 How do I convert my Pine
+        addressbook file to Mutt alias format?</a></li>
+    </ul>
+  </li>
+
+<a href="security.html#top" name="13"><strong>13. Security</strong></a>
+    <ul>
+      <li><a href="security.html#13.1">13.1 General Pine Security</a></li>
+      <li><a href="security.html#13.2">13.2 How do I get a secure version of PC-Pine?</a></li>
+      <li><a href="security.html#13.3">13.3 Is there a "remote exploit" 
+        bug in Pine's handling of mailcap entries?</a></li>
+      <li><a href="security.html#13.4">13.4 Can I get a virus through
+        email?</a></li>
+      <li><a href="security.html#13.5">13.5 What should I do if I
+        receive email about a computer virus?</a></li>
+      <li><a href="security.html#13.6">13.6 On Win2k, why do I get errors 
+      when trying to validate my host name?</a></li>
+    </ul>
+  </li>
+
+<a href="development.html#top" name="14"><strong>14. Pine Development</strong></a>
+    <ul>
+      <li><a href="development.html#14.1">14.1 What is the latest version 
+        of Pine, and what's new in it?</a></li>
+      <li><a href="development.html#14.3">14.2 When is the next release of
+        Pine scheduled?</a></li>
+      <li><a href="development.html#14.4">14.3 What are the results of the
+        anonymous messages sent to the UW for tallying?</a></li>
+    </ul>
+  </li>
+
+<a href="additional.html#top" name="15"><strong>15. Additional Pine FAQs</strong></a>
+<ul>
+  <li><a href="additional.html#15.1">15.1 Are there other Pine FAQs available?</a></li>
+  <li><a href="additional.html#15.2">15.2 Can I contribute to these FAQs?</a></li>
+</ul>
+
+
+
+
+<P>
+<br /><br />
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="right" valign="top">
+  <a class="navlink" href="/pine/search.html"> <img src="/home/graphics/arrow.gif" alt="| " height="13" width="18" border="0">Search Pine Information Center</a>
+</td>
+</tr>
+</table>
+
+
+
+<div id="footer"><div id="footerseal">
+<a href="http://www.washington.edu/"><img src="/home/graphics/footersealW.gif" alt="UW Seal" /></a>
+</div>
+<div id="addressright"></div>
+<div id="address"><ADDRESS>
+Pine&reg; Information Center<BR>
+<A HREF="/pine/comments.html">Comments?</A><BR>
+Modified: July 15, 2003<BR>
+</ADDRESS>
+
+</div>
+</div>
+
+ </body>
+</html>
+
+
+
+

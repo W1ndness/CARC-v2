@@ -1,12 +1,22 @@
+import multiprocessing
+
 from clftools.models.classify import Classifier, SklearnClassifier, TorchClassifier
 from clftools.datasets import load
 from clftools.models.encoder.bert import BertEncoder
 from clftools.models.encoder.fastnlp import FastNLPEncoder
 from clftools.models.encoder.glove import GloVeEncoder
+from clftools import constants
+
 from sklearn.svm import SVC
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+from tqdm import tqdm
+from joblib import Parallel, delayed
+from joblib.externals.loky import set_loky_pickler
+
+set_loky_pickler("dill")
+
 
 def classify(clf: Classifier,
              encoding_method: str,
@@ -32,7 +42,9 @@ def classify(clf: Classifier,
         webpages = load.read_from_path(base_dir=data_dir,
                                        endswith_html=kwargs['endswith_html'],
                                        preprocessing_func=func)
-    text_of_webpages = [page.get_all_texts() for page in webpages]
+    text_of_webpages = []
+    for page in tqdm(webpages):
+        text_of_webpages.append(page.get_all_texts())
     print("Webpage fetching and class <Webpage> instance initializing succeed.")
 
     # encoding
@@ -42,11 +54,28 @@ def classify(clf: Classifier,
     if encoding_method not in supported_encoding_method:
         raise ValueError(encoding_method, f'{encoding_method} is not supported')
     if encoding_method == 'bert':
-        encoder = BertEncoder(model_name_or_path='/Users/macbookpro/PycharmProjects/CARC-v2/clftools/models/encoder/bert-cache/bert-base-chinese')
-        text_embedding_of_webpages = [encoder.embedding(text) for text in text_of_webpages]
+        encoder = BertEncoder(
+            model_name_or_path='/Users/macbookpro/PycharmProjects/CARC-v2/clftools/models/encoder/bert-cache/bert-base-chinese')
+
+        def embed_work(text):
+            return encoder.embedding(text)
+
+        text_embedding_of_webpages = Parallel(n_jobs=constants.N_JOBS,
+                                              backend="threading",
+                                              verbose=2,
+                                              batch_size='auto',
+                                              pre_dispatch='2*n_jobs')(embed_work(text) for text in text_of_webpages)
     elif encoding_method == 'glove':
         encoder = GloVeEncoder()
-        text_embedding_of_webpages = [encoder.embedding(text) for text in text_of_webpages]
+
+        def embed_work(text):
+            return encoder.embedding(text)
+
+        text_embedding_of_webpages = Parallel(n_jobs=constants.N_JOBS,
+                                              backend="threading",
+                                              verbose=2,
+                                              batch_size='auto',
+                                              pre_dispatch='2*n_jobs')(embed_work(text) for text in text_of_webpages)
     elif 'fastnlp' in encoding_method:
         encoder = FastNLPEncoder()
         if encoding_method.endswith('static'):
@@ -71,7 +100,6 @@ def classify(clf: Classifier,
                                                         train_size=train_size, test_size=test_size,
                                                         random_state=42)
     clf.fit(X_train, y_train, X_test, y_test)
-
 
 
 if __name__ == '__main__':

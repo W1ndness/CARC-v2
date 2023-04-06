@@ -1,0 +1,908 @@
+<!-- <DOCUMENT>
+	<FILE>
+		9868117815.html
+	</FILE>
+	<URL>
+		http://java.sun.com/sfaq/
+	</URL>
+	<TITLE>
+		Frequently Asked Questions - Applet Security
+	</TITLE>
+	<GENRE>
+		help
+	</GENRE>
+	<PLAINTEXT>
+ Applet Security developers.sun.com &raquo; search tips | Search: in Developers' Site in Sun.com Developers Home &gt; Products & Technologies &gt; Java Technology &gt; J2SE &gt; Core Java &gt; Security &gt; Reference &gt; FAQs &gt; Profile and Registration | Why Register? FAQ Applet Security Printable Page Security Top | Security Bug Chronology | Security Q & A Archive The goal for the JDK is to enable browsers to run untrusted applets in a trusted environment. Our approach is to be conservative at first, and to add functionality when it can be added securely. The intent is to prevent applets from inspecting or changing files on the client file system. Also, the intent is to prevent applets from using network connections to circumvent file protections or people's expectations of privacy. JDK 1.1 provides the basic technology for loading and authenticating signed classes. This enables browsers to run trusted applets in a trusted environment. This does not make obselete the need to run untrusted applets in a secure way. In the release following JDK 1.1, we will provide tools for finer-grained control of flexible security policies. See the chronology page to check on the status of security-related bugs. Applet Security Applets What are applets prevented from doing? Can applets read or write files? How do I let an applet read a file? How do I let an applet write a file? What system properties can be read by applets, and how? How do I hide system properties that applets are allowed to read by default? How can I allow applets to read system properties that they aren't allowed to read by default? How can an applet open a network connection to a computer on the internet? How can an applet open a network connection to its originating host? How can an applet maintain persistent state? Can an applet start another program running on the client? What features of the Java language help people build secure applets? What is the difference between applets loaded over the net, and applets loaded via the file system? What's the applet class loader, and what does it buy me? What's the applet security manager, and what does it buy me? Is there a summary of applet capabilities? If other languages are compiled to Java bytecodes, how does that affect the applet security model? Examples Tiny applet examples that demonstrate the security features of your web browser. Glossary Terms used in this FAQ. See Also Other references on Java security Applets What are applets prevented from doing? In general, applets loaded over the net are prevented from reading and writing files on the client file system, and from making network connections except to the originating host . In addition, applets loaded over the net are prevented from starting other programs on the client. Applets loaded over the net are also not allowed to load libraries, or to define native method calls. If an applet could define native method calls, that would give the applet direct access to the underlying computer. There are other specific capabilities denied to applets loaded over the net, but most of the applet security policy is described by those two paragraphs above. Read on for the gory details. Can applets read or write files? In Java-enabled browsers, untrusted applets cannot read or write files at all. By default, downloaded applets are considered untrusted. There are two ways for an applet to be considered trusted: The applet is installed on the local hard disk, in a directory on the CLASSPATH used by the program that you are using to run the applet. Usually, this is a Java-enabled browser, but it could be the appletviewer, or other Java programs that know how to load applets. The applet is signed by an identity marked as trusted in your identity database. For more information on signed applets, refer to an example of using signed applets , and to a short description on using javakey . Sun's appletviewer allows applets to read files that reside in directories on the access control lists . If the file is not on the client's access control list, then applets cannot access the file in any way. Specifically, applets cannot check for the existence of the file read the file write the file rename the file create a directory on the client file system list the files in this file (as if it were a directory) check the file's type check the timestamp when the file was last modified check the file's size How do I let an applet read a file? Applets loaded into a Java-enabled browser can't read files. Sun's appletviewer allows applets to read files that are named on the access control list for reading. The access control list for reading is null by default, in the JDK. You can allow applets to read directories or files by naming them in the acl.read property in your ~/.hotjava/properties file. Note : The " ~ " (tilde) symbol is used on UNIX systems to refer to your home directory. If you install a web browser on your F:\ drive on your PC, and create a top-level directory named .hotjava , then your properties file is found in F:\.hotjava\properties . For example, to allow any files in the directory home/me to be read by applets loaded into the appletviewer, add this line to your ~/.hotjava/properties file. acl.read=/home/me You can specify one file to be read: acl.read=/home/me/somedir/somefile Use " : " to separate entries: acl.read=/home/foo:/home/me/somedir/somefile Allowing an applet to read a directory means that it can read all the files in that directory, including any files in any subdirectories that might be hanging off that directory. How do I let an applet write a file? Applets loaded into a Java-enabled browser can't write files. Sun's appletviewer allows applets to write files that are named on the access control list for writing. The access control list for writing is empty by default. You can allow applets to write to your /tmp directory by setting the acl.write property in your ~/.hotjava/properties file: acl.write=/tmp You can allow applets to write to a particular file by naming it explicitly: acl.write=/home/me/somedir/somefile Use : to separate entries: acl.write=/tmp:/home/me/somedir/somefile Bear in mind that if you open up your file system for writing by applets, there is no way to limit the amount of disk space an applet might use. What system properties can be read by applets, and how? In both Java-enabled browsers and the appletviewer, applets can read these system properties by invoking System.getProperty(String key) : key meaning ____________ ______________________________ java.version Java version number java.vendor Java vendor-specific string java.vendor.url Java vendor URL java.class.version Java class version number os.name Operating system name os.arch Operating system architecture os.version Operating system version file.separator File separator (eg, "/") path.separator Path separator (eg, ":") line.separator Line separator Applets are prevented from reading these system properties: key meaning ____________ _____________________________ java.home Java installation directory java.class.path Java classpath user.name User account name user.home User home directory user.dir User's current working directory To read a system property from within an applet, simply invoke System.getProperty(key) on the property you are interested in. For example, String s = System.getProperty("os.name"); How do I hide system properties that applets are allowed to read by default? There's no way to hide the above ten system properties from applets loaded into a Java-enabled browser. The reason is that the browsers don't consult any external files as part their Java configuration, as a security precaution, including the ~/.hotjava/properties file. From the appletviewer, you can prevent applets from finding out anything about your system by redefining the property in your ~/.hotjava/properties file. For example, to hide the name of the operating system that you are using, add this line to your ~/.hotjava/properties file: os.name=null How can I allow applets to read system properties that they aren't allowed to read by default? There's no way to allow an applet loaded into a Java-enabled browser to read system properties that they aren't allowed to read by default. To allow applets loaded into the appletviewer to read the property named by key , add the property key.applet=true to your ~/.hotjava/property file. For example, to allow applets to record your user name, add this line to your ~/.hotjava/properties file: user.name.applet=true How can an applet open a network connection to a computer on the internet? Applets are not allowed to open network connections to any computer, except for the host that provided the .class files. This is either the host where the html page came from, or the host specified in the codebase parameter in the applet tag, with codebase taking precendence. For example, if you try to do this from an applet that did not originate from the machine foo.com, it will fail with a security exception: Socket s = new Socket("foo.com", 25, true); How can an applet open a network connection to its originating host? Be sure to name the originating host exactly as it was specified when the applet was loaded into the browser. That is, if you load an HTML page using the URL http://foo.state.edu/~me/appletPage.html then your applet will be able to connect to its host only by using the name foo.state.edu . Using the IP address for foo.state.edu won't work, and using a "shorthand" form of the host name, like foo.state instead of foo.state.edu, won't work. How can an applet maintain persistent state? There is no explicit support in the JDK applet API for persistent state on the client side. However, an applet can maintain its own persistent state on the server side. That is, it can create files on the server side and read files from the server side. Can an applet start another program on the client? No, applets loaded over the net are not allowed to start programs on the client. That is, an applet that you visit can't start some rogue process on your PC. In UNIX terminology, applets are not allowed to exec or fork processes. In particular, this means that applets can't invoke some program to list the contents of your file system, and it means that applets can't invoke System.exit() in an attempt to kill your web browser. Applets are also not allowed to manipulate threads outside the applet's own thread group. What features of the Java language help people build secure applets? Java programs do not use pointers explicitly. Objects are accessed by getting a handle to the object. Effectively, this is like getting a pointer to an object, but Java does not allow the equivalent of pointer arithmetic on object handles. Object handles cannot be modified in any way by the Java applet or application. C and C++ programmers are used to manipulating pointers to implement strings and to implement arrays. Java has high-level support for both strings and arrays, so programmers don't need to resort to pointer arithmetic in order to use those data structures. Arrays are bounds-checked at runtime. Using a negative index causes a runtime exception, and using an index that is larger than the size of the array causes a runtime exception. Once an array object is created, its length never changes. Strings in Java are immutable. A string is zero or more characters enclosed in double quotes, and it's an instance of the String class. Using immutable strings can help prevent common runtime errors that could be exploited by hostile applets. The Java compiler checks that all type casts are legal. Java is a strongly typed language, unlike C or C++, and objects cannot be cast to a subclass without an explicit runtime check. The final modifier can be used when initializing a variable, to prevent runtime modification of that variable. The compiler catches attempts to modify final variables. Before a method is invoked on an object, the compiler checks that the object is the correct type for that method. For example, invoking t.currentThread() when t is not a Thread object causes a compile time error. Java provides four access modifiers for methods and variables defined within classes and makes sure that these access barriers are not violated. public: a public method is accessible anywhere the class name is accessible protected: a protected method is accessible by a child of a class as long as it is trying to access fields in a similarly typed class. For example, class Parent { protected int x; } class Child extends Parent { ... } The class Child can access the field " x " only on objects that are of type Child (or a subset of Child .) private: a private method is accessible only within its defining class default: if no modifier is specified, then by default, a method is accessible only within its defining package For example, programmers can choose to implement sensitive functions as private methods. The compiler and the runtime checks ensure that no objects outside the class can invoke the private methods. What is the difference between applets loaded over the net and applets loaded via the file system? There are two different ways that applets are loaded by a Java system. The way an applet enters the system affects what it is allowed to do. If an applet is loaded over the net, then it is loaded by the applet class loader, and is subject to the restrictions enforced by the applet security manager. If an applet resides on the client's local disk, and in a directory that is on the client's CLASSPATH, then it is loaded by the file system loader. The most important differences are applets loaded via the file system are allowed to read and write files applets loaded via the file system are allowed to load libraries on the client applets loaded via the file system are allowed to exec processes applets loaded via the file system are allowed to exit the virtual machine applets loaded via the file system are not passed through the byte code verifier Java-enabled browsers use the applet class loader to load applets specified with file: URLs. So, the restrictions and protections that accrue from the class loader and its associated security manager are now in effect for applets loaded via file: URLs. This means that if you specify the URL like so: Location: file:/home/me/public_html/something.html and the file something.html contains an applet, the browser loads it using its applet class loader. What's the applet class loader, and what does it buy me? Applets loaded over the net are loaded by the applet class loader. For example, the appletviewer's applet class loader is implemented by the class sun.applet.AppletClassLoader. The class loader enforces the Java name space hierarchy. The class loader guarantees that a unique namespace exists for classes that come from the local file system, and that a unique namespace exists for each network source. When a browser loads an applet over the net, that applet's classes are placed in a private namespace associated with the applet's origin. Thus, applets loaded from different network sources are partitioned from each other. Also, classes loaded by the class loader are passed through the verifier. The verifier checks that the class file conforms to the Java language specification - it doesn't assume that the class file was produced by a "friendly" or "trusted" compiler. On the contrary, it checks the class file for purposeful violations of the language type rules and name space restrictions. The verifier ensures that There are no stack overflows or underflows. All register accesses and stores are valid. The parameters to all bytecode instructions are correct. There is no illegal data conversion. The verifier accomplishes that by doing a data-flow analysis of the bytecode instruction stream, along with checking the class file format, object signatures, and special analysis of finally clauses that are used for Java exception handling. Details on the verifier's design and implementation were presented in a paper by Frank Yellin at the December 1995 WWW conference in Boston. A web browser uses only one class loader, which is established at start-up. Thereafter, the system class loader cannot be extended, overloaded, overridden or replaced. Applets cannot create or reference their own class loader. What's the applet security manager, and what does it buy me? The applet security manager is the Java mechanism for enforcing the applet restrictions described above. The appletviewer's applet security manager is implemented by sun.applet.AppletSecurity. A browser may only have one security manager. The security manager is established at startup, and it cannot thereafter be replaced, overloaded, overridden, or extended. Applets cannot create or reference their own security manager. Is there a summary of applet capabilities? The following table is not an exhaustive list of applet capabilities. It's meant to answer the questions we hear most often about what applets can and cannot do. Key: NN: N etscape Navigator 4.x, loading unsigned applets over the N et NL: N etscape Navigator 4.x, loading unsigned applets from the L ocal file system AN: A ppletviewer, JDK 1.x, loading applets over the N et AL: A ppletviewer, JDK 1.x, loading applets from the L ocal file system JS: J ava S tandalone applications Stricter ------------------------> Less strict NN NL AN AL JS read file in /home/me, no no no yes yes acl.read=null read file in /home/me, no no yes yes yes acl.read=/home/me write file in /tmp, no no no yes yes acl.write=null write file in /tmp, no no yes yes yes acl.write=/tmp get file info, no no no yes yes acl.read=null acl.write=null get file info, no no yes yes yes acl.read=/home/me acl.write=/tmp delete file, no no no no yes using File.delete() delete file, no no no yes yes using exec /usr/bin/rm read the user.name no yes no yes yes property connect to port no no no yes yes on client connect to port no no no yes yes on 3rd host load library no yes no yes yes exit(-1) no no no yes yes create a popup no yes no yes yes window without a warning If other languages are compiled to Java bytecodes, how does that affect the applet security model? The verifier is independent of Sun's reference implementation of the Java compiler and the high-level specification of the Java language. It verifies bytecodes generated by other Java compilers. It also verifies bytecodes generated by compiling other languages into the bytecode format. Bytecodes imported over the net that pass the verifier can be trusted to run on the Java virtual machine. In order to pass the verifier, bytecodes have to conform to the strict typing, the object signatures, the class file format, and the predictability of the runtime stack that are all defined by the Java language implementation. Examples None of these examples are malicious - the one line descriptions can be taken at face value. You can look at the source code for each applet, before visiting the page that has that applet inside. (The first link in each example takes you to the source code, and the second link takes you to an html page that includes the executable content for the example.) Files: Can this applet read files on your system? Can this applet obtain information about files on your system ? Can this applet write a file on your system? Can this applet use File.delete() to delete the file named /tmp/foo? Can this applet use the unix command /bin/rm to delete the file named /tmp/foo? System Properties: Can this applet read the ten system properties that applets are allowed to read by default? Can this applet read hidden properties like user.name or user.home ? Can this applet replace your browser's property file? Sockets: Can this applet connect to port 25 on www.netscape.com? Can this applet send data to www.sun.com? Processes: Can this applet kill your browser? Can this applet run some program on your computer? Libraries and name spaces: Can this applet load a library on your computer? Can this applet create its own class loader? This applet tries to create a class of its own in the java.net namespace, but it can't. This example will not compile with the Java compilers that conform to the Java language specification. Windows: What does a window created by an applet look like? Glossary of terms used in this FAQ Applet A Java program that is run from inside a web browser. The html page loaded into the web browser contains an &lt;applet&gt; tag, which tells the browser where to find the Java .class files. For example, appletviewer http://foo.com/~jo/coolApplet.html Standalone Java application A Java program that is run by invoking the java interpreter. For example, java coolApplication Server The computer that hosts the web page that contains an applet. The .class files that make up the applet, and the .html files that reference the applet, reside on the server. When someone on the internet connects to a web page that contains an applet, the server delivers the .class files over the internet to the client that made the request. The server is also known as the originating host . Client The computer that displays the web page that contains an applet. The terms server and client are sometimes used to refer to computers, and are sometimes used to refer to computer programs. For example, www.sun.com is a server, and the httpd process running on www.sun.com is its server process. My computer at home is a client, and the web browser running on my computer at home acts as the client process. Archival Documents Low-level Security in Java , Frank Yellin, WWW4 Conference, December, 1995 This paper presents the details of the lowest levels of the java security mechanism. Before any downloaded code is executed, it is scanned and verified to ensure that it conforms to the specifications of the virtual machine. HotJava: The Security Story This paper from May 1995 (the 1.0alpha3 release of Java and HotJava) provides a high-level overview of the security mechanisms, which were elaborated on for the JDK 1.0 release. See Also Security Top Security Bug Chronology Security Q & A Archive Company Info | About SDN | Press | Contact Us | Employment How to Buy | Licensing | Terms of Use | Privacy | Trademarks Copyright 1994-2004 Sun Microsystems, Inc. A Sun Developer Network Site Unless otherwise licensed, code in all technical manuals herein (including articles, FAQs, samples) is provided under this License . Content Feeds 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Applet Security</title>
+<meta name="description" content="This document answers several frequently asked questions related to applets and what they are allowed to do." />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<meta name="archiveFlag" content="false"/>
+<link rel="stylesheet" href="/css/default_developer.css" />
+<script type='text/JavaScript' src='/js/popUp.js'></script>
+</head>
+<!--stopindex-->
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" rightmargin="0" bgcolor="#ffffff">
+<a name="top"></a>
+<!-- BEGIN GENERIC MASTHEAD -->
+<!-- BEGIN VNV1 MASTHEAD COMPONENT, thinner variation for content pages -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="25" class="topnav">
+<form name="formsearch" action="http://developers.sun.com/jsp_utils/send_redirect.jsp" method="post">
+<tr>
+<td><a href="#mast"><img src="/im/a.gif" width="10" height="1" border="0" alt="Skip Masthead Links" /></a></td>
+<td><a href="http://developers.sun.com">developers.sun.com</a></td>
+<td width="100%">&nbsp;</td> 
+<td nowrap="nowrap"><span class="rightarrowblue">&raquo;</span>&nbsp;<a href="http://search.sun.com/search/developers/help.jsp">search tips</a>&nbsp;&nbsp;|&nbsp;&nbsp;<b>Search:</b>&nbsp;</td>
+<td><input name="qt" class="medium" size="7" value="" /></td>
+<td>&nbsp;</td>
+<td class="selectcell"><select class="globalsearch" name="myredir">
+<option value="http://search.sun.com/search/developers/index.jsp?qt=" selected>in Developers' Site</option>
+<option value="http://search.sun.com/search/suncom/index.jsp?qt=">in Sun.com</option>
+</select></td>
+<td>&nbsp;</td>
+<td valign="middle" align="left"><input type="submit" border="0" class="buttonred" value="&nbsp;&raquo;&nbsp;" onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" /></td>
+<td><img src="/im/a.gif" width="10" height="1" alt=" " /></td>
+</tr></form>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></td>
+<td valign="top" class="grey3"><a href="http://java.sun.com"><img src="/im/logo_java_grey.gif" width="180" height="53" border="0" alt=" " /></a></td>
+<td><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></td>
+<td class="sunblue" nowrap="nowrap"><div class="pad6"><a href="http://developers.sun.com"><img src="/im/masthead_the_source_java.gif" width="308" height="25" border="0" alt="The Source for Java Developers" /></a></div><img src="/im/a.gif" width="468" height="1" border="0" alt=" " /></td>
+<td class="sunblue" width="100%" valign="top" align="right"><div class="pad10"><a href="http://www.sun.com"><img src="/im/logo_sun_sdn.gif" width="72" height="33" border="0" alt="Sun Microsystems" /></a></div></td>
+<td><a name="mast"></a><a href="#skip2content"><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></a></td></tr>
+</table>
+</td></tr>
+</table>
+<span class="sp5">&nbsp;</span><br />
+<!-- END VNV1 MASTHEAD COMPONENT, thinner variation for content pages -->
+<!-- END GENERIC MASTHEAD -->
+<!-- BEGIN BREADCRUMB -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="vatop">
+<tr>
+<td>      
+<div class="breadcrumb">
+<a href="http://developers.sun.com/index.html">Developers Home</a> &gt; <a href="http://developers.sun.com/prodtech/index.html">Products & Technologies</a> &gt; <a href="http://java.sun.com/index.jsp">Java Technology</a> &gt; <a href="http://java.sun.com/j2se/index.jsp">J2SE</a> &gt; <a href="http://java.sun.com/j2se/corejava/index.jsp">Core Java</a> &gt; <a href="http://java.sun.com/security/index.jsp">Security</a> &gt; <a href="http://java.sun.com/security/reference/index.html">Reference</a> &gt; <a href="http://java.sun.com/security/reference/faqs/index.html">FAQs</a> &gt;
+</div>
+</td>
+<td align="right" nowrap="nowrap">
+<div class="breadcrumb">
+<a href="http://developer.sun.com/user_registration/index.html">Profile and Registration</a> | 
+<a href="http://developer.sun.com/user_registration/whyregister.html">Why Register?</a>
+</div>
+</td>
+</tr>
+<tr><td colspan="2"><img src="/im/a.gif" width="770" height="1" border="0" alt=" " /></td></tr>
+</table>
+<span class="sp5">&nbsp;</span>
+<br />        
+<!-- END BREADCRUMB -->
+<!-- BEGIN PAGETITLE -->
+<div class="pagetitle2">FAQ</div>
+<div class="pagetitle">Applet Security</div>
+<!-- END PAGETITLE -->
+<!-- BEGIN WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%">
+<tr><td width="100%" valign="top">
+<!-- BEGIN CENTRAL COLUMN COMPONENTS -->
+<!--startindex-->
+<!-- ============ -->
+<!-- MAIN CONTENT -->
+<!-- ============ -->
+<a name="skip2content"></a>
+<!-- BEGIN VCD5 ANCHOR LINKS COMPONENT, numbered and sectioned variation  -->
+<span class="sp10">&nbsp;</span><br />
+<!-- END VCD5 ANCHOR LINKS COMPONENT, numbered and sectioned variation  -->
+<!--  BEGIN VCD4 BYLINE AND TOOLS  -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="smaller" valign="top"><em></em></td>
+<td width="10">&nbsp;</td>
+<td align="right" valign="bottom"><div class="sitelinks" style="padding:0px;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="bottom" align="right"><img src="/im/ic_print.gif" width="14" height="12" hspace="4" border="0" alt=" " /></td>
+<td valign="bottom" class="smaller" nowrap="nowrap"><a href="/jsp_utils/PrintPage.jsp" target="popup_name" onclick="openPopup('','popup_name',655,500,'no',1,0,1,0,0,0); return true;">Printable Page</a></td>
+</tr></table></div>
+</td></tr>
+</table>
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4">
+<tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!--  END VCD4 BYLINE AND TOOLS  -->
+<TABLE BORDER="0" WIDTH="100%">
+<TR>
+<TD ALIGN="RIGHT" HEIGHT="25" VALIGN="TOP">
+</TD>
+</TR>
+<TR>
+<TD>
+<P>
+</TD>
+</TR>
+<TR>
+<TD ALIGN="RIGHT" COLSPAN="2">
+<!-- page headline -->
+<br>
+</TD>
+</TR>
+<TR>
+<TD ALIGN="RIGHT" VALIGN="TOP" HEIGHT="30" COLSPAN="2">
+<font size="-1">
+<!-- subcategories of the current topic -->
+<A HREF="/security/index.jsp">Security Top</A>  | 
+<A HREF="/sfaq/chronology.html"> Security Bug Chronology </A>  | 
+<A HREF="/security/hypermail/java-security-archive/index.html"> Security Q & A Archive</A>
+<BR>
+</font>
+<p>
+</TD>
+</TR>
+</TABLE>
+<!-- Begin Page Data -->
+The goal for the JDK is to enable browsers to run untrusted applets in
+a trusted environment.  Our approach is to be conservative at first,
+and to add functionality when it can be added securely.  The intent is
+to prevent applets from inspecting or changing files on the client
+file system.  Also, the intent is to prevent applets from using
+network connections to circumvent file protections or people's
+expectations of privacy.
+<p>
+JDK 1.1 provides the basic technology for loading and authenticating
+signed classes.  This enables browsers to run trusted applets in a
+trusted environment.  This does not make obselete the need to run
+untrusted applets in a secure way.  In the release following JDK 1.1,
+we will provide tools for finer-grained control of flexible security
+policies.
+<p>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<P>
+See the <a href=chronology.html>chronology page</a> to
+check on the status of security-related bugs.
+</P><P>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<center>
+<h2>
+<a name=questions> Applet Security</a>
+</h2>
+</center>
+<dl>
+<dt> <a href="#applets">Applets</a>
+<dd>
+<ol>
+<li> <a href="#prevent">What are applets prevented from doing?</a>
+<li> <a href="#read">Can applets read or write files?</a>
+<li> <a href="#allowRead">How do I let an applet read a file?</a>
+<li> <a href="#allowWrite">How do I let an applet write a file?</a>
+<li> <a href="#props">What system properties can be read by applets, and how?</a>
+<li> <a href="#hideProps">How do I hide system properties that applets are allowed to read by default?</a>
+<li> <a href="#getProps">How can I allow applets to read system properties that they aren't allowed to read by default?</a>
+<li> <a href="#socket">How can an applet open a network connection to a computer on the internet?</a>
+<li> <a href="#socketOrig">How can an applet open a network connection
+to its originating host?</a>
+<li> <a href="#persistent">How can an applet maintain persistent state?</a>
+<li> <a href="#exec">Can an applet start another program running on the client?</a>
+<li> <a href="#lang">What features of the Java language help people build secure applets?</a>
+<li> <a href="#diff">What is the difference between applets loaded over the net,
+and applets loaded via the file system?</a>
+<li> <a href="#appletCL">What's the applet class loader, and what does it buy me?</a>
+<li> <a href="#appletSM">What's the applet security manager, and what does it buy me?</a>
+<li> <a href="#summary">Is there a summary of applet capabilities?</a>
+<li> <a href="#otherBytes">If other languages are compiled to Java
+bytecodes, how does that affect the applet security model?</a>
+</ol>
+</dd>
+<dt> <a href="#examples">Examples</a>
+<dd> Tiny applet examples that demonstrate the security features of your web browser. 
+<dt> <a href="#defs">Glossary</a>
+<dd> Terms used in this FAQ. 
+<dt> <a href="#seeAlso">See Also</a>
+<dd> Other references on Java security
+</dl>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<center>
+<h2>
+<a name=applets>Applets</a>
+</h2>
+</center>
+<ol> 
+<li> <a name=prevent><STRONG>What are applets prevented from doing?</STRONG></a>
+<p>
+In general, <a href="#applet">applets</a> loaded over the net are
+prevented from reading and writing files on the <a
+href="#client">client</a> file system, and from making network
+connections except to the <a href="#originatingHost">originating
+host</a>.
+<p> In addition, applets loaded over the net are prevented from
+starting other programs on the client.  Applets loaded over the net
+are also not allowed to load libraries, or to define native method
+calls.  If an applet could define native method calls, that would give
+the applet direct access to the underlying computer.
+<p> There are other specific capabilities denied to applets loaded
+over the net, but most of the applet security policy is described by
+those two paragraphs above.   Read on for the gory details.  
+<p>
+<li> <a name=read><STRONG>Can applets read or write files?</STRONG></a>
+<p> In Java-enabled browsers, untrusted applets cannot read or write files at
+all.   By default, downloaded applets are considered untrusted.   There are
+two ways for an applet to be considered trusted: 
+<p>
+<ol>
+<li>  The applet is installed on the local hard disk, in a directory 
+on the CLASSPATH used by the program that you are using to run the
+applet.    Usually, this is a Java-enabled browser, but it could be
+the appletviewer, or other Java programs that know how to load applets. 
+<p>
+<li> The applet is signed by an identity marked as trusted in your
+identity database.   For more information on signed applets, refer to
+<a href=../security/signExample>an example of using signed applets</a>, and
+to a short description on <a href=../security/usingJavakey.html>using javakey</a>.
+</ol>
+<p>
+Sun's appletviewer allows applets to read files that reside in
+directories on the <STRONG>access control lists</STRONG>.  
+<p>
+If the file is not on the client's access control list, then applets
+cannot access the file in any way.   Specifically, applets cannot
+<ul>
+<li> check for the existence of the file
+<li> read the file
+<li> write the file
+<li> rename the file
+<li> create a directory on the client file system
+<li> list the files in this file (as if it were a directory)
+<li> check the file's type
+<li> check the timestamp when the file was last modified
+<li> check the file's size
+</ul>
+<p>
+<p>
+<li> <a name=allowRead><STRONG>How do I let an applet read a file?</STRONG></a>
+<p>
+Applets loaded into a Java-enabled browser can't read files.
+<p>
+Sun's appletviewer allows applets to read files that are named on the
+access control list for reading.  The access control list for reading
+is null by default, in the JDK.  You can allow applets
+to read directories or files by naming them in the
+<code>acl.read</code> property in your
+<code>~/.hotjava/properties</code> file.
+<p>
+<blockquote>
+<STRONG>Note</STRONG>: The "<code>~</code>" (tilde) symbol is used on UNIX
+systems to refer to your home directory.  If you install a web browser
+on your <code>F:\</code> drive on your PC, and create a top-level
+directory named <code>.hotjava</code>, then your properties file is
+found in <code>F:\.hotjava\properties</code>.
+</blockquote>
+<p>
+For example, to allow any files in the directory <code>home/me</code>
+to be read by applets loaded into the appletviewer, add this line to
+your <code>~/.hotjava/properties</code> file.
+<pre>
+	acl.read=/home/me
+</pre>
+You can specify one file to be read: 
+<pre>
+	acl.read=/home/me/somedir/somefile
+</pre>
+Use "<STRONG>:</STRONG>" to separate entries:
+<pre>
+	acl.read=/home/foo:/home/me/somedir/somefile
+</pre>
+Allowing an applet to read a directory means that it can read all the
+files in that directory, including any files in any subdirectories that might
+be hanging off that directory. 
+<p>
+<li> <a name=allowWrite><STRONG>How do I let an applet write a file?</STRONG></a>
+<p>
+Applets loaded into a Java-enabled browser can't write files.
+<p>
+Sun's appletviewer allows applets to write files that are named on the
+access control list for writing.  The access control list for writing 
+is empty by default.  
+<p>
+You can allow applets to write to your /tmp directory by setting the
+acl.write property in your ~/.hotjava/properties file: 
+<pre>
+	acl.write=/tmp
+</pre>
+You can allow applets to write to a particular file by naming it explicitly: 
+<pre>
+	acl.write=/home/me/somedir/somefile
+</pre>
+Use <STRONG>:</STRONG> to separate entries: 
+<pre>
+	acl.write=/tmp:/home/me/somedir/somefile
+</pre>
+<p>
+Bear in mind that if you open up your file system for writing by
+applets, there is no way to limit the amount of disk space an applet
+might use.
+<p>
+<li> <a name=props><STRONG>What system properties can be read by applets, and how?</STRONG></a>
+<p>
+In both Java-enabled browsers  and the appletviewer, applets can read
+these system properties by invoking
+<code>System.getProperty(String key)</code>:
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%" class="grey4">
+<tr><td><pre>
+  key			meaning
+  ____________		______________________________
+  java.version		Java version number
+  java.vendor		Java vendor-specific string
+  java.vendor.url	Java vendor URL
+  java.class.version	Java class version number
+  os.name		Operating system name
+  os.arch		Operating system architecture
+  os.version	        Operating system version
+  file.separator	File separator (eg, "/")
+  path.separator	Path separator (eg, ":")
+  line.separator	Line separator 
+</pre></td></tr></table>
+<span class="sp20"> </span><br />
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+Applets are prevented from reading these system properties: 
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%" class="grey4">
+<tr><td><pre>
+  key			meaning
+  ____________		_____________________________
+  java.home		Java installation directory
+  java.class.path	Java classpath
+  user.name		User account name
+  user.home		User home directory
+  user.dir		User's current working directory
+</pre></td></tr></table>
+<span class="sp20"> </span><br />
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+To read a system property from within an applet, simply invoke
+<code>System.getProperty(key)</code> on the property you are
+interested in.
+<p>
+For example,
+<pre>
+  String s = System.getProperty("os.name");
+</pre>
+<li> <a name=hideProps><STRONG>How do I hide system properties that applets
+are allowed to read by default? </STRONG></a>
+<p>
+There's no way to hide the above ten system properties from applets
+loaded into a Java-enabled browser.  The reason is that the browsers
+don't consult any external files as part their Java configuration, as
+a security precaution, including the
+<code>~/.hotjava/properties</code> file.
+<p>
+From the appletviewer, you can prevent applets from finding out
+anything about your system by redefining the property in your
+<code>~/.hotjava/properties</code> file.  For example, to hide the
+name of the operating system that you are using, add this line to your
+<code>~/.hotjava/properties</code> file:
+<pre>
+	os.name=null
+</pre>
+<li> <a name=getProps><STRONG>How can I allow applets to read system
+properties that they aren't allowed to read by default?</STRONG></a>
+<p>
+There's no way to allow an applet loaded into a Java-enabled browser
+to read system properties that they aren't allowed to read by default.
+<p>
+To allow applets loaded into the appletviewer to read the property
+named by <code>key</code>, add the property
+<code>key.applet=true</code> to your <code>~/.hotjava/property</code>
+file.  For example, to allow applets to record your user name, add
+this line to your <code>~/.hotjava/properties</code> file:
+<pre>
+	user.name.applet=true
+</pre>
+<li><a name=socket><STRONG>How can an applet open a network connection to a
+computer on the internet?</STRONG></a>
+<p> 
+Applets are not allowed to open network connections to any computer,
+except for the host that provided the .class files.  This is either
+the host where the html page came from, or the host specified in the
+<code>codebase</code> parameter in the <code>applet</code> tag, with
+<code>codebase</code> taking precendence.
+<p>
+For example, if you try to do this from an applet that did not
+originate from the machine foo.com, it will fail with a security
+exception:
+<pre>
+	Socket s = new Socket("foo.com", 25, true);
+</pre>
+<li><a name=socketOrig><STRONG>How can an applet open a network connection
+to its originating host?</STRONG></a>
+<p>
+Be sure to name the originating host exactly as it was specified when
+the applet was loaded into the browser.
+<p>  That is, if you load an HTML page using the URL
+<pre>
+	http://foo.state.edu/~me/appletPage.html
+</pre>
+then your applet will be able to connect to its host only by using the
+name <code>foo.state.edu</code>. Using the IP address for
+foo.state.edu won't work, and using a "shorthand" form of the host
+name, like foo.state instead of foo.state.edu, won't work.
+<p>
+<li><a name=persistent><STRONG>How can an applet maintain persistent state?
+</STRONG></a>
+<p>
+There is no explicit support in the JDK applet API for persistent
+state on the client side.  However, an applet can maintain its own
+persistent state on the server side.  That is, it can create files on
+the server side and read files from the server side.
+<p>
+<li> <a name=exec><STRONG>Can an applet start another program on the
+client?</STRONG></a>
+<p>
+No, applets loaded over the net are not allowed to start programs on the
+client.  That is, an applet that you visit can't start some rogue
+process on your PC.  In UNIX terminology, applets are not allowed to
+exec or fork processes.  In particular, this means that applets can't
+invoke some program to list the contents of your file system, and it
+means that applets can't invoke System.exit() in an attempt to kill
+your web browser.  Applets are also not allowed to manipulate threads
+outside the applet's own thread group.
+<p>
+<li> <a name=lang><STRONG>What features of the Java language help people
+build secure applets?</STRONG></a>
+<p>
+<ul>
+<li>
+Java programs do not use pointers explicitly.  Objects are accessed by
+getting a handle to the object.  Effectively, this is like getting a
+pointer to an object, but Java does not allow the equivalent of
+pointer arithmetic on object handles.  Object handles cannot be
+modified in any way by the Java applet or application.
+<p>
+<li>
+C and C++ programmers are used to manipulating pointers to implement
+strings and to implement arrays.  Java has high-level support for both
+strings and arrays, so programmers don't need to resort to pointer
+arithmetic in order to use those data structures. 
+<p>
+<li> Arrays are bounds-checked at runtime.  Using a negative index
+causes a runtime exception, and using an index that is larger than the
+size of the array causes a runtime exception.  Once an array object is
+created, its length never changes.
+<p>
+<li> Strings in Java are immutable.  A string is zero or more
+characters enclosed in double quotes, and it's an instance of the
+<code>String</code> class.  Using immutable strings can help prevent
+common runtime errors that could be exploited by hostile applets.
+<p>
+<li>
+The Java compiler checks that all type casts are legal.  Java is a
+strongly typed language, unlike C or C++, and objects cannot be cast
+to a subclass without an explicit runtime check.  
+<p>
+<li> The <code>final</code> modifier can be used when initializing a
+variable, to prevent runtime modification of that variable.  The
+compiler catches attempts to modify <code>final</code> variables.
+<p>
+<li> Before a method is invoked on an object, the compiler checks that
+the object is the correct type for that method.   For example, invoking
+<pre>
+  t.currentThread()
+</pre>
+when <code>t</code> is not a <code>Thread</code> object causes a
+compile time error.  
+<p>
+<li>
+Java provides four access modifiers for methods and variables defined
+within classes and makes sure that these access barriers are not
+violated.
+<ul>
+<li> public: a public method is accessible anywhere the class name is
+accessible
+<li> protected: a protected method is accessible by a child of a class
+as long as it is trying to access fields in a similarly typed class.
+For example,
+<pre>
+  class Parent { protected int x; }
+  class Child extends Parent { ... }
+</pre>
+The class <code>Child</code> can access the field "<code>x</code>"
+only on objects that are of type <code>Child</code> (or a subset of
+<code>Child</code>.)
+<p>
+<li> private: a private method is accessible only within its defining
+class
+<li> default: if no modifier is specified, then by default, a method
+is accessible only within its defining package
+</ul>
+<p>
+For example, programmers can choose to implement sensitive functions
+as private methods.  The compiler and the runtime checks ensure that
+no objects outside the class can invoke the private methods.
+</ul>
+<p>
+<li> <a name=diff><STRONG>What is the difference between applets loaded
+over the net and applets loaded via the file system?</STRONG></a>
+<p> 
+There are two different ways that applets are loaded by a Java system.
+The way an applet enters the system affects what it is allowed to do. 
+<p>
+If an applet is loaded over the net, then it is loaded by the applet
+class loader, and is subject to the restrictions enforced by the applet
+security manager. 
+<p>
+If an applet resides on the client's local disk, and in a directory
+that is on the client's CLASSPATH, then it is loaded by the file
+system loader.  The most important differences are
+<ul>
+<li> applets loaded via the file system are allowed to read and write files
+<li> applets loaded via the file system are allowed to load libraries on the client
+<li> applets loaded via the file system are allowed to exec processes 
+<li> applets loaded via the file system are allowed to exit the virtual machine
+<li> applets loaded via the file system are not passed through the byte code verifier
+</ul>
+<p>
+Java-enabled browsers use the applet class loader to
+load applets specified with file: URLs.  So, the restrictions and
+protections that accrue from the class loader and its associated
+security manager are now in effect for applets loaded via file: URLs. 
+<p>
+This means that if you specify the URL like so:
+<pre>
+	Location:  file:/home/me/public_html/something.html
+</pre>
+and the file something.html contains an applet, the browser loads
+it using its applet class loader. 
+<p>
+<li> <a name=appletCL><STRONG>What's the applet class loader, and what does it buy me?</STRONG></a>
+<p>
+Applets loaded over the net are loaded by the applet class loader.
+For example, the appletviewer's applet class loader is implemented by
+the class sun.applet.AppletClassLoader.
+<p> 
+The class loader enforces the Java name space hierarchy.  The class
+loader guarantees that a unique namespace exists for classes that come
+from the local file system, and that a unique namespace exists for
+each network source.  When a browser loads an applet over the net,
+that applet's classes are placed in a private namespace associated
+with the applet's origin.  Thus, applets loaded from different network
+sources are partitioned from each other.
+<p>
+Also, classes loaded by the class loader are passed through the
+verifier.  The verifier checks that the class file conforms to the
+Java language specification - it doesn't assume that the class file
+was produced by a "friendly" or "trusted" compiler.  On the contrary,
+it checks the class file for purposeful violations of the language
+type rules and name space restrictions.   The verifier ensures that
+<ul>
+<li> There are no stack overflows or underflows.
+<li> All register accesses and stores are valid.
+<li> The parameters to all bytecode instructions are correct.
+<li> There is no illegal data conversion.
+</ul> 
+<p>
+The verifier accomplishes that by doing a data-flow analysis of the
+bytecode instruction stream, along with checking the class file
+format, object signatures, and special analysis of
+<code>finally</code> clauses that are used for Java exception
+handling.
+<p>
+Details on the <a href="/sfaq/verifier.html">verifier's</a> design and
+implementation were presented in a paper by Frank Yellin at the
+December 1995 WWW conference in Boston.
+<p>
+A web browser uses only one class loader, which is established
+at start-up.   Thereafter, the system class loader cannot 
+be extended, overloaded, overridden or replaced.  Applets cannot
+create or reference their own class loader.  
+<p>
+<li><STRONG> <a name=appletSM>What's the applet security manager, and what
+does it buy me?</a></STRONG>
+<p>
+The applet security manager is the Java mechanism for enforcing the
+applet restrictions described above.  The appletviewer's applet
+security manager is implemented by sun.applet.AppletSecurity.
+<p>
+A browser may only have one security manager.  The security manager is
+established at startup, and it cannot thereafter be replaced,
+overloaded, overridden, or extended.  Applets cannot create or
+reference their own security manager.
+<p>
+<li><a name=summary><STRONG>Is there a summary of applet capabilities?</STRONG></a>
+<p>
+The following table is not an exhaustive list of applet capabilities.
+It's meant to answer the questions we hear most often about what
+applets can and cannot do.  
+<p>
+Key:
+<ul>
+<li> NN: <STRONG>N</STRONG>etscape Navigator 4.x, loading unsigned applets over the <STRONG>N</STRONG>et
+<li> NL: <STRONG>N</STRONG>etscape Navigator 4.x, loading unsigned applets from the <STRONG>L</STRONG>ocal file system
+<li> AN: <STRONG>A</STRONG>ppletviewer, JDK 1.x, loading applets over the <STRONG>N</STRONG>et
+<li> AL: <STRONG>A</STRONG>ppletviewer, JDK 1.x, loading applets from the <STRONG>L</STRONG>ocal file system
+<li> JS: <STRONG>J</STRONG>ava <STRONG>S</STRONG>tandalone applications
+</ul>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%" class="grey4">
+<tr><td><pre>
+		 Stricter ------------------------> Less strict
+
+			NN	NL	AN	AL	JS
+
+read file in /home/me,	no	no	no      yes     yes
+acl.read=null
+
+read file in /home/me,	no	no	yes	yes	yes
+acl.read=/home/me
+
+write file in /tmp,	no	no	no	yes	yes
+acl.write=null
+
+write file in /tmp,	no	no	yes	yes 	yes
+acl.write=/tmp
+
+get file info,		no	no	no	yes	yes
+acl.read=null
+acl.write=null
+
+get file info,		no	no	yes	yes	yes
+acl.read=/home/me
+acl.write=/tmp
+
+delete file,		no	no	no	no	yes
+using File.delete()
+
+delete file, 		no	no	no	yes 	yes
+using exec /usr/bin/rm
+
+read the user.name	no	yes	no	yes	yes
+property
+
+connect to port		no	no	no	yes	yes
+on client
+
+connect to port		no	no	no	yes	yes
+on 3rd host
+
+load library		no	yes	no	yes	yes
+
+exit(-1)		no	no	no 	yes	yes
+
+create a popup		no	yes	no	yes	yes
+window without 
+a warning
+
+</pre></td></tr></table>
+<span class="sp20"> </span><br />
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+<p>
+<li> <a name=otherBytes><STRONG>If other languages are compiled to Java
+bytecodes, how does that affect the applet security model?</STRONG></a>
+<p> The verifier is independent of Sun's reference implementation of
+the Java compiler and the high-level specification of the Java
+language.  It verifies bytecodes generated by other Java compilers.
+It also verifies bytecodes generated by compiling other languages into
+the bytecode format.  Bytecodes imported over the net that pass the
+verifier can be trusted to run on the Java virtual machine.  In order
+to pass the verifier, bytecodes have to conform to the strict typing,
+the object signatures, the class file format, and the predictability of
+the runtime stack that are all defined by the Java language
+implementation.
+</ol>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<CENTER>
+<h3><a name=examples>Examples</a></h3>
+</CENTER>
+None of these examples are malicious - the one line descriptions can
+be taken at face value.  You can look at the source code for each
+applet, before visiting the page that has that applet inside.  (The
+first link in each example takes you to the source code, and the
+second link takes you to an html page that includes the executable
+content for the example.)
+<p>
+<p>
+Files:
+<ul>
+<li> Can <a href="/sfaq/example/readFile.java">this</a> applet <a
+href="/sfaq/example/readFile.html">read files on your system?</a>
+<li>Can <a href="/sfaq/example/fileInfo.java">this</a> applet <a
+href="/sfaq/example/fileInfo.html">obtain information about files on your
+system</a>?
+<li>Can <a href="/sfaq/example/writeFile.java">this</a> applet <a href="/sfaq/example/writeFile.html">write a file on
+your system?</a>
+<li> Can <a href="/sfaq/example/deleteFile.java">this</a> applet <a
+href="/sfaq/example/deleteFile.html">use File.delete()</a> to delete the file
+named /tmp/foo?
+<li> Can <a href="/sfaq/example/rm.java">this</a> applet use the unix command
+<a href="/sfaq/example/rm.html">/bin/rm</a> to delete the file named
+/tmp/foo?
+</ul>
+System Properties: 
+<ul>
+<li>Can <a href="/sfaq/example/getOpenProperties.java">this</a> applet <a
+href="/sfaq/example/getOpenProperties.html">read the ten system properties</a>
+that applets are allowed to read by default?
+<li> Can <a href="/sfaq/example/getHiddenProperties.java">this</a> applet <a
+href="/sfaq/example/getHiddenProperties.html">read hidden properties</a> like
+<code>user.name</code> or <code>user.home</code>?
+<li> Can <a href="/sfaq/example/replacePropertiesFile.java">this</a> applet <a
+href="/sfaq/example/replacePropertiesFile.html">replace your browser's property file?</a> 
+</ul>
+Sockets: 
+<ul>
+<li> Can <a href="/sfaq/example/port25.java">this</a> applet <a
+href="/sfaq/example/port25.html">connect to port 25 on www.netscape.com?</a>
+<li> Can <a href="/sfaq/example/sendTest.java">this</a> applet <a
+href="/sfaq/example/sendTest.html">send data to www.sun.com?</a>
+</ul>
+Processes: 
+<ul>
+<li> Can <a href="/sfaq/example/exitTest.java">this</a> applet <a
+href="/sfaq/example/exitTest.html">kill your browser?</a>
+<li> Can <a href="/sfaq/example/execTest.java">this</a> applet <a href="/sfaq/example/execTest.html">run some program on your computer?</a>
+</ul>
+Libraries and name spaces: 
+<ul>
+<li> Can <a href="/sfaq/example/loadLibrary.java">this</a> applet <a href="/sfaq/example/loadLibrary.html">load a library on your computer?</a>
+<li> Can <a href="/sfaq/example/newLoader.java">this</a> applet <a
+href="/sfaq/example/newLoader.html">create its own class loader?</a>
+<li> <a href="/sfaq/example/ownNet.java">This</a> applet tries to create a
+class of its own in the java.net namespace, but it can't.  This
+example will not compile with the Java compilers that conform to the
+Java language specification.    
+</ul>
+Windows:
+<ul>
+<li> What does a <a href="/sfaq/example/myWindow.html">window created by an
+applet</a> look like?
+</ul>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<CENTER><H2>Glossary of terms used in this FAQ</H2></CENTER>
+<dl>
+<dt> <a name=applet>Applet</a>
+<dd> A Java program that is run from inside a web browser.  The html
+page loaded into the web browser contains an
+<code>&lt;applet&gt;</code> tag, which tells the browser where to find
+the Java .class files.   For example,
+<p><pre>
+	appletviewer http://foo.com/~jo/coolApplet.html
+</pre>
+<p>
+<dt> Standalone Java application
+<dd> A Java program that is run by invoking the <code>java</code> interpreter.   For example, 
+<p>
+<pre>
+	java coolApplication
+</pre>
+<p>
+<dt> <a name=originatingHost>Server</a>
+<dd> The computer that hosts the web page that contains an applet.
+The .class files that make up the applet, and the .html files that
+reference the applet, reside on the server.  When someone on the
+internet connects to a web page that contains an applet, the server
+delivers the .class files over the internet to the client that made
+the request.
+<p> The server is also known as the <i>originating host</i>.
+<p>
+<dt> <a name=client>Client</a>
+<dd> The computer that displays the web page that contains an applet.
+<p>
+The terms <i>server</i> and <i>client</i> are sometimes used to refer
+to computers, and are sometimes used to refer to computer programs.
+For example, www.sun.com is a server, and the httpd process running on
+www.sun.com is its server process.  My computer at home is a client,
+and the web browser running on my computer at home acts as the client
+process.
+</dl>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4"><tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- END FRAGMENT | HR TAG -->
+<CENTER><H2><a name=seeAlso>Archival Documents</a></H2></CENTER>
+<dl>
+<dt> <a href="/sfaq/verifier.html">Low-level Security in Java</a>, Frank
+Yellin, WWW4 Conference, December, 1995
+<dd> This paper presents the details of the lowest levels of the java
+security mechanism.  Before any downloaded code is executed, it is
+scanned and verified to ensure that it conforms to the specifications
+of the virtual machine.   
+<p>
+<dt> <a href="/sfaq/may95/security.html">HotJava: The
+Security Story</a>
+<dd> This paper from May 1995 (the 1.0alpha3 release of Java and
+HotJava) provides a high-level overview of the security mechanisms,
+which were elaborated on for the JDK 1.0 release.  
+</dl>
+<!-- End Page Data -->
+<TABLE BORDER="0" WIDTH="452">
+<TR>
+<TD ALIGN="RIGHT" VALIGN="TOP">
+See Also<BR>
+<FONT SIZE="-1">
+<A HREF="/security/index.jsp"> Security Top</A>  <br> 
+<A HREF="/sfaq/chronology.html"> Security Bug Chronology </A>  <br> 
+<A HREF="/security/hypermail/java-security-archive/index.html"> Security Q & A Archive</A> 
+</font>
+<p>
+</TD>
+</TR>
+</TABLE>
+<!-- =================== -->
+<!-- END OF MAIN CONTENT -->
+<!-- =================== -->
+<!--stopindex-->
+<!-- END CENTRAL COLUMN COMPONENTS -->
+</td><td valign="top">
+<!-- BEGIN RIGHT COLUMN COMPONENTS -->
+<!-- END RIGHT COLUMN COMPONENTS -->
+</td></tr>
+<!-- BEGIN SPACER ROW -->
+<tr><td><img src="/im/a.gif" width="560" height="1" border="0" alt=" " /></td><td><img src="/im/a.gif" width="170" height="1" border="0" alt=" " /></td></tr>
+<!-- END SPACER ROW -->
+</table>
+<!-- END WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<!-- BEGIN VNV5 FOOTER  -->
+<table border="0" cellpadding="0" cellspacing="10" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="vatop">
+<tr>
+<td colspan="4" valign="top" class="grey3"><img src="http://developers.sun.com/im/a.gif" width="1" height="2" border="0" alt=" " /></td></tr>
+<tr>
+<td><img src="http://developers.sun.com/im/a.gif" width="190" height="1" border="0" alt=" " /><br />
+<a href="http://www.sun.com"><img src="http://developers.sun.com/im/logo_sun_small_sdn.gif" width="61" height="29" border="0" alt=" " vspace="5"/></a></td>
+<td width="100%" valign="top"><img src="http://developers.sun.com/im/a.gif" width="350" height="1" border="0" alt=" " /><br />
+<div class="footer">
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910015">Company Info</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910010">About SDN</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910011">Press</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/contact/index.jsp">Contact Us</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910014">Employment</a><br />
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910012">How to Buy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910009">Licensing</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910013">Terms of Use</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910016">Privacy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910017">Trademarks</a>
+<br /><span class="sp10">&nbsp;</span><br />
+<br /><span class="sp10">&nbsp;</span><br />
+Copyright 1994-2004 Sun Microsystems, Inc.
+</div></td>
+<td><img src="http://developers.sun.com/im/a.gif" width="40" height="1" border="0" alt=" " /></td>
+<td valign="top"><div class="footer"><b><a href="http://developers.sun.com/dispatcher.jsp?uid=6910010">A Sun Developer Network Site</a></b></div>
+<div class="footer">
+<img src="http://developers.sun.com/im/a.gif" width="170" height="1" border="0" alt=" " /><br />
+Unless otherwise licensed, code in all technical manuals herein (including articles, FAQs, samples) is provided under this <a href="http://developers.sun.com/dispatcher.jsp?uid=6910008">License</a>.
+<br /><span class="sp5">&nbsp;</span><br />
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910006"><img src="http://developers.sun.com/im/button_xml.gif" width="36" height="14" align="top" border="0" alt="XML" /></a>&nbsp;<a href="http://developers.sun.com/dispatcher.jsp?uid=6910007">Content Feeds</a>
+</div></td></tr>
+<tr><td colspan="4" valign="top" class="grey3"><img src="http://developers.sun.com/im/a.gif" width="1" height="2" border="0" alt=" " /></td></tr>
+</table>
+</td></tr>
+</table>
+<!-- END VNV5 FOOTER -->
+</body>
+</html>
+
+
+
+

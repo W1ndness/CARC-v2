@@ -1,0 +1,635 @@
+<!-- <DOCUMENT>
+	<FILE>
+		4942826337.html
+	</FILE>
+	<URL>
+		http://www.che.wisc.edu/octave/doc/octave_toc.html
+	</URL>
+	<TITLE>
+		Octave Manual
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ (original author) Karl Berry Olaf Bachmann and many others. Maintained by: Many creative people Send bugs and suggestions to --> GNU Octave: Table of Contents [ Top ] [ Contents ] [ Index ] [ ? ] Table of Contents Preface Acknowledgements How You Can Contribute to Octave Distribution 1. A Brief Introduction to Octave 1.1 Running Octave 1.2 Simple Examples Creating a Matrix Matrix Arithmetic Solving Linear Equations Integrating Differential Equations Producing Graphical Output Editing What You Have Typed Help and Documentation 1.3 Conventions 1.3.1 Fonts 1.3.2 Evaluation Notation 1.3.3 Printing Notation 1.3.4 Error Messages 1.3.5 Format of Descriptions 1.3.5.1 A Sample Function Description 1.3.5.2 A Sample Command Description 1.3.5.3 A Sample Variable Description 2. Getting Started 2.1 Invoking Octave 2.1.1 Command Line Options 2.1.2 Startup Files 2.2 Quitting Octave 2.3 Commands for Getting Help 2.4 Command Line Editing 2.4.1 Cursor Motion 2.4.2 Killing and Yanking 2.4.3 Commands For Changing Text 2.4.4 Letting Readline Type For You 2.4.5 Commands For Manipulating The History 2.4.6 Customizing readline 2.4.7 Customizing the Prompt 2.4.8 Diary and Echo Commands 2.5 How Octave Reports Errors 2.6 Executable Octave Programs 2.7 Comments in Octave Programs 3. Data Types 3.1 Built-in Data Types 3.1.1 Numeric Objects 3.1.2 Missing Data 3.1.3 String Objects 3.1.4 Data Structure Objects 3.2 User-defined Data Types 3.3 Object Sizes 4. Numeric Data Types 4.1 Matrices 4.1.1 Empty Matrices 4.2 Ranges 4.3 Logical Values 4.4 Predicates for Numeric Objects 5. Strings 5.1 Creating Strings 5.2 Searching and Replacing 5.3 String Conversions 5.4 Character Class Functions 6. Data Structures 7. Containers 7.1 Lists 7.2 Cell Arrays 8. I/O Streams 9. Variables 9.1 Global Variables 9.2 Status of Variables 9.3 Summary of Built-in Variables 9.4 Defaults from the Environment 10. Expressions 10.1 Index Expressions 10.2 Calling Functions 10.2.1 Call by Value 10.2.2 Recursion 10.3 Arithmetic Operators 10.4 Comparison Operators 10.5 Boolean Expressions 10.5.1 Element-by-element Boolean Operators 10.5.2 Short-circuit Boolean Operators 10.6 Assignment Expressions 10.7 Increment Operators 10.8 Operator Precedence 11. Evaluation 12. Statements 12.1 The if Statement 12.2 The switch Statement 12.3 The while Statement 12.4 The do-until Statement 12.5 The for Statement 12.5.1 Looping Over Structure Elements 12.6 The break Statement 12.7 The continue Statement 12.8 The unwind_protect Statement 12.9 The try Statement 12.10 Continuation Lines 13. Functions and Script Files 13.1 Defining Functions 13.2 Multiple Return Values 13.3 Variable-length Argument Lists 13.4 Variable-length Return Lists 13.5 Returning From a Function 13.6 Function Files 13.7 Script Files 13.8 Dynamically Linked Functions 13.9 Organization of Functions Distributed with Octave 14. Error Handling 15. Debugging 16. Input and Output 16.1 Basic Input and Output 16.1.1 Terminal Output 16.1.2 Terminal Input 16.1.3 Simple File I/O 16.2 C-Style I/O Functions 16.2.1 Opening and Closing Files 16.2.2 Simple Output 16.2.3 Line-Oriented Input 16.2.4 Formatted Output 16.2.5 Output Conversion for Matrices 16.2.6 Output Conversion Syntax 16.2.7 Table of Output Conversions 16.2.8 Integer Conversions 16.2.9 Floating-Point Conversions 16.2.10 Other Output Conversions 16.2.11 Formatted Input 16.2.12 Input Conversion Syntax 16.2.13 Table of Input Conversions 16.2.14 Numeric Input Conversions 16.2.15 String Input Conversions 16.2.16 Binary I/O 16.2.17 Temporary Files 16.2.18 End of File and Errors 16.2.19 File Positioning 17. Plotting 17.1 Two-Dimensional Plotting 17.2 Specialized Two-Dimensional Plots 17.3 Three-Dimensional Plotting 17.4 Plot Annotations 17.5 Multiple Plots on One Page 17.6 Multiple Plot Windows 17.7 Interaction with gnuplot 18. Matrix Manipulation 18.1 Finding Elements and Checking Conditions 18.2 Rearranging Matrices 18.3 Special Utility Matrices 18.4 Famous Matrices 19. Arithmetic 19.1 Utility Functions 19.2 Complex Arithmetic 19.3 Trigonometry 19.4 Sums and Products 19.5 Special Functions 19.6 Coordinate Transformations 19.7 Mathematical Constants 20. Linear Algebra 20.1 Basic Matrix Functions 20.2 Matrix Factorizations 20.3 Functions of a Matrix 21. Nonlinear Equations 22. Quadrature 22.1 Functions of One Variable 22.2 Orthogonal Collocation 23. Differential Equations 23.1 Ordinary Differential Equations 23.2 Differential-Algebraic Equations 24. Optimization 24.1 Linear Programming 24.2 Quadratic Programming 24.3 Nonlinear Programming 24.4 Linear Least Squares 25. Statistics 25.1 Basic Statistical Functions 25.2 Tests 25.3 Models 25.4 Distributions 26. Financial Functions 27. Sets 28. Polynomial Manipulations 29. Control Theory 29.1 System Data Structure 29.1.1 Variables common to all OCST system formats 29.1.2 tf format variables 29.1.3 zp format variables 29.1.4 ss format variables 29.2 System Construction and Interface Functions 29.2.1 Finite impulse response system interface functions 29.2.2 State space system interface functions 29.2.3 Transfer function system interface functions 29.2.4 Zero-pole system interface functions 29.2.5 Data structure access functions 29.2.6 Data structure internal functions 29.3 System display functions 29.4 Block Diagram Manipulations 29.5 Numerical Functions 29.6 System Analysis-Properties 29.7 System Analysis-Time Domain 29.8 System Analysis-Frequency Domain 29.9 Controller Design 29.10 Miscellaneous Functions (Not yet properly filed/documented) 30. Signal Processing 31. Image Processing 32. Audio Processing 33. Quaternions 34. System Utilities 34.1 Timing Utilities 34.2 Filesystem Utilities 34.3 Controlling Subprocesses 34.4 Process, Group, and User IDs 34.5 Environment Variables 34.6 Current Working Directory 34.7 Password Database Functions 34.8 Group Database Functions 34.9 System Information A. Tips and Standards A.1 Writing Clean Octave Programs A.2 Tips for Making Code Run Faster. A.3 Tips for Documentation Strings A.4 Tips on Writing Comments A.5 Conventional Headers for Octave Functions B. Known Causes of Trouble B.1 Actual Bugs We Haven't Fixed Yet B.2 Reporting Bugs B.3 Have You Found a Bug? B.4 Where to Report Bugs B.5 How to Report Bugs B.6 Sending Patches for Octave B.7 How To Get Help with Octave C. Installing Octave C.1 Installation Problems D. Emacs Octave Support D.1 Installing EOS D.2 Using Octave Mode D.3 Running Octave From Within Emacs D.4 Using the Emacs Info Reader for Octave E. Grammar E.1 Keywords F. GNU GENERAL PUBLIC LICENSE F.1 Preamble F.2 Appendix: How to Apply These Terms to Your New Programs Concept Index Variable Index Function Index Operator Index This document was generated by John W. Eaton on November, 18 2003 using texi2html 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html40/loose.dtd">
+<HTML>
+<!-- Created on November, 18 2003 by texi2html 1.66 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<HEAD>
+<TITLE>GNU Octave: Table of Contents</TITLE>
+
+<META NAME="description" CONTENT="GNU Octave: Table of Contents">
+<META NAME="keywords" CONTENT="GNU Octave: Table of Contents">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.66">
+
+</HEAD>
+
+<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC_Contents"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="octave.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="octave_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="octave_42.html#SEC240">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="octave_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1>Table of Contents</H1>
+<BLOCKQUOTE>
+<A NAME="TOC1" HREF="octave_1.html#SEC1">Preface</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC2" HREF="octave_1.html#SEC2">Acknowledgements</A>
+<BR>
+<A NAME="TOC3" HREF="octave_1.html#SEC3">How You Can Contribute to Octave</A>
+<BR>
+<A NAME="TOC4" HREF="octave_1.html#SEC4">Distribution</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC5" HREF="octave_2.html#SEC5">1. A Brief Introduction to Octave</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC6" HREF="octave_2.html#SEC6">1.1 Running Octave</A>
+<BR>
+<A NAME="TOC7" HREF="octave_2.html#SEC7">1.2 Simple Examples</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC8" HREF="octave_2.html#SEC8">Creating a Matrix</A>
+<BR>
+<A NAME="TOC9" HREF="octave_2.html#SEC9">Matrix Arithmetic</A>
+<BR>
+<A NAME="TOC10" HREF="octave_2.html#SEC10">Solving Linear Equations</A>
+<BR>
+<A NAME="TOC11" HREF="octave_2.html#SEC11">Integrating Differential Equations</A>
+<BR>
+<A NAME="TOC12" HREF="octave_2.html#SEC12">Producing Graphical Output</A>
+<BR>
+<A NAME="TOC13" HREF="octave_2.html#SEC13">Editing What You Have Typed</A>
+<BR>
+<A NAME="TOC14" HREF="octave_2.html#SEC14">Help and Documentation</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC15" HREF="octave_2.html#SEC15">1.3 Conventions</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC16" HREF="octave_2.html#SEC16">1.3.1 Fonts</A>
+<BR>
+<A NAME="TOC17" HREF="octave_2.html#SEC17">1.3.2 Evaluation Notation</A>
+<BR>
+<A NAME="TOC18" HREF="octave_2.html#SEC18">1.3.3 Printing Notation</A>
+<BR>
+<A NAME="TOC19" HREF="octave_2.html#SEC19">1.3.4 Error Messages</A>
+<BR>
+<A NAME="TOC20" HREF="octave_2.html#SEC20">1.3.5 Format of Descriptions</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC21" HREF="octave_2.html#SEC21">1.3.5.1 A Sample Function Description</A>
+<BR>
+<A NAME="TOC22" HREF="octave_2.html#SEC22">1.3.5.2 A Sample Command Description</A>
+<BR>
+<A NAME="TOC23" HREF="octave_2.html#SEC23">1.3.5.3 A Sample Variable Description</A>
+<BR>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<A NAME="TOC24" HREF="octave_3.html#SEC24">2. Getting Started</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC25" HREF="octave_3.html#SEC25">2.1 Invoking Octave</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC26" HREF="octave_3.html#SEC26">2.1.1 Command Line Options</A>
+<BR>
+<A NAME="TOC27" HREF="octave_3.html#SEC27">2.1.2 Startup Files</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC28" HREF="octave_3.html#SEC28">2.2 Quitting Octave</A>
+<BR>
+<A NAME="TOC29" HREF="octave_3.html#SEC29">2.3 Commands for Getting Help</A>
+<BR>
+<A NAME="TOC30" HREF="octave_3.html#SEC30">2.4 Command Line Editing</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC31" HREF="octave_3.html#SEC31">2.4.1 Cursor Motion</A>
+<BR>
+<A NAME="TOC32" HREF="octave_3.html#SEC32">2.4.2 Killing and Yanking</A>
+<BR>
+<A NAME="TOC33" HREF="octave_3.html#SEC33">2.4.3 Commands For Changing Text</A>
+<BR>
+<A NAME="TOC34" HREF="octave_3.html#SEC34">2.4.4 Letting Readline Type For You</A>
+<BR>
+<A NAME="TOC35" HREF="octave_3.html#SEC35">2.4.5 Commands For Manipulating The History</A>
+<BR>
+<A NAME="TOC36" HREF="octave_3.html#SEC36">2.4.6 Customizing <CODE>readline</CODE></A>
+<BR>
+<A NAME="TOC37" HREF="octave_3.html#SEC37">2.4.7 Customizing the Prompt</A>
+<BR>
+<A NAME="TOC38" HREF="octave_3.html#SEC38">2.4.8 Diary and Echo Commands</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC39" HREF="octave_3.html#SEC39">2.5 How Octave Reports Errors</A>
+<BR>
+<A NAME="TOC40" HREF="octave_3.html#SEC40">2.6 Executable Octave Programs</A>
+<BR>
+<A NAME="TOC41" HREF="octave_3.html#SEC41">2.7 Comments in Octave Programs</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC42" HREF="octave_4.html#SEC42">3. Data Types</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC43" HREF="octave_4.html#SEC43">3.1 Built-in Data Types</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC44" HREF="octave_4.html#SEC44">3.1.1 Numeric Objects</A>
+<BR>
+<A NAME="TOC45" HREF="octave_4.html#SEC45">3.1.2 Missing Data</A>
+<BR>
+<A NAME="TOC46" HREF="octave_4.html#SEC46">3.1.3 String Objects</A>
+<BR>
+<A NAME="TOC47" HREF="octave_4.html#SEC47">3.1.4 Data Structure Objects</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC48" HREF="octave_4.html#SEC48">3.2 User-defined Data Types</A>
+<BR>
+<A NAME="TOC49" HREF="octave_4.html#SEC49">3.3 Object Sizes</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC50" HREF="octave_5.html#SEC50">4. Numeric Data Types</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC51" HREF="octave_5.html#SEC51">4.1 Matrices</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC52" HREF="octave_5.html#SEC52">4.1.1 Empty Matrices</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC53" HREF="octave_5.html#SEC53">4.2 Ranges</A>
+<BR>
+<A NAME="TOC54" HREF="octave_5.html#SEC54">4.3 Logical Values</A>
+<BR>
+<A NAME="TOC55" HREF="octave_5.html#SEC55">4.4 Predicates for Numeric Objects</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC56" HREF="octave_6.html#SEC56">5. Strings</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC57" HREF="octave_6.html#SEC57">5.1 Creating Strings</A>
+<BR>
+<A NAME="TOC58" HREF="octave_6.html#SEC58">5.2 Searching and Replacing</A>
+<BR>
+<A NAME="TOC59" HREF="octave_6.html#SEC59">5.3 String Conversions</A>
+<BR>
+<A NAME="TOC60" HREF="octave_6.html#SEC60">5.4 Character Class Functions</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC61" HREF="octave_7.html#SEC61">6. Data Structures</A>
+<BR>
+<A NAME="TOC62" HREF="octave_8.html#SEC62">7. Containers</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC63" HREF="octave_8.html#SEC63">7.1 Lists</A>
+<BR>
+<A NAME="TOC64" HREF="octave_8.html#SEC64">7.2 Cell Arrays</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC65" HREF="octave_9.html#SEC65">8. I/O Streams</A>
+<BR>
+<A NAME="TOC66" HREF="octave_10.html#SEC66">9. Variables</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC67" HREF="octave_10.html#SEC67">9.1 Global Variables</A>
+<BR>
+<A NAME="TOC68" HREF="octave_10.html#SEC68">9.2 Status of Variables</A>
+<BR>
+<A NAME="TOC69" HREF="octave_10.html#SEC69">9.3 Summary of Built-in Variables</A>
+<BR>
+<A NAME="TOC70" HREF="octave_10.html#SEC70">9.4 Defaults from the Environment</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC71" HREF="octave_11.html#SEC71">10. Expressions</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC72" HREF="octave_11.html#SEC72">10.1 Index Expressions</A>
+<BR>
+<A NAME="TOC73" HREF="octave_11.html#SEC73">10.2 Calling Functions</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC74" HREF="octave_11.html#SEC74">10.2.1 Call by Value</A>
+<BR>
+<A NAME="TOC75" HREF="octave_11.html#SEC75">10.2.2 Recursion</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC76" HREF="octave_11.html#SEC76">10.3 Arithmetic Operators</A>
+<BR>
+<A NAME="TOC77" HREF="octave_11.html#SEC77">10.4 Comparison Operators</A>
+<BR>
+<A NAME="TOC78" HREF="octave_11.html#SEC78">10.5 Boolean Expressions</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC79" HREF="octave_11.html#SEC79">10.5.1 Element-by-element Boolean Operators</A>
+<BR>
+<A NAME="TOC80" HREF="octave_11.html#SEC80">10.5.2 Short-circuit Boolean Operators</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC81" HREF="octave_11.html#SEC81">10.6 Assignment Expressions</A>
+<BR>
+<A NAME="TOC82" HREF="octave_11.html#SEC82">10.7 Increment Operators</A>
+<BR>
+<A NAME="TOC83" HREF="octave_11.html#SEC83">10.8 Operator Precedence</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC84" HREF="octave_12.html#SEC84">11. Evaluation</A>
+<BR>
+<A NAME="TOC85" HREF="octave_13.html#SEC85">12. Statements</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC86" HREF="octave_13.html#SEC86">12.1 The <CODE>if</CODE> Statement</A>
+<BR>
+<A NAME="TOC87" HREF="octave_13.html#SEC87">12.2 The <CODE>switch</CODE> Statement</A>
+<BR>
+<A NAME="TOC88" HREF="octave_13.html#SEC88">12.3 The <CODE>while</CODE> Statement</A>
+<BR>
+<A NAME="TOC89" HREF="octave_13.html#SEC89">12.4 The <CODE>do-until</CODE> Statement</A>
+<BR>
+<A NAME="TOC90" HREF="octave_13.html#SEC90">12.5 The <CODE>for</CODE> Statement</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC91" HREF="octave_13.html#SEC91">12.5.1 Looping Over Structure Elements</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC92" HREF="octave_13.html#SEC92">12.6 The <CODE>break</CODE> Statement</A>
+<BR>
+<A NAME="TOC93" HREF="octave_13.html#SEC93">12.7 The <CODE>continue</CODE> Statement</A>
+<BR>
+<A NAME="TOC94" HREF="octave_13.html#SEC94">12.8 The <CODE>unwind_protect</CODE> Statement</A>
+<BR>
+<A NAME="TOC95" HREF="octave_13.html#SEC95">12.9 The <CODE>try</CODE> Statement</A>
+<BR>
+<A NAME="TOC96" HREF="octave_13.html#SEC96">12.10 Continuation Lines</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC97" HREF="octave_14.html#SEC97">13. Functions and Script Files</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC98" HREF="octave_14.html#SEC98">13.1 Defining Functions</A>
+<BR>
+<A NAME="TOC99" HREF="octave_14.html#SEC99">13.2 Multiple Return Values</A>
+<BR>
+<A NAME="TOC100" HREF="octave_14.html#SEC100">13.3 Variable-length Argument Lists</A>
+<BR>
+<A NAME="TOC101" HREF="octave_14.html#SEC101">13.4 Variable-length Return Lists</A>
+<BR>
+<A NAME="TOC102" HREF="octave_14.html#SEC102">13.5 Returning From a Function</A>
+<BR>
+<A NAME="TOC103" HREF="octave_14.html#SEC103">13.6 Function Files</A>
+<BR>
+<A NAME="TOC104" HREF="octave_14.html#SEC104">13.7 Script Files</A>
+<BR>
+<A NAME="TOC105" HREF="octave_14.html#SEC105">13.8 Dynamically Linked Functions</A>
+<BR>
+<A NAME="TOC106" HREF="octave_14.html#SEC106">13.9 Organization of Functions Distributed with Octave</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC107" HREF="octave_15.html#SEC107">14. Error Handling</A>
+<BR>
+<A NAME="TOC108" HREF="octave_16.html#SEC108">15. Debugging</A>
+<BR>
+<A NAME="TOC109" HREF="octave_17.html#SEC109">16. Input and Output</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC110" HREF="octave_17.html#SEC110">16.1 Basic Input and Output</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC111" HREF="octave_17.html#SEC111">16.1.1 Terminal Output</A>
+<BR>
+<A NAME="TOC112" HREF="octave_17.html#SEC112">16.1.2 Terminal Input</A>
+<BR>
+<A NAME="TOC113" HREF="octave_17.html#SEC113">16.1.3 Simple File I/O</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC114" HREF="octave_17.html#SEC114">16.2 C-Style I/O Functions</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC115" HREF="octave_17.html#SEC115">16.2.1 Opening and Closing Files</A>
+<BR>
+<A NAME="TOC116" HREF="octave_17.html#SEC116">16.2.2 Simple Output</A>
+<BR>
+<A NAME="TOC117" HREF="octave_17.html#SEC117">16.2.3 Line-Oriented Input</A>
+<BR>
+<A NAME="TOC118" HREF="octave_17.html#SEC118">16.2.4 Formatted Output</A>
+<BR>
+<A NAME="TOC119" HREF="octave_17.html#SEC119">16.2.5 Output Conversion for Matrices</A>
+<BR>
+<A NAME="TOC120" HREF="octave_17.html#SEC120">16.2.6 Output Conversion Syntax</A>
+<BR>
+<A NAME="TOC121" HREF="octave_17.html#SEC121">16.2.7 Table of Output Conversions</A>
+<BR>
+<A NAME="TOC122" HREF="octave_17.html#SEC122">16.2.8 Integer Conversions</A>
+<BR>
+<A NAME="TOC123" HREF="octave_17.html#SEC123">16.2.9 Floating-Point Conversions</A>
+<BR>
+<A NAME="TOC124" HREF="octave_17.html#SEC124">16.2.10 Other Output Conversions</A>
+<BR>
+<A NAME="TOC125" HREF="octave_17.html#SEC125">16.2.11 Formatted Input</A>
+<BR>
+<A NAME="TOC126" HREF="octave_17.html#SEC126">16.2.12 Input Conversion Syntax</A>
+<BR>
+<A NAME="TOC127" HREF="octave_17.html#SEC127">16.2.13 Table of Input Conversions</A>
+<BR>
+<A NAME="TOC128" HREF="octave_17.html#SEC128">16.2.14 Numeric Input Conversions</A>
+<BR>
+<A NAME="TOC129" HREF="octave_17.html#SEC129">16.2.15 String Input Conversions</A>
+<BR>
+<A NAME="TOC130" HREF="octave_17.html#SEC130">16.2.16 Binary I/O</A>
+<BR>
+<A NAME="TOC131" HREF="octave_17.html#SEC131">16.2.17 Temporary Files</A>
+<BR>
+<A NAME="TOC132" HREF="octave_17.html#SEC132">16.2.18 End of File and Errors</A>
+<BR>
+<A NAME="TOC133" HREF="octave_17.html#SEC133">16.2.19 File Positioning</A>
+<BR>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<A NAME="TOC134" HREF="octave_18.html#SEC134">17. Plotting</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC135" HREF="octave_18.html#SEC135">17.1 Two-Dimensional Plotting</A>
+<BR>
+<A NAME="TOC136" HREF="octave_18.html#SEC136">17.2 Specialized Two-Dimensional Plots</A>
+<BR>
+<A NAME="TOC137" HREF="octave_18.html#SEC137">17.3 Three-Dimensional Plotting</A>
+<BR>
+<A NAME="TOC138" HREF="octave_18.html#SEC138">17.4 Plot Annotations</A>
+<BR>
+<A NAME="TOC139" HREF="octave_18.html#SEC139">17.5 Multiple Plots on One Page</A>
+<BR>
+<A NAME="TOC140" HREF="octave_18.html#SEC140">17.6 Multiple Plot Windows</A>
+<BR>
+<A NAME="TOC141" HREF="octave_18.html#SEC141">17.7 Interaction with <CODE>gnuplot</CODE></A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC142" HREF="octave_19.html#SEC142">18. Matrix Manipulation</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC143" HREF="octave_19.html#SEC143">18.1 Finding Elements and Checking Conditions</A>
+<BR>
+<A NAME="TOC144" HREF="octave_19.html#SEC144">18.2 Rearranging Matrices</A>
+<BR>
+<A NAME="TOC145" HREF="octave_19.html#SEC145">18.3 Special Utility Matrices</A>
+<BR>
+<A NAME="TOC146" HREF="octave_19.html#SEC146">18.4 Famous Matrices</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC147" HREF="octave_20.html#SEC147">19. Arithmetic</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC148" HREF="octave_20.html#SEC148">19.1 Utility Functions</A>
+<BR>
+<A NAME="TOC149" HREF="octave_20.html#SEC149">19.2 Complex Arithmetic</A>
+<BR>
+<A NAME="TOC150" HREF="octave_20.html#SEC150">19.3 Trigonometry</A>
+<BR>
+<A NAME="TOC151" HREF="octave_20.html#SEC151">19.4 Sums and Products</A>
+<BR>
+<A NAME="TOC152" HREF="octave_20.html#SEC152">19.5 Special Functions</A>
+<BR>
+<A NAME="TOC153" HREF="octave_20.html#SEC153">19.6 Coordinate Transformations</A>
+<BR>
+<A NAME="TOC154" HREF="octave_20.html#SEC154">19.7 Mathematical Constants</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC155" HREF="octave_21.html#SEC155">20. Linear Algebra</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC156" HREF="octave_21.html#SEC156">20.1 Basic Matrix Functions</A>
+<BR>
+<A NAME="TOC157" HREF="octave_21.html#SEC157">20.2 Matrix Factorizations</A>
+<BR>
+<A NAME="TOC158" HREF="octave_21.html#SEC158">20.3 Functions of a Matrix</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC159" HREF="octave_22.html#SEC159">21. Nonlinear Equations</A>
+<BR>
+<A NAME="TOC160" HREF="octave_23.html#SEC160">22. Quadrature</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC161" HREF="octave_23.html#SEC161">22.1 Functions of One Variable</A>
+<BR>
+<A NAME="TOC162" HREF="octave_23.html#SEC162">22.2 Orthogonal Collocation</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC163" HREF="octave_24.html#SEC163">23. Differential Equations</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC164" HREF="octave_24.html#SEC164">23.1 Ordinary Differential Equations</A>
+<BR>
+<A NAME="TOC165" HREF="octave_24.html#SEC165">23.2 Differential-Algebraic Equations</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC166" HREF="octave_25.html#SEC166">24. Optimization</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC167" HREF="octave_25.html#SEC167">24.1 Linear Programming</A>
+<BR>
+<A NAME="TOC168" HREF="octave_25.html#SEC168">24.2 Quadratic Programming</A>
+<BR>
+<A NAME="TOC169" HREF="octave_25.html#SEC169">24.3 Nonlinear Programming</A>
+<BR>
+<A NAME="TOC170" HREF="octave_25.html#SEC170">24.4 Linear Least Squares</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC171" HREF="octave_26.html#SEC171">25. Statistics</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC172" HREF="octave_26.html#SEC172">25.1 Basic Statistical Functions</A>
+<BR>
+<A NAME="TOC173" HREF="octave_26.html#SEC173">25.2 Tests</A>
+<BR>
+<A NAME="TOC174" HREF="octave_26.html#SEC174">25.3 Models</A>
+<BR>
+<A NAME="TOC175" HREF="octave_26.html#SEC175">25.4 Distributions</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC176" HREF="octave_27.html#SEC176">26. Financial Functions</A>
+<BR>
+<A NAME="TOC177" HREF="octave_28.html#SEC177">27. Sets</A>
+<BR>
+<A NAME="TOC178" HREF="octave_29.html#SEC178">28. Polynomial Manipulations</A>
+<BR>
+<A NAME="TOC179" HREF="octave_30.html#SEC179">29. Control Theory</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC180" HREF="octave_30.html#SEC180">29.1 System Data Structure</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC181" HREF="octave_30.html#SEC181">29.1.1 Variables common to all OCST system formats</A>
+<BR>
+<A NAME="TOC182" HREF="octave_30.html#SEC182">29.1.2 <CODE>tf</CODE> format variables</A>
+<BR>
+<A NAME="TOC183" HREF="octave_30.html#SEC183">29.1.3 <CODE>zp</CODE> format variables</A>
+<BR>
+<A NAME="TOC184" HREF="octave_30.html#SEC184">29.1.4 <CODE>ss</CODE> format variables</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC185" HREF="octave_30.html#SEC185">29.2 System Construction and Interface Functions</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC186" HREF="octave_30.html#SEC186">29.2.1 Finite impulse response system interface functions</A>
+<BR>
+<A NAME="TOC187" HREF="octave_30.html#SEC187">29.2.2 State space system interface functions</A>
+<BR>
+<A NAME="TOC188" HREF="octave_30.html#SEC188">29.2.3 Transfer function system interface functions</A>
+<BR>
+<A NAME="TOC189" HREF="octave_30.html#SEC189">29.2.4 Zero-pole system interface functions</A>
+<BR>
+<A NAME="TOC190" HREF="octave_30.html#SEC190">29.2.5 Data structure access functions</A>
+<BR>
+<A NAME="TOC191" HREF="octave_30.html#SEC191">29.2.6 Data structure internal functions</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC192" HREF="octave_30.html#SEC192">29.3 System display functions</A>
+<BR>
+<A NAME="TOC193" HREF="octave_30.html#SEC193">29.4 Block Diagram Manipulations</A>
+<BR>
+<A NAME="TOC194" HREF="octave_30.html#SEC194">29.5 Numerical Functions</A>
+<BR>
+<A NAME="TOC195" HREF="octave_30.html#SEC195">29.6 System Analysis-Properties</A>
+<BR>
+<A NAME="TOC196" HREF="octave_30.html#SEC196">29.7 System Analysis-Time Domain</A>
+<BR>
+<A NAME="TOC197" HREF="octave_30.html#SEC197">29.8 System Analysis-Frequency Domain</A>
+<BR>
+<A NAME="TOC198" HREF="octave_30.html#SEC198">29.9 Controller Design</A>
+<BR>
+<A NAME="TOC199" HREF="octave_30.html#SEC199">29.10 Miscellaneous Functions (Not yet properly filed/documented)</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC200" HREF="octave_31.html#SEC200">30. Signal Processing</A>
+<BR>
+<A NAME="TOC201" HREF="octave_32.html#SEC201">31. Image Processing</A>
+<BR>
+<A NAME="TOC202" HREF="octave_33.html#SEC202">32. Audio Processing</A>
+<BR>
+<A NAME="TOC203" HREF="octave_34.html#SEC203">33. Quaternions</A>
+<BR>
+<A NAME="TOC204" HREF="octave_35.html#SEC204">34. System Utilities</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC205" HREF="octave_35.html#SEC205">34.1 Timing Utilities</A>
+<BR>
+<A NAME="TOC206" HREF="octave_35.html#SEC206">34.2 Filesystem Utilities</A>
+<BR>
+<A NAME="TOC207" HREF="octave_35.html#SEC207">34.3 Controlling Subprocesses</A>
+<BR>
+<A NAME="TOC208" HREF="octave_35.html#SEC208">34.4 Process, Group, and User IDs</A>
+<BR>
+<A NAME="TOC209" HREF="octave_35.html#SEC209">34.5 Environment Variables</A>
+<BR>
+<A NAME="TOC210" HREF="octave_35.html#SEC210">34.6 Current Working Directory</A>
+<BR>
+<A NAME="TOC211" HREF="octave_35.html#SEC211">34.7 Password Database Functions</A>
+<BR>
+<A NAME="TOC212" HREF="octave_35.html#SEC212">34.8 Group Database Functions</A>
+<BR>
+<A NAME="TOC213" HREF="octave_35.html#SEC213">34.9 System Information</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC214" HREF="octave_36.html#SEC214">A. Tips and Standards</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC215" HREF="octave_36.html#SEC215">A.1 Writing Clean Octave Programs</A>
+<BR>
+<A NAME="TOC216" HREF="octave_36.html#SEC216">A.2 Tips for Making Code Run Faster.</A>
+<BR>
+<A NAME="TOC217" HREF="octave_36.html#SEC217">A.3 Tips for Documentation Strings</A>
+<BR>
+<A NAME="TOC218" HREF="octave_36.html#SEC218">A.4 Tips on Writing Comments</A>
+<BR>
+<A NAME="TOC219" HREF="octave_36.html#SEC219">A.5 Conventional Headers for Octave Functions</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC220" HREF="octave_37.html#SEC220">B. Known Causes of Trouble</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC221" HREF="octave_37.html#SEC221">B.1 Actual Bugs We Haven't Fixed Yet</A>
+<BR>
+<A NAME="TOC222" HREF="octave_37.html#SEC222">B.2 Reporting Bugs</A>
+<BR>
+<A NAME="TOC223" HREF="octave_37.html#SEC223">B.3 Have You Found a Bug?</A>
+<BR>
+<A NAME="TOC224" HREF="octave_37.html#SEC224">B.4 Where to Report Bugs</A>
+<BR>
+<A NAME="TOC225" HREF="octave_37.html#SEC225">B.5 How to Report Bugs</A>
+<BR>
+<A NAME="TOC226" HREF="octave_37.html#SEC226">B.6 Sending Patches for Octave</A>
+<BR>
+<A NAME="TOC227" HREF="octave_37.html#SEC227">B.7 How To Get Help with Octave</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC228" HREF="octave_38.html#SEC228">C. Installing Octave</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC229" HREF="octave_38.html#SEC229">C.1 Installation Problems</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC230" HREF="octave_39.html#SEC230">D. Emacs Octave Support</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC231" HREF="octave_39.html#SEC231">D.1 Installing EOS</A>
+<BR>
+<A NAME="TOC232" HREF="octave_39.html#SEC232">D.2 Using Octave Mode</A>
+<BR>
+<A NAME="TOC233" HREF="octave_39.html#SEC233">D.3 Running Octave From Within Emacs</A>
+<BR>
+<A NAME="TOC234" HREF="octave_39.html#SEC234">D.4 Using the Emacs Info Reader for Octave</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC235" HREF="octave_40.html#SEC235">E. Grammar</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC236" HREF="octave_40.html#SEC236">E.1 Keywords</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC237" HREF="octave_41.html#SEC237">F. GNU GENERAL PUBLIC LICENSE</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC238" HREF="octave_41.html#SEC238">F.1 Preamble</A>
+<BR>
+<A NAME="TOC239" HREF="octave_41.html#SEC239">F.2 Appendix: How to Apply These Terms to Your New Programs</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC240" HREF="octave_42.html#SEC240">Concept Index</A>
+<BR>
+<A NAME="TOC241" HREF="octave_43.html#SEC241">Variable Index</A>
+<BR>
+<A NAME="TOC242" HREF="octave_44.html#SEC242">Function Index</A>
+<BR>
+<A NAME="TOC243" HREF="octave_45.html#SEC243">Operator Index</A>
+<BR>
+</BLOCKQUOTE>
+<HR SIZE=1>
+<BR>
+<FONT SIZE="-1">
+This document was generated
+by <I>John W. Eaton</I> on <I>November, 18 2003</I>
+using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
+</FONT>
+
+</BODY>
+</HTML>
+

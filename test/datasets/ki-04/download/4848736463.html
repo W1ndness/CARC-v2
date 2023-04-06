@@ -1,0 +1,515 @@
+<!-- <DOCUMENT>
+	<FILE>
+		4848736463.html
+	</FILE>
+	<URL>
+		http://www.w3.org/Amaya/User/BinDist
+	</URL>
+	<TITLE>
+		Amaya 8.2 Binary Release
+	</TITLE>
+	<GENRE>
+		download
+	</GENRE>
+	<PLAINTEXT>
+ Amaya 8.2 Binary Release About Amaya Home page Overview Release history Amaya in the Press Download Amaya Distributions Source RPMs CVS Latest CVS changes Bugs and Wishlist Mailing lists www-amaya www-amaya-dev www-amaya-doc amaya@ml.free.fr Documentation Users and Developers FAQ Project Contributors Contributors How to contribute Open projects Amaya 8.2 Binary Release About this release Release date: 13 November 2003 Snapshot 8.2+ date: 13 January 2004 Amaya is intended to be a comprehensive client environment for testing and evaluating new proposals for Web standards and formats. A large part of the intended features of Amaya are implemented in this release, but some of them are not complete yet. Check out the list of new features . The Amaya binary distribution is available for PC Linux (GTK/OpenGL), Windows (NT, XP, 2000, 98). Users having other architectures are expected to compile the Amaya source code . Release schedule The W3C Position Statement on Amaya describes the planned developments for Amaya . Between each major release, we may generate patch releases which fix important bugs. Each a time a new release is made available, an email will be sent to the www-amaya mailing list. Getting the binary distribution The binary distribution is available for a set of Windows and Unix platforms. When installing Amaya for the first time on Windows NT/2000/XP platforms, Amaya will try to create the Amaya user directory in the following order: 1) By looking at the values of the HOMEDRIVE and HOMEPATH environment variables, 2) Document and settings\login-name\. WINNT\profiles\login-name. When reinstalling Amaya, Amaya will see if the Amaya user directory already existed in one of those paths before trying to create a new one. Snapshot 8.2+ Platform Size http download ftp Europe or US Windows NT/2000/XP about 4,902,000 bytes** amaya-WinXP-8.2+.exe amaya-WinXP-8.2+.exe Amaya Documentation (French, Spanish, German) Windows platforms about 1,587,000 bytes amayadoc-8.2+.exe amayadoc-8.2+.exe Linux Debian 3.0: GTK version about 3,639,000 bytes** amaya-GTK-8.2+.tgz amaya-GTK-8.2+.tgz Debian 3.0 (woody) package: GTK version about 5,506,000 bytes amaya_gtk-8.2+-1_i386.deb amaya_gtk-8.2+-1_i386.deb RedHat 9 RPM i386 packages: GTK version (should work with Mandrake and SuZE) about 4,695,000 bytes** amaya_gtk-8.2+-1.i386.rpm amaya_gtk-8.2+-1.i386.rpm Amaya Documentation (French, Spanish, German) Unix platforms about 1,587,000 bytes amayadoc-8.2+.tgz amayadoc-8.2+.tgz Release 8.2 Platform Size http download ftp Europe or US Windows NT/2000/XP about 4,902,000 bytes** amaya-WinXP-8.2.exe amaya-WinXP-8.2.exe Windows 98/ME about 5,512,000 bytes** amaya-Win98-8.2.exe amaya-Win98-8.2.exe Amaya Documentation (French, Spanish, German) Windows platforms about 2,591,000 bytes amayadoc-8.2.exe amayadoc-8.2.exe Linux Debian 3.0: GTK version about 3,639,000 bytes** amaya-GTK-8.2.tgz amaya-GTK-8.2.tgz Debian 3.0 (woody) package: GTK version about 5,506,000 bytes amaya_gtk-8.2-1_i386.deb amaya_gtk-8.2-1_i386.deb RedHat 9 RPM i386 packages: GTK version (should work with Mandrake and SuZE) about 4,695,000 bytes** amaya_gtk-8.2-1.i386.rpm amaya_gtk-8.2-1.i386.rpm Windows NT/2000/XP: OpenGL version about 5,051,000 bytes** amaya-WinGL-8.2.exe amaya-WinGL-8.2.exe Linux Debian 3.0: OpenGL version about 3,699,000 bytes** amaya-GL-8.2.tgz amaya-GL-8.2.tgz RedHat 9 RPM i386 packages: OpenGL version (should work with Mandrake and SuZE) about 4,665,000 bytes** amaya_gl-8.2-1.i386.rpm amaya_gl-8.2-1.i386.rpm Amaya Documentation (French, Spanish, German) Unix platforms about 1,587,000 bytes amayadoc-8.2.tgz amayadoc-8.2.tgz **These distributions include English dictionaries used by the spell-checker. The extra file amayadoc includes French dictionaries. These are internationalized versions of Amaya. Today these versions work vith a limited set of fonts. On Linux platforms the demo works with ms fonts (see packages msttcorefonts)or Unicode fonts delivered by Markus Kuhn &lt;Markus.Kuhn@cl.cam.ac.uk&gt; ( http://www.cl.cam.ac.uk/%7emgk25/ucs-fonts.html ). OpenGL versions share configuration files with standard distributions. Binaries are stored within specific sub-directories: Amaya\WindowsGL\bin\amaya.exe for the Windows version, Amaya/GL/bin/amaya for the Linux version. Some previous Amaya releases are still availalbe in http://www.w3.org/Amaya/Distribution Other contributions Release 8.2 - for Solaris 9: http://jrankin.ath.cx/amaya/ RPM distributions are also available at http://rpmfind.net/linux/rpm2html/search.php?query=amaya. Debian.org site (probably the same version, but generated using the Debian testing and unstable releases) Installing or compiling Amaya MacOSX Installing Amaya Please follow the directions given in the Unix , Windows , or MacOSX installation notes. Further documentation is provided inside the distribution tar file and in the Amaya on-line documentation page. How to change the dialogue language By default Amaya works with an English dialogue and comes with an English in-line documentation. Dialogues in other languages (French, German, Spanish, Portuguese, Italian, and Finnish) are provided in the standard distribution, but translated versions of the in-line documentation (in French, German, and Spanish) have to be downloaded separately: When other dialogues are installed, users can change the dialogue language through the configuration menu Special &gt; Preferences &gt; General ( fr for French, de for German, es for Spanish, pt for Portuguese, it for Italian, and fi for Finnish). Installing dictionaries Amaya includes a spell-checker. By default French and English dictionaries are included in the distribution If your distribution doesn't include them (see Amaya/dicopar/*.dic ), you must download and install a dictionary for the language you want to check. These dictionaries are not complete, so the spell-checker could report spelling errors just because the dictionary doesn't include these words. This is the list of dictionary tar files currently available. : Dutch dictionary Dutch.tgz (1228,989 bytes) gzipped tar file (last update: 14 December 1999). download ( http ), ( ftp Europe or US ), ( ftp mirror in Australia ) English dictionary English.tgz (660,990 bytes) gzipped tar file (last update: 29 October 2001). download ( http ), ( ftp Europe or US ), ( ftp mirror in Australia ). French dictionary French.tgz (801,407 bytes) gzipped tar file (last update: 29 October 2001). download ( http ), ( ftp Europe or US ), ( ftp mirror in Australia ) German dictionary German.tgz (1132,270 bytes) gzipped tar file (last update: 14 December 1999). download ( http ), ( ftp Europe or US ), ( ftp mirror in Australia ) Italian dictionary Italian.tgz (323,845 bytes) gzipped tar file (last update: 14 December 1999). download ( http ), ( ftp Europe or US ), ( ftp mirror in Australia ) Spanish dictionary Spanish.tgz (525,267 bytes) gzipped tar file (last update: 14 December 1999). download ( http ), ( ftp Europe or US ), ( ftp mirror in Australia ) Swedish dictionary Swedish.tgz (96,316 bytes) gzipped tar file (last update: 14 December 1999). download ( http ), ( ftp Europe or US ), ( ftp mirror in Australia ) To install a dictionary you have just to unzip and untar it into the current directory Amaya/dicopar with the command " tar xzf gzipped-tar-file ". Irène Vatton $ Date: 2004/01/15 14:43:34 $ Copyright © 1994-2003 INRIA and W3C ® ( MIT , ERCIM , Keio ), All Rights Reserved. W3C liability, trademark , document use and software licensing rules apply. Your interactions with this site are in accordance with our public and Member privacy statements. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Amaya 8.2 Binary Release</title>
+  <style type="text/css">
+.contrib { font-style: italic; font-size: 10pt; color: #B20000}</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link href="../amaya.css" rel="stylesheet" type="text/css">
+</head>
+
+<body lang="en">
+
+<div id="head">
+<p><a href="../../"><img border="0" alt="W3C"
+src="../../Icons/WWW/w3c_home"></a> <a href="../"><img border="0"
+src="../Icons/amaya.gif" alt="Amaya"></a> <a href="Manual.html"><img
+border="0" src="../Icons/doc48x.gif" alt="Using"></a></p>
+</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td valign="top">
+        <table width="150" class="nav">
+          <tbody>
+            <tr>
+              <td><p class="title"><img src="../Icons/amaya1.gif" alt="Amaya"
+                border="0" align="middle" width="20" height="20"> About
+                Amaya</p>
+                <ul>
+                  <li><a href="../">Home page</a></li>
+                  <li><a href="../Amaya.html">Overview</a></li>
+                  <li><a href="New.html">Release history</a></li>
+                  <li><a href="../Press.html">Amaya in the Press</a></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><p class="title"><img src="/Icons/WWW/install48x"
+                alt="INSTALL" height="20" width="20" align="middle"> Download
+                Amaya</p>
+                <ul>
+                  <li><span class="here">Distributions</span></li>
+                  <li><a href="SourceDist.html">Source</a></li>
+                  <li><a
+                    href="http://rpmfind.net/linux/rpm2html/search.php?query=amaya">RPMs</a></li>
+                  <li><a href="cvs.html">CVS</a></li>
+                  <li><a href="Changelog.html">Latest CVS changes</a></li>
+                  <li><a href="Bugs.html">Bugs and Wishlist</a></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><p class="title"><img src="/Icons/WWW/mail48x" alt="Mail"
+                border="0" align="middle" width="20" height="20"> Mailing
+                lists</p>
+                <ul>
+                  <li><a href="Mailing.html">www-amaya</a></li>
+                  <li><a href="Mailing.html">www-amaya-dev</a></li>
+                  <li><a href="Mailing.html">www-amaya-doc</a></li>
+                  <li><a href="Mailing.html">amaya@ml.free.fr</a></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><p class="title"><img src="/Icons/doc48x.gif"
+                alt="Documentation" align="middle" width="20" height="20">
+                Documentation</p>
+                <ul>
+                  <li><a href="Overview.html">Users and Developers</a></li>
+                  <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><p class="title"><img src="/Icons/WWW/people_48x48"
+                alt="People" align="middle" height="20" width="20"> Project
+                Contributors</p>
+                <ul>
+                  <li><a href="../Actors.html">Contributors</a></li>
+                  <li><a href="../Actors.html#contribute1">How to
+                    contribute</a></li>
+                  <li><a href="Stage.html">Open projects</a></li>
+                </ul>
+
+                <p></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td valign="top"><h1>Amaya 8.2 Binary Release</h1>
+
+        <h2>About this release</h2>
+
+        <p>Release date: 13 November 2003<br>
+        Snapshot 8.2+ date: 13 January 2004</p>
+
+        <p><strong>Amaya</strong> is intended to be a comprehensive client
+        environment for testing and evaluating new proposals for Web
+        standards and formats. A large part of the intended features of
+        <strong>Amaya</strong> are implemented in this release, but some of
+        them are not complete yet.</p>
+
+        <p>Check out the <a href="New.html">list of new features</a>.</p>
+
+        <p>The Amaya binary distribution is available for PC Linux
+        (GTK/OpenGL), Windows (NT, XP, 2000, 98). Users having other
+        architectures are expected to compile the Amaya <a
+        href="SourceDist.html">source code</a>.</p>
+
+        <h3>Release schedule</h3>
+
+        <p>The W3C <a href="../Activity.html">Position Statement</a> on Amaya
+        describes the planned developments for <strong>Amaya</strong>.</p>
+
+        <p>Between each major release, we may generate <em>patch</em>
+        releases which fix important bugs.</p>
+
+        <p>Each a time a new release is made available, an email  will be
+        sent to the www-amaya mailing list.</p>
+
+        <h2>Getting the binary distribution</h2>
+
+        <p>The binary distribution is available for a set of Windows and Unix
+        platforms.</p>
+
+        <p>When installing Amaya for the first time on Windows NT/2000/XP
+        platforms, Amaya will try to create the Amaya user directory in the
+        following order: 1) By looking at the values of the HOMEDRIVE and
+        HOMEPATH environment variables, 2) Document and settings\login-name\.
+        WINNT\profiles\login-name. When reinstalling Amaya, Amaya will see if
+        the Amaya user directory already existed in one of those paths before
+        trying to create a new one.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Snapshot 8.2+</h3>
+
+<table border="1">
+  <caption></caption>
+  <tbody>
+    <tr class="nav">
+      <th>Platform</th>
+      <th>Size</th>
+      <th>http download</th>
+      <th>ftp Europe or US</th>
+    </tr>
+    <tr>
+      <th>Windows NT/2000/XP</th>
+      <td>about 4,902,000 bytes**</td>
+      <td><a
+        href="../Distribution/amaya-WinXP-8.2+.exe">amaya-WinXP-8.2+.exe</a></td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya-WinXP-8.2+.exe">amaya-WinXP-8.2+.exe</a></td>
+    </tr>
+    <tr class="nav">
+      <th>Amaya Documentation<br>
+        (French, Spanish, German)<br>
+        Windows platforms</th>
+      <td>about 1,587,000 bytes</td>
+      <td><a
+      href="../Distribution/amayadoc-8.2+.exe">amayadoc-8.2+.exe</a></td>
+      <td><a
+      href="../Distribution/amayadoc-8.2+.exe">amayadoc-8.2+.exe</a></td>
+    </tr>
+    <tr>
+      <th>Linux Debian 3.0:
+
+        <p><a href="AmayaGTK.html">GTK</a> version</p>
+      </th>
+      <td>about 3,639,000 bytes**</td>
+      <td><a
+      href="../Distribution/amaya-GTK-8.2+.tgz">amaya-GTK-8.2+.tgz</a></td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya-GTK-8.2+.tgz">amaya-GTK-8.2+.tgz</a></td>
+    </tr>
+    <tr>
+      <th>Debian 3.0 (woody) package:
+
+        <p>GTK version</p>
+      </th>
+      <td>about 5,506,000 bytes</td>
+      <td><a
+        href="../Distribution/amaya_gtk-8.2+-1_i386.deb">amaya_gtk-8.2+-1_i386.deb</a><br>
+      </td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya_gtk-8.2+-1_i386.deb">amaya_gtk-8.2+-1_i386.deb</a><br>
+      </td>
+    </tr>
+    <tr>
+      <th>RedHat 9 RPM i386 packages:
+
+        <p>GTK version</p>
+
+        <p>(should work with Mandrake and SuZE)</p>
+      </th>
+      <td>about 4,695,000 bytes**</td>
+      <td><a
+        href="../Distribution/amaya_gtk-8.2+-1.i386.rpm">amaya_gtk-8.2+-1.i386.rpm</a><br>
+      </td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya_gtk-8.2+-1.i386.rpm">amaya_gtk-8.2+-1.i386.rpm</a><br>
+      </td>
+    </tr>
+    <tr class="nav">
+      <th>Amaya Documentation<br>
+        (French, Spanish, German)<br>
+        Unix platforms</th>
+      <td>about 1,587,000 bytes</td>
+      <td><p><a
+        href="../Distribution/amayadoc-8.2+.tgz">amayadoc-8.2+.tgz</a></p>
+      </td>
+      <td><a
+      href="../Distribution/amayadoc-8.2+.tgz">amayadoc-8.2+.tgz</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p></p>
+
+<h3>Release 8.2</h3>
+
+<table border="1">
+  <caption></caption>
+  <tbody>
+    <tr class="nav">
+      <th>Platform</th>
+      <th>Size</th>
+      <th>http download</th>
+      <th>ftp Europe or US</th>
+    </tr>
+    <tr>
+      <th>Windows NT/2000/XP</th>
+      <td>about 4,902,000 bytes**</td>
+      <td><a
+        href="../Distribution/amaya-WinXP-8.2.exe">amaya-WinXP-8.2.exe</a></td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya-WinXP-8.2.exe">amaya-WinXP-8.2.exe</a></td>
+    </tr>
+    <tr>
+      <th>Windows 98/ME</th>
+      <td>about 5,512,000 bytes**</td>
+      <td><a
+        href="../Distribution/amaya-Win98-8.2.exe">amaya-Win98-8.2.exe</a></td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya-Win98-8.2.exe">amaya-Win98-8.2.exe</a></td>
+    </tr>
+    <tr class="nav">
+      <th>Amaya Documentation<br>
+        (French, Spanish, German)<br>
+        Windows platforms</th>
+      <td>about 2,591,000 bytes</td>
+      <td><a href="../Distribution/amayadoc-8.2.exe">amayadoc-8.2.exe</a></td>
+      <td><a href="../Distribution/amayadoc-8.2.exe">amayadoc-8.2.exe</a></td>
+    </tr>
+    <tr>
+      <th>Linux Debian 3.0:
+
+        <p><a href="AmayaGTK.html">GTK</a> version</p>
+      </th>
+      <td>about 3,639,000 bytes**</td>
+      <td><a
+      href="../Distribution/amaya-GTK-8.2.tgz">amaya-GTK-8.2.tgz</a></td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya-GTK-8.2.tgz">amaya-GTK-8.2.tgz</a></td>
+    </tr>
+    <tr>
+      <th>Debian 3.0 (woody) package:
+
+        <p>GTK version</p>
+      </th>
+      <td>about 5,506,000 bytes</td>
+      <td><a
+        href="../Distribution/amaya_gtk-8.2-1_i386.deb">amaya_gtk-8.2-1_i386.deb</a><br>
+      </td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya_gtk-8.2-1_i386.deb">amaya_gtk-8.2-1_i386.deb</a><br>
+      </td>
+    </tr>
+    <tr>
+      <th>RedHat 9 RPM i386 packages:
+
+        <p>GTK version</p>
+
+        <p>(should work with Mandrake and SuZE)</p>
+      </th>
+      <td>about 4,695,000 bytes**</td>
+      <td><a
+        href="../Distribution/amaya_gtk-8.2-1.i386.rpm">amaya_gtk-8.2-1.i386.rpm</a><br>
+      </td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya_gtk-8.2-1.i386.rpm">amaya_gtk-8.2-1.i386.rpm</a><br>
+      </td>
+    </tr>
+    <tr>
+      <th>Windows NT/2000/XP:<br>
+        <a href="AmayaGL.html">OpenGL</a> version</th>
+      <td>about 5,051,000 bytes**</td>
+      <td><a
+        href="../Distribution/amaya-WinGL-8.2.exe">amaya-WinGL-8.2.exe</a></td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya-WinGL-8.2.exe">amaya-WinGL-8.2.exe</a></td>
+    </tr>
+    <tr>
+      <th>Linux Debian 3.0:<br>
+        <a href="AmayaGL.html">OpenGL</a> version</th>
+      <td>about 3,699,000 bytes**</td>
+      <td><a href="../Distribution/amaya-GL-8.2.tgz">amaya-GL-8.2.tgz</a></td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya-GL-8.2.tgz">amaya-GL-8.2.tgz</a></td>
+    </tr>
+    <tr>
+      <th>RedHat 9 RPM i386 packages:
+
+        <p>OpenGL version</p>
+
+        <p>(should work with Mandrake and SuZE)</p>
+      </th>
+      <td>about 4,665,000 bytes**</td>
+      <td><a
+        href="../Distribution/amaya_gl-8.2-1.i386.rpm">amaya_gl-8.2-1.i386.rpm</a><br>
+      </td>
+      <td><a
+        href="ftp://ftp.w3.org/pub/amaya/amaya_gl-8.2-1.i386.rpm">amaya_gl-8.2-1.i386.rpm</a></td>
+    </tr>
+    <tr class="nav">
+      <th>Amaya Documentation<br>
+        (French, Spanish, German)<br>
+        Unix platforms</th>
+      <td>about 1,587,000 bytes</td>
+      <td><a href="../Distribution/amayadoc-8.2.tgz">amayadoc-8.2.tgz</a></td>
+      <td><a href="../Distribution/amayadoc-8.2.tgz">amayadoc-8.2.tgz</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>**These distributions include English dictionaries used by the
+spell-checker. The extra file amayadoc includes French dictionaries.</p>
+
+<p>These are internationalized versions of Amaya. Today these versions work
+vith a limited set of fonts. On Linux platforms the demo works with ms fonts
+(see packages msttcorefonts)or Unicode fonts delivered by Markus Kuhn
+&lt;Markus.Kuhn@cl.cam.ac.uk&gt; (<a
+href="http://www.cl.cam.ac.uk/%7emgk25/ucs-fonts.html">http://www.cl.cam.ac.uk/%7emgk25/ucs-fonts.html</a>).</p>
+
+<p><a href="AmayaGL.html">OpenGL versions</a> share configuration files with
+standard distributions. Binaries are stored within specific sub-directories:
+<code>Amaya\WindowsGL\bin\amaya.exe</code> for the Windows version,
+<code>Amaya/GL/bin/amaya</code> for the Linux version.</p>
+
+<p>Some previous Amaya releases are still availalbe in <a
+href="../Distribution">http://www.w3.org/Amaya/Distribution</a></p>
+
+<h3 style="color: #B20000">Other contributions</h3>
+<ul>
+  <li>Release 8.2 - for Solaris 9: <a
+    href="http://jrankin.ath.cx/amaya/">http://jrankin.ath.cx/amaya/</a></li>
+  <li><strong>RPM</strong> distributions are  also available at <a
+    href="http://rpmfind.net/linux/rpm2html/search.php?query=amaya">http://rpmfind.net/linux/rpm2html/search.php?query=amaya.</a></li>
+  <li><a
+    href="http://packages.debian.org/cgi-bin/search_packages.pl?keywords=amaya&amp;searchon=all&amp;subword=1&amp;version=all&amp;release=all">Debian.org
+    site</a>  (probably the same version, but generated using the Debian
+    testing and unstable releases)</li>
+  <li>Installing or compiling <a href="/2002/09/amaya-darwin">Amaya
+  MacOSX</a></li>
+</ul>
+
+<p></p>
+
+<h2>Installing Amaya</h2>
+
+<p>Please follow the directions given in the <a href="Install.html">Unix</a>,
+<a href="InstallW.html">Windows</a>, or <a
+href="/2002/09/amaya-darwin">MacOSX</a> installation notes.</p>
+
+<p>Further documentation is provided inside the distribution tar file and in
+the <a href="Overview.html">Amaya on-line documentation </a>page.</p>
+
+<h3>How to change the dialogue language</h3>
+
+<p><img alt="New " src="/Icons/WWW/new_red.gif"> By default Amaya works with
+an English dialogue and comes with an English in-line documentation.
+Dialogues in other languages (French, German, Spanish, Portuguese, Italian,
+and Finnish) are provided in the standard distribution, but translated
+versions of the in-line documentation (in French, German, and Spanish) have
+to be downloaded separately:</p>
+
+<p>When other dialogues are installed, users can change the dialogue language
+through the configuration menu <strong>Special &gt; Preferences &gt;
+General</strong> (<code>fr</code> for French, <code>de</code> for German,
+<code>es</code> for Spanish, <code>pt</code> for Portuguese, <code>it</code>
+for Italian, and <code>fi</code> for Finnish).</p>
+
+<h3>Installing dictionaries</h3>
+
+<p><strong>Amaya</strong> includes a spell-checker. By default French and
+English dictionaries are included in the distribution If your distribution
+doesn't include them (see <code>Amaya/dicopar/*.dic</code>), you
+<strong>must</strong> download and install a dictionary for the language  you
+want to check. These dictionaries are not complete, so the spell-checker
+could report spelling errors just because the dictionary doesn't include
+these words.</p>
+
+<p>This is the list of dictionary  tar files currently available. :</p>
+<ul>
+  <li><strong>Dutch dictionary</strong> Dutch.tgz (1228,989 bytes) gzipped
+    tar file (last update: 14 December 1999).
+    <p>download (<a href="../Distribution/Dutch.tgz">http</a>), (<a>ftp
+    Europe or US</a>), (<a
+    href="ftp://mirror.aarnet.edu.au/pub/amaya/Dutch.tgz">ftp mirror in
+    Australia</a>)</p>
+  </li>
+  <li><strong>English dictionary</strong> English.tgz (660,990 bytes) gzipped
+    tar file (last update: 29 October 2001).
+    <p>download (<a href="../Distribution/English.tgz">http</a>), (<a
+    href="ftp://ftp.w3.org/pub/amaya/English.tgz">ftp Europe or US</a>), (<a
+    href="ftp://mirror.aarnet.edu.au/pub/amaya/English.tgz">ftp mirror in
+    Australia</a>).</p>
+  </li>
+  <li><strong>French dictionary</strong> French.tgz (801,407 bytes) gzipped
+    tar file (last update: 29 October 2001).
+    <p>download (<a href="../Distribution/French.tgz">http</a>), (<a
+    href="ftp://ftp.w3.org/pub/amaya/French.tgz">ftp Europe or US</a>), (<a
+    href="ftp://mirror.aarnet.edu.au/pub/amaya/French.tgz">ftp mirror in
+    Australia</a>)</p>
+  </li>
+  <li><strong>German dictionary</strong> German.tgz (1132,270 bytes) gzipped
+    tar file (last update: 14 December 1999).
+    <p>download (<a href="../Distribution/German.tgz">http</a>), (<a
+    href="ftp://ftp.w3.org/pub/amaya/German.tgz">ftp Europe or US</a>), (<a
+    href="ftp://mirror.aarnet.edu.au/pub/amaya/German.tgz">ftp mirror in
+    Australia</a>)</p>
+  </li>
+  <li><strong>Italian dictionary</strong> Italian.tgz (323,845 bytes) gzipped
+    tar file (last update: 14 December 1999).
+    <p>download (<a href="../Distribution/Italian.tgz">http</a>), (<a
+    href="ftp://ftp.w3.org/pub/amaya/Italian.tgz">ftp Europe or US</a>), (<a
+    href="ftp://mirror.aarnet.edu.au/pub/amaya/Italian.tgz">ftp mirror in
+    Australia</a>)</p>
+  </li>
+  <li><strong>Spanish dictionary</strong> Spanish.tgz (525,267 bytes) gzipped
+    tar file (last update: 14 December 1999).
+    <p>download (<a href="../Distribution/Spanish.tgz">http</a>), (<a
+    href="ftp://ftp.w3.org/pub/amaya/Spanish.tgz">ftp Europe or US</a>), (<a
+    href="ftp://mirror.aarnet.edu.au/pub/amaya/Spanish.tgz">ftp mirror in
+    Australia</a>)</p>
+  </li>
+  <li><strong>Swedish dictionary</strong> Swedish.tgz (96,316 bytes) gzipped
+    tar file (last update: 14 December 1999).
+    <p>download (<a href="../Distribution/Swedish.tgz">http</a>), (<a
+    href="ftp://ftp.w3.org/pub/amaya/Swedish.tgz">ftp Europe or US</a>), (<a
+    href="ftp://mirror.aarnet.edu.au/pub/amaya/Swedish.tgz">ftp mirror in
+    Australia</a>)</p>
+  </li>
+</ul>
+
+<p>To install a dictionary you have just to unzip and untar it into the
+current directory <code>Amaya/dicopar </code>with the command "<code>tar xzf
+gzipped-tar-file</code>".</p>
+
+<p></p>
+
+<p><a href="http://validator.w3.org/"><img border="0"
+src="http://validator.w3.org/images/vh40.gif" alt="Valid HTML 4.0!"
+height="31" width="88"></a> <a href="/Amaya"><img
+src="../Icons/w3c-amaya.gif" alt="W3C-Amaya" align="bottom"></a></p>
+<hr>
+<address>
+  <a href="mailto:Irene.Vatton@inria.fr">Irène Vatton</a><br>
+  $Date: 2004/01/15 14:43:34 $
+</address>
+
+<p class="policyfooter"><small>Copyright &nbsp;©&nbsp; 1994-2003 <a
+href="http://www.inria.fr">INRIA</a> and  <a
+href="http://www.w3.org/">W3C</a><sup>®  </sup> (<a
+href="http://www.lcs.mit.edu/">MIT</a>, <a>ERCIM</a>, <a
+href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a
+href="/Consortium/Legal/ipr-notice.html#Legal_Disclaimer">liability,</a> <a
+href="/Consortium/Legal/ipr-notice.html#W3C_Trademarks">trademark</a>, <a
+href="http://www.w3.org/Consortium/Legal/copyright-documents.html">document
+use </a>and <a
+href="http://www.w3.org/Consortium/Legal/copyright-software.html">software
+licensing </a>rules apply. Your interactions with this site are in accordance
+with our <a
+href="http://www.w3.org/Consortium/Legal/privacy-statement.html#Public">public</a>
+and <a
+href="http://www.w3.org/Consortium/Legal/privacy-statement.html#Members">Member</a>
+privacy statements.</small></p>
+
+<p></p>
+</body>
+</html>
+

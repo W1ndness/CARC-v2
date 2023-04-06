@@ -1,0 +1,481 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5181502276.html
+	</FILE>
+	<URL>
+		http://www.cis.temple.edu/~ingargio/cis587/readings/tms.shtml
+	</URL>
+	<TITLE>
+		Problem Solving and Truth Maintenance Systems
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Problem Solving and Truth Maintenance Systems Problem Solving and Truth Maintenance Systems Last Modified: Thursday, 06-Apr-1995 15:01:43 EDT Introduction Justification-Based Truth Maintenance Assumption-Based Truth Maintenance Conclusions References Appendix: The ABC example Introduction Truth Maintenance Systems (TMS), also called Reason Maintenance Systems, are used within Problem Solving Systems, in conjunction with Inference Engines (IE) such as rule-based inference systems, to manage as a Dependency Network the inference engine's beliefs in given sentences. PROBLEM SOLVING SYSTEM +--------------------------------------------+ | | | +----+ +-----+ | | | IE | | TMS | | | +----+ +-----+ | | | +--------------------------------------------+ A TMS is intended to satisfy a number of goals: Provide justifications for conclusions When a problem solving system gives an answer to a user's query, an explanation of the answer is usually required. If the advice to a stockbroker is to invest millions of dollars, an explanation of the reasons for that advice can help the broker reach a reasonable decision. An explanantion can be constructed by the IE by tracing the justification of the assertion. Recognise inconsistencies The IE may tell the TMS that some sentences are contradictory. Then, if on the basis of other IE commands and of inferences we find that all those sentences are believed true, then the TMS reports to the IE that a contradiction has arisen. For instance, in the ABC example the statement that either Abbott, or Babbitt, or Cabot is guilty together with the statements that Abbott is not guilty, Babbitt is not guilty, and Cabot is not guilty, form a contradiction. The IE can eliminate an inconsistency by determining the assumptions used and changing them appropriately, or by presenting the contradictory set of sentences to the users and asking them to choose which sentence(s) to retract. Support default reasoning In many situations we want, in the absence of firmer knowledge, to reason from default assumptions. If Tweety is a bird, until told otherwise, we will assume that Tweety flies and use as justification the fact that Tweety is a bird and the assumption that birds fly. Remember derivations computed previously In the process of determining what is responsible for a network problem, we may have derived, while examining the performance of a name server, that Ms.Doe is an expert on e-mail systems. That conclusion will not need to be derived again when the name server ceases to be the potential culprit for the problem and we examine instead the routers. Support dependency driven backtracking The justification of a sentence, as maintained by the TMS, provides the natural indication of what assumptions need to be changed if we want to invalidate that sentence. Our belief [ by "our belief" we mean the "inference-engine's belief" ] about a sentence can be: false , the sentence is believed to be unconditionally false; this is also called a contradiction true , the sentence is believed unconditionally true; this is also called a premise assumed-true , the sentence is assumed true [we may change our belief later]; this is also called an enabled assumption assumed-false , the sentence is assumed false [we may change our belief later]; this is also called a retracted assumption assumed , the sentence is believed by inference from other sentences don't-care . We say a sentence in in if true or assumed-true; it is out if false, assumed-false, or don't-care. A TMS maintains a Dependency Network . The network is bipartite, with nodes representing sentences and justifications . A sentence may correspond to a fact, such as "Socrates is a man", or a rule, such as "if ?x is a man then ?x is mortal". We will say that a sentence node is a premise if its sentence is true, is a contradiction if its sentence is false, is an assumption if its sentence is assumed-true or assumed-false or assumed. A sentence node receives arcs from justification nodes. Each such justification node provides an argument for believing the given sentence node. In turn a sentence node has arcs to the justification nodes that use it as a premise. A justification node has inputs from sentence nodes, its premises or justifiers , and has output to a sentence node, its conclusion or justificand . A justification node represents the inference of the conclusion from the conjunction of the stated premises. The conventions used in representing graphically dependency networks are summarized here . The TMS maintains the following information with each sentence node: a sentence a label expressing the current belief in the sentence; it is IN for sentences that are believed, and OUT for sentences that are not believed. a list of the justification nodes that support it a list of the justification nodes supported by it an indication if the node is an assumption, contradiction, or premise. The TMS maintains very little information with justification nodes. Only a label with value IN or OUT depending if we believe the justification valid or not. The IE can give at least the following orders to the TMS: create a sentence node with specific properties create a justification with specific premises and conclusions attach rules to sentence nodes and execute them when specific beliefs hold at those nodes [these are like callbacks or triggers; a standard callback informs the IE when a contradiction becomes true] retrieve the properties of a sentence node or its justifications and consequences. Truth Maintenance Systems can have different characteristics: Justification-Based Truth Maintenance System (JTMS) It is a simple TMS where one can examine the consequences of the current set of assumptions. The meaning of sentences is not known. Assumption-Based Truth Maintenance System (ATMS) It allows to maintain and reason with a number of simultaneous, possibly incompatible, current sets of assumption. Otherwise it is similar to JTMS, i.e. it does not recognise the meaning of sentences. Logical-Based Truth Maintenance System (LTMS) Like JTMS in that it reasons with only one set of current assumptions at a time. More powerful than JTMS in that it recognises the propositional semantics of sentences, i.e. understands the relations between p and ~p, p and q and p&q, and so on. We will not discuss further LTMSs. Justification-Based Truth Maintenance A Justification-based truth maintenance system (JTMS) is a simple TMS where one can examine the consequences of the current set of assumptions. In JTMS labels are attacched to arcs from sentence nodes to justification nodes. This label is either "+" or "-". Then, for a justification node we can talk of its in-list, the list of its inputs with "+" label, and of its out-list , the list of its inputs with "-" label. The meaning of sentences is not known. We can have a node representing a sentence p and one representing ~p and the two will be totally unrelated, unless relations are established between them by justifications. For example, we can write: ~p^p Contradiction Node o | x 'x' denotes a justification node / \ 'o' denotes a sentence node +/ \+ o o p ~p which says that if both p and ~p are IN we have a contradiction. The association of IN or OUT labels with the nodes in a dependency network defines an in-out-labeling function . This function is consistent if: The label of a junctification node is IN iff the labels of all the sentence nodes in its in-list are all IN and the labels of all the sentence nodes in its out-list are OUT. The label of a sentence node is IN iff it is a premise, or an enabled assumption node, or it has an input from a justification node with label IN. Here are examples of JTMS operations (see Forbus&deKleer): create-jtms (node-string contradiction-handler enqueue-procedure) creates a dependency network. The parameters are: node-string, a function to be used by the JTMS, which, given a node, returns its description contradiction-handler, a function to be invoked by the JTMS when it recognises a contradiction enqueue-procedure, a function to be called by the JTMS when it changes the label of a node to IN. tms-create-node (jtms datum assumptionp contradictoryp) creates a sentence node. The parameters are: jtms, the jtms within which the sentence node is to be created datum, the sentence assumptionp, true iff this is an assumption node; initially the assumption is retracted contradictoryp, true iff this is a contradictory node Note that premise nodes are recognised because they are given a justification without any premises. enable-assumption(node), retract-assumption(node). These functions respectively enable and retract an existing assumption node. justify-node (informant conclusion-node list-of-premise-nodes), creates a justification node. The parameters are: The informant , that is who/what is entering this justification The conslusion-node and list-of-premise-nodes that specify respectively the conslusion and the premises of this justification. Here is a simple dependency network: contradiction | x | g o o h | | x x / \ / \ / \ / \ o o o A C E This network is created: (setq *jtms* (create-jtms "Forbus-deKleer example on page 181")) The nodes A, C, E are created and enabled: (setq assumption-a (tms-create-node *jtms* "A" :assumptionp t) assumption-c (tms-create-node *jtms* "C" :assumptionp t) assumption-e (tms-create-node *jtms* "E" :assumptionp t)) (enable-assumption assumption-a) (enable-assumption assumption-c) (enable-assumption assumption-e) The node h is created and justified: (setq node-h (tms-create-node *jtms* "h")) (justify-node "R1" node-h (list assumption-c assumption-a)) ;; R1 is the informant for this ;; justification The node g is created, justified, and established as a contradiction: (setq node-g (tms-create-node *jtms* "g")) (justify-node "R2" node-g (list assumption-a assumption-c)) (setq contradiction (tms-create-node *jtms* 'contra :contradictoryp t)) (justify-node "R3" contradiction (list node-g)) This last command will recognise that a contradiction exists and will invoke a contradiction handler that should state that the node "contradiction" is a contradiction and that some of the assumptions in {A, C} should be retracted. Here should be a larger dependency network as used in a JTMS. Algorithms are available to propage changes in assumptions, either asserting a sentence, or retracting it. Further, algorithms are available to determine the maximally consistent sets of assumptions supporting a given sentence. Assumption-Based Truth Maintenance In a JTMS, we change assumptions by relabeling the nodes of a dependency network. Any time we switch among alternative sets of assumptions, we re-label the net. This may lead to considerable work. Another possibility is to maintain information at each node within a single dependency network for all the alternative sets of assumptions that we may hold, also called worlds or environments . That is, we can use as label of a node the set consisting of all the environments that justify this node. This is the path taken in Assumption-Based Truth Maintenance Systems (ATMS). Since all environments are simultaneously available, it is not necessary to enable or retract sentences, and thus re-label the network. It is only necessary to switch from one environment to another. The problem of the ATMS approach is that if we are given n assumptions, there are 2**n possible selections of all these assumptions, that is 2**n environments. This, except in trivial cases, is more than we can work with. Two observations simplify this problem: If we find out that a set A of assertions is inconsistent, in which case we say that A is a no-good set, then any set B of assertions such that A is contained in B will also be inconsistent. [Notice that we need to label a node only with consistent environments.] If we find that a node has a justification based on a set of assertions A, in which case we say that the node holds in A, then we do not need to consider any context B, where B contains A. We define the context of a set A of assumptions to be the set consisting of all the nodes that hold in A, i.e. that have a justification based on A. Here are examples of ATMS operations (see Forbus&deKleer, pg440): create-atms (title node-string enqueue-procedure) creates a dependency network with the same parameters as create-jtms, except that now we do not have a contradiction-handler, since the relevant information is recorded by the label. true-node? (node) recognises if node is a premise why-node(node) returns the label of node atms-assumptions(an-atms) returns a list of all the assumptions enabled for this atms interpretations(atms choice-sets defaults) returns all the environments that are consistent with defaults and include at least an element from choice-sets. tms-create-node and justify-node are for ATMS as defined for JTMS. Here is the same example considered for JTMS: (stq *atms* (create-atms "Example from Forbus-deKleer pg.442") (setq assumption-a (tms-create-node *atms* "A" :assumptionp t) assumption-c (tms-create-node *atms* "C" :assumptionp t) assumption-e (tms-create-node *atms* "E" :assumptionp t)) (setq node-h (tms-create-node *atms* "h")) (justify-node "R1" node-h (list assumption-c assumption-e)) Now the query (why-node node-h) returns the label (h {{C,E}}). Continuing: (setq node-g (tms-create-node *atms* "g")) (justify-node "R2" node-g (list assumption-a assumption-c)) (setq contradiction (tms-create-node *atms* 'contradiction :contradictionp t)) (justify-node "R3" contradiction (list node-g)) After this last statement there is no call-back from ATMS to IE. Yet we can determine the maximally consistent sets of assumptions that are compatible with what we know by calling: (mapc 'print-env (interpretations *atms* nil (atms-assumptions *atms*))) with result: {A,E} {C,E} Conclusions Truth Maintenance Systems are significant as a mechanism for implementing dependency directed backtracking during search. Software is available on JTMS and ATMS in Forbus. References Forbus,K.,deKleer,J.: Building Problem Solvers MIT Press, 1993 Forbus is the most comprehensive reference on Truth Maintenance in problem solving systems. The programs described in the book are available on line. Shoham,Y.: Artificial Intelligence: Techniques in Prolog Morgan-Kauffman, 1994 Brief introduction and programs in Prolog showing basic algorithms in TMS. Rich,E.,Knight,K.: Artificial Intelligence, Third Edition McGraw-Hill 1991 Good, Brief introduction and the ABC example . No programs. Appendix: The ABC example An example by Quine and Ullian, as reported by Rich&Knight, shows typical circumstances under which people operate. We would like a problem solving system to be able to reason about cases such as this. We know that: Abbott, Babbitt, Cabot are suspects in a murder. Abbott has an alibi, the registration at a good hotel in Albany at the time of the crime Babbitt has an alibi, his brother-in-law says they were together at the time of the crime Cabot says he was at a Catskills ski resort, but with no witnesses. Our other premises (i.e. assumed unconditionally) are: The hotel in Albany is reliable Babbitt's bother-in-law is reliable We have as current assumptions: (1) Abbott did not commit crime (2) Babbitt did not commit crime (3) Abbott, Babbitt, or Cabot committed the crime. We then find a newsreel showing Cabot at the ski resort: (4) Cabott did not commit the crime. Thus: (1) & (2) & (3) & (4) are contradictory beliefs ingargiola@cis.temple.edu 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html>
+<head>
+<title>Problem Solving and Truth Maintenance Systems</title>
+</head>
+
+<body>
+<h1>Problem Solving and Truth Maintenance Systems</h1><p>
+
+Last Modified: 
+Thursday, 06-Apr-1995 15:01:43 EDT
+<hr>
+<ul>
+<li><a href=#1>Introduction</a>
+<li><a href=#2>Justification-Based Truth Maintenance</a>
+<li><a href=#3>Assumption-Based Truth Maintenance</a>
+<li><a href=#4>Conclusions</a>
+<li><a href=#5>References</a>
+<li><a href=#abc>Appendix: The ABC example</a>
+</ul>
+
+<hr>
+
+<a name=1><h2>Introduction</h2></a>
+
+Truth Maintenance Systems (TMS), also called Reason Maintenance Systems, 
+are used within Problem Solving Systems,
+in conjunction with Inference Engines (IE) such as rule-based 
+inference systems, to manage as a <strong>Dependency Network</strong>
+the inference engine's beliefs in given sentences.
+
+<pre>
+
+		    PROBLEM SOLVING SYSTEM
+	+--------------------------------------------+
+	|					     |
+	|	+----+	                +-----+	     |
+	|	| IE |<---------------->| TMS |	     |
+	|	+----+	                +-----+	     |
+	|					     |
+	+--------------------------------------------+
+
+</pre>
+
+A TMS is intended to satisfy a number of goals:<p>
+<dl>
+<dt><h3>Provide justifications for conclusions</h3>
+<dd>When a problem solving system gives an answer to a user's query,
+an explanation of the answer is usually required. If the advice 
+to a stockbroker
+is to invest millions of dollars, an explanation of the reasons for
+that advice can help the broker reach a reasonable decision.<br>
+An explanantion can be constructed by the IE by tracing the justification
+of the assertion.<p>
+<dt><h3>Recognise inconsistencies</h3>
+<dd>The IE may tell the TMS that some sentences are
+contradictory. Then, if on the basis of other IE commands and of inferences
+we find that all those sentences are believed true, then the TMS reports
+to the IE that a contradiction has arisen.
+For instance, in <a href=#abc>the ABC example</a> the statement
+that either Abbott, or Babbitt, or Cabot is guilty together with the statements
+that Abbott is not guilty, Babbitt is not guilty, and Cabot is not guilty,
+form a contradiction.<br>
+The IE can eliminate an inconsistency by determining the assumptions
+used and changing them appropriately, or by presenting the contradictory
+set of sentences to the users and asking them to choose which 
+sentence(s) to retract.
+
+<p>
+
+<dt><h3>Support default reasoning</h3>
+<dd>In many situations we want, in the absence of firmer knowledge,
+to reason from default assumptions. If Tweety is a bird, until told
+otherwise, we will assume that Tweety flies and use as justification the fact
+that Tweety is a bird and the assumption that birds fly.<p>
+<dt><h3>Remember derivations computed previously</h3>
+<dd>In the process of determining what is responsible for a network problem,
+we may have derived, while examining the performance of a name server, that 
+Ms.Doe is an expert on e-mail systems. That conclusion will not need to 
+be derived again when the name server ceases to be the potential culprit 
+for the problem and we examine instead the routers.<p>
+<dt><h3>Support dependency driven backtracking</h3>
+<dd>The justification of a sentence, as maintained by the TMS, provides 
+the natural indication of what assumptions need to be changed if we want to
+invalidate that sentence.
+</dl>
+
+Our belief [<em>by "our belief" we mean the "inference-engine's belief"</em>]
+about a sentence can be:<p>
+<ul>
+<li><b>false</b>, the sentence is believed to be unconditionally false;
+this is also called a <em>contradiction</em>
+<li><b>true</b>, the sentence is believed unconditionally true; this is also
+called a <em>premise</em>
+<li><b>assumed-true</b>, the sentence is assumed true [we may change our belief
+later]; this is also called an <em>enabled</em> assumption
+<li><b>assumed-false</b>, the sentence is assumed false [we may change our 
+belief later]; this is also called a <em>retracted</em> assumption
+<li><b>assumed</b>, the sentence is believed by inference from other sentences
+<li><b>don't-care</b>.
+</ul>
+<p>
+We say a sentence in <b>in</b> if true or assumed-true; it is <b>out</b> if false,
+assumed-false, or don't-care.
+<p>
+A TMS maintains a <b>Dependency Network</b>. The network is bipartite,
+with nodes representing <em>sentences</em> and <em>justifications</em>.<br>
+
+A sentence may correspond to a fact, such as "Socrates is a man",
+or a rule, such as "if ?x is a man then ?x is mortal".
+We will say that a sentence node is a <b>premise</b> if its sentence is true, 
+is a <b>contradiction</b> if its sentence is false, is an <b>assumption</b> 
+if its sentence is assumed-true or assumed-false or assumed.<br>
+A sentence node receives arcs from  justification nodes. Each such 
+justification node provides an argument for believing the given sentence node.
+In turn a sentence node has arcs to the justification nodes that use it
+as a premise.<p>
+
+A justification node has inputs from sentence nodes, <em>its premises or justifiers</em>,
+and has output to a sentence node, <em>its conclusion or justificand</em>. 
+A justification node
+represents the inference of the conclusion from the conjunction
+of the stated premises.<p>
+
+The conventions used in representing graphically dependency networks are 
+summarized <a href="dependency-graph">here</a>.<p>
+
+The TMS maintains the following information with each sentence node:<p>
+<ul>
+<li>a sentence
+<li>a <em>label</em> expressing the current belief in the sentence;
+it is IN for sentences that are believed, and OUT for sentences that are
+not believed.
+<li>a list of the justification nodes that support it
+<li>a list of the justification nodes supported by it
+<li>an indication if the node is an assumption, contradiction, or premise.
+</ul>
+The TMS maintains very little information with justification nodes. Only a 
+label with value IN or OUT depending if we believe the justification
+valid or not.<p>
+
+
+The IE can give at least the following orders to the TMS:<p>
+<ul>
+<li>create a sentence node with specific properties
+<li>create a justification with specific premises and conclusions
+<li>attach rules to sentence nodes and execute them when
+specific beliefs hold at those nodes [these are like callbacks or triggers;
+a standard callback informs the IE when a contradiction becomes true]
+<li>retrieve the properties of a sentence node or its justifications and
+consequences.
+<p>
+</ul>
+
+Truth Maintenance Systems can have different characteristics:<p>
+<ul>
+<dl>
+<dt><h3>Justification-Based Truth Maintenance System (JTMS)</h3>
+<dd>It is a simple TMS where one can examine the consequences of the
+current set of assumptions. The meaning of sentences is not known.
+
+<dt><h3>Assumption-Based Truth Maintenance System (ATMS)</h3>
+<dd>It allows to maintain and reason with a number of simultaneous,
+possibly incompatible, current sets of assumption. Otherwise it is
+similar to JTMS, i.e. it does not recognise the meaning of sentences.
+<dt><h3>Logical-Based Truth Maintenance System (LTMS)</h3>
+<dd>Like JTMS in that it reasons with only one set of current 
+assumptions at a time. More powerful than JTMS in that it recognises
+the propositional semantics of sentences, i.e. understands the relations
+between p and ~p, p and q and p&q, and so on.<br>
+We will not discuss further LTMSs.
+
+</dl>
+</ul>
+<a name=2><h2>Justification-Based Truth Maintenance</h2></a>
+
+A Justification-based truth maintenance system (JTMS)
+is a simple TMS where one can examine the consequences of the
+current set of assumptions. In JTMS labels are attacched to arcs from 
+sentence nodes to justification nodes. This label is either "+" or "-".
+Then, for a justification node we can talk of its <em>in-list,</em>
+the list of its inputs with "+" label, and of its <em>out-list</em>,
+the list of its inputs with "-" label.<p>
+
+
+The meaning of sentences is not known.
+We can have a node representing a sentence p and one representing ~p
+and the two will be totally unrelated, unless relations are 
+established between them by justifications. For example, we can write:
+<pre>
+
+		~p^p Contradiction Node
+		  o
+		  |
+		  x		   'x' denotes a justification node
+		/   \		   'o' denotes a sentence node
+	      +/     \+
+	      o       o
+	      p      ~p
+
+</pre>
+which says that if both p and ~p are IN we have a contradiction.<p>
+
+The association of IN or OUT labels with the nodes in a dependency network
+defines an <em>in-out-labeling function</em>. This function is 
+<b>consistent</b> if:
+<ul>
+<li>The label of a junctification node is IN iff the labels of all the sentence 
+nodes in its in-list are all IN and the labels of all the sentence nodes in
+its out-list are OUT.
+<li>The label of a sentence node is IN iff it is a premise, or an enabled
+assumption node, or it has an input from a justification node with label IN.
+</ul><p>
+
+Here are examples of JTMS operations (see Forbus&deKleer):<p>
+<ul>
+<li>create-jtms (node-string contradiction-handler enqueue-procedure)<br>
+creates a dependency network. The parameters are:
+<ul>
+<li>node-string, a function to be used by the JTMS, which, given a node,
+returns its description
+<li>contradiction-handler, a function to be invoked by the JTMS when it 
+recognises a contradiction
+<li>enqueue-procedure, a function to be called by the JTMS when it changes the
+label of a node to IN.
+</ul><p>
+<li>tms-create-node (jtms datum assumptionp contradictoryp)<br>
+creates a sentence  node. The parameters are:
+<ul>
+<li>jtms, the jtms within which the sentence node is to be created
+<li>datum, the sentence
+<li>assumptionp, true iff this is an assumption node; initially the 
+assumption is retracted
+<li>contradictoryp, true iff this is a contradictory node
+</ul>
+Note that premise nodes are recognised because they are given a 
+justification without any premises.
+<li>enable-assumption(node),<br> 
+retract-assumption(node).<br>
+These functions respectively enable and retract an existing assumption node.
+<li>justify-node (informant conclusion-node list-of-premise-nodes),<br>
+creates a justification node. The parameters are:
+<ul>
+<li>The <b>informant</b>, that is who/what is entering this justification
+<li>The conslusion-node and list-of-premise-nodes that specify respectively
+the conslusion and the premises of this justification.
+</ul>
+</ul>
+Here is a simple dependency network:
+<pre>
+
+	     contradiction
+		   |
+		   x
+		   |
+		 g o     o h
+		   |     | 
+		   x     x 
+		  / \   / \
+		 /   \ /   \
+	        o     o     o
+		A     C	    E
+
+This network is created:
+	(setq *jtms* (create-jtms "Forbus-deKleer example on page 181"))
+The nodes A, C, E are created and enabled:
+	(setq assumption-a (tms-create-node *jtms* "A" :assumptionp t)
+	      assumption-c (tms-create-node *jtms* "C" :assumptionp t)
+	      assumption-e (tms-create-node *jtms* "E" :assumptionp t))
+	(enable-assumption assumption-a)
+	(enable-assumption assumption-c)
+	(enable-assumption assumption-e)
+The node h is created and justified:
+	(setq node-h (tms-create-node *jtms* "h"))
+	(justify-node "R1" node-h (list assumption-c assumption-a))
+				;; R1 is the <em>informant</em> for this 
+			        ;; justification
+The node g is created, justified, and established as a contradiction:
+	(setq node-g (tms-create-node *jtms* "g"))
+	(justify-node "R2" node-g (list assumption-a assumption-c))
+	(setq contradiction (tms-create-node *jtms* 'contra :contradictoryp t))
+	(justify-node "R3" contradiction (list node-g))
+
+This last command will recognise that a contradiction exists and will
+invoke a contradiction handler that should state that the node 
+"contradiction" is a contradiction and that some of the assumptions 
+in {A, C} should be retracted.
+</pre>
+<a href="abc-jtms.html">Here</a> should be a larger dependency network as used in a
+JTMS.
+<p>
+Algorithms are available to propage changes in assumptions, either asserting a sentence, or 
+retracting it. Further, algorithms are available to determine the maximally
+consistent sets of  assumptions
+supporting a given sentence.
+
+
+<a name=3><h2>Assumption-Based Truth Maintenance</h2></a>
+
+In a JTMS, we change assumptions by relabeling the nodes of a 
+dependency network. Any time we switch among alternative sets of assumptions, 
+we re-label the net. This may lead to considerable work.<br>  
+Another possibility is to maintain information at each node
+within a single dependency network for
+all the alternative <em>sets of assumptions</em> that we may hold, also called
+<b>worlds</b> or <b>environments</b>. 
+That is, we can use as label of a node 
+the set consisting of all the environments that justify this node.
+This is the path taken in Assumption-Based Truth Maintenance Systems (ATMS).
+Since all environments are simultaneously available, 
+it is not necessary to enable
+or retract sentences, and thus re-label the network. It is only necessary 
+to switch from one environment to another.<p>
+
+The problem of the ATMS approach is that if we are given n assumptions,
+there are 2**n possible  selections of all these assumptions, that is
+2**n environments. 
+This, except in trivial cases, is more than we can work with.
+<p>
+Two observations simplify this problem:<p>
+<ul>
+<li>If we find out that a set A of assertions is inconsistent, in which
+case we say that A is a <b>no-good set,</b>
+then any set B of assertions such that A is contained in B will also
+be inconsistent. [Notice that we need to label a node only with consistent
+environments.]<p>
+<li>If we find that a node has a justification based on 
+a set of assertions A, in which case we say that the node <b>holds</b> in A,
+then we do not need to consider any context B, where
+B contains A.<p>
+</ul>
+We define the <b>context</b> of a set A of assumptions to be the set
+consisting of all the nodes that hold in A, i.e. that have a 
+justification based on A.<p>
+
+Here are examples of ATMS operations (see Forbus&deKleer, pg440):<p>
+<dl>
+<dt>create-atms (title node-string enqueue-procedure)
+<dd>creates a dependency network with the same parameters as create-jtms,
+except that now we do not have a contradiction-handler, since the 
+relevant information is recorded by the label.
+<dt>true-node? (node)
+<dd>recognises if node is a premise
+<dt>why-node(node)
+<dd>returns the label of node
+<dt>atms-assumptions(an-atms)
+<dd>returns a list of all the assumptions enabled for this atms
+<dt>interpretations(atms choice-sets defaults)
+<dd>returns all the environments that are consistent with 
+defaults and include at least an element from choice-sets.
+</dl>
+
+tms-create-node and justify-node are for ATMS as defined for JTMS.<p>
+
+Here is the same example considered for JTMS:
+<pre>
+
+    (stq *atms* (create-atms "Example from Forbus-deKleer pg.442")
+    (setq assumption-a (tms-create-node *atms* "A" :assumptionp t)
+	  assumption-c (tms-create-node *atms* "C" :assumptionp t)
+	  assumption-e (tms-create-node *atms* "E" :assumptionp t))
+    (setq node-h (tms-create-node *atms* "h"))
+    (justify-node "R1" node-h (list assumption-c assumption-e))
+
+Now the query (why-node node-h) returns the label (h {{C,E}}). Continuing:
+
+    (setq node-g (tms-create-node *atms* "g"))
+    (justify-node "R2" node-g (list assumption-a assumption-c))
+    (setq contradiction (tms-create-node *atms* 
+				'contradiction :contradictionp t))
+    (justify-node "R3" contradiction (list node-g))
+
+After this last statement there is no call-back from ATMS to IE. Yet
+we can determine the maximally consistent sets of assumptions that are
+compatible with what we know by calling:
+
+    (mapc 'print-env 
+	 (interpretations *atms* nil (atms-assumptions *atms*)))
+
+with result:
+
+	{A,E}
+	{C,E}
+
+</pre>
+
+
+<a name=4><h2>Conclusions</h2></a>
+
+Truth Maintenance Systems are significant as a mechanism for implementing dependency 
+directed backtracking during search. 
+<p>
+Software is available on <a href="http://yoda.cis.temple.edu:8080/books/forbus/jtms">JTMS</a> and 
+<a href="http://yoda.cis.temple.edu:8080/books/forbus/atms">ATMS</a> in Forbus.<p>
+
+
+<a name=5><h2>References</h2></a>
+<ul>
+<li>Forbus,K.,deKleer,J.: Building Problem Solvers<br>
+MIT Press, 1993<br>
+Forbus is the most comprehensive reference on Truth Maintenance in 
+problem solving systems. The programs described in the book are available
+<a href="http://yoda.cis.temple.edu:8080/books/forbus">on line.</a><p>
+
+<li>Shoham,Y.: Artificial Intelligence: Techniques in Prolog<br>
+Morgan-Kauffman, 1994<br>
+Brief introduction and <a href="http://yoda.cis.temple.edu:8080/books/shoham/chapter5">programs</a>
+in Prolog showing basic algorithms in TMS.<p>
+
+<li>Rich,E.,Knight,K.: Artificial Intelligence, Third Edition<br>
+McGraw-Hill 1991<br>
+Good, Brief introduction and <a href=#abc>the ABC example</a>. No programs.
+</ul><p>
+
+<a name=abc><h2>Appendix: The ABC example</h2></a>
+
+An example by Quine and Ullian, as reported by Rich&Knight,
+shows typical circumstances under which people operate. We would like
+a problem solving system to be able to reason about cases such as this.
+
+<pre>
+
+   We know that:
+
+	Abbott, Babbitt, Cabot are suspects in a murder.
+
+	Abbott has an alibi, the registration at a good hotel in
+	Albany at the time of the crime
+
+	Babbitt has an alibi, his brother-in-law says they were
+	together at the time of the crime
+
+	Cabot says he was at a Catskills ski resort, but with no
+	witnesses.
+
+   Our other premises (i.e. assumed unconditionally) are:
+
+	The hotel in Albany is reliable
+
+	Babbitt's bother-in-law is reliable
+
+   We have as current assumptions:
+
+	(1) Abbott did not commit crime
+
+	(2) Babbitt did not commit crime
+
+	(3) Abbott, Babbitt, or Cabot committed the crime.
+
+   We then find a newsreel showing Cabot at the ski resort:
+
+	(4) Cabott did not commit the crime.
+
+   Thus:
+
+	(1) & (2) & (3) & (4) are contradictory beliefs
+</pre>
+
+</h3>
+<p>
+<i>ingargiola@cis.temple.edu</i>
+</body>
+</html>
+

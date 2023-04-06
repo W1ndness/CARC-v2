@@ -1,0 +1,354 @@
+<!-- <DOCUMENT>
+	<FILE>
+		9356367806.html
+	</FILE>
+	<URL>
+		http://carbon.cudenver.edu/~hgreenbe/glossary/index.php?page=nature.html
+	</URL>
+	<TITLE>
+		Mathematical Programming Glossary
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Mathematical Programming Glossary Nature of Mathematical Programming The Nature of Mathematical Programming George B. Dantzig Father of Mathematical Programming Here is a biography . A mathematical program is an optimization problem of the form: Maximize f(x): x in X, g(x) &lt;= 0, h(x) = 0, where X is a subset of R^n and is in the domain of the real-valued functions, f, g and h. The relations, g(x) &lt;= 0 and h(x) = 0 are called constraints , and f is called the objective function . There are, however, forms that deviate from this paradigm, and it is typically a modeling issue to find an equivalent standard form. Important examples are as follows: Fuzzy mathematical program Goal program Multiple objectives Randomized program Semi-definite program --> Stochastic program A point x is feasible if it is in X and satisfies the constraints: g(x) &lt;= 0 and h(x) = 0. A point x* is optimal if it is feasible and if the value of the objective function is not less than that of any other feasible solution: f(x*) &gt;= f(x) for all feasible x. The sense of optimization is presented here as maximization , but it could just as well be minimization , with the appropriate change in the meaning of optimal solution: f(x*) &lt;= f(x) for all feasible x. A mathematical program is often extended to indicate a family of mathematical programs over a parameter space , say P. This merely involves extending the domain of the functions, f, g and h, and we use the semi-colon to separate the decision variables from the parameters. Maximize f(x; p): x in X, g(x; p) &lt;= 0, h(x; p) = 0. (We could also have X depend on p, but this form generally suffices.) Mathematical programming is the study or use of the mathematical program. It includes any or all of the following: Theorems about the form of a solution, including whether one exists; Algorithms to seek a solution or ascertain that none exists; Formulation of problems into mathematical programs, including understanding the quality of one formulation in comparison with another; Analysis of results, including debugging situations, such as infeasible or anomalous values; Theorems about the model structure, including properties pertaining to feasibility, redundancy and/or implied relations (such theorems could be to support analysis of results or design of algorithms); Theorems about approximation arising from imperfections of model forms, levels of aggregation, computational error, and other deviations; Developments in connection with other disciplines, such as a computing environment. One taxonomy for mathematical programming is by its defining ingredients: Abstract Biconvex Bilinear Composite concave Convex Disjunctive Dynamic Factorable Fractional Geometric Integer Infinite Lattice Linear Mixed-Integer Multilevel Nonlinear Pseudo-boolean Reverse convex Semi-definite Semi-infinite Separable This glossary contains some mathematical programming problems , which you might examine as examples. Other web sources that explain the nature of mathematical programming are given in the NEOS Guide . You might also consult my Myths and Counterexamples in Mathematical Programming . Notation Last updated: Sunday, January 25, 2004 Send questions and comments to Harvey.Greenberg@cudenver.edu . Copyright &#169; 1996 &#8211; 2003, Mathematical Programming Glossary, by Harvey Greenberg 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<HTML>
+<HEAD>
+<TITLE>Mathematical Programming Glossary</TITLE>
+<BASE Target = "second">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</HEAD>
+<style>
+<!--
+
+a:link {
+color:#4C577E;
+background:transparent;
+}
+
+a:visited {
+color:#343F6A;
+background:transparent;
+}
+
+a:active {
+color:#d19803;
+background:transparent;
+}
+a:hover {
+color:#848B64;
+background:transparent;
+}
+
+.smallHead {font-family: arial,helvetica; font-weight: bold; color: #d19803;}
+.mediumHead {font-family: arial,helvetica; font-weight: bold; color: #e5480c;}
+.largeHead {font-family: arial,helvetica; font-weight: bold; color: #d19803;}
+
+.Header {font-family: Times New Roman; font-size:22; color: #25377A; padding-bottom: 12pt; font-weight: bold; }
+.Text {font-family: 'Times New Roman', Times, serif; color: #000000; link-color: #e5480c; font-weight: normal; }
+
+.smallText {font-family: arial,helvetica; font-weight: normal;}
+.smallTextRequired {font-family: arial,helvetica; font-size: 8pt; font-weight: normal; background-color: #FFEF9C;}
+.smallTextBold {font-family: arial,helvetica; font-weight:  bold;}
+.smallTextBoldRequired {font-family: arial,helvetica; font-size: 8pt;  font-weight: bold; background-color: #FFEF9C;}
+.Emphasised {font-family: 'Times New Roman', Times, serif; color: #664326; font-weight: bold; }
+.Bold {font-family: 'Times New Roman'; color: #233060; font-weight: bold;}
+.largeText {font-family: arial,helvetica; font-weight: normal;}
+.largeTextBold {font-family: arial,helvetica; color: #996633; font-weight: bold;}
+.mediumTextJustified {font-family: arial,helvetica; font-weight: normal; text-align: justify;}
+.largeTextJustified {font-family: arial,helvetica; font-weight: bold; text-align: justify; line-height: 15pt;}
+-->
+</style>
+
+<BODY BGCOLOR=#FFFFFF LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 onLoad="MM_preloadImages('images/search-over.jpg','images/index-over.jpg','images/a-over.jpg','images/b-over.jpg','images/c-over.jpg','images/d-over.jpg','images/e-over.jpg','images/f-over.jpg','images/g-over.jpg','images/h-over.jpg','images/i-over.jpg','images/j-over.jpg','images/k-over.jpg','images/l-over.jpg','images/m-over.jpg','images/n-over.jpg','images/o-over.jpg','images/p-over.jpg','images/q-over.jpg','images/r-over.jpg','images/s-over.jpg','images/t-over.jpg','images/u-over.jpg','images/v-over.jpg','images/w-over.jpg','images/x-over.jpg','images/y-over.jpg','images/z-over.jpg')">
+<BASE Target = "second">
+    <map name="Map">
+      <area shape="rect" coords="726,59,873,85" href="index.php?page=contact.htm" target="_parent">
+      <area shape="rect" coords="22,31,557,82" href="index.php?" target="_parent">
+    </map>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td height="93" align="left" valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td><table width="100%%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="22%" height="136"> <table width=900 border=0 cellpadding=0 cellspacing=0>
+                    <tr> 
+                      <td colspan=29> <img src="images/header.jpg" alt="" width=900 height=91 border="0" usemap="#Map"></td>
+                    </tr>
+                    <tr> 
+                      <td colspan=28> <img src="images/header-02.jpg" width=802 height=2 alt=""></td>
+                      <td width="98" rowspan=2> <img src="images/math2_03.jpg" width=98 height=28 alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td width="71" rowspan=2> <a href="index.php?page=index_page.html" target="_parent"><img src="images/index.jpg" alt="" name="Image2" width=71 height=27 border="0" id="Image2" onMouseOver="MM_swapImage('Image2','','images/index-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="70" rowspan=2> <a href="index.php?page=search.html" target="_parent"><img src="images/search.jpg" alt="" name="Image1" width=70 height=27 border="0" id="Image1" onMouseOver="MM_swapImage('Image1','','images/search-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=A.html" target="_parent"><img src="images/a.jpg" alt="" name="Image8" width=25 height=26 border="0" id="Image8" onMouseOver="MM_swapImage('Image8','','images/a-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=B.html" target="_parent"><img src="images/b.jpg" alt="" name="Image9" width=26 height=26 border="0" id="Image9" onMouseOver="MM_swapImage('Image9','','images/b-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=C.html" target="_parent"><img src="images/c.jpg" alt="" name="Image10" width=25 height=26 border="0" id="Image10" onMouseOver="MM_swapImage('Image10','','images/c-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=D.html" target="_parent"><img src="images/d.jpg" alt="" name="Image11" width=26 height=26 border="0" id="Image11" onMouseOver="MM_swapImage('Image11','','images/d-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=E.html" target="_parent"><img src="images/e.jpg" alt="" name="Image12" width=25 height=26 border="0" id="Image12" onMouseOver="MM_swapImage('Image12','','images/e-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=F.html" target="_parent"><img src="images/f.jpg" alt="" name="Image13" width=26 height=26 border="0" id="Image13" onMouseOver="MM_swapImage('Image13','','images/f-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=G.html" target="_parent"><img src="images/g.jpg" alt="" name="Image14" width=25 height=26 border="0" id="Image14" onMouseOver="MM_swapImage('Image14','','images/g-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=H.html" target="_parent"><img src="images/h.jpg" alt="" name="Image15" width=25 height=26 border="0" id="Image15" onMouseOver="MM_swapImage('Image15','','images/h-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=I.html" target="_parent"><img src="images/i.jpg" alt="" name="Image16" width=26 height=26 border="0" id="Image16" onMouseOver="MM_swapImage('Image16','','images/i-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=J.html" target="_parent"><img src="images/j.jpg" alt="" name="Image17" width=25 height=26 border="0" id="Image17" onMouseOver="MM_swapImage('Image17','','images/j-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=K.html" target="_parent"><img src="images/k.jpg" alt="" name="Image18" width=26 height=26 border="0" id="Image18" onMouseOver="MM_swapImage('Image18','','images/k-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=L.html" target="_parent"><img src="images/l.jpg" alt="" name="Image19" width=25 height=26 border="0" id="Image19" onMouseOver="MM_swapImage('Image19','','images/l-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=M.html" target="_parent"><img src="images/m.jpg" alt="" name="Image20" width=25 height=26 border="0" id="Image20" onMouseOver="MM_swapImage('Image20','','images/m-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=N.html" target="_parent"><img src="images/n.jpg" alt="" name="Image21" width=26 height=26 border="0" id="Image21" onMouseOver="MM_swapImage('Image21','','images/n-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=O.html" target="_parent"><img src="images/o.jpg" alt="" name="Image22" width=25 height=26 border="0" id="Image22" onMouseOver="MM_swapImage('Image22','','images/o-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=P.html" target="_parent"><img src="images/p.jpg" alt="" name="Image23" width=26 height=26 border="0" id="Image23" onMouseOver="MM_swapImage('Image23','','images/p-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=Q.html" target="_parent"><img src="images/q.jpg" alt="" name="Image24" width=25 height=26 border="0" id="Image24" onMouseOver="MM_swapImage('Image24','','images/q-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=R.html" target="_parent"><img src="images/r.jpg" alt="" name="Image25" width=26 height=26 border="0" id="Image25" onMouseOver="MM_swapImage('Image25','','images/r-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=S.html" target="_parent"><img src="images/s.jpg" alt="" name="Image26" width=25 height=26 border="0" id="Image26" onMouseOver="MM_swapImage('Image26','','images/s-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=T.html" target="_parent"><img src="images/t.jpg" alt="" name="Image27" width=25 height=26 border="0" id="Image27" onMouseOver="MM_swapImage('Image27','','images/t-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=U.html" target="_parent"><img src="images/u.jpg" alt="" name="Image28" width=26 height=26 border="0" id="Image28" onMouseOver="MM_swapImage('Image28','','images/u-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=V.html" target="_parent"><img src="images/v.jpg" alt="" name="Image29" width=25 height=26 border="0" id="Image29" onMouseOver="MM_swapImage('Image29','','images/v-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=W.html" target="_parent"><img src="images/w.jpg" alt="" name="Image30" width=26 height=26 border="0" id="Image30" onMouseOver="MM_swapImage('Image30','','images/w-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=X.html" target="_parent"><img src="images/x.jpg" alt="" name="Image31" width=25 height=26 border="0" id="Image31" onMouseOver="MM_swapImage('Image31','','images/x-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="26"> <a href="index.php?page=Y.html" target="_parent"><img src="images/y.jpg" alt="" name="Image32" width=26 height=26 border="0" id="Image32" onMouseOver="MM_swapImage('Image32','','images/y-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                      <td width="25"> <a href="index.php?page=Z.html" target="_parent"><img src="images/z.jpg" alt="" name="Image33" width=25 height=26 border="0" id="Image33" onMouseOver="MM_swapImage('Image33','','images/z-over.jpg',1)" onMouseOut="MM_swapImgRestore()"></a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan=27> <img src="images/math2_32.jpg" width=759 height=1 alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td colspan=29> <img src="images/lower_bar.jpg" width=900 height=28 alt=""></td>
+                    </tr>
+                  </table></td>
+                <td width="22%" valign="top"><img src="images/top_right_drag.jpg" width="100%" height="104">&nbsp;</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+    <td width="1" align="left" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="41" height="100%" align="left" valign="top" background="images/footer_31.jpg"><img src="images/footer_32.jpg" width="30" height="100%"></td>
+    <td width="967" valign="top"> <p>&nbsp; </p>
+      <p> 
+        <HTML>
+                 <TITLE>Nature of Mathematical Programming</TITLE>
+<BODY><div align="left">
+<div class="Header"  align= "center"> <i>The Nature of Mathematical Programming</i><br>
+</div>
+
+<center>
+<table>
+ <tr><td><img src="images/dantzig.gif" width=104 height=154 
+              alt="George B. Dantzig">
+     </td>
+      <td> <big> <big> George B. Dantzig</big>
+           <br> <i>Father of Mathematical Programming</i>
+           </big>
+          <p>
+ <a href="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Dantzig_George.html">
+Here is a biography</a>.
+             
+     </td> 
+</tr>
+</table>
+</center>
+<p>
+
+<a name="Std"> 
+  A <i>mathematical program</i> is an optimization problem of the form: 
+</a>
+
+<p align= "center">
+               Maximize f(x): x in X, g(x)  &lt;=  0, h(x) = 0,
+ </p>
+
+  where X is a subset of R^n and is in the domain of the real-valued
+  functions, f, g and h.  The relations, g(x) &lt;= 0 and h(x) = 0 are
+  called <i>constraints</i>, and f is called the <i>objective function</i>.
+ <p>
+
+  There are, however, forms that deviate from this paradigm, and it is 
+  typically a modeling issue to find an equivalent standard form.
+  Important examples are as follows:
+
+ <ul>
+    <li><a href="second.php?page=F.html#Fuzzy_math_program">  Fuzzy mathematical program</a>
+    <li><a href="second.php?page=G.html#Goal_program">        Goal program</a>
+    <li><a href="second.php?page=M.html#Multiple_objectives"> Multiple objectives</a>
+    <li><a href="second.php?page=R.html#Randomized_program">  Randomized program</a>
+<!--
+    <li><a href="second.php?page=S.html#Semi-definite_program">Semi-definite program</a>
+-->
+    <li><a href="second.php?page=S.html#Stochastic_program">  Stochastic program</a>
+ </ul>
+<p>
+
+  A point x is <i>feasible</i> if it is in X and satisfies the constraints:
+  g(x) &lt;= 0 and h(x) = 0.  A point x* is
+  <i>optimal</i> if it is feasible and if the value of the objective
+  function is not less than that of any other feasible solution:  f(x*) &gt;=
+  f(x) for all feasible x.  The <i>sense of optimization</i> is presented
+  here as <i>maximization</i>, but it could just as well be 
+  <i>minimization</i>, with the appropriate change in the meaning of optimal 
+  solution:  f(x*) &lt;= f(x) for all feasible x.
+ <p>
+
+  A mathematical program is often extended to indicate a <em>family</em> of
+  mathematical programs over a <em>parameter space</em>, say P.  This merely
+  involves extending the domain of the functions, f, g and h, and we use
+  the semi-colon to separate the decision variables from the parameters.
+
+ <p align= "center">
+        Maximize f(x; p): x in X, g(x; p)  &lt;=  0, h(x; p) = 0.
+ </p>
+ (We could also have X depend on p, but this form generally suffices.)
+ <p>
+
+  <i>Mathematical programming</i> is the study or use of the mathematical
+  program.  It includes any or all of the following:
+
+ <ul>
+
+  <li>Theorems about the form of a solution, including whether one exists;
+</li>
+
+  <li>Algorithms to seek a solution or ascertain that none exists;
+</li>
+
+  <li>Formulation of problems into mathematical programs, including 
+      understanding the quality of one formulation in comparison with another;
+</li>
+
+  <li>Analysis of results, including debugging situations, such as
+      infeasible or anomalous values;
+</li>
+
+  <li>Theorems about the model structure, including properties pertaining
+      to feasibility, redundancy and/or implied relations (such theorems
+      could be to support analysis of results or design of algorithms);
+</li>
+
+  <li>Theorems about approximation arising from imperfections of model
+      forms, levels of aggregation, computational error, and other deviations;
+</li>
+
+  <li>Developments in connection with other disciplines, such as a
+      computing environment.
+</li>
+
+ </ul>
+
+ 
+ <p>One taxonomy for mathematical programming is by its defining ingredients:
+</p> </p> </p> </p> </p> </p>
+   <ul>
+     <li><a href="second.php?page=A.html#Abstract_program">          Abstract</a>
+</li>
+     <li><a href="second.php?page=B.html#Biconvex_program">          Biconvex</a>
+</li>
+     <li><a href="second.php?page=B.html#Bilinear_program">          Bilinear</a>
+</li>
+     <li><a href="second.php?page=C.html#Composite_concave_program"> Composite concave</a> 
+</li>
+     <li><a href="second.php?page=C.html#Convex_program">            Convex</a>
+</li>
+     <li><a href="second.php?page=D.html#Disjunctive_program">       Disjunctive</a>
+</li>
+     <li><a href="second.php?page=D.html#DP">                        Dynamic</a>
+</li>
+     <li><a href="second.php?page=F.html#Factorable_program">        Factorable</a>
+</li>
+     <li><a href="second.php?page=F.html#Fractional_program">        Fractional</a>
+</li>
+     <li><a href="second.php?page=G.html#Geometric_program">         Geometric</a>
+</li>
+     <li><a href="second.php?page=I.html#IP">                        Integer</a>
+</li>
+     <li><a href="second.php?page=I.html#Infinite_program">          Infinite</a>
+</li>
+     <li><a href="second.php?page=L.html#Lattice_program">           Lattice</a>
+</li>
+     <li><a href="second.php?page=L.html#LP">                        Linear</a>
+</li>
+     <li><a href="second.php?page=M.html#MIP">                       Mixed-Integer</a>
+</li>
+     <li><a href="second.php?page=M.html#Multilevel_program">        Multilevel</a>
+</li>
+     <li><a href="second.php?page=N.html#NLP">                       Nonlinear</a>
+</li>
+     <li><a href="second.php?page=P.html#Pseudo-boolean_program">    Pseudo-boolean</a>
+</li>
+     <li><a href="second.php?page=R.html#Reverse_convex_program">    Reverse convex</a>
+</li>
+     <li><a href="second.php?page=S.html#Semi-definite_program">     Semi-definite</a>
+</li>
+     <li><a href="second.php?page=S.html#Semi-infinite_program">     Semi-infinite</a>
+</li>
+     <li><a href="second.php?page=S.html#Separable_program">         Separable</a>
+</li>
+   </ul>
+
+  <p>
+  This glossary contains <a href="second.php?page=problems.html">some mathematical programming 
+  problems</a>, which you might examine as examples.  
+
+Other web sources that explain the nature of mathematical programming are given 
+in the <a target = "_parent" href="http://www.mcs.anl.gov/home/otc/Guide"> 
+<i>NEOS Guide</i></a>. 
+You might also consult my 
+<a href="http://www.cudenver.edu/~hgreenbe/myths/myths.html" target="_blank"> 
+  <i>Myths and Counterexamples in Mathematical Programming</i></a>. 
+
+<p>&nbsp; 
+	  
+	  
+      </p>
+<hr>
+<center><font size=+2>
+      <a href="second.php?page=notation.html">Notation</a>
+</font></center>
+<hr>
+      <p>
+
+        Last updated:  Sunday, January 25, 2004         <br>Send questions and comments to 
+<a href="mailto:Harvey.Greenberg@cudenver.edu">Harvey.Greenberg@cudenver.edu</a>. 
+        <br>
+        Copyright<sup><big>&#169;</big></sup> 1996 &#8211; 2003, 
+   Mathematical Programming Glossary, by 
+     <a href="index.php?page=contact.htm" target="_parent">Harvey Greenberg</a> </p></td>
+    <td width="1">&nbsp;</td>
+  </tr>
+</table>
+</BODY>
+</HTML>
+

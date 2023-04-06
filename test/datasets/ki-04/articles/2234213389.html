@@ -1,0 +1,2234 @@
+<!-- <DOCUMENT>
+	<FILE>
+		2234213389.html
+	</FILE>
+	<URL>
+		http://www.w3.org/TR/2003/WD-InkML-20030806/
+	</URL>
+	<TITLE>
+		Ink Markup Language
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Ink Markup Language Ink Markup Language W3C Working Draft 6 August 2003 This version: http://www.w3.org/TR/2003/WD-InkML-20030806 Latest version: http://www.w3.org/TR/InkML Previous version: This is the first Working Draft Authors: Gregory Russell, IBM (editor) Yi-Min Chee, IBM Giovanni Seni, Motorola Larry Yaeger, Apple Christopher Tremblay, Corel Katrin Franke, Fraunhofer Gesellschaft Sriganesh Madhvanath, HP Max Froumentin, W3C Copyright &copy; 2003 W3C &reg; ( MIT , ERCIM , Keio ), All Rights Reserved. W3C liability , trademark , document use and software licensing rules apply. Abstract This document describes the syntax and semantics for the Ink Markup Language for use in the W3C Multimodal Interaction Framework as proposed by the W3C Multimodal Interaction Activity . The Ink Markup Language serves as the data format for representing ink entered with an electronic pen or stylus. The markup allows for the input and processing of handwriting, gestures, sketches, music and other notational languages in Web-based applications. It provides a common format for the exchange of ink data between components such as handwriting and gesture recognizers, signature verifiers, and other ink-aware modules. Status of this document This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current W3C publications and the latest revision of this technical report can be found in the W3C technical reports index at http://www.w3.org/TR/. This document is a public W3C Working Draft for review by W3C members and other interested parties. Publication as a Working Draft does not imply endorsement by the W3C Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than 'work in progress. This specification describes the syntax and semantics for ink markup, as a basis for a common format for the exchange of ink data between components such as handwriting and gesture recognizers, signature verifiers, and other ink-aware modules. This document has been produced as part of the W3C Multimodal Interaction Activity , following the procedures set out for the W3C Process . The authors of this document are members of the Multimodal Interaction Working Group ( W3C Members only ) . Patent disclosures relevant to this specification may be found on the Working Group's patent disclosure page in conformance with W3C policy. This document is for public review, and comments and discussion are welcomed on the ( archived ) public mailing list &lt; www-multimodal@w3.org &gt;. Table of contents i. Abstract ii. Document Status 1 Overview 2 Traces and Trace Formatting 2.1 Trace Formats 2.2 Traces 2.3 Trace Groups 3 The Context Elements 3.1 Capture Device 3.2 Brushes 3.3 context element 3.4 defs element 4 Streaming Applications and Archives 4.1 Archival Apps 4.2 Streaming Apps 4.3 Archival and Streaming Equivalence 5 Semantic Labelling and traceRefGroup 1 Overview As more electronic devices with pen interfaces have and continue to become available for entering and manipulating information, applications need to be more effective at leveraging this method of input. Handwriting is an input modality that is very familiar for most users since everyone learns to write in school. Hence, users will tend to use this as a mode of input and control when available. A pen-based interface consists of a transducer device and a pen so that the movement of the pen is captured as digital ink. Digital ink can be passed on to recognition software that will convert the pen input into appropriate computer actions. Alternatively, the handwritten input can be organized into ink documents, notes or messages that can be stored for later retrieval or exchanged through telecommunications means. Such ink documents are appealing because they capture information as the user composed it, including text in any mix of languages and drawings such as equations and graphs. Hardware and software vendors have typically stored and represented digital ink using proprietary or restrictive formats. The lack of a public and comprehensive digital ink format has severely limited the capture, transmission, processing, and presentation of digital ink across heterogeneous devices developed by multiple vendors. In response to this need, the Ink Markup Language (InkML) provides a simple and platform-neutral data format to promote the interchange of digital ink between software applications. InkML supports a complete and accurate representation of hand-drawn ink. For instance, in addition to the pen position over time, InkML allows recording of information about transducer device characteristics and detailed dynamic behavior to support applications such as handwriting recognition and authentication. For example, there is support for recording additional channels such as pen tilt, or pen tip force (commonly referred to as pressure in manufacturers' documentation). InkML provides means for extension. By virtue of being an XML-based language, users may easily add application-specific information to ink files to suit the needs of the application at hand. Note: A media type will be registered for InkML instances. It is expected that this media type will be application/inkml+xml as recommended by RFC3023. This specification was developed to fulfill the W3C requirements for the Ink Markup Language . Open Issues The question of whether this specification will use the term "pressure" or "force" has not been decided yet. The Working Group welcomes feedback from the public on this issue. 1.1 Uses of InkML With the establishment of a non-proprietary ink standard, a number of applications, old and new, are expanded where the pen can be used as a very convenient and natural form of input. Here are a few examples. Ink Messaging Two-way transmission of digital ink, possibly wireless, offers mobile-device users a compelling new way to communicate. Users can draw or write with a pen on the device's screen to compose a note in their own handwriting. Such an ink note can then be addressed and delivered to other mobile users, desktop users, or fax machines. The recipient views the message as the sender composed it, including text in any mix of languages and drawings. Ink and SMIL A photo taken with a digital camera can be annotated with a pen; the digital ink can be coordinated with a spoken commentary. The ink annotation could be used for indexing the photo (for example, one could assign different handwritten glyphs to different categories of pictures). Ink Archiving and Retrieval A software application may allow users to archive handwritten notes and retrieve them using either the time of creation of the handwritten notes or the tags associated with keywords. The tags are typically text strings created using a handwriting recognition system. Electronic Form-Filling In support of natural and robust data entry for electronic forms on a wide- spectrum of keyboardless devices, a handwriting recognition engine developer may define an API that takes InkML as input. Pen Input and Multimodal Systems Robust and flexible user interfaces can be created that integrate the pen with other input modalities such as speech. Higher robustness is achievable because cross-modal redundancy can be used to compensate for imperfect recognition on each individual mode. Higher flexibility is possible because users can choose the most appropriate from among various modes for achieving a task or issuing commands. This choice might be based on user preferences, suitability for the task, or external conditions. For instance, when noise in the environment or privacy is a concern, the pen modality is preferred over voice. 1.2 Elements The current InkML specification defines a set of primitive elements sufficient for all basic ink applications. Few semantics are attached to these elements. All content of an InkML document is contained within a single &lt;ink&gt; element. The fundamental data element in an InkML file is the &lt;trace&gt; . A trace represents a sequence of contiguous ink points -- e.g., the X and Y coordinates of the pen's position. A sequence of traces accumulates to meaningful units, such as characters and words. The &lt;traceFormat&gt; element is used to define the format of data within a trace. In its simplest form, an InkML file with its enclosed traces looks like this: &lt;ink&gt; &lt;trace&gt; 10 0 9 14 8 28 7 42 6 56 6 70 8 84 8 98 8 112 9 126 10 140 13 154 14 168 17 182 18 188 23 174 30 160 38 147 49 135 58 124 72 121 77 135 80 149 82 163 84 177 87 191 93 205 &lt;/trace&gt; &lt;trace&gt; 130 155 144 159 158 160 170 154 179 143 179 129 166 125 152 128 140 136 131 149 126 163 124 177 128 190 137 200 150 208 163 210 178 208 192 201 205 192 214 180 &lt;/trace&gt; &lt;trace&gt; 227 50 226 64 225 78 227 92 228 106 228 120 229 134 230 148 234 162 235 176 238 190 241 204 &lt;/trace&gt; &lt;trace&gt; 282 45 281 59 284 73 285 87 287 101 288 115 290 129 291 143 294 157 294 171 294 185 296 199 300 213 &lt;/trace&gt; &lt;trace&gt; 366 130 359 143 354 157 349 171 352 185 359 197 371 204 385 205 398 202 408 191 413 177 413 163 405 150 392 143 378 141 365 150 &lt;/trace&gt; &lt;/ink&gt; These traces consist simply of alternating X and Y values, and may look like this when rendered: Figure 1: example trace rendering Figure 1 shows a trace of a sampled handwriting signal representing. The dots mark the sampling positions which were interpolated by the blue line. Green points represent pen-downs whereas red dots indicate pen-ups. Information about the transducer device used to collect the ink (e.g., the sampling rate and resolution) is specified with the &lt;captureDevice&gt; element. The Multimodal Interaction Working Group is currently working with the Device Independence Working Group to make sure that transducer characteristics are also represented as a CC/PP profile that can be included inside an ink document by reference. See "Composite Capability/Preference Profiles (CC/PP): Structure and Vocabularies" Ink traces can have certain attributes such as color and width. These attributes are captured in the &lt;brush&gt; element. Traces that share the same characteristics, such as being written with the same brush, can be grouped together with the &lt;traceGroup&gt; element. For applications that require ink sharing, such as collaborative whiteboards, where ink coming from different devices is drawn on a common canvas, the &lt;context&gt; element allows representation and grouping of the pertinent information, such as the trace format, brush, and canvas. The &lt;traceRefGroup&gt; element is provided as a building block for semantic labelling of groups of traces. It includes a generic contentCategory attribute that can be used by applications to describe at a basic level the category of content that the traces represent (e.g., "handwritten text", "drawing", etc.). In all appropriate cases, the InkML specification defines default values for elements that are not specified, and rules that establish the scope of a given attribute. Application-specific elements are expected to be defined to provide a higher-level description of the digital ink captured in the primitive elements. Some application-specific elements would reference the primitive elements. For example, a page tag may be useful in a document management application to indicate groups of traces belonging to a particular page. In a form processing application, a field tag might indicate a group of traces belonging to a particular field. Another example of an application-specific element is &lt;writerInfo&gt; which could be used to record information about the age and handedness of the writer. When combining InkML and other XML elements within applications, elements from different namespaces may be disambiguated by use of the namespace qualifier. InkML element names are defined within the InkML namespace, specifically http://www.w3.org/2003/InkML Finally, the InkML specification is currently restricted to fixed Cartesian coordinate systems. Similarly, it does not support detailed timestamp handling, events (although these could be handled via application-specific elements), or sophisticated compression of trace data. 1.3 Exchange Modes Most ink-related applications fall into two broad categories: Streaming and Archival. Archival ink applications capture and store digital ink for later processing, such as document storage/retrieval applications and remote on-line forms processing (where forms are filled on electronic tablet computers and processed remotely). In these applications, all primitive elements are written prior to processing. For ease of processing, it is recommended that, in archival mode, referenced elements be defined inside of a declaration block using the &lt;defs&gt; element. Streaming ink applications, on the other hand, capture and transmit digital ink in essentially real time, such as in the electronic whiteboard example mentioned above. In order to support a streaming style of ink markup generation, the InkML language supports the notion of a "current" state (e.g., the current brush) and allows for incremental changes to this state. 2 Traces and Trace Formatting Traces are the basic element used to record the trajectory of the pen as the user writes digital ink. More specifically, these recordings describe sequences of connected points. On most devices, these sequences of points will be bounded by pen contact change events (pen-up and pen-down), although some application simply record proximity and force data without providing an interpretation of pen-up or pen-down state. The simplest form of encoding specifies the X and Y coordinates of each sample point. For compactness, it may be desirable to specify absolute coordinates only for the first point in the trace and use delta-x and delta-y values to encode subsequent points. Some devices record acceleration rather than absolute or relative position; some provide additional data that may be encoded in the trace, including Z coordinates or tip force (pressure), or the state of side switches or buttons. These variations in the information available from different capture devices, or needed by different applications, are supported in InkML through the &lt;traceFormat&gt; and &lt;trace&gt; elements. The &lt;traceFormat&gt; element specifies the encoding format for each sample of a recorded trace, while &lt;trace&gt; elements are used to represent the actual trace data. If no &lt;traceFormat&gt; is specified, a default encoding format of X and Y coordinates is assumed. 2.1 Trace Formats Traces generated by differing devices, or used in differing applications, may contain different types of information. InkML defines channels to describe the data that may be encoded in a trace. A channel can be characterized as either regular--meaning that its value is recorded for every sample point of the trace, or intermittent--meaning that its value may change infrequently and thus will not necessarily be recorded for every sample point. X and Y coordinates are examples of likely regular channels, while the state of a pen button is likely to be an intermittent channel. The &lt;traceFormat&gt; element describes the format used to encode points within &lt;trace&gt; elements. In particular, it defines the sequence of channel values that occurs within &lt;traceFormat&gt; elements. The order of declaration of channels in the &lt;traceFormat&gt; element determines the order of appearance of their values within &lt;trace&gt; elements. X and Y should be the first two channels of the &lt;traceFormat&gt; if they are used. Regular channels appear first in the &lt;trace&gt; , followed by any intermittent channels. Correspondingly, the &lt;traceFormat&gt; element contains a &lt;regularChannels&gt; section followed by a &lt;intermittentChannels&gt; section. The &lt;regularChannels&gt; element lists those channels whose value must be recorded for each sample point, while the &lt;intermittentChannels&gt; lists those channels whose value may optionally be recorded for each sample point. If no channels of either type exist, the corresponding element may be omitted. Within a &lt;regularChannels&gt; or &lt;intermittentChannels&gt; element, channels are described using the empty element &lt;channel&gt; , with name , type , default , and mapping attributes. The required name attribute specifies the interpretation of the channel in the trace data. The following channel names, with their specified meanings, are reserved: channel name interpretation X X coordinate (horizontal pen position) Y Y coordinate (vertical pen position) Z Z coordinate (height of pen above paper/digitizer) F pen tip force (tablet pressure) S tip switch state (touching/not touching the digitizer) B1...Bn side button states Tx tilt along the x-axis Ty tilt along the y-axis Az azimuth angle of the pen (yaw) El elevation angle of the pen (pitch) R rotation (rotation about pen axis - i.e., like the roll axis of an airplane) Orientation Channels There are 5 channels defined for recording of pen orientation data. Implementers may choose to use either Azimuth and Elevation, or tilt angles. The latter are the angles of projections of the pen axis onto the XZ and YZ planes, measured from the vertical. It is often useful to record the sine of this angle, rather than the angle itself, as this is usually more useful in calculations involving angles. The specification does not yet include a mechanism for distinguishing these two. The third degree of freedom in orientation is generally defined as the rotation of the pen about its axis. This is potentially useful (in combination with tilt) in application such as illustration or calligraphy, and signature verification. Figure 2: (a) azimuth and elevation angles, (b) tilt angles Figure 3: (a) pen orientation decomposition, (b) pen rotation Figure 2a displays the pen orientation using Azimuth and Elevation. The origin of the Azimuth is at the Y-axis. Azimuth increases anticlockwise up to 360 degrees. The origin of Elevation is located within the XY-plane. Elevation increases up to 90 degrees, at which point the pen is perpendicular to the XY-plane. Figure 2b explains the definition of the Tilt-X and the Tilt-Y angles. For both the origin is along the Z-axis. Tilt-X increases up to +90 degrees for inclinations along the positive X-axis and decreases up to -90 degrees for inclinations along the negative X-axis. Respectively, Tilt-Y is defined for pen inclinations along the Y-axis. Figure 3a displays the pen orientation decomposition as functions of Azimuth/Elevation or alternatively as function of Tilt-X/Tilt-Y. Thereby, Elevations of the pen which are mapped to the XZ- and to the YZ- plane lead to Tilt-X and Tilt-Y. Figure 3b shows the Rotation of the pen along its longitudinal axis. User Defined Channels In addition, user-defined channels are allowed, although their interpretation is not required by conforming ink markup processors. The type attribute defines the encoding type for the channel (either boolean, decimal, or integer). If type is not specified, it defaults to decimal. A default value can be specified for the channel using the default attribute; the use of default values within a trace is described in the next section. If no default is specified, it is assumed to be zero for integer and decimal-valued channels, and false for boolean channels. Typically, a channel in the &lt;traceFormat&gt; will map directly to a corresponding channel provided by the digitizing device, and its values as recorded in the trace data will be the original channel values recorded by the device. However, for some applications, it may be useful to store normalized channel values instead, or even to remap the channels provided by the digitizing device to different channels in the trace data. This correspondence between the trace data and the device channels is recorded using the mapping attribute of the &lt;channel&gt; element. The mapping attribute has three forms. Identity mappings from device channels are described using a mapping value of "*". The following example defines a channel in the trace data which records the values obtained directly from the X coordinate channel provided by the device: &lt;channel name="X" type="decimal" mapping="*"/&gt; Simple mappings such as scaling, and translation, can be specified using a mapping value of the form "formula(...)", where the expression enclosed in the parentheses contains only channel names (from the device element), integer and decimal values, mathematical operators +, -, *, /, and boolean operators !, &amp;, |. Formulae syntax is defined to be standard ANSI-C expression syntax, including use of integer and decimal values, restricted to the listed operators. The examples below define a channel for Y coordinates which is derived from the original device y-coordinate channel by scaling by 2 and translating by 10 units, and another channel which normalizes the device's tip force values from the range 0..1024 to 0..128: &lt;channel name="Y" type="decimal" mapping="formula(2*Y+10)"/&gt; &lt;channel name="F" type="decimal" mapping="formula(F*.125)"/&gt; More complex relations can be described using a mapping value of the form "uri(...)", where the URI enclosed within the parentheses can refer to a resource such as a MathML document. The following element defines a force channel in the trace data whose values were obtained by some mapping of device channels specified in a separate resource called fxform: &lt;channel name="F" type="decimal" mapping="uri('http://www.example.org/fxform')"/&gt; If no mapping is specified for a channel, it is assumed to be unknown. The following example defines a &lt;traceFormat&gt; which reports decimal-valued X and Y coordinates for each point, and intermittent boolean values for the states of two buttons B1 and B2, which have default values of "false": &lt;traceFormat id="xyb1b2"&gt; &lt;regularChannels&gt; &lt;channel name="X" type="decimal" mapping="*"/&gt; &lt;channel name="Y" type="decimal" mapping="*"/&gt; &lt;/regularChannels&gt; &lt;intermittentChannels&gt; &lt;channel name="B1" type="boolean" default="F" mapping="*"/&gt; &lt;channel name="B2" type="boolean" default="F" mapping="*"/&gt; &lt;/intermittentChannels&gt; &lt;/traceFormat&gt; The appearance of a &lt;traceFormat&gt; element in an ink markup file both defines the format and installs it as the current format for subsequent traces (except within a &lt;defs&gt; block, discussed later in section 3.4). The id attribute of a &lt;traceFormat&gt; allows the format to be reused by multiple contexts (section 3.2). If no &lt;traceFormat&gt; is specified, the following default format is assumed for all traces: &lt;traceFormat id="default"&gt; &lt;regularChannels&gt; &lt;channel name="X" type="decimal"/&gt; &lt;channel name="Y" type="decimal"/&gt; &lt;/regularChannels&gt; &lt;/traceFormat&gt; Thus, in the simplest case, an ink markup file need only contain traces. Open Issues Should a &lt;traceFormat&gt; be allowed to reference another &lt;traceFormat&gt; ? If so, what is the nature of the modifications which would be allowed? One possibility is to allow extension only; i.e. the channels defined in the &lt;traceFormat&gt; are added in order after the ones in the referenced &lt;traceFormat&gt; . Another is to allow overriding of the attributes of channels in the referenced &lt;traceFormat&gt; ; e.g. any channel whose name matches that of a channel in the referenced &lt;traceFormat&gt; replaces its definition. Additional detail about formula syntax is still open. Lookup tables, &lt; &gt; == operators, ... 2.2 Traces The &lt;trace&gt; element is used to record the data captured by the digitizer. It contains a sequence of points encoded according to the specification given by the &lt;traceFormat&gt; element. The type attribute of a &lt;trace&gt; indicates the pen contact state (either "pen-up" or "pen-down") during its recording. A value of "indeterminate" is used if the contact-state is neither pen-up nor pen-down, and may be either unknown or variable within the trace. For example, a signature may be captured as a single indeterminate trace containing both the actual writing and the trajectory of the pen between strokes. A value of "continuation" means both that the pen contact state is retained from the previous trace element and that the points of the current trace element are a temporally contiguous continuation of (and thus should be connected to) the previous trace element. This allows a trace to be spread across several elements for purposes such as streaming. Regular channels may be reported as explicit values, differences, or second differences. Prefix symbols are used to indicate the interpretation of a value. A preceding exclamation point indicates an explicit value, a single quote indicates a single difference, and a double quote prefix indicates a second difference. If there is no prefix, then the channel value is interpreted as explicit, difference, or second difference based on the last prefix for the channel. If there is no last prefix, the value is interpreted as explicit. A second difference encoding must be preceded by a single difference representation; which, in turn, must be preceded with an explicit encoding. NOTE: All traces must begin with an explicit value, not with a first or second difference. This is true of continuation traces as well. This allows the location and velocity state information to be discarded at the end of each trace, simplifying parser design. Intermittent channels are always encoded explicitly, and prefixes are not allowed. Both regular and intermittent channels may be encoded with a wildcard character *. The wildcard character means either that the value of the channel remains at the previous channel value (if explicit), or that the channel continues integrating the previous velocity and acceleration values. Booleans are encoded as "T" or "F". For each point in the trace, regular channel values are reported first in the order given by the &lt;traceFormat&gt; . If any intermittent values are reported for the point, the set of intermittent values is preceded by a colon and ended with a semicolon. Within these delimiters, the intermittent channels are represented in the order given by the &lt;traceFormat&gt; . The list may be terminated early with the semicolon, and the unreported intermittent channels are interpreted with wildcards. Here is an example of a trace of 11 points, using the following traceFormat: &lt;traceFormat&gt; &lt;regularChannels&gt; &lt;channel name="X" type="decimal"&gt; &lt;channel name="Y" type="decimal"&gt; &lt;/regularChannels&gt; &lt;intermittentChannels&gt; &lt;channel name="B1" type="boolean" default="F"/&gt; &lt;channel name="B2" type="boolean" default="F"/&gt; &lt;/intermittentChannels&gt; &lt;/traceFormat&gt; &lt;trace id = "id4525abc"&gt; 1125 18432'23'43"7"-8 3-5+7 -3+6+2+6 8+3+6:T;+2+4:*T;+3+6+3-6:FF; &lt;/trace&gt; The trace is interpreted as follows: Trace X Y vx vy B1 B2 Comments 1125 18432 1125 18432 ? ? F F button default values '23'43 1148 18475 23 43 F F velocity values "7"-8 1178 18510 30 35 F F acceleration Values 3-5 1211 18540 33 30 F F implicit acceleration whitespace token sep +7 -3 1251 18567 40 27 F F optional whitespace +6+2 1297 18596 46 29 F F +6 8 1349 18633 52 37 F F space instead of + +3+6:T; 1404 18676 55 43 T F an optional value +2+4:*T; 1461 18723 57 47 T T wildcard +3+6 1521 18776 60 53 T T optional keep last +3-6:FF; 1584 18823 63 47 F F optionals One would not typically see both a "+"and a "space" used as a separator in the same trace or document, but it is legal. An ink markup generator might also include additional whitespace formatting for clarity. The following trace specification is identical in meaning to the more compact version shown above: &lt;trace id = "id4525abc"&gt; 1125 18432 '23 '43 "7 "-8 3 -5 7 -3 6 2 6 8 3 6 :T; 2 4 : *T; 3 6 3-6 :F F; &lt;/trace&gt; In addition, the alphabetic characters may be used to encode small negative and positive integer values. These may be substituted anywhere for an integer value between -25 and +25. The characters "a" to "y" are interpreted as -1 through -25. The characters "A" to "Y" are interpreted as 1 through 25. "z" and "Z" are interpreted as zero. Using these shorthand codes, the above trace could be encoded: &lt;trace id="4525BCD"&gt; 1125 18432'W'43"G"hCeGcFBFHCF:T;BD:*T;CFCf:FF; &lt;/trace&gt; Note that the true and false values for the side buttons use symbols that are also used to encode numbers. However, they are unambiguous because of their location. 2.2.1 Grammar The grammar for trace encoding is described in Backus-Naur Form (BNF) using the following notation: *: 0 or more +: 1 or more ?: 0 or 1 (): grouping |: separates alternatives double quotes surround literals #x precedes hex character codes The grammar is as follows: trace ::= wsp * point + point ::= regularPart intermittentPart? regularPart ::= regularValue + intermittentPart ::= ":" wsp * intermittentValue * ";" wsp * regularValue ::= qualifier ? value wsp * intermittentValue ::= value wsp * value ::= integer | decimal | code integer ::= sign ? digit + decimal ::= sign ? digit + "." digit + code ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "*" digit ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" sign ::= "+" | "-" qualifier ::= "!" | "'" | """ wsp ::= #x20 | #x9 | #xD | #xA The number of regularValue tokens appearing within a trace must match the number of regular channels specified in the &lt;traceFormat&gt; , and the number of intermittentValue tokens must be no greater than the number of intermittent channels. Whitespace is optional before and after regularValue and intermittentValue tokens (unless required to separate two adjacent positive integer or decimal tokens values without + signs). Open Issues Since many sources of digital ink are temporal, many digital ink records will have significant time information. The "current" or "cumulative" time may be expressed in several ways, depending on what is available at the time of capture. The most explicit expression of time is by the use of a startTime attribute in any element. This is not an ideal solution and should be considered more carefully by the working group. There is currently some discussion about whether to make continuation a separate attribute, rather than a type. This would allow specification of whether a continuation trace was pen-up, pen-down, or indeterminate in addition to the fact that it is a continuation. 2.3 Trace Groups The &lt;traceGroup&gt; element is used to group successive traces which share common characteristics, such as the same &lt;traceFormat&gt; . The brush and context sections describe other contextual values that can be specified for a &lt;traceGroup&gt; . In the following example the two traces enclosed in the &lt;traceGroup&gt; share the same brush (see section 3.2 for a description of brushes). &lt;traceGroup brushRef="penA"&gt; &lt;trace&gt;...&lt;/trace&gt; &lt;trace&gt;...&lt;/trace&gt; &lt;/traceGroup&gt; The use of &lt;traceGroup&gt; is reserved for the containment of traces according to their properties at the time of capture. The element may not be nested, and it is not meant to be a generic grouping mechanism for the semantic labelling of traces. For that purpose, InkML provides the &lt;traceRefGroup&gt; element, which is described in section 5. Trace groups are the primary mechanism for assigning &lt;context&gt; to traces in archival ink markup. For additional details about this usage, see section 4.1. Open Issues We recently clarified that &lt;traceGroup&gt; elements may not be nested. &lt;traceRefGroup&gt; provides most of the functionality for which this would be desireable. Is there any use case we have overlooked that would require nested traceGroups ? 3 Context Elements A number of device, data format, and coordinate system details comprise the context in which ink is written and recorded. These contextual details need to be captured by the ink markup language in order to fully characterize the recorded ink data. The &lt;context&gt; element (section 3.3) provides various attributes such as canvas and mapping by which InkML addresses this need. In addition, the &lt;captureDevice&gt; element (section 3.1) describes how InkML allows accurate recording of the hardware characteristics relevant during the capture of the ink traces. Different pen tips (e.g. eraser vs. writing end) or entirely different pens, physical or virtual, may be used on the same input device. These details are captured by the &lt;brush&gt; element (Section 3.2). The following sections describe the elements which are used to capture the context in which the ink data was recorded. 3.1 Capture Device One of the important requirements for the ink format is to allow accurate recording of meta-data about the hardware that was used to acquire the ink contained in a file. This is accomplished in the &lt;captureDevice&gt; block, which may contain either very basic information, or very detailed information about a number of device characteristics. Some of these characteristics are already commonly used in digitizer specifications, while others are somewhat more esoteric, but nonetheless potentially very useful. Most digitizer manufacturers do not spec them, and many are not able to measure them. However, these device characteristics influence signal fidelity and impose some limits on how the data can be used. Hopefully by beginning to standardize the recording of these characteristics, we can raise awareness and encourage device manufacturers to take them into consideration. The &lt;captureDevice&gt; block, including &lt;channelList&gt; , will often be specified by reference to a separate xml document, either local or at some remote URI. Ideally, &lt;captureDevice&gt; blocks for common devices will become publicly available. 3.1.1 captureDevice Element The &lt;captureDevice&gt; element will allow specification of: Manufacturer and model Basic sampling rate - samples/sec Sampling uniformity: must be designated non-uniform if any pen-down points are skipped or if the sampling is irregular Latency: latency of the real-time channel, in msec, from physical action to the API time stamp. This is typically specified at the device level, since all channels often are subject to a common processing and communications latency. Channel List Syntax: &lt;captureDevice id=&quot;foo&quot; manufacturer=&quot;AcmePen&quot; model=&quot;FooBar 2000 USB&quot; sampleRate=&quot;100&quot; uniform=&quot;TRUE&quot; latency=&quot;50&quot;&gt; &lt;channelList&gt; ... &lt;/channelList&gt; &lt;/captureDevice&gt; Attributes: id A unique identifier for this captureDevice element manufacturer String identifying the digitizer device manufacturer model String identifying the digitizer model sampleRate The basic sample rate in samples/sec. May be &quot;unknown&quot; uniform TRUE or FALSE indication of whether sample rate is consistent, with no dropped points latency The basic device latency that applies to all channels, in msec Examples: --> 3.1.2 ChannelList The &lt;channelList&gt; element lists all data channels that the device is capable of reporting. Channels include: X coordinate (horizontal pen position, relative or absolute) Y coordinate (up/down or vertical pen position, relative or absolute) Z coordinate (height of pen above paper/digitizer, relative or absolute) Force (pen tip force) [NOTE: this is often referred to as &quot;pressure&quot; by manufacturers] Tip switch state (touching, not touching digitizer) Side switches and Buttons (for example, bezel buttons, cursor buttons...) Tilt angle in X dimension Tilt angle in Y dimension Pen Azimuth (alternative to tilt) Pen Elevation (alternative to tilt) Pen Rotation (around the pen axis) Syntax: &lt;channelList id=&quot;foo&quot;&gt; &lt;channel name=&quot;X&quot;&gt; ... &lt;/channel&gt; &lt;/channelList&gt; Attributes: id A unique identifier for this channelList element Examples: --> In addition, each channel may specify any of the following when known and appropriate: Value representation - for example, Boolean, integer, or decimal Range - the range of possible values that may be reported Threshold - (for binary channels) - e.g. the threshold force at which the tip switch is activated For continuous channels, like X, Y and Z, and Force, these additional characteristics may be specified: Resolution - the scale of the values recorded, expressed as &quot;fraction units&quot;, e.g. &quot;1/1000 inch&quot;) or &quot;decimal units&quot;, e.g. &quot;0.1 mm&quot; or &quot;1 degrees&quot; Note that if decimal values are recorded, the quantization of the data may be smaller than the &quot;resolution&quot; Quantization - the unit of smallest change in the reported values. If the value is reported as integer, this is assumed to be the same as the resolution Noise - the RMS value of noise typically observed on the channel. This is distinct from accuracy! It is an indication of the difference observed in the data from the device when the same path is traced out multiple times (e.g. by a robot). Accuracy - the typical accuracy of the data on the channel (e.g. &quot;0.5 mm&quot;, &quot;10 degrees&quot; or &quot;0.1 newton&quot;) This is the typical difference between the reported position and the actual position of the pen tip (or tilt ...) Cross-coupling - the distortion in the data from one channel due to changes in another channel. For example, the X and Y coordinates in an electromagnetic digitizer are influenced by the tilt of the pen. This would be specified by dX/dTx = ... ??? or max delta X vs. Tx = ... ??? If the influencing channels are also recorded, and the cross-couplings are accurately specified, it may be possible to compensate for the cross-coupling by subtracting the influence, at the expense of higher noise. The cross-coupling is always expressed in the units of the two channels, e.g. if X mm and Tx is in degrees, then cross-coupling is in mm/deg Skew - the temporal skew of this channel relative to the basic device latency, if any. For example, some devices actually sample X and Y at different points in time, so one might have a skew of -5 msec, and the other +5 msec. Minimum bandwidth (in Hz) - the minimum bandwidth of the channel, in Hz (not samples/sec), i.e., the frequency of input motion up to which the signal is accurate to within 3dB. Peak rate - the maximum speed at which the device can accurately track motion Dynamic distortion, e.g., how velocity affects position accuracy. This is expressed in inverse seconds, e.g. 0.01 mm / mm / sec. This kind of distortion is often cross channel, but this spec only allows a generic, channel independent specification. Syntax: &lt;channel name=&quot;X&quot;&gt; &lt;representation value=&quot;INTEGER&quot;/&gt; &lt;range min=&quot;0&quot; max=&quot;8191&quot;/&gt; &lt;threshold value=&quot;0.1&quot; units=&quot;newtons&quot;/&gt; &lt;resolution value=&quot;0.1&quot; units=&quot;mm&quot;/&gt; &lt;quantization value=&quot;0.01&quot; units=&quot;mm&quot;/&gt; &lt;noise value=&quot;0.05&quot; units=&quot;mm&quot;/&gt; &lt;accuracy value=&quot;0.5&quot; units=&quot;mm&quot;/&gt; &lt;crossCoupling otherChannel=&quot;Tx&quot; value=&quot;0.1&quot;/&gt; &lt;crossCoupling otherChannel=&quot;Ty&quot; value=&quot;0.01&quot;/&gt; &lt;skew value=&quot;2&quot; units=&quot;msec&quot;/&gt; &lt;minBandwidth value=&quot;15.0&quot;/&gt; &lt;distortion value=&quot;.001&quot;/&gt; &lt;/channel&gt; Attributes: name The name of the channel described by this channel element Examples: &lt;channel name=&quot;S&quot;&gt; &lt;representation value=&quot;BOOLEAN&quot;/&gt; &lt;threshold value=&quot;0.1&quot; units=&quot;newtons&quot;/&gt; &lt;skew value=&quot;5&quot; units=&quot;msec&quot;/&gt; &lt;/channel&gt; &lt;channel name=&quot;X&quot;&gt; &lt;representation value=&quot;INTEGER&quot;/&gt; &lt;range min=&quot;0&quot; max=&quot;8191&quot;/&gt; &lt;resolution value=&quot;0.1&quot; units=&quot;mm&quot;/&gt; &lt;quantization value=&quot;0.01&quot; units=&quot;mm&quot;/&gt; &lt;noise value=&quot;0.05&quot; units=&quot;mm&quot;/&gt; &lt;accuracy value=&quot;0.5&quot; units=&quot;mm&quot;/&gt; &lt;crossCoupling otherChannel=&quot;Tx&quot; value=&quot;0.1&quot;/&gt; &lt;crossCoupling otherChannel=&quot;Ty&quot; value=&quot;0.01&quot;/&gt; &lt;skew value=&quot;2&quot; units=&quot;msec&quot;/&gt; &lt;minBandwidth value=&quot;15.0&quot;/&gt; &lt;distortion value=&quot;.001&quot;/&gt; &lt;/channel&gt; 3.1.4 Error Calculations This Error Calculations section is informative. The following are some suggestions for how error estimates might be derived from the basic fidelity information in a spatial channel (x or y): Total position error is the sum of {absolute accuracy + velocity*(dynamic distortion) + noise + quantization error} for identical path (in all channels). Repeatability is also the sum of {noise + quantization error} for a repeated, identical physical trajectory across the digitizer. Relative position error is the minimum of {linearity*delta, absolute accuracy). This effects the ability to accurately measure the length and orientation of a short stroke. Maximum error including skew (by assuming that all channels are in sync) is equal to the sum of {absolute accuracy + velocity*dynamic distortion + cross-coupling + velocity*(skew) + noise + quantization error}. All errors are subject to additional distortion from a signal exceeding the channel bandwidth. Open Issues The attribute for identifying the capture device info block has not been incorporated into the Context section. There should be a "time" channel. We recently noticed that it is missing, and it will be incorporated in the next draft. There have been last minute additions to try to flesh out the syntax and examples. These are preliminary, and may be changed. 3.2 Brushes Along with trace data, it is often necessary to record certain attributes of the pen during ink capture. For example, in a notetaking application, it is important to be able to distinguish between traces captured while writing as opposed to those which represent erasures. Because these attributes will often be application specific, this specification does not attempt to enumerate the brush attributes which can be associated with a trace. It also does not provide a language for describing brush attributes, since it is possible to imagine attributes which are described using complex functions parameterized by time, pressure, or other factors. Instead, the specification allows for capturing the fact that a given trace was recorded in a particular brush context, leaving the details of precisely specifying that context to a higher-level, application specific layer. Depending on the application, brush attributes may change frequently. Accordingly, there should be a concise mechanism to assign the attributes for an individual trace. On the other hand, it is likely that many traces will be recorded using the same sets of attributes; therefore, it should not be necessary to explicitly state the attributes of every trace (again, for reasons of conciseness). Furthermore, it should be possible to define entities which encompass these attribute sets and refer to them rather than listing the entire set each time. Since many attribute sets will be similar to one another, it should also be possible to inherit attributes from a prior set while overriding some of the attributes in the set. In the ink markup, brush attributes are described by the &lt;brush&gt; element. This element allows for the definition of reusable sets of brush attributes which may be associated with traces. For reference purposes, a brush specifies an identifier which can be used to refer to the brush. A brush can inherit the attributes of another &lt;brush&gt; element by including a brushRef attribute which contains the referenced brush's id. Brush attributes are associated with traces using the brushRef attribute. When it appears as an attribute of an individual &lt;trace&gt; , the brushRef specifies the brush attributes for that trace. When it appears as an attribute of a &lt;traceGroup&gt; element, the brushRef specifies the common brush attributes for all traces enclosed in the &lt;traceGroup&gt; . Within the &lt;traceGroup&gt; , an individual trace may still override the traceGroup's brush attributes using a brushRef attribute. Brush attributes can also be associated with a context by including the brushRef attribute on a &lt;context&gt; element. Any traces which reference the context using a contextRef attribute are assigned the brush attributes defined by the context. If a trace includes both brushRef and contextRef attributes, the brushRef overrides any brush attributes given by the contextRef. In streaming ink markup, brushes are assigned to a trace according to the current brush, which can be set using the &lt;context&gt; and &lt;brush&gt; elements. See section 4.2 for a detailed description of streaming mode. 3.3 Context This section describes the &lt;context&gt; element and its attributes: canvas , mapping traceFormatRef , and brushRef . The context element both defines the shared context (canvas) and serves as a convenient agglomeration of contextual attributes. It is used by the &lt;traceGroup&gt; (Section 2.3) element to define the complete shared context of a group of traces or may be referred to as part of a context change in streaming mode. In either mode, individual attributes may be overridden at time of use. Additionally, individual traces may refer to a previously defined context (again optionally overriding its attributes) to describe a context change that persists only for the duration of that trace. Although the use of the &lt;context&gt; element and attributes is strongly encouraged, default interpretations are provided so that they are not required in an ink markup file if all trace data is recorded in the same virtual coordinate system, and its relationship to digitizer coordinates is either not needed or unknown. A shared context, called a canvas , is needed for the ink markup to support screen sharing amongst multiple devices, each of which might have a different set of capture characteristics. For example, a single ink markup stream or file may contain traces that are captured on a tablet computer, a PDA device, and an opaque graphics tablet attached to a desktop computer. The size of these traces on each capture device and corresponding display might differ, yet it may be necessary to relate these traces to one another. They could represent scribbles on a shared electronic whiteboard, annotations of a common document, or the markings of two players in a distributed tic-tac-toe game. The trace data for these different ink sessions could be recorded using the same set of virtual coordinates; however, it is often useful and occasionally may even be necessary to record the data in the capture device coordinates, in order to more precisely represent the original capture conditions, for compactness, or to avoid round-off errors that might be associated with the use of a common coordinate system. Thus the mapping ; (section 3.3.2) from trace coordinates to the shared canvas coordinates may vary from device to device. The &lt;traceFormat&gt; (Section 2.1) used to record trace data may also vary, therefore the &lt;context&gt; element also contains a traceFormatRef attribute. Finally, the &lt;context&gt; element provides a brushRef attribute to record the attributes of the pen during the capture of the digital ink, for a particular context. 3.3.1 canvas Attribute In order to render data from a participant in a multi-party ink app, it is necessary to know how to transform trace data to screen coordinates. Each party may have a different coordinate system for their traces. Each party will need a mapping to their display that allows scrolling and zooming. Call this S[k] . Party k still needs to determine the meaning of the traces from party i . This is most simply accomplished by having each party define the relationship between their trace coordinate system, and an arbitrary reference coordinate system. This virtual coordinate system does not have any physical dimensions, because each party will render it differently, and each person will draw onto it differently, with arbitrary zoom and scrolling. Thus the virtual coordinate system is arbitrary. This virtual coordinate system is provided by the canvas, declared via the canvas attribute. This uniquely identifies a shared virtual coordinate system for cooperating ink applications. Together with the trace-to-canvas coordinate mapping (discussed below), it provides a common frame of reference for ink collected in multiple sessions on different devices. In the example above, trace data collected from the tablet computer can be combined with trace data collected from the PDA by specifying a common canvas and describing the relationships between each device's trace data and the common canvas coordinate system. In the ink markup, the canvas is an unbounded space oriented so that x and y coordinates increase as one moves to the right and down, respectively. Specifying a standard handedness for the canvas coordinate system allows each device to orient and display ink from every other device. Canvas Math To collaborate in the multi-party ink exchange, party k needs to know the orientation and handedness of the virtual coordinate system (in order to determine their own local S[k] ), and the mapping of each other party's data to that virtual coordinate system. Call these mappings T[i] To map from trace coordinates to screen coordinates, we compose the transform from party i to virtual space with my transform from virtual space to screen space, S[k] . This is M = T * S . This matrix is used to transform all points from that traceGroup. When the display is zoomed or scrolled, S[k] changes, and M is recomputed. When a new traceGroup with a different T[i] is encountered, it is composed with S[k] , and rendering continues. The S[k] matrix is not part of the inkML file, but is determined locally during capture or rendering. T and S are the minimum necessary information to be able to render some data. However, in order to determine S or T, it is also necessary to make a decision about the orientation of the virtual space. If everyone makes this determination independently, there is no common virtual space. Consequently, the virtual space, or canvas is defined to have a specific orientation. The orientation of this canvas does not effect anyone, as it disappears when T and S are composed. It simply provides a common intermediate space that everyone uses when computing T (which goes into the xml) and S (which is used only to display the data). The default canvas Since a canvas identifier is a simple string, the id of the default canvas is defined to be &quot;default&quot;. This is sufficient to allow simple single-canvas sharing without further action on the part of devices or applications. 3.3.2 mapping Attribute The trace-to-canvas coordinate system mapping, declared via the mapping attribute, defines the transformation from trace coordinates to the shared canvas coordinate system. The trace-to-canvas coordinate system mapping is expressed as a standard 2x3 2D transformation matrix (at this time, we ignore the additional complication of nonlinearity in the digitizing device's coordinate system). The default mapping is the identity matrix (with a zero offset). The format of the trace data--both the mapping from digitizer to trace coordinates and the channels and channel formats present in the data--for a given context is specified via the traceFormatRef attribute, which refers to a &lt;traceFormat&gt; element (Section 3.x). Note: As it is primarily intended as an input specification, the ink markup language does not provide a mechanism for representing the transformations to screen or view coordinates, which relate to ink display and are typically transient. 3.3.3 traceFormatRef Attribute The trace format to associate with the context being defined is specified with a traceFormatRef attribute, which refers to a &lt;traceFormat&gt; element (Section 2.1). 3.3.4 brushRef Attribute The brush to associate with the context being defined is specified with a brushRef attribute, which refers to a &lt;brush&gt; element (Section 3.3). 3.3.5 Context The &lt;context&gt; element consolidates all salient characteristics of one or more ink traces. It may be specified by declaring all non-default attributes, or by referring to a previously defined context and overriding specific attributes. Syntax: &lt;context id=&quot;&quot; contextRef=&quot;&quot; canvas=&quot;&quot; mapping=&quot;&quot; traceFormatRef=&quot;&quot; brushRef=&quot;&quot;/&gt; Attributes: id A unique identifier for this context. contextRef A previously defined context upon which this context is to be based. canvas The unique identifier of the canvas for this context. mapping The standard 2x3 matrix representation of the transformation from the trace data coordinates to the canvas; expressed as the six values of the transformation matrix in row order xx xy x0 yx yy y0 . traceFormatRef A reference to the traceFormat for this context. brushRef A reference to the brush for this context. Examples: &lt;context id=&quot;context1&quot; canvas=&quot;canvas1&quot; traceFormatRef=&quot;format1&quot; brushRef=&quot;brush1&quot;/&gt; &lt;context id=&quot;context2&quot; contextRef=&quot;context1&quot; brushRef=&quot;brush2&quot;/&gt; &lt;context id=&quot;context3&quot; canvas=&quot;canvas1&quot; mapping=&quot;2 0 0 0 2 0&quot; traceFormatRef=&quot;format2&quot; brushRef=&quot;brush3&quot;/&gt; The first example is a hypothetical device #1, using a previously defined format1 and brush1, and indicating that it can share trace data using canvas1. Its trace coordinates are mapped to this shared canvas using the default identity matrix with zero offset. The second example is the same device #1, using a different brush: brush2. The third example is a hypothetical device #2, using previously defined format2 and brush3, and sharing trace data with the first device by using the common canvas1. Its trace coordinates require a scale factor of 2 to map to the canvas. 3.4 Defs The &lt;defs&gt; element is a container which is used to define reusable content. The definitions within a &lt;defs&gt; block can be referenced by other elements using the appropriate syntax. Content within a &lt;defs&gt; has no impact on the interpretation of traces, unless referenced from outside the &lt;defs&gt; . In order to allow them to be referenced, elements within a &lt;defs&gt; block must include an id ; attribute. Therefore, an element which is defined inside a &lt;defs&gt; without an id , or that is never referenced, serves no purpose. The three elements which can be defined inside a &lt;defs&gt; are: &lt;context&gt; , &lt;brush&gt; and &lt;traceFormat&gt; . The attributes which are used to reference these definitions are the associated contextRef , brushRef and traceFormatRef attributes. The following simple example illustrates usage of the &lt;defs&gt; element. &lt;ink&gt; &lt;defs&gt; &lt;brush id=&quot;redPen&quot;/&gt; &lt;brush id=&quot;bluePen&quot;/&gt; &lt;traceFormat id=&quot;normal&quot;/&gt; &lt;traceFormat id=&quot;noForce&quot;/&gt; &lt;context id=&quot;context1&quot; brushRef=&quot;redPen&quot; traceFormatRef=&quot;normal&quot;/&gt; &lt;context id=&quot;context2&quot; contextRef=&quot;context1&quot; brushRef=&quot;bluePen&quot;/&gt; &lt;/defs&gt; &lt;context contextRef=&quot;context2&quot; traceFormatRef=&quot;noForce&quot;/&gt; &lt;context id=&quot;context3&quot;/&gt; &lt;/ink&gt; More details on the usage of the &lt;defs&gt; element are provided in section 4. 4 Streams and Archives The ink markup is expected to be utilized in many different scenarios. Ink markup data may be transmitted in substantially real time while exchanging ink messages, or ink documents may be archived for later retrieval or processing. These examples illustrate two different styles of ink generation and usage. In the former, the markup must facilitate the incremental transmission of a stream of ink data, while in the latter, the markup should provide the structure necessary for operations such as search and interpretation. In order to support both cases, InkML provides archival and streaming modes of usage. 4.1 Archival Applications In archival usage, contextual elements are defined within a &lt;defs&gt; element and assigned identifiers using the id attribute. References to defined elements are made using the corresponding brushRef , traceFormatRef , and contextRef attributes. The following example: &lt;defs&gt; &lt;brush id="penA"/&gt; &lt;brush id="penB"/&gt; &lt;traceFormat id="fmt1"&gt; &lt;regularChannels&gt; &lt;channel name="X" type="integer"&gt; &lt;channel name="Y" type="integer"&gt; &lt;channel name="Z" type="integer"&gt; &lt;/regularChannles&gt; &lt;/traceFormat&gt; &lt;context id="context1" canvas="canvasA" mapping="1 0 0 0 1 0" traceFormatRef="fmt1" brushRef="penA"/&gt; &lt;context id="context2" canvas="canvasA" mapping="2 0 0 0 2 0" traceFormatRef="fmt1" brushRef="penB"/&gt; &lt;/defs&gt; defines two brushes ("penA" and "penB"), a traceFormat ("fmt1"), and two contexts ("context1" and "context2") which both refer to the same canvas ("canvasA") and traceFormat ("fmt1"), but with different mappings and brushes. Note the use of the brushRef and traceFormatRef attributes to refer to the previously defined &lt;brush&gt; and &lt;traceFormat&gt; . Within the scope of a &lt;defs&gt; element, unspecified attributes of a &lt;context&gt; element are assumed to have their default values. This &lt;defs&gt; block: &lt;defs&gt; &lt;brush id="penA"&gt; &lt;context id="context1" canvas="canvasA" brushRef="penA"/&gt; &lt;/defs&gt; defines "context1", which is comprised of "canvasA" with the default mapping and traceFormat (the identity mapping and a traceFormat consisting of decimal X-Y coordinate pairs), and "penA". A &lt;context&gt; element can inherit and override the values of a previously defined context by including a contextRef attribute, so: &lt;defs&gt; &lt;brush id="penA"/&gt; &lt;context id="context1" canvas="canvasA" mapping="1 0 0 0 1 0"/&gt; &lt;context id="context2" contextRef="context1" mapping="2 0 0 0 2 0" brushRef="penA"/&gt; &lt;/defs&gt; defines "context2" which shares the same canvas ("canvasA") and traceFormat (the default format) as "context1", but has a different mapping and brush. Within archival ink markup, traces can either explicitly specify their context through the use of contextRef and brushRef attributes, or they can have their context provided by an enclosing traceGroup. In the following: &lt;trace id="t001" contextRef="context1"/&gt;...&lt;/trace&gt; &lt;trace id="t002" brushRef="penA"/&gt;...&lt;/trace&gt; &lt;traceGroup contextRef="context1"&gt; &lt;trace id="t003"&gt;...&lt;/trace&gt; &lt;/traceGroup&gt; traces "t001" and "t003" have the context defined by "context1", while trace "t002" has a context consisting of the default canvas, mapping and traceFormat, and "penA". Traces within a &lt;traceGroup&gt; element can also override the context or brush specified by the traceGroup. In this example: &lt;traceGroup contextRef="context1"&gt; &lt;trace id="t001"&gt;...&lt;/trace&gt; &lt;trace id="t002" brushRef="penA"&gt;...&lt;/trace&gt; &lt;trace id="t003"&gt;...&lt;/trace&gt; &lt;/traceGroup&gt; traces "t001" and "t003" have their context specified by "context1" while trace "t002" overrides the default brush of "context1" with "penA". A trace or traceGroup can both reference a context and override its brush, as in the following: &lt;trace id="t001" contextRef="context1" brushRef="penA"&gt;...&lt;/trace&gt; &lt;traceGroup contextRef="context1" brushRef="penA"&gt; &lt;trace id="t002"&gt;...&lt;/trace&gt; &lt;/traceGroup&gt; which assigns the context specified by "context1" to traces "t001" and "t002", but with "penA" instead of the default brush. In archival mode, the ink markup processor can straightforwardly determine the context for a given trace by examining only the &lt;defs&gt; blocks within the markup and the enclosing traceGroup for the trace. 4.2 Streaming Applications In streaming ink markup, changes to trace context are expressed directly using the &lt;brush&gt; , &lt;traceFormat&gt; , and &lt;context&gt; elements. This corresponds to an event-driven model of ink generation, where events which result in contextual changes map directly to elements in the markup. In the streaming case, the current context consists of the set of canvas, mapping, traceFormat and brush which are associated with subsequent traces in the ink markup. Initially, the current context contains the default canvas, an identity mapping, the default traceFormat, and a brush with no attributes. Each &lt;brush&gt; , &lt;traceFormat&gt; , and &lt;context&gt; element which appears outside of a &lt;defs&gt; element changes the current context accordingly (elements appearing within a &lt;defs&gt; block have no effect on the current context, and behave as described above in the archival section). The appearance of a &lt;brush&gt; element in the ink markup sets the current brush attributes, leaving all other contextual values the same. Likewise, the appearance of a &lt;traceFormat&gt; element sets the current traceFormat, and the appearance of a &lt;context&gt; element sets the current context. Outside of a &lt;defs&gt; block, any values which are not specified within a &lt;context&gt; element are taken from the current context. For instance, the &lt;context&gt; element in the following example changes the current brush from "penB" to "penA", leaving the canvas, mapping, and traceFormat unchanged from trace "t001" to trace "t002". &lt;brush id="penA"/&gt; &lt;brush id="penB"/&gt; &lt;trace id="t001"&gt;...&lt;/trace&gt; &lt;context brushRef="penA"/&gt; &lt;trace id="t002"&gt;...&lt;/trace&gt; In order to change a contextual value back to its default value, its attribute can be specified with the value "". In the following: &lt;context canvas="canvasA" brushRef="penA"/&gt; &lt;trace id="t001"&gt;...&lt;/trace&gt; &lt;context canvas="" brushRef=""/&gt; &lt;trace id="t002"&gt;...&lt;/trace&gt; trace "t001" is on "canvasA" and has the brush specified by "penA", while trace "t002" is on the default canvas and has the default brush. Brushes, traceFormats, and contexts which appear outside of a &lt;defs&gt; block and contain an id attribute both set the current context and define contextual elements which can be reused (as shown above for the brushes "penA" and "penB"). This example: &lt;context id="context1" canvas="canvasA" mapping="2 0 0 0 2 0" traceFormatRef="fmt1" brushRef="penA"/&gt; defines a context which can be referred to by its identifier "context1". It also sets the current context to the values specified in the &lt;context&gt; element. A previously defined context is referenced using the contextRef attribute of the &lt;context&gt; element. For example: &lt;context contextRef="context1"/&gt; sets the current context to have the values specified by "context1". A &lt;context&gt; element can also override values of a previously defined context by including both a contextRef attribute and canvas , mapping , traceFormatRef or brushRef attributes. The following: &lt;context contextRef="context1" brushRef="penB"/&gt; sets the current context to the values specified by "context1", except that the current brush is set to "penB" instead of "penA". A &lt;context&gt; element which inherits and overrides values from a previous context can itself be reused, so the element: &lt;context id="context2" contextRef="context1" brushRef="penB"/&gt; defines "context2" which has the same context values as "context1" except for the brush. Finally, a &lt;context&gt; element with only an id has the effect of taking a "snapshot" of the current context which can then be reused. The element: &lt;context id="context3"/&gt; defines "context3", whose values consist of the current canvas, mapping, traceFormat, and brush at the point where the element occurs (note that since "context3" does not specify any values, the element has no effect on the current context). An advantage of the streaming style is that it is easier to express overlapping changes to the individual elements of the context. However, determining the context for a particular trace can require more computation from the ink markup processor, since the entire file may need to be scanned from the beginning in order to establish the current context at the point of the &lt;trace&gt; element. 4.3 Archival and Streaming Equivalence The following examples of archival and streaming ink markup data are equivalent, but they highlight the differences between the two styles: Archival &lt;ink&gt; ... &lt;defs&gt; &lt;brush id="penA"/&gt; &lt;brush id="penB"/&gt; &lt;context id="context1" canvas="canvas1" mapping="1 0 0 0 1 0" traceFormatRef="format1"/&gt; &lt;context id="context2" contextRef="context1" mapping="2 0 50 0 2 50"/&gt; &lt;/defs&gt; &lt;traceGroup contextRef="context1"&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;/traceGroup&gt; &lt;traceGroup contextRef="context2"&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;/traceGroup&gt; &lt;traceGroup contextRef="context2" brushRef="penB"&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;/traceGroup&gt; &lt;traceGroup contextRef="context1" brushRef="penB"&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;/traceGroup&gt; &lt;traceGroup contextRef="context1" brushRef="penA"&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;/traceGroup&gt; &lt;/ink&gt; Streaming &lt;ink&gt; ... &lt;defs&gt; &lt;brush id="penA"/&gt; &lt;brush id="penB"/&gt; &lt;/defs&gt; &lt;context id="context1" canvas="canvas1" mapping="1 0 0 0 1 0" traceFormatRef="format1"/&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;context id="context2" contextRef="context1" mapping="2 0 50 0 2 50"/&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;context brushRef="penB"/&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;context contextRef="context1"/&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;context brushRef="penA"/&gt; &lt;trace&gt;...&lt;/trace&gt; ... &lt;/ink&gt; In the archival case, the context for each trace is simply determined by the &lt;trace&gt; element, its enclosing traceGroup, and contextual elements defined in the &lt;defs&gt; block, while in the streaming case, the context for a trace can depend on the entire sequence of context changes up to the point of the &lt;trace&gt; element. However, the streaming case more simply expresses the changes of context involving "penB", "context1", and "penA", whereas the archival case requires the restatement of the unchanged values in the successive traceGroups. The two styles of ink markup are equally expressive, but impose different requirements on the ink markup processor and generator. The working group is considering the usefulness of additional mechanisms for distinguishing between the two forms, such as separate profiles for archival and streaming ink markup. Tools to translate from streaming to archival style might also be of use to applications which work on stored ink markup. 5 Semantic Labelling and traceRefGroup The &lt;traceRefGroup&gt; element provides the basis for most semantic labelling of groups of traces. It should be used as the base class for all application specific elements that identify collections of traces. The &lt;traceRefGroup&gt; element has the following syntax: &lt;traceRefGroup id="" contentCategory=""&gt; &lt;traceref xpath=""&gt; &lt;traceref xpath="" from="" to=""&gt; &lt;traceRefGroup id=""&gt; &lt;!-- a nested traceRefGroup, which has attributes of all parent traceRefGroups --&gt; ... &lt;/traceRefGroup&gt; &lt;/traceRefGroup&gt; Traces listed within a &lt;traceRefGroup&gt; are included by reference only. The xpath attribute of the &lt;traceRef&gt; element is used to refer to traces within the current document, or from external documents. The from and to attributes can be used to reference a (contiguous) subset of the points within a given trace. &lt;traceRefGroup&gt; elements may also include other &lt;traceRefGroup&gt; elements by reference. A &lt;traceRefGroup&gt; element may be overlapping, i.e., a trace may be referenced in multiple groups. &lt;traceRefGroup&gt; elements will typically be used either to tag a group of traces for further processing, to tag a group of traces with some metadata, or to provide a concise reference to a group of traces for external use. Open Issues TODO: we intend to add a paragraph with more detail about using XPATH to identify groups of traces. 5.1 contentCategory attribute One of the common attributes of &lt;traceRefGroup&gt; will be contentCategory , which describes at a basic level the category of content that the traces represent; e.g., "Text/English", "Drawing", "Math", "Music". Such categories are useful for general data identification purposes, and may be essential for selecting data to train handwriting recognizers in different problem domains. A number of likely, common categories are suggested below. However, since this attribute: is largely application-specific may take on values that are difficult or impossible to predict may be a conjunction of more than one primitive type (e.g., "Text/English and Graphics") it is defined as a general-purpose string, to be used as necessary by applications. If, however, the data fits conveniently into one of the following basic categories, it is recommended that the appropriate suggested category (and optional sub-category) be used. Suggested categories: Text/&lt;language&gt;[/&lt;script&gt;][/&lt;sub-category&gt;] (e.g., Text/jpn/Kanji, Text/en/SSN) Drawing[/&lt;sub-category&gt;] (e.g., Drawing/Sketch, Drawing/Diagram) Math Music Chemistry[&lt;sub-category&gt;] The language specification may be made using any of the language identifiers specified in ISO 639 , using 2-letter codes, 3-letter codes, or country names. Some text may also require a script specification (such as Kanji, Katakana, or Hiragana) in addition to the language. For some applications it may be useful to provide additional sub-categories defining the type of the data. Suggested sub-categories for Text: SSN (Social Security Number) Phone Date Time Money URL Suggested sub-categories for Drawing: Sketch (Not suitable for geometric clean-up) Diagram (Suitable for geometric clean-up) 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="HTML Tidy for Linux/x86 (vers 1st April 2003), see www.w3.org"
+      name="generator" />
+<title>Ink Markup Language</title>
+<style type="text/css">
+/*<![CDATA[*/
+.menu { text-align: center }
+.ex { color: green }
+.schema { color: #cc3333 }
+.attrs td { background-color: #ccffcc }
+.attrs th { background-color: #99ffcc }
+.reqs td { background-color: #ccffff }
+.reqs th { background-color: #99ffff }
+.trace th { background-color: #99ffcc }
+.trace td { background-color: #ccffcc }
+.channels th { background-color: #99ffcc }
+.channels td { background-color: #ccffcc }
+td.trace { background-color: #99ff99 }
+
+dl.toc { margin-left: 5% }
+.toc A { text-decoration: none}
+table { margin-left: 5%}
+li { margin-top: 0.5em}
+div.issues { border-width: thin;
+  border-style: solid;
+  border-color: maroon;
+  background-color: #ffcc99;
+  width: 95%; padding: 0.5em; }
+.issues h4 { margin-top: 0px; font-size: larger}
+
+.figure { text-align: center }
+.caption { text-align: center }
+code { font-size: 110%; font-weight: bold }
+
+
+/*]]>
+*/
+</style>
+<link href="http://www.w3.org/StyleSheets/TR/W3C-WD.css"
+type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="head">
+<p><a href="http://www.w3.org/"><img height="48" width="72"
+alt="W3C" src="http://www.w3.org/Icons/w3c_home" /></a></p>
+
+<h1>Ink Markup Language</h1>
+
+<h2>W3C Working Draft 6 August 2003</h2>
+
+<dl>
+<dt>This version:</dt>
+
+<dd>
+<a href="http://www.w3.org/TR/2003/WD-InkML-20030806">http://www.w3.org/TR/2003/WD-InkML-20030806</a></dd>
+
+<dt>Latest version:</dt>
+
+<dd>
+<a href="http://www.w3.org/TR/InkML">http://www.w3.org/TR/InkML</a></dd>
+
+<dt>Previous version:</dt>
+
+<dd>This is the first Working Draft</dd>
+
+<dt>Authors:</dt>
+
+<dd>Gregory Russell, IBM (editor)<br />
+Yi-Min Chee, IBM<br />
+Giovanni Seni, Motorola<br />
+Larry Yaeger, Apple<br />
+Christopher Tremblay, Corel<br />
+Katrin Franke, Fraunhofer Gesellschaft<br />
+Sriganesh Madhvanath, HP<br />
+Max Froumentin, W3C<br />
+</dd>
+</dl>
+
+<p class="copyright"><a 
+href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+&copy; 2003
+<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">
+W3C</acronym></a><sup>&reg;</sup>
+(<a href="http://www.lcs.mit.edu/"><acronym title="Massachusetts Institute of Technology">
+MIT</acronym></a>,
+<a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">
+ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>),
+All Rights Reserved. W3C
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">
+liability</a>,
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">
+trademark</a>,
+<a href="http://www.w3.org/Consortium/Legal/copyright-documents">document
+use</a> and
+<a href="http://www.w3.org/Consortium/Legal/copyright-software">software
+licensing</a> rules apply.</p>
+
+</div>
+
+<hr title="Separator from Header" />
+
+<div class="abstract">
+<h2><a id="abstract" name="abstract">Abstract</a></h2>
+
+<p>This document describes the syntax and semantics for the Ink
+Markup Language for use in the
+<a href="http://www.w3.org/TR/mmi-framework/">W3C Multimodal
+Interaction Framework</a> as proposed by the
+<a href="http://www.w3.org/2002/mmi/">W3C Multimodal Interaction
+Activity</a>. The Ink Markup Language serves as the data format
+for representing ink entered with an electronic pen or stylus.
+The markup allows for the input and processing of handwriting,
+gestures, sketches, music and other notational languages in
+Web-based  applications. It provides a common format for the exchange of ink data between components such as handwriting and gesture recognizers, signature verifiers, and other ink-aware modules.</p></div>
+
+<div class="status">
+<h2><a id="status" name="status">Status of this document</a></h2>
+
+<p><em>This section describes the status of this document at the time
+of its publication. Other documents may supersede this document. A
+list of current W3C publications and the latest revision of this
+technical report can be found in the <a
+href="http://www.w3.org/TR/">W3C technical reports index</a> at
+http://www.w3.org/TR/.</em></p>
+
+<p>This document is a public W3C Working Draft for review by W3C
+members and other interested parties. Publication as a Working Draft
+does not imply endorsement by the W3C Membership. This is a draft
+document and may be updated, replaced or obsoleted by other documents
+at any time. It is inappropriate to cite this document as other than
+'work in progress.</p>
+
+<p>This specification describes the syntax and semantics for ink
+markup, as a basis for a common format for the exchange of ink data
+between components such as handwriting and gesture recognizers,
+signature verifiers, and other ink-aware modules.</p>
+
+<p>This document has been produced as part of the
+<a href="http://www.w3.org/2002/mmi/">W3C Multimodal Interaction
+Activity</a>,
+<a href="http://www.w3.org/2002/mmi/Activity.html"></a>following
+the procedures set out for the
+<a href="http://www.w3.org/Consortium/Process/">W3C Process</a>.
+The authors of this document are members of the
+<a href="http://www.w3.org/2002/mmi/Group/">Multimodal Interaction
+Working Group</a>
+<i>(<a href="http://cgi.w3.org/MemberAccess/AccessRequest">W3C
+Members only</a>)</i>.</p>
+
+<p>Patent disclosures relevant to this specification may be found
+on the Working Group's
+<a href="http://www.w3.org/2002/01/mmi-ipr.html">patent disclosure
+page</a> in conformance with W3C policy.</p>
+
+<p>This document is for public review, and comments and discussion are
+welcomed on the (<a
+href="http://lists.w3.org/Archives/Public/www-multimodal/">archived</a>)
+public mailing list &lt;<a
+href="mailto:www-multimodal@w3.org">www-multimodal@w3.org</a>&gt;.
+</p>
+
+</div>
+<hr/>
+<div class="content">
+<h2><a id="contents" name="contents">Table of contents</a></h2>
+<ul>
+<li><a href="#abstract"               > i.  Abstract              </a></li>
+<li><a href="#status"                 > ii. Document Status       </a></li>
+
+<li><a href="#Overview"               >1 Overview              </a></li>
+<li><a href="#TraceIntro"             >2 Traces and Trace Formatting </a>
+<ul>
+<li><a href="#traceFormat"            >2.1 Trace Formats  </a></li>
+<li><a href="#Trace"                  >2.2 Traces     </a></li>
+<li><a href="#traceGroup"             >2.3 Trace Groups </a></li>
+</ul>
+</li>
+
+<li><a href="#Section:ContextIntro"   >3    The Context Elements </a>
+<ul>
+<li><a href="#Section:captureDevice"  >3.1  Capture Device</a></li>
+<li><a href="#Section:Brush"          >3.2  Brushes         </a></li>
+<li><a href="#Section:Context"        >3.3  context element</a></li>
+<li><a href="#defs"                   >3.4  defs element</a></li>
+</ul>
+</li>
+ 
+<li><a href="#streamsAndArchives"     >4 Streaming Applications and Archives</a>
+<ul>
+<li><a href="#Archival"               >4.1 Archival Apps</a></li>
+<li><a href="#Streaming"              >4.2 Streaming Apps</a></li>
+<li><a href="#Equivalence"            >4.3 Archival and Streaming Equivalence</a></li>
+</ul></li>
+<li><a href="#traceRefGroup"          >5 Semantic Labelling and traceRefGroup</a></li>
+
+</ul>
+</div>
+<hr/>
+<h2><a id="Overview" name="Overview"></a>1 Overview</h2>
+
+<p>As more electronic devices with pen interfaces have and continue to become 
+available for entering and manipulating information, applications need to be 
+more effective at leveraging this method of input. Handwriting is an input modality that 
+is very familiar for most users since everyone learns to write in school. Hence, 
+users will tend to use this as a mode of input and control when available.</p>
+
+<p>A pen-based interface consists of a transducer device and a pen so that 
+the movement of the pen is captured as digital ink. Digital ink can be passed 
+on to recognition software that will convert the pen input into appropriate 
+computer actions. Alternatively, the handwritten input can be organized into ink 
+documents, notes or messages that can be stored for later retrieval or exchanged 
+through telecommunications means. Such ink documents are appealing because they 
+capture information as the user composed it, including text in any mix of 
+languages and drawings such as equations and graphs.</p>
+
+<p>Hardware and software vendors have typically stored and represented digital 
+ink using proprietary or restrictive formats. The lack of a public and 
+comprehensive digital ink format has severely limited the capture, transmission, 
+processing, and presentation of digital ink across heterogeneous devices 
+developed by multiple vendors. In response to this need, the  Ink Markup 
+Language (InkML) provides a simple and platform-neutral data format to promote 
+the interchange of digital ink between software applications.</p>
+
+<p>InkML supports a complete and accurate representation of hand-drawn ink. 
+For instance, in addition to the pen position over time, InkML allows 
+recording of information about transducer device characteristics and 
+detailed dynamic behavior to support applications such as 
+handwriting recognition and authentication. For example, there is support 
+for recording additional channels such as pen tilt, or pen tip 
+force (commonly referred to as pressure in manufacturers' documentation).</p>
+
+<p>InkML provides means for extension. By virtue of being an XML-based
+language, users may easily add application-specific information to ink
+files to suit the needs of the application at hand.</p>
+
+<p><b>Note:</b> A media type will be registered for InkML instances.
+It is expected that this media type will be application/inkml+xml as
+recommended by RFC3023.</p>
+
+<p>This specification was developed to
+fulfill the <a href="http://www.w3.org/TR/inkreqs/">
+W3C requirements for the Ink Markup Language</a>.</p>
+
+<div class="issues">
+<h4 id="open1">Open Issues</h4>
+
+<p>The question of whether this specification will use the term
+"pressure" or "force" has not been decided yet. The Working Group
+welcomes feedback from the public on this issue.</p>
+</div>
+
+<h3><a id="Overview:Uses" name="Overview:Uses"></a>1.1 Uses of InkML</h3>
+
+<p>With the establishment of a non-proprietary ink standard, a number of 
+applications, old and new, are expanded where the pen can be used as a very 
+convenient and natural form of input. Here are a few examples.</p>
+
+<ul>
+<li><b>Ink Messaging</b>
+
+<p>Two-way transmission of digital ink, possibly wireless, offers mobile-device 
+users a compelling new way to communicate. Users can draw or write with a pen
+on the device's screen to compose a note in their own handwriting. Such an ink 
+note can then be addressed and delivered to other mobile users, desktop users, 
+or fax machines. The recipient views the message as the sender composed it, 
+including text in any mix of languages and drawings.</p>
+
+</li>
+<li><b>Ink and SMIL</b>
+
+<p>A photo taken with a digital camera can be annotated with a pen; the digital 
+ink can be coordinated with a spoken commentary. The ink annotation could be 
+used for indexing the photo (for example, one could assign different handwritten 
+glyphs to different categories of pictures).</p>
+
+</li>
+<li><b>Ink Archiving and Retrieval</b>
+
+<p>A software application may allow users to archive handwritten notes and 
+retrieve them using either the time of creation of the handwritten notes or the 
+tags associated with keywords. The tags are typically text strings created using 
+a handwriting recognition system.</p>
+
+</li>
+<li><b>Electronic Form-Filling</b>
+
+<p>In support of natural and robust data entry for electronic forms on a wide-
+spectrum of keyboardless devices, a handwriting recognition engine developer 
+may define an API that takes InkML as input.</p>
+
+</li>
+<li><b>Pen Input and Multimodal Systems</b>
+
+<p>Robust and flexible user interfaces can be created that integrate the pen with 
+other input modalities such as speech. Higher robustness is achievable because 
+cross-modal redundancy can be used to compensate for imperfect recognition on 
+each individual mode. Higher flexibility is possible because users can choose 
+the most appropriate from among various modes for achieving a task or issuing 
+commands. This choice might be based on user preferences, suitability for the 
+task, or external conditions. For instance, when noise in the environment or 
+privacy is a concern, the pen modality is preferred over voice.</p>
+
+</li>
+</ul>
+<h3><a id="Overview:Elements" name="Overview:Elements"></a>1.2 Elements</h3>
+
+<p>The current InkML specification defines a set of primitive elements
+sufficient for all basic ink applications. Few semantics are attached
+to these elements. All content of an InkML document is contained
+within a single <code>&lt;ink&gt;</code> element.  The fundamental
+data element in an InkML file is the <code>&lt;trace&gt;</code>. A
+trace represents a sequence of contiguous ink points -- e.g., the X
+and Y coordinates of the pen's position. A sequence of traces
+accumulates to meaningful units, such as characters and words. The
+<code>&lt;traceFormat&gt;</code> element is used to define the format
+of data within a trace. </p>
+
+<p>In its simplest form, an InkML file with its enclosed traces looks like this:</p>
+
+<pre class="ex">
+&lt;ink&gt;
+  &lt;trace&gt;
+    10 0 9 14 8 28 7 42 6 56 6 70 8 84 8 98 8 112 9 126 10 140
+    13 154 14 168 17 182 18 188 23 174 30 160 38 147 49 135
+    58 124 72 121 77 135 80 149 82 163 84 177 87 191 93 205
+  &lt;/trace&gt;
+  &lt;trace&gt;
+    130 155 144 159 158 160 170 154 179 143 179 129 166 125
+    152 128 140 136 131 149 126 163 124 177 128 190 137 200
+    150 208 163 210 178 208 192 201 205 192 214 180
+  &lt;/trace&gt;
+  &lt;trace&gt;
+    227 50 226 64 225 78 227 92 228 106 228 120 229 134
+    230 148 234 162 235 176 238 190 241 204
+  &lt;/trace&gt;
+  &lt;trace&gt;
+    282 45 281 59 284 73 285 87 287 101 288 115 290 129
+    291 143 294 157 294 171 294 185 296 199 300 213
+  &lt;/trace&gt;
+  &lt;trace&gt;
+    366 130 359 143 354 157 349 171 352 185 359 197
+    371 204 385 205 398 202 408 191 413 177 413 163
+    405 150 392 143 378 141 365 150
+  &lt;/trace&gt;
+&lt;/ink&gt;
+</pre>
+
+
+<p>These traces consist simply of alternating X and Y values, and may look like this when rendered:</p>
+
+<div class="figure"><p><img border="0" src="hello.png" alt="a possible rendering of the sample trace above"/></p>
+<p class="caption">Figure 1: example trace rendering</p></div>
+
+<p>Figure 1 shows a trace of a sampled handwriting signal
+representing. The dots mark the sampling positions which were
+interpolated by the blue line. Green points represent pen-downs
+whereas red dots indicate pen-ups.</p>
+
+
+<p>Information about the transducer device used to collect the ink
+(e.g., the sampling rate and resolution) is specified with the <code>&lt;captureDevice&gt;</code>
+element. The Multimodal Interaction Working Group is currently working
+with the Device Independence Working Group to make sure that transducer
+characteristics are also represented as a CC/PP profile that can be
+included inside an ink document by reference. See <a href="http://www.w3.org/TR/CCPP-struct-vocab/">
+"Composite Capability/Preference Profiles (CC/PP): Structure and Vocabularies"</a></p>
+
+<p>Ink traces can have certain attributes such as color and width. 
+These attributes are captured in the <code>&lt;brush&gt;</code> 
+element. Traces that share the same characteristics, such as being 
+written with the same brush, can be grouped together with the 
+<code>&lt;traceGroup&gt;</code> element.</p>
+
+<p>For applications that require ink sharing, such as collaborative whiteboards, 
+where ink coming from different devices is drawn on a common canvas, the 
+<code>&lt;context&gt;</code> element allows representation and grouping of the pertinent 
+information, such as the trace format, brush, and canvas. </p>
+
+<p>The <code>&lt;traceRefGroup&gt;</code> element is provided as a building block for semantic 
+labelling of groups of traces. It includes a generic <b>contentCategory</b> attribute 
+that can be used by applications to describe at a basic level the category of 
+content that the traces represent (e.g., "handwritten text", "drawing", 
+etc.).</p>
+
+<p>In all appropriate cases, the InkML specification defines default values for 
+elements that are not specified, and rules that establish the scope of a given 
+attribute.</p>
+
+<p>Application-specific elements are expected to be 
+defined to provide a higher-level description of the digital ink captured in the 
+primitive elements. Some application-specific elements would reference the 
+primitive elements. For example, a page tag may be useful in a document 
+management application to indicate groups of traces belonging to a particular 
+page. In a form processing application, a field tag might indicate a group of 
+traces belonging to a particular field. Another example of an 
+application-specific element is <code>&lt;writerInfo&gt;</code> which 
+could be used to record information about 
+the age and handedness of the writer. </p>
+
+<p>
+When combining InkML and other XML elements within applications, elements
+from different namespaces may be disambiguated by use of the namespace qualifier.
+InkML element names are defined within the InkML namespace, specifically 
+<a href="http://www.w3.org/2003/InkML">http://www.w3.org/2003/InkML</a>
+</p>
+
+<p>Finally, the InkML specification is currently restricted to fixed 
+Cartesian coordinate systems. Similarly, it does not support detailed timestamp 
+handling, events (although these could be handled via application-specific 
+elements), or sophisticated compression of trace data.</p>
+
+<h3><a id="PersistentAndStreaming" name="PersistentAndStreaming"></a>1.3 Exchange Modes</h3>
+
+<p>Most ink-related applications fall into two broad categories: Streaming and Archival. 
+Archival ink applications capture and store digital ink for later processing, 
+such as document storage/retrieval applications and remote on-line forms 
+processing (where forms are filled on electronic tablet computers and processed 
+remotely). In these applications, all primitive elements are written prior to 
+processing. For ease of processing, it is recommended that, in 
+archival mode, referenced elements be defined inside of a declaration block 
+using the <code>&lt;defs&gt;</code> element.</p>
+
+<p>Streaming ink applications, on the other hand, capture and transmit digital 
+ink in essentially real time, such as in the electronic whiteboard example 
+mentioned above. In order to support a streaming style of ink markup generation, 
+the InkML language supports the notion of a "current" state (e.g., the current 
+brush) and allows for incremental changes to this state.</p>
+<hr/>
+<h2><a name="TraceIntro" id="TraceIntro"> 2  Traces and Trace Formatting</a></h2>
+
+<p>Traces are the basic element used to record the trajectory of the pen as the 
+user writes digital ink. More specifically, these recordings describe sequences
+of connected points. On most devices, these sequences of points will be bounded 
+by pen contact change events (pen-up and pen-down), although some  application simply 
+record proximity and force data without providing an interpretation of pen-up or pen-down 
+state.</p>
+
+<p>The simplest form of encoding specifies the X and Y coordinates
+of each sample point. For compactness, it may be desirable to
+specify absolute coordinates only for the first point in the trace
+and use delta-x and delta-y values to encode subsequent points.
+Some devices record acceleration rather than absolute or relative
+position; some provide additional data that may be encoded in the
+trace, including Z coordinates or tip force (pressure), or the state of side
+switches or buttons.</p>
+
+<p>These variations in the information available from different
+capture devices, or needed by different applications, are supported in
+InkML through the <code>&lt;traceFormat&gt;</code> and
+<code>&lt;trace&gt;</code> elements. The
+<code>&lt;traceFormat&gt;</code> element specifies the encoding format
+for each sample of a recorded trace, while <code>&lt;trace&gt;</code>
+elements are used to represent the actual trace data. If no
+<code>&lt;traceFormat&gt;</code> is specified, a default encoding
+format of X and Y coordinates is assumed.</p>
+
+<h3><a name="traceFormat" id="traceFormat"></a>2.1 Trace Formats</h3>
+
+
+<p>Traces generated by differing devices, or used in differing
+applications, may contain different types of information. InkML
+defines <em>channels</em> to describe the data that may be encoded
+in a trace.</p>
+
+<p>A channel can be characterized as either regular--meaning that
+its value is recorded for every sample point of the trace, or
+intermittent--meaning that its value may change infrequently and
+thus will not necessarily be recorded for every sample point. X and
+Y coordinates are examples of likely regular channels, while the
+state of a pen button is likely to be an intermittent channel.</p>
+<p>The <code>&lt;traceFormat&gt;</code> element describes the
+format used to encode points within <code>&lt;trace&gt;</code>
+elements. In particular, it defines the sequence of channel values
+that occurs within <code>&lt;traceFormat&gt;</code> elements. The
+order of declaration of channels in the
+<code>&lt;traceFormat&gt;</code> element determines the order of
+appearance of their values within <code>&lt;trace&gt;</code>
+
+elements. X and Y should be the first two channels of the
+<code>&lt;traceFormat&gt;</code> if they are used.</p>
+<p>Regular channels appear first in the <code>&lt;trace&gt;</code>,
+followed by any intermittent channels. Correspondingly, the
+<code>&lt;traceFormat&gt;</code> element contains a
+<code>&lt;regularChannels&gt;</code> section followed by a
+<code>&lt;intermittentChannels&gt;</code> section. The
+
+<code>&lt;regularChannels&gt;</code> element lists those channels
+whose value must be recorded for each sample point, while the
+<code>&lt;intermittentChannels&gt;</code> lists those channels
+whose value may optionally be recorded for each sample point. If no
+channels of either type exist, the corresponding element may be
+omitted.</p>
+<p>Within a <code>&lt;regularChannels&gt;</code> or
+<code>&lt;intermittentChannels&gt;</code> element, channels are
+described using the empty element <code>&lt;channel&gt;</code>,
+with <b>name</b>, <b>type</b>, <b>default</b>, and <b>mapping</b>
+attributes.</p>
+<p>The required <b>name</b> attribute specifies the interpretation
+of the channel in the trace data. The following channel names, with
+their specified meanings, are reserved:</p>
+
+<table border="1" cellspacing="0" cellpadding="3" width="80%"
+class="channels" summary="">
+<tbody>
+<tr>
+<th>channel name</th>
+<th>interpretation</th>
+</tr>
+
+<tr>
+<td>X</td>
+<td>X coordinate (horizontal pen position)</td>
+</tr>
+
+<tr>
+<td>Y</td>
+<td>Y coordinate (vertical pen position)</td>
+</tr>
+
+<tr>
+<td>Z</td>
+<td>Z coordinate (height of pen above paper/digitizer)</td>
+</tr>
+
+<tr>
+<td>F</td>
+<td>pen tip force (tablet pressure)</td>
+</tr>
+
+<tr>
+<td>S</td>
+<td>tip switch state (touching/not touching the digitizer)</td>
+</tr>
+
+<tr>
+<td>B1...Bn</td>
+<td>side button states</td>
+</tr>
+
+<tr>
+<td>Tx</td>
+<td>tilt along the x-axis</td>
+</tr>
+
+<tr>
+<td>Ty</td>
+<td>tilt along the y-axis</td>
+</tr>
+
+<tr>
+<td>Az</td>
+<td>azimuth angle of the pen (yaw)</td>
+</tr>
+
+<tr>
+<td>El</td>
+<td>elevation angle of the pen (pitch)</td>
+</tr>
+
+
+<tr>
+<td>R</td>
+<td>rotation (rotation about pen axis - i.e., like the roll axis of an airplane)</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="orientation">Orientation Channels</h4>
+
+<p>There are 5 channels defined for recording of pen orientation data.  
+Implementers may choose to use either Azimuth and Elevation, or tilt angles. The latter are the angles of projections of the pen axis onto the XZ and YZ planes, measured from the vertical. It is often useful to record the sine of this angle, rather than the angle itself, as this is usually more useful in calculations involving angles. The specification does not yet include a mechanism for distinguishing these two.</p>
+<p>The third degree of freedom in orientation is generally defined as the rotation of the pen about its axis. This is potentially useful (in combination with tilt) in application such as illustration or calligraphy, and signature verification.</p>
+
+
+<div class="figure">
+<p><img src="azimuth.png" alt="Diagram showing the azimuth and elevation of the pen" width="212" height="224"/><img src="tilt.png" alt="Diagram showing the tilt angles of the pen" width="198" height="224"/></p>
+<p class="caption">Figure 2: (a) azimuth and elevation angles, (b) tilt angles</p>
+</div>
+
+<div class="figure">
+<p><img src="projection.png" alt="Diagram showing the pen orientation decomposition" width="211" height="244"/><img src="rotation.png" alt="Diagram showing the rotation angle around the axis of the pen" width="198" height="244"/></p> <p
+class="caption">Figure 3: (a) pen orientation decomposition, (b) pen rotation</p>
+</div>
+
+
+<p>Figure 2a displays the pen orientation using Azimuth and
+Elevation. The origin of the Azimuth is at the Y-axis. Azimuth
+increases anticlockwise up to 360 degrees.  The origin of Elevation is
+located within the XY-plane.  Elevation increases up to 90 degrees, at
+which point the pen is perpendicular to the XY-plane.</p>
+
+<p>Figure 2b explains the definition of the Tilt-X and the Tilt-Y
+angles. For both the origin is along the Z-axis. Tilt-X increases up
+to +90 degrees for inclinations along the positive X-axis and
+decreases up to -90 degrees for inclinations along the negative
+X-axis. Respectively, Tilt-Y is defined for pen inclinations along the
+Y-axis.</p>
+
+<p>Figure 3a displays the pen orientation decomposition as functions of
+Azimuth/Elevation or alternatively as function of Tilt-X/Tilt-Y. Thereby,
+Elevations of the pen which are mapped to the XZ- and to the YZ- plane lead
+to Tilt-X and Tilt-Y.</p>
+
+<p>Figure 3b shows the Rotation of the pen along its longitudinal
+axis.</p>
+
+<h4 id="user">User Defined Channels</h4>
+
+<p>In addition, user-defined channels are allowed, although their
+interpretation is not required by conforming ink markup processors.</p>
+
+<p>The <b>type</b> attribute defines the encoding type for the
+channel (either boolean, decimal, or integer). If <b>type</b> is
+not specified, it defaults to decimal.</p>
+
+<p>A default value can be specified for the channel using the
+<b>default</b> attribute; the use of default values within a trace
+is described in the next section. If no <b>default</b> is
+specified, it is assumed to be zero for integer and decimal-valued
+channels, and false for boolean channels.</p>
+
+<p>Typically, a channel in the <code>&lt;traceFormat&gt;</code> will map
+directly to a corresponding channel provided by the digitizing
+device, and its values as recorded in the trace data will be the
+original channel values recorded by the device. However, for some
+applications, it may be useful to store normalized channel values
+instead, or even to remap the channels provided by the digitizing
+device to different channels in the trace data. This correspondence
+between the trace data and the device channels is recorded using
+the <b>mapping</b> attribute of the <code>&lt;channel&gt;</code> element.</p>
+
+<p>The <b>mapping</b> attribute has three forms. Identity mappings
+from device channels are described using a mapping value of "*".
+The following example defines a channel in the trace data which
+records the values obtained directly from the X coordinate channel
+provided by the device:</p>
+
+<pre class="ex">
+&lt;channel name="X" type="decimal" mapping="*"/&gt;
+</pre>
+
+<p>Simple mappings such as scaling, and translation, can be specified
+using a mapping value of the form "formula(...)", where the expression
+enclosed in the parentheses contains only channel names (from the
+device element), integer and decimal values, mathematical operators +,
+-, *, /, and boolean operators !, &amp;, |. Formulae syntax is defined
+to be standard ANSI-C expression syntax, including use of integer and
+decimal values, restricted to the listed operators. The examples below
+define a channel for Y coordinates which is derived from the original
+device y-coordinate channel by scaling by 2 and translating by 10
+units, and another channel which normalizes the device's tip force
+values from the range 0..1024 to 0..128:</p>
+
+<pre class="ex">
+&lt;channel name="Y" type="decimal" mapping="formula(2*Y+10)"/&gt;
+&lt;channel name="F" type="decimal" mapping="formula(F*.125)"/&gt;
+</pre>
+
+<p>More complex relations can be described using a mapping value of
+the form "uri(...)", where the URI enclosed within the parentheses
+can refer to a resource such as a MathML document. The following
+element defines a force channel in the trace data whose values were
+obtained by some mapping of device channels specified in a separate
+resource called fxform:</p>
+
+<pre class="ex">
+&lt;channel name="F" type="decimal"
+         mapping="uri('http://www.example.org/fxform')"/&gt;
+</pre>
+
+<p>If no mapping is specified for a channel, it is assumed to be
+unknown.</p>
+
+<p id="ex-tracefmt">The following example defines a
+<code>&lt;traceFormat&gt;</code> which reports decimal-valued X and
+Y coordinates for each point, and intermittent boolean values for
+the states of two buttons B1 and B2, which have default values of
+"false":</p>
+
+<pre class="ex">
+&lt;traceFormat id="xyb1b2"&gt;
+  &lt;regularChannels&gt;
+     &lt;channel name="X" type="decimal" mapping="*"/&gt;
+     &lt;channel name="Y" type="decimal" mapping="*"/&gt;
+  &lt;/regularChannels&gt;
+  &lt;intermittentChannels&gt;
+     &lt;channel name="B1" type="boolean" default="F" mapping="*"/&gt;
+     &lt;channel name="B2" type="boolean" default="F" mapping="*"/&gt;
+  &lt;/intermittentChannels&gt;
+&lt;/traceFormat&gt;
+</pre>
+
+<p id="default-tracefmt">The appearance of a
+<code>&lt;traceFormat&gt;</code> element in an ink markup file both
+defines the format and installs it as the current format for
+subsequent traces (except within a <code>&lt;defs&gt;</code> block,
+discussed later in section 3.4). The <b>id</b> attribute of a
+<code>&lt;traceFormat&gt;</code> allows the format to be reused by
+multiple contexts (section 3.2). If no
+<code>&lt;traceFormat&gt;</code> is specified, the following default
+format is assumed for all traces:</p>
+
+<pre class="ex">
+&lt;traceFormat id="default"&gt;
+  &lt;regularChannels&gt;
+     &lt;channel name="X" type="decimal"/&gt;
+     &lt;channel name="Y" type="decimal"/&gt;
+  &lt;/regularChannels&gt;
+&lt;/traceFormat&gt;
+</pre>
+
+<p>Thus, in the simplest case, an ink markup file need only contain
+traces.</p>
+
+<div class="issues">
+<h4 id="open2">Open Issues</h4>
+
+<p>Should a <code>&lt;traceFormat&gt;</code> be allowed to reference another
+<code>&lt;traceFormat&gt;</code>? If so, what is the nature of the modifications
+which would be allowed? One possibility is to allow extension only;
+i.e. the channels defined in the <code>&lt;traceFormat&gt;</code> are added in
+order after the ones in the referenced <code>&lt;traceFormat&gt;</code>. Another
+is to allow overriding of the attributes of channels in the
+referenced <code>&lt;traceFormat&gt;</code>; e.g. any channel whose name matches
+that of a channel in the referenced <code>&lt;traceFormat&gt;</code> replaces
+its definition.</p>
+<p>Additional detail about formula syntax is still open. Lookup tables, &lt; &gt; == operators, ...
+</p></div>
+<h3><a name="Trace" id="Trace"> 2.2 Traces</a></h3>
+
+<p>The <code>&lt;trace&gt;</code> element is used to record the data
+captured by the digitizer. It contains a sequence of points encoded
+according to the specification given by the
+<code>&lt;traceFormat&gt;</code> element.</p>
+
+<p>The <b>type</b> attribute of a <code>&lt;trace&gt;</code> indicates the pen
+contact state (either "pen-up" or "pen-down") during its recording.
+A value of "indeterminate" is used if the contact-state is neither pen-up 
+nor pen-down, and may be either unknown or variable within the trace.
+For example, a signature may be captured as a single indeterminate trace 
+containing both the actual writing and the trajectory of the pen between strokes.
+A value of "continuation" means both that
+the pen contact state is retained from the previous trace element
+and that the points of the current trace element are a temporally
+contiguous continuation of (and thus should be connected to) the
+previous trace element. This allows a trace to be spread across
+several elements for purposes such as streaming.</p>
+
+<p>Regular channels may be reported as explicit values,
+differences, or second differences. Prefix symbols are used to
+indicate the interpretation of a value. A preceding exclamation
+point indicates an explicit value, a single quote indicates a
+single difference, and a double quote prefix indicates a second
+difference. If there is no prefix, then the channel value is
+interpreted as explicit, difference, or second difference based on
+the last prefix for the channel. If there is no last prefix, the
+value is interpreted as explicit.</p>
+
+<p>A second difference encoding must be preceded by a single
+difference representation; which, in turn, must be preceded with an
+explicit encoding.</p>
+<p>NOTE: All traces must begin with an explicit value, not with a first or second difference. This is true of continuation traces as well. This allows the location and velocity state information to be discarded at the end of each trace, simplifying parser design.</p><p>Intermittent channels are always encoded explicitly, and
+prefixes are not allowed.</p>
+
+<p>Both regular and intermittent channels may be encoded with a
+wildcard character *. The wildcard character means either that the
+value of the channel remains at the previous channel value (if
+explicit), or that the channel continues integrating the previous
+velocity and acceleration values.</p>
+
+<p>Booleans are encoded as "T" or "F".</p>
+
+<p>For each point in the trace, regular channel values are reported
+first in the order given by the <code>&lt;traceFormat&gt;</code>. If any
+intermittent values are reported for the point, the set of
+intermittent values is preceded by a colon and ended with a
+semicolon. Within these delimiters, the intermittent channels are
+represented in the order given by the <code>&lt;traceFormat&gt;</code>. The list
+may be terminated early with the semicolon, and the unreported
+intermittent channels are interpreted with wildcards.</p>
+
+<p id="ex-trace">Here is an example of a trace of 11
+points, using the following traceFormat:</p>
+
+<pre class="ex">
+&lt;traceFormat&gt;
+  &lt;regularChannels&gt;
+     &lt;channel name="X" type="decimal"&gt;
+     &lt;channel name="Y" type="decimal"&gt;
+  &lt;/regularChannels&gt;
+  &lt;intermittentChannels&gt;
+     &lt;channel name="B1" type="boolean" default="F"/&gt;
+     &lt;channel name="B2" type="boolean" default="F"/&gt;
+  &lt;/intermittentChannels&gt;
+&lt;/traceFormat&gt;
+
+&lt;trace id = "id4525abc"&gt;
+1125 18432'23'43"7"-8 3-5+7  -3+6+2+6 8+3+6:T;+2+4:*T;+3+6+3-6:FF;
+&lt;/trace&gt;
+</pre>
+
+<p>The trace is interpreted as follows:</p>
+
+<table border="1" cellspacing="0" cellpadding="3" width="80%"
+class="trace" summary="">
+<tbody>
+<tr>
+<th>Trace</th>
+<th>X</th>
+<th>Y</th>
+<th>vx</th>
+<th>vy</th>
+<th>B1</th>
+<th>B2</th>
+<th>Comments</th>
+</tr>
+
+<tr>
+<td class="trace">1125 18432</td>
+<td>1125</td>
+<td>18432</td>
+<td>?</td>
+<td>?</td>
+<td>F</td>
+<td>F</td>
+<td>button default values</td>
+</tr>
+
+<tr>
+<td class="trace">'23'43</td>
+<td>1148</td>
+<td>18475</td>
+<td>23</td>
+<td>43</td>
+<td>F</td>
+<td>F</td>
+<td>velocity values</td>
+</tr>
+
+<tr>
+<td class="trace">"7"-8</td>
+<td>1178</td>
+<td>18510</td>
+<td>30</td>
+<td>35</td>
+<td>F</td>
+<td>F</td>
+<td>acceleration Values</td>
+</tr>
+
+<tr>
+<td class="trace">3-5</td>
+<td>1211</td>
+<td>18540</td>
+<td>33</td>
+<td>30</td>
+<td>F</td>
+<td>F</td>
+<td>implicit acceleration<br />
+ whitespace token sep</td>
+</tr>
+
+<tr>
+<td class="trace">+7 -3</td>
+<td>1251</td>
+<td>18567</td>
+<td>40</td>
+<td>27</td>
+<td>F</td>
+<td>F</td>
+<td>optional whitespace</td>
+</tr>
+
+<tr>
+<td class="trace">+6+2</td>
+<td>1297</td>
+<td>18596</td>
+<td>46</td>
+<td>29</td>
+<td>F</td>
+<td>F</td>
+<td> </td>
+</tr>
+
+<tr>
+<td class="trace">+6 8</td>
+<td>1349</td>
+<td>18633</td>
+<td>52</td>
+<td>37</td>
+<td>F</td>
+<td>F</td>
+<td>space instead of +</td>
+</tr>
+
+<tr>
+<td class="trace">+3+6:T;</td>
+<td>1404</td>
+<td>18676</td>
+<td>55</td>
+<td>43</td>
+<td>T</td>
+<td>F</td>
+<td>an optional value</td>
+</tr>
+
+<tr>
+<td class="trace">+2+4:*T;</td>
+<td>1461</td>
+<td>18723</td>
+<td>57</td>
+<td>47</td>
+<td>T</td>
+<td>T</td>
+<td>wildcard</td>
+</tr>
+
+<tr>
+<td class="trace">+3+6</td>
+<td>1521</td>
+<td>18776</td>
+<td>60</td>
+<td>53</td>
+<td>T</td>
+<td>T</td>
+<td>optional keep last</td>
+</tr>
+
+<tr>
+<td class="trace">+3-6:FF;</td>
+<td>1584</td>
+<td>18823</td>
+<td>63</td>
+<td>47</td>
+<td>F</td>
+<td>F</td>
+<td>optionals</td>
+</tr>
+</tbody>
+</table>
+
+<p>One would not typically see both a "+"and a "space" used as a
+separator in the same trace or document, but it is legal.</p>
+
+<p>An ink markup generator might also include additional whitespace
+formatting for clarity. The following trace specification is
+identical in meaning to the more compact version shown above:</p>
+
+<pre class="ex">
+&lt;trace id = "id4525abc"&gt;
+1125  18432
+'23  '43
+"7  "-8
+3  -5
+7  -3
+6  2
+6  8
+3  6  :T;
+2  4  :  *T;
+3  6
+3-6  :F  F;
+&lt;/trace&gt;
+</pre>
+
+<p>In addition, the alphabetic characters may be used to encode
+small negative and positive integer values. These may be substituted
+anywhere for an integer value between -25 and +25.</p>
+
+<ul>
+<li>The characters "a" to "y" are interpreted as -1 through
+-25.</li>
+
+<li>The characters "A" to "Y" are interpreted as 1 through 25.</li>
+
+<li>"z" and "Z" are interpreted as zero.</li>
+</ul>
+Using these shorthand codes, the above trace could be encoded: 
+
+<pre class="ex">
+&lt;trace id="4525BCD"&gt;
+1125 18432'W'43"G"hCeGcFBFHCF:T;BD:*T;CFCf:FF;
+&lt;/trace&gt;</pre><p>Note that the true and false values for the side buttons use
+symbols that are also used to encode numbers. However, they are
+unambiguous because of their location.</p>
+
+<h4><a name="grammar" id="grammar">2.2.1 Grammar</a></h4>
+
+<p>The grammar for trace encoding is described in Backus-Naur Form
+(BNF) using the following notation:</p>
+
+<ul>
+<li>*: 0 or more</li>
+
+<li>+: 1 or more</li>
+
+<li>?: 0 or 1</li>
+
+<li>(): grouping</li>
+
+<li>|: separates alternatives</li>
+
+<li>double quotes surround literals</li>
+
+<li>#x precedes hex character codes</li>
+</ul>
+<br />
+ 
+
+<p>The grammar is as follows:</p>
+
+<pre class="grammar">
+<a name="traceGrammar" id="traceGrammar">trace</a> ::=
+    <a href="#gram-wsp">wsp</a>* <a href="#gram-point">point</a>+
+
+<a name="gram-point" id="gram-point">point</a> ::=
+    regularPart intermittentPart?
+
+<a name="gram-regpart" id="gram-regpart">regularPart</a> ::=
+    <a href="#gram-regval">regularValue</a>+
+
+<a name="gram-intpart" id="gram-intpart">intermittentPart</a> ::=
+    ":" <a href="#gram-wsp">wsp</a>* <a href="#gram-intval">intermittentValue</a>* ";" <a href="#gram-wsp">wsp</a>* 
+
+<a name="gram-regval" id="gram-regval">regularValue</a> ::=
+    <a href="#gram-qual">qualifier</a>? <a href="#gram-value">value</a> <a href="#gram-wsp">wsp</a>*
+
+<a name="gram-intval" id="gram-intval">intermittentValue</a> ::=
+    <a href="#gram-value">value</a> <a href="#gram-wsp">wsp</a>*
+
+<a name="gram-value" id="gram-value">value</a> ::=
+    <a href="#gram-int">integer</a> | <a href="#gram-dec">decimal</a> | <a href="#gram-code">code</a>
+
+<a name="gram-int" id="gram-int">integer</a> ::=
+    <a href="#gram-sign">sign</a>? <a href="#gram-digit">digit</a>+
+
+<a name="gram-dec" id="gram-dec">decimal</a> ::=
+    <a href="#gram-sign">sign</a>? <a href="#gram-digit">digit</a>+ "." <a href="#gram-digit">digit</a>+
+
+<a name="gram-code" id="gram-code">code</a> ::=
+    "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" |
+    "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
+    "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" |
+    "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" |
+    "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" |
+    "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "*"
+
+<a name="gram-digit" id="gram-digit">digit</a> ::=
+    "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<a name="gram-sign" id="gram-sign">sign</a> ::=
+    "+" | "-"
+
+<a name="gram-qual" id="gram-qual">qualifier</a> ::=
+    "!" | "'" | """
+
+<a name="gram-wsp" id="gram-wsp">wsp</a> ::=
+    #x20 | #x9 | #xD | #xA
+</pre>
+
+<p>The number of <a href="#gram-regval"><em>regularValue</em></a>
+tokens appearing within a trace must match the number of regular
+channels specified in the <code>&lt;traceFormat&gt;</code>, and the number of
+<a href="#gram-intval"><em>intermittentValue</em></a> tokens must
+be no greater than the number of intermittent channels.</p>
+
+<p>Whitespace is optional before and after
+<a href="#gram-regval"><em>regularValue</em></a> and
+<a href="#gram-intval"><em>intermittentValue</em></a> tokens
+(unless required to separate two adjacent positive integer or
+decimal tokens values without + signs).</p>
+
+<div class="issues">
+<h4 id="open3">Open Issues</h4>
+
+<p>Since many sources of digital ink are temporal, many digital ink
+records will have significant time information. The "current" or
+"cumulative" time may be expressed in several ways, depending on
+what is available at the time of capture. The most explicit
+expression of time is by the use of a <code>startTime</code> attribute in
+any element. This is not an ideal solution and should be considered
+more carefully by the working group.</p>
+<p>There is currently some discussion about whether to make 
+<b>continuation</b> a separate attribute, rather than a 
+type. This would allow specification of whether a continuation 
+trace was pen-up, pen-down, or indeterminate in addition to the
+fact that it is a continuation.</p>
+</div>
+
+<h3><a name="traceGroup" id="traceGroup"> 2.3 Trace Groups</a></h3>
+
+<p>The <code>&lt;traceGroup&gt;</code> element is used to group successive traces which share common characteristics, 
+such as the same <code>&lt;traceFormat&gt;</code>. The brush and context sections describe other contextual 
+values that can be specified for a <code>&lt;traceGroup&gt;</code>. In the following example the two traces enclosed 
+in the <code>&lt;traceGroup&gt;</code> share the same brush (see section 3.2 for a description of brushes).
+</p>
+<pre class="ex">
+&lt;traceGroup brushRef="penA"&gt;
+  &lt;trace&gt;...&lt;/trace&gt;
+  &lt;trace&gt;...&lt;/trace&gt;
+&lt;/traceGroup&gt;
+</pre>
+
+<p>The use of <code>&lt;traceGroup&gt;</code> is reserved for the
+containment of traces according to their properties at the time of
+capture. The element may not be nested, and it is not meant to be a
+generic grouping mechanism for the semantic labelling of traces. For
+that purpose, InkML provides the <code>&lt;traceRefGroup&gt;</code>
+element, which is described in section 5.</p>
+
+<p>Trace groups are the primary mechanism for assigning
+<code>&lt;context&gt;</code> to traces in archival ink markup.  For
+additional details about this usage, see section 4.1.</p>
+ 
+<div class="issues"><h4 id="open4">Open Issues</h4>
+
+<p>We recently clarified that <code>&lt;traceGroup&gt;</code> elements
+may not be nested. <code>&lt;traceRefGroup&gt;</code> provides most of
+the functionality for which this would be desireable.</p>
+
+<p>Is there any use case we have overlooked that would require nested
+<code>traceGroups</code>?</p>
+
+</div><hr/>
+
+<h2><a name="Section:ContextIntro" id="Section:ContextIntro"></a>3 Context Elements</h2>
+
+<p>A number of device, data format, and coordinate system details 
+comprise the context in which ink is written and recorded. These 
+contextual details need to be captured by the ink markup language in 
+order to fully characterize the recorded ink data.</p>
+
+<p>The <code>&lt;context&gt;</code> element (section 3.3) provides various 
+attributes such as <b>canvas</b> and <b>mapping</b> by which 
+InkML addresses this need.  In addition, the 
+<code>&lt;captureDevice&gt;</code> element (section 3.1) describes how InkML allows 
+accurate recording of the hardware characteristics relevant during the 
+capture of the ink traces.</p>
+
+<p>Different pen tips (e.g. eraser vs. writing end) or 
+entirely different pens, physical or virtual, may be used on the same 
+input device.  These details are captured by the <code>&lt;brush&gt;</code> 
+element (Section 3.2).</p>
+
+<p>The following sections describe the elements which are used to capture the context in
+which the ink data was recorded.</p>
+
+<h3><a id="Section:captureDevice" name="Section:captureDevice"></a>3.1 Capture Device</h3>
+
+<p>One of the important requirements for the ink format is to allow 
+accurate recording of meta-data about the hardware that was used to 
+acquire the ink contained in a file. This is accomplished in the 
+<code>&lt;captureDevice&gt;</code> block, which may contain either very basic information, 
+or very detailed information about a number of device 
+characteristics.</p>
+
+<p>Some of these characteristics are already commonly used in 
+digitizer specifications, while others are somewhat more esoteric, but 
+nonetheless potentially very useful. Most digitizer manufacturers do 
+not spec them, and many are not able to measure them. However, these 
+device characteristics influence signal fidelity and impose some 
+limits on how the data can be used. Hopefully by beginning to 
+standardize the recording of these characteristics, we can raise 
+awareness and encourage device manufacturers to take them into 
+consideration.</p>
+
+<p>The <code>&lt;captureDevice&gt;</code> block, including
+<code>&lt;channelList&gt;</code>, will often be specified by reference
+to a separate xml document, either local or at some remote
+URI. Ideally, <code>&lt;captureDevice&gt;</code> blocks for common
+devices will become publicly available.</p>
+
+<h4><a id="captureDeviceElement" name="captureDeviceElement">3.1.1 captureDevice Element</a></h4>
+
+<p>The <code>&lt;captureDevice&gt;</code> element will allow specification of:</p>
+
+<ul>
+  <li>Manufacturer and model</li>
+  <li>Basic sampling rate - samples/sec</li>
+  <li>Sampling uniformity: must be designated non-uniform if <b>any</b> pen-down points are
+    skipped or if the sampling is irregular</li>
+  <li>Latency: latency of the real-time channel, in msec, from physical action to the API time
+    stamp. This is typically specified at the device level, since all channels often are
+    subject to a common processing and communications latency.</li>
+  <li>Channel List</li>
+</ul>
+
+<h6><a name="captureDevice:syntax" id="captureDevice:syntax">Syntax:</a></h6>
+
+<pre class="ex">
+&lt;captureDevice id=&quot;foo&quot;
+               manufacturer=&quot;AcmePen&quot;
+               model=&quot;FooBar 2000 USB&quot; 
+               sampleRate=&quot;100&quot;
+               uniform=&quot;TRUE&quot;
+               latency=&quot;50&quot;&gt;
+
+  &lt;channelList&gt;
+     ...
+
+  &lt;/channelList&gt;
+&lt;/captureDevice&gt;
+
+</pre>
+
+<h6>Attributes:</h6>
+<div class="table:captureDevice">
+
+<table border="1" cellspacing="0" cellpadding="3" width="80%" summary=""
+        class="attrs">
+      <tbody>
+            <tr>
+                  <th>id</th>
+                  <td>A unique identifier for this <code>captureDevice</code> element</td>
+            </tr>
+            <tr>
+                  <th>manufacturer</th>
+                  <td>String identifying the digitizer device manufacturer</td>
+            </tr>
+            <tr>
+                  <th>model</th>
+                  <td>String identifying the digitizer model</td>
+            </tr>
+            <tr>
+                  <th>sampleRate</th>
+                  <td>The basic sample rate in samples/sec. May be &quot;unknown&quot;</td>
+            </tr>
+            <tr>
+                  <th>uniform</th>
+                  <td>TRUE or FALSE indication of whether sample rate
+                  is consistent, with no dropped points</td>
+            </tr>
+            <tr>
+                  <th>latency</th>
+                  <td>The basic device latency that applies to all channels, in msec</td>
+            </tr>
+      </tbody>
+</table>
+</div>
+
+<!-- <h6><a name="captureDevice:ex" id="captureDevice:ex">Examples:</a></h6>
+
+<code> <pRE class="ex">
+</pre></code> -->
+
+
+<h4><a id="channelList" name="channelList">3.1.2 ChannelList</a></h4>
+
+<p>The <code>&lt;channelList&gt;</code> element lists all data channels that the device is capable of
+reporting. Channels include:</p>
+
+<ul>
+  <li>X coordinate (horizontal pen position, relative or absolute)</li>
+  <li>Y coordinate (up/down or vertical pen position, relative or absolute)</li>
+  <li>Z coordinate (height of pen above paper/digitizer, relative or absolute)</li>
+  <li>Force (pen tip force) [NOTE: this is often referred to as &quot;pressure&quot; by
+    manufacturers]</li>
+  <li>Tip switch state (touching, not touching digitizer)</li>
+  <li>Side switches and Buttons (for example, bezel buttons, cursor buttons...)</li>
+  <li>Tilt angle in X dimension</li>
+  <li>Tilt angle in Y dimension</li>
+      <li>Pen Azimuth (alternative to tilt)</li>
+      <li>Pen Elevation (alternative to tilt)</li>
+      <li>Pen Rotation (around the pen axis)</li>
+</ul>
+
+<h6><a name="syntax:channelList" id="syntax:channelList">Syntax:</a></h6>
+
+<pre class="ex">
+&lt;channelList id=&quot;foo&quot;&gt;
+  &lt;channel name=&quot;X&quot;&gt;
+     ...
+
+  &lt;/channel&gt;
+&lt;/channelList&gt;
+
+</pre>
+
+<h6>Attributes:</h6>
+<div class="table:xxx">
+
+<table border="1" cellspacing="0" cellpadding="3" width="80%" summary=""
+      class="attrs">
+      <tbody>
+            <tr>
+                  <th>id</th>
+                  <td>A unique identifier for this <code>channelList</code> element</td>
+            </tr>
+      </tbody>
+</table>
+</div>
+
+<!-- <h6><a name="xxx:ex" id="xxx:ex">Examples:</a></h6>
+
+<code> <pre class="ex">
+</pre></code> -->
+
+
+<p>In addition, each channel may specify any of the following when known and appropriate:</p>
+
+<ul>
+  <li>Value representation - for example, Boolean, integer, or decimal</li>
+  <li>Range - the range of possible values that may be reported</li>
+  <li>Threshold - (for binary channels) - e.g. the threshold force at which the tip switch is
+    activated</li>
+</ul>
+
+<p>For continuous channels, like X, Y and Z, and Force, these additional characteristics
+may be specified:</p>
+
+<ul>
+  <li>Resolution - the scale of the values recorded, expressed as &quot;fraction units&quot;, e.g. &quot;1/1000 inch&quot;) or &quot;decimal units&quot;, e.g. &quot;0.1 mm&quot; or
+    &quot;1 degrees&quot; Note that if decimal values are recorded, the quantization of the data may be smaller than the &quot;resolution&quot;</li>
+      <li>Quantization - the unit of smallest change in the reported values. If the value is reported as integer, this is assumed to be the same as the resolution</li>
+      <li>Noise - the RMS value of noise typically observed on the channel. This is distinct from
+    accuracy! It is an indication of the difference observed in the data from the device when
+    the same path is traced out multiple times (e.g. by a robot).</li>
+  <li>Accuracy - the typical accuracy of the data on the channel (e.g. &quot;0.5 mm&quot;,
+    &quot;10 degrees&quot; or &quot;0.1 newton&quot;) This is the typical difference between
+    the reported position and the actual position of the pen tip (or tilt ...)</li>
+  <li>Cross-coupling - the distortion in the data from one channel due to changes in another
+    channel. For example, the X and Y coordinates in an electromagnetic digitizer are
+    influenced by the tilt of the pen. This would be specified by dX/dTx = ... ??? or max
+    delta X vs. Tx = ... ??? If the influencing channels are also recorded, and the
+    cross-couplings are accurately specified, it may be possible to compensate for the
+    cross-coupling by subtracting the influence, at the expense of higher noise. The cross-coupling is always expressed in the units of the two channels, e.g. if X mm and Tx is in degrees, then cross-coupling is in mm/deg</li>
+      <li>Skew - the temporal skew of this channel relative to the basic device latency, if any.
+    For example, some devices actually sample X and Y at different points in time, so one
+    might have a skew of -5 msec, and the other +5 msec.</li>
+  <li>Minimum bandwidth (in Hz) - the minimum bandwidth of the channel, in Hz (not
+    samples/sec), i.e., the frequency of input motion up to which the signal is accurate to
+    within 3dB.</li>
+  <li>Peak rate - the maximum speed at which the device can accurately track motion</li>
+  <li>Dynamic distortion, e.g., how velocity affects position accuracy. This is expressed in
+    inverse seconds, e.g. 0.01 mm / mm / sec. This kind of distortion is often cross channel,
+    but this spec only allows a generic, channel independent specification.</li>
+</ul>
+
+<h6><a name="syntax:xxx" id="syntax:xxx">Syntax:</a></h6>
+
+<pre class="ex">
+&lt;channel name=&quot;X&quot;&gt;
+  &lt;representation  value=&quot;INTEGER&quot;/&gt;
+  &lt;range           min=&quot;0&quot; max=&quot;8191&quot;/&gt;
+  &lt;threshold       value=&quot;0.1&quot; units=&quot;newtons&quot;/&gt;
+  &lt;resolution    value=&quot;0.1&quot;  units=&quot;mm&quot;/&gt;
+  &lt;quantization  value=&quot;0.01&quot; units=&quot;mm&quot;/&gt;
+  &lt;noise         value=&quot;0.05&quot; units=&quot;mm&quot;/&gt;
+  &lt;accuracy      value=&quot;0.5&quot;  units=&quot;mm&quot;/&gt;
+  &lt;crossCoupling otherChannel=&quot;Tx&quot; value=&quot;0.1&quot;/&gt;
+  &lt;crossCoupling otherChannel=&quot;Ty&quot; value=&quot;0.01&quot;/&gt;
+  &lt;skew          value=&quot;2&quot; units=&quot;msec&quot;/&gt;
+  &lt;minBandwidth  value=&quot;15.0&quot;/&gt;
+  &lt;distortion    value=&quot;.001&quot;/&gt;
+
+&lt;/channel&gt;
+
+</pre>
+
+<h6>Attributes:</h6>
+<div class="table:xxx">
+
+<table border="1" cellspacing="0" cellpadding="3" width="80%" summary=""
+      class="attrs">
+      <tbody>
+            <tr>
+                  <th>name</th>
+                  <td>The  name of the channel described by this <code>channel</code> element</td>
+            </tr>
+      </tbody>
+</table>
+</div>
+
+<h6><a name="xxx:ex" id="xxx:ex">Examples:</a></h6>
+
+<pre class="ex">&lt;channel name=&quot;S&quot;&gt;
+  &lt;representation  value=&quot;BOOLEAN&quot;/&gt;
+  &lt;threshold       value=&quot;0.1&quot; units=&quot;newtons&quot;/&gt;
+  &lt;skew          value=&quot;5&quot; units=&quot;msec&quot;/&gt;
+&lt;/channel&gt;
+ 
+&lt;channel name=&quot;X&quot;&gt;
+  &lt;representation  value=&quot;INTEGER&quot;/&gt;
+  &lt;range           min=&quot;0&quot; max=&quot;8191&quot;/&gt;
+  &lt;resolution    value=&quot;0.1&quot;  units=&quot;mm&quot;/&gt;
+  &lt;quantization  value=&quot;0.01&quot; units=&quot;mm&quot;/&gt;
+  &lt;noise         value=&quot;0.05&quot; units=&quot;mm&quot;/&gt;
+  &lt;accuracy      value=&quot;0.5&quot;  units=&quot;mm&quot;/&gt;
+  &lt;crossCoupling otherChannel=&quot;Tx&quot; value=&quot;0.1&quot;/&gt;
+  &lt;crossCoupling otherChannel=&quot;Ty&quot; value=&quot;0.01&quot;/&gt;
+  &lt;skew          value=&quot;2&quot; units=&quot;msec&quot;/&gt;
+  &lt;minBandwidth  value=&quot;15.0&quot;/&gt;
+  &lt;distortion    value=&quot;.001&quot;/&gt;
+
+&lt;/channel&gt;
+</pre>
+
+
+<h4><a id="errorCalc" name="errorCalc">3.1.4 Error Calculations</a></h4>
+
+<p><b>This Error Calculations section is informative.</b></p>
+
+<p>The following are some suggestions for how error estimates might be derived from the
+basic fidelity information in a spatial channel (x or y):</p>
+
+<ul>
+  <li>Total position error is the sum of {absolute accuracy + velocity*(dynamic distortion) +
+    noise + quantization error} for identical path (in all channels).</li>
+  <li>Repeatability is also the sum of {noise + quantization error} for a repeated, identical
+    physical trajectory across the digitizer.</li>
+  <li>Relative position error is the minimum of {linearity*delta, absolute accuracy). This
+    effects the ability to accurately measure the length and orientation of a short stroke.</li>
+  <li>Maximum error including skew (by assuming that all channels are in sync) is equal to the
+    sum of {absolute accuracy + velocity*dynamic distortion + cross-coupling + velocity*(skew)
+    + noise + quantization error}.</li>
+</ul>
+
+<p>All errors are subject to additional distortion from a signal exceeding the channel
+bandwidth.</p>
+
+<div class="issues">
+<h4 id="open5">Open Issues</h4>
+<p>The attribute for identifying the capture device info
+block has not been incorporated into the Context section.</p>
+
+<p>
+There should be a "time" channel.  We recently noticed that it is missing,
+and it will be incorporated in the next draft.
+</p>
+<p>There have been last minute additions to try to flesh out the syntax and examples. These are preliminary, and may be changed.</p>
+
+</div>
+
+
+<h3><a id="Section:Brush" name="Section:Brush"></a>3.2 Brushes</h3>
+
+<p>Along with trace data, it is often necessary to record certain 
+attributes of the pen during ink capture. For example, in a notetaking 
+application, it is important to be able to distinguish between traces 
+captured while writing as opposed to those which represent erasures. 
+Because these attributes will often be application specific, this 
+specification does not attempt to enumerate the brush attributes which 
+can be associated with a trace. It also does not provide a language 
+for describing brush attributes, since it is possible to imagine 
+attributes which are described using complex functions parameterized 
+by time, pressure, or other factors. Instead, the specification allows 
+for capturing the fact that a given trace was recorded in a particular 
+brush context, leaving the details of precisely specifying that 
+context to a higher-level, application specific layer.</p>
+
+<p>Depending on the application, brush attributes may change 
+frequently. Accordingly, there should be a concise mechanism to assign 
+the attributes for an individual trace. On the other hand, it is 
+likely that many traces will be recorded using the same sets of 
+attributes; therefore, it should not be necessary to explicitly state 
+the attributes of every trace (again, for reasons of conciseness). 
+Furthermore, it should be possible to define entities which encompass 
+these attribute sets and refer to them rather than listing the entire 
+set each time. Since many attribute sets will be similar to one 
+another, it should also be possible to inherit attributes from a prior 
+set while overriding some of the attributes in the set.</p>
+
+<p>In the ink markup, brush attributes are described by the 
+<code>&lt;brush&gt;</code> element. This element allows for the definition of 
+reusable sets of brush attributes which may be associated with traces. 
+For reference purposes, a brush specifies an identifier which can be 
+used to refer to the brush. A brush can inherit the attributes of 
+another <code>&lt;brush&gt;</code> element by including a brushRef attribute which 
+contains the referenced brush's id.</p>
+
+<p>Brush attributes are associated with traces using the brushRef 
+attribute. When it appears as an attribute of an individual 
+<code>&lt;trace&gt;</code>, the brushRef specifies the brush attributes for that 
+trace. When it appears as an attribute of a <code>&lt;traceGroup&gt;</code> 
+element, the brushRef specifies the common brush attributes for all 
+traces enclosed in the <code>&lt;traceGroup&gt;</code>. Within the 
+<code>&lt;traceGroup&gt;</code>, an individual trace may still override the 
+traceGroup's brush attributes using a brushRef attribute.</p>
+
+<p>Brush attributes can also be associated with a context by including 
+the brushRef attribute on a <code>&lt;context&gt;</code> element. Any traces which 
+reference the context using a contextRef attribute are assigned the 
+brush attributes defined by the context. If a trace includes both 
+brushRef and contextRef attributes, the brushRef overrides any brush 
+attributes given by the contextRef.</p>
+
+<p>In streaming ink markup, brushes are assigned to a trace according
+to the current brush, which can be set using the
+<code>&lt;context&gt;</code> and <code>&lt;brush&gt;</code>
+elements. See section 4.2 for a detailed description of streaming
+mode. </p>
+
+<h3><a name="Section:Context" id="Section:Context"></a>3.3 Context</h3>
+
+<p>This section describes the <code>&lt;context&gt;</code> element and its 
+attributes: <b>canvas</b>, <b>mapping</b> 
+<b>traceFormatRef</b>, and <b>brushRef</b>.  The 
+context element both defines the shared context (canvas) and serves as 
+a convenient agglomeration of contextual attributes. It is used by the 
+<code>&lt;traceGroup&gt;</code> (Section 2.3) element to define the complete 
+shared context of a group of traces or may be referred to as part of a 
+context change in streaming mode. In either mode, individual 
+attributes may be overridden at time of use. Additionally, individual 
+traces may refer to a previously defined context (again optionally 
+overriding its attributes) to describe a context change that persists 
+only for the duration of that trace.</p>
+
+<p>Although the use of the <code>&lt;context&gt;</code> element and attributes 
+is strongly encouraged, default interpretations are provided so that 
+they are not required in an ink markup file if all trace data is 
+recorded in the same virtual coordinate system, and its relationship 
+to digitizer coordinates is either not needed or unknown.</p>
+
+<p>A shared context, called a <b>canvas</b>, is needed for the 
+ink markup to support screen sharing amongst multiple devices, each of 
+which might have a different set of capture characteristics. For 
+example, a single ink markup stream or file may contain traces that 
+are captured on a tablet computer, a PDA device, and an opaque 
+graphics tablet attached to a desktop computer. The size of these 
+traces on each capture device and corresponding display might differ, 
+yet it may be necessary to relate these traces to one another. They 
+could represent scribbles on a shared electronic whiteboard, 
+annotations of a common document, or the markings of two players in a 
+distributed tic-tac-toe game.</p>
+
+<p>The trace data for these different ink sessions could be recorded
+using the same set of virtual coordinates; however, it is often useful
+and occasionally may even be necessary to record the data in the
+capture device coordinates, in order to more precisely represent the
+original capture conditions, for compactness, or to avoid round-off
+errors that might be associated with the use of a common coordinate
+system. Thus the <b>mapping</b>; (section 3.3.2) from trace
+coordinates to the shared canvas coordinates may vary from device to
+device.  The <code>&lt;traceFormat&gt;</code> (Section 2.1) used to
+record trace data may also vary, therefore the
+<code>&lt;context&gt;</code> element also contains a
+<b>traceFormatRef</b> attribute.</p>
+
+<p>Finally, the <code>&lt;context&gt;</code> element provides a 
+<b>brushRef</b> attribute to record the attributes of the pen 
+during the capture of the digital ink, for a particular 
+context.</p>
+
+<h4 id="canvas">3.3.1 canvas Attribute</h4>
+
+<p>In order to render data from a participant in a multi-party ink 
+app, it is necessary to know how to transform trace data to screen 
+coordinates. </p>
+
+<p>Each party may have a different coordinate system for their traces. 
+Each party will need a mapping to their display that allows scrolling 
+and zooming. Call this <code>S[k]</code>. </p>
+
+<p>Party <code>k</code> still needs to determine the meaning of the traces from 
+party <code>i</code>. This is most simply accomplished by having each party define 
+the relationship between their trace coordinate system, and an 
+arbitrary reference coordinate system.</p>
+
+<p>This virtual coordinate system does not have any physical 
+dimensions, because each party will render it differently, and each 
+person will draw onto it differently, with arbitrary zoom and 
+scrolling. Thus the virtual coordinate system is arbitrary.</p>
+
+<p>This virtual coordinate system is provided by the 
+canvas, declared via the <b>canvas</b> attribute. 
+This uniquely identifies a shared virtual coordinate system for 
+cooperating ink applications. 
+
+Together with the trace-to-canvas coordinate mapping (discussed 
+below), it provides a common frame of reference for ink collected in 
+multiple sessions on different devices. In the example above, trace 
+data collected from the tablet computer can be combined with trace 
+data collected from the PDA by specifying a common canvas and 
+describing the relationships between each device's trace data and the 
+common canvas coordinate system.</p>
+
+<p>In the ink markup, the canvas is an unbounded space oriented so 
+that x and y coordinates increase as one moves to the right and down, 
+respectively. Specifying a standard handedness for the canvas 
+coordinate system allows each device to orient and display ink from 
+every other device.</p>
+
+<h4><a name="canvasMath" id="canvasMath">Canvas Math </a></h4>
+
+<p>To collaborate in the multi-party ink exchange, party <code>k</code> needs to 
+know the orientation and handedness of the virtual coordinate system 
+(in order to determine their own local <code>S[k]</code>), and the mapping of each 
+other party's data to that virtual coordinate system. Call these 
+mappings <code>T[i]</code></p>
+
+<p>To map from trace coordinates to screen coordinates, we compose the 
+transform from party i to virtual space with my transform from virtual 
+space to screen space, <code>S[k]</code>. This is <code>M = T * S</code>. This matrix is used to 
+transform all points from that traceGroup.</p>
+
+<p>When the display is zoomed or scrolled, <code>S[k]</code> changes, and <code>M</code> is recomputed. 
+When a new traceGroup with a different <code>T[i]</code> is encountered, it is 
+composed with <code>S[k]</code>, and rendering continues.</p>
+
+<p>
+The <code>S[k]</code> matrix is not part of the inkML file, but is determined locally
+during capture or rendering.
+</p>
+
+<p><code>T</code> and <code>S</code> are the minimum necessary information to be able to render 
+some data. However, in order to determine S or T, it is also necessary to make 
+a decision about the orientation of the virtual space. If everyone 
+makes this determination independently, there is no common virtual 
+space. Consequently, the virtual space, or <b>canvas</b> is 
+defined to have a specific orientation.</p>
+
+<p>The orientation of this canvas does not effect anyone, as it 
+disappears when <code>T</code> and <code>S</code> are composed. It simply provides a common 
+intermediate space that everyone uses when computing <code>T</code> (which goes 
+into the xml) and <code>S</code> (which is used only to display the data).</p>
+
+<h4><a name="defaultCanvas" id="defaultCanvas">The default canvas</a> </h4>
+
+<p>Since a canvas identifier is a simple string, the <b>id</b> of the default canvas is defined to be &quot;default&quot;.  This is sufficient to allow simple single-canvas sharing without further action on the part of devices or applications.</p>
+
+<h4 id="mapping" class="mapping">3.3.2 mapping Attribute</h4>
+
+<p>The trace-to-canvas coordinate system mapping, declared via the 
+<b>mapping</b> attribute, defines the transformation from trace 
+coordinates to the shared canvas coordinate system.</p>
+
+<p>The trace-to-canvas coordinate system mapping is expressed as a 
+standard 2x3 2D transformation matrix (at this time, we ignore the 
+additional complication of nonlinearity in the digitizing device's 
+coordinate system). The default mapping is the identity matrix (with a 
+zero offset).</p>
+
+<p>The format of the trace data--both the mapping from digitizer to 
+trace coordinates and the channels and channel formats present in the 
+data--for a given context is specified via the 
+<b>traceFormatRef</b> attribute, which refers to a 
+<code>&lt;traceFormat&gt;</code> element (Section 3.x).</p>
+
+<p>Note: As it is primarily intended as an input specification, the 
+ink markup language does not provide a mechanism for representing the 
+transformations to screen or view coordinates, which relate to ink 
+display and are typically transient.</p>
+
+<h4 id="traceformatref">3.3.3 traceFormatRef Attribute</h4>
+
+<p>The trace format to associate with the context being defined is
+specified with a <code>traceFormatRef</code> attribute, which refers
+to a <code>&lt;traceFormat&gt;</code> element (Section 2.1).</p>
+
+<h4 id="brushref">3.3.4 brushRef Attribute</h4>
+
+<p>The brush to associate with the context being defined is specified with a
+<code>brushRef</code> attribute, which refers to a <code>&lt;brush&gt;</code> element (Section 3.3).</p>
+<h4 id="context">3.3.5 Context</h4>
+
+<p>The <code>&lt;context&gt;</code> 
+element consolidates all salient characteristics of one or more ink 
+traces. It may be specified by declaring all non-default attributes, 
+or by referring to a previously defined context and overriding 
+specific attributes.</p>
+
+<h6><a name="Context:ex1" id="Context:ex1">Syntax:</a></h6>
+
+<pre class="ex">
+&lt;context id=&quot;&quot; contextRef=&quot;&quot; canvas=&quot;&quot;
+         mapping=&quot;&quot; traceFormatRef=&quot;&quot; brushRef=&quot;&quot;/&gt;
+</pre>
+
+<h6>Attributes:</h6>
+<div class="table:Context">
+
+<table border="1" cellspacing="0" cellpadding="3" width="80%" class="attrs">
+<tbody>
+  <tr>
+    <th>id</th>
+    <td>A unique identifier for this context.</td>
+  </tr>
+  <tr>
+    <th>contextRef</th>
+    <td>A previously defined context upon which this context is to be based.</td>
+  </tr>
+  <tr>
+    <th>canvas</th>
+    <td>The unique identifier of the canvas for this context.</td>
+  </tr>
+  <tr>
+    <th>mapping</th>
+    <td>The standard 2x3 matrix representation of the transformation from the trace data
+    coordinates to the canvas; expressed as the six values of the transformation matrix in row
+    order <code>xx xy x0 yx yy y0</code>. </td>
+  </tr>
+  <tr>
+    <th>traceFormatRef</th>
+    <td>A reference to the traceFormat for this context.</td>
+  </tr>
+  <tr>
+    <th>brushRef</th>
+    <td>A reference to the brush for this context.</td>
+  </tr>
+</tbody>
+</table>
+
+<h6><a name="Context:ex2" id="Context:ex2">Examples:</a></h6>
+
+<pre class="ex">
+&lt;context id=&quot;context1&quot; canvas=&quot;canvas1&quot;
+         traceFormatRef=&quot;format1&quot; brushRef=&quot;brush1&quot;/&gt;
+&lt;context id=&quot;context2&quot; contextRef=&quot;context1&quot; brushRef=&quot;brush2&quot;/&gt;
+&lt;context id=&quot;context3&quot; canvas=&quot;canvas1&quot; mapping=&quot;2 0 0 0 2 0&quot; 
+         traceFormatRef=&quot;format2&quot; brushRef=&quot;brush3&quot;/&gt;
+</pre>
+
+<p>The first example is a hypothetical device #1, using a previously 
+defined format1 and brush1, and indicating that it can share trace 
+data using canvas1. Its trace coordinates are mapped to this shared 
+canvas using the default identity matrix with zero offset.</p>
+
+<p>The second example is the same device #1, using a different brush: brush2.</p>
+
+<p>The third example is a hypothetical device #2, using previously 
+defined format2 and brush3, and sharing trace data with the first 
+device by using the common canvas1. Its trace coordinates require a 
+scale factor of 2 to map to the canvas.</p> </div>
+
+<h3><a name="defs" id="defs">3.4 Defs</a></h3>
+
+<p>The <code>&lt;defs&gt;</code> element is a container which is used
+to define reusable content.   The definitions within a
+<code>&lt;defs&gt;</code> block can be referenced by other elements
+using the appropriate syntax.  Content within a
+<code>&lt;defs&gt;</code> has no impact on the interpretation of
+traces, unless referenced from outside the
+<code>&lt;defs&gt;</code>.  In order to allow them to be
+referenced, elements within a <code>&lt;defs&gt;</code> block must
+include an <b>id</b>; attribute.  Therefore, an element which is
+defined inside a <code>&lt;defs&gt;</code> without an <b>id</b>, or
+that is never referenced, serves no purpose.   </p>
+
+<p>The three elements which can be defined inside a
+<code>&lt;defs&gt;</code> are: <code>&lt;context&gt;</code>,
+<code>&lt;brush&gt;</code> and <code>&lt;traceFormat&gt;</code>. 
+The attributes which are used to reference these definitions are the
+associated <b>contextRef</b>, <b>brushRef</b> and
+<b>traceFormatRef</b> attributes.  The following simple example
+illustrates usage of the <code>&lt;defs&gt;</code> element.</p>
+
+<pre class="ex">
+&lt;ink&gt;
+  &lt;defs&gt;
+    &lt;brush id=&quot;redPen&quot;/&gt;
+    &lt;brush id=&quot;bluePen&quot;/&gt;
+    &lt;traceFormat id=&quot;normal&quot;/&gt;
+    &lt;traceFormat id=&quot;noForce&quot;/&gt;
+    &lt;context id=&quot;context1&quot;
+             brushRef=&quot;redPen&quot;
+             traceFormatRef=&quot;normal&quot;/&gt;
+    &lt;context id=&quot;context2&quot;
+             contextRef=&quot;context1&quot;
+      brushRef=&quot;bluePen&quot;/&gt;
+  &lt;/defs&gt;
+  &lt;context contextRef=&quot;context2&quot;
+           traceFormatRef=&quot;noForce&quot;/&gt;      
+  &lt;context id=&quot;context3&quot;/&gt;
+&lt;/ink&gt;
+</pre>
+
+<p>More details on the usage of the <code>&lt;defs&gt;</code> element are provided in section 4.</p>
+<hr/>
+
+<h2><a id="streamsAndArchives" name="streamsAndArchives"></a>4 Streams and Archives</h2>
+<p>The ink markup is expected to be utilized in many different
+scenarios. Ink markup data may be transmitted in substantially real
+time while exchanging ink messages, or ink documents may be archived
+for later retrieval or processing. </p>
+<p>These examples illustrate two
+different styles of ink generation and usage. In the former, the
+markup must facilitate the incremental transmission of a stream of ink
+data, while in the latter, the markup should provide the structure
+necessary for operations such as search and interpretation. In order
+to support both cases, InkML provides archival and streaming
+modes of usage.</p>
+
+<h3><a id="Archival" name="Archival"></a>4.1 Archival Applications</h3>
+
+<p>In archival usage, contextual elements are defined within a <code>&lt;defs&gt;</code>
+element and assigned identifiers using the id attribute. References to
+defined elements are made using the corresponding <b>brushRef</b>,
+<b>traceFormatRef</b>, and <b>contextRef</b> attributes. The following example:</p>
+
+<pre class="ex">
+&lt;defs&gt;
+  &lt;brush id="penA"/&gt;
+  &lt;brush id="penB"/&gt;
+  &lt;traceFormat id="fmt1"&gt;
+    &lt;regularChannels&gt;
+      &lt;channel name="X" type="integer"&gt;
+      &lt;channel name="Y" type="integer"&gt;
+      &lt;channel name="Z" type="integer"&gt;
+    &lt;/regularChannles&gt;
+  &lt;/traceFormat&gt;
+  &lt;context id="context1" canvas="canvasA"
+           mapping="1 0 0 0 1 0" traceFormatRef="fmt1" brushRef="penA"/&gt;
+  &lt;context id="context2" canvas="canvasA"
+           mapping="2 0 0 0 2 0" traceFormatRef="fmt1" brushRef="penB"/&gt;
+&lt;/defs&gt;
+</pre>
+
+<p>defines two brushes ("penA" and "penB"), a traceFormat ("fmt1"), and
+two contexts ("context1" and "context2") which both refer to the same
+canvas ("canvasA") and traceFormat ("fmt1"), but with different
+mappings and brushes.  Note the use of the <b>brushRef</b> and <b>traceFormatRef</b>
+attributes to refer to the previously defined <code>&lt;brush&gt;</code> and <code>&lt;traceFormat&gt;</code>.</p>
+
+<p>Within the scope of a <code>&lt;defs&gt;</code> element, unspecified attributes of a
+<code>&lt;context&gt;</code> element are assumed to have their default values. This
+<code>&lt;defs&gt;</code> block:</p>
+
+<pre class="ex">
+&lt;defs&gt;
+  &lt;brush id="penA"&gt;
+  &lt;context id="context1" canvas="canvasA" brushRef="penA"/&gt;
+&lt;/defs&gt;
+</pre>
+
+<p>defines "context1", which is comprised of "canvasA" with the default
+mapping and traceFormat (the identity mapping and a traceFormat
+consisting of decimal X-Y coordinate pairs), and "penA".</p>
+
+<p>A <code>&lt;context&gt;</code> element can inherit and override the values of a
+previously defined context by including a contextRef attribute, so:</p>
+
+<pre class="ex">
+&lt;defs&gt;
+  &lt;brush id="penA"/&gt;
+  &lt;context id="context1" canvas="canvasA"
+           mapping="1 0 0 0 1 0"/&gt;
+  &lt;context id="context2" contextRef="context1"
+           mapping="2 0 0 0 2 0" brushRef="penA"/&gt;
+&lt;/defs&gt;
+</pre>
+
+<p>defines "context2" which shares the same canvas ("canvasA") and
+traceFormat (the default format) as "context1", but has a different
+mapping and brush.</p>
+
+<p>Within archival ink markup, traces can either explicitly specify their
+context through the use of contextRef and brushRef attributes, or they
+can have their context provided by an enclosing traceGroup. In the
+following:</p>
+
+<pre class="ex">
+&lt;trace id="t001" contextRef="context1"/&gt;...&lt;/trace&gt;
+&lt;trace id="t002" brushRef="penA"/&gt;...&lt;/trace&gt;
+&lt;traceGroup contextRef="context1"&gt;
+  &lt;trace id="t003"&gt;...&lt;/trace&gt;
+&lt;/traceGroup&gt;
+</pre>
+
+<p>traces "t001" and "t003" have the context defined by "context1", while
+trace "t002" has a context consisting of the default canvas, mapping and
+traceFormat, and "penA".</p>
+
+<p>Traces within a <code>&lt;traceGroup&gt;</code> element can also override the
+context or brush specified by the traceGroup. In this example:</p>
+
+<pre class="ex">
+&lt;traceGroup contextRef="context1"&gt;
+  &lt;trace id="t001"&gt;...&lt;/trace&gt;
+  &lt;trace id="t002" brushRef="penA"&gt;...&lt;/trace&gt;
+  &lt;trace id="t003"&gt;...&lt;/trace&gt;
+&lt;/traceGroup&gt;
+</pre>
+
+<p>traces "t001" and "t003" have their context specified by "context1"
+while trace "t002" overrides the default brush of "context1" with
+"penA".</p>
+
+<p>A trace or traceGroup can both reference a context and override its
+brush, as in the following:</p>
+
+<pre class="ex">
+&lt;trace id="t001" contextRef="context1" brushRef="penA"&gt;...&lt;/trace&gt;
+&lt;traceGroup contextRef="context1" brushRef="penA"&gt;
+  &lt;trace id="t002"&gt;...&lt;/trace&gt;
+&lt;/traceGroup&gt;</pre>
+
+<p>which assigns the context specified by "context1" to traces "t001"
+and "t002", but with "penA" instead of the default brush.</p>
+
+<p>In archival mode, the ink markup processor can straightforwardly
+determine the context for a given trace by examining only the
+<code>&lt;defs&gt;</code> blocks within the markup and the enclosing traceGroup for
+the trace.</p>
+
+<h3><a id="Streaming" name="Streaming"></a>4.2 Streaming Applications</h3>
+
+<p>In streaming ink markup, changes to trace context are expressed
+directly using the <code>&lt;brush&gt;</code>, <code>&lt;traceFormat&gt;</code>, and
+<code>&lt;context&gt;</code> elements. This corresponds to an event-driven model of
+ink generation, where events which result in contextual changes map
+directly to elements in the markup.</p>
+
+<p>In the streaming case, the current context consists of the set of
+canvas, mapping, traceFormat and brush which are associated with
+subsequent traces in the ink markup. Initially, the current context
+contains the default canvas, an identity mapping, the default
+traceFormat, and a brush with no attributes. Each <code>&lt;brush&gt;</code>,
+<code>&lt;traceFormat&gt;</code>, and <code>&lt;context&gt;</code> element which appears outside
+of a <code>&lt;defs&gt;</code> element changes the current context accordingly
+(elements appearing within a <code>&lt;defs&gt;</code> block have no effect on the
+current context, and behave as described above in the archival
+section).</p>
+
+<p>The appearance of a <code>&lt;brush&gt;</code> element in the ink markup sets
+the current brush attributes, leaving all other contextual values the
+same. Likewise, the appearance of a <code>&lt;traceFormat&gt;</code> element sets
+the current traceFormat, and the appearance of a <code>&lt;context&gt;</code>
+element sets the current context.</p>
+
+<p>Outside of a <code>&lt;defs&gt;</code> block, any values which are not specified
+within a <code>&lt;context&gt;</code> element are taken from the current context.
+For instance, the <code>&lt;context&gt;</code> element in the following example
+changes the current brush from "penB" to "penA", leaving the canvas,
+mapping, and traceFormat unchanged from trace "t001" to trace
+"t002".</p>
+
+<pre class="ex">
+&lt;brush id="penA"/&gt;
+&lt;brush id="penB"/&gt;
+&lt;trace id="t001"&gt;...&lt;/trace&gt;
+&lt;context brushRef="penA"/&gt;
+&lt;trace id="t002"&gt;...&lt;/trace&gt;
+</pre>
+
+<p>In order to change a contextual value back to its default value,
+its attribute can be specified with the value "".  In the following:</p>
+
+<pre class="ex">
+&lt;context canvas="canvasA" brushRef="penA"/&gt;
+&lt;trace id="t001"&gt;...&lt;/trace&gt;
+&lt;context canvas="" brushRef=""/&gt;
+&lt;trace id="t002"&gt;...&lt;/trace&gt;
+</pre>
+
+<p> trace "t001" is on "canvasA" and has the brush specified by
+"penA", while trace "t002" is on the default canvas and has the
+default brush.</p>
+
+<p>Brushes, traceFormats, and contexts which appear outside of a
+<code>&lt;defs&gt;</code> block and contain an <b>id</b> attribute both set the current
+context and define contextual elements which can be reused (as shown
+above for the brushes "penA" and "penB"). This example:</p>
+
+<pre class="ex">
+&lt;context id="context1" canvas="canvasA" mapping="2 0 0 0 2 0"
+traceFormatRef="fmt1" brushRef="penA"/&gt;
+</pre>
+
+<p>defines a context which can be referred to by its identifier
+"context1". It also sets the current context to the values specified
+in the <code>&lt;context&gt;</code> element.</p>
+
+<p>A previously defined context is referenced using the <b>contextRef</b>
+attribute of the <code>&lt;context&gt;</code> element. For example:</p>
+
+<pre class="ex">
+&lt;context contextRef="context1"/&gt;
+</pre>
+
+<p>sets the current context to have the values specified by
+"context1". A <code>&lt;context&gt;</code> element can also override values of a
+previously defined context by including both a <b>contextRef</b> attribute
+and <b>canvas</b>, <b>mapping</b>, <b>traceFormatRef</b> or <b>brushRef</b> attributes.  The
+following:</p>
+
+<pre class="ex">
+&lt;context contextRef="context1" brushRef="penB"/&gt;
+</pre>
+
+<p>sets the current context to the values specified by "context1",
+except that the current brush is set to "penB" instead of "penA".</p>
+
+<p>A <code>&lt;context&gt;</code> element which inherits and overrides values from
+a previous context can itself be reused, so the element:</p>
+
+<pre class="ex">
+&lt;context id="context2" contextRef="context1" brushRef="penB"/&gt;
+</pre>
+
+<p>defines "context2" which has the same context values as "context1"
+except for the brush.</p>
+
+<p>Finally, a <code>&lt;context&gt;</code> element with only an id has the effect
+of taking a "snapshot" of the current context which can then be
+reused. The element:</p>
+
+<pre class="ex">
+&lt;context id="context3"/&gt;
+</pre>
+
+<p>defines "context3", whose values consist of the current canvas,
+mapping, traceFormat, and brush at the point where the element occurs
+(note that since "context3" does not specify any values, the element
+has no effect on the current context).</p>
+
+<p>An advantage of the streaming style is that it is easier
+to express overlapping changes to the individual elements of the
+context. However, determining the context for a particular trace can
+require more computation from the ink markup processor, since the
+entire file may need to be scanned from the beginning in order
+to establish the current context at the point of the <code>&lt;trace&gt;</code>
+element.</p> 
+
+<h3><a id="Equivalence" name="Equivalence"></a>4.3 Archival and Streaming Equivalence</h3>
+<p>The following examples of archival and streaming ink markup data are
+equivalent, but they highlight the differences between the two styles:</p>
+
+<p><em>Archival</em></p>
+
+<pre class="ex">
+&lt;ink&gt;
+  ...
+  &lt;defs&gt;
+    &lt;brush id="penA"/&gt;
+    &lt;brush id="penB"/&gt;
+    &lt;context id="context1" canvas="canvas1"
+             mapping="1 0 0 0 1 0" traceFormatRef="format1"/&gt;
+    &lt;context id="context2" contextRef="context1"
+             mapping="2 0 50 0 2 50"/&gt;
+  &lt;/defs&gt;
+  &lt;traceGroup contextRef="context1"&gt;
+    &lt;trace&gt;...&lt;/trace&gt;
+    ...
+  &lt;/traceGroup&gt;
+  &lt;traceGroup contextRef="context2"&gt;
+    &lt;trace&gt;...&lt;/trace&gt;
+    ...
+  &lt;/traceGroup&gt;
+  &lt;traceGroup contextRef="context2" brushRef="penB"&gt;
+    &lt;trace&gt;...&lt;/trace&gt;
+    ...
+  &lt;/traceGroup&gt;
+  &lt;traceGroup contextRef="context1" brushRef="penB"&gt;
+    &lt;trace&gt;...&lt;/trace&gt;
+    ...
+  &lt;/traceGroup&gt;
+  &lt;traceGroup contextRef="context1" brushRef="penA"&gt;
+    &lt;trace&gt;...&lt;/trace&gt;
+    ...
+ &lt;/traceGroup&gt;
+&lt;/ink&gt;
+</pre>
+
+<p><em>Streaming</em></p>
+
+<pre class="ex">
+&lt;ink&gt;
+  ...
+  &lt;defs&gt;
+    &lt;brush id="penA"/&gt;
+    &lt;brush id="penB"/&gt;
+  &lt;/defs&gt;
+  &lt;context id="context1" canvas="canvas1"
+           mapping="1 0 0 0 1 0" traceFormatRef="format1"/&gt;
+  &lt;trace&gt;...&lt;/trace&gt;
+  ...
+  &lt;context id="context2" contextRef="context1"
+           mapping="2 0 50 0 2 50"/&gt;
+  &lt;trace&gt;...&lt;/trace&gt;
+  ...
+  &lt;context brushRef="penB"/&gt;
+  &lt;trace&gt;...&lt;/trace&gt;
+  ...
+  &lt;context contextRef="context1"/&gt;
+  &lt;trace&gt;...&lt;/trace&gt;
+  ...
+  &lt;context brushRef="penA"/&gt;
+  &lt;trace&gt;...&lt;/trace&gt;
+  ...
+&lt;/ink&gt;
+</pre>
+
+<p>In the archival case, the context for each trace is simply
+determined by the <code>&lt;trace&gt;</code> element, its enclosing traceGroup, and
+contextual elements defined in the <code>&lt;defs&gt;</code> block, while in the
+streaming case, the context for a trace can depend on the entire
+sequence of context changes up to the point of the <code>&lt;trace&gt;</code>
+element.</p>
+
+<p>However, the streaming case more simply expresses the changes of
+context involving "penB", "context1", and "penA", whereas the archival
+case requires the restatement of the unchanged values in the
+successive traceGroups.</p>
+
+<p>The two styles of ink markup are equally expressive, but impose
+different requirements on the ink markup processor and generator. The
+working group is considering the usefulness of additional mechanisms
+for distinguishing between the two forms, such as separate profiles
+for archival and streaming ink markup. Tools to translate from
+streaming to archival style might also be of use to applications
+which work on stored ink markup.</p>
+
+<hr/>
+
+<h2><a name="traceRefGroup" id="traceRefGroup"></a>5  Semantic Labelling and traceRefGroup</h2>
+
+<p>The <code>&lt;traceRefGroup&gt;</code> element provides the basis for most
+semantic labelling of groups of traces. It should be used as the
+base class for all application specific elements that identify
+collections of traces.</p>
+
+<p id="ex-tracerefgroup">The <code>&lt;traceRefGroup&gt;</code> element has the
+following syntax:</p>
+
+<pre class="ex">
+&lt;traceRefGroup id="" contentCategory=""&gt;
+    &lt;traceref xpath=""&gt;
+    &lt;traceref xpath="" from="" to=""&gt;
+    &lt;traceRefGroup id=""&gt;
+        &lt;!-- a nested traceRefGroup, which has
+         attributes of all parent traceRefGroups --&gt;
+       ...
+    &lt;/traceRefGroup&gt;
+&lt;/traceRefGroup&gt;
+</pre>
+
+<p>Traces listed within a <code>&lt;traceRefGroup&gt;</code> are included by
+reference only. The <b>xpath</b> attribute of the <code>&lt;traceRef&gt;</code>
+element is used to refer to traces within the current document, or
+from external documents. The <b>from</b> and <b>to</b> attributes can be used
+to reference a (contiguous) subset of the points within a given
+trace.</p>
+
+<p><code>&lt;traceRefGroup&gt;</code> elements may also include other
+<code>&lt;traceRefGroup&gt;</code> elements by reference. A
+<code>&lt;traceRefGroup&gt;</code> element may be overlapping, i.e., a
+trace may be referenced in multiple groups.</p>
+
+<p><code>&lt;traceRefGroup&gt;</code> elements will typically be used
+either to tag a group of traces for further processing, to tag a group
+of traces with some metadata, or to provide a concise reference to a
+group of traces for external use.</p>
+
+<div class="issues"><h4 id="open6"> Open Issues</h4>
+TODO: we intend to add a paragraph with more detail about using XPATH to identify groups of traces.
+</div>
+
+
+<h3 id="contentcategory">5.1 contentCategory attribute</h3>
+
+<p>One of the common attributes of <code>&lt;traceRefGroup&gt;</code>
+will be <b>contentCategory</b>, which describes at a basic level the
+category of content that the traces represent; e.g., "Text/English",
+"Drawing", "Math", "Music". Such categories are useful for general
+data identification purposes, and may be essential for selecting data
+to train handwriting recognizers in different problem domains.</p>
+
+<p>A number of likely, common categories are suggested below.
+However, since this attribute:</p>
+<ol>
+<li>is largely application-specific</li>
+<li>may take on values that are difficult or impossible to predict</li>
+<li>may be a conjunction of more than one primitive type (e.g., "Text/English and Graphics")</li>
+</ol>
+
+<p>it is defined as a general-purpose string, to be used as necessary
+by applications. If, however, the data fits conveniently into one
+of the following basic categories, it is recommended that the
+appropriate suggested category (and optional sub-category) be
+used.</p>
+
+<p>Suggested categories:</p>
+
+<ul>
+<li>Text/&lt;language&gt;[/&lt;script&gt;][/&lt;sub-category&gt;] (e.g., Text/jpn/Kanji, Text/en/SSN)</li>
+<li>Drawing[/&lt;sub-category&gt;] (e.g., Drawing/Sketch, Drawing/Diagram)</li>
+<li>Math</li>
+<li>Music</li>
+<li>Chemistry[&lt;sub-category&gt;]</li>
+</ul>
+
+<p>The language specification may be made using any of the language
+identifiers specified in
+<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639</a>,
+using 2-letter codes, 3-letter codes, or country names. Some text
+may also require a script specification (such as Kanji, Katakana,
+or Hiragana) in addition to the language.</p>
+
+<p>For some applications it may be useful to provide additional
+sub-categories defining the type of the data.</p>
+
+<p>Suggested sub-categories for Text:</p>
+
+<ul>
+<li>SSN (Social Security Number)</li>
+<li>Phone</li>
+<li>Date</li>
+<li>Time</li>
+<li>Money</li>
+<li>URL</li>
+</ul>
+
+<p>Suggested sub-categories for Drawing:</p>
+
+<ul>
+<li>Sketch (Not suitable for geometric clean-up)</li>
+<li>Diagram (Suitable for geometric clean-up)</li>
+</ul>
+</body>
+</html>
+

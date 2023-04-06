@@ -1,0 +1,825 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1816732524.html
+	</FILE>
+	<URL>
+		http://forums.devshed.com/t28964/s.html
+	</URL>
+	<TITLE>
+		Recipe Search Portal- Looking for geeks who like to cook and program!
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ Recipe Search Portal- Looking for geeks who like to cook and program! Developer Shed Network | Dev Shed | ASP Free | Dev Articles | Dev Hardware | SEO Chat | itsALLnet &nbsp | Web Hosters &nbsp&nbsp Forums : &raquo; Register &laquo; | User CP | Calendar | Members | FAQs | Archive Dev Shed Forums Advanced Forums Search Dev Shed Site ASP Free Forums | SEO Chat Forums | Newsletter | PHP Web Hosting | ASP Web Hosting Dev Shed Forums &gt; Other &gt; Project Help Wanted &gt; Recipe Search Portal- Looking for geeks who like to cook and program! Last Thread Next Thread Author Thread Hero Zzyzzx It goes up to 11 Registered: Jul 2001 Location: Lynn, MA Posts: 3475 Recipe Search Portal- Looking for geeks who like to cook and program! Cooking, computers, and music have always been my passions. I'm already working on a pretty cool music app (via www.directionsincollaborativeaudio.org ) and have been tossing around in my head creating a google-like search engine specifically for recipes. I'm looking to create a recipe specific search engine that will index and crawl the numerous cooking sites and return recipe results. It will be built with perl, mod_perl, MySQL, HTML::Template, HTML::Parser, LWP::UserAgent, CGI::Application and DBIx::FullTextSearch as the framework. Data will be stored in MySQL, but pages will be served from a data warehouse I've developed, giving this site the potential to handle MASSIVE amounts of hits. I plan on getting the search engine working first, and then turning it into a user customizable portal. I have experience using all the above modules, creating relevancy ranked searches, parsing HTML, and writing web bots. I'm looking for: - Developers who use the above modules and know mod_perl to do code reviews (won't pay, but will review your code, too!), - Folks who really understand relevancy ranking to advise me on how to improve results - Designers who know how to create compatible, attractive interfaces that are browser and platform independent (again, your chance for infamy, but not pay), - Other folks who want to help as beta testers of the developing app. I'm not looking for, nor will I entertain, suggestions that this be done in PHP. Nothing against PHP, I just don't think it's the best choice for my plans with this thing. When this goes live, I will get a dedicated server and run the whole thing in mod_perl, making PHP unnecessary. There are no immediate plans to make money, but I see numerous opportunities for it, both in offering premium services and selling advertising. If it gets to the point where it makes money, I will generously take care of those who've helped significantly. (Specific terms will develop as they are needed, I suppose). Thanks for your consideration!! __________________ Me: GeekUprising Internet Consultants mod_perl, web-enabled database, linux and web automation consultant Please don't PM me with technical questions that belong in the forum. I'll probably ignore your PM. Read: Ask Questions The Smart Way | Perl FAQ | PHP Docs | LDP | Perlmonks.org | MySQL Docs | Perl Module Installation | CPAN | Perl Docs | BlosGate- The Email to Blog Gateway NewForge NewsVac Headlines Linux To Reduce Boot Time for Win XP Media Center 2004-01-25 Queen to give knighthood to Bill Gates 2004-01-25 Slashdot Headlines Whose Desktop Would You Most Like To See? 2004-01-26 A First Look At Meridiani Planum 2004-01-25 Report this post to a moderator | IP: Logged January 16th, 2002 05:58 PM All times are GMT. The time now is 02:14 AM. Last Thread Next Thread Dev Shed Forums &gt; Other &gt; Project Help Wanted &gt; Recipe Search Portal- Looking for geeks who like to cook and program! >> More Related Threads Thread Thread Starter Forum Replies Last Post setting up sms portal walshs Project Help Wanted 1 February 20th, 2002 08:08 PM by M.Hirsch Portal Configuration footballdaft Project Help Wanted 0 January 16th, 2004 12:54 PM by footballdaft Website Portal Help flipsided Project Help Wanted 0 December 20th, 2003 01:01 AM by flipsided OS Development Portal Project PatchWorKs Project Help Wanted 0 February 15th, 2002 02:30 PM by PatchWorKs Show Printable Version | Email this Page | Subscribe to this Thread Forum Jump: Please select one: -------------------- Private Messages User Control Panel Who's Online Search Forums Forums Home -------------------- Popular Programming Languages -- PHP -- Perl -- C Languages (C, C++, Obj-C) -- Java, Java Servlets & JSP -- Python Other Programming Languages -- ASP -- .Net (ASP.Net, VB.Net, C#) -- Visual Basic -- Software Design & Algorithms -- Cold Fusion -- Delphi & Kylix -- XML & XUL Web Design -- HTML, JavaScript & CSS -- Adobe Photoshop -- Macromedia Flash -- General Web Design -- Reviews & Critiques -- Web Site Promotion Web Site Management -- Business & Legal Issues -- Development Software -- Scripts Databases -- General Database Discussion -- MySQL -- PostgreSQL -- Firebird SQL -- MS SQL -- Oracle -- LDAP System Administration -- Mail Servers -- Apache -- Security -- DNS -- IIS -- Networking Operating Systems -- *BSD -- Linux -- UNIX -- Windows NT/2000/XP Web Hosting -- Web Hosting -- Free Web Hosting -- Web Hosting Offers -- Web Hosting Requests Computer Hardware -- General Hardware -- CPUs & Overclocking -- Cooling -- Motherboards -- Video Cards & Sound Cards Other -- Dev Shed Lounge -- Articles & Tutorials ---- PHP Tutorials ---- Perl Tutorials ---- Administration Tutorials ---- Python Tutorials ---- MySQL Tutorials ---- XML Tutorials ---- Java Tutorials ---- Zope Tutorials ---- Development Practices Articles ---- DHTML Tutorials ---- Flash Tutorials ---- JavaScript Tutorials ---- Style Sheets Tutorials ---- WML Tutorials ---- Multimedia Tutorials -- Beginners -- Hire A Programmer -- Project Help Wanted Register Now Get Full Access It's Free! Forum Rules: You may not post new threads You may not post replies You may not post attachments You may not edit your posts HTML code is OFF vB code is ON Smilies are ON [IMG] code is OFF ASP Free Forums | SEO Chat Forums | Newsletter | PHP Web Hosting | ASP Web Hosting Forums : &raquo; Register &laquo; | User CP | Calendar | Members | FAQs | Archive > Dev Shed Forums Advanced Forums Search Dev Shed Site Powered by: vBulletin Version 2.3.0 Dev Shed Forums | ASP Free Forums | Dev Articles Forums | Dev Hardware Forums | SEO Chat Forums © 2001-2004. All rights reserved. ( Privacy Policy ) Dev Shed hosted by Hostway . 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><title>Recipe Search Portal- Looking for geeks who like to cook and program!</title>
+     <meta name="Keywords" content="php, apache, mysql, tutorial, jserv,  python, roxen, zend, zope, ftp, forums, forum, java, postgresql, linux, bsd, freebsd, windows xp, windows, windows 2000, hosting, servers, server, visual basic, visualbasic, c#, .net, asp, perl, xml, wap, wml, database, databases, c++, servlet, sevlets, flash, html, javascript, emcascript, css, security, mail, pop, smtp, dns, jsp" />
+     <meta name="Description" content="SEO chat - Open Source web development forums.  Topics covered include PHP, Apache, mySQL, Zope, Jserv, Java, Python, Zend, XML, DHTML, Javascript and more." />
+
+<style type="text/css">
+BODY { FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;margin:0px;}
+UL		{ FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; }
+LI		{ FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; }
+P		{ FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; }
+TD		{ FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; }
+TR		{ FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; }
+
+FORM		{ FONT-SIZE: 10px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; }
+SELECT		{ FONT-SIZE: 10px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;}
+OPTION		{ FONT-SIZE: 10px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; }
+TEXTAREA	{ FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;}
+
+.bginput	{ FONT-SIZE: 12px; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;}
+.thtcolor	{ COLOR: #ffffff; }
+.invtable 	{ BACKGROUND-COLOR: #F8F8F8; BORDER-WIDTH: 1px; BORDER-STYLE: outset; }
+
+#all A:link	{ COLOR: #003333; }
+#all A:visited	{ COLOR: #003333; }
+#all A:active	{ COLOR: #003333; }
+#all A:hover	{ COLOR: #336666; }
+#cat A:link	{ COLOR: #FFFFFF; TEXT-DECORATION: none; }
+#cat A:visited	{ COLOR: #FFFFFF; TEXT-DECORATION: none; }
+#cat A:active	{ COLOR: #FFFFFF; TEXT-DECORATION: none; }
+#cat A:hover	{ COLOR: #FFFFFF; TEXT-DECORATION: underline; }
+#whitead A:link	{ COLOR: #FFFFFF; TEXT-DECORATION: underline; }
+#whitead A:visited	{ COLOR: #FFFFFF; TEXT-DECORATION: underline; }
+#whitead A:active	{ COLOR: #FFFFFF; TEXT-DECORATION: underline; }
+#whitead A:hover	{ COLOR: #FFFFFF; TEXT-DECORATION: underline; }
+#network A:link { font-family: Verdana,Arial,Helvetica; font-size: 8pt; color: #000000; text-decoration: none;}
+#network A:visited { font-family: Verdana,Arial,Helvetica; font-size: 8pt; color: #000000; text-decoration: none;}
+#network A:active { font-family: Verdana,Arial,Helvetica; font-size: 8pt; color: #000000; text-decoration: none;}
+#network A:hover { color:#000000; text-decoration: underline;}
+.boxAds, a.boxAds:link, a.boxAds:visited, a.boxAds:active, a.boxAds:hover{ 
+     background-color: #000066; 
+     font-weight: bold; 
+     font-size: 8pt; 
+     color: #FFFFCC; 
+     text-decoration : underline;
+} 
+
+</style>
+<META HTTP-EQUIV="MSThemeCompatible" Content="Yes">
+
+<base href="http://forums.devshed.com/">
+<script language="javascript" type="text/javascript">
+<!--
+function aimwindow(aimid) {
+	window.open("member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=aimmessage&aim="+aimid,"_blank","toolbar=no,location=no,menubar=no,scrollbars=no,width=175,height=275,resizeable=yes,status=no")
+
+
+}
+// -->
+</script>
+</head>
+<body bgcolor="#ffffff" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" id="all">
+<LINK REL="SHORTCUT ICON" HREF="http://forums.devshed.com/images/favicon.ico">
+<a name="top"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+  <tr> 
+    <td height="18" bgcolor="DCD8D8" id="network"><div align="right"> <a href="http://www.developershed.com" ><font color="#333333"><strong>Developer 
+        Shed Network</strong></font></a><font color="#666666"> &nbsp;|</font>&nbsp; 
+        <a href="http://www.devshed.com" >Dev Shed</a>&nbsp; <font color="#666666">|</font>&nbsp;&nbsp;
+
+<a href="http://www.aspfree.com" >ASP 
+        Free</a>&nbsp; <font color="#666666">|</font>&nbsp;&nbsp;
+
+<a href="http://www.devarticles.com" >Dev Articles</a>&nbsp; <font color="#666666">|</font>&nbsp;&nbsp;
+
+<a href="http://www.devhardware.com" >Dev Hardware</a>&nbsp; <font color="#666666">|</font>&nbsp;&nbsp;
+
+<a href="http://www.seochat.com" >SEO 
+        Chat</a>&nbsp; <font color="#666666">|</font>&nbsp;&nbsp;<a href="http://www.itsallnet.com" >itsALLnet</a>&nbsp 
+        <font color="#666666">|</font>&nbsp;&nbsp;<a href="http://www.webhosters.com">Web 
+        Hosters</a>&nbsp&nbsp</div></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#000000"><img height="1" width="1" src="http://images.devshed.com/pixeldevshed.gif" alt="Dev Shed - Open Source web development tutorials, forums, and tools.  Topics covered include PHP, Apache, mySQL, Zope, Roxen, Jserv, Zend, XML, DHTML, Javascript and more."></td>
+  </tr>
+</table>
+<TABLE width="100%" height="32" border=0 cellPadding=0 cellSpacing=0>
+  <TBODY>
+    <TR> 
+      <TD width="24%" bgcolor="#FFCC66"><a href="http://www.devshed.com"><img src="http://images.devshed.com/devshedlogo.gif" alt="Dev Shed" border="0"></a></TD>
+      <TD width="76%" height="32" vAlign=bottom align="right" bgcolor="#FFCC66"><table width="100%" border="0" cellspacing="0" cellpadding="1">
+          <tr> 
+            <td><div align="right"><img src="http://ads.developershed.com/phpAdsNew/adlog.php?bannerid=427&clientid=345&zoneid=62&block=0&capping=0&cb=345333245656">
+<b>
+<!-- NEW AD -->
+<script language='JavaScript' type='text/javascript'>
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://ads.developershed.com/phpAdsNew/adjs.php?n=a283000d");
+   document.write ("&amp;what=zone:122");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><noscript><a href='http://ads.developershed.com/phpAdsNew/adclick.php?n=a283000d' target='_blank'><img src='http://ads.developershed.com/phpAdsNew/adview.php?what=zone:122&amp;n=a283000d' border='0' alt=''></a></noscript>
+<!-- END NEW AD -->
+</b>
+</div></td>
+          </tr>
+        </table></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<div align="center"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td height="1" bgcolor="#333333"><img src="http://images.devshed.com/pixeldevshed.gif" width="1" height="1"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#6699CC">
+    <tr bgcolor="#336666"> 
+      <td width="58%" height="22" valign="middle" bgcolor="#336666">&nbsp;<a href="index.php?s=20f7c423928f24c015e0ddd24eedf83f"><strong><font color="#FFCC66" size="1" face="Verdana, Arial, Helvetica, sans-serif">Forums</font></strong></a><font color="#FFCC66" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>:</strong></font><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>&nbsp;<font color="#FFFFFF">&raquo;</font> 
+        <a href="register.php?s=20f7c423928f24c015e0ddd24eedf83f&action=signup"><font color="#FFFFFF">Register</font></a> 
+        <font color="#FFFFFF">&laquo;</font>&nbsp;<font color="#FFFFFF">|</font>&nbsp; 
+        <a href="usercp.php?s=20f7c423928f24c015e0ddd24eedf83f"><font color="#FFFFFF">User 
+        CP</font></a> &nbsp;<font color="#FFFFFF">|</font>&nbsp; <a href="calendar.php?s=20f7c423928f24c015e0ddd24eedf83f"><font color="#FFFFFF">Calendar</font></a>&nbsp; 
+        <font color="#FFFFFF">|</font>&nbsp; <a href="memberlist.php?s=20f7c423928f24c015e0ddd24eedf83f"><font color="#FFFFFF">Members</font></a>&nbsp; 
+        <font color="#FFFFFF">|</font>&nbsp; <a href="misc.php?s=20f7c423928f24c015e0ddd24eedf83f&action=faq"><font color="#FFFFFF">FAQs</font></a>&nbsp; 
+        <font color="#FFFFFF">|</font>&nbsp; <a href="http://forums.devshed.com/archive"><font color="#FFFFFF">Archive</font></a></strong></font><strong>&nbsp;</strong></td>
+      <td width="42%" valign="middle" bgcolor="#336666"><div align="right">
+          <table width="73%" border="0" cellspacing="0" cellpadding="0">
+            <form method="post" action="http://www.devshed.com/search_jump.php">
+              <tr> 
+                <td width="209"> <div align="right"> 
+                    <input name="search" type="text" style="font-family: Verdana; color: #333333; font-size: 7pt" onfocus="if(this.value=='Search Here')this.value='';" onblur="if(this.value=='')this.value='Search Here';" value="Search Here" size="16">
+                    <input type="hidden" name="types:list" value="articles">
+                    <input type="hidden" name="batch_size:integer" value="10">
+                    <input type="hidden" name="s" value="20f7c423928f24c015e0ddd24eedf83f">
+                    <input type="hidden" name="searchdate" value="-1">
+                    <input type="hidden" name="action" value="simplesearch">
+                  </div></td>
+                <td width="117"><select name="where" style="font-family: Verdana; color: #333333; font-size: 7pt" onChange="if (this.selectedIndex==1){ window.location='http://forums.devshed.com/search.php';}">
+                    <option value="forums" selected>Dev Shed Forums</option>
+					<option value="advanced">Advanced Forums Search</option>
+					<option value="devshed">Dev Shed Site</option>
+                  </select></td>
+                <td width="33"><input name="image" type="image" src="http://forums.devshed.com/images/go.gif" alt="Go" align="absbottom" border="0"></td>
+              </tr>
+            </form>
+          </table>
+        </div></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr bgcolor="#336666"> 
+      <td height="22" valign="middle" bgcolor="FFEAC1"><div align="right">
+
+<!-- start page tracking -->
+
+         <!-- script type="text/javascript" src="http://stats.developershed.com/cgi-bin/stats/code.cgi?acct=devshed"-- ><!-- /script -->
+<!-- noscript --><!-- img src="http://stats.developershed.com/cgi-bin/stats/easystat.cgi?acct=devshed&js=0" --><!-- /noscript -->
+
+<!-- end page tracking -->
+
+
+          <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong> 
+          <a href="http://forums.aspfree.com"> <font color="#336666">ASP Free Forums</font></a>&nbsp; 
+          |&nbsp; <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong> 
+          <a href="http://forums.seochat.com"> <font color="#336666">SEO Chat Forums</font></a>&nbsp; 
+          |&nbsp; <u><a href="http://www.developershed.com/newsletter.php"><font color="#336666">Newsletter</font></a></u> 
+          &nbsp;|&nbsp; <u><a href="http://www.itsallnet.com"><font color="#336666">PHP 
+          Web Hosting</font></a></u>&nbsp; |&nbsp; <u><a href="http://www.aspfree.com/asp/freeasphost.asp"><font color="#336666">ASP 
+          Web Hosting</font></a></u>&nbsp; </div></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+<!-- Ad stuff -->
+      <td><div align="center"><script language='JavaScript' type='text/javascript'>
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://ads.developershed.com/phpAdsNew/adjs.php?n=afab26c1");
+   document.write ("&amp;what=zone:18&amp;block=1");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><noscript><a href='http://ads.developershed.com/phpAdsNew/adclick.php?n=afab26c1' target='_blank'><img src='http://ads.developershed.com/phpAdsNew/adview.php?what=zone:18&amp;n=afab26c1' border='0' alt=''></a></noscript>
+<!-- Scriptname: showthread.php --></div></td></tr>
+<!-- End ad stuff -->
+  </table>
+</div>
+<!-- content table -->
+<table bgcolor="#FFFFFF" width="100%" cellpadding="10" cellspacing="0" border="0">
+<tr>
+  <td width="100%">
+
+<!-- breadcrumb, nav links -->
+<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+<tr>
+	<td><img src="images/vb_bullet.gif" border="0" align="middle" alt="Dev Shed Forums : Powered by vBulletin version 2.3.0">
+<font face="verdana, arial, helvetica" size="2" ><b><a href="index.php?s=20f7c423928f24c015e0ddd24eedf83f">Dev Shed Forums</a> &gt; <a href="forumdisplay.php?s=20f7c423928f24c015e0ddd24eedf83f&forumid=29">Other</a> &gt; <a href="forumdisplay.php?s=20f7c423928f24c015e0ddd24eedf83f&forumid=40">Project Help Wanted</a> &gt; Recipe Search Portal- Looking for geeks who like to cook and program!</b></font></td>
+	
+</tr>
+</table>
+<!-- /breadcrumb, nav links -->
+
+<a name="posttop"></a>
+
+<!-- End content area table (CREATED IN HEADER!!) -->   
+	</td>
+</tr>
+</table>
+
+<!-- spacer -->
+<table bgcolor="#FFFFFF" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td width="10"><img width="10" height="1" src="images/space.gif" alt=""></td><td width="100%">
+<!-- /spacer -->
+
+
+
+
+<table width=100%>
+<tr><td><center><font face=arial size=2>
+<script language='JavaScript' type='text/javascript'>
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://ads.developershed.com/phpAdsNew/adjs.php?n=aa4f2fd8");
+   document.write ("&amp;what=zone:23&amp");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><noscript><a href='http://ads.developershed.com/phpAdsNew/adclick.php?n=aa4f2fd8' target='_blank'><img src='http://ads.developershed.com/phpAdsNew/adview.php?what=zone:23&amp;n=aa4f2fd8' border='0' alt=''></a></noscript>
+</font></center></td></tr></table>
+
+
+<!-- first unread and next/prev -->
+<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+<tr>
+	<td><font face="verdana,arial,helvetica" size="1" > &nbsp;</font></td>
+	<td align="right"><font face="verdana,arial,helvetica" size="1" >
+	<img src="images/prev.gif" alt="" border="0">
+	<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&threadid=28964&goto=nextoldest">Last Thread</a>
+	&nbsp;
+	<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&threadid=28964&goto=nextnewest">Next Thread</a>
+	<img src="images/next.gif" alt="" border="0">
+	</font></td>
+</tr>
+</table>
+<!-- first unread and next/prev -->
+
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"  width="100%" align="center"><tr><td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr>
+	<td bgcolor="#336666" width="175" nowrap><font face="verdana,arial,helvetica" size="1"  color="#ffffff" class="thtcolor"><b>Author</b></font></td>
+	<td bgcolor="#336666" width="100%">
+	<!-- Thread nav and post images -->
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="100%"><font face="verdana,arial,helvetica" size="1"  color="#ffffff" class="thtcolor"><b>Thread</b></font></td>
+                 <td><a href="/search.php?query=Recipe Search Portal- Looking for geeks who like to cook and program!&action=simplesearch&searchdate=-1&s="><img src="images/relatedthreads.gif" border="0" ALT="Related Threads"></a>&nbsp;</td>
+		<td><font face="verdana, arial, helvetica" size="2" >&nbsp;&nbsp;&nbsp;</font></td>
+		<td><a href="newthread.php?s=20f7c423928f24c015e0ddd24eedf83f&action=newthread&forumid=40"><img src="images/newthread.gif" border="0" alt="Post New Thread"></a></td>
+		<td><font face="verdana, arial, helvetica" size="2" >&nbsp;&nbsp;</font></td>
+		<td><a href="newreply.php?s=20f7c423928f24c015e0ddd24eedf83f&action=newreply&threadid=28964"><img src="images/reply.gif" border="0" alt="Post A Reply"></a></td>
+	</tr>
+	</table>
+	<!-- /Thread nav and post images -->
+	</td>
+</tr>
+</table>
+</td></tr></table>
+
+<!-- /spacer -->
+</td><td width="10"><img width="10" height="1" src="images/space.gif" alt=""></td></tr></table>
+<!-- /spacer -->
+
+<table bgcolor="#FFFFFF" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td width="10"><img width="10" height="1" src="images/space.gif" alt=""></td><td width="100%"><!-- spacer -->
+
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"  width="100%" align="center"><tr><td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr>
+	<td bgcolor="#dedfdf" width="175" valign="top" nowrap>
+	<a name="post116507"></a>
+	
+	<font face="verdana, arial, helvetica" size="2" ><b>Hero Zzyzzx</b></font><br>
+	<font face="verdana,arial,helvetica" size="1" >It goes up to 11</font><br>
+	<img src="avatar.php?userid=11118&dateline=1060352996" border="0" alt=""><p>
+	<font face="verdana,arial,helvetica" size="1" >Registered: Jul 2001<br>
+	Location: Lynn, MA<br>
+	Posts: 3475</font></td>
+	
+	<td bgcolor="#dedfdf" width="100%" valign="top">
+	<font face="verdana,arial,helvetica" size="1" > <b>Recipe Search Portal- Looking for geeks who like to cook and program!</b></font>
+	<p><font face="verdana, arial, helvetica" size="2" >Cooking, computers, and music have always been my passions.  I'm already working on a pretty cool music app (via <a href="http://www.directionsincollaborativeaudio.org" target="_blank">www.directionsincollaborativeaudio.org</a> ) and have been tossing around in my head creating a google-like search engine specifically for recipes.<br />
+<br />
+I'm looking to create a recipe specific search engine that will index and  crawl the numerous cooking sites and return recipe results.  <br />
+<br />
+It will be built with perl, mod_perl, MySQL, HTML::Template,  HTML::Parser, LWP::UserAgent, CGI::Application and DBIx::FullTextSearch as the framework.  Data will be stored in MySQL, but pages will be served from a data warehouse I've developed, giving this site the potential to handle MASSIVE amounts of hits.<br />
+<br />
+I plan on getting the search engine working first, and then turning it into a user customizable portal.  I have experience using all the above modules,  creating relevancy ranked searches,  parsing HTML, and writing web bots.<br />
+<br />
+I'm looking for:<br />
+- Developers who use the above modules and know mod_perl to do code reviews (won't pay, but will review your code, too!),<br />
+- Folks who really understand relevancy ranking to advise me on how to improve results<br />
+- Designers who know how to create compatible, attractive interfaces that are browser and platform independent (again, your chance for infamy, but not pay),<br />
+- Other folks who want to help as beta testers of the developing app.<br />
+<br />
+I'm not looking for, nor will I entertain, suggestions that this be done in PHP.  Nothing against PHP, I just don't think it's the best choice for my plans with this thing.  When this goes live, I will get a dedicated server and run the whole thing in mod_perl, making PHP unnecessary.<br />
+<br />
+There are no immediate plans to make money, but I see numerous opportunities for it, both in offering premium services and selling advertising. If it gets to the point where it makes money,  I will generously take care of those who've helped significantly. (Specific terms will develop as they are needed, I suppose).<br />
+<br />
+<br />
+Thanks for your consideration!!</font></p>
+	
+	<p><p><font face="verdana, arial, helvetica" size="2" >__________________<br>
+<font face="verdana"><font size="2"><b>Me:</b> <a href="http://www.geekuprising.com" target="_blank"><font color="blue">GeekUprising Internet Consultants</font></a></font><br />
+<font size="1"><font color="green">mod_perl, web-enabled database, linux and web automation consultant</font><br />
+<font color="red">Please don't PM me with technical questions that belong in the forum. I'll probably ignore your PM.</font><br />
+<br />
+<b>Read:</b>  <a href="http://www.catb.org/~esr/faqs/smart-questions.html" target="_blank"><font color="blue">Ask Questions The Smart Way</font></a>  |  <a href="http://www.perldoc.com/perl5.8.0/pod/perlfaq.html" target="_blank"><font color="blue">Perl FAQ</font></a>  |  <a href="http://www.php.net/manual/en/" target="_blank"><font color="blue">PHP Docs</font></a>  |  <a href="http://www.tldp.org/" target="_blank"><font color="blue">LDP</font></a>  |  <a href="http://www.perlmonks.org" target="_blank"><font color="blue">Perlmonks.org</font></a>  |  <br />
+<a href="http://www.mysql.com/doc/" target="_blank"><font color="blue">MySQL Docs</font></a>  |  <a href="http://www.perlmonks.org/index.pl?node_id=128077" target="_blank"><font color="blue">Perl Module Installation</font></a>  |  <a href="http://www.cpan.org" target="_blank"><font color="blue">CPAN</font></a>  |  <a href="http://www.perldoc.com" target="_blank"><font color="blue">Perl Docs</font></a>  |  <a href="http://www.geekuprising.com/blosgate-_the_email_to_blosxom_gateway" target="_blank"><font color="blue">BlosGate- The Email to Blog Gateway</font></a><br />
+<br />
+<b>NewForge NewsVac Headlines</b><br />
+<a href="http://newsvac.newsforge.com/article.pl?sid=04/01/25/167204" target="_blank"><font color="blue">Linux To Reduce Boot Time for Win XP Media Center</font></a> 2004-01-25<br />
+<a href="http://newsvac.newsforge.com/article.pl?sid=04/01/25/164219" target="_blank"><font color="blue">Queen to give knighthood to Bill Gates</font></a> 2004-01-25<br />
+<br />
+<b>Slashdot Headlines</b><br />
+<a href="http://slashdot.org/article.pl?sid=04/01/25/2330216" target="_blank"><font color="blue">Whose Desktop Would You Most Like To See?</font></a> 2004-01-26<br />
+<a href="http://slashdot.org/article.pl?sid=04/01/25/2219239" target="_blank"><font color="blue">A First Look At Meridiani Planum</font></a> 2004-01-25<br />
+</font></font></font></p></p>
+	<p></p>
+	<p align="right"><font face="verdana,arial,helvetica" size="1" ><a href="report.php?s=20f7c423928f24c015e0ddd24eedf83f&postid=116507">Report this post to a moderator</a> | IP: <a href="postings.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getip&postid=116507">Logged</a></font></p>
+	</td>
+</tr>
+<tr>
+	<td bgcolor="#dedfdf" width="175" height="16" nowrap><font face="verdana,arial,helvetica" size="1" ><img src="images/posticon.gif" border="0" alt="Old Post">
+	January 16th, 2002 <font color="#800080">05:58 PM</font></font></td>
+	
+	<td bgcolor="#dedfdf" width="100%" valign="middle" height="16">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr valign="bottom">
+			<td><font face="verdana,arial,helvetica" size="1" ><img src="images/on.gif" border="0" alt="Hero Zzyzzx is online now" align="absmiddle">
+			<a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&userid=11118" target="_blank"><img src="images/profile.gif" border="0" alt="Click Here to See the Profile for Hero Zzyzzx"></a> <a href="private.php?s=20f7c423928f24c015e0ddd24eedf83f&action=newmessage&userid=11118"><img src="images/sendpm.gif" border="0" alt="Click here to Send Hero Zzyzzx a Private Message"></a>  <a href="http://www.geekuprising.com" target="_blank"><img src="images/home.gif" alt="Visit Hero Zzyzzx's homepage!" border="0"></a> <a href="search.php?s=20f7c423928f24c015e0ddd24eedf83f&action=finduser&userid=11118"><img src="images/find.gif" border="0" alt="Find more posts by Hero Zzyzzx"></a> <a href="member2.php?s=20f7c423928f24c015e0ddd24eedf83f&action=addlist&userlist=buddy&userid=11118"><img src="images/buddy.gif" border="0" alt="Add Hero Zzyzzx to your buddy list"></a>
+			<!-- $ post[icqicon] --> <!-- $ post[aimicon] --> <!-- $ post[yahooicon] --> 
+			</font></td>
+			<td align="right" nowrap><font face="verdana,arial,helvetica" size="1" >
+			<a href="editpost.php?s=20f7c423928f24c015e0ddd24eedf83f&action=editpost&postid=116507"><img src="images/edit.gif" border="0" alt="Edit/Delete Message"></a>
+                        <a
+href="newreply.php?s=20f7c423928f24c015e0ddd24eedf83f&action=newreply&postid=116507"><img src="images/quickreply.gif" onclick="quickreply(); return false;" border="0" alt="Quick Reply"></a>
+			<a href="newreply.php?s=20f7c423928f24c015e0ddd24eedf83f&action=newreply&postid=116507"><img src="images/quote.gif" border="0" alt="Reply w/Quote"></a>
+			</font></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</td></tr></table>
+
+<!-- spacer --></td><td width="10"><img width="10" height="1" src="images/space.gif" alt=""></td></tr></table>
+
+
+<!-- spacer -->
+<table bgcolor="#FFFFFF" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td width="10"><img width="10" height="1" src="images/space.gif" alt=""></td><td width="100%">
+<!-- spacer -->
+
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"  width="100%" align="center"><tr><td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr>
+	<td bgcolor="#336666" width="100%">
+	<!-- time zone and post buttons -->
+	<table border="0" cellspacing="0" cellpadding="0" bgcolor="#336666">
+	<tr>
+		<td width="100%"><font face="verdana,arial,helvetica" size="1"  color="#ffffff"><b>All times are GMT. The time now is 02:14 AM.</b></font></td>
+                 <td><a href="/search.php?query=Recipe Search Portal- Looking for geeks who like to cook and program!&action=simplesearch&searchdate=-1&s="><img src="images/relatedthreads.gif" border="0" ALT="Related Threads"></a>&nbsp;</td>
+		<td><font face="verdana, arial, helvetica" size="2" >&nbsp;&nbsp;&nbsp;</font></td>
+		<td><a href="newthread.php?s=20f7c423928f24c015e0ddd24eedf83f&action=newthread&forumid=40"><img src="images/newthread.gif" border="0" alt="Post New Thread"></a></td>
+		<td><font face="verdana, arial, helvetica" size="2" >&nbsp;&nbsp;</font></td>
+		<td><a href="newreply.php?s=20f7c423928f24c015e0ddd24eedf83f&action=newreply&threadid=28964"><img src="images/reply.gif" border="0" alt="Post A Reply"></a></td>
+	</tr>
+	</table>
+	<!-- /time zone and post buttons -->
+	</td>
+</tr>
+</table>
+</td></tr></table>
+
+<!-- first unread and next/prev -->
+<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+<tr>
+	<td><font face="verdana,arial,helvetica" size="1" >&nbsp;</font></td>
+	<td align="right"><font face="verdana,arial,helvetica" size="1" >
+	<img src="images/prev.gif" alt="" border="0">
+	<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&threadid=28964&goto=nextoldest">Last Thread</a>
+	&nbsp;
+	<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&threadid=28964&goto=nextnewest">Next Thread</a>
+	<img src="images/next.gif" alt="" border="0">
+	</font></td>
+</tr>
+</table>
+<!-- first unread and next/prev -->
+
+
+
+<!-- /spacer -->
+</td><td width="10"><img width="10" height="1" src="images/space.gif" alt=""></td></tr></table>
+<!-- /spacer -->
+
+<!-- restart content table from header -->
+<table cellpadding="10" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF" align="center">
+<tr>
+    <td>
+<img src="images/vb_bullet.gif" border="0" align="middle" alt="Dev Shed Forums : Powered by vBulletin version 2.3.0">
+<font face="verdana, arial, helvetica" size="2" ><b><a href="index.php?s=20f7c423928f24c015e0ddd24eedf83f">Dev Shed Forums</a> &gt; <a href="forumdisplay.php?s=20f7c423928f24c015e0ddd24eedf83f&forumid=29">Other</a> &gt; <a href="forumdisplay.php?s=20f7c423928f24c015e0ddd24eedf83f&forumid=40">Project Help Wanted</a> &gt; Recipe Search Portal- Looking for geeks who like to cook and program!</b></font>
+<br><br>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"  width="100%" align="center">
+<tr><td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr>
+      <td bgcolor="#336666" width="100%" colspan="5" id="whitead">
+<font face="verdana, arial, helvetica" size="2"  color="#ffffff"><b>>> <a href="/search.php?query=Recipe Search Portal- Looking for geeks who like to cook and program!&action=simplesearch&searchdate=-1&s=">More Related Threads</a></b></font></td>
+
+</tr>
+<tr align="center" bgcolor="#336666">
+        <td align="center" width="40%"><span><font face="verdana,arial,helvetica" size="1"  color="#FFFFFF"><b>Thread</b></font></span></td>
+        <td width="15%"><span><b><font face="verdana,arial,helvetica" size="1"  color="#FFFFFF">Thread Starter</font></b></span></td>
+<td width="20%"><span><b><font face="verdana,arial,helvetica" size="1"  color="#FFFFFF">Forum</font></b></span></td>
+        <td width="5%"><span><font face="verdana,arial,helvetica" size="1"  color="#FFFFFF"><b>Replies</b></font></span></td>
+        <td width="20%"><span><font face="verdana,arial,helvetica" size="1"  color="#FFFFFF"><b>Last Post</b></font></span></td>
+</tr>
+<tr align="center">
+<td width="40%" align="left" bgcolor="#f7f7f7"><font face="verdana,arial,helvetica" size="1" >
+<a href="/t31006/s.html">setting up sms portal
+</a>
+</font></td>
+        <td width="15%" bgcolor="#dedfdf" align="center"><font face="verdana,arial,helvetica" size="1" >
+<a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&userid=1862">walshs
+</a>
+</font></td>
+<td bgcolor="#f7f7f7" align="center" width="20%"><font face="verdana,arial,helvetica" size="1" >
+<a href="/f40/s.html">Project Help Wanted
+</a>
+</font></td>
+        <td bgcolor="#dedfdf" align="center" width="5%"><font face="verdana,arial,helvetica" size="1" >
+1
+</font></td>
+        <td bgcolor="#f7f7f7" width="20%" align="right"><font face="verdana,arial,helvetica" size="1" ><table cellpadding="0" cellspacing="0" border="0" width="55%" id="ltlink"><tr align="right">
+                <td nowrap><font face="verdana,arial,helvetica" size="1" >February 20th, 2002 <font color="#800080">08:08 PM</font><br>
+                by <a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&find=lastposter&threadid=31006"><b>M.Hirsch</b></a></font></td>
+                <td nowrap>&nbsp;<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&goto=lastpost&threadid=31006"><img src="images/lastpost.gif" border="0" alt="Go to last post"></a></td>
+        </tr></table></font>
+</td>
+</tr><tr align="center">
+<td width="40%" align="left" bgcolor="#f7f7f7"><font face="verdana,arial,helvetica" size="1" >
+<a href="/t113408/s.html">Portal Configuration
+</a>
+</font></td>
+        <td width="15%" bgcolor="#dedfdf" align="center"><font face="verdana,arial,helvetica" size="1" >
+<a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&userid=67070">footballdaft
+</a>
+</font></td>
+<td bgcolor="#f7f7f7" align="center" width="20%"><font face="verdana,arial,helvetica" size="1" >
+<a href="/f40/s.html">Project Help Wanted
+</a>
+</font></td>
+        <td bgcolor="#dedfdf" align="center" width="5%"><font face="verdana,arial,helvetica" size="1" >
+0
+</font></td>
+        <td bgcolor="#f7f7f7" width="20%" align="right"><font face="verdana,arial,helvetica" size="1" ><table cellpadding="0" cellspacing="0" border="0" width="55%" id="ltlink"><tr align="right">
+                <td nowrap><font face="verdana,arial,helvetica" size="1" >January 16th, 2004 <font color="#800080">12:54 PM</font><br>
+                by <a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&find=lastposter&threadid=113408"><b>footballdaft</b></a></font></td>
+                <td nowrap>&nbsp;<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&goto=lastpost&threadid=113408"><img src="images/lastpost.gif" border="0" alt="Go to last post"></a></td>
+        </tr></table></font>
+</td>
+</tr><tr align="center">
+<td width="40%" align="left" bgcolor="#f7f7f7"><font face="verdana,arial,helvetica" size="1" >
+<a href="/t107182/s.html">Website Portal Help
+</a>
+</font></td>
+        <td width="15%" bgcolor="#dedfdf" align="center"><font face="verdana,arial,helvetica" size="1" >
+<a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&userid=61739">flipsided
+</a>
+</font></td>
+<td bgcolor="#f7f7f7" align="center" width="20%"><font face="verdana,arial,helvetica" size="1" >
+<a href="/f40/s.html">Project Help Wanted
+</a>
+</font></td>
+        <td bgcolor="#dedfdf" align="center" width="5%"><font face="verdana,arial,helvetica" size="1" >
+0
+</font></td>
+        <td bgcolor="#f7f7f7" width="20%" align="right"><font face="verdana,arial,helvetica" size="1" ><table cellpadding="0" cellspacing="0" border="0" width="55%" id="ltlink"><tr align="right">
+                <td nowrap><font face="verdana,arial,helvetica" size="1" >December 20th, 2003 <font color="#800080">01:01 AM</font><br>
+                by <a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&find=lastposter&threadid=107182"><b>flipsided</b></a></font></td>
+                <td nowrap>&nbsp;<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&goto=lastpost&threadid=107182"><img src="images/lastpost.gif" border="0" alt="Go to last post"></a></td>
+        </tr></table></font>
+</td>
+</tr><tr align="center">
+<td width="40%" align="left" bgcolor="#f7f7f7"><font face="verdana,arial,helvetica" size="1" >
+<a href="/t30738/s.html">OS Development Portal Project
+</a>
+</font></td>
+        <td width="15%" bgcolor="#dedfdf" align="center"><font face="verdana,arial,helvetica" size="1" >
+<a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&userid=14675">PatchWorKs
+</a>
+</font></td>
+<td bgcolor="#f7f7f7" align="center" width="20%"><font face="verdana,arial,helvetica" size="1" >
+<a href="/f40/s.html">Project Help Wanted
+</a>
+</font></td>
+        <td bgcolor="#dedfdf" align="center" width="5%"><font face="verdana,arial,helvetica" size="1" >
+0
+</font></td>
+        <td bgcolor="#f7f7f7" width="20%" align="right"><font face="verdana,arial,helvetica" size="1" ><table cellpadding="0" cellspacing="0" border="0" width="55%" id="ltlink"><tr align="right">
+                <td nowrap><font face="verdana,arial,helvetica" size="1" >February 15th, 2002 <font color="#800080">02:30 PM</font><br>
+                by <a href="member.php?s=20f7c423928f24c015e0ddd24eedf83f&action=getinfo&find=lastposter&threadid=30738"><b>PatchWorKs</b></a></font></td>
+                <td nowrap>&nbsp;<a href="showthread.php?s=20f7c423928f24c015e0ddd24eedf83f&goto=lastpost&threadid=30738"><img src="images/lastpost.gif" border="0" alt="Go to last post"></a></td>
+        </tr></table></font>
+</td>
+</tr>
+</table>
+</td></tr></table>
+<br>
+<!-- thread options links -->
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"   align="center"><tr><td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr>
+	<td bgcolor="#f7f7f7" align="center"><font face="verdana,arial,helvetica" size="1" >
+	<img src="images/printer.gif" alt="" border="0" align="absmiddle">
+	<a href="printthread.php?s=20f7c423928f24c015e0ddd24eedf83f&threadid=28964">Show Printable Version</a> |
+	<img src="images/sendtofriend.gif" alt="" border="0" align="absmiddle">
+	<a href="sendtofriend.php?s=20f7c423928f24c015e0ddd24eedf83f&threadid=28964">Email this Page</a> |
+	<img src="images/subscribe.gif" alt="" border="0" align="absmiddle">
+	<a href="member2.php?s=20f7c423928f24c015e0ddd24eedf83f&action=addsubscription&threadid=28964">Subscribe to this Thread</a>
+	</font></td>
+</tr>
+</table>
+</td></tr></table>
+<!-- /thread options links -->
+	
+<br>
+
+<!-- forum jump and rate thread -->
+<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+<tr>
+	<td width="33%"><table cellpadding="0" cellspacing="0" border="0">
+<form action="/forumdisplay.php" method="get"><tr><td>
+	<font face="verdana,arial,helvetica" size="1" >
+	<input type="hidden" name="s" value="20f7c423928f24c015e0ddd24eedf83f">
+	<input type="hidden" name="daysprune" value="">
+	<b>Forum Jump:</b><br>
+	<select name="forumid"
+	onchange="window.location=('/forumdisplay.php?s=20f7c423928f24c015e0ddd24eedf83f&daysprune=&forumid='+this.options[this.selectedIndex].value)">
+		<option value="-1" >Please select one:</option>
+		<option value="-1">--------------------</option>
+		<option value="pm" >Private Messages</option>
+		<option value="cp" >User Control Panel</option>
+		<option value="wol" >Who's Online</option>
+		<option value="search" >Search Forums</option>
+		<option value="home" >Forums Home</option>
+		<option value="-1">--------------------</option>
+		<option value="41" > Popular Programming Languages</option><option value="5" >-- PHP</option><option value="6" >-- Perl</option><option value="42" >-- C Languages (C, C++, Obj-C)</option><option value="9" >-- Java, Java Servlets & JSP</option><option value="11" >-- Python</option><option value="86" > Other Programming Languages</option><option value="51" >-- ASP</option><option value="87" >-- .Net (ASP.Net, VB.Net, C#)</option><option value="52" >-- Visual Basic</option><option value="43" >-- Software Design & Algorithms</option><option value="84" >-- Cold Fusion</option><option value="90" >-- Delphi & Kylix</option><option value="19" >-- XML & XUL</option><option value="27" > Web Design</option><option value="1" >-- HTML, JavaScript & CSS</option><option value="88" >-- Adobe Photoshop</option><option value="38" >-- Macromedia Flash</option><option value="2" >-- General Web Design</option><option value="89" >-- Reviews & Critiques</option><option value="108" >-- Web Site Promotion</option><option value="91" > Web Site Management</option><option value="92" >-- Business & Legal Issues</option><option value="93" >-- Development Software</option><option value="94" >-- Scripts</option><option value="28" > Databases</option><option value="46" >-- General Database Discussion</option><option value="4" >-- MySQL</option><option value="21" >-- PostgreSQL</option><option value="61" >-- Firebird SQL</option><option value="95" >-- MS SQL</option><option value="96" >-- Oracle</option><option value="76" >-- LDAP</option><option value="45" > System Administration</option><option value="111" >-- Mail Servers</option><option value="15" >-- Apache</option><option value="17" >-- Security</option><option value="36" >-- DNS</option><option value="97" >-- IIS</option><option value="109" >-- Networking</option><option value="30" > Operating Systems</option><option value="31" >-- *BSD</option><option value="33" >-- Linux</option><option value="35" >-- UNIX</option><option value="34" >-- Windows NT/2000/XP</option><option value="98" > Web Hosting</option><option value="12" >-- Web Hosting</option><option value="99" >-- Free Web Hosting</option><option value="100" >-- Web Hosting Offers</option><option value="101" >-- Web Hosting Requests</option><option value="102" > Computer Hardware</option><option value="103" >-- General Hardware</option><option value="104" >-- CPUs & Overclocking</option><option value="105" >-- Cooling</option><option value="106" >-- Motherboards</option><option value="107" >-- Video Cards & Sound Cards</option><option value="29" > Other</option><option value="26" >-- Dev Shed Lounge</option><option value="65" >-- Articles & Tutorials</option><option value="66" >---- PHP Tutorials</option><option value="67" >---- Perl Tutorials</option><option value="68" >---- Administration Tutorials</option><option value="71" >---- Python Tutorials</option><option value="72" >---- MySQL Tutorials</option><option value="73" >---- XML Tutorials</option><option value="74" >---- Java Tutorials</option><option value="75" >---- Zope Tutorials</option><option value="77" >---- Development Practices Articles</option><option value="78" >---- DHTML Tutorials</option><option value="79" >---- Flash Tutorials</option><option value="80" >---- JavaScript Tutorials</option><option value="81" >---- Style Sheets Tutorials</option><option value="82" >---- WML Tutorials</option><option value="83" >---- Multimedia Tutorials</option><option value="16" >-- Beginners</option><option value="57" >-- Hire A Programmer</option><option value="40" selected>-- Project Help Wanted</option>
+	</select><!-- go button -->
+<input type="image" src="images/go.gif" alt="Go" border="0" 
+align="absbottom" >
+	</font>
+</td></tr></form>
+</table></td>
+	<td width="33%" align="center"><table width="127" border="0" cellspacing="2" cellpadding="0">
+  <tr> 
+    <td width="214"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><strong><a href="register.php?s=20f7c423928f24c015e0ddd24eedf83f&action=signup">Register 
+        Now</a></strong></font></div></td>
+  </tr>
+  <tr> 
+    <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><strong><a href="register.php?s=20f7c423928f24c015e0ddd24eedf83f&action=signup">Get 
+        Full Access</a></strong></font></div></td>
+  </tr>
+  <tr> 
+    <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><strong><a href="register.php?s=20f7c423928f24c015e0ddd24eedf83f&action=signup">It's 
+        Free!</a></strong></font></div></td>
+  </tr>
+</table></td>
+	<td width="33%" align="right"></td>
+</tr>
+</table>
+<!-- /Rate this thread -->
+
+<br>
+
+<!-- forum rules and admin links -->
+<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+<tr valign="bottom">
+	<td><font face="verdana,arial,helvetica" size="1" ><b>Forum Rules:</b><table cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr><td>
+<table cellpadding="4" cellspacing="1" border="0">
+<tr>
+	<td bgcolor="#f7f7f7"><font face="verdana,arial,helvetica" size="1" >
+		You <b>may not</b> post new threads<br>
+		You <b>may not</b> post replies<br>
+		You <b>may not</b> post attachments<br>
+		You <b>may not</b> edit your posts
+	</font></td>
+	<td bgcolor="#f7f7f7"><font face="verdana,arial,helvetica" size="1" >
+		HTML code is <b>OFF</b><br>
+		<a href="misc.php?s=20f7c423928f24c015e0ddd24eedf83f&action=bbcode" target="_blank">vB code</a> is <b>ON</b><br>
+		<a href="misc.php?s=20f7c423928f24c015e0ddd24eedf83f&action=showsmilies" target="_blank">Smilies</a> are <b>ON</b><br>
+		<a href="misc.php?s=20f7c423928f24c015e0ddd24eedf83f&action=bbcode#imgcode" target="_blank">[IMG]</a> code is <b>OFF</b>
+	</font></td>
+</tr>
+</table>
+</td></tr></table></font></td>
+	<td align="right">
+	&nbsp;
+	</td>
+</tr>
+</table>
+<!-- /forum rules and admin links -->
+
+  </td>
+</tr>
+</table>
+<!-- /content area table -->
+</td>
+</tr>
+</table>
+</center>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+  <tr> 
+    <td> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="AAC8C8">
+        <tr>
+          <td bgcolor="#FFFFFF"> <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr bgcolor="#336666"> 
+                <td height="22" valign="middle" bgcolor="FFEAC1"><div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>
+                    <a href="http://forums.aspfree.com"> <font color="#336666">ASP Free Forums</font></a>&nbsp;&nbsp;|&nbsp; <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong> 
+                    <a href="http://forums.seochat.com"> <font color="#336666">SEO Chat Forums</font></a>&nbsp; 
+                    |&nbsp; <u><a href="http://www.developershed.com/newsletter.php"><font color="#336666">Newsletter</font></a></u> 
+                    &nbsp;|&nbsp; <u><a href="http://www.itsallnet.com"><font color="#336666">PHP 
+                    Web Hosting</font></a></u>&nbsp; |&nbsp; <u><a href="http://www.aspfree.com/asp/freeasphost.asp"><font color="#336666">ASP 
+                    Web Hosting</font></a></u>&nbsp; </div></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#6699CC">
+              <tr bgcolor="#336666"> 
+                <td width="58%" height="22" valign="middle" bgcolor="#336666">&nbsp;<a href="index.php?s=20f7c423928f24c015e0ddd24eedf83f"><strong><font color="#FFCC66" size="1" face="Verdana, Arial, Helvetica, sans-serif">Forums</font></strong></a><font color="#FFCC66" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>:</strong></font><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>&nbsp;<font color="#FFFFFF">&raquo;</font> 
+                  <a href="register.php?s=20f7c423928f24c015e0ddd24eedf83f&action=signup"><font color="#FFFFFF">Register</font></a> 
+                  <font color="#FFFFFF">&laquo;</font>&nbsp;<font color="#FFFFFF">|</font> 
+                  <a href="usercp.php?s=20f7c423928f24c015e0ddd24eedf83f"><font color="#FFFFFF">User 
+                  CP</font></a> &nbsp;<font color="#FFFFFF">|</font>&nbsp; <a href="calendar.php?s=20f7c423928f24c015e0ddd24eedf83f"><font color="#FFFFFF">Calendar</font></a>&nbsp; 
+                  <font color="#FFFFFF">|</font>&nbsp; <a href="memberlist.php?s=20f7c423928f24c015e0ddd24eedf83f"><font color="#FFFFFF">Members</font></a>&nbsp; 
+                  <font color="#FFFFFF">|</font>&nbsp; <a href="misc.php?s=20f7c423928f24c015e0ddd24eedf83f&action=faq"><font color="#FFFFFF">FAQs</font></a>&nbsp; 
+                  <font color="#FFFFFF">|</font>&nbsp; <a href="http://forums.devshed.com/archive"><font color="#FFFFFF">Archive</font></a></strong></font><strong>&nbsp;</strong></td>
+                <td width="42%" valign="middle" bgcolor="#336666"><div align="right">
+                    <table width="73%" border="0" cellspacing="0" cellpadding="0">
+                      <form method="post" action="http://www.devshed.com/search_jump.php">
+                        <tr> 
+                          <td width="209"> <div align="right"> 
+                              <input name="search" type="text" style="font-family: Verdana; color: #333333; font-size: 7pt" onfocus="if(this.value=='Search Here')this.value='';" onblur="if(this.value=='')this.value='Search Here';" value="Search Here" size="16">
+                              <input type="hidden" name="types:list" value="articles">
+                              <input type="hidden" name="batch_size:integer" value="10">
+                              <input type="hidden" name="s" value="20f7c423928f24c015e0ddd24eedf83f">
+                              <input type="hidden" name="searchdate" value="-1">
+                              <input type="hidden" name="action" value="simplesearch">
+                            </div></td>
+                          <td width="117"><select name="where" style="font-family: Verdana; color: #333333; font-size: 7pt" onChange="if (this.selectedIndex==1){ window.location='http://forums.devshed.com/search.php';}">>
+                              <option value="forums"  selected>Dev Shed Forums</option>
+							  <option value="advanced">Advanced Forums Search</option>
+							  <option value="devshed">Dev Shed Site</option>
+                            </select></td>
+                          <td width="33"><input name="image" type="image" src="http://forums.devshed.com/images/go.gif" alt="Go" align="absbottom" border="0"></td>
+                        </tr>
+                      </form>
+                    </table>
+                  </div></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+
+
+
+<BR>
+<div align=center>
+<script language='JavaScript' type='text/javascript'>
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+   
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://ads.developershed.com/phpAdsNew/adjs.php?n=" + phpAds_random);
+   document.write ("&amp;what=zone:205");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><noscript><a href='http://ads.developershed.com/phpAdsNew/adclick.php?n=a429ca62' target='_blank'><img src='http://ads.developershed.com/phpAdsNew/adview.php?what=zone:205&amp;n=a429ca62' border='0' alt=''></a></noscript>
+</div>
+<BR>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td><div align="center">
+
+<script language='JavaScript' type='text/javascript'>
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+   
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://ads.developershed.com/phpAdsNew/adjs.php?n=" + phpAds_random);
+   document.write ("&amp;what=zone:146");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><noscript><a href='http://ads.developershed.com/phpAdsNew/adclick.php?n=af8356f9' target='_blank'><img src='http://ads.developershed.com/phpAdsNew/adview.php?what=zone:146&amp;n=af8356f9' border='0' alt=''></a></noscript>
+
+</div></td>
+  </tr>
+</table>
+ 
+<p align="center"><font face="verdana,arial,helvetica" size="1" > 
+  <!-- Do not remove this copyright notice -->
+  Powered by: vBulletin Version 2.3.0<br>
+<BR>  
+</td>
+  </tr>
+</table>
+
+<!-- ------------------------------------------ -->
+<!-- Bottom Footer -->
+
+<style type='text/css'>
+<!--
+ .newlinks {
+cursor:pointer; cursor:hand;
+text-decoration: underline; color:blue;
+font-family: Verdana,Arial,Helvetica; 
+font-size: 10px;
+}
+-->
+</style>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+<TR>
+<td></td>
+ <td height="18" bgcolor="#CCCCCC"><div align="center">
+
+<font color=black size=-1>
+<center>
+<a href="http://forums.devshed.com"><font color=black size=-2>Dev Shed Forums</font></a>
+&nbsp;<font color=black>|</font>&nbsp; 
+<a href="http://forums.aspfree.com"><font color=black size=-2>ASP Free Forums</font></a>
+&nbsp;|&nbsp;
+<a href="http://forums.devarticles.com"><font color=black size=-2>Dev Articles Forums</font></a>
+&nbsp;|&nbsp;
+<a href="http://forums.devhardware.com"><font color=black size=-2>Dev Hardware Forums</font></a>
+&nbsp;|&nbsp;
+<a href="http://forums.seochat.com"><font color=black size=-2>SEO Chat Forums</font></a>
+</center>
+</font>
+</td></tr>
+
+<tr> 
+    <td width="1" bgcolor="#666666"><img height="1" width="1"  src="http://images.devshed.com/pixeldevshed.gif"></td>
+    <td height="18" bgcolor="#CCCCCC">
+
+<center>
+<font size=-2 color=black>
+© 2001-2004. All rights reserved. (<span class="newlinks" onClick="window.location='http://www.developershed.com/privacy.php'"><font size=-2 color=black>Privacy Policy</font></span>)
+ Dev Shed hosted by 
+<span class="newlinks" onClick="window.location='http://www.hostway.com'"><font size=-2 color=black>Hostway</font></span>. </font>
+</center>
+
+</td>
+
+    <td width="1" bgcolor="#666666"><img height="1" width="1"  src="http://images.devshed.com/pixeldevshed.gif"></td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td bgcolor="#666666"><img height="1" width="1"  src="http://images.devshed.com/pixeldevshed.gif"></td>
+  </tr>
+</table>
+
+<!-- End Bottom Footer -->
+<!-- ------------------------------------------ -->
+
+</body>
+</html>

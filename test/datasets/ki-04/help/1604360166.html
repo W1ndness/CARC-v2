@@ -1,0 +1,310 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1604360166.html
+	</FILE>
+	<URL>
+		http://de.php.net/FAQ.php
+	</URL>
+	<TITLE>
+		PHP: FAQ: Frequently Asked Questions - Manual
+	</TITLE>
+	<GENRE>
+		help
+	</GENRE>
+	<PLAINTEXT>
+ PHP: FAQ: Frequently Asked Questions - Manual downloads | documentation | faq | getting help | mailing lists | reporting bugs | php.net sites | links | my php.net s earch for in the function list whole site online documentation [en] bug database general mailing list developer mailing list documentation mailing list PHP Handbuch PHP Handbuch Vorwort Einführung Sprachreferenz Sicherheit Features Funktionsreferenz Zend API PHP API FAQ Anhang Stream open options Allgemeine Informationen view the printer friendly printer friendly [+notes] English Brazilian Portuguese Chinese (Simplified) Chinese (Hong Kong Cantonese) Chinese (Traditional) Czech Dutch Finnish French Greek Hebrew Hungarian Italian Japanese Korean Polish Romanian Russian Slovak Slovenian Spanish Swedish Turkish version of this page Last updated: Sat, 09 Aug 2003 VIII. FAQ: Frequently Asked Questions Inhaltsverzeichnis 44. Allgemeine Informationen 45. Mailing-Listen 46. Obtaining PHP 47. Database issues 48. Installation 49. Probleme bei der Compilierung 50. PHP benutzen 51. PHP und HTML 52. PHP and COM 53. PHP und andere Sprachen 54. Von PHP 2 auf PHP 3 umsteigen 55. Von PHP 3 auf PHP 4 umsteigen 56. Verschiedene Fragen add a note User Contributed Notes FAQ: Frequently Asked Questions PietroAbbatiMarescotti p dot abbati at ieee dot org 09-Jan-2004 12:16 Regarding implode and explode function, they do not allow to save keys as well. Basing on function wrote by static (14-May-2002 07:43), I wrote these two functions that allow to export and import an array with its keys: function implode_with_keys( $ glue, $ keyglue, $ array) { $ output = array(); foreach( $ array as $ key =&gt; $ item ) $ output[] = $ key . $ keyglue . $ item; return implode( $ glue, $ output); } function explode_with_keys( $ glue, $ keyglue, $ string) { $ imported_array = array(); $ original_array = array(); $ imported_array = explode( $ glue, $ string); foreach( $ imported_array as $ row){ list( $ key, $ value) = explode( $ keyglue, $ row); $ original_array[ $ key] = $ value;} return $ original_array; } Obviously, $ glue and $ keyglue MUST be different, and no one of them should appear in values. Ciao - PietroAM johannes at schlueters dot de 05-Apr-2003 01:49 A great German FAQ can be found on http://www.dclp-faq.de philip at cornado dot com 30-Dec-2002 09:07 A lot of faqts here: http://php.faqts.com/ 14-Jul-2002 12:49 For more PHP faq in russian please see : http://www.php-tutor.com Konstantin. add a note Stream open options Allgemeine Informationen Last updated: Sat, 09 Aug 2003 show source | credits | sitemap | contact | mirror sites Copyright &copy; 2001-2004 The PHP Group All rights reserved. This mirror generously provided by: @GLOBE GmbH Last updated: Mon Jan 26 00:20:46 2004 CET 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+ <title>PHP: FAQ: Frequently Asked Questions - Manual</title>
+ <link rel="stylesheet" href="/style.css" />
+ <link rel="stylesheet" href="/styles/mirror.css" />
+ <link rel="shortcut icon" href="/favicon.ico" />
+ <script language="Javascript" type="text/javascript" src="/userprefs.js"></script>
+ <base href="http://de.php.net/manual/de/faq.php" /></head>
+<body bgcolor="#ffffff" text="#000000"
+      link="#000099" alink="#0000ff" vlink="#000099"
+      onload="runOnLoad();">
+
+<!--UdmComment-->
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+ <tr bgcolor="#9999cc">
+  <td align="center" rowspan="2" width="126"><a href="/"><img src="/images/php.gif" alt="PHP" width="120" height="67" hspace="3" /></a></td>
+  <td>&nbsp;</td>
+ </tr>
+ <tr bgcolor="#9999cc">
+  <td align="right" valign="bottom">
+<a href="/downloads.php" class="small">downloads</a> | <a href="/docs.php" class="small">documentation</a> | <a href="/FAQ.php" class="small">faq</a> | <a href="/support.php" class="small">getting help</a> | <a href="/mailing-lists.php" class="small">mailing lists</a> | <a href="http://bugs.php.net/" class="small">reporting bugs</a> | <a href="/sites.php" class="small">php.net sites</a> | <a href="/links.php" class="small">links</a> | <a href="/my.php" class="small">my php.net</a>&nbsp;
+  </td>
+ </tr>
+ <tr bgcolor="#333366"><td colspan="2"><img src="/images/spacer.gif" width="1" height="1" border="0" alt="" /></td></tr>
+ <tr bgcolor="#666699">
+   <td align="right" valign="top" colspan="2" class="quicksearch">
+    <form method="post" action="/search.php" class="thin" name="topsearch">
+<small><span title="Keyboard shortcut: Alt+S (Win), Ctrl+S (Apple)"><u>s</u>earch for</span></small>
+<input class="small" type="text" name="pattern" value="" size="30" accesskey="s" />
+<small>in the</small>
+<select name="show" class="small">
+<option value="quickref" selected="selected">function list</option>
+<option value="wholesite">whole site</option>
+<option value="manual">online documentation [en]</option>
+<option value="bugdb">bug database</option>
+<option value="maillist">general mailing list</option>
+<option value="devlist">developer mailing list</option>
+<option value="phpdoc">documentation mailing list </option>
+</select>
+<input type="image" src="/images/small_submit_white.gif" alt="search" align="bottom" />&nbsp;
+</form>
+   </td>
+ </tr>
+ <tr bgcolor="#333366"><td colspan="3"><img src="/images/spacer.gif" width="1" height="1" border="0" alt="" /></td></tr> 
+</table>
+<!--/UdmComment-->
+
+
+<table border="0" cellpadding="0" cellspacing="0">
+ <tr valign="top">
+  <td width="200" bgcolor="#f0f0f0">
+   <table width="100%" cellpadding="2" cellspacing="0" border="0">
+    <tr valign="top"><td class="sidebar"><!--UdmComment-->
+<ul id="manualtoc">
+ <li class="header home"><a href="index.php">PHP Handbuch</a></li>
+ <li><a href="index.php#bookinfo">PHP Handbuch</a></li>
+ <li><a href="preface.php">Vorwort</a></li>
+ <li><a href="getting-started.php">Einführung</a></li>
+ <li><a href="langref.php">Sprachreferenz</a></li>
+ <li><a href="security.php">Sicherheit</a></li>
+ <li><a href="features.php">Features</a></li>
+ <li><a href="funcref.php">Funktionsreferenz</a></li>
+ <li><a href="zend.php">Zend API</a></li>
+ <li><a href="api.php">PHP API</a></li>
+ <li class="active"><a href="faq.php">FAQ</a></li>
+ <li><a href="appendixes.php">Anhang</a></li>
+</ul><!--/UdmComment-->
+</td></tr>
+   </table>
+  </td>
+  <td bgcolor="#cccccc" background="/images/checkerboard.gif" width="1"><img src="/images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+  <td>
+   <table cellpadding="10" cellspacing="0" width="100%">
+    <tr><td valign="top">
+<!--UdmComment-->
+<table border="0" width="100%" bgcolor="#e0e0e0" cellpadding="0" cellspacing="4"><tr><td><a href="streams.options.php"><img src="/images/caret-l.gif" alt="&lt;" width="11" height="7" />Stream open options</a></td><td align="right"><a href="faq.general.php">Allgemeine Informationen<img src="/images/caret-r.gif" alt="&gt;" width="11" height="7" /></a></td></tr><tr bgcolor="#cccccc"><td colspan="2"><img src="/images/spacer.gif" width="1" height="1" border="0" alt="" /></td></tr><tr><td><form action="/manual/change.php" method="GET" class="thin">
+<small>view the </small><select name="page" class="small">
+<option value="de/print/faq.php">printer friendly</option>
+<option value="de/printwn/faq.php">printer friendly [+notes]</option>
+<option value="en/faq.php">English</option>
+<option value="pt_BR/faq.php">Brazilian Portuguese</option>
+<option value="zh/faq.php">Chinese (Simplified)</option>
+<option value="hk/faq.php">Chinese (Hong Kong Cantonese)</option>
+<option value="tw/faq.php">Chinese (Traditional)</option>
+<option value="cs/faq.php">Czech</option>
+<option value="nl/faq.php">Dutch</option>
+<option value="fi/faq.php">Finnish</option>
+<option value="fr/faq.php">French</option>
+<option value="el/faq.php">Greek</option>
+<option value="he/faq.php">Hebrew</option>
+<option value="hu/faq.php">Hungarian</option>
+<option value="it/faq.php">Italian</option>
+<option value="ja/faq.php">Japanese</option>
+<option value="kr/faq.php">Korean</option>
+<option value="pl/faq.php">Polish</option>
+<option value="ro/faq.php">Romanian</option>
+<option value="ru/faq.php">Russian</option>
+<option value="sk/faq.php">Slovak</option>
+<option value="sl/faq.php">Slovenian</option>
+<option value="es/faq.php">Spanish</option>
+<option value="sv/faq.php">Swedish</option>
+<option value="tr/faq.php">Turkish</option>
+</select><input type="image" src="/images/small_submit.gif" border="0" width="11" height="11" alt="" align="baseline"> <small>version of this page</small></form></td><td align="right" valign="bottom"><small>Last updated: Sat, 09 Aug 2003</small></td></tr></table>
+<!--/UdmComment-->
+<DIV
+CLASS="PART"
+><A
+NAME="faq"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+>VIII. FAQ: Frequently Asked Questions</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Inhaltsverzeichnis</B
+></DT
+><DT
+>44. <A
+HREF="faq.general.php"
+>Allgemeine Informationen</A
+></DT
+><DT
+>45. <A
+HREF="faq.mailinglist.php"
+>Mailing-Listen</A
+></DT
+><DT
+>46. <A
+HREF="faq.obtaining.php"
+>Obtaining PHP</A
+></DT
+><DT
+>47. <A
+HREF="faq.databases.php"
+>Database issues</A
+></DT
+><DT
+>48. <A
+HREF="faq.installation.php"
+>Installation</A
+></DT
+><DT
+>49. <A
+HREF="faq.build.php"
+>Probleme bei der Compilierung</A
+></DT
+><DT
+>50. <A
+HREF="faq.using.php"
+>PHP benutzen</A
+></DT
+><DT
+>51. <A
+HREF="faq.html.php"
+>PHP und HTML</A
+></DT
+><DT
+>52. <A
+HREF="faq.com.php"
+>PHP and COM</A
+></DT
+><DT
+>53. <A
+HREF="faq.languages.php"
+>PHP und andere Sprachen</A
+></DT
+><DT
+>54. <A
+HREF="faq.migration.php"
+>Von PHP 2 auf PHP 3 umsteigen</A
+></DT
+><DT
+>55. <A
+HREF="faq.migration4.php"
+>Von PHP 3 auf PHP 4 umsteigen</A
+></DT
+><DT
+>56. <A
+HREF="faq.misc.php"
+>Verschiedene Fragen</A
+></DT
+></DL
+></DIV
+></DIV
+></DIV
+><br /><br />
+<div id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=faq&amp;redirect=http://de.php.net/manual/de/faq.php"><img src="/images/notes-add.gif" alt="add a note" width="13" height="13" align="middle" /></a> <small><a href="/manual/add-note.php?sect=faq&amp;redirect=http://de.php.net/manual/de/faq.php">add a note</a></small></span>
+  <small>User Contributed Notes</small><br />
+  <strong>FAQ: Frequently Asked Questions</strong>
+ </div>
+ <a name="38863"></a>
+ <div class="note">
+  <strong>PietroAbbatiMarescotti p dot abbati at ieee dot org</strong><br />
+  09-Jan-2004 12:16
+  <div class="text">
+<div class="phpcode"><code><span class="html">
+Regarding implode and explode function, they do not allow to save keys as well. Basing on function wrote by static (14-May-2002 07:43), I wrote these two functions that allow to export and import&nbsp; an array with its keys:<br />
+<br />
+function implode_with_keys($glue, $keyglue, $array) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; $output = array();<br />
+&nbsp;&nbsp; &nbsp; &nbsp; foreach( $array as $key =&gt; $item )<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $output[] = $key . $keyglue . $item;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; return implode($glue, $output);<br />
+}<br />
+<br />
+function explode_with_keys($glue, $keyglue, $string) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;  $imported_array = array();<br />
+&nbsp;&nbsp; &nbsp; &nbsp;  $original_array = array();<br />
+&nbsp;&nbsp; &nbsp; &nbsp;  $imported_array = explode($glue,$string);<br />
+&nbsp;&nbsp; &nbsp; &nbsp;  foreach($imported_array as $row){<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; list($key,$value) = explode($keyglue,$row);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $original_array[$key] = $value;}<br />
+&nbsp;&nbsp; &nbsp; &nbsp;  return $original_array;<br />
+}<br />
+<br />
+Obviously, $glue and $keyglue MUST be different, and no one of them should appear in values.<br />
+<br />
+Ciao - PietroAM</span>
+</code></div>
+  </div>
+ </div>
+ <a name="30985"></a>
+ <div class="note">
+  <strong>johannes at schlueters dot de</strong><br />
+  05-Apr-2003 01:49
+  <div class="text">
+<div class="phpcode"><code><span class="html">
+A great German FAQ can be found on <a href="http://www.dclp-faq.de" target="_blank">http://www.dclp-faq.de</a></span>
+</code></div>
+  </div>
+ </div>
+ <a name="28044"></a>
+ <div class="note">
+  <strong>philip at cornado dot com</strong><br />
+  30-Dec-2002 09:07
+  <div class="text">
+<div class="phpcode"><code><span class="html">
+A lot of faqts here:<br />
+<a href="http://php.faqts.com/" target="_blank">http://php.faqts.com/</a></span>
+</code></div>
+  </div>
+ </div>
+ <a name="23276"></a>
+ <div class="note">
+  14-Jul-2002 12:49
+  <div class="text">
+<div class="phpcode"><code><span class="html">
+For more PHP faq in russian please see :<br />
+<a href="http://www.php-tutor.com" target="_blank">http://www.php-tutor.com</a><br />
+<br />
+Konstantin.</span>
+</code></div>
+  </div>
+ </div>
+ <div class="foot"><a href="/manual/add-note.php?sect=faq&amp;redirect=http://de.php.net/manual/de/faq.php"><img src="/images/notes-add.gif" alt="add a note" width="13" height="13" align="middle" /></a> <small><a href="/manual/add-note.php?sect=faq&amp;redirect=http://de.php.net/manual/de/faq.php">add a note</a></small></div>
+</div><br /><!--UdmComment-->
+<table border="0" width="100%" bgcolor="#e0e0e0" cellpadding="0" cellspacing="4"><tr><td><a href="streams.options.php"><img src="/images/caret-l.gif" alt="&lt;" width="11" height="7" />Stream open options</a></td><td align="right"><a href="faq.general.php">Allgemeine Informationen<img src="/images/caret-r.gif" alt="&gt;" width="11" height="7" /></a></td></tr><tr bgcolor="#cccccc"><td colspan="2"><img src="/images/spacer.gif" width="1" height="1" border="0" alt="" /></td></tr><tr><td><small>&nbsp;</small></td><td align="right" valign="bottom"><small>Last updated: Sat, 09 Aug 2003</small></td></tr></table>
+<!--/UdmComment-->
+</td></tr></table></td></tr></table>
+
+<!--UdmComment-->
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+ <tr bgcolor="#333366"><td><img src="/images/spacer.gif" width="1" height="1" border="0" alt="" /></td></tr>
+ <tr bgcolor="#9999cc">
+  <td align="right" valign="bottom">
+<a href="/source.php?url=/manual/de/faq.php" class="small">show source</a> | <a href="/credits.php" class="small">credits</a> | <a href="/sitemap.php" class="small">sitemap</a> | <a href="/copyright.php#contact" class="small">contact</a> | <a href="/mirrors.php" class="small">mirror sites</a>&nbsp;  </td>
+ </tr>
+ <tr bgcolor="#333366"><td><img src="/images/spacer.gif" width="1" height="1" border="0" alt="" /></td></tr>
+</table>
+
+<table border="0" cellspacing="0" cellpadding="6" width="100%">
+ <tr valign="top" bgcolor="#cccccc">
+  <td><small><a href="/copyright.php">Copyright &copy; 2001-2004 The PHP Group</a><br />All rights reserved.</small></td>
+  <td align="right"><small>
+   <a href="/mirror.php">This mirror</a> generously provided by:
+   <a href="http://www.globe.de/">@GLOBE GmbH</a><br />
+   Last updated: Mon Jan 26 00:20:46 2004 CET   </small>
+  </td>
+ </tr>
+</table>
+<!--/UdmComment-->
+</body>
+</html>
+

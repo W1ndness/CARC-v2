@@ -1,0 +1,336 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5488476908.html
+	</FILE>
+	<URL>
+		http://www.ussg.iu.edu/hypermail/linux/kernel/0106.2/0098.html
+	</URL>
+	<TITLE>
+		Linux-Kernel Archive: Kernel configuration. It's not just a jo
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ Linux-Kernel Archive: Kernel configuration. It's not just a jo Kernel configuration. It's not just a job, it's an adventure! From: Eric S. Raymond ( esr@thyrsus.com ) Date: Sat Jun 16 2001 - 21:27:09 EST Next message: Christian Robottom Reis: "eepro100 problems with 2.2.19 _and_ 2.4.0" Previous message: Rik van Riel: "[docPATCH] mm.h documentation" Next in thread: Robert Love: "Re: Kernel configuration. It's not just a job, it's an adventure!" Reply: Robert Love: "Re: Kernel configuration. It's not just a job, it's an adventure!" Reply: Keith Owens: "Re: Kernel configuration. It's not just a job, it's an adventure!" Reply: Ingo Oeser: "Re: Kernel configuration. It's not just a job, it's an adventure!" Maybe reply: Eric S. Raymond: "Re: Kernel configuration. It's not just a job, it's an adventure!" Maybe reply: Colonel: "Re: Kernel configuration. It's not just a job, it's an adventure!" Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] Various people on the Linux kernel mailing list and elsewhere have been heard to opine that CML2's user interface is too oriented towards nontechnical users. In response to these complaints, I have implemented a fourth CML2 front end with an interface style expressly designed for the serious, hard-core hacker. A transcript of an example session follows: ---------------------------------------------------------------------------- Welcome to CML2 Adventure, version 1.6.1. You are in a maze of twisty little Linux kernel options menus, all different. The main room. A sign reads `Linux Kernel Configuration System'. Passages lead off in all directions. &gt; n The arch room. A sign reads `Processor type'. A passage leads upwards. Choose your processor architecture. A brass lantern is here. There is a row of buttons on the wall of this room. They read: X86, ALPHA, SPARC32, SPARC64, MIPS32, MIPS64, PPC, M68K, ARM, SUPERH, IA64, PARISC, S390, S390X, CRIS The button marked X86 is pressed. &gt; take lantern Lantern: taken. &gt; look X86 Value of X86 is y. This is Linux's home port. Linux was originally native to the Intel 386, and runs on all the later x86 processors including the Intel 486, 586, Pentiums, and various instruction-set-compatible chips by AMD, Cyrix, and others. &gt; up In main room. &gt; nearby The arch room. A sign reads `Processor type'. The archihacks room. A sign reads `Architecture-specific hardware hacks'. The buses room. A sign reads `System buses and controller types'. The pm room. A sign reads `Power management'. The mtd room. A sign reads `Memory Technology Device (MTD) support'. The x86 room. A sign reads `Intel and compatible 80x86 processor options'. The policy room. A sign reads `Configuration policy options'. The generic room. A sign reads `Architecture-independent feature selections'. The block_devices room. A sign reads `Block devices'. &gt; go generic The generic room. A sign reads `Architecture-independent feature selections'. A passage leads upwards. There is an option named MODULES here. There is an option named NET here. There is an option named SYSVIPC here. There is an option named BSD_PROCESS_ACCT here. There is an option named SYSCTL here. There is an option named BINFMT_AOUT here. There is an option named BINFMT_MISC here. There is an option named SMP here. &gt; take NET NET: taken. &gt; take MODULES Tristate symbols won't default to M. MODULES: taken. &gt; up In main room. &gt; nearby The arch room. A sign reads `Processor type'. The archihacks room. A sign reads `Architecture-specific hardware hacks'. The buses room. A sign reads `System buses and controller types'. The pm room. A sign reads `Power management'. The mtd room. A sign reads `Memory Technology Device (MTD) support'. The x86 room. A sign reads `Intel and compatible 80x86 processor options'. The policy room. A sign reads `Configuration policy options'. The generic room. A sign reads `Architecture-independent feature selections'. The block_devices room. A sign reads `Block devices'. &gt; go buses The buses room. A sign reads `System buses and controller types'. A passage leads upwards. Specify the buses, disk controllers, and internal interconnection standards that you want your kernel to support. It is very dark. If you continue, you are likely to be eaten by a grue. There is an option named EISA here. There is an option named PCI here. There is an option named PNP here. There is an option named PARPORT here. There is an option named HOTPLUG here. There is an option named IDE here. There is an option named SCSI here. There is an option named USB here. There is an option named I2O here. There is an option named MTD here. There is an option named WATCHDOG here. &gt; light lantern The lantern radiates a mellow golden light. &gt; take PCI PCI: taken. &gt; help Welcome to the adventure configurator. For a command summary, type `commands'. In general, a three-letter abbreviation of any command word is sufficient to identify it to the parser. This interface emulates the style of classic text adventure games such as Colossal Cave Adventure and Zork. Configuration menus are rooms, and configuration options are objects that can be taken and dropped (except for choice/radiobutton symbols, which become buttons on various room walls). Objects and rooms may silently appear and disappear as visibilities change. Have fun, and beware of the grues! In main room. &gt; commands look [target] -- look here or at target (direction or option). nearby -- list nearby rooms (useful with go) go -- go to a named menu (follow with the label). inventory -- show which options you have picked up. drop -- unset option. take [module] -- set option, follow with option name. press -- press a button (follow with the button name). set -- set numeric or string; follow with symbol and value. load -- read in a configuration (follow with the filename). save -- save the configuration (follow with a filename). xyzzy -- toggle suppression flag. quit -- quit, discarding changes. exit -- exit, saving the configuration. You can move in compass directions n,e,w,s,ne,nw,se,sw or dn for down. &gt; quit ---------------------------------------------------------------------------- -- &lt;a href=&quot; http://www.tuxedo.org/~esr/ &quot;&gt;Eric S. Raymond&lt;/a&gt; What, then is law [government]? It is the collective organization of the individual right to lawful defense.&quot; -- Frederic Bastiat, &quot;The Law&quot; - To unsubscribe from this list: send the line &quot;unsubscribe linux-kernel&quot; in the body of a message to majordomo@vger.kernel.org More majordomo info at http://vger.kernel.org/majordomo-info.html Please read the FAQ at http://www.tux.org/lkml/ Next message: Christian Robottom Reis: "eepro100 problems with 2.2.19 _and_ 2.4.0" Previous message: Rik van Riel: "[docPATCH] mm.h documentation" Next in thread: Robert Love: "Re: Kernel configuration. It's not just a job, it's an adventure!" Reply: Robert Love: "Re: Kernel configuration. It's not just a job, it's an adventure!" Reply: Keith Owens: "Re: Kernel configuration. It's not just a job, it's an adventure!" Reply: Ingo Oeser: "Re: Kernel configuration. It's not just a job, it's an adventure!" Maybe reply: Eric S. Raymond: "Re: Kernel configuration. It's not just a job, it's an adventure!" Maybe reply: Colonel: "Re: Kernel configuration. It's not just a job, it's an adventure!" Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] This archive was generated by hypermail 2b29 : Sat Jun 23 2001 - 21:00:16 EST 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+                      "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Linux-Kernel Archive: Kernel configuration.  It's not just a jo</TITLE>
+<META NAME="Author" CONTENT="Eric S. Raymond (esr@thyrsus.com)">
+<META NAME="Subject" CONTENT="Kernel configuration.  It's not just a job, it's an adventure!">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1>Kernel configuration.  It's not just a job, it's an adventure!</H1>
+<!-- received="Sat Jun 16 21:25:37 2001" -->
+<!-- isoreceived="20010617022537" -->
+<!-- sent="Sat, 16 Jun 2001 22:27:09 -0400" -->
+<!-- isosent="20010617022709" -->
+<!-- name="Eric S. Raymond" -->
+<!-- email="esr@thyrsus.com" -->
+<!-- subject="Kernel configuration.  It's not just a job, it's an adventure!" -->
+<!-- id="20010616222709.A11872@thyrsus.com" -->
+<STRONG>From:</STRONG> Eric S. Raymond (<A HREF="mailto:esr@thyrsus.com?Subject=Re:%20Kernel%20configuration.%20%20It's%20not%20just%20a%20job,%20it's%20an%20adventure!&In-Reply-To=&lt;20010616222709.A11872@thyrsus.com&gt;"><EM>esr@thyrsus.com</EM></A>)<BR>
+<STRONG>Date:</STRONG> Sat Jun 16 2001 - 21:27:09 EST
+<P>
+<!-- next="start" -->
+<UL>
+<LI><STRONG>Next message:</STRONG> <A HREF="0099.html">Christian Robottom Reis: "eepro100 problems with 2.2.19 _and_ 2.4.0"</A>
+<LI><STRONG>Previous message:</STRONG> <A HREF="0097.html">Rik van Riel: "[docPATCH] mm.h documentation"</A>
+<!-- nextthread="start" -->
+<LI><STRONG>Next in thread:</STRONG> <A HREF="0100.html">Robert Love: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Reply:</STRONG> <A HREF="0100.html">Robert Love: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Reply:</STRONG> <A HREF="0103.html">Keith Owens: "Re: Kernel configuration. It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Reply:</STRONG> <A HREF="0107.html">Ingo Oeser: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Maybe reply:</STRONG> <A HREF="0112.html">Eric S. Raymond: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Maybe reply:</STRONG> <A HREF="0126.html">Colonel: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<!-- reply="end" -->
+<LI><STRONG>Messages sorted by:</STRONG> 
+<A HREF="date.html#98">[ date ]</A>
+<A HREF="index.html#98">[ thread ]</A>
+<A HREF="subject.html#98">[ subject ]</A>
+<A HREF="author.html#98">[ author ]</A>
+</UL>
+<HR NOSHADE><P>
+<!-- body="start" -->
+<P>
+Various people on the Linux kernel mailing list and elsewhere have been heard
+<BR>
+to opine that CML2's user interface is too oriented towards nontechnical
+<BR>
+users.  In response to these complaints, I have implemented a fourth CML2
+<BR>
+front end with an interface style expressly designed for the serious,
+<BR>
+hard-core hacker.  A transcript of an example session follows:
+<BR>
+<P>----------------------------------------------------------------------------
+<BR>
+Welcome to CML2 Adventure, version 1.6.1.
+<BR>
+You are in a maze of twisty little Linux kernel options menus, all different.
+<BR>
+The main room.  A sign reads `Linux Kernel Configuration System'.
+<BR>
+Passages lead off in all directions.
+<BR>
+<P><EM>&gt; n
+</EM><BR>
+The arch room.  A sign reads `Processor type'.
+<BR>
+A passage leads upwards.
+<BR>
+<P>Choose your processor architecture.
+<BR>
+A brass lantern is here.
+<BR>
+There is a row of buttons on the wall of this room. They read:
+<BR>
+X86, ALPHA, SPARC32, SPARC64, MIPS32, MIPS64, PPC, M68K, ARM, SUPERH, IA64, PARISC, S390, S390X, CRIS
+<BR>
+The button marked X86 is pressed.
+<BR>
+<EM>&gt; take lantern
+</EM><BR>
+Lantern: taken.
+<BR>
+<EM>&gt; look X86
+</EM><BR>
+Value of X86 is y.
+<BR>
+This is Linux's home port.  Linux was originally native to the Intel
+<BR>
+386, and runs on all the later x86 processors including the Intel
+<BR>
+486, 586, Pentiums, and various instruction-set-compatible chips by
+<BR>
+AMD, Cyrix, and others.
+<BR>
+<EM>&gt; up
+</EM><BR>
+In main room.
+<BR>
+<EM>&gt; nearby
+</EM><BR>
+The arch room.  A sign reads `Processor type'.
+<BR>
+The archihacks room.  A sign reads `Architecture-specific hardware hacks'.
+<BR>
+The buses room.  A sign reads `System buses and controller types'.
+<BR>
+The pm room.  A sign reads `Power management'.
+<BR>
+The mtd room.  A sign reads `Memory Technology Device (MTD) support'.
+<BR>
+The x86 room.  A sign reads `Intel and compatible 80x86 processor options'.
+<BR>
+The policy room.  A sign reads `Configuration policy options'.
+<BR>
+The generic room.  A sign reads `Architecture-independent feature selections'.
+<BR>
+The block_devices room.  A sign reads `Block devices'.
+<BR>
+<P><EM>&gt; go generic
+</EM><BR>
+The generic room.  A sign reads `Architecture-independent feature selections'.
+<BR>
+A passage leads upwards.
+<BR>
+<P>There is an option named MODULES here.
+<BR>
+There is an option named NET here.
+<BR>
+There is an option named SYSVIPC here.
+<BR>
+There is an option named BSD_PROCESS_ACCT here.
+<BR>
+There is an option named SYSCTL here.
+<BR>
+There is an option named BINFMT_AOUT here.
+<BR>
+There is an option named BINFMT_MISC here.
+<BR>
+There is an option named SMP here.
+<BR>
+<EM>&gt; take NET
+</EM><BR>
+NET: taken.
+<BR>
+<EM>&gt; take MODULES
+</EM><BR>
+Tristate symbols won't default to M.
+<BR>
+MODULES: taken.
+<BR>
+<EM>&gt; up
+</EM><BR>
+In main room.
+<BR>
+<EM>&gt; nearby
+</EM><BR>
+The arch room.  A sign reads `Processor type'.
+<BR>
+The archihacks room.  A sign reads `Architecture-specific hardware hacks'.
+<BR>
+The buses room.  A sign reads `System buses and controller types'.
+<BR>
+The pm room.  A sign reads `Power management'.
+<BR>
+The mtd room.  A sign reads `Memory Technology Device (MTD) support'.
+<BR>
+The x86 room.  A sign reads `Intel and compatible 80x86 processor options'.
+<BR>
+The policy room.  A sign reads `Configuration policy options'.
+<BR>
+The generic room.  A sign reads `Architecture-independent feature selections'.
+<BR>
+The block_devices room.  A sign reads `Block devices'.
+<BR>
+<P><EM>&gt; go buses
+</EM><BR>
+The buses room.  A sign reads `System buses and controller types'.
+<BR>
+A passage leads upwards.
+<BR>
+<P>Specify the buses, disk controllers, and internal interconnection standards
+<BR>
+that you want your kernel to support.
+<BR>
+It is very dark.  If you continue, you are likely to be eaten by a grue.
+<BR>
+There is an option named EISA here.
+<BR>
+There is an option named PCI here.
+<BR>
+There is an option named PNP here.
+<BR>
+There is an option named PARPORT here.
+<BR>
+There is an option named HOTPLUG here.
+<BR>
+There is an option named IDE here.
+<BR>
+There is an option named SCSI here.
+<BR>
+There is an option named USB here.
+<BR>
+There is an option named I2O here.
+<BR>
+There is an option named MTD here.
+<BR>
+There is an option named WATCHDOG here.
+<BR>
+<EM>&gt; light lantern
+</EM><BR>
+The lantern radiates a mellow golden light.
+<BR>
+<EM>&gt; take PCI
+</EM><BR>
+PCI: taken.
+<BR>
+<EM>&gt; help
+</EM><BR>
+Welcome to the adventure configurator.  For a command summary, type `commands'.
+<BR>
+In general, a three-letter abbreviation of any command word is sufficient
+<BR>
+to identify it to the parser.
+<BR>
+<P>This interface emulates the style of classic text adventure games such as
+<BR>
+Colossal Cave Adventure and Zork.  Configuration menus are rooms, and
+<BR>
+configuration options are objects that can be taken and dropped (except
+<BR>
+for choice/radiobutton symbols, which become buttons on various room walls).
+<BR>
+Objects and rooms may silently appear and disappear as visibilities
+<BR>
+change.
+<BR>
+<P>Have fun, and beware of the grues!
+<BR>
+<P>In main room.
+<BR>
+<EM>&gt; commands
+</EM><BR>
+look [target] -- look here or at target (direction or option).
+<BR>
+nearby        -- list nearby rooms (useful with go)
+<BR>
+go            -- go to a named menu (follow with the label).
+<BR>
+inventory     -- show which options you have picked up.
+<BR>
+drop          -- unset option.
+<BR>
+take [module] -- set option, follow with option name.
+<BR>
+press         -- press a button (follow with the button name).
+<BR>
+set           -- set numeric or string; follow with symbol and value.
+<BR>
+load          -- read in a configuration (follow with the filename).
+<BR>
+save          -- save the configuration (follow with a filename).
+<BR>
+xyzzy         -- toggle suppression flag.
+<BR>
+quit          -- quit, discarding changes.
+<BR>
+exit          -- exit, saving the configuration.
+<BR>
+You can move in compass directions n,e,w,s,ne,nw,se,sw or dn for down.
+<BR>
+<EM>&gt; quit
+</EM><BR>
+----------------------------------------------------------------------------
+<BR>
+<PRE>
+-- 
+		&lt;a href=&quot;<A HREF="http://www.tuxedo.org/~esr/">http://www.tuxedo.org/~esr/</A>&quot;&gt;Eric S. Raymond&lt;/a&gt;
+<P>What, then is law [government]? It is the collective organization of
+the individual right to lawful defense.&quot;
+	-- Frederic Bastiat, &quot;The Law&quot;
+<P><P>-
+To unsubscribe from this list: send the line &quot;unsubscribe linux-kernel&quot; in
+the body of a message to <A HREF="mailto:majordomo@vger.kernel.org?Subject=Re:%20Kernel%20configuration.%20%20It's%20not%20just%20a%20job,%20it's%20an%20adventure!&In-Reply-To=&lt;20010616222709.A11872@thyrsus.com&gt;">majordomo@vger.kernel.org</A>
+More majordomo info at  <A HREF="http://vger.kernel.org/majordomo-info.html">http://vger.kernel.org/majordomo-info.html</A>
+Please read the FAQ at  <A HREF="http://www.tux.org/lkml/">http://www.tux.org/lkml/</A>
+</PRE>
+<P><!-- body="end" -->
+<HR NOSHADE>
+<UL>
+<!-- next="start" -->
+<LI><STRONG>Next message:</STRONG> <A HREF="0099.html">Christian Robottom Reis: "eepro100 problems with 2.2.19 _and_ 2.4.0"</A>
+<LI><STRONG>Previous message:</STRONG> <A HREF="0097.html">Rik van Riel: "[docPATCH] mm.h documentation"</A>
+<!-- nextthread="start" -->
+<LI><STRONG>Next in thread:</STRONG> <A HREF="0100.html">Robert Love: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Reply:</STRONG> <A HREF="0100.html">Robert Love: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Reply:</STRONG> <A HREF="0103.html">Keith Owens: "Re: Kernel configuration. It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Reply:</STRONG> <A HREF="0107.html">Ingo Oeser: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Maybe reply:</STRONG> <A HREF="0112.html">Eric S. Raymond: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<LI><STRONG>Maybe reply:</STRONG> <A HREF="0126.html">Colonel: "Re: Kernel configuration.  It's not just a job, it's an adventure!"</A>
+<!-- reply="end" -->
+<LI><STRONG>Messages sorted by:</STRONG> 
+<A HREF="date.html#98">[ date ]</A>
+<A HREF="index.html#98">[ thread ]</A>
+<A HREF="subject.html#98">[ subject ]</A>
+<A HREF="author.html#98">[ author ]</A>
+</UL>
+<!-- trailer="footer" -->
+<HR NOSHADE>
+<P>
+<SMALL>
+<EM>
+This archive was generated by <A HREF="http://www.hypermail.org/">hypermail 2b29</A> 
+: <EM>Sat Jun 23 2001 - 21:00:16 EST</EM>
+</EM>
+</SMALL>
+</BODY>
+</HTML>
+

@@ -1,0 +1,479 @@
+<!-- <DOCUMENT>
+	<FILE>
+		4564985843.html
+	</FILE>
+	<URL>
+		http://jdbc.postgresql.org/download.html
+	</URL>
+	<TITLE>
+		PostgreSQL JDBC Downloads
+	</TITLE>
+	<GENRE>
+		download
+	</GENRE>
+	<PLAINTEXT>
+ PostgreSQL JDBC Downloads "> "> Home PostgreSQL Downloads Documentation PostgreSQL JDBC Downloads The current version of the drivers are available here: These files are provided here for convenience purposes only. If you have any problems, please try compiling from source if possible. The source is included with PostgreSQL, and because it is integrated with PostgreSQL is not available on it's own. Check the main developer site for details of obtaining the PostgreSQL source code from CVS. All .jar files are compatible with all platforms. Because there are several build versions for each release (6.5.x has 2, 7.0 and 7.1 have 3) check that you download the correct build for your VM (or the destination VM). The pre 6.2 drivers are for historical purposes only. The JDBC1 driver is intended for JDK 1.1 environments but will run under later JDKs (1.2, 1.3, and 1.4) The JDBC2 driver is intended for JDK 1.2 and JDK 1.3 environments but will run under later JDKs (1.4). It will not run under JDK 1.1. The JDBC3 driver is intended for JDK 1.4 environments. It will not run under JDK 1.1, 1.2 or 1.3. The 7.2 source code will not build under the 1.4 JDK. You will either need the prebuilt JDBC2 driver, or build with a 1.2 or 1.3 JDK. The 7.3 source code should build fine in all environments. Latest Stable Drivers These are the pre-compiled drivers for the current production version of PostgreSQL Version Platform Notes PostgreSQL 7.4.1 JDBC1 JDK 1.1 JDBC2 JDK 1.2, JDK 1.3 JDBC2+ includes support for javax.sql.*. Supports JDK 1.3 only JDBC3 JDK 1.3 and JDK 1.4 PostgreSQL 7.4 JDBC1 JDK 1.1 JDBC2 JDK 1.2, JDK 1.3 JDBC2+ includes support for javax.sql.*. Supports JDK 1.3 only JDBC3 JDK 1.3 and JDK 1.4 Development Drivers These drivers are based on the current source base, and as such may not work as well as the latest stable releases. Version Platform Notes 7.5 coming soon JDK 1.1 (build 209) JDBC2 JDK 1.2, JDK 1.3 (2003-09-12) JDBC3 JDK 1.4 includes support for SSL --> Archived Drivers These are the pre-compiled drivers for previous versions of PostgreSQL. The pre-6.2 drivers are for historical purposes only. Version Platform Notes PostgreSQL 7.3.x JDBC3 JDK1.4 JDBC1 JDK 1.1 (supports 7.1 and 7.2) JDBC2 JDK 1.2, JDK 1.3 (build 113) JDBC2+ includes support for javax.sql.*. Supports JDK 1.3 only PostgreSQL 7.2.x JDK1.1 JDK 1.1 Java2 JDK1.2, JDK1.3, JDK1.4 PostgreSQL 7.1.x JDK1.1.x Java2 JDK1.2.x, JDK1.3.x PostgreSQL 7.0.x JDK1.1.x Java2 JDK1.2.x, JDK1.3.x PostgreSQL 6.5.2 JDK1.1.x Java2 JDK1.2.x, JDK1.3.x PostgreSQL 6.4.x JDK1.1.x Java2 was not available for Linux at this time, hence only JDK1.1 was supported. PostgreSQL 6.3.x JDK1.1.x PostgreSQL 6.2.1 JDK1.1.x Tar format only PostgreSQL 6.2 JDK1.1.x Tar format only Original driver released before PostgreSQL 6.2: Version 0.4 JavaPostgres95-0.4.tar.gz Version 0.3 JavaPostgres95-0.3.tar.gz Version 0.2 JavaPostgres95-0.2.tar.gz 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head>
+<title>PostgreSQL JDBC Downloads</title>
+<meta name="Description" content="postgres, postgresql, interface, java, jdbc, sql -->">
+<meta name="Keywords" content="postgres, postgresql, interface, java, jdbc, sql -->">
+<link rel="stylesheet" href="/jdbc.css">
+</head>
+<body bgcolor="#CCFFFF" text="#000000" link="#FF0000" vlink="#FF3333" leftmargin="0" topmargin="0" alink="#FFFF00">
+<center>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr bgcolor="#006666"> 
+      <td> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF" size="2"><b><a href="http://jdbc.postgresql.org/" class="jdbcnav">Home</a></b></font></div>
+      </td>
+      <td> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF" size="2"><b><a href="http://www.postgresql.org/" class="jdbcnav">PostgreSQL</a></b></font></div>
+      </td>
+      <td> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF" size="2"><b><a href="download.html" class="jdbcnav">Downloads</a></b></font></div>
+      </td>
+      <td> 
+        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF" size="2"><b><a href="doc.html" class="jdbcnav">Documentation</a></b></font></div>
+      </td>
+    </tr>
+  </table>
+</center>
+  
+<h1>PostgreSQL JDBC Downloads</h1>
+<p>The current version of the drivers are available here:</p>
+<p> 
+<ul>
+  <li>These files 
+    are provided here for convenience purposes only. If you have any problems, 
+    please try compiling from source if possible.<br>
+    <br>
+    The source is included with PostgreSQL, and because it is integrated with 
+    PostgreSQL is not available on it's own. Check the 
+    <a href="http://developer.postgresql.org">main developer site</a> 
+    for details of obtaining the PostgreSQL source code from CVS.<br>
+    <br>
+    </li>
+  <li>All .jar files 
+    are compatible with all platforms.</li>
+  <li>Because there 
+    are several build versions for each release (6.5.x has 2, 7.0 and 7.1 
+    have 3) check that you download the correct build for your VM (or 
+    the destination VM).</li>
+  <li>The pre 6.2 
+    drivers are for historical purposes only.</li>
+  <li>The JDBC1 driver is intended for JDK 1.1 environments but will run under later JDKs (1.2, 1.3, and 1.4)</li>
+  <li>The JDBC2 driver is intended for JDK 1.2 and JDK 1.3 environments but will run under later JDKs (1.4).  It will not run under JDK 1.1.</li>
+  <li>The JDBC3 driver is intended for JDK 1.4 environments.  It will not run under JDK 1.1, 1.2 or 1.3.</li>
+  <li>The 7.2 source code will not build under the 1.4 JDK.  You will either need the prebuilt JDBC2 driver, or build with a 1.2 or 1.3 JDK.  The 7.3 source code should build fine in all environments.</li>
+</ul>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td colspan="5" bgcolor="#006666">
+       <div><b><font color="#FFFFFF">Latest Stable Drivers
+         </font></b></div></td>
+  </tr>
+  <tr> 
+    <td colspan="5"> 
+      <p>These are 
+        the pre-compiled drivers for the current production version of 
+        PostgreSQL</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="64">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td bgcolor="#006666"><font color="#FFFFFF">Version</font></td>
+    <td bgcolor="#006666"><font color="#FFFFFF">Platform</font></td>
+    <td bgcolor="#006666"><font color="#FFFFFF">Notes</font></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>PostgreSQL 7.4.1</td>
+    <td>
+      <div align="left"><a href="download/pg74.1jdbc1.jar">JDBC1</a></div>
+    </td>
+    <td nowrap>JDK 1.1</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <div align="left"><a href="download/pg74.1jdbc2.jar">JDBC2</a>
+        </div>
+    </td>
+    <td nowrap>
+      <div align="left">JDK 1.2, JDK 1.3</div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <div align="left"><a href="download/pg74.1jdbc2ee.jar">JDBC2+</a></div>
+    </td>
+    <td>includes support for javax.sql.*.  Supports JDK 1.3 only</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <div align="left"><a href="download/pg74.1jdbc3.jar">JDBC3</a></div>
+    </td>
+    <td>JDK 1.3 and JDK 1.4</td>
+    <td></td>
+  </tr>
+
+  <tr> 
+    <td>&nbsp;</td>
+    <td>PostgreSQL 7.4</td>
+    <td> 
+      <div align="left"><a href="download/pg74jdbc1.jar">JDBC1</a></div>
+    </td>
+    <td nowrap>JDK 1.1</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left"><a href="download/pg74jdbc2.jar">JDBC2</a> 
+        </div>
+    </td>
+    <td nowrap> 
+      <div align="left">JDK 1.2, JDK 1.3</div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <div align="left"><a href="download/pg74jdbc2ee.jar">JDBC2+</a></div>
+    </td>
+    <td>includes support for javax.sql.*.  Supports JDK 1.3 only</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <div align="left"><a href="download/pg74jdbc3.jar">JDBC3</a></div>
+    </td>
+    <td>JDK 1.3 and JDK 1.4</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td colspan="5" bgcolor="#006666">
+       <div><b><font color="#FFFFFF">Development Drivers
+         </font></div></b></td>
+  </tr>
+  <tr> 
+    <td colspan="5"> 
+      <p>These drivers 
+        are based on the current source base, and as such may not work as well as the latest stable releases.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="64">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td bgcolor="#006666"><div><font color="#FFFFFF">Version</font></div></td>
+    <td bgcolor="#006666"><div><font color="#FFFFFF">Platform</font></div></td>
+    <td bgcolor="#006666" width="95%"><div><font color="#FFFFFF">Notes</font></div></td>
+    <td width="64"></td>
+  </tr>
+  <tr> 
+    <td></td>
+    <td>7.5</td>
+    <td>
+      <div align="left">coming soon</div
+    </td>
+    <td>JDK 1.1</td>
+    <td></td>
+  </tr>
+<!--
+  <tr> 
+    <td></td>
+    <td>(build 209)</td>
+    <td>
+      <div align="left"><a href="download/devpgjdbc2.jar">JDBC2</a></div>
+    </td>
+    <td>JDK 1.2, JDK 1.3</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td></td>
+    <td>(2003-09-12)</td>
+    <td>
+      <div align="left"><a href="download/devpgjdbc3.jar">JDBC3</a></div>
+    </td>
+    <td>JDK 1.4 includes support for SSL</td>
+    <td></td>
+  </tr>
+-->
+  <tr> 
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td colspan="5" bgcolor="#006666">
+       <div><b><font color="#FFFFFF">Archived Drivers
+         </font></b></div></td>
+  </tr>
+  <tr> 
+    <td colspan="5"> 
+      <p>These are 
+        the pre-compiled drivers for previous versions of PostgreSQL.<br>
+        The pre-6.2 drivers are for historical purposes only. 
+      </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="64">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td bgcolor="#006666"><font color="#FFFFFF">Version</font></td>
+    <td bgcolor="#006666"><font color="#FFFFFF">Platform</font></td>
+    <td bgcolor="#006666"><font color="#FFFFFF">Notes</font></td>
+    <td></td>
+  </tr>
+    <tr> 
+    <td>&nbsp;</td>
+    <td>PostgreSQL&nbsp;7.3.x&nbsp;&nbsp;</td>
+    <td> 
+      <div align="left"><a href="download/pg73jdbc3.jar">JDBC3&nbsp;&nbsp;</a></div>
+    </td>
+    <td nowrap> 
+      <div align="left">JDK1.4</div>
+    </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>
+        <div align="left"><a href="download/pg73jdbc1.jar">JDBC1</a></div>
+      </td>
+      <td nowrap>JDK 1.1</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>(supports 7.1 and 7.2)</td>
+      <td>
+        <div align="left"><a href="download/pg73jdbc2.jar">JDBC2</a>
+        </div>
+      </td>
+      <td nowrap>
+        <div align="left">JDK 1.2, JDK 1.3</div>
+      </td>
+      <td></td>
+    </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>(build 113)</td>
+    <td>
+      <div align="left"><a href="download/pg73jdbc2ee.jar">JDBC2+</a></div>
+    </td>
+    <td>includes support for javax.sql.*.  Supports JDK 1.3 only</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+ 
+    <tr> 
+   </tr>
+   <tr>
+    <td>&nbsp;</td>
+    <td>PostgreSQL&nbsp;7.2.x&nbsp;&nbsp;</td>
+    <td> 
+      <div align="left"><a href="download/pg72jdbc1.jar">JDK1.1&nbsp;&nbsp;</a></div>
+    </td>
+    <td> 
+	JDK 1.1 
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td></td>
+    <td></td>
+    <td> 
+      <div align="left"><a href="download/pg72jdbc2.jar">Java2</a> 
+        </div>
+    </td>
+    <td nowrap> 
+      <div align="left">JDK1.2, JDK1.3, JDK1.4</div>
+    </td>
+    <td></td>
+  </tr>
+    <tr> 
+    <td>&nbsp;</td>
+    <td>PostgreSQL&nbsp;7.1.x&nbsp;&nbsp;</td>
+    <td> 
+      <div align="left"><a href="download/jdbc7.1-1.1.jar">JDK1.1.x&nbsp;&nbsp;</a></div>
+    </td>
+    <td nowrap> 
+      <div align="left"></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td></td>
+    <td></td>
+    <td> 
+      <div align="left"><a href="download/jdbc7.1-1.2.jar">Java2</a> 
+        </div>
+    </td>
+    <td nowrap> 
+      <div align="left">JDK1.2.x, JDK1.3.x</div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>PostgreSQL&nbsp;7.0.x&nbsp;&nbsp;</td>
+    <td> 
+      <div align="left"><a href="download/jdbc7.0-1.1.jar">JDK1.1.x&nbsp;&nbsp;</a></div>
+    </td>
+    <td nowrap> 
+      <div align="left"></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td></td>
+    <td></td>
+    <td> 
+      <div align="left"><a href="download/jdbc7.0-1.2.jar">Java2</a> 
+        </div>
+    </td>
+    <td nowrap> 
+      <div align="left">JDK1.2.x, JDK1.3.x</div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left">PostgreSQL 
+        6.5.2</div>
+    </td>
+    <td> 
+      <div align="left"><a href="download/jdbc6.5-1.1.jar">JDK1.1.x</a></div>
+    </td>
+    <td nowrap></td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left"></div>
+    </td>
+    <td> 
+      <div align="left"><a href="download/jdbc6.5-1.2.jar">Java2</a></div>
+    </td>
+    <td nowrap> 
+      <div align="left">JDK1.2.x, JDK1.3.x</div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left">PostgreSQL 
+        6.4.x</div>
+    </td>
+    <td> 
+      <div align="left"><a href="download/jdbc6.4.jar">JDK1.1.x</a></div>
+    </td>
+    <td nowrap rowspan="2">Java2 
+      was not available for Linux at this time, hence only JDK1.1 was supported.</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left">PostgreSQL 
+        6.3.x</div>
+    </td>
+    <td> 
+      <div align="left"><a href="download/jdbc6.3.jar">JDK1.1.x</a></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left">PostgreSQL 
+        6.2.1</div>
+    </td>
+    <td> 
+      <div align="left"><a href="download/jdbc6.2.1.tgz">JDK1.1.x</a></div>
+    </td>
+    <td nowrap>Tar 
+      format only</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td height="20">&nbsp;</td>
+    <td height="20"> 
+      <div align="left">PostgreSQL 
+        6.2</div>
+    </td>
+    <td height="20"> 
+      <div align="left"><a href="download/jdbc62.tgz">JDK1.1.x</a></div>
+    </td>
+    <td nowrap height="20">Tar 
+      format only</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td colspan="3" bgcolor="#006666"> <font color="#FFFFFF">Original 
+      driver released before PostgreSQL 6.2:</font></td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left">Version 0.4</div>
+    </td>
+    <td nowrap colspan="2"> 
+      <div align="left"><a href="download/JavaPostgres95-0.4.tar.gz">JavaPostgres95-0.4.tar.gz</a></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left">Version 0.3</div>
+    </td>
+    <td nowrap colspan="2"> 
+      <div align="left"><a href="download/JavaPostgres95-0.3.tar.gz">JavaPostgres95-0.3.tar.gz</a></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td> 
+      <div align="left">Version 0.2</div>
+    </td>
+    <td nowrap colspan="2"> 
+      <div align="left"><a href="download/JavaPostgres95-0.2.tar.gz">JavaPostgres95-0.2.tar.gz</a></div>
+    </td>
+    <td></td>
+  </tr>
+</table>
+

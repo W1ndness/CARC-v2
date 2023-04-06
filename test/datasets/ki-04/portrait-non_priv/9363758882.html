@@ -1,0 +1,1583 @@
+<!-- <DOCUMENT>
+	<FILE>
+		9363758882.html
+	</FILE>
+	<URL>
+		http://www.samsung.com/Products/index.htm
+	</URL>
+	<TITLE>
+		SAMSUNG’s Digital World - Products
+	</TITLE>
+	<GENRE>
+		portrait-non_priv
+	</GENRE>
+	<PLAINTEXT>
+ SAMSUNG&rsquo;s Digital World - Products Select a Country Argentina Australia Austria Belgium Brazil Canada Chile China (Group) China (Electronics) Colombia Europe Finland France Germany Hong Kong Hungary India Indonesia Italy Japan Kazakhstan Korea (Group) Korea (Electronics) Latvia Lithuania Malaysia Mexico Middle East Netherlands Panama Peru Philippines Poland Portugal Russia Singapore South Africa Spain Sweden Taiwan Thailand Turkey United Kingdom United States Ukraine Vietnam Sales Locations Service Locations Mobile Phones TV, Video & Audio Computers & Related Products Home Appliances Semiconductor TFT LCD Modules Telecommunication Systems Fiberoptics CCTV Compressors Home > Products GSM CDMA TDMA Cordless Phone TV DVD Player Camcorder VCR Digital Set Top Box Digital Audio Player Home Audio Portable Audio Notebook PCs Hard Disk Drive CD/DVD-Rom CD/DVD-Writer Monitor Printer Multi Function Products Fax Refrigerator Air Conditioner Microwave Oven Washing Machine Vacuum Cleaner DRAM Flash &amp; SmartMedia SRAM UtRAM MCP Graphics Memory Mask ROM System LSI ASIC Note PC LCD TV Monitor& Industrial Small & Mediums Recipro Compressor Rotary Compressor CDMA2000 1X CDMA20001xEV-DO W-CDMA NGN Solution Broadband Network Solution Edge/Metro Solution InfoMobile OfficeServ Keyphone Home Infra Optical Fibers Fiber Optic Cables Interconnection Products Cameras SmartDome Systems Monitors Network Security Controllers VCRs DVRs Digital Display PDP MDT CDT CPT Mobile Display & Energy LCD(TSP) VFD Battery Business Software Enterprise Portal(E.R.P.) Enterprise Knowledge Management Unified Communications Graphic Viewer Reporting Tools SmartCard System Solution System Integration and More... Electronic Components MLB(Multi-layer board) BGA (Ball Grid Array) Optical Pick-up Bluetooth Digital Tuner LD LED SAW Filter FEM PAM TCXO Display Materials Glass for TVs & Monitors Frit Glass ITO Coated Glass ITO Glass for PDP Touch Pan el Glass ARAS Glass Coated Film Nano Powder Ceria Nano Powder Ceramics Rotary Transformer Power Supply Ferrite Cores Sputtering Target Camera Digital Camera 35mm Camera Web Camera Presenter Semiconductor System Chip Mounter Lead Frame IT Consumables CD-R/RW DVD-R/RW/+RW/RAM CF Card Floppy Diskette Negative Color Film Inkjet & Toner Primary Battery 6mm/8mm Digital Tapes Engineering plastics Flame-Retardant ABS Flame-Retardant Hi-Impact PS Electronic Chemical Material Semiconductor materials - EMC,CMP Slurry Display materials - CR,PI Secondary Li-Ion Batteries - Starlyte Electrolyte Functional materials - PASTE, EMS, OPC, INK 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html>
+<head>
+<title>SAMSUNG&rsquo;s Digital World - Products</title>
+<meta name="title" content="Product">
+<meta name="keywords" content="Product [digital]">
+<meta name="description" content="Search all Samsung Electronics products, from TVs, video and phones to computers, home appliances, fiberoptics and more.">
+<meta name="date" content="">
+<meta name="sitecode" content="com">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<link rel="STYLESHEET" type="text/css" href="/module/CSS/global.css">
+<link rel="STYLESHEET" type="text/css" href="/module/CSS/product.css">
+<script language="JavaScript" src="/module/JS/prod_nav.js"></script>
+<script language="JavaScript">
+	   ImgPreLoad('/images/TMenu',5);	   
+		 _MCurrentOn = 1  //Main menu status
+</script>
+<script>
+	
+	function random(num){
+		var cur=Math.round((num-1)*Math.random())
+
+		return cur;
+	
+	}	
+	
+	function RandomProduct(product_img_src,titext,tilink, product_desc, morelink){
+		this.product_img_src = product_img_src;
+		this.titext		= titext;		
+		this.tilink		= tilink;
+		this.product_desc	= product_desc;			
+		this.morelink		= morelink;
+	}
+
+
+	var random_product1 = new Array();
+	var random_product2 = new Array();
+	var random_product3 = new Array();
+
+	random_product1[0] = new RandomProduct("images/img_camera.gif"	, "Techwin", "http://www.samsungcamera.com/", "An elegant, hand-friendly form that appeals to the user's senses of sight and touch...1","http://www.samsungcamera.com/");
+
+	random_product1[1] = new RandomProduct("images/img_camera.gif", "Techwin", "http://www.samsungcamera.com/", "An elegant, hand-friendly form that appeals to the user's senses of sight and touch...1", "http://www.samsungcamera.com/");
+
+	random_product2[0] = new RandomProduct("images/img_chip.gif", "Electro-Mechanics", "http://www.sem.samsung.co.kr/kr/products/productOverview.jsp?categoryID=4AFECF11-4629-184E-1B3872409AC42428&navi=overview ", "VCO modules change the frequency transmitted or received based upon the..","http://www.sem.samsung.co.kr/kr/products/productOverview.jsp?categoryID=4AFECF11-4629-184E-1B3872409AC42428&navi=overview");
+
+	random_product2[1] = new RandomProduct("images/img_chip.gif", "Electro-Mechanics", "http://www.sem.samsung.co.kr/kr/products/productOverview.jsp?categoryID=4AFECF11-4629-184E-1B3872409AC42428&navi=overview", "VCO modules change the frequency transmitted or received based upon the..","http://www.sem.samsung.co.kr/kr/products/productOverview.jsp?categoryID=4AFECF11-4629-184E-1B3872409AC42428&navi=overview");
+
+	random_product3[0] = new RandomProduct("images/img_voc.gif", "SDI", "http://www.samsungsdi.com", "Amid the  recent explosive growth of the color mobile phone market and greater....","http://www.samsungsdi.com");
+
+	random_product3[1] = new RandomProduct("images/img_voc.gif", "SDI", "http://www.samsungsdi.com", "Amid the  recent explosive growth of the color mobile phone market and greater....","http://www.samsungsdi.com");
+
+
+
+	function print_product(index){
+		var product_obj = eval("random_product" + index)[random(2)];
+
+		document.writeln("<TR><TD align=middle><img src='"+product_obj.product_img_src+"' border=0></TD></TR>");
+		document.writeln("<TR><TD><IMG height=7 src='/images/spacer.gif' width=1></TD></TR>");
+		document.writeln("<TR><TD class=copy-b><A href='"+product_obj.tilink+"' target=_blank>"+product_obj.titext+"</A></TD></TR>");
+		document.writeln("<TR><TD class=copy>"+product_obj.product_desc+"</TD></TR>");
+		document.writeln("<TR><TD><IMG height=7  src='/images/spacer.gif' width=1></TD></TR>");
+		document.writeln("<TR><TD><!--more--><A href='"+product_obj.morelink+"' target=_blank><IMG height=9 alt='' src='/images/Bt_visit.gif' width=33  border=0></A></TD></TR>");
+	
+	}
+</script>
+
+<script language="JavaScript">
+<!-- 
+function LauncherWin(mypage, myname, w, h, scroll) {
+var winl = (screen.width - w) / 2;
+var wint = (screen.height - h) / 2;
+winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars='+scroll+',noresiz'
+win = window.open(mypage, myname, winprops)
+if (parseInt(navigator.appVersion) >= 4) { win.window.focus(); }
+}
+//-->
+</script>
+
+
+<script>
+     function Go_global() {
+      var obj = document.global;
+      var url = obj.url.value;
+      if (url == "") {
+       alert("Select a Country");
+       obj.url.focus();
+       return;
+      }
+      window.open(url,"","")
+     }
+  </script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"  onLoad="imgOver(_MCurrentOn)">
+<!--BEGIN TOP Navigation-->
+
+<!--BEGIN TOP Navigation-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" background="/images/bg_top.gif">
+<tr>
+	<td width="160" rowspan="2"><a href="javascript:GoUrl('home')"><img src="/images/logo_samsung.gif" width="160" height="40"alt="" border="0"></a></td>
+	<td width="100%">
+			<table width="610" border="0" cellspacing="0" cellpadding="0">
+				<tr> 
+					<td width="70"><a href="javascript:GoUrl('products')" onFocus="this.blur();" onmouseover="imgOver('1')" onmouseout="imgOut('1')"><img src="/images/TMenu_01_off.gif" width="70" height="40" border="0" alt="" name="w1"></a></td>
+					<td width="70"><a href="javascript:GoUrl('support')" onFocus="this.blur();" onmouseover="imgOver('2')" onmouseout="imgOut('2')"><img src="/images/TMenu_02_off.gif" width="70" height="40" border="0" alt="" name="w2"></a></td>
+					<td width="69"><a href="javascript:GoUrl('digitall')" onFocus="this.blur();" onmouseover="imgOver('3')" onmouseout="imgOut('3')"><img src="/images/TMenu_03_off.gif" width="69" height="40" border="0" alt="" name="w3"></a></td>
+					<td width="103"><a href="javascript:GoUrl('press')" onFocus="this.blur();" onmouseover="imgOver('4')" onmouseout="imgOut('4')"><img src="/images/TMenu_04_off.gif" width="103" height="40" border="0" alt="" name="w4"></a></td>
+					<td width="119"><a href="javascript:GoUrl('about')" onFocus="this.blur();" onmouseover="imgOver('5')" onmouseout="imgOut('5')"><img src="/images/TMenu_05_off.gif" width="119" height="40" border="0" alt="" name="w5"></a></td>
+					<td align="right" valign="bottom"><a href="#"><img src="/images/TMenu_cnav.gif" width="163" height="37" border="0" usemap="#mu"></a></td>
+				</tr>
+			</table>
+	</td>
+</tr>
+</table>
+<script LANGUAGE="JavaScript">
+<!-- 
+function LauncherWin(mypage, myname, w, h, scroll) {
+var winl = (screen.width - w) / 2;
+var wint = (screen.height - h) / 2;
+winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars='+scroll+',noresiz'
+win = window.open(mypage, myname, winprops)
+if (parseInt(navigator.appVersion) >= 4) { win.window.focus(); }
+}
+//-->
+</script>
+<map name="mu">
+  <area shape="rect" coords="7,7,45,23" href="http://www.samsung.com/redirect.asp?file=index.htm" alt="" onFocus="this.blur();">
+  <area shape="rect" coords="47,7,113,23" href="http://www.samsung.com/redirect.asp?file=ContactUs/ContactUs.htm" alt="" onFocus="this.blur();">
+  <area shape="rect" coords="118,7,161,23" href="http://www.samsung.com/redirect.asp?file=Sitemap/Sitemap.htm" alt="" onFocus="this.blur();">
+</map>
+<!--//END TOP Navigation-->
+
+
+<!--//END TOP Navigation-->
+<!--BEGIN Wide img -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td bgcolor="#6688aa"><img src="/images/spacer.gif" width="1" height="1"></td>
+</tr>
+<tr>
+	<td bgcolor="#229CEC">
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="770" height="130">
+        <param name=movie value="images/Topimg_ices.swf">
+        <param name=quality value=high>
+        <embed src="images/Topimg_ices.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="770" height="130"> </embed>
+      </object>	</td>
+</tr>
+</table>
+<!--//END Wide img-->
+<!--BEGIN Title & Search-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td bgcolor="#A5A5A5"><img src="/images/spacer.gif" width="1" height="1"></td>
+</tr>
+<tr>
+	<td bgcolor="#EBEBEB">
+		<table width="770" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td><img src="/Products/images/Title_Products.gif" width="129" height="38" border=0></td>
+			<td align="right">
+				<!--BEGIN TOP Navigation-->
+
+				<table border="0" cellspacing="0" cellpadding="0">
+<form name=seek action='http://search.samsung.com/query.html'>
+<tr>
+<td><img src="/images/img_search.gif" width="48" height="7" border=0></td>
+<td>
+<input type="text" name=qt size="14" style="width:120" class="search">
+<input type="hidden" name=la size="14" style="width:120" class="search" value='en'>
+</td>
+<td><img src="/images/spacer.gif" width="5" height="1"></td>
+<td><input type=image src="/images/Bt_go_search.gif" width="20" height="20" border=0 alt="go"></td>
+</tr>
+</form>
+</table>
+				
+				<!--//END TOP Navigation-->
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td bgcolor="#A5A5A5"><img src="/images/spacer.gif" width="1" height="1"></td>
+</tr>
+</table>
+<!--//END Title & Search-->
+<!--BEGIN Body Section Guide-->
+<table width="770" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+	        
+    <td valign="top"> 
+      <!--BEGIN Left Section-->
+      <table width="135" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td rowspan="12"><img src="images/spacer.gif" width="9" height="1"></td>
+          <td height="2" colspan="2"><img src="images/spacer.gif" width="1" height="10"></td>
+        </tr>
+        <tr> 
+          <td colspan="2"><img src="http://www.samsung.com/images/Stxt_local2.gif" width="135" height="14" border="0"></td>
+        </tr>
+        <tr> 
+          <td colspan="2"><img src="images/spacer.gif" width="1" height="6"></td>
+        </tr>
+        <form name="global" method="post">
+          <tr> 
+            <td colspan="2"> <div align="right"> 
+                				<select name="url" onchange="Go_global();" style="width:135" class="copy">
+				<option selected value="">Select a Country</option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/ar/>Argentina </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/au/>Australia </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/at/>Austria </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.be>Belgium </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/br/>Brazil </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.ca>Canada </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.cl>Chile </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://china.samsung.com.cn>China (Group) </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com.cn>China (Electronics) </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/co>Colombia </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung-europe.com>Europe </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.fi>Finland </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.fr>France </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.de>Germany </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsungelectronics.com.hk>Hong Kong </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/hu/>Hungary </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/in/>India </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/id/>Indonesia</option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.it>Italy </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.co.jp>Japan </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.kz>Kazakhstan </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.co.kr>Korea (Group) </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.sec.co.kr>Korea (Electronics) </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.lv>Latvia </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.lt>Lithuania </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/my/>Malaysia </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/mx/>Mexico </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/mea/>Middle East </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/nl/>Netherlands </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/pa/>Panama </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsungperu.com>Peru </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/ph/>Philippines </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.pl>Poland </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/pt/>Portugal </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.ru>Russia </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/sg/>Singapore </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/za/>South Africa </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.es>Spain </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.se>Sweden </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/tw/>Taiwan </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/th/>Thailand </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/tr/>Turkey </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsungelectronics.co.uk>United Kingdom </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsungusa.com>United States </option>				
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.ua>Ukraine </option>
+				<option value=http://www.samsung.com/Products/redirect.asp?url=http://www.samsung.com/ve/>Vietnam </option>
+				</select>
+              </div></td>
+          </tr>
+        </form>
+        <tr> 
+          <td colspan="2"><img src="images/spacer.gif" width="1" height="3"></td>
+        </tr>
+		                        <tr> 
+                                        <td width="11"><img src="http://www.samsung.com/images/Bult_ar_org.gif" width="11" height="15"></td>
+                                        <td width="124" class="copy"><a href="http://www.samsung.com/Support/SalesLocations/index.htm" onFocus="this.blur();">Sales Locations</a></td>
+                                </tr>
+                                <tr> 
+                                        <td height="2" colspan="2"><img src="images/spacer.gif" width="1" height="1"></td>
+                                </tr>
+                                <tr> 
+                                        <td width="11"><img src="http://www.samsung.com/images/Bult_ar_org.gif" width="11" height="15"></td>
+                                        <td width="124" class="copy"><a href="http://www.samsung.com/Support/ServiceLocations/index.htm" onFocus="this.blur();">Service Locations</a></td>
+                                </tr>
+                                <tr> 
+                                        <td height="7" colspan="2"><img src="images/spacer.gif" width="1" height="1"></td>
+                                </tr>
+      </table>
+      <!--Left Menu-->
+        
+
+ <table cellpadding="0" cellspacing="0" border="0" width="145"> 
+ 
+ <tr> 
+ 	<td height="1" bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/MobilePhones.htm">Mobile Phones</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/TVVideoAudio.htm">TV, Video & Audio</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/ComputersRelatedProducts.htm">Computers & Related Products</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/HomeAppliances.htm">Home Appliances</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/Semiconductor/index.htm">Semiconductor</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/Semiconductor/TFTLCD/index.htm">TFT LCD Modules</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/TelecommunicationSystems.htm">Telecommunication Systems</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/Fiberoptics.htm">Fiberoptics</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/CCTV.htm">CCTV</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr> 
+ 	<td height="20" class="menu"> 
+		<table cellpadding="0" cellspacing="0" border="0"><tr ><td width="9"><img src="/images/spacer.gif" width="9" height="1"></td><td width="136" height="20" class="menu"><a href="/Products/Compressors.htm">Compressors</a></td></tr></table> 
+	</td> 
+ </tr> 
+ <tr> 
+ 	<td bgcolor="#B5B5B5"><img src="/images/spacer.gif" width="1" height="1"></td> 
+ </tr> 
+ <tr align='center'><td align='center'> 
+<table cellpadding="0" cellspacing="0" border="0" width="135"> 
+	<tr> 
+		<td height="5"></td> 
+	</tr> 
+	<tr align="center"> 
+		<td><a href="/Support/ProductSupport/download/index.aspx"><img src="/images/download_01.gif"  border=0></a></td> 
+	</tr> 
+</table> 
+</td></tr> 
+	<tr> 
+		<td height="15"></td> 
+	</tr> 
+	<tr align="center"> 
+	<td> 
+ <a href="#" onmouseup="window.open('http://www.samsung.com/redirect.asp?file=ProductFind/finder.htm','newwin','width=400,height=540,left=0,top=0')" onFocus="this.blur();"><img src="/module/SSI/left/images/banner_finder.gif" border=0></a> 
+	</td> 
+	</tr> 
+	<tr> 
+		<td height="5"></td> 
+	</tr> 
+	<tr align="center"> 
+	<td> 
+ <a href="http://www.samsung.com/ices/"><img src="/module/SSI/left/images/leftbanner_ices2004.gif" border=0></a> 
+	</td> 
+	</tr> 
+	<tr> 
+		<td height="5"></td> 
+	</tr> 
+	<tr align="center"> 
+	<td> 
+ <a href="http://www.samsung.com/redirect.asp?file=HomeNetwork/index.htm"><img src="/module/SSI/left/images/Lbanner_homenetwork.gif" border=0></a> 
+	</td> 
+	</tr> 
+	<tr> 
+		<td height="5"></td> 
+	</tr> 
+	<tr align="center"> 
+	<td> 
+ <a href="http://www.samsung.com/redirect.asp?file=myguide/homeflash.asp" target="_blank"><img src="/module/SSI/left/images/home001_v1.gif" border=0></a> 
+	</td> 
+	</tr> 
+	<tr> 
+		<td height="5"></td> 
+	</tr> 
+</table> 
+
+
+
+      <!--//Left Menu-->
+	</td>
+                <td><img src="/images/spacer.gif" width="15" height="1"></td>
+                <td valign="top" width="610"> 
+                        <!--Begin Contents Section-->
+                        <!--BEGIN location-->
+                        <table border="0" cellspacing="0" cellpadding="0">
+                                <tr> 
+                                        
+          <td height="30" class="lo"><a href="javascript:GoUrl('home')">Home</a> 
+            > <span class="copy-b">Products </span></td>
+                                </tr>
+                        </table>
+                        <!--END location-->
+                        <table cellpadding="0" cellspacing="0" border="0" width="610">
+                                <tr> 
+                                        <td width="455"> 
+                                                <!--Key menu-->
+                                                <table width="455" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr> 
+                                                                <td><OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+ WIDTH="612" HEIGHT="100" id="all" ALIGN="">
+                                                                  <PARAM NAME=movie VALUE="images/ProductBanner.swf">
+                                                                  <PARAM NAME=quality VALUE=high>
+                                                                  <PARAM NAME=bgcolor VALUE=#FFFFFF>
+                                                                  <EMBED src="images/ProductBanner.swf" quality=high bgcolor=#FFFFFF  WIDTH="612" HEIGHT="100" NAME="all" ALIGN=""
+ TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED>
+                                                                </OBJECT></td>
+                                                        </tr>
+                                                        <tr> 
+                                                                <td><img src="../images/spacer.gif" width="1" height="15"></td>
+                                                        </tr>
+                                                </table> 
+                                                <!--//Key menu-->
+                                                <!--Group Menu-->
+                                                
+            <table width="610" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="145" valign="top"> 
+                  <!--Mobile Phones-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=MobilePhones.htm"><img src="images/p_title_01.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=MobilePhone/GSM/index.htm">GSM</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=MobilePhone/CDMA/index.htm">CDMA</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=MobilePhone/TDMA/index.htm">TDMA</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=CordlessPhone/index.htm">Cordless 
+                        Phone</a></td>
+                    </tr>
+                  </table>
+                  <!--//Mobile Phones-->
+                </td>
+                <td width="10"><img src="../images/spacer.gif" width="10" height="1"></td>
+                <td width="145" valign="top"> 
+                  <!--tv,video,audio-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=TVVideoAudio.htm"><img src="images/p_title_02.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=TV/index.htm">TV</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=DVDPlayer/index.htm">DVD 
+                        Player</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Camcorder/index.htm">Camcorder</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=VCR/index.htm">VCR</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=DigitalSetTopBox/index.htm">Digital 
+                        Set Top Box</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=DigitalAudioPlayer/index.htm">Digital 
+                        Audio Player</a> 
+                      <td> </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=HomeAudio/index.htm">Home 
+                        Audio</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=PortableAudio/index.htm">Portable 
+                        Audio</a></td>
+                    </tr>
+                  </table>
+                  <!--//tv,video,audio-->
+                </td>
+                <td width="10"><img src="../images/spacer.gif" width="10" height="1"></td>
+                <td width="145" valign="top"> 
+                  <!--computers&Related products -->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="30" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=ComputersRelatedProducts.htm"><img src="images/p_title_03.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=NotebookPCs/index.htm">Notebook PCs</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=HardDiskDrive/index.htm">Hard 
+                        Disk Drive</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=CDDVD_Rom/index.htm">CD/DVD-Rom</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=CDDVD_Writer/index.htm">CD/DVD-Writer</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Monitor/index.htm">Monitor</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Printer/index.htm">Printer</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=MultiFunctionProducts/index.htm">Multi 
+                        Function Products</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Fax/index.htm">Fax</a></td>
+                    </tr>
+                  </table>
+                  <!--//computers&Related products -->
+                </td>
+                <td width="10" valign="top">&nbsp;</td>
+                <td width="145" valign="top"> 
+                  <!--home app-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=HomeAppliances.htm"><img src="images/p_title_04.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Refrigerator/index.htm">Refrigerator</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=AirConditioner/index.htm">Air 
+                        Conditioner</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=MicrowaveOven/index.htm">Microwave 
+                        Oven</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=WashingMachine/index.htm">Washing 
+                        Machine</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=VacuumCleaner/index.htm">Vacuum 
+                        Cleaner</a></td>
+                    </tr>
+                  </table>
+                  <!--//home app-->
+                </td>
+              </tr>
+              <tr> 
+                <td colspan="7"><img src="../images/spacer.gif" width="1" height="15"></td>
+              </tr>
+              <tr> 
+                <td colspan="7" bgcolor="#C5C5C5"><img src="../images/spacer.gif" width="1" height="3"></td>
+              </tr>
+              <tr> 
+                <td colspan="7"><img src="../images/spacer.gif" width="1" height="15"></td>
+              </tr>
+              <tr> 
+                <td width="145" valign="top"> 
+                  <!--semiconductor-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><img src="../images/spacer.gif" width="1" height="3"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/index.htm"><img src="images/p_title_05.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/DRAM/index.htm">DRAM</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/Flash/index.htm">Flash 
+                        &amp; SmartMedia</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/SRAM/index.htm">SRAM</a></td>
+                    </tr>
+					<tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/SRAM/index.htm">UtRAM</a></td>
+                    </tr>
+                    <tr> 
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/MCP/index.htm">MCP</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/GraphicsMemory/index.htm">Graphics 
+                        Memory</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/MaskROM/index.htm">Mask 
+                        ROM</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/SystemLSI/index.htm">System 
+                        LSI</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/ASIC/index.htm">ASIC</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                  </table>
+                  <!--//semiconductor-->
+                </td>
+                <td width="10"><img src="../images/spacer.gif" width="10" height="1"></td>
+                <td width="145" valign="top"> 
+                  <!--tft lcd-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/TFTLCD/index.htm"><img src="images/p_title_06.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td valign="top"><img src="../images/spacer.gif" width="1" height="5"><br>
+                        <img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/common/product_list.jsp?family_cd=LCD02">Note 
+                        PC</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/common/product_list.jsp?family_cd=LCD04">LCD 
+                        TV</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/common/product_list.jsp?family_cd=LCD01">Monitor& 
+                        Industrial</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Semiconductor/common/product_list.jsp?family_cd=LCD03">Small 
+                        & Mediums</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                  </table> 
+                  <!--tft lcd-->
+                  <br>
+                  <!--compressors-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=Compressors.htm"><img src="images/p_title_10.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=ReciproCompressor/index.htm">Recipro 
+                        Compressor</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=RotaryCompressor/index.htm">Rotary 
+                        Compressor</a></td>
+                    </tr>
+                  </table>
+                  <!--//compressors-->
+                </td>
+                <td width="10"><img src="../images/spacer.gif" width="10" height="1"></td>
+                <td width="145" valign="top"> 
+                  <!--telecommunication-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="30" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=TelecommunicationSystems.htm"><img src="images/p_title_07.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=CDMA20001x/index.htm">CDMA2000 
+                        1X</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=CDMA20001xEV_DO/index.htm">CDMA20001xEV-DO</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=W_CDMA/index.htm">W-CDMA</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=NGNSolution/index.htm">NGN 
+                        Solution</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="5"></td>
+                      <td valign="top" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=BroadbandNetworkSolution/index.htm">Broadband 
+                        Network Solution</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=EdgeMetroSolution/index.htm">Edge/Metro 
+                        Solution</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=/InfoMobile/index.htm">InfoMobile</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=OfficeServ/index.htm">OfficeServ</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Keyphone/index.htm">Keyphone</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td height="14"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=HomeInfra/index.htm">Home 
+                        Infra</a></td>
+                    </tr>
+                  </table>
+                  <!--//telecommunication-->
+                </td>
+                <td width="10" valign="top">&nbsp;</td>
+                <td width="145" valign="top"> 
+                  <!--fiberoptics-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=Fiberoptics.htm"><img src="images/p_title_08.gif" border="0"></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=OpticalFibers/index.htm">Optical 
+                        Fibers</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=FiberOpticCables/index.htm">Fiber 
+                        Optic Cables</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=InterconnectionProducts/index.htm">Interconnection 
+                        Products</a></td>
+                    </tr>
+                  </table> 
+                  <!--//fiberoptics-->
+                  <br>
+                  <!--cctv-->
+                  <table cellpadding="0" cellspacing="0" border="0" width="145">
+                    <tr> 
+                      <td height="20" colspan="2" valign="top"><a href="http://www.samsung.com/Products/redirect.asp?file=CCTV.htm"><img src="images/p_title_09.gif" border=0></a></td>
+                    </tr>
+                    <tr> 
+                      <td height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td width="138" class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Cameras/index.htm">Cameras</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=SmartDomeSystems/index.htm">SmartDome 
+                        Systems</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Monitors/index.htm">Monitors</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=NetworkSecurity/index.htm">Network 
+                        Security</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=Controllers/index.htm">Controllers</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=VCRs/index.htm">VCRs</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                      <td class="copy"><a href="http://www.samsung.com/Products/redirect.asp?file=DVRs/index.htm">DVRs</a></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2"><img src="../images/spacer.gif" width="1" height="3"></td>
+                    </tr>
+                  </table>
+                  <!--//cctv-->
+                </td>
+              </tr>
+            </table>
+                                        </td>
+                                </tr>
+                                <tr> 
+                                        <td><img src="../images/spacer.gif" width="1" height="10"></td>
+                                </tr>
+                                <tr> 
+                                        <td align="right"><a href="#"><img src="images/butn_top.gif" border="0"></a></td>
+                                </tr>
+                                <tr> 
+                                        <td height="15" colspan="7"><img src="../images/spacer.gif" width="1" height="15"></td>
+                                </tr>
+                        </table>
+                        <!--end Group Menu-->
+                        <!--begin Affiliated Company Products-->
+                        <table width="610" border="0" cellspacing="0" cellpadding="0">
+                                <tr> 
+                                        <td bgcolor="#F7F7F7" background="images/pi_dot.gif"></td>
+                                </tr>
+                                <tr> 
+                                        <td bgcolor="#F7F7F7"><img src="../images/spacer.gif" width="1" height="20"></td>
+                                </tr>
+                                <tr> 
+                                        <td bgcolor="#F7F7F7"><a href="http://www.samsung.com/redirect.asp?file=products/Affiliated_product/Affiliated_product.htm"><img src="images/title_affiliated_com.gif" width="209" height="16" alt="" border="0"></a></td>
+                                </tr>
+                                <tr> 
+                                        <td bgcolor="#F7F7F7"><img src="../images/spacer.gif" width="1" height="15"></td>
+                                </tr>
+                                <tr> 
+                                        <td bgcolor="#F7F7F7" align="center"> 
+                                                <!-- Affiliated Company contents begin-->
+                                                
+            <table cellpadding="0" cellspacing="0" border="0" width="560" align="center">
+              <tr> 
+                <td width="160" valign="top"> <table cellpadding="0" cellspacing="0" border="0">
+                    <tr> 
+                      <td class="black-t" height="22" colspan="2"><img src="images/t_sdi.gif" width="180" height="11" alt="" border="0"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="8"></td>
+                      <td class="copy"><font color="#808080"><b>Digital Display</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="8"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungsdi.co.kr/sdi_en/product/pdp/pdp.html" target="_blank">PDP</a><img src="../../images/spacer.gif" width="7" height="1"></td>
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungsdi.co.kr/sdi_en/product/mdt/mdt.html" target="_blank">MDT</a><img src="../../images/spacer.gif" width="7" height="1"></td>
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungsdi.co.kr/sdi_en/product/cdt/cdt.html" target="_blank">CDT</a><img src="../../images/spacer.gif" width="7" height="1"></td>
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungsdi.co.kr/sdi_en/product/cpt/cpt.html" target="_blank">CPT</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td height="15" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="8"></td>
+                      <td class="copy"><font color="#808080"><b>Mobile Display 
+                        & Energy </b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="8"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungsdi.co.kr/sdi_en/product/lcd/lcd.html" target="_blank">LCD(TSP)</a><img src="../../images/spacer.gif" width="7" height="1"></td>
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungsdi.co.kr/sdi_en/product/vfd/vfd.html" target="_blank">VFD</a><img src="../../images/spacer.gif" width="7" height="1"></td>
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungsdi.co.kr/sdi_en/product/battery/battery.html" target="_blank">Battery</a></td>
+                            <td width="8"></td>
+                            <td class="copy"></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td height="30" colspan="2"></td>
+                    </tr>
+                  </table>
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr> 
+                      <td class="black-t" height="22" colspan="2"><img src="images/t_sds.gif" width="180" height="10" alt="" border="0"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="10"></td>
+                      <td class="copy"><font color="#808080"><b>Business Software</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="10"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.bizentro.com" target="_blank">Enterprise 
+                              Portal(E.R.P.)</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sds.samsung.co.kr/product/acube_en/index.php" target="_blank">Enterprise 
+                              Knowledge Management</a> </td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcontact.com/en" target="_blank">Unified 
+                              Communications</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sds.samsung.co.kr/product/wiseview_en/index.php" target="_blank">Graphic 
+                              Viewer</a></td>
+                          </tr>
+                          <tr> 
+                            <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sds.samsung.co.kr/product/reqube/index.php" target="_blank">Reporting 
+                              Tools</a></td>
+                          </tr>
+                          <tr> 
+                            <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sds.samsung.com/product/si/smartcard.html" target="_blank">SmartCard 
+                              System Solution</a> </td>
+                          </tr>
+                          <tr> 
+                            <td><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sds.samsung.com/product/index.html" target="_blank">System 
+                              Integration and More...</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+                <td width="12"></td>
+                <td width="160" valign="top"> <table cellpadding="0" cellspacing="0" border="0">
+                    <tr> 
+                      <td class="black-t" height="38" colspan="2"><img src="images/t_elec_mecha.gif" width="180" height="25" alt="" border="0"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td class="copy"><font color="#808080"><b>Electronic Components</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A94A-A60D-E1B3872409AC4242&navi=overview" target="_blank">MLB(Multi-layer 
+                              board) </a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A94A-B7B5-E1B3872409AC4242&navi=overview" target="_blank">BGA 
+                              (Ball Grid Array) </a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=BB304DF2-16D9-A6D6-E1B3872409AC4242&navi=overview" target="_blank">Optical 
+                              Pick-up </a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A947-44E2-E1B3872409AC4242&navi=overview" target="_blank">Bluetooth</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=2C9D98F2-A126-2CB9-E1B3872409AC4242&navi=overview" target="_blank">Digital 
+                              Tuner</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=D955C6F2-0776-65AA-E1B3872409AC4242&navi=overview" target="_blank">LD</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A94A-F955-E1B3872409AC4242&navi=overview" target="_blank">LED</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8" valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="6"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A947-CD7A-E1B3872409AC4242&navi=overview" target="_blank">SAW 
+                              Filter</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8" valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="6"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A947-9B7F-E1B3872409AC4242&navi=overview" target="_blank">FEM</a></td>
+                          </tr>
+                          <tr> 
+                            <td valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="6"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A947-8F35-E1B3872409AC4242&navi=overview" target="_blank">PAM</a></td>
+                          </tr>
+                          <tr> 
+                            <td valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="6"></td>
+                            <td class="copy"><a href="http://www.sem.samsung.com/en/products/productOverview.jsp?categoryID=4D9E98F1-A947-69F6-E1B3872409AC4242&navi=overview" target="_blank">TCXO</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+                <td width="12"></td>
+                <td width="160" valign="top"> <table cellpadding="0" cells
+						pacing="0" border="0">
+                    <tr> 
+                      <td class="black-t" height="22" colspan="2"><img src="images/t_corning.gif" width="180"  height="12" alt="" border="0"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td class="copy"><font color="#808080"><b>Display Materials</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_01_1braun.html" target="_blank">Glass 
+                              for TVs & Monitors</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_01_2print.html" target="_blank">Frit 
+                              Glass</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_02_1ito.html" target="_blank">ITO 
+                              Coated Glass</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_02_2pdp.html" target="_blank">ITO 
+                              Glass for PDP</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_02_3touch.html" target="_blank">Touch 
+                              Pan el Glass</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_02_4reflection.html" target="_blank">ARAS 
+                              Glass</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_02_5coating.html" target="_blank">Coated 
+                              Film</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td height="15" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td class="copy"><font color="#808080"><b>Nano Powder</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td width="154" class="copy"><a href="http://www.samsungcorning.com/02_product/P_03_4nano.html" target="_blank">Ceria 
+                              Nano Powder</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td height="15" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td class="copy">Ceramics</td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_03_1roters.html" target="_blank">Rotary 
+                              Transformer</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_03_2coar.html" target="_blank">Power 
+                              Supply Ferrite Cores</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungcorning.com/02_product/P_03_3target.html" target="_blank">Sputtering 
+                              Target</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr> 
+                <td colspan="5" height="15"></td>
+              </tr>
+              <tr> 
+                <td width="160" valign="top"><table cellpadding="0" cellspacing="0" border="0">
+                    <tr> 
+                      <td class="black-t" height="22" colspan="2"><img src="images/t_techwin.gif" width="180" height="10" alt="" border="0"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td class="copy"><font color="#808080"><b>Camera</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungtechwin.com" target="_blank">Digital 
+                              Camera</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungtechwin.com" target="_blank">35mm 
+                              Camera</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungtechwin.com" target="_blank">Web 
+                              Camera</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungtechwin.com" target="_blank">Presenter</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td height="15" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td class="copy"><font color="#808080"><b>Semiconductor 
+                        System</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungtechwin.com" target="_blank">Chip 
+                              Mounter</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungtechwin.com" target="_blank">Lead 
+                              Frame</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+                <td width="12"></td>
+                <td width="160" valign="top"><table cellpadding="0" cellspacing="0" border="0">
+                    <tr> 
+                      <td class="black-t" height="22" colspan="2"><img src="images/t_corp.gif" width="180" height="12" alt="" border="0"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td class="copy"><font color="#808080"><b>IT Consumables</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="7"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">CD-R/RW 
+                              </a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">DVD-R/RW/+RW/RAM</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">CF 
+                              Card</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">Floppy 
+                              Diskette </a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">Negative 
+                              Color Film</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">Inkjet 
+                              & Toner</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">Primary 
+                              Battery </a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.samsungmedia.com" target="_blank">6mm/8mm 
+                              Digital Tapes</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+                <td width="12"></td>
+                <td width="160" valign="top"><table cellpadding="0" cellspacing="0" border="0">
+                    <tr> 
+                      <td class="black-t" height="22" colspan="2"><img src="images/t_cheil.gif" width="180" height="10" alt="" border="0"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="10"></td>
+                      <td class="copy"><font color="#808080"><b>Engineering plastics</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="10"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.starex.co.kr/eng/product_info/product_starex_abs_set.htm" target="_blank">Flame-Retardant 
+                              ABS</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.starex.co.kr/eng/product_info/product_starex_ps_set.htm" target="_blank">Flame-Retardant 
+                              Hi-Impact PS</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td height="15" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="10"></td>
+                      <td class="copy"><font color="#808080"><b>Electronic Chemical 
+                        Material</b></font></td>
+                    </tr>
+                    <tr> 
+                      <td height="3" colspan="2"></td>
+                    </tr>
+                    <tr> 
+                      <td><img src="../images/spacer.gif" width="10"></td>
+                      <td> <table cellpadding="0" cellspacing="0" border="0">
+                          <tr> 
+                            <td width="8" valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="6"></td>
+                            <td class="copy"><a href="http://www.starex.co.kr/eng/product_info/product_electronic_chemical_materials_set1.htm" target="_blank">Semiconductor 
+                              materials - EMC,CMP Slurry</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8"><img src="../images/bult_cross_org.gif" width="5" height="5"></td>
+                            <td class="copy"><a href="http://www.starex.co.kr/eng/product_info/product_electronic_chemical_materials_set2.htm" target="_blank">Display 
+                              materials - CR,PI</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8" valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="6"></td>
+                            <td class="copy"><a href="http://www.starex.co.kr/eng/product_info/product_electronic_chemical_materials_set3.htm" target="_blank">Secondary 
+                              Li-Ion Batteries - Starlyte Electrolyte</a></td>
+                          </tr>
+                          <tr> 
+                            <td width="8" valign="top"><img src="../images/bult_cross_org.gif" width="5" height="5" vspace="6"></td>
+                            <td class="copy"><a href="http://www.starex.co.kr/eng/product_info/product_electronic_chemical_materials_set4.htm" target="_blank">Functional 
+                              materials - PASTE, EMS, OPC, INK </a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <!-- //3-->
+            </table>
+                                                <!-- Affiliated Company contents end-->
+            <br>
+                                  </td>
+                                </tr>
+                                <tr> 
+                                        <td bgcolor="#F7F7F7"><img src="../images/spacer.gif" width="1" height="10"></td>
+                                </tr>
+                                <tr> 
+                                        <td bgcolor="#F7F7F7" background="images/pi_dot.gif"></td>
+                                </tr>
+                        </table>
+                        <table width="100%">
+                                <tr> 
+                                        <td height="20" align="right" valign="bottom"><a href="#"><img src="images/butn_top.gif" border="0"></a></td>
+                                </tr>
+                        </table>
+                        <!--end Affiliated Company Products-->
+    </td>
+        </tr>
+</table>
+<!--//END Body Section Guide-->
+
+<!--BEGIN Footer-->
+
+<script src="/satisfaction/inc/javascript.js"></script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr><td><script src="/satisfaction/inc/main.js"></script></td></tr>
+	<tr><td><img src="/images/spacer.gif" width="1" height="25"></td></tr>
+	<tr><td bgcolor="#B3B3B3"><img src="/images/spacer.gif" width="1" height="1"></td></tr>
+	<tr><td><img src="/images/footer.gif" width="442" height="39" border=0 usemap="#footer"></td></tr>
+	<tr><td><img src="/images/spacer.gif" width="1" height="10"></td></tr>
+</table>
+<map name="footer">
+  <area shape="rect" coords="149,7,204,29" href="javascript:GoUrl('priv')" alt="privacy" onFocus="this.blur();">
+  <area shape="rect" coords="208,7,260,28" href="javascript:GoUrl('legal')" alt="legal" onFocus="this.blur();">
+</map>
+
+<!--//END Footer-->
+</body>
+</html>

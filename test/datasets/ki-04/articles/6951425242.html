@@ -1,0 +1,530 @@
+<!-- <DOCUMENT>
+	<FILE>
+		6951425242.html
+	</FILE>
+	<URL>
+		http://www.cc.ukans.edu/~acs/docs/other/HTML_quick.shtml
+	</URL>
+	<TITLE>
+		HTML quick reference
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ HTML Quick Reference Email Internet Web Authoring Computer Labs Computing Classes Help HTML Quick Reference The HyperText Markup Language (HTML) is composed of a set of elements that define a document and guide its display. This document presents a concise reference guide to HTML, listing the most commonly used elements from Versions 1 and 2 of HTML, and giving a brief description of those elements. Users should be aware that HTML is an evolving language, and different World-Wide Web browsers may recognize slightly different sets of HTML elements. For general information about HTML including plans for new versions, see http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html. http://www.sandia.gov/sci_compute/html_ref.html --> Introduction An HTML element may include a name, some attributes and some text or hypertext, and will appear in an HTML document as &lt;tag_name&gt; text &lt;/tag_name&gt; &lt;tag_name attribute_name=argument&gt; text &lt;/tag_name&gt; , or just &lt;tag_name&gt; For example: &lt;title&gt; My Useful Document &lt;/title&gt; and &lt;a href="argument"&gt; text &lt;/a&gt; An HTML document is composed of a single element: &lt;html&gt; . . . &lt;/html&gt; that is, in turn, composed of head and body elements: &lt;head&gt; . . . &lt;/head&gt; and &lt;body&gt; . . . &lt;/body&gt; To allow older HTML documents to remain readable, &lt;html&gt; , &lt;head&gt; , and &lt;body&gt; are actually optional within HTML documents. Elements usually placed in the head element &lt;isindex&gt; Specifies that the current document describes a database that can be searched using the index search method appropriate for whatever client is being used to read the document. For example, a Lynx user will use the "s" keyboard command. &lt;title&gt; . . . &lt;/title&gt; Specify a document title. Note that the title will not appear on the document as is customary on printed documents. It will usually appear in a window bar identifying the contents of the window. HTML header tags perform the functions usually reserved for titles. &lt;base href="URL"&gt; Specify the name of the file relative to which partially qualified pathnames in URLs should be interpreted. If not otherwise specified the URL containing the document being displayed is used as the base. &lt;link rev="RELATIONSHIP" rel="RELATIONSHIP" href="URL"&gt; The link tag allows you to define relationships between the document containing the link tag and the document specified in the "URL". The rel attribute specifies the relationship between the HTML file and the Uniform Resource Locator (URL). The rev attribute (for "reverse") specifies the relationship between the URL and the HTML file. For example, &lt;link rev="made" href="URL"&gt; indicates that the file maker or owner is described in the document identified by the URL. (Note that link tags are not displayed on the screen as part of the document. They define static relationships, not hypertext links.) Elements usually placed in the body element The following sections describe elements that can be used in the body of the document. Text Elements &lt;p&gt; The end of a paragraph that will be formatted before it is displayed on the screen. &lt;pre&gt; . . . &lt;/pre&gt; Identifies text that has already been formatted (preformatted) by some other system and must be displayed as is. Preformatted text may include embedded tags, but not all tag types are permitted. The &lt;pre&gt; tag can be used to include tables in documents. &lt;listing&gt; . . . &lt;/listing&gt; Example computer listing; embedded tags will be ignored, but embedded tabs will work. This is an archaic tag. &lt;xmp&gt; . . . &lt;/xmp&gt; Similar to &lt;pre&gt; except no embedded tags will be recognized. &lt;plaintext&gt; Similar to &lt;pre&gt; except no embedded tags will be recognized, and since there is no end tag, the remainder of the document will be rendered as plain text. This is an archaic tag. Note that some browsers actually recognize a &lt;/plaintext&gt; tag, even though it is not defined by the standard. &lt;blockquote&gt; . . . &lt;/blockquote&gt; Include a section of text quoted from some other source. Hyperlinks or Anchors &lt;a name="anchor_name"&gt; . . . &lt;/a&gt; Define a target location in a document &lt;a href="#anchor_name"&gt; . . . &lt;/a&gt; Link to a location in the base document, which is the document containing the anchor tag itself, unless a base tag has been specified. &lt;a href="URL"&gt; . . . &lt;/a&gt; Link to another file or resource &lt;a href="URL#anchor_name"&gt; . . . &lt;/a&gt; Link to a target location in another document &lt;a href="URL?search_word+search_word"&gt; . . . &lt;/a&gt; Send a search string to a server. Different servers may interpret the search string differently. In the case of word-oriented search engines, multiple search words might be specified by separating individual words with a plus sign (+). An anchor must include a name or href attribute, and may include both. There are several optional attributes, but they are rarely encountered. The structure of a Uniform Resource Locator (URL) may be expressed as: resource_type:additional_information where the possible resource types include: file , http , news , gopher , telnet , ftp , and wais , among others, and each resource type relates to a specific server type. Since each server performs a unique function, each resource type requires different additional_information . For example http and gopher URLs will have a structure like: resource_type://host.domain:port/pathname The colon followed by an integer TCP port number is optional, and is used when a server is listening on a non-standard port. Strictly speaking, the anchor_name and search_word information included in the name and href attributes in the examples above are part of the URL. They are presented as separate entities for simplicity. A more complete description of URLs is presented in http://www.w3.org/hypertext/WWW/Addressing/Addressing.html Headers &lt;h1&gt; . . . &lt;/h1&gt; Most prominent header &lt;h2&gt; . . . &lt;/h2&gt; &lt;h3&gt; . . . &lt;/h3&gt; &lt;h4&gt; . . . &lt;/h4&gt; &lt;h5&gt; . . . &lt;/h5&gt; &lt;h6&gt; . . . &lt;/h6&gt; Least prominent header Logical Styles &lt;em&gt; . . . &lt;/em&gt; Emphasis &lt;strong&gt; . . . &lt;/strong&gt; Stronger emphasis &lt;code&gt; . . . &lt;/code> Display an HTML directive &lt;samp&gt; . . . &lt;/samp&gt; Include sample output &lt;kbd&gt; . . . &lt;/kbd&gt; Display a keyboard key &lt;var&gt; . . . &lt;/var&gt; Define a variable &lt;dfn&gt; . . . &lt;/dfn&gt; Display a definition (not widely supported) &lt;cite&gt; . . . &lt;/cite&gt; Display a citation Physical Styles &lt;b&gt; . . . &lt;/b&gt; Boldface &lt;i&gt; . . . &lt;/i&gt; Italics &lt;u&gt; . . . &lt;/u&gt; Underline &lt;tt&gt; . . . &lt;/tt&gt; Typewriter font Definition list/glossary: &lt;dl&gt; &lt;dl&gt; &lt;dt&gt; First term to be defined &lt;dd&gt; Definition of first term &lt;dt&gt; Next term to be defined &lt;dd&gt; Next definition &lt;/dl&gt; The &lt;dl&gt; attribute compact can be used to generate a definition list requiring less space. Present an unordered list: &lt;ul&gt; &lt;ul&gt; &lt;li&gt; First item in the list &lt;li&gt; Next item in the list &lt;/ul&gt; Present an ordered list: &lt;ol&gt; &lt;ol&gt; &lt;li&gt; First item in the list &lt;li&gt; Next item in the list &lt;/ol&gt; Present an interactive menu: &lt;menu&gt; &lt;menu&gt; &lt;li&gt; First item in the menu &lt;li&gt; Next item &lt;/menu&gt; Present a directory list of items: &lt;dir&gt; &lt;dir&gt; &lt;li&gt; First item in the list &lt;li&gt; Second item in the list &lt;li&gt; Next item in the list &lt;/dir&gt; Items should be less than 20 characters long. Entities &amp; keyword ; Display a particular character identified by a special keyword. For example the entity &amp;amp; specifies the ampersand ( &amp; ), and the entity &amp;lt; specifies the less than ( &lt; ) character. Note that the semicolon following the keyword is required, and the keyword must be one from the lists presented in: http://www.w3.org/pub/WWW/MarkUp/html-spec/html-spec_9.html#SEC9.7 &amp;# ascii_equivalent ; Use a character literally. Again note that the semicolon following the ASCII numeric value is required. HTML Forms Interface The HTML forms interface allows document creators to define HTML documents containing forms to be filled out by users. When a user fills out the form and presses a button indicating the form should be "submitted," the information on the form is sent to a server for processing. The server will usually prepare an HTML document using the information supplied by the user and return it to the client for display. The following tags implement the forms interface: &lt;form&gt; . . . &lt;/form&gt; &lt;input&gt; &lt;select&gt; . . . &lt;/select&gt; &lt;option&gt; &lt;textarea&gt; . . . &lt;/textarea&gt; The last four tags can only be used within a &lt;form&gt; . . . &lt;/form&gt; element. Define a form &lt;form&gt; . . . &lt;/form&gt; Defines a form within an HTML document. A document may contain multiple &lt;form&gt; elements, but &lt;form&gt; elements may not be nested. Note that non-form tags can be used within a &lt;form&gt; element. Attributes and their arguments: action="URL" : The location of the program that will process the form. method=data_exchange method The method chosen to exchange data between the client and the program started to process the form: One of get or post . post is preferred for most applications. Example: &lt;form action="http://www.ku.edu/cgi-bin/register" method=post&gt; . . . &lt;/form&gt; Define an input field &lt;input&gt; (there is no ending tag) Defines an input field where the user may enter information on the form. Each input field assigns a value to a variable which has a specified name and a specified data type . Attributes and their arguments: type="variable_type" Specifies the data type for the variable, where: type="text" and type="password" fields accept character data type="checkbox" fields are either selected or not type="radio" fields of the same name allow selection of only one of the associated values type="submit" defines an action button that sends the completed form to the query server type="reset" defines a button that resets the form variables to their default values type="hidden" defines an invisible input field whose value will be sent along with the other form values when the form is submitted. This is used to pass state information from one script or form to another. type="image" defines an image map within a form and returns the coordinates of a mouse click within the image. name="textstring" where textstring is a symbolic name (not displayed) identifying the input variable as in: &lt;input type="checkbox" name="box1"&gt; value="textstring" where the meaning of textstring depends on the argument for type . For type="text" or type="password" , textstring is the default value for the input variable. Password values will not be shown on the user's form. Anything entered by the user will replace any default value defined with this attribute. If type="checkbox" or type="radio" , textstring is the value that will be sent to the server if the checkbox is "checked". For type="reset" or type="submit" , textstring is a label that will appear on the submit or reset button in place of the words " submit " and " reset ". checked No arguments. For type="checkbox" or type="radio" , if checked is present the input field is "checked" by default. size="display_width" where display_width is an integer value representing the number of characters displayed for the type="text" or type="password" input field. maxlength="string_length" where string_length is the maximum number of characters allowed within type="text" or type="password" variable values. This attribute is only valid for single line "text" or "password" fields. Define a select field &lt;select&gt; . . . &lt;/select&gt; Defines and displays a set of optional list items from which the user can select one or more items. This element requires an &lt;option&gt; element for each item in the list. Attributes and their arguments: name="textstring" where textstring is the symbolic identifier for the select field variable. size="list_length" where list_length is an integer value representing the number of &lt;option&gt; items that will be displayed at one time. multiple No arguments. If present, the multiple attribute allows selection of more than one &lt;option&gt; value. Define a select field option &lt;option&gt; Within the &lt;select&gt; element the &lt;option&gt; tags are used to define the possible values for the select field. If the attribute selected is present then the option value is selected by default. In the following example all three options may be chosen but bananas are selected by default. &lt;select multiple&gt; &lt;option&gt;Apples &lt;option selected&gt;Bananas &lt;option&gt;Cherries &lt;/select&gt; Define a text area &lt;textarea&gt; . . . default text . . . &lt;/textarea&gt; Defines a rectangular field where the user may enter text data. If "default text" is present it will be displayed when the field appears. Otherwise the field will be blank. Attributes and their values: name="textstring" textstring is a symbolic name that identifies the &lt;textarea&gt; variable. rows="num_rows" and cols="numcols" Both attributes take an integer value which represents the lines and number of characters per line in the &lt;textarea&gt; to be displayed. Miscellaneous &lt;!-- text --&gt; Place a comment in the HTML source &lt;address&gt; . . . &lt;/address&gt; Present address information &lt;img src="URL" alt="Alternate Text"&gt; Embed a graphic image in the document. Attributes: src Specifies the location of the image. alt Allows a text string to be put in place of the image in clients that cannot display images. align Specify a relationship to surrounding text. The argument for align can be one of top , middle , or bottom . ismap If ismap is present and the image tag is within an anchor, the image will become a "clickable image". The pixel coordinates of the cursor will be appended to the URL specified in the anchor if the user clicks within the ismap image. The resulting URL will take the form "URL?m,n" where m and n are integer coordinates, and the URL will specify the location of a program that will examine the pixel coordinates, and return an appropriate document. &lt;br&gt; Forces a line break immediately and retains the same style. &lt;hr&gt; Places a horizontal rule or separator between sections of text. Additional Information For a tutorial introduction to HTML see: http://www.ncsa.uiuc.edu/General/Internet/WWW/HTMLPrimer.html. For an introduction to forms within HTML see: An Instantaneous Introduction to CGI Scripts and HTML Forms . For general information about HTML, see http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html The current URL is /~acs/docs/other/HTML_quick.shtml This file was last modified Tuesday, 03-Jul-2001 09:55:56 CDT. Questions about computing to question@ku.edu. Problems, comments about this Web site to acsweb@ku.edu . HTML> 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+ 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 //EN" "http://www.w3.org/REC-html40/transitional.dtd">
+<HTML>
+<!-- #BeginTemplate "/Templates/template-third-level.dwt" --> 
+<HEAD>
+<LINK REV="mailto: acs@raven.cc.ku.edu">
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META NAME="DESCRIPTION" CONTENT="The official site of Academic Computing Services at the University of Kansas">
+<META name="KEYWORDS" content="computer, computing, University of Kansas, Academic
+Computing Services">
+<META NAME="OWNER" CONTENT="acs@raven.cc.ku.edu">
+<META NAME="COPYRIGHT" CONTENT="&copy; Academic Computing Services 2000">
+<STYLE type="text/css">
+<!--
+-->
+</STYLE>
+<link rel="stylesheet" href="../../acsstyle.css">
+<!-- #BeginEditable "doctitle" --> 
+<TITLE>HTML Quick Reference</TITLE>
+<!-- #EndEditable --> 
+</head>
+<BODY>
+<table border="0" cellspacing="0" cellpadding="4" width="100%">
+  <tr> 
+    <td rowspan="2" valign="top"><img src="../../graphics/cpu.jpg" width="76" height="66" alt="image of computer in field"></td>
+    <td colspan="7"><img src="../../graphics/howto.gif" width="521" height="33" usemap="#Map" border="0"> 
+      <map name="Map"> 
+        <area shape="rect" coords="3,4,259,26" href="http://www.cc.ku.edu/cgiwrap/acs/subject.pl" alt="How to's and Guides" title="How to's and Guides">
+        <area shape="rect" coords="272,3,418,10" href="http://www.ku.edu/" alt="The University of Kansas" title="The University of Kansas">
+        <area shape="rect" coords="273,15,522,26" href="../../index.shtml" alt="Academic Computing Services" title="Academic Computing Services">
+      </map>
+    </td>
+  </tr>
+  <tr> 
+    <td nowrap><a href="../../email.shtml" class="small-text">Email</a></td>
+    <td nowrap><a href="../../internet.shtml" class="small-text">Internet</a></td>
+    <td nowrap><a href="../../website.shtml" class="small-text">Web 
+      Authoring</a></td>
+    <td nowrap> <a href="../../lablist.shtml" class="small-text">Computer 
+      Labs</a></td>
+    <td nowrap><a href="../../training/index.shtml" class="small-text">Computing 
+      Classes</a></td>
+    <td nowrap><a href="../../help/index.shtml" class="small-text">Help</a></td>
+    <td nowrap> 
+      <FORM method=GET action="http://www.cc.ku.edu/cgi-bin/scout">
+        <INPUT TYPE=hidden NAME="config_file" VALUE="http://www.ku.edu/acssearch.conf">
+        <INPUT TYPE=hidden NAME=marker VALUE=on>
+        <INPUT TYPE=hidden NAME=pg VALUE=aq>
+        <INPUT TYPE=hidden NAME=q VALUE="&#34Academic Computing Services&#34 and not cwis">
+        <INPUT NAME=temphere size=15 VALUE="">
+        <INPUT TYPE=submit VALUE="Search ACS">
+      </form>
+    </td>
+  </tr>
+</table>
+<!-- #BeginEditable "contents" --><!-- #EndEditable --> <!-- #BeginEditable "subsitelinks" --><!-- #EndEditable --> 
+<table width="*" border="0" cellspacing="8" cellpadding="0">
+  <tr valign="top"> 
+    <td> 
+      <h1><!-- #BeginEditable "head1" -->HTML Quick Reference<!-- #EndEditable --></h1>
+      <!-- #BeginEditable "pagelinks" --> 
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td><span class="page-navbar"></span></td>
+        </tr>
+      </table>
+      <p>The HyperText Markup Language (HTML) is composed of a set of elements 
+        that define a document and guide its display. This document presents a 
+        concise reference guide to HTML, listing the most commonly used elements 
+        from Versions 1 and 2 of HTML, and giving a brief description of those 
+        elements. </p>
+      <p> Users should be aware that HTML is an evolving language, and different 
+        World-Wide Web browsers may recognize slightly different sets of HTML 
+        elements. For general information about HTML including plans for new versions, 
+        see <a href="http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html"> http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html.</a> 
+        <!-- 
+For a comprehensive list of HTML elements see
+<a href="http://www.sandia.gov/sci_compute/html_ref.html">  
+http://www.sandia.gov/sci_compute/html_ref.html
+</a>
+-->
+      <p>&nbsp; 
+      <!-- If you are building an expandable version put the xl tag here. -->
+      <p> 
+      <h2>Introduction</h2>
+      <p> An HTML element may include a name, some attributes and some text or 
+        hypertext, and will appear in an HTML document as 
+      <dl> 
+        <dd><code>&lt;tag_name&gt; text &lt;/tag_name&gt;</code> 
+        <dd><code>&lt;tag_name attribute_name=argument&gt; text &lt;/tag_name&gt;</code>, 
+          or just 
+        <dd><code>&lt;tag_name&gt;</code> 
+      </dl>
+      For example: 
+      <dl> 
+        <dd><code>&lt;title&gt; My Useful Document &lt;/title&gt;</code><br>
+      </dl>
+      and 
+      <dl> 
+        <dd><code>&lt;a href="argument"&gt; text &lt;/a&gt;</code> 
+      </dl>
+      An HTML document is composed of a single element: 
+      <dl> 
+        <dd><code>&lt;html&gt;</code> . . . <code>&lt;/html&gt;</code> 
+      </dl>
+      that is, in turn, composed of head and body elements: 
+      <dl> 
+        <dd><code>&lt;head&gt;</code> . . . <code>&lt;/head&gt;</code> 
+      </dl>
+      and 
+      <dl> 
+        <dd><code>&lt;body&gt;</code> . . . <code>&lt;/body&gt;</code> 
+      </dl>
+      To allow older HTML documents to remain readable, <code>&lt;html&gt;</code>, 
+      <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> are actually optional 
+      within HTML documents. 
+      <h2>Elements usually placed in the head element</h2>
+      <dl compact> 
+        <dt><code>&lt;isindex&gt;</code> 
+        <dd>Specifies that the current document describes a database that can 
+          be searched using the index search method appropriate for whatever client 
+          is being used to read the document. For example, a Lynx user will use 
+          the "s" keyboard command. 
+        <dt><code>&lt;title&gt;</code> . . . <code>&lt;/title&gt;</code> 
+        <dd>Specify a document title. Note that the title will not appear on the 
+          document as is customary on printed documents. It will usually appear 
+          in a window bar identifying the contents of the window. HTML header 
+          tags perform the functions usually reserved for titles. 
+        <dt><code>&lt;base href="URL"&gt;</code>
+        <dd>Specify the name of the file relative to which partially qualified 
+          pathnames in URLs should be interpreted. If not otherwise specified 
+          the URL containing the document being displayed is used as the base. 
+        <dt><code>&lt;link rev="RELATIONSHIP" rel="RELATIONSHIP" href="URL"&gt;</code> 
+        <dd>The link tag allows you to define relationships between the document 
+          containing the link tag and the document specified in the "URL". The 
+          <code>rel</code> attribute specifies the relationship between the HTML 
+          file and the Uniform Resource Locator (URL). The <code>rev</code> attribute 
+          (for "reverse") specifies the relationship between the URL and the HTML 
+          file. For example, <code>&lt;link rev="made" href="URL"&gt;</code> indicates 
+          that the file maker or owner is described in the document identified 
+          by the URL. (Note that link tags are not displayed on the screen as 
+          part of the document. They define static relationships, not hypertext 
+          links.) 
+      </dl>
+      <h2>Elements usually placed in the body element</h2>
+      The following sections describe elements that can be used in the body of 
+      the document.
+      <p> 
+      <h2>Text Elements</h2>
+      <dl compact> 
+        <dt><code>&lt;p&gt;</code>
+        <dd>The end of a paragraph that will be formatted before it is displayed 
+          on the screen. 
+        <dt><code>&lt;pre&gt;</code> . . . <code>&lt;/pre&gt;</code> 
+        <dd>Identifies text that has already been formatted (preformatted) by 
+          some other system and must be displayed as is. Preformatted text may 
+          include embedded tags, but not all tag types are permitted. The <code>&lt;pre&gt;</code> 
+          tag can be used to include tables in documents. 
+        <dt><code>&lt;listing&gt;</code> . . . <code>&lt;/listing&gt;</code> 
+        <dd>Example computer listing; embedded tags will be ignored, but embedded 
+          tabs will work. This is an archaic tag. 
+        <dt><code>&lt;xmp&gt;</code> . . . <code>&lt;/xmp&gt;</code> 
+        <dd>Similar to <code>&lt;pre&gt;</code> except no embedded tags will be 
+          recognized. 
+        <dt><code>&lt;plaintext&gt;</code> 
+        <dd>Similar to <code>&lt;pre&gt;</code> except no embedded tags will be 
+          recognized, and since there is no end tag, the remainder of the document 
+          will be rendered as plain text. This is an archaic tag. Note that some 
+          browsers actually recognize a <code>&lt;/plaintext&gt;</code> tag, even 
+          though it is not defined by the standard. 
+        <dt><code>&lt;blockquote&gt;</code> . . . <code>&lt;/blockquote&gt;</code> 
+        <dd>Include a section of text quoted from some other source. 
+      </dl>
+      <h2>Hyperlinks or Anchors</h2>
+      <dl> 
+        <dt><code>&lt;a name="anchor_name"&gt;</code> . . . <code>&lt;/a&gt;</code>
+        <dd>Define a target location in a document 
+        <dt><code>&lt;a href="#anchor_name"&gt;</code> . . . <code>&lt;/a&gt;</code>
+        <dd>Link to a location in the base document, which is the document containing 
+          the anchor tag itself, unless a base tag has been specified. 
+        <dt><code>&lt;a href="URL"&gt;</code> . . . <code>&lt;/a&gt;</code>
+        <dd>Link to another file or resource 
+        <dt><code>&lt;a href="URL#anchor_name"&gt;</code> . . . <code>&lt;/a&gt;</code>
+        <dd>Link to a target location in another document 
+        <dt><code>&lt;a href="URL?search_word+search_word"&gt;</code> . . . <code>&lt;/a&gt;</code>
+        <dd>Send a search string to a server. Different servers may interpret 
+          the search string differently. In the case of word-oriented search engines, 
+          multiple search words might be specified by separating individual words 
+          with a plus sign (+). 
+      </dl>
+      An anchor must include a <code>name</code> or <code>href</code> attribute, 
+      and may include both. There are several optional attributes, but they are 
+      rarely encountered. 
+      <p> The structure of a Uniform Resource Locator (URL) may be expressed as: 
+      <dl> 
+        <dt> 
+        <dd>resource_type:additional_information 
+      </dl>
+      where the possible resource types include: <code>file</code>, <code>http</code>, 
+      <code>news</code>, <code>gopher</code>, <code>telnet</code>, <code>ftp</code>, 
+      and <code>wais</code>, among others, and each resource type relates to a 
+      specific server type. Since each server performs a unique function, each 
+      resource type requires different <code>additional_information</code>. For 
+      example <code>http</code> and <code>gopher</code> URLs will have a structure 
+      like: 
+      <dl> 
+        <dt> 
+        <dd>resource_type://host.domain:port/pathname 
+      </dl>
+      The colon followed by an integer TCP port number is optional, and is used 
+      when a server is listening on a non-standard port. 
+      <p> Strictly speaking, the <code>anchor_name </code> and <code>search_word</code> 
+        information included in the <code>name</code> and <code>href</code> attributes 
+        in the examples above are part of the URL. They are presented as separate 
+        entities for simplicity. A more complete description of URLs is presented 
+        in <a href="http://www.w3.org/hypertext/WWW/Addressing/Addressing.html"> 
+        http://www.w3.org/hypertext/WWW/Addressing/Addressing.html </a> 
+      <h2>Headers</h2>
+      <dl compact> 
+        <dt><code>&lt;h1&gt;</code> . . . <code>&lt;/h1&gt;</code> Most prominent 
+          header 
+        <dt><code>&lt;h2&gt;</code> . . . <code>&lt;/h2&gt;</code> 
+        <dt><code>&lt;h3&gt;</code> . . . <code>&lt;/h3&gt;</code> 
+        <dt><code>&lt;h4&gt;</code> . . . <code>&lt;/h4&gt;</code> 
+        <dt><code>&lt;h5&gt;</code> . . . <code>&lt;/h5&gt;</code> 
+        <dt><code>&lt;h6&gt;</code> . . . <code>&lt;/h6&gt;</code> Least prominent 
+          header 
+      </dl>
+      <h2>Logical Styles</h2>
+      <dl compact> 
+        <dt><code>&lt;em&gt;</code> . . . <code>&lt;/em&gt;</code>
+        <dd>Emphasis 
+        <dt><code>&lt;strong&gt;</code> . . . <code>&lt;/strong&gt;</code>
+        <dd>Stronger emphasis 
+        <dt><code>&lt;code&gt;</code> . . . <code>&lt;/code></code>
+        <dd>Display an HTML directive 
+        <dt><code>&lt;samp&gt;</code> . . . <code>&lt;/samp&gt;</code>
+        <dd>Include sample output 
+        <dt><code>&lt;kbd&gt;</code> . . . <code>&lt;/kbd&gt;</code>
+        <dd>Display a keyboard key 
+        <dt><code>&lt;var&gt;</code> . . . <code>&lt;/var&gt;</code>
+        <dd>Define a variable 
+        <dt><code>&lt;dfn&gt;</code> . . . <code>&lt;/dfn&gt;</code>
+        <dd>Display a definition (not widely supported) 
+        <dt><code>&lt;cite&gt;</code> . . . <code>&lt;/cite&gt;</code>
+        <dd>Display a citation 
+      </dl>
+      <h2>Physical Styles</h2>
+      <dl compact> 
+        <dt><code>&lt;b&gt;</code> . . . <code>&lt;/b&gt;</code>
+        <dd> <b>Boldface</b> 
+        <dt><code>&lt;i&gt;</code> . . . <code>&lt;/i&gt;</code>
+        <dd> <i>Italics</i> 
+        <dt><code>&lt;u&gt;</code> . . . <code>&lt;/u&gt;</code>
+        <dd> <u>Underline</u> 
+        <dt><code>&lt;tt&gt;</code> . . . <code>&lt;/tt&gt;</code>
+        <dd> <tt>Typewriter font</tt> 
+      </dl>
+      <h2>Definition list/glossary: &lt;dl&gt;</h2>
+      <dl compact> 
+        <dt><code>&lt;dl&gt;</code> 
+        <dt><code>&lt;dt&gt;</code> First term to be defined 
+        <dt><code>&lt;dd&gt;</code> Definition of first term 
+        <dt><code>&lt;dt&gt;</code> Next term to be defined 
+        <dt><code>&lt;dd&gt;</code> Next definition 
+        <dt><code>&lt;/dl&gt;</code> 
+      </dl>
+      The <code>&lt;dl&gt;</code> attribute <code>compact</code> can be used to 
+      generate a definition list requiring less space.
+      <p> 
+      <h2>Present an unordered list: &lt;ul&gt;</h2>
+      <dl compact> 
+        <dt><code>&lt;ul&gt;</code> 
+        <dt><code>&lt;li&gt;</code> First item in the list 
+        <dt><code>&lt;li&gt;</code> Next item in the list 
+        <dt><code>&lt;/ul&gt;</code> 
+      </dl>
+      <h2>Present an ordered list: &lt;ol&gt;</h2>
+      <dl compact> 
+        <dt><code>&lt;ol&gt;</code> 
+        <dt><code>&lt;li&gt;</code> First item in the list 
+        <dt><code>&lt;li&gt;</code> Next item in the list 
+        <dt><code>&lt;/ol&gt;</code> 
+      </dl>
+      <h2>Present an interactive menu: &lt;menu&gt;</h2>
+      <dl compact> 
+        <dt><code>&lt;menu&gt;</code> 
+        <dt><code>&lt;li&gt;</code> First item in the menu 
+        <dt><code>&lt;li&gt;</code> Next item 
+        <dt><code>&lt;/menu&gt;</code> 
+      </dl>
+      <h2>Present a directory list of items: &lt;dir&gt;</h2>
+      <dl compact> 
+        <dt><code>&lt;dir&gt;</code> 
+        <dt><code>&lt;li&gt;</code> First item in the list 
+        <dt><code>&lt;li&gt;</code> Second item in the list 
+        <dt><code>&lt;li&gt;</code> Next item in the list 
+        <dt><code>&lt;/dir&gt;</code> 
+      </dl>
+      Items should be less than 20 characters long.
+      <p> 
+      <h2>Entities</h2>
+      <dl> 
+        <dt><code>&amp;</code>keyword<code>;</code> 
+        <dd>Display a particular character identified by a special keyword. For 
+          example the entity <code>&amp;amp;</code> specifies the ampersand ( 
+          &amp; ), and the entity <code>&amp;lt;</code> specifies the less than 
+          ( &lt; ) character. Note that the semicolon following the keyword is 
+          required, and the keyword must be one from the lists presented in: 
+        <dd><a 
+href="http://www.w3.org/pub/WWW/MarkUp/html-spec/html-spec_9.html#SEC9.7"> http://www.w3.org/pub/WWW/MarkUp/html-spec/html-spec_9.html#SEC9.7 
+          </a> 
+        <dt><code>&amp;#</code>ascii_equivalent<code>;</code> 
+        <dd>Use a character literally. Again note that the semicolon following 
+          the ASCII numeric value is required. 
+      </dl>
+      <h2>HTML Forms Interface</h2>
+      The HTML forms interface allows document creators to define HTML documents 
+      containing forms to be filled out by users. When a user fills out the form 
+      and presses a button indicating the form should be "submitted," the information 
+      on the form is sent to a server for processing. The server will usually 
+      prepare an HTML document using the information supplied by the user and 
+      return it to the client for display. 
+      <p> The following tags implement the forms interface: 
+      <ul>
+        <li><code>&lt;form&gt;</code> . . . <code>&lt;/form&gt;</code> 
+        <li><code>&lt;input&gt;</code> 
+        <li><code>&lt;select&gt;</code> . . . <code>&lt;/select&gt;</code> 
+        <li><code>&lt;option&gt;</code> 
+        <li><code>&lt;textarea&gt;</code> . . . <code>&lt;/textarea&gt;</code> 
+      </ul>
+      The last four tags can only be used within a <code>&lt;form&gt;</code> . 
+      . . <code>&lt;/form&gt;</code> element. 
+      <h2>Define a form</h2>
+      <code>&lt;form&gt;</code> . . . <code>&lt;/form&gt;</code> 
+      <p> Defines a form within an HTML document. A document may contain multiple 
+        <code>&lt;form&gt;</code> elements, but <code>&lt;form&gt;</code> elements 
+        may not be nested. Note that non-form tags can be used within a <code>&lt;form&gt;</code> 
+        element. Attributes and their arguments: 
+      <dl> 
+        <dt><code>action="URL"</code>: 
+        <dd>The location of the program that will process the form. 
+        <dt><code>method=data_exchange method</code> 
+        <dd>The method chosen to exchange data between the client and the program 
+          started to process the form: One of <code>get</code> or <code>post</code>. 
+          <code>post</code> is preferred for most applications. 
+      </dl>
+      <dl> 
+        <dt>Example: 
+        <dt>
+        <dd><code>&lt;form action="http://www.ku.edu/cgi-bin/register" method=post&gt;</code> 
+          . . . <code>&lt;/form&gt;</code> 
+      </dl>
+      <p> 
+      <h2>Define an input field</h2>
+      <p> <code>&lt;input&gt;</code> (there is no ending tag) 
+      <p> Defines an input field where the user may enter information on the form. 
+        Each input field assigns a value to a variable which has a specified <code>name</code> 
+        and a specified data <code>type</code>. Attributes and their arguments: 
+      <dl> 
+        <dt><code>type="variable_type"</code> 
+        <dd>Specifies the data type for the variable, where: 
+          <ul>
+            <li> <code>type="text"</code> and <code>type="password"</code> fields 
+              accept character data 
+            <li> <code>type="checkbox"</code> fields are either selected or not 
+            <li> <code>type="radio"</code> fields of the same name allow selection 
+              of only one of the associated values 
+            <li> <code>type="submit"</code> defines an action button that sends 
+              the completed form to the query server 
+            <li><code>type="reset"</code> defines a button that resets the form 
+              variables to their default values 
+            <li><code>type="hidden"</code> defines an invisible input field whose 
+              value will be sent along with the other form values when the form 
+              is submitted. This is used to pass state information from one script 
+              or form to another. 
+            <li><code>type="image"</code>defines an image map within a form and 
+              returns the coordinates of a mouse click within the image. 
+          </ul>
+        <dt><code>name="textstring"</code> 
+        <dd>where <code>textstring</code> is a symbolic name (not displayed) identifying 
+          the <code>input</code> variable as in: <br>
+          <code>&lt;input type="checkbox" name="box1"&gt;</code> 
+        <dt><code>value="textstring"</code> 
+        <dd>where the meaning of <code>textstring</code> depends on the argument 
+          for <code>type</code>. 
+          <p> 
+          <ul>
+            <li>For <code>type="text"</code> or <code>type="password"</code>, 
+              <code>textstring</code> is the default value for the <code>input</code> 
+              variable. Password values will not be shown on the user's form. 
+              Anything entered by the user will replace any default value defined 
+              with this attribute. 
+            <li>If <code>type="checkbox"</code> or <code>type="radio"</code>, 
+              <code>textstring</code> is the value that will be sent to the server 
+              if the checkbox is "checked". 
+            <li>For <code>type="reset"</code> or <code>type="submit"</code>, <code>textstring</code> 
+              is a label that will appear on the submit or reset button in place 
+              of the words "<code>submit</code>" and "<code>reset</code>". 
+          </ul>
+        <dt><code>checked</code> 
+        <dd>No arguments. For <code>type="checkbox"</code> or <code>type="radio"</code>, 
+          if <code>checked</code> is present the <code>input</code> field is "checked" 
+          by default. 
+        <dt><code>size="display_width"</code> 
+        <dd>where <code>display_width</code> is an integer value representing 
+          the number of characters displayed for the <code>type="text"</code> 
+          or <code>type="password" input</code> field. 
+        <dt><code>maxlength="string_length"</code> 
+        <dd>where <code>string_length</code> is the maximum number of characters 
+          allowed within <code>type="text"</code> or <code>type="password"</code> 
+          variable values. This attribute is only valid for single line <code>"text"</code> 
+          or <code>"password"</code> fields. 
+      </dl>
+      <h2>Define a select field</h2>
+      <code>&lt;select&gt;</code> . . . <code>&lt;/select&gt;</code> 
+      <p> Defines and displays a set of optional list items from which the user 
+        can select one or more items. This element requires an <code>&lt;option&gt;</code> 
+        element for each item in the list. Attributes and their arguments: 
+      <dl> 
+        <dt><code>name="textstring"</code> 
+        <dd>where <code>textstring</code> is the symbolic identifier for the <code>select</code> 
+          field variable. 
+        <dt><code>size="list_length"</code> 
+        <dd>where <code>list_length</code> is an integer value representing the 
+          number of <code>&lt;option&gt;</code> items that will be displayed at 
+          one time. 
+        <dt><code>multiple</code> 
+        <dd>No arguments. If present, the <code>multiple</code> attribute allows 
+          selection of more than one <code>&lt;option&gt;</code> value. 
+      </dl>
+      <h2>Define a select field option</h2>
+      <code>&lt;option&gt;</code> 
+      <p> Within the <code>&lt;select&gt;</code> element the <code>&lt;option&gt;</code> 
+        tags are used to define the possible values for the <code>select</code> 
+        field. If the attribute <code>selected</code> is present then the <code>option</code> 
+        value is selected by default. In the following example all three options 
+        may be chosen but bananas are selected by default. 
+      <p> <code>&lt;select multiple&gt;</code><br>
+        <code>&lt;option&gt;Apples</code><br>
+        <code>&lt;option selected&gt;Bananas</code><br>
+        <code>&lt;option&gt;Cherries</code><br>
+        <code>&lt;/select&gt;</code> 
+      <p> 
+      <h2>Define a text area</h2>
+      <code>&lt;textarea&gt;</code> . . . default text . . . <code>&lt;/textarea&gt;</code> 
+      <p> Defines a rectangular field where the user may enter text data. If "default 
+        text" is present it will be displayed when the field appears. Otherwise 
+        the field will be blank. Attributes and their values: 
+      <dl> 
+        <dt><code>name="textstring"</code> 
+        <dd><code>textstring</code> is a symbolic name that identifies the <code>&lt;textarea&gt;</code> 
+          variable. 
+        <dt><code>rows="num_rows"</code> and <code>cols="numcols"</code> 
+        <dd>Both attributes take an integer value which represents the lines and 
+          number of characters per line in the <code>&lt;textarea&gt;</code> to 
+          be displayed. 
+      </dl>
+      <h2>Miscellaneous</h2>
+      <dl> 
+        <dt><code>&lt;!--</code> text <code>--&gt;</code>
+        <dd>Place a comment in the HTML source 
+        <dt><code>&lt;address&gt;</code> . . . <code>&lt;/address&gt;</code>
+        <dd>Present address information 
+        <dt><code>&lt;img src="URL" alt="Alternate Text"&gt;</code>
+        <dd>Embed a graphic image in the document. Attributes: 
+          <dl> 
+            <dt><code>src</code> 
+            <dd>Specifies the location of the image. 
+            <dt><code>alt</code> 
+            <dd>Allows a text string to be put in place of the image in clients 
+              that cannot display images. 
+            <dt><code>align</code> 
+            <dd>Specify a relationship to surrounding text. The argument for <code>align</code> 
+              can be one of <code>top</code>, <code>middle</code>, or <code>bottom</code>. 
+            <dt><code>ismap</code> 
+            <dd>If <code>ismap</code> is present and the image tag is within an 
+              anchor, the image will become a "clickable image". The pixel coordinates 
+              of the cursor will be appended to the URL specified in the anchor 
+              if the user clicks within the ismap image. The resulting URL will 
+              take the form "URL?m,n" where m and n are integer coordinates, and 
+              the URL will specify the location of a program that will examine 
+              the pixel coordinates, and return an appropriate document. 
+          </dl>
+        <dt><code>&lt;br&gt;</code> 
+        <dd>Forces a line break immediately and retains the same style. 
+        <dt><code>&lt;hr&gt;</code> 
+        <dd>Places a horizontal rule or separator between sections of text. 
+      </dl>
+      <h2>Additional Information</h2>
+      For a tutorial introduction to HTML see: <a href="http://www.ncsa.uiuc.edu/General/Internet/WWW/HTMLPrimer.html"> 
+      http://www.ncsa.uiuc.edu/General/Internet/WWW/HTMLPrimer.html.</a> 
+      <p> For an introduction to forms within HTML see: <a href="forms-intro.shtml"> 
+        An Instantaneous Introduction to CGI Scripts and HTML Forms</a>. 
+      <p> For general information about HTML, see <a href="http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html"> 
+        http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html</a> 
+      <!-- #EndEditable --></td>
+  </tr>
+</table>
+ <br> <SPAN class="small-text">The current URL is /~acs/docs/other/HTML_quick.shtml <br>
+  This file was last modified Tuesday, 03-Jul-2001 09:55:56 CDT.<br>
+Questions about computing to <span class="red"> </span><a href="mailto:question@ku.edu"> 
+question@ku.edu.<br>
+</a> Problems, comments about this Web site to <a href="mailto:acsweb@ku.edu"> 
+acsweb@ku.edu</a>.<br>
+  </SPAN>
+
+</BODY>
+<!-- #EndTemplate -->
+</HTML>
+HTML>
+

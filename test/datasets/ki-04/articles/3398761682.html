@@ -1,0 +1,263 @@
+<!-- <DOCUMENT>
+	<FILE>
+		3398761682.html
+	</FILE>
+	<URL>
+		http://atlas.web.cern.ch/Atlas/GROUPS/SOFTWARE/DOCUMENTS/srt_html/c4459.html
+	</URL>
+	<TITLE>
+		People and Roles
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ People and Roles Software Release Tools Manual Prev Chapter 1 Introduction Next 1.2 People and Roles It is assumed that each software project managed with these tools has one software librarian that is responsible for the software repository as a whole. It is the job of the librarian to manage the lifetime of releases : coherent and stamped snapshots of the software. The librarian need not be responsible for all aspects of the software. In fact, there is no need for the librarian to have anything to do with the architecture, design or even the code of the software project. It does help a lot if he or she has a good understanding of the system's structure and is experienced with software development tools.&#13; In addition to the librarian each project has one or more developers who produce and modify the code. It is assumed that not all developers work with all of the software. Rather, the system is expected to be partitioned into smaller parts which we shall call packages . Each package has one main author, or coordinator , responsible for its development. Other developers may join the coordinator as peers, but they do not share the responsibilities. This subdivision of responsibilities may apply recursively so that a package may be composed of smaller packages. [1] Thus, the concept of distributed responsibility is very germane to this tool suite.&#13; Finally, there is one more category of people involved: the end users who do not develop the software but do something with it. [2] Since the Software Release Tools are directed at developers, there is little material in this manual that is of benefit to end users. Each software project must describe how its software is to be used; this should be a natural part of the documentation.&#13; One issue worth noting is that the above classifications are only roles. The coordinator of one package may be a peer developer for another package. The person wearing the software librarian's hat at one moment may take the hat of a regular developer an instant after, and the role of an end user later. The responsibilities may also shift from one person to another over the time. A package may for instance have different coordinators at different times. What really matters is that there is one coordinator for each package at any one time.&#13; Notes [1] Typically the partitioning into packages follows naturally the domain decomposition of the software project itself. [2] In the context for which these tools are developed, the users almost always run the software directly from the releases. Hence the lack of support for creating distributions. Prev Home Next Introduction Up What The Release Tools Provide 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>People and Roles</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.16"><LINK
+REV="MADE"
+HREF="mailto:lat@iki.fi"><LINK
+REL="HOME"
+TITLE="Software Release Tools Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Introduction"
+HREF="c44.html"><LINK
+REL="PREVIOUS"
+TITLE="Introduction"
+HREF="c44.html"><LINK
+REL="NEXT"
+TITLE="What The Release Tools Provide"
+HREF="c4473.html"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Software Release Tools Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c44.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1 Introduction</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c4473.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="BASIC.INTRO.PEOPLE"
+>1.2 People and Roles</A
+></H1
+><P
+ALIGN="JUSTIFY"
+>It is assumed that each software project managed with these
+tools has one <I
+CLASS="FIRSTTERM"
+>software
+librarian</I
+> that is responsible for the software repository as a whole.
+It is the job of the librarian to manage the lifetime of
+<I
+CLASS="FIRSTTERM"
+>releases</I
+>: coherent and stamped snapshots of the software.
+The librarian need not be responsible for all aspects of the software.
+In fact, there is no need for the librarian to have anything to do
+with the architecture, design or even the code of the software
+project.  It does help a lot if he or she has a good understanding of
+the system's structure and is experienced with software development
+tools.&#13;</P
+><P
+ALIGN="JUSTIFY"
+>In addition to the librarian each project has one or more
+developers who produce and modify the code.  It is assumed that not
+all developers work with all of the software.  Rather, the system is
+expected to be partitioned into smaller parts which we shall call
+<I
+CLASS="FIRSTTERM"
+>packages</I
+>.  Each package has one main author, or <I
+CLASS="FIRSTTERM"
+>coordinator</I
+>, responsible for its
+development.  Other developers may join the coordinator as peers, but
+they do not share the responsibilities.  This subdivision of
+responsibilities may apply recursively so that a package may be
+composed of smaller packages.<A
+NAME="AEN67"
+HREF="#FTN.AEN67"
+>[1]</A
+> Thus, the concept of
+distributed responsibility is very germane to this tool suite.&#13;</P
+><P
+ALIGN="JUSTIFY"
+>Finally, there is one more category of people involved: the end
+users who do not develop the software but do something with
+it.<A
+NAME="AEN70"
+HREF="#FTN.AEN70"
+>[2]</A
+> Since
+the Software Release Tools are directed at developers, there is little
+material in this manual that is of benefit to end users.  Each
+software project must describe how its software is to be used; this
+should be a natural part of the documentation.&#13;</P
+><P
+ALIGN="JUSTIFY"
+>One issue worth noting is that the above classifications are
+only roles.  The coordinator of one package may be a peer developer
+for another package.  The person wearing the software librarian's hat
+at one moment may take the hat of a regular developer an instant
+after, and the role of an end user later.  The responsibilities may
+also shift from one person to another over the time.  A package may
+for instance have different coordinators at different times.  What
+really matters is that there is one coordinator for each package at
+any one time.&#13;</P
+><H3
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN67"
+HREF="c4459.html#AEN67"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+ALIGN="JUSTIFY"
+>Typically the
+partitioning into packages follows naturally the domain decomposition
+of the software project itself.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN70"
+HREF="c4459.html#AEN70"
+>[2]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+ALIGN="JUSTIFY"
+>In the context for which these tools are developed,
+the users almost always run the software directly from the releases.
+Hence the lack of support for creating distributions.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c44.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c4473.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Introduction</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c44.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>What The Release Tools Provide</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

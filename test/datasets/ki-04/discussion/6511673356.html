@@ -1,0 +1,811 @@
+<!-- <DOCUMENT>
+	<FILE>
+		6511673356.html
+	</FILE>
+	<URL>
+		http://club.cdfreaks.com/showthread/t-68072.html
+	</URL>
+	<TITLE>
+		Windows XP Home boot Problem
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ Windows XP Home boot Problem Your advertisement on CD Freaks? 150.000 visitors a day! Club CD Freaks - Knowledge is Power Archive &gt; International Chat: Software related &gt; General Software Forum Windows XP Home boot Problem - Click HERE for Original Thread Bloodstar007 First off I've been using this install of windows XP home for 3 weeks now, when i went to restart my computer i came across an error, NTLDR not found press CTRL+ALT+DEL to restart. Every time i've rebooted i get this error, and the only way to get it to work is by putting in any cd with a boot screen and hitting load from hard drive. I've searched and found my ntldr and it is here, it's size is 233,632 bytes. Then I searched my windows XP cd and it found an NTLDR on it, it's size is 222,368 bytes. My last scan was yesterday and it was done with a fullly updated Norton Anti-Virus 2003. I can still boot so it isnt an earth shattering problem, but if anyone can assist, it'd be appreciated. Regardless of which I'm still backing up my files, just in case. Mr. Belvedere Methinks your partition sector has been messed up. Either you need to rewrite a new one (fdisk /mbr , disk manager or some other tool that can do that) or use a partition bootloader. Something like XOSL Bloodstar007 i know i have to get to DOS can i have more detail? panos You can use the recovery console in winxp cd. Boot form cd, select the recovery console and the type fixmbr and then fixboot Dee-ehn If panos' solution doesn't work (isn't very likely, this usually solves the ntldr problem), you could surf to www.bootdisk.com to get a Windows XP bootdisk, with NTFS support! Bloodstar007 Alright thanks guys I'm on my way to test it. [Update] Sigh i fixmbr and fixboot and it didnt solve it. Oh well I was planning on formating in the next week anyway. xtacydima Just do this exactly and all will be well, fine, and dandy: 1. Boot the computer with the WindowsXP CD. When prompted to setup or repair, choose repair. In the recovery console, enter the follwing commands. a) FIXBOOT - answer yes b) CD\ c) ATTRIB -H C:\NTLDR d) ATTRIB -s C:\NTLDR e) ATTRIB -r C:\NTLDR f) COPY X:\I386\NTLDR C:\ *** X is the letter of your CD-ROM drive *** Now get a nice donut with some hot chocolate. --Level 3 tech support sucks-- Bloodstar007 I like this idea xtacydima, particularly the hot chocolate/donut combo. I will reply with the results tommorow hopefully. xtacydima It will work for sure :) Bloodstar007 Despite the apparent awesome-ness of the hot chocolate and the donut, the result is negative. xtacydima can you be more specific. this problem also comes up with a win2000 install on top of winxp install. 2 files are damamged in the process and need to be repaired. one is ntdetect.com and the other is ntldr. the method i gave you is guaranteed to copy ntldr back onto the system. Unless you are dealing with a proprietary cd to the system in which case the files are not always where they belong by default. Bloodstar007 Huh. I just restarted my computer and everything worked fine... how odd. I guess your solution did work, though I'm not sure why it didn't take right away... xtacydima that sometimes does happen but very rare. i would even go as far as saying extremely rare. how about the hot chocolate and donut, did that also go well. Bloodstar007 I became slightly confused and as a result I combined the hot chocolate and donut, which created a new drink which I call "teh dochoc". Quite tasty. Airhead Thanks xtacydima I've had that error too and fixmbr didn't fix it so I'll write down your solution :) Could you please pass me some of the dochoc Bloodstar? xtacydima No prob Airhead. I do advanced PC tech support so this part of the forums is prob a stronghold for me. Not too good with unix/linux but with any Windows O/S and such I am great on solving. I generally visit here to read the CloneCD forum but I like to give back so I look here too now and try to help others. :) ckin2001 microsoft tech support? or in general ? either way, thanks for contributing - as i've finally given up on windows myself ;) xtacydima ckin2001, just general, I wouldnt work for MS, they treat their employees horribly, my friend worked for them. Dell treats their people well, one of my other friends worked for dell for many years and was happy. Except they make you take many exams proprietory to dell only so they are useless to list on your resume for future jobs. Right now I am not working but looking to do level 3 tech support for any major company. Also wanted to take the Aplus exams for more certifications to list on resume, but otherwise its all for general pleasure. And I am glad to help other people. :) AZImmortal i've had this problem in the past as well, and altho i can usually solve most computer problems on my own, i was never able to solve this one without formatting. makes me wish i came across a thread like this (and a tech support guy like xtacydima) while i was going nuts. :bigsmile: @Bloodstar007: that teh dochoc sounds pretty good right about now. :p ckin2001 actually, from what i've heard, microsoft treats their techies horribly - but is almost alright to actually work for, on the development side. so long as you dont code for fun, as they claim all work you do as theirs, at work or not ;) Bloodstar007 Hmm I seemed to have stumbled on to a nifty idea, i have xtasydima to thank. I'll make a place called "Teh Dochoc Hut". It will be a tiki-themed breakfast restaurant serving cinnamon buns, donuts, egg sandwiches and of course: Teh Dochoc. I'll buy some ad space on CDFreaks and we'll invite all of our fellow CDFreakers to the grand opening. Me and xtasydima will be partners, what do ya say? cloakdoa And dont forget the almighty caffeniated coffee beverages!! Anybody every hear of a cola called Jolt?? Hey btw are there franchises available for the Teh Dochoc Hut?? AZImmortal yep, i've heard of Jolt. one can kept my friend up for 36 hours one time. too bad caffeine has no effect on me, i could really use a burst of energy right now. Bloodstar007 Oh man i have to make a website now, if only to keep the joke running a bit longer... EDIT: http://www.angelfire.com/comics/soulsindrome/Main.html Back to CD Freaks.com - Check Software - Check Firmware - Articles - Forum - News Archive - Lite - CD-R Shop 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Windows XP Home boot Problem</title>
+<meta name="keywords" content="indexer  windows xp home boot problem">
+<meta name="description" content="General Software Forum - First off Ive been using this install of windows XP home for  weeks now when i went to restart my co">
+<meta name="robots" content="index,follow">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+<style type="text/css">
+
+SELECT {
+	FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	BACKGROUND-COLOR: #CFCFCF
+}
+TEXTAREA, .bginput {
+	FONT-SIZE: 12px;
+	FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;
+	COLOR: #000000;
+	BACKGROUND-COLOR: #CFCFCF
+}
+#all A:link, #all A:visited, #all A:active {
+	COLOR: #FF8000;
+}
+#all A:hover {
+	COLOR: #FF8000;
+}
+#cat A:link, #cat A:visited, #cat A:active {
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+}
+#cat A:hover {
+	COLOR: #000000;
+	TEXT-DECORATION: underline;
+}
+#ltlink A:link, #ltlink A:visited, #ltlink A:active {
+	COLOR: #FF8000;
+	TEXT-DECORATION: none;
+}
+#ltlink A:hover {
+	COLOR: #FF8000;
+	TEXT-DECORATION: underline;
+}
+.thtcolor {
+	COLOR: #FFFFFF;
+}
+
+
+
+</style>
+
+
+</head>
+<body bgcolor="#ffffff" text="#000000" id="all">
+<!-- logo and buttons -->
+
+
+
+<script language="JavaScript" src="http://www.cdfreaks.com/adcodes/fastclick.js">
+</script>
+
+<script> 
+var popunder=new Array() 
+popunder[0]="http://www.alcohol-software.com/?aff=15&banner=b" 
+popunder[1]="http://www.dvdxcopy.com/?a=46075" 
+popunder[2]="http://www.dvdxcopy.com/?a=46075" 
+popunder[3]="http://www.dvdxcopy.com/?a=46075" 
+popunder[4]="http://www.dvdxcopy.com/?a=46075" 
+popunder[5]="http://www.dvdxcopy.com/?a=46075" 
+
+var width = '1024'; 
+var height = '768'; 
+
+var p = 'scrollbars=yes,resizable=yes,toolbar=yes,' +  
+'menubar=yes,status=yes,location=yes,left=85,top=20,height=' + //yes/no, & the screen location 
+height + ',width=' + width; 
+
+var one_time=1 
+
+function get_cookie(Name) { 
+var search = Name + "=" 
+var returnvalue = ""; 
+if (document.cookie.length > 0) { 
+offset = document.cookie.indexOf(search) 
+if (offset != -1) { // if the cookie exists 
+offset += search.length 
+end = document.cookie.indexOf(";", offset); // set the index of beginning value 
+
+if (end == -1) // set the index of the end of cookie value 
+end = document.cookie.length; 
+returnvalue=unescape(document.cookie.substring(offset, end)) 
+} 
+} 
+return returnvalue; 
+} 
+
+function loadornot(){ 
+if (get_cookie('popunder')==''){ 
+load_pop_power() 
+document.cookie="popunder=yes" 
+} 
+} 
+
+function load_pop_power(){ 
+win2=window.open(popunder[Math.floor(Math.random()*(popunder.length))],"bw",p) 
+win2.blur() 
+window.focus() 
+} 
+
+if (one_time==0) 
+load_pop_power() 
+else 
+loadornot() 
+</script>
+
+
+
+
+<a href='http://ads.cdfreaks.com/adclick.php?n=ad4264d1'><img src='http://ads.cdfreaks.com/adview.php?what=zone:22&amp;n=ad4264d1' border='0' alt=''></a>
+
+<Br>
+<font face="verdana" size="2"><a href="http://www.cdfreaks.com/article/100/3">Your advertisement on CD Freaks? 150.000 visitors a day!</a> </font>
+<br>
+
+
+
+
+
+<div id="sky" style="position:absolute; left:805px; top:200px;  width:200px; z-index:0;"> 
+
+
+<!-- TF 120x600 JScript code -->
+
+<center><script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=CDFreakscom&adSpace=Archive&size=120x600&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="http://a.tribalfusion.com/i.click?site=CDFreakscom&adSpace=Archive&size=120x600&requestID=2075157214" target=_blank>
+   <img src="http://a.tribalfusion.com/i.ad?site=CDFreakscom&adSpace=Archive&size=120x600&requestID=2075157214" 
+                  width=120 height=600 border=0 alt="Click Here"></a>
+</noscript>
+</center>
+
+<!-- TF 120x600 JScript code -->
+
+</div>
+
+
+<table border="0" width="800" cellpadding="0" <!-- /logo and buttons -->
+<!-- content table -->
+<table bgcolor="#FFFFFF" width="800" cellpadding="10" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+<tr>
+<td><font face="verdana, arial, helvetica" size="2" ><img border="0" src="http://club.cdfreaks.com/images/vb_bullet.gif" align="absmiddle" alt="CDFreaks.com"> <b><a href="http://club.cdfreaks.com/archive/">Club CD Freaks - Knowledge is Power Archive</a> &gt; <a href="http://club.cdfreaks.com/forumdisplay/f-45.html">International Chat: Software related</a> &gt; <a href="http://club.cdfreaks.com/forumdisplay/f-3.html">General Software Forum</a></b></font></td>
+</tr>
+</table>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr>
+<td><font face="verdana,arial,helvetica" size="1" >&nbsp;</font></td>
+</tr>
+</table>
+
+
+
+
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+
+
+
+<tr align="center">
+<center>
+
+
+
+
+</center>
+<br>
+</tr>
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr id="cat">
+<td bgcolor="#F1DBD6"><font face="verdana, arial, helvetica" size="2"  color="#000000"><h1>Windows XP Home boot Problem</h1> - Click <a href="http://club.cdfreaks.com/showthread.php?threadid=68072"><font color="#FFFFFF"><b>HERE</b></font></a> for Original Thread<font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#F7F7F7">
+<td><font face="verdana, arial, helvetica" size="2" >
+
+
+<div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >First off I've been using this install of windows XP home for 3 weeks now, when i went to restart my computer i came across an error, <br />
+<br />
+NTLDR not found<br />
+press CTRL+ALT+DEL to restart.<br />
+<br />
+Every time i've rebooted i get this error, and the only way to get it to work is by putting in any cd with a boot screen and hitting load from hard drive. I've searched and found my ntldr and it is here, it's size is 233,632 bytes.<br />
+<br />
+Then I searched my windows XP cd and it found an NTLDR on it, it's size is 222,368 bytes. My last scan was yesterday and it was done with a fullly updated Norton Anti-Virus 2003.<br />
+<br />
+I can still boot so it isnt an earth shattering problem, but if anyone can assist, it'd be appreciated. Regardless of which I'm still backing up my files, just in case.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Mr. Belvedere</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Methinks your partition sector has been messed up. Either you need to rewrite a new one (fdisk /mbr , disk manager or some other tool that can do that) or use a partition bootloader.<br />
+<br />
+Something like <a href="http://www.xosl.org" target="_blank">XOSL</a></font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >i know i have to get to DOS can i have more detail?</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>panos</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >You can use the recovery console in winxp cd.<br />
+<br />
+Boot form cd, select the recovery console and the type fixmbr and then fixboot</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Dee-ehn</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >If panos' solution doesn't work (isn't very likely, this usually solves the ntldr problem), you could surf to <a href="http://www.bootdisk.com" target="_blank">www.bootdisk.com</a> to get a Windows XP bootdisk, with NTFS support!</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Alright thanks guys I'm on my way to test it.<br />
+<br />
+[Update] Sigh i fixmbr and fixboot and it didnt solve it. Oh well I was planning on formating in the next week anyway.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>xtacydima</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Just do this exactly and all will be well, fine, and dandy:<br />
+<br />
+1. Boot the computer with the WindowsXP CD.  When prompted to setup or repair, choose repair.  In the recovery console, enter the follwing commands.<br />
+<br />
+a)  FIXBOOT - answer yes<br />
+b)  CD\<br />
+c)  ATTRIB -H C:\NTLDR<br />
+d)  ATTRIB -s C:\NTLDR<br />
+e)  ATTRIB -r C:\NTLDR<br />
+f)   COPY X:\I386\NTLDR C:\<br />
+<br />
+*** X is the letter of your CD-ROM drive ***<br />
+<br />
+Now get a nice donut with some hot chocolate.<br />
+<br />
+--Level 3 tech support sucks--</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >I like this idea xtacydima, particularly the hot chocolate/donut combo. I will reply with the results tommorow hopefully.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>xtacydima</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >It will work for sure :)</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Despite the apparent awesome-ness of the hot chocolate and the donut, the result is negative.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>xtacydima</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >can you be more specific.  this problem also comes up with a win2000 install on top of winxp install.  2 files are damamged in the process and need to be repaired.  one is ntdetect.com and the other is ntldr.  the method i gave you is guaranteed to copy ntldr back onto the system.  Unless you are dealing with a proprietary cd to the system in which case the files are not always where they belong by default.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Huh.<br />
+<br />
+I just restarted my computer and everything worked fine... how odd. I guess your solution did work, though I'm not sure why it didn't take right away...</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>xtacydima</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >that sometimes does happen but very rare.  i would even go as far as saying extremely rare.  how about the hot chocolate and donut, did that also go well.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >I became slightly confused and as a result I combined the hot chocolate and donut, which created a new drink which I call "teh dochoc". Quite tasty.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Airhead</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Thanks xtacydima I've had that error too and fixmbr didn't fix it so I'll write down your solution :)<br />
+Could you please pass me some of the dochoc Bloodstar?</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>xtacydima</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >No prob Airhead.  I do advanced PC tech support so this part of the forums is prob a stronghold for me.  Not too good with unix/linux but with any Windows O/S and such I am great on solving.  I generally visit here to read the CloneCD forum but I like to give back so I look here too now and try to help others.<br />
+:)</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>ckin2001</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >microsoft tech support? or in general ? either way, thanks for contributing - as i've finally given up on windows myself ;)</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>xtacydima</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >ckin2001, just general, I wouldnt work for MS, they treat their employees horribly, my friend worked for them.  Dell treats their people well, one of my other friends worked for dell for many years and was happy.  Except they make you take many exams proprietory to dell only so they are useless to list on your resume for future jobs.  Right now I am not working but looking to do level 3 tech support for any major company.  Also wanted to take the Aplus exams for more certifications to list on resume, but otherwise its all for general pleasure.  And I am glad to help other people.  :)</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>AZImmortal</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >i've had this problem in the past as well, and altho i can usually solve most computer problems on my own, i was never able to solve this one without formatting.  makes me wish i came across a thread like this (and a tech support guy like xtacydima) while i was going nuts. :bigsmile: <br />
+<br />
+@Bloodstar007: that teh dochoc sounds pretty good right about now. :p</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>ckin2001</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >actually, from what i've heard, microsoft treats their techies horribly - but is almost alright to actually work for, on the development side. so long as you dont code for fun, as they claim all work you do as theirs, at work or not ;)</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Hmm I seemed to have stumbled on to a nifty idea, i have xtasydima to thank. I'll make a place called "Teh Dochoc Hut". It will be a tiki-themed breakfast restaurant serving cinnamon buns, donuts, egg sandwiches and of course: Teh Dochoc. I'll buy some ad space on CDFreaks and we'll invite all of our fellow CDFreakers to the grand opening. Me and xtasydima will be partners, what do ya say?</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>cloakdoa</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >And dont forget the almighty caffeniated coffee beverages!!<br />
+<br />
+Anybody every hear of a cola called Jolt??<br />
+<br />
+Hey btw are there franchises available for the Teh Dochoc Hut??</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>AZImmortal</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >yep, i've heard of Jolt.  one can kept my friend up for 36 hours one time.  too bad caffeine has no effect on me, i could really use a burst of energy right now.</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div><div id="intelliTxt">
+<table width="100%" cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F7F7"  width="100%">
+<tr>
+<td>
+<table cellpadding="4" cellspacing="1" border="0"  width="100%">
+<tr bgcolor="#DEDFDF">
+<td><font face="verdana, arial, helvetica" size="2" ><b>Bloodstar007</b><font face="verdana, arial, helvetica" size="2" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="verdana, arial, helvetica" size="2" >Oh man i have to make a website now, if only to keep the joke running a bit longer...<br />
+<br />
+EDIT:<br />
+<a href="http://www.angelfire.com/comics/soulsindrome/Main.html" target="_blank">http://www.angelfire.com/comics/soulsindrome/Main.html</a></font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</font></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+</td>
+</tr>
+</table>
+<!-- /content area table -->
+</center>
+
+<!-- Begin Nedstat Basic code -->
+<!-- Title: CD Freaks.com Archives -->
+<!-- URL: http://archive.cdfreaks.com -->
+<script language="JavaScript" src="http://m1.nedstatbasic.net/basic.js">
+</script>
+<script language="JavaScript">
+<!--
+  nedstatbasic("ABpQZQvDEUHzuLyQpVmbS5RFAO8w", 0);
+// -->
+</script>
+<noscript>
+<a target="_blank" href="http://v1.nedstatbasic.net/stats?ABpQZQvDEUHzuLyQpVmbS5RFAO8w"><img
+src="http://m1.nedstatbasic.net/n?id=ABpQZQvDEUHzuLyQpVmbS5RFAO8w"
+border="0" nosave width="18" height="18"></a>
+</noscript>
+<!-- End Nedstat Basic code -->
+
+<center><font size=2"><a href="http://www.cdfreaks.com">Back to CD Freaks.com</a> - <a href="http://www.cdfreaks.com/software/">Check Software</a> - <a href="http://www.cdfreaks.com/drive/">Check Firmware</a> - <a href="http://www.cdfreaks.com/article/search/A">Articles</a> - <a href="http://club.cdfreaks.com">Forum</a> - <a href="http://www.cdfreaks.com/archive.php">News Archive</a> - <a href="http://club.cdfreaks.com/lite/">Lite</a>- <a href="http://shop.cdfreaks.com/">CD-R Shop</a></font></center>
+
+
+<!-- start Vibrant Media IntelliTxt script section -->
+<style type="text/css">
+.iTt{
+    FONT-FAMILY:       Verdana, Arial, Helvetica;
+    FONT-SIZE:         11px;
+    FONT-STYLE:        normal;
+    FONT-WEIGHT:       normal;
+    COLOR:             black;
+    BACKGROUND-COLOR:  lightyellow;
+    BORDER:            black 1px solid;
+    PADDING:           2px;
+}
+</style>
+<span id="iTt" class="iTt" style="visibility:hidden;position:absolute;"></span>
+<script defer="true" language="javascript" src="http://itxt.vibrantmedia.com/system/liveintellitxt.asp?IPID=145&MK=4"></script>
+<!-- end Vibrant Media IntelliTxt script section -->
+
+</body>
+</html>
+

@@ -1,0 +1,286 @@
+<!-- <DOCUMENT>
+	<FILE>
+		5195448189.html
+	</FILE>
+	<URL>
+		http://hebb.cis.uoguelph.ca/~skremer/Teaching/27642/BP/node1.html
+	</URL>
+	<TITLE>
+		A First Artificial Network
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ A First Artificial Network Next: The Perceptron Paradigm Up: 27-642 Artificial Neural Networks Previous: 27-642 Artificial Neural Networks Subsections McCulloch and Pitts, 1943 The Setting The Premises Translation Some Example Neurons Degrees of Inhibition Repercussions A First Artificial Network In previous lectures we have seen a general overview of Artificial Neural Networks (ANNs) and the relation of the discipline to Artificial Intelligence (AI). This lectures explores the development of one particular network design from its origins to its current incarnation. McCulloch and Pitts, 1943 The Setting beginnings of single cell recordings no intracellular recordings ionic and electrical basis of neural activity unclear dominant observation: ``all or none action potential'' no understanding of how thought, intelligence, reasoning, etc., occurred in the neural substrate models of intelligence largely based in logic Warren S. McCulloch and Walter Pitts, ``A logical calculus of the ideas immanent in nervous activity'', Bulletin of Mathematical Biophysics , 5 : 115-133. The Premises All based on 1943 understandings of neuro-biology. 1. The activity of the neuron is an ``all-or-none'' process. 2. A certain fixed number of synapses must be excited within the period of latent addition in order to excite a neuron at any time, and this number is independent of previous activity and position on the neuron. 3. The only significant delay within the nervous system is synaptic delay. 4. The activity of any inhibitory synapse absolutely prevents excitation of the neuron at that time. 5. The structure of the net does not change with time. Goal: to postulate a mathematical model of networks of neurons that was biologically accurate and could account for high level cognitive tasks (logic). Translation The mathematical formalism used is very ornate. Minsky (1967), used a more straightforward formulation to develop an entire theory of computation. 1. The activity is -1 or +1. 2. Excitatory connections: (1) 3. Connections are associated with a delay. 4. If an neuron with an inhibitory connection to this neuron is active (+1), then this neuron does not fire (-1). 5. System is static. Some Example Neurons No excitatory connections, b i = -1, 1 inhibitory connection. NOT. Two excitatory connections, w i ,1 = 1, w i ,2 = 1, b i = -1/2, no inhibitory connections. OR. Two excitatory connections, w i ,1 = 1, w i ,2 = 1, b i = +1/2, no inhibitory connections. AND. With NOT, OR, and AND gates, any logic circuit can be created. Degrees of Inhibition McCulloch and Pitts also showed that networks with degrees of inhibition have equivalent computational power. This means for every net with all-or-nothing inhibition, there exists a different net with degrees of inhibition that does exactly the same thing, and vice versa. How would we do this construction? Repercussions influenced von Neumann (1945) Minsky (1967) theory of computation basis for biological models of neurons led to generalized artificial neuron models used today (first perceptron) Next: The Perceptron Paradigm Up: 27-642 Artificial Neural Networks Previous: 27-642 Artificial Neural Networks 1999-01-26 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>A First Artificial Network</TITLE>
+<META NAME="description" CONTENT="A First Artificial Network">
+<META NAME="keywords" CONTENT="BP">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="BP.css">
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="BP.html">
+<LINK REL="up" HREF="BP.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html84"
+ HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/lib/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html82"
+ HREF="BP.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/lib/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html76"
+ HREF="BP.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/lib/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html85"
+ HREF="node2.html">The Perceptron Paradigm</A>
+<B> Up:</B> <A NAME="tex2html83"
+ HREF="BP.html">27-642 Artificial Neural Networks </SUP></A>
+<B> Previous:</B> <A NAME="tex2html77"
+ HREF="BP.html">27-642 Artificial Neural Networks </SUP></A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><strong>Subsections</strong></A>
+<UL>
+<LI><A NAME="tex2html86"
+ HREF="node1.html#SECTION00110000000000000000">McCulloch and Pitts, 1943</A>
+<UL>
+<LI><A NAME="tex2html87"
+ HREF="node1.html#SECTION00111000000000000000">The Setting</A>
+<LI><A NAME="tex2html88"
+ HREF="node1.html#SECTION00112000000000000000">The Premises</A>
+<LI><A NAME="tex2html89"
+ HREF="node1.html#SECTION00113000000000000000">Translation</A>
+<LI><A NAME="tex2html90"
+ HREF="node1.html#SECTION00114000000000000000">Some Example Neurons</A>
+<LI><A NAME="tex2html91"
+ HREF="node1.html#SECTION00115000000000000000">Degrees of Inhibition</A>
+<LI><A NAME="tex2html92"
+ HREF="node1.html#SECTION00116000000000000000">Repercussions</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00100000000000000000">
+A First Artificial Network</A>
+</H1>
+
+<P>
+In previous lectures we have seen a general overview of Artificial Neural
+Networks (ANNs) and the relation of the discipline to Artificial Intelligence 
+(AI).  This lectures explores the development of one particular network design
+from its origins to its current incarnation.
+
+<P>
+
+<H1><A NAME="SECTION00110000000000000000">
+McCulloch and Pitts, 1943</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00111000000000000000">
+The Setting</A>
+</H2>
+<UL>
+<LI>beginnings of single cell recordings
+<LI>no intracellular recordings
+<LI>ionic and electrical basis of neural activity unclear
+<LI>dominant observation:  ``all or none action potential''
+<LI>no understanding of how thought, intelligence, reasoning, etc., 
+	occurred in the neural substrate
+<LI>models of intelligence largely based in logic
+</UL>
+<P>
+Warren S. McCulloch and Walter Pitts, ``A logical calculus of the 
+ideas immanent in nervous activity'', <I>Bulletin of Mathematical Biophysics</I>,
+<B>5</B>: 115-133.
+
+<P>
+
+<H2><A NAME="SECTION00112000000000000000">
+The Premises</A>
+</H2>
+All based on 1943 understandings of neuro-biology.
+
+<P>
+<DL COMPACT>
+<DT>1.
+<DD>The activity of the neuron is an ``all-or-none'' process.
+<DT>2.
+<DD>A certain fixed number of synapses must be excited within the period
+of latent addition in order to excite a neuron at any time, and this 
+	number is independent of previous activity and position on the
+	neuron.
+<DT>3.
+<DD>The only significant delay within the nervous system is synaptic delay.
+<DT>4.
+<DD>The activity of any inhibitory synapse absolutely prevents excitation
+	of the neuron at that time.
+<DT>5.
+<DD>The structure of the net does not change with time.
+</DL>
+<P>
+Goal:  to postulate a mathematical model of networks of neurons that was 
+biologically accurate and could account for high level cognitive tasks
+(logic).
+
+<P>
+
+<H2><A NAME="SECTION00113000000000000000">
+Translation</A>
+</H2>
+The mathematical formalism used is very ornate.  Minsky (1967), used a
+more straightforward formulation to develop an entire theory of computation.
+
+<P>
+<DL COMPACT>
+<DT>1.
+<DD>The activity is -1 or +1.
+<DT>2.
+<DD>Excitatory connections:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+
+<!-- MATH: \begin{equation}
+a_i = \left\{
+\begin{array}{ll} 
+        -1 & \mbox{ if $ \sum_j w_{ij} a_j < b_i $\space } \\
+        +1 & \mbox{ if $ \sum_j w_{ij} a_j \geq b_i $\space }
+      \end{array}
+    \right.
+  
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="220" HEIGHT="54"
+ SRC="img2.gif"
+ ALT="\begin{displaymath}a_i = \left\{
+\begin{array}{ll}
+-1 & \mbox{ if $ \sum_j w...
+...f $ \sum_j w_{ij} a_j \geq b_i $\space }
+\end{array} \right.
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(1)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P><DT>3.
+<DD>Connections are associated with a delay.
+<DT>4.
+<DD>If an neuron with an inhibitory connection to this neuron is active (+1),
+	then this neuron does not fire (-1).
+<DT>5.
+<DD>System is static.
+</DL>
+<P>
+
+<H2><A NAME="SECTION00114000000000000000">
+Some Example Neurons</A>
+</H2>
+<UL>
+<LI>No excitatory connections, <I>b</I><SUB><I>i</I></SUB> = -1, 1 inhibitory connection.
+
+<P>
+NOT.
+
+<P>
+<LI>Two excitatory connections, 
+<!-- MATH: $w_{i,1} = 1, w_{i,2} = 1$ -->
+<I>w</I><SUB><I>i</I>,1</SUB> = 1, <I>w</I><SUB><I>i</I>,2</SUB> = 1, 
+<!-- MATH: $b_i = -1/2$ -->
+<I>b</I><SUB><I>i</I></SUB> = -1/2,
+	no inhibitory connections.
+
+<P>
+OR.
+
+<P>
+<LI>Two excitatory connections, 
+<!-- MATH: $w_{i,1} = 1, w_{i,2} = 1$ -->
+<I>w</I><SUB><I>i</I>,1</SUB> = 1, <I>w</I><SUB><I>i</I>,2</SUB> = 1, 
+<!-- MATH: $b_i = +1/2$ -->
+<I>b</I><SUB><I>i</I></SUB> = +1/2,
+	no inhibitory connections.
+
+<P>
+AND.
+</UL>
+<P>
+With NOT, OR, and AND gates, any logic circuit can be created.
+
+<P>
+
+<H2><A NAME="SECTION00115000000000000000">
+Degrees of Inhibition</A>
+</H2>
+McCulloch and Pitts also showed that networks with degrees of inhibition
+have equivalent computational power.  This means for every net with 
+all-or-nothing inhibition, there exists a different net with degrees of 
+inhibition that does exactly the same thing, and vice versa.  How would
+we do this construction?
+
+<P>
+
+<H2><A NAME="SECTION00116000000000000000">
+Repercussions</A>
+</H2>
+<UL>
+<LI>influenced von Neumann (1945)
+<LI>Minsky (1967) theory of computation
+<LI>basis for biological models of neurons
+<LI>led to generalized artificial neuron models used today (first 
+		perceptron)
+</UL>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html84"
+ HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/lib/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html82"
+ HREF="BP.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/lib/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html76"
+ HREF="BP.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/lib/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html85"
+ HREF="node2.html">The Perceptron Paradigm</A>
+<B> Up:</B> <A NAME="tex2html83"
+ HREF="BP.html">27-642 Artificial Neural Networks </SUP></A>
+<B> Previous:</B> <A NAME="tex2html77"
+ HREF="BP.html">27-642 Artificial Neural Networks </SUP></A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I></I>
+<BR><I>1999-01-26</I>
+</ADDRESS>
+</BODY>
+</HTML>
+

@@ -1,0 +1,924 @@
+<!-- <DOCUMENT>
+	<FILE>
+		6473814746.html
+	</FILE>
+	<URL>
+		http://www.tek-tips.com/gviewthread.cfm/lev2/3/lev3/20/pid/80/qid/696316
+	</URL>
+	<TITLE>
+		-General UNIX discussion - Does windows network users work in Linux system ?
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ -General UNIX discussion - Does windows network users work in Linux system ? Support Tek-Tips | About Us | Contact Us | Site Policies HANDLE PASSWORD Remember Me Forgot Password? Join Us! Keyword Search Browse Forums NEW Tek-Tips Groups Tell A Friend Support Tek-Tips Talk With Other Members Be Notified Of Responses To Your Posts Keyword Search Turn Off Ad Banners One-Click Access To Your Favorite Forums Automated Signatures On Your Posts Best Of All, It's Free! E-mail* Handle Select A Type MIS IS/IT--Management Programmer ISP Instructor Vendor TechnicalUser Password Verify P'word *Opt in e-mail system. Click Personal Profile after login to opt out. &quot;Best Of Breed&quot; Forums Add Stickiness To Your Site (Download This Button Today!) "...Your information in this site is absolutely WONDERFUL. It is the most useful site on the web to me right now. Thank You Thank You..." More... TopXML DevGuru DevelopersDex ASP Alliance Programmers Heaven VisualBuilder.com SitePoint Developer Fusion Code Project Zvon - Guide to XML Tek-Tips Forums Search partner sites Search Find A Forum Find An Expert Home &gt; Forums &gt; MIS/IT &gt; Operating Systems - UNIX based &gt; -General UNIX discussion Does windows network users work in Linux system ? thread80-696316 Reply E-mail It Print It vrcatherine (IS/IT--Manageme) Nov 2, 2003 I am completely new to Linux. We have a windows network and all the desktops are windows based. Every system has a network user id with which everyone logins. Now i had installed Redhat Linux 7.3 on one of the newly brought server. I wanted this linux server also be a part of our windows network. I had samba package also installed in the redhat box. I have few questions . 1) The redhat linux box has only ROOT user, can i use some of the windows network userid's to login to this linux box ? Or do i have to create seperate users in linux ? 2) I am trying to login to this linux box from a windows box using TELNET. Now thru this telnet i am not able to login as ROOT user, so i had created a &quot;TEST&quot; user in linux and granted him everything in redhat box.(including root privilege). Now i can login thru telnet to this redhat box as TEST user. Can i do a remote SHUTDOWN or REBOOT of this linux box from telnet session ? 3) In this redhat box , the default boot is TEXT mode and from there if i want to go to GUI desktop i was saying STARTX and geting on. In the same way can i do the thing thru some TELNET session? Like login to the telnet (text mode) from there can i say STARTX and open up the Linux desktop in the telnet session ? --Thanks CATHY Tek-Tips Forums is Member Supported. Click Here to donate. akuindia123 (Programmer) Nov 3, 2003 you cannot use windows users on linux ...u have to create users for linux server. you can login as root from your machine and shutdown or reboot the server . Install Xmanager on your windows m/c to get the GUI of linux and login thru that usige (TechnicalUser) Nov 3, 2003 Cathy, 1st - it is possible to use your windows users under linux. You have a few choices here. You can either use winbind or pam_smb. Here is some high level documentation on winbind ( http://ranger.dnsalias.com/mandrake/samba/Integrating%2... , http://open-projects.linuxcare.com/research-papers/winb... ) 2nd - Once you have logged in with a regular user id you can su to root to do the shutdown. You could also setup sudo to allow your admin user id to do a shutdown/reboot. One suggestion is to use ssh instead of telnet. You can find a free ssh program for windowz here: http://www.puttyssh.org/ 3rd - As akuindia123 stated you will need an X-Windows server running under winderz if you want to start X on your local machine. vrcatherine (IS/IT--Manageme) Nov 3, 2003 Thanks for the info. One more quick question, i am trying to do this on the Linux server which is in windows network. I have 2 network cards(NIC's) on the linux server and 1st NIC ==== Internal IP address ( 10.x.x.x) this is talking to windows domain &quot;ABC&quot; 2nd NIC === With some IP address (192.168.x.x) which is directly hooked to some firewall/router . So basically i wanted to open up some ports in that firewall/router for this 192.168.x.x address, so that the externally ( from internet or from remote place) we can access the Linux server. The 1st NIC is basically to talk to the windows network. Please suggest me if anything has to be done , whether or not this can be accomplished ? --Thanks Cathy azrael811 (MIS) Nov 5, 2003 If you want to connect remotely using ssh to the linux machine then you could do the following. 1. Enable port forwading on the router/firewall for port 22 to the IP address of the 2nd NIC of the linux box. 2. From a remote place use putty the connect to the external IP address of the router/firewall. If you need help with the port forwarding then do a search on google as there is plenty of good information about it available. vrcatherine (IS/IT--Manageme) Nov 6, 2003 Hi azrael811 , So i can go according to the scenario what i have given, 2 NIC's methodology ? Is it ? And i will do the port forwarding as what you had said. So the Linux server can have 2NIC's with 2 different IP addresses ? Is it ? azrael811 (MIS) Dec 22, 2003 Yes it can here is an example of how it would look Windows&#124; Network &#124; -------------&#124;Linux&#124;---------------------------&#124;Firewall&#124; 10.x.x.x 10.0.0.10 192.168.0.10 192.168.0.1 &lt;external IP&gt; Also make sure you close unneeded ports on the external NIC of the linux machine. E-mail This Thread To A Friend Tek-Tips Forums is Member Supported. Click Here to donate. Start your own Tek-Tips Group Today! Back To -General UNIX discussion PHV aigles bi SamBones Salem appi aixmurderer grega fredericofonseca dickiebird Promoting, selling, recruiting and student posting are not allowed in the forums. Click here to find out why. Posting in the Tek-Tips forums is a member-only feature. Click Here to join Tek-Tips and talk with other members! Promoting, selling, recruiting and student posting are not allowed in the forums. Click here to find out why. LINK TO THIS FORUM! (Add Stickiness To Your Site By Linking To This Professionally Managed Technical Forum) TITLE: -General UNIX discussion Forum at Tek-Tips URL: http://www.tek-tips.com/gthreadminder.cfm/lev2/3/lev3/20/pid/80 DESCRIPTION: -General UNIX discussion technical support forum and mutual help system for computer professionals. Selling and recruiting forbidden. Copyright &copy; 1998-2004 Tecumseh Group, Inc. All rights reserved. Unauthorized reproduction forbidden. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/JavaScript">
+<!--
+  if (window.top != window) {
+      window.top.location.replace (window.location.href);
+  }
+ -->
+</SCRIPT> 
+	<TITLE>-General UNIX discussion - Does windows network users work in Linux  system ?</TITLE>
+	<BASE HREF="www.tek-tips.com">
+	<LINK REL="STYLESHEET" TYPE="text/css" HREF="/tm.css">
+	<LINK REL="shortcut icon" HREF="/favicon.ico" TYPE="image/x-icon"> 
+	<SCRIPT LANGUAGE="JavaScript" SRC="/jsource.js" TYPE="text/javascript"></SCRIPT>
+<SCRIPT LANGUAGE=JavaScript TYPE=text/javascript>
+<!--
+function gofaq(pid,fid) {
+	var theURL = "/gfaqs.cfm/spid/"+pid+"/sfid/"+fid+"";
+	window.top.location.href=theURL;}
+function gothread(pid,qid) {
+	var theURL = "/gviewthread.cfm/pid/"+pid+"/qid/"+qid+"";
+	window.top.location.href=theURL;}
+function goforum(pid) {
+	var theURL = "/gthreadminder.cfm/lev2/3/lev3/20/pid/"+pid+"";
+	window.top.location.href=theURL;}
+function golink(pid) {
+	var theURL = "/glinks.cfm/lev2/3/lev3/20/pid/"+pid+"";
+	window.top.location.href=theURL;}
+//-->
+</SCRIPT></HEAD>
+
+<BODY BGCOLOR="#F6F6F6" LEFTMARGIN=5 TOPMARGIN=5 MARGINWIDTH=5 MARGINHEIGHT=5 RIGHTMARGIN=5 onLoad="doPopup()";>
+
+<TABLE WIDTH="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD WIDTH="221"><A HREF="/supportus.cfm"><IMG SRC="/art/site/hdrlogo.gif" WIDTH="221" HEIGHT="103" BORDER="0"></A></TD>
+		<TD BACKGROUND="/art/hdrbackgrnd.gif" WIDTH="100%" ALIGN="Center">
+			<DIV ALIGN="Right" CLASS="clink1"><B><A HREF="/supportus.cfm" CLASS="clink1">Support Tek-Tips</A> | <A HREF="/about.cfm" CLASS="clink1">About Us</A> | <A onmouseover="window.status='Contact Us';return true;" onmouseout="window.status='';return true;" HREF="javascript:cont('')" CLASS="clink1">Contact Us</A> | <A HREF="http://www.tecumsehgroup.com/administration.htm" CLASS="clink1">Site Policies</A></B></DIV>
+			
+			
+
+
+
+
+
+	
+
+
+
+
+	
+		
+		
+		
+		
+	
+	
+	<script type="text/javascript"><!--
+google_ad_client = "pub-8000425157908189";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_color_border = ["B4D0DC","A8DDA0","DDB7BA","FDFFCA"];
+google_color_bg = ["ECF8FF","EBFFED","FFF5F6","FDFFCA"];
+google_color_link = "0000CC";
+google_color_url = "008000";
+google_color_text = ["6F6F6F","6F6F6F","6F6F6F","000000"];
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+	
+	
+	
+
+		
+		</TD>
+		<TD WIDTH="10"><IMG SRC="/art/hdrright.gif" WIDTH="10" HEIGHT="103" BORDER="0"></TD>
+	</TR>
+</TABLE>
+
+
+<TABLE WIDTH="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR VALIGN="Top">
+		<TD WIDTH="191">
+			
+			
+
+<TABLE WIDTH=191 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD WIDTH=191 BACKGROUND="/art/lcolbackgrnd.gif"><IMG SRC="/art/lcolbackgrnd.gif" WIDTH=191 HEIGHT=1 BORDER=0><BR>
+
+
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/wt-memlogin.gif" WIDTH=168 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=156 BACKGROUND="/art/w-back.gif" CLASS=col align=center BGCOLOR="#DEDEDE">
+
+	<TABLE WIDTH="100%" CELLSPACING=0 CELLPADDING=0>			
+		<TR>			
+		<FORM NAME="pass" ACTION="passcheck.cfm" METHOD="post">
+		<INPUT TYPE="Hidden" NAME="t" VALUE="">
+		<INPUT TYPE="hidden" NAME="Last" VALUE="viewthread.cfm?spid=80&newpid=80&sqid=696316">
+			<TD WIDTH="104" CLASS="col" ALIGN="Center">HANDLE<BR>
+			<INPUT TYPE="Text" NAME="Handle" SIZE=8 MAXLENGTH=20><BR>
+			<INPUT TYPE="Password" NAME="Pass" SIZE=8 MAXLENGTH=20><BR>PASSWORD</TD>
+			<TD><INPUT TYPE="image" SRC="/art/b-go.gif" ALT="Log In" HSPACE="3" WIDTH="46" HEIGHT="21" BORDER=0></TD>
+		</TR>
+		<TR>
+			<TD COLSPAN=2 CLASS="col" ALIGN="center"><INPUT TYPE="Checkbox" NAME="Remember" VALUE=1><A HREF="javascript:openindex(300,350,'http://www.tipmaster.com/includes/cookieinfo.cfm?w=300&h=350')">Remember Me</A><BR>
+<A HREF="javascript:openindex(600,400,'/forgotpassword.cfm?w=600&h=400')">Forgot Password?</A></TD></TR></FORM>
+</TABLE>
+
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/w-bottom.gif" WIDTH=168 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+			
+
+
+
+<P ALIGN="Center"><A HREF="/supportus.cfm"><IMG SRC="/art/site/supportusbutton2.gif" BORDER=0></A></P>
+
+
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/w-top.gif" WIDTH=168 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=156 BACKGROUND="/art/w-back.gif" CLASS=col align=center BGCOLOR="#DEDEDE">
+
+	<B><A HREF="/register.cfm">Join Us!</A><BR>
+	<A HREF="javascript:openindex(200,200,'http://www.tipmaster.com/includes/gsearchinfo.cfm?w=250&h=250')">Keyword Search</A><BR>
+	<A HREF="/gthreadminder.cfm">Browse Forums</A><BR>
+	<SPAN STYLE="color:red;">NEW</SPAN> <A HREF="/groups">Tek-Tips Groups</A><BR>
+	<A HREF="javascript:openindex(600,400,'/email.cfm?w=600&h=400')">Tell A Friend</A><BR>
+	<A HREF="/supportus.cfm">Support Tek-Tips</A></B>
+
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/w-bottom.gif" WIDTH=168 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+		
+
+
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/wt-join.gif" WIDTH=168 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=156 BACKGROUND="/art/w-back.gif" CLASS=col align=center BGCOLOR="#DEDEDE">
+
+<TABLE CELLPADDING=2 CELLSPACING=0>
+	<TR><TD CLASS="col">Talk With Other Members</TD></TR>
+	<TR><TD CLASS="col">Be Notified Of Responses<BR>&nbsp;&nbsp;To Your Posts</TD></TR>
+	<TR><TD CLASS="col">Keyword Search</TD></TR>
+	<TR><TD CLASS="col">Turn Off Ad Banners</TD></TR>
+	<TR><TD CLASS="col">One-Click Access To Your<BR>&nbsp;&nbsp;Favorite Forums</TD></TR>
+	<TR><TD CLASS="col">Automated Signatures<BR>&nbsp;&nbsp;On Your Posts</TD></TR>
+	<TR><TD CLASS="col">Best Of All, It's Free!</TD></TR>
+	<TR><TD CLASS="col"><HR WIDTH="80%" SIZE="2"></TD></TR>
+	<FORM ACTION="registermanager.cfm" METHOD="Post" NAME="Register">
+	<TR><TD>
+		<INPUT TYPE="Hidden" NAME="AUID" VALUE="11256">
+
+		<DIV CLASS="col" ALIGN="Right">E-mail* <INPUT TYPE="text" NAME="email" SIZE="8" MAXLENGTH="50"><BR>
+		Handle <INPUT TYPE="Text" NAME="Handle" SIZE="8" MAXLENGTH=20><BR>
+		<SELECT NAME="UserType">
+			<OPTION VALUE="Select A Type">Select A Type</OPTION>
+			<OPTION VALUE="MIS">MIS</OPTION>
+			<OPTION VALUE="IS/IT--Management">IS/IT--Management</OPTION>
+			<OPTION VALUE="Programmer">Programmer</OPTION>
+			<OPTION VALUE="ISP">ISP</OPTION>
+			<OPTION VALUE="Instructor">Instructor</OPTION>
+			<OPTION VALUE="Vendor">Vendor</OPTION>
+			<OPTION VALUE="TechnicalUser">TechnicalUser</OPTION>
+		</SELECT><BR>
+		Password <INPUT TYPE="PASSWORD" NAME="Pass" SIZE="8" MAXLENGTH=10><BR>
+Verify P'word <INPUT TYPE="PASSWORD" NAME="pass2" SIZE="8" MAXLENGTH=10></DIV>
+<DIV ALIGN="Center">
+<INPUT TYPE="image" SRC="/art/b-go.gif" ALT="Log In" HSPACE="3" WIDTH="46" HEIGHT="21" BORDER=0></DIV>
+<P CLASS="col" ALIGN="Center">*Opt in e-mail system.<BR> Click Personal Profile<BR>after login to opt out.</P>
+</TD></TR>
+	</FORM>					
+</TABLE>
+
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/w-bottom.gif" WIDTH=168 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+
+
+
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/wt-partner.gif" WIDTH=168 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=156 BACKGROUND="/art/w-back.gif" CLASS=col align=center BGCOLOR="#DEDEDE">
+		
+	<B>&quot;Best Of Breed&quot; Forums Add Stickiness To Your Site</B><BR>
+	<A HREF="/affiliates/"><IMG SRC="/art/site/partner.gif" WIDTH="120" HEIGHT="60" BORDER="0" VSPACE=5></A><BR>
+	(Download This Button Today!)
+
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/w-bottom.gif" WIDTH=168 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+
+
+
+
+
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/wt-feedback.gif" WIDTH=168 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=156 BACKGROUND="/art/w-back.gif" CLASS=col align=center BGCOLOR="#DEDEDE">
+
+	"...Your information in this site is absolutely WONDERFUL.  It is the most useful site on the web to me right now.  Thank You Thank You..."
+	<DIV CLASS="col" ALIGN="Center"><A HREF="/feedback.cfm"><B>More...</B></A></DIV>
+
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/w-bottom.gif" WIDTH=168 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+				
+					
+					
+					
+					
+				
+
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/wt-topxmlpartners.gif" WIDTH=168 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=156 BACKGROUND="/art/w-back.gif" CLASS=col align=center BGCOLOR="#DEDEDE">
+
+	
+		<A HREF="http://www.topxml.com" TARGET="Blank">TopXML</A><BR>
+	
+		<A HREF="http://www.devguru.com" TARGET="Blank">DevGuru</A><BR>
+	
+		<A HREF="http://www.developersdex.com" TARGET="Blank">DevelopersDex</A><BR>
+	
+		<A HREF="http://aspalliance.com" TARGET="Blank">ASP Alliance</A><BR>
+	
+		<A HREF="http://www.programmersheaven.com" TARGET="Blank">Programmers Heaven</A><BR>
+	
+		<A HREF="http://www.visualbuilder.com" TARGET="Blank">VisualBuilder.com</A><BR>
+	
+		<A HREF="http://www.sitepoint.com" TARGET="Blank">SitePoint</A><BR>
+	
+		<A HREF="http://www.developerfusion.com" TARGET="Blank">Developer Fusion</A><BR>
+	
+		<A HREF="http://www.codeproject.com" TARGET="Blank">Code Project</A><BR>
+	
+		<A HREF="http://www.zvon.org" TARGET="Blank">Zvon - Guide to XML</A><BR>
+	
+		<A HREF="http://www.tek-tips.com" TARGET="Blank">Tek-Tips Forums</A><BR>
+	
+		<A HREF="http://www.topxml.com/search/default.asp" TARGET="Blank">Search partner sites</A><BR>
+	
+
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/w-bottom.gif" WIDTH=168 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+
+				
+				
+
+
+
+
+		</TD>
+	</TR>
+	<TR>
+		<TD><IMG SRC="/art/lcolbottom.gif" HEIGHT=10 WIDTH=191></TD>
+	</TR>
+</TABLE>
+
+			
+		</TD>
+		
+		<TD WIDTH="100%">
+			
+			<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 BGCOLOR="#CCCCCC" WIDTH="520"><TR><TD>
+	<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 BGCOLOR="#CCCCCC" WIDTH="520">
+		<TR>
+		<FORM ACTION="gforumsearch2.cfm" METHOD="Post">
+			<TD>&nbsp;</TD>
+			<TD CLASS="header">&nbsp;<B>Search</B>&nbsp;</TD>
+			<TD><INPUT TYPE="Text" NAME="SearchString" SIZE="20"></TD>
+			<TD><INPUT TYPE="image" NAME="sub" SRC="/art/b-go.gif" HSPACE="3" BORDER="0"></TD>
+			<TD WIDTH="100%" CLASS="col"><INPUT TYPE="radio" NAME="type" VALUE="forum" CHECKED ID="srch1"><LABEL FOR="srch1"> Find A Forum</LABEL><BR><INPUT TYPE="radio" NAME="type" VALUE="member" ID="srch2"><LABEL FOR="srch2"> Find An Expert</LABEL></TD>
+		</FORM>
+		</TR>
+	</TABLE>
+</TD></TR></TABLE>
+			
+			<TABLE CELLSPACING=0 CELLPADDING=7><TR><TD>
+<A href="/index.cfm">Home</A> &gt;
+<A href="/gthreadminder.cfm">Forums</A> &gt; 
+<A href="/gthreadminder.cfm/lev2/3">MIS/IT</A> &gt; 
+<A href="/gthreadminder.cfm/lev2/3/lev3/20">Operating Systems - UNIX based</A> &gt;
+<A href="/gthreadminder.cfm/lev2/3/lev3/20/pid/80">-General UNIX discussion</A>
+<DIV><FONT CLASS=header>Does windows network users work in Linux  system ?</FONT></DIV>
+<DIV CLASS="forumshortcut"><A href="javascript:openindex(450,350,'http://www.tipmaster.com/includes/refinfo.cfm?w=450&h=350')">thread80-696316</A></DIV>
+
+</TD></TR></TABLE>
+
+<TABLE WIDTH="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+
+		<TD WIDTH=35><IMG SRC="/art/tableft.gif" WIDTH=35 HEIGHT=43 BORDER=0></TD>
+		<TD WIDTH="85"><A HREF="/gthreadminder.cfm/lev2/3/lev3/20/pid/80"><IMG SRC="/art/tabforum1.gif" WIDTH=85 HEIGHT=43 BORDER=0></A></TD>
+		<TD WIDTH=80><A HREF="/gsearch.cfm/lev2/3/lev3/20/pid/80"><IMG SRC="/art/tabkywrd1.gif" WIDTH=80 HEIGHT=43 BORDER=0></A></TD>
+		<TD WIDTH=80><A HREF="/gfaq.cfm/lev2/3/lev3/20/pid/80"><IMG SRC="/art/tabfaqs1.gif" WIDTH=80 HEIGHT=43 BORDER=0></A></TD>
+		<TD WIDTH=88><A HREF="/glinks.cfm/lev2/3/lev3/20/pid/80"><IMG SRC="/art/tablinks1.gif" WIDTH=88 HEIGHT=43 BORDER=0></A></TD>
+		<TD WIDTH="100%" BACKGROUND="/art/tabspacer.gif">&nbsp;</TD>
+		<TD WIDTH=141><IMG SRC="/art/tabright.gif" WIDTH=145 HEIGHT=43 BORDER=0></TD>
+
+	</TR>
+</TABLE>
+
+	
+			<TABLE WIDTH="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+				<TR VALIGN="Top">
+					<TD>
+						<TABLE WIDTH="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0><TR><TD>
+
+
+
+
+
+
+
+
+
+
+<TABLE width="100%" border="1" cellspacing="0" cellpadding="0" bordercolor="Black" bgcolor="White">
+	<TR align="center">
+		<TD width="33%"><A href="/gviewthread.cfm/lev2/3/lev3/20/pid/80/qid/696316#PostForm"><B>Reply</B></A></TD>
+		<TD width="33%"><A href="javascript:openindex(600,400,'/emailthread.cfm?pid=80&qid=696316&w=600&h=400')"><IMG src="/art/email.gif" width=30 height=11 border=0><BR><B>E-mail It</B></A></TD>
+		<TD width="33%"><A href="/gpviewthread.cfm/qid/696316/pid/80/lev2/3/lev3/20"><IMG src="/art/printer.gif" width=16 height=14 border=0 vspace=1> <BR><B>Print It</B></A></TD>
+	</TR>
+</TABLE>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0 CELLPADDING=5>
+	<TR BGCOLOR="#B5B5FF">
+		<TD>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><B><A HREF="/guserinfo.cfm?member=vrcatherine">vrcatherine</A></B>  (IS/IT--Manageme)</TD>
+					<TD WIDTH="90" ALIGN="Right"><B>Nov 2, 2003</B></TD>
+				</TR>
+			</TABLE>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><br>I am completely new to Linux.<br><br><br>We have a windows network and all the desktops are windows<br>based. Every system has a network user id with which <br>everyone logins.<br><br>Now i had installed&nbsp;&nbsp;&nbsp;Redhat Linux 7.3 on one of the<br>newly brought server. I wanted this linux server also<br>be a part of our windows network. <br><br>I had samba package also installed in the redhat box.<br><br>I have few questions .<br><br>1)&nbsp;&nbsp;The redhat linux box has only ROOT user, can i use<br>&nbsp;&nbsp;&nbsp;some of the windows network userid's to login<br>&nbsp;&nbsp;&nbsp;to this linux box ?<br><br>&nbsp;&nbsp;&nbsp;Or do i have to create seperate users in linux ?<br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>2) I am trying to login to this linux box from a windows<br>&nbsp;&nbsp;&nbsp;box using&nbsp;&nbsp;TELNET. Now thru this telnet i am not able<br>&nbsp;&nbsp;to login as ROOT user, so i had created a &quot;TEST&quot; user<br>&nbsp;&nbsp;in linux and granted him everything in redhat box.(including root privilege). Now i can login thru telnet to this redhat box as&nbsp;&nbsp;TEST user.&nbsp;&nbsp;&nbsp;<br><br>&nbsp;Can i do a remote SHUTDOWN or REBOOT of this linux box from telnet session ?<br><br><br>3)&nbsp;&nbsp;In this redhat box , the default boot is TEXT mode <br>&nbsp;&nbsp;&nbsp;&nbsp;and from there if i want to go to GUI desktop i was&nbsp;&nbsp;saying STARTX&nbsp;&nbsp;and geting on.<br><br>In the same way can i do the thing thru some TELNET session?<br>Like login to the telnet (text mode) from there can i say STARTX and open up the Linux desktop in the telnet session ?<br><br><br><br><br>--Thanks<br>&nbsp;&nbsp;CATHY</TD>
+				</TR>
+			</TABLE>
+			
+		</TD>
+	</TR>
+</TABLE>
+
+
+
+
+<DIV align="center" style="padding-top:5px;padding-bottom:5px;color:red;font-weight:bold;">Tek-Tips Forums is Member Supported. <A href="/supportus.cfm">Click Here</A> to donate.</DIV>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0 CELLPADDING=5>
+	<TR BGCOLOR="#DEDEFF">
+		<TD>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><B><A HREF="/guserinfo.cfm?member=akuindia123">akuindia123</A></B>  (Programmer)</TD>
+					<TD WIDTH="90" ALIGN="Right"><B>Nov 3, 2003</B></TD>
+				</TR>
+			</TABLE>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD>you cannot use windows users on linux ...u have to create users for linux server.<br><br>you can login as root from your machine and shutdown or reboot the server .<br><br>Install Xmanager on your windows m/c to get the GUI of linux and login thru that<br><br></TD>
+				</TR>
+			</TABLE>
+			
+		</TD>
+	</TR>
+</TABLE>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0 CELLPADDING=5>
+	<TR BGCOLOR="#F6F6F6">
+		<TD>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><B><A HREF="/guserinfo.cfm?member=usige">usige</A></B>  (TechnicalUser)</TD>
+					<TD WIDTH="90" ALIGN="Right"><B>Nov 3, 2003</B></TD>
+				</TR>
+			</TABLE>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD>Cathy,<br>1st - it is possible to use your windows users under linux. You have a few choices here. You can either use winbind or pam_smb. Here is some high level documentation on winbind ( <A HREF="http://ranger.dnsalias.com/mandrake/samba/Integrating%20Linux%20into%20Windows%20Networks.pdf" TARGET="_new" Title="http://ranger.dnsalias.com/mandrake/samba/Integrating%20Linux%20into%20Windows%20Networks.pdf">http://ranger.dnsalias.com/mandrake/samba/Integrating%2...</A> , <A HREF="http://open-projects.linuxcare.com/research-papers/winbind-08162000.html" TARGET="_new" Title="http://open-projects.linuxcare.com/research-papers/winbind-08162000.html">http://open-projects.linuxcare.com/research-papers/winb...</A> )<br><br>2nd - Once you have logged in with a regular user id you can su to root to do the shutdown. You could also setup sudo to allow your admin user id to do a shutdown/reboot. One suggestion is to use ssh instead of telnet. You can find a free ssh program for windowz here: <A HREF="http://www.puttyssh.org/" TARGET="_new" Title="http://www.puttyssh.org/">http://www.puttyssh.org/</A><br><br>3rd - As akuindia123 stated you will need an X-Windows server running under winderz if you want to start X on your local machine.</TD>
+				</TR>
+			</TABLE>
+			
+		</TD>
+	</TR>
+</TABLE>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0 CELLPADDING=5>
+	<TR BGCOLOR="#DEDEFF">
+		<TD>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><B><A HREF="/guserinfo.cfm?member=vrcatherine">vrcatherine</A></B>  (IS/IT--Manageme)</TD>
+					<TD WIDTH="90" ALIGN="Right"><B>Nov 3, 2003</B></TD>
+				</TR>
+			</TABLE>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD>Thanks for the info.<br><br>One more quick question, i am trying to do this <br>on the Linux server which is in windows network.<br><br>I have 2 network cards(NIC's) on the linux server<br>and<br><br>1st NIC ====&nbsp;&nbsp;Internal IP address ( 10.x.x.x)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this is talking to windows domain &quot;ABC&quot;<br><br>2nd NIC ===&nbsp;&nbsp;With some IP address (192.168.x.x)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which is directly hooked to some&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firewall/router .<br><br><br>So basically i wanted to open up some ports in that firewall/router for this 192.168.x.x address, so that<br>the externally ( from internet or from remote place)<br>we can access the Linux server.<br><br>The 1st NIC is basically to talk to the windows network.<br><br><br>Please suggest me if anything has to be done , whether<br>or not this can be accomplished ?<br><br>--Thanks<br>&nbsp;Cathy<br><br><br></TD>
+				</TR>
+			</TABLE>
+			
+		</TD>
+	</TR>
+</TABLE>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0 CELLPADDING=5>
+	<TR BGCOLOR="#F6F6F6">
+		<TD>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><B><A HREF="/guserinfo.cfm?member=azrael811">azrael811</A></B>  (MIS)</TD>
+					<TD WIDTH="90" ALIGN="Right"><B>Nov 5, 2003</B></TD>
+				</TR>
+			</TABLE>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD>If you want to connect remotely using ssh to the linux machine then you could do the following.<br><br>1. Enable port forwading on the router/firewall for port 22 to the IP address of the 2nd&nbsp;&nbsp;NIC of the linux box.<br><br>2. From a remote place use putty the connect to the external IP address of the router/firewall.<br><br><br>If you need help with the port forwarding then do a search on google as there is plenty of good information about it available. </TD>
+				</TR>
+			</TABLE>
+			
+		</TD>
+	</TR>
+</TABLE>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0 CELLPADDING=5>
+	<TR BGCOLOR="#DEDEFF">
+		<TD>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><B><A HREF="/guserinfo.cfm?member=vrcatherine">vrcatherine</A></B>  (IS/IT--Manageme)</TD>
+					<TD WIDTH="90" ALIGN="Right"><B>Nov 6, 2003</B></TD>
+				</TR>
+			</TABLE>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><br><br>Hi azrael811 ,<br><br><br>So i can go according to the scenario what i have<br>given,&nbsp;&nbsp;2 NIC's&nbsp;&nbsp;methodology ?<br><br>Is it ? <br><br>And i will do the port forwarding as what you had said.<br><br><br>So the Linux server can have&nbsp;&nbsp;2NIC's&nbsp;&nbsp;with 2 different<br>IP addresses ? Is it ?<br><br><br></TD>
+				</TR>
+			</TABLE>
+			
+		</TD>
+	</TR>
+</TABLE>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0 CELLPADDING=5>
+	<TR BGCOLOR="#F6F6F6">
+		<TD>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD><B><A HREF="/guserinfo.cfm?member=azrael811">azrael811</A></B>  (MIS)</TD>
+					<TD WIDTH="90" ALIGN="Right"><B>Dec 22, 2003</B></TD>
+				</TR>
+			</TABLE>
+			<TABLE BORDER=0 WIDTH="100%" CELLSPACING=0>
+				<TR>
+					<TD>Yes it can here is an example of how it would look<br><br>Windows&#124;<br>Network &#124; -------------&#124;Linux&#124;---------------------------&#124;Firewall&#124;<br><br>10.x.x.x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.0.0.10&nbsp;&nbsp;&nbsp;&nbsp;192.168.0.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192.168.0.1&nbsp;&nbsp;&nbsp;&nbsp;&lt;external IP&gt;<br><br><br>Also make sure you close unneeded ports on the external NIC of the linux machine.</TD>
+				</TR>
+			</TABLE>
+			
+		</TD>
+	</TR>
+</TABLE>
+
+
+
+<TABLE width="100%" border="1" cellspacing="0" cellpadding="3" bordercolor="Black" bgcolor="White">
+	<TR>
+		<TD align="Center"><A href="javascript:openindex(600,400,'/emailthread.cfm?pid=80&qid=696316&w=600&h=400')"><B><IMG src="/art/email.gif" width=30 height=11 border=0> E-mail This Thread To A Friend</B></A></TD>
+	</TR>
+	<TR>
+		<TD align="Center"><B style="color:red;">Tek-Tips Forums is Member Supported. <A href="/supportus.cfm">Click Here</A> to donate.</B></TD>
+	</TR>
+</TABLE>
+
+
+
+
+
+
+
+
+
+						</TD></TR></TABLE>
+					</TD>
+					
+					<TD WIDTH="145" BACKGROUND="/art/rcolbackgrnd.gif">
+					
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-top.gif" WIDTH=120 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=108 BACKGROUND="/art/w-back.gif" CLASS="col" ALIGN="Center" BGCOLOR="#DEDEDE">
+<A HREF="/groups" STYLE="color:red;font-weight:bold;">Start your own<BR>Tek-Tips Group Today!</A>
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-bottom.gif" WIDTH=120 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+						
+							
+							
+								
+									
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-top.gif" WIDTH=120 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=108 BACKGROUND="/art/w-back.gif" CLASS="col" ALIGN="Center" BGCOLOR="#DEDEDE">
+<A HREF="/gthreadminder.cfm/lev2/3/lev3/20/pid/80">Back To -General UNIX discussion</A>
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-bottom.gif" WIDTH=120 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+								
+							
+							
+								
+									
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-ftmembers.gif" WIDTH=120 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=108 BACKGROUND="/art/w-back.gif" CLASS="col" ALIGN="Center" BGCOLOR="#DEDEDE">
+<TABLE WIDTH="100%" CELLSPACING=0 CELLPADDING=1><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=PHV&">PHV</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=aigles&">aigles</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=bi&">bi</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=SamBones&">SamBones</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=Salem&">Salem</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=appi&">appi</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=aixmurderer&">aixmurderer</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=grega&">grega</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=fredericofonseca&">fredericofonseca</A></TD></TR><TR><TD CLASS="col" ALIGN="Center"><A HREF="/guserinfo.cfm?member=dickiebird&">dickiebird</A></TD></TR></TABLE>
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-bottom.gif" WIDTH=120 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+								
+							
+							
+								
+									
+
+								
+							
+							
+								
+									<BR><BR><BR><BR>
+
+
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 ALIGN="Center">
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-top.gif" WIDTH=120 BORDER=0></TD></TR>
+	<TR><TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD>
+		<TD WIDTH=108 BACKGROUND="/art/w-back.gif" CLASS="col" ALIGN="Center" BGCOLOR="#DEDEDE">
+
+	<DIV ALIGN="Center" CLASS="xxsmallwarn">Promoting, selling, recruiting and student posting are not allowed in the forums. <A HREF="market.cfm">Click here</A> to find out why.</DIV>
+
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH=6 HEIGHT=2 BORDER=0></TD></TR>
+	<TR><TD COLSPAN=3><IMG SRC="/art/n-bottom.gif" WIDTH=120 HEIGHT=6 BORDER=0></TD></TR>
+</TABLE>
+<BR>
+
+
+								
+							
+						
+						</TD>
+					
+				</TR>
+				<TR>
+					<TD></TD>
+					<TD><IMG SRC="/art/rcolbottom.gif" WIDTH="145" HEIGHT="10" BORDER="0"></TD>
+				</TR>
+			</TABLE>
+			
+			
+			
+				
+
+
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+	<TR>
+		<TD><A NAME="PostForm"><IMG SRC="/art/topl.gif" WIDTH=8 HEIGHT=8 BORDER="0"></A></TD>
+		<TD BACKGROUND="/art/top.gif" WIDTH="100%"><IMG SRC="/art/top.gif" WIDTH="100%" HEIGHT=8 BORDER="0"></TD>
+		<TD><IMG SRC="/art/topr.gif" WIDTH=9 HEIGHT=8 BORDER="0"></TD>
+	</TR>
+	<TR>
+		<TD BACKGROUND="/art/left.gif"><IMG SRC="/art/left.gif" WIDTH=8 HEIGHT=8 BORDER="0"></TD>
+		<TD BACKGROUND="/art/back.gif" VALIGN="top" ALIGN="Center">
+		<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 WIDTH="538" ALIGN="Center">
+			<TR>
+				<TD COLSPAN=3><IMG SRC="/art/f-reply.gif" WIDTH="538" HEIGHT="30" BORDER="0"></TD>
+			</TR>
+			
+			<TR>
+				<TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH="6" HEIGHT="2" BORDER="0"></TD>
+				<TD WIDTH="526" BACKGROUND="/art/w-back.gif" ALIGN="center">
+
+
+<TABLE CELLSPACING=0 BORDER=1 ALIGN="Center" WIDTH="526">
+	
+	<TR>	
+		<TD ALIGN="Center"><BR><P STYLE="font-size:11pt;"><B>Posting in the Tek-Tips forums is a member-only feature.</B></P>
+		<A HREF="/register.cfm"><B>Click Here to join Tek-Tips</B></A> and talk with other members!<BR>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+
+
+
+
+				</TD>
+				<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH="6" HEIGHT="2" BORDER="0"></TD>
+			</TR>
+			
+			<TR>
+				<TD COLSPAN=3><IMG SRC="/art/f-bottom.gif" WIDTH="538" HEIGHT="6" BORDER="0"></TD>
+			</TR>
+		</TABLE>
+		
+<BR>
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 WIDTH="538">
+	<TR>
+		<TD COLSPAN=3><IMG SRC="/art/f-top.gif" WIDTH="538" HEIGHT="6" BORDER="0"></TD>
+	</TR>
+	<TR>
+		<TD WIDTH=6 BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH="6" HEIGHT="2" BORDER="0"></TD>
+		<TD BACKGROUND="/art/w-back.gif" ALIGN="Center" CLASS="xxsmallwarn" WIDTH=526>Promoting, selling, recruiting and student posting<BR>are not allowed in the forums.<BR><A HREF="market.cfm">Click here</A> to find out why.</TD>
+		<TD WIDTH=6 BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH="6" HEIGHT="2" BORDER="0"></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3><IMG SRC="/art/f-bottom.gif" WIDTH="538" HEIGHT="6" BORDER="0"></TD>
+	</TR>
+</TABLE>
+<BR>
+	
+
+<TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0 WIDTH="538">
+	<TR>
+		<TD COLSPAN=3><IMG SRC="/art/f-top.gif" WIDTH="538" HEIGHT="6" BORDER="0"></TD>
+	</TR>
+	<TR>
+		<TD BACKGROUND="/art/w-left.gif"><IMG SRC="/art/w-left.gif" WIDTH="6" HEIGHT="2" BORDER="0"></TD>
+		<TD BACKGROUND="/art/w-back.gif" ALIGN="Center">
+			<TABLE WIDTH="100%" ALIGN="Center" CELLSPACING=0 BORDERCOLOR="Black">
+				<TR><TD>
+<DIV CLASS="headersm">LINK TO THIS FORUM!</DIV>
+<DIV CLASS="linkto" ALIGN="Center" STYLE="color:darkblue;"><B>(Add Stickiness To Your Site By Linking To This Professionally Managed Technical Forum)</B></DIV>
+<DIV CLASS="linkto"><B>TITLE:</B>&nbsp;&nbsp;&nbsp;&nbsp; -General UNIX discussion Forum at Tek-Tips</DIV>
+<DIV CLASS="linkto"><B>URL:</B>&nbsp;&nbsp;&nbsp;&nbsp; http://www.tek-tips.com/gthreadminder.cfm/lev2/3/lev3/20/pid/80</DIV>
+<DIV CLASS="linkto"><B>DESCRIPTION:</B>&nbsp;&nbsp;&nbsp;&nbsp; -General UNIX discussion technical support forum and mutual help system for computer professionals. Selling and recruiting forbidden.</DIV>
+</TD></TR>
+			</TABLE>
+<BR>				
+		</TD>
+		<TD BACKGROUND="/art/w-right.gif"><IMG SRC="/art/w-right.gif" WIDTH="6" HEIGHT="2" BORDER="0"></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3><IMG SRC="/art/f-bottom.gif" WIDTH="538" HEIGHT="6" BORDER="0"></TD>
+	</TR>
+</TABLE>
+<BR>
+		</TD>
+		<TD BACKGROUND="/art/right.gif"><IMG SRC="/art/right.gif" WIDTH=9 HEIGHT=5 BORDER="0"></TD>
+	</TR>
+	<TR>
+		<TD><IMG SRC="/art/botl.gif" WIDTH=8 HEIGHT=8 BORDER="0"></TD>
+		<TD BACKGROUND="/art/bot.gif"><IMG SRC="/art/bot.gif" WIDTH="100%" HEIGHT=8 BORDER="0"></TD>
+		<TD><IMG SRC="/art/botr.gif" WIDTH=9 HEIGHT=8 BORDER="0"></TD>
+	</TR>
+
+</TABLE>
+
+	
+
+			
+			
+			
+			
+			
+				
+			
+			
+			<BR>
+<DIV ALIGN="Center"><HR WIDTH="500">
+<TABLE WIDTH=150><TR ALIGN="Center">
+<TD><A HREF="/groups" TARGET="_blank"><IMG SRC="/art/startgroup.gif" BORDER=0 HSPACE=25></A></TD>
+<TD><A HREF="http://www.tecumsehgroup.com/opportunities.cfm" TARGET="_blank"><IMG SRC="/art/advus.gif" BORDER=0 HSPACE=25></A></TD>
+<TD><A HREF="http://www.tecumsehgroup.com/opportunities.cfm" TARGET="_blank"><IMG SRC="/art/usemail.gif" BORDER=0 HSPACE=25></A></TD>
+<TD><A HREF="/supportus.cfm"><IMG SRC="/art/site/supportus.gif" BORDER=0 HSPACE=25></A>
+</TD>
+
+</TR></TABLE><HR WIDTH="500"></DIV>
+<DIV CLASS="footer" ALIGN="Center"> Copyright &copy; 1998-2004 <A HREF="http://www.tecumsehgroup.com">Tecumseh Group, Inc.</A>  All rights reserved.<BR>Unauthorized reproduction forbidden.</DIV>
+
+		</TD>
+		
+	</TR>
+
+</TABLE>
+<DIV ID="dropin" STYLE="position:absolute;visibility:hidden;top:125;"></DIV>
+</BODY>
+</HTML>
+				
+
+
+
+
+
+
+	

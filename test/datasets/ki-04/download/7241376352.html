@@ -1,0 +1,225 @@
+<!-- <DOCUMENT>
+	<FILE>
+		7241376352.html
+	</FILE>
+	<URL>
+		http://www.rocketdownload.com/categories.php?cat_id=8&cat_name=Internet
+	</URL>
+	<TITLE>
+		Rocketdownload.com
+	</TITLE>
+	<GENRE>
+		download
+	</GENRE>
+	<PLAINTEXT>
+ Rocketdownload.com Launch Pad : E-mail : Privacy and Terms : Advertiser Info &copy; 2003 DigitalCandle, Inc. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<html>
+<head>
+  <title>Rocketdownload.com</title>
+  <meta NAME="KEYWORDS" CONTENT="freeware downloads,freeware,internetbooster,free software,html tools,downloading free software,symantec,mc affee,open zip file,unzip tool,freeware,download,mp3,software">
+  <meta NAME="description" CONTENT="Large collection of freeware and shareware downloads including internet tools, system tools, web developer tools and more">
+  <LINK REL="StyleSheet" HREF="style.css" TYPE="text/css">
+  <LINK REL="SHORTCUT ICON" HREF="favicon.ico">
+  <script language=JavaScript>
+    var nm=navigator.appName;
+    NS=((nm.indexOf("Netscape")>-1||nm.indexOf("Netscape")>-1)?1:0);
+    var IE4 = (document.all);
+    function Homepage(th) { th.style.behavior="url(#default#homepage)"; th.setHomePage("http://www.rocketdownload.com") }
+    function addfavorite(){ if (IE4) {	window.external.AddFavorite(location.href, document.title);} if (NS) { alert(" For Netscape users, please press Ctrl+D to add this page to your bookmarks.");	}}
+    function resizeimg()
+{
+  if (document.all.scrshot.width > 550)
+  {
+    var w = document.all.scrshot.width;
+    var h = document.all.scrshot.height;
+    var hnew = h / (w/550);
+    document.all.scrshot.width = 550;
+    document.all.scrshot.height = hnew;
+  }
+}
+    function setCookie(p_name,item)
+    {
+      //var s ="";
+      var aCookies = document.cookie.split("; ");
+      for (var i=0; i<aCookies.length;i++)
+      {
+        var aOneCookie=aCookies[i].split("=");
+        if (aOneCookie[0] == "items_count")
+        {
+          var cnt = aOneCookie[1];
+        }
+        if (aOneCookie[1] == item && aOneCookie[0].indexOf("items[") != -1 )
+        {
+          alert("Program \"" + p_name + "\" is already in your basket.");
+          var alr = 1;
+        }
+        //s += aOneCookie[0]+ " - " + aOneCookie[1]+ "\n";
+      }
+      //alert(s);
+      if (String(cnt) == "undefined") cnt = 0;
+      //alert("items_count="+ (cnt+1) + "; expires=");
+      if (alr != 1)
+      {
+        document.cookie = "items[" + cnt + "]="+ escape(item) +";path=/; expires=";
+        cnt = parseInt(cnt) + 1;
+        document.cookie = "items_count="+ escape(cnt) + ";path=/; expires=";
+        alert("Program \"" + p_name + "\" was succesfully added to your basket.");
+      }
+    }
+    function confirmLink(thelink,prog)
+     {
+       // Confirmation is not required in the configuration file
+       if (prog == 1) var is_confirmed = confirm('All saved items will be overridden by the current items in your basket.\n\nAre you sure this is what you want to do ?');
+       else
+       if (prog == 2) var is_confirmed = confirm('All items in your basket will be overridden by the loaded items.\n\nAre you sure this is what you want to do ?');
+       else
+       if (prog == 3) var is_confirmed = confirm('You are about to remove all content from your basket. Are you sure this is what you want to do ?');
+       if (is_confirmed) {
+          //theLink.href = 'rebview.php?id=&is_js_confirmed=1';
+          //document.location.href = theLink;
+       }
+       return is_confirmed;
+    } // end of the 'confirmLink()' function
+ </script>
+</head>
+<body bgcolor="#f6f6f6" background="images/bck.gif" >
+<table width=760 border=0 cellpadding=0 cellspacing=0 lign=center bgcolor=#ffffff>
+<tr bgcolor="#5e4192">
+<td valign="top"><a href="index.php"><img src="../images/rdheader.jpg" width=760 alt="rocketdownload" border=0 height=90></a></td>
+</tr>
+</table>
+<!--<table width=100% align=center border=0 bgcolor="#ffffff" cellpadding=0 cellspacing=0>
+<tr><td align=center>-->
+<table width=760 border=0 cellpadding=0 cellspacing=1 lign=center>
+  <tr><td align=right>
+    <table border=0 cellpadding=0 cellspacing=0>
+    <tr>
+     <td>&nbsp;<img src="images/home1.gif" alt="program" border=0>&nbsp;</td><td><a href="index.php">Launch Pad</a></td>
+     <td>&nbsp;<img src="images/new_small.gif" alt="program" border=0>&nbsp;</td><td><a href="whatsnew.php">What's New</a></td>
+     <td>&nbsp;<img src="images/search_ico.gif" alt="power search" border=0>&nbsp;</td><td><a href="search.php">Search</a></td>
+<!--
+     <td>&nbsp;<img src="images/program.gif" alt="program" border=0>&nbsp;</td><td><a href="features.php"><b>Features</b></a></td>-->
+     <td>&nbsp;<img src="images/top100icon1.gif" alt="Top20 programs" border=0>&nbsp;</td><td><a href="top20.php">Top 20</a></td>
+     <!--<td>&nbsp;<img src="images/missfilesicon.gif" alt="program" border=0>&nbsp;</td><td><a href="missing.php?">Missing files?</a></td>-->
+     <td>&nbsp;<img src="images/foldericon.gif" alt="program" border=0>&nbsp;</td><td><a href="feedback.php">About Us</a></td>
+     <!--<td>&nbsp;<img src="images/top100icon1.gif" alt="Top10 Sites" border=0>&nbsp;</td><td><a href="top10/index.php">Top10 Sites</a></td>-->
+     <td>&nbsp;<img src="images/submitfile.gif" alt="program" border=0>&nbsp;</td><td><a href="dev/index.php">Developers</a></td>
+     <td>&nbsp;</td>
+         </tr></table>
+  </td>
+  </tr>
+</table>
+  <table width=760 border=0 cellpadding=0 cellspacing=2 aign=center bgcolor="#ffffff">
+    <tr><td bgcolor=#cdcdcd colspan=5><img src="images/blank.gif" height="1" width="1" alt="" border=0></td></tr>
+    <tr>
+       <td width=295 valign=top><table width=100% border=0 cellpadding=0 cellspacing=0><tr><td>
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr> <td class=tdtitle background="images/blank.gif" width=1 height=20></td> <td class=tdtitle background="images/tabtop.gif" width=35>   &nbsp;<img src="images/new_small.gif" alt="news" border=0></td><td class=tdtitle background="images/tabtop.gif" width=220>&nbsp;News in this category...</td> <td class=tdtitle background="images/tabtop1.gif" width=30><img src="images/blank.gif" height="1" width="30" border=0></td> <TD background="images/tabtop2.gif" bcolor=#ddddff align=right width=100>&nbsp;</td></tr></table>
+</td></tr><tr><td><table width=100% cellpadding=1 cellspacing=1 border=0><tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7769><b>Spam Blackout</b> 1.1</a></td>
+<tr><td>Anti-Spam Tool for your Inbox</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7764><b>SendMail</b> 1.01</a></td>
+<tr><td>Send files by EMail easily</td></tr>
+<tr><td rowspan=2 valign=top><font color=#FF0033>upd</font></td><td><a href=program.php?id=5659><b>Traffic Calculator</b> 1.1</a></td>
+<tr><td>An utility for monitoring network traffic</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7751><b>PingGraph</b> 2.0.1.2</a></td>
+<tr><td>Network ping time graph and bandwidth tool.</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7744><b>Browser Commander</b> 4.93</a></td>
+<tr><td>Auto-Hide Internet Explorer toolbar</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7734><b>ABC Amber Agent Converter</b> 1.04</a></td>
+<tr><td>Powerful Agent mails converter to any format</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7724><b>sharpVoice(tm) Client</b> 6.0</a></td>
+<tr><td>Free PC-to-PC and inexpensive PC-to-Telephone</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7715><b>WebMaster FTP</b> 1.0</a></td>
+<tr><td>FTP program for webmasters</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7710><b>ATAF-Picture-eShop</b> 2004.0.0</a></td>
+<tr><td>ATAF-picture-eShop online</td></tr>
+<tr><td rowspan=2 valign=top><B><font color=#3cb371>new</font></B></td><td><a href=program.php?id=7706><b>Offline Downloader</b> 2.21</a></td>
+<tr><td>download up to 100 files simultaneously</td></tr>
+</td></tr></table>
+</td></tr></table>
+</td>
+       <td bgcolor="#cdcdcd"><img src="images/blank.gif" height="1" width="1" alt="" border=0></td>
+       <td width=300 valign=top>
+       
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td><table width=100% cellpadding=0 cellspacing=0 border=0><tr> <td class=tdtitle background="images/blank.gif" width=1 height=20></td> <td background="images/tabtop.gif">&nbsp;<img src="images/newapp1.gif" alt="program" border=0></td> <td class=tdtitle background="images/tabtop.gif" width=230 nowrap>   &nbsp;&nbsp;Internet</td> <td class=tdtitle background="images/tabtop1.gif" width=30>&nbsp;</td> <TD background="images/tabtop2.gif" bcolor=#ddddff align=right width=30>&nbsp;</td></tr></table>
+</td></tr><tr><td><table width=100% border=0>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=136">Browsers</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=137">Chat</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=138">Communications</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=139">Dial-up & Connectivity</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=140">Download Managers</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=141">E-mail</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=142">File Sharing</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=143">FTP</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=144">ISPs</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=145">Newsreaders</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=146">Online Privacy</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=147">Telnet</a></td></tr>
+<tr><td><a class="a_top_menu" href="programs.php?&cat_id=8&subcat_id=148">Tools & Utilities</a></td></tr>
+</table>
+</td></tr></table>
+<table width=100% border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#000000 colspan=2><img src="images/blank.gif" width=1 height=1></td></tr><tr><td bgcolor="#eff7ff"><img src="images/arrow_blue.gif"></td><td bgcolor="#eff7ff"><a href="top20.php?cat_id=8&cat_name=Internet"><b>Show Top20 of this category</b></a></td></tr><tr><td bgcolor=#000000 colspan=2><img src="images/blank.gif" width=1 height=1></td></tr></table>       </td>
+       <td bgcolor="#cdcdcd"><img src="images/blank.gif" height="1" width="1" alt="" border=0></td>
+       <td width=150 valign=top bgcolor="#f6f6f6">
+         <table width=100% border=0 bgcolor=#c4d4f3 cellpadding=1 cellspacing=0><tr><td>
+<table bgcolor=#FFFFFF width=100% border=0 cellpadding=0 cellspacing=0><tr><td valign=top><form action=categories.php><table width=100% border=0 cellpadding=0 cellspacing=0><tr> <td class=tdtitle background="images/tabtop.gif" width=100>   &nbsp;<img src="images/gl_do.gif" alt="menu" border=0>&nbsp;Categories</td> <td class=tdtitle background="images/tabtop1.gif" width=29>&nbsp;</td> <TD background="images/tabtop2.gif" bcolor=#ddddff align=right><img src="images/blank.gif" height=19></td></tr></table>
+<tr><td bgcolor="#eef3ff"><img src="images/blank.gif" width=1 height=3></td></tr><tr><td bgcolor="#eef3ff">&nbsp;<select name=cat_id id=cat_id><option value=1>Audio<option value=2>Business<option value=3>Development Tools<option value=4>Education<option value=5>Games<option value=6>Graphics<option value=7>Home/Hobby<option value=8>Internet<option value=9>Shell & Desktop<option value=10>Utilities<option value=11>Mac OS</select></td></tr><tr><td bgcolor="#eef3ff"><img src="images/blank.gif" width=1 height=3></td></tr><tr><td bgcolor="#eef3ff" align=center><input type=image src="images/submit.gif" title="Submit" name="submit" border=0></td></tr><tr><td bgcolor="#eef3ff"><img src="images/blank.gif" width=1 height=3></td></tr></td></tr></form></table>
+</td></tr></table>
+<table width=100% border=0 cellpadding=0><tr><td bgcolor=#cdcdcd><img src="images/blank.gif" width=1 height=1></td></tr></table><table width=100% border=0 bgcolor=#c4d4f3 cellpadding=1 cellspacing=0><tr><td>
+<FORM METHOD="get" ACTION="search_res.php"><table bgcolor=#FFFFFF width=100% border=0 cellpadding=0 cellspacing=0><tr><td valign=top><table width=100% border=0 cellpadding=0 cellspacing=0><tr> <td class=tdtitle background="images/tabtop.gif" width=90>   &nbsp;<img src="images/gl_do.gif" alt="menu" border=0>&nbsp;Search</td> <td class=tdtitle background="images/tabtop1.gif" width=29>&nbsp;</td> <TD background="images/tabtop2.gif" bcolor=#ddddff align=right><img src="images/blank.gif" height=19></td></tr></table>
+<tr><td bgcolor="#eef3ff">&nbsp;<b>Search:</b> <input type="text" name="terms" size="11" style="background-color:#f0f8ff"></td></tr><tr><td bgcolor="#eef3ff" align=center><input type="image" name="submit" title="Search" src="images/searchbut.gif" align="absmiddle" hspace="2" vspace="2" border="0"></td></tr><tr><td bgcolor="#eef3ff" align=right><a href="search.php"><FONT face=verdana size=1><b>» Advanced...</font></a>&nbsp;</td></tr><tr><td bgcolor="#eef3ff"><img src="images/blank.gif" width=1 height=3></td></tr></td></tr></form></table>
+</td></tr></table>
+<table width=100% border=0 bgcolor=#c4d4f3 cellpadding=1 cellspacing=0><tr><td>
+<table bgcolor=#FFFFFF width=100% border=0 cellpadding=0 cellspacing=0><tr><td valign=top><table width=100% border=0 cellpadding=0 cellspacing=0><tr> <td class=tdtitle background="images/tabtop.gif" width=90>   &nbsp;<img src="images/gl_do.gif" alt="menu" border=0>&nbsp;Account</td> <td class=tdtitle background="images/tabtop1.gif" width=29>&nbsp;</td> <TD background="images/tabtop2.gif" bcolor=#ddddff align=right><img src="images/blank.gif" height=19></td></tr></table>
+<tr><td bgcolor="#eef3ff"><b></b><br><table width=100%><tr><td><img src="images/community.gif" alt="Account" border=0></td><td><a href="users/index.php"><b>Log-in/Account</b></a></td></tr></table></td></tr><tr><td bgcolor="#eef3ff"><table width=100%><tr><td><img src="images/b_add1.gif" alt="View basket" border=0></td><td><a href="basket.php?action=show"><b>View basket</b></a></td></tr></table></td></tr><tr><td bgcolor="#eef3ff"><img src="images/blank.gif" width=1 height=3></td></tr></td></tr></table>
+</td></tr></table>
+<table width=100% border=0 cellpadding=0><tr><td bgcolor=#cdcdcd><img src="images/blank.gif" width=1 height=1></td></tr></table><table bgcolor="#eff7ff" width=100% border=0><tr><td><table width=100%><tr><td><a class=clsubb href="http://www.bestgasscooters.com"><b>buy gas scooters</b></a><br /><br /><a class=clsubb href="http://www.scooterlife.com"><b>cheap electric scooters</b></a><br /><br /><br /><br /></td></tr></table></td></tr></table>       </td>
+    </tr>
+    <tr><td bgcolor=#cdcdcd colspan=5><img src="images/blank.gif" height="1" width="1" alt="" border=0></td></tr>
+  </table>
+<!--  </td>
+  </tr>
+</table>  -->
+
+
+<table width="760" border="0" bgcolor="#f6f6f6"><tr><td>
+<table width="100%" border="0" cellspacing="1" cellpadding="0" bgcolor="#f6f6f6" aign=center>
+  <tr bgcolor="#f6f6f6">
+    <td width=50 bgcolor="#f6f6f6"><IMG alt="RD" border=0 width=78 src="/images/greyfooterrocket.gif" width=68></td>
+    <td align=center bgcolor="#f6f6f6"><font  size=1 face=verdana color="#000000">
+
+<a href="http://www.lendingexpo.net">Home Equity Loans</a> through Lending Expo.<br /><br />
+
+
+<div id="ad">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4561602420086472";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_color_border = "7A6EC2";
+google_color_bg = "7A6EC2";
+google_color_link = "000000";
+google_color_url = "008000";
+google_color_text = "FFFFFF";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+</div>
+<br>
+      <A  HREF="index.php">Launch Pad</A>
+      <font color="red"><b> : </b></font><A  HREF="feedback.php">E-mail</A>
+      <font color="red"><b> : </b></font><A  HREF="privacy.php">Privacy and Terms</A>
+      <font color="red"><b> : </b></font><A  HREF="advertise.php">Advertiser Info</A></FONT> &copy; 2003  <a href="http://www.digitalcandle.com">DigitalCandle, Inc.</a>
+   </td>
+   <td width=50 bgcolor="#f6f6f6"><a href="#top"><img src="images/gotop.gif" alt="Go top" border=0></a></td>
+</tr></table>
+</td></tr></table>
+</body>
+</html>
+

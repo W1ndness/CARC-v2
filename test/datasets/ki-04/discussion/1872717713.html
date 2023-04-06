@@ -1,0 +1,233 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1872717713.html
+	</FILE>
+	<URL>
+		http://zerowing.idsoftware.com/archives/gtkradiant/2001-July/000258.html
+	</URL>
+	<TITLE>
+		[Gtkradiant] [Bug 111] New: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1
+	</TITLE>
+	<GENRE>
+		discussion
+	</GENRE>
+	<PLAINTEXT>
+ [Gtkradiant] [Bug 111] New: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1 [Gtkradiant] [Bug 111] New: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1 gtkradiant@zerowing.idsoftware.com gtkradiant@zerowing.idsoftware.com Sun, 01 Jul 2001 03:49:02 -0500 Previous message: [Gtkradiant] roadmap, developement process (Was: realtime lighting) Next message: [Gtkradiant] [Bug 68] nightly build code for IS setup Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] http://zerowing.idsoftware.com/bugzilla/show_bug.cgi?id=111 Summary: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1 Product: GtkRadiant Version: 1.2 Platform: URL: OS/Version: Linux Status: NEW Status Whiteboard: Keywords: Resolution: Severity: normal Priority: P2 Component: editor AssignedTo: ttimo@idsoftware.com ReportedBy: ttimo@idsoftware.com &lt;Primer&gt; timo! &lt;Primer&gt; mon amí! &lt;Primer&gt; dude, trying to get radiant working on Linux... &lt;Primer&gt; downloaded 1.2, compiled it, compiled the plugins &lt;Primer&gt; it &quot;runs&quot;, but it's...god aweful slow &lt;Primer&gt; nvidia driver &lt;Primer&gt; and it's NOT using Mesa QUIT Mr!~ micjohn@newax4-075.dialup.optusnet.com.au (Read error to Mr[newax4-075.dialup.optusnet.com.au]: EOF from client) JOIN Krusty! rkhayward@123.lcn0101.lcn.iprimus.net.au JOIN Mr!~ micjohn@newax4-075.dialup.optusnet.com.au QUIT krust! rkhayward@222.lcn0103.lcn.iprimus.net.au (Ping timeout for krust[222.lcn0103.lcn.iprimus.net.au]) QUIT chrisq! simpsonlab@cdm-138-29-bcs.cox-internet.com (zzzzzzzzz) JOIN Jabby1! trilluser@adsl-63-206-118-187.dsl.snfc21.pacbell.net MODE &quot;+o Jabby1&quot; by ChanServ! ChanServ@Chanserv.telefragged.com QUIT Jabby! trilluser@adsl-63-206-118-187.dsl.snfc21.pacbell.net (Read error to Jabby[adsl-63-206-118-187.dsl.snfc21.pacbell.net]: Connection reset by peer) QUIT wattimus! 123@h24-67-14-47.cg.shawcable.net (Read error to wattimus[h24-67-14-47.cg.shawcable.net]: Connection reset by peer) JOIN wattimu! 123@h24-67-14-47.cg.shawcable.net &lt;TTimo&gt; back! &lt;TTimo&gt; the trunk is fairly experimental &lt;Primer&gt; well. 1-1 isn't working well for me &lt;TTimo&gt; I'm not sure that's what you would want to build .. &lt;TTimo&gt; you should try building from the Alpha branch &lt;Primer&gt; I have this issue where I create a brush, the drag a side, and it's DOG SLOW &lt;TTimo&gt; that's the current stable release &lt;TTimo&gt; mh .. did you try loading a texture set? &lt;Primer&gt; and it hangs my X while it moves the side one square every 5 seconds &lt;Primer&gt; yes &lt;Primer&gt; I can load textures just fine &lt;TTimo&gt; I remember it did that when you were using the default texture JOIN Juz! juz@ppp-4-13.5800-3.access.uk.worldonline.com MODE &quot;+o Juz&quot; by ChanServ! ChanServ@Chanserv.telefragged.com &lt;TTimo&gt; if you load a texture set and set the current texture to something it didn't happen &lt;Primer&gt; hrmm &lt;Primer&gt; I could swear that I did that and I continued to have the issue... &lt;Primer&gt; is the linux tree comparable to the windows tree in terms of features, stability? &lt;Primer&gt; are they in sync? &lt;TTimo&gt; yes &lt;Primer&gt; ok &lt;Primer&gt; hrmm &lt;TTimo&gt; maybe a few tweaks to apply on linux for Alpha branch &lt;TTimo&gt; (cause I've been working on win32 Alpha yesterday) &lt;TTimo&gt; but we release stuff in sync anyway &lt;Primer&gt; the latest nvidia driver has been quite stable for all my 3d stuff &lt;Primer&gt; for example, Maya runs VERY well &lt;TTimo&gt; well &lt;TTimo&gt; I have NVidia hardware too &lt;TTimo&gt; and Radiant works great &lt;Primer&gt; in Linux? &lt;TTimo&gt; yes &lt;Primer&gt; what distro? &lt;TTimo&gt; Debian &lt;Primer&gt; of course &lt;TTimo&gt; heh :) &lt;Primer&gt; I use redhate 7.1 &lt;TTimo&gt; mh &lt;TTimo&gt; 7.1 ? that's tad old &lt;TTimo&gt; err actually .. I was thinking about mandrake &lt;Primer&gt; yeah, 7.1 is latest redhate &lt;Primer&gt; http://sh.nu/mon/radiant.jpg &lt;Primer&gt; check that out &lt;Primer&gt; I have twinview &lt;TTimo&gt; ah &lt;TTimo&gt; maybe that's a problem with dual head systems then &lt;Primer&gt; I dunno &lt;TTimo&gt; what is your setup to have two monitors? you have two X displays? &lt;Primer&gt; twinview card &lt;TTimo&gt; or localhost:0.0 localhost:0.1 ? &lt;Primer&gt; nvidia dual head card &lt;Primer&gt; no &lt;Primer&gt; it's one card &lt;TTimo&gt; ah ok &lt;Primer&gt; 2 rgb 15 outputs &lt;Primer&gt; it's treated as if it were one card &lt;Primer&gt; http://sh.nu/mon/head-001.jpg &lt;TTimo&gt; so it's like a desktop with a wiiide resolution &lt;TTimo&gt; I didn't know nvidia sold that &lt;Primer&gt; they've had this for quite a while now &lt;TTimo&gt; heh .. that your kid :) &lt;Primer&gt; this is a geforce 2 mx with twinview &lt;Primer&gt; winfast leadtek geforce 2 mx dh pro &lt;Primer&gt; is the make/model &lt;TTimo&gt; well .. it's not a &quot;very&quot; standard setup, so I would think that's the problem &lt;Primer&gt; you gonna be here for a while? what time is it there? &lt;TTimo&gt; did all versions of Radiant have the problem with this setup? &lt;Primer&gt; yes &lt;Primer&gt; abut I had this same problem on my old gf1 ddr &lt;Primer&gt; same EXACT problem &lt;TTimo&gt; so, the ones you downloaded as binary and the ones you compiled &lt;Primer&gt; yes &lt;Primer&gt; and on the old card too &lt;Primer&gt; the old card was a single head &lt;TTimo&gt; mh .. I don't think I would be able to reproduce the problem .. I have single head gf1 and it's been working great .. &lt;Primer&gt; ok, let me test now &lt;TTimo&gt; you would have to build it and try to track down the performance hit &lt;Primer&gt; I quit q3 &lt;Primer&gt; 1-1TA? &lt;TTimo&gt; yeah that's the latest stab;e &lt;TTimo&gt; stable even &lt;Primer&gt; btw, the instructions for downloading the source from cvs... &lt;Primer&gt; says that I need to get Alpha GtkRadint for 1-1, and just GtkRadiant dor 1.2 &lt;Primer&gt; I believe this is...backwards? &lt;TTimo&gt; no no &lt;TTimo&gt; the stable version is on a branch &lt;TTimo&gt; and the experimental one is in the trunk &lt;Primer&gt; ok, that textures thing...no go &lt;TTimo&gt; cause the main developement work is supposed to be happening on 1.2 now &lt;Primer&gt; maybe I should nuke my ~/.q3as/radiant? &lt;TTimo&gt; that may be a good idea &lt;Primer&gt; damn, it just hangs &lt;Primer&gt; I sometimes have to wait literally minutes before I get a response from the app &lt;TTimo&gt; err &lt;TTimo&gt; you should definitely compile a debug build and try to find out where it's hanging &lt;Primer&gt; I'm gonna re-install 1-1 &lt;Primer&gt; heh &lt;Primer&gt; I'm not much of a coder &lt;TTimo&gt; mh &lt;TTimo&gt; well I could get you some debug builds and stuff I guess &lt;Primer&gt; I knew enough to add -I../incude to the Makefile though :) &lt;Primer&gt; err &lt;Primer&gt; -I../include &lt;Primer&gt; well, I'm willing to compile it &lt;Primer&gt; if you give me a few pointers NICK MarsSleep is now known as MarsMattel &lt;TTimo&gt; I need to work some on current Alpha &lt;TTimo&gt; and make sure it's building &lt;Primer&gt; well, I jkust built it &lt;Primer&gt; it builds &lt;Primer&gt; :P &lt;TTimo&gt; mh ok .. that means it wasn't too bad &lt;Primer&gt; so, cvs co Alpha GtkRadiant? &lt;Primer&gt; and that will get me 1-1TA? &lt;TTimo&gt; cvs co -r Alpha GtkRadiant &lt;Primer&gt; ok &lt;TTimo&gt; that will get you .. 1.1-TA.1 &lt;TTimo&gt; i.e. a bugfix build of 1.1-TA we are preparing &lt;Primer&gt; ok &lt;Primer&gt; pulling it down now &lt;TTimo&gt; I'll open a bug report on bugzilla about it &lt;Primer&gt; is it simply a matter of setting a debug flag in the Makefile? Previous message: [Gtkradiant] roadmap, developement process (Was: realtime lighting) Next message: [Gtkradiant] [Bug 68] nightly build code for IS setup Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Gtkradiant] [Bug 111] New: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:gtkradiant%40zerowing.idsoftware.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000265.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Gtkradiant] [Bug 111] New: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1
+   </H1>
+    <B>gtkradiant@zerowing.idsoftware.com
+    </B> 
+    <A HREF="mailto:gtkradiant%40zerowing.idsoftware.com"
+       TITLE="[Gtkradiant] [Bug 111] New: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1">gtkradiant@zerowing.idsoftware.com
+       </A><BR>
+    <I>Sun, 01 Jul 2001 03:49:02 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000265.html">[Gtkradiant] roadmap, developement process (Was: realtime
+ lighting)
+</A></li>
+        <LI> Next message: <A HREF="000260.html">[Gtkradiant] [Bug 68] nightly build code for IS setup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="http://zerowing.idsoftware.com/bugzilla/show_bug.cgi?id=111">http://zerowing.idsoftware.com/bugzilla/show_bug.cgi?id=111</A>
+
+           Summary: slow GtkRadiant - linux / NVidia drivers / RedHat 7.1
+           Product: GtkRadiant
+           Version: 1.2
+          Platform:
+               URL:
+        OS/Version: Linux
+            Status: NEW
+ Status Whiteboard:
+          Keywords:
+        Resolution:
+          Severity: normal
+          Priority: P2
+         Component: editor
+        AssignedTo: <A HREF="mailto:ttimo@idsoftware.com">ttimo@idsoftware.com</A>
+        ReportedBy: <A HREF="mailto:ttimo@idsoftware.com">ttimo@idsoftware.com</A>
+
+
+&lt;Primer&gt; timo!
+&lt;Primer&gt; mon amí!
+&lt;Primer&gt; dude, trying to get radiant working on Linux...
+&lt;Primer&gt; downloaded 1.2, compiled it, compiled the plugins
+&lt;Primer&gt; it &quot;runs&quot;, but it's...god aweful slow
+&lt;Primer&gt; nvidia driver
+&lt;Primer&gt; and it's NOT using Mesa
+  QUIT  Mr!~<A HREF="mailto:micjohn@newax4-075.dialup.optusnet.com.au">micjohn@newax4-075.dialup.optusnet.com.au</A> (Read error to Mr[newax4-075.dialup.optusnet.com.au]: EOF from client)
+  JOIN  Krusty!<A HREF="mailto:rkhayward@123.lcn0101.lcn.iprimus.net.au">rkhayward@123.lcn0101.lcn.iprimus.net.au</A>
+  JOIN  Mr!~<A HREF="mailto:micjohn@newax4-075.dialup.optusnet.com.au">micjohn@newax4-075.dialup.optusnet.com.au</A>
+  QUIT  krust!<A HREF="mailto:rkhayward@222.lcn0103.lcn.iprimus.net.au">rkhayward@222.lcn0103.lcn.iprimus.net.au</A> (Ping timeout for krust[222.lcn0103.lcn.iprimus.net.au])
+  QUIT  chrisq!<A HREF="mailto:simpsonlab@cdm-138-29-bcs.cox-internet.com">simpsonlab@cdm-138-29-bcs.cox-internet.com</A> (zzzzzzzzz)
+  JOIN  Jabby1!<A HREF="mailto:trilluser@adsl-63-206-118-187.dsl.snfc21.pacbell.net">trilluser@adsl-63-206-118-187.dsl.snfc21.pacbell.net</A>
+  MODE  &quot;+o Jabby1&quot; by ChanServ!<A HREF="mailto:ChanServ@Chanserv.telefragged.com">ChanServ@Chanserv.telefragged.com</A>
+  QUIT  Jabby!<A HREF="mailto:trilluser@adsl-63-206-118-187.dsl.snfc21.pacbell.net">trilluser@adsl-63-206-118-187.dsl.snfc21.pacbell.net</A> (Read error to Jabby[adsl-63-206-118-187.dsl.snfc21.pacbell.net]: Connection reset by peer)
+  QUIT  wattimus!<A HREF="mailto:123@h24-67-14-47.cg.shawcable.net">123@h24-67-14-47.cg.shawcable.net</A> (Read error to wattimus[h24-67-14-47.cg.shawcable.net]: Connection reset by peer)
+  JOIN  wattimu!<A HREF="mailto:123@h24-67-14-47.cg.shawcable.net">123@h24-67-14-47.cg.shawcable.net</A>
+&lt;TTimo&gt; back!
+&lt;TTimo&gt; the trunk is fairly experimental
+&lt;Primer&gt; well. 1-1 isn't working well for me
+&lt;TTimo&gt; I'm not sure that's what you would want to build ..
+&lt;TTimo&gt; you should try building from the Alpha branch
+&lt;Primer&gt; I have this issue where I create a brush, the drag a side, and it's DOG SLOW
+&lt;TTimo&gt; that's the current stable release
+&lt;TTimo&gt; mh .. did you try loading a texture set?
+&lt;Primer&gt; and it hangs my X while it moves the side one square every 5 seconds
+&lt;Primer&gt; yes
+&lt;Primer&gt; I can load textures just fine
+&lt;TTimo&gt; I remember it did that when you were using the default texture
+  JOIN  Juz!<A HREF="mailto:juz@ppp-4-13.5800-3.access.uk.worldonline.com">juz@ppp-4-13.5800-3.access.uk.worldonline.com</A>
+  MODE  &quot;+o Juz&quot; by ChanServ!<A HREF="mailto:ChanServ@Chanserv.telefragged.com">ChanServ@Chanserv.telefragged.com</A>
+&lt;TTimo&gt; if you load a texture set and set the current texture to something it didn't happen
+&lt;Primer&gt; hrmm
+&lt;Primer&gt; I could swear that I did that and I continued to have the issue...
+&lt;Primer&gt; is the linux tree comparable to the windows tree in terms of features, stability?
+&lt;Primer&gt; are they in sync?
+&lt;TTimo&gt; yes
+&lt;Primer&gt; ok
+&lt;Primer&gt; hrmm
+&lt;TTimo&gt; maybe a few tweaks to apply on linux for Alpha branch
+&lt;TTimo&gt; (cause I've been working on win32 Alpha yesterday)
+&lt;TTimo&gt; but we release stuff in sync anyway
+&lt;Primer&gt; the latest nvidia driver has been quite stable for all my 3d stuff
+&lt;Primer&gt; for example, Maya runs VERY well
+&lt;TTimo&gt; well
+&lt;TTimo&gt; I have NVidia hardware too
+&lt;TTimo&gt; and Radiant works great
+&lt;Primer&gt; in Linux?
+&lt;TTimo&gt; yes
+&lt;Primer&gt; what distro?
+&lt;TTimo&gt; Debian
+&lt;Primer&gt; of course
+&lt;TTimo&gt; heh :)
+&lt;Primer&gt; I use redhate 7.1
+&lt;TTimo&gt; mh
+&lt;TTimo&gt; 7.1 ? that's tad old
+&lt;TTimo&gt; err actually .. I was thinking about mandrake
+&lt;Primer&gt; yeah, 7.1 is latest redhate
+&lt;Primer&gt; <A HREF="http://sh.nu/mon/radiant.jpg">http://sh.nu/mon/radiant.jpg</A>
+&lt;Primer&gt; check that out
+&lt;Primer&gt; I have twinview
+&lt;TTimo&gt; ah
+&lt;TTimo&gt; maybe that's a problem with dual head systems then
+&lt;Primer&gt; I dunno
+&lt;TTimo&gt; what is your setup to have two monitors? you have two X displays?
+&lt;Primer&gt; twinview card
+&lt;TTimo&gt; or localhost:0.0 localhost:0.1 ?
+&lt;Primer&gt; nvidia dual head card
+&lt;Primer&gt; no
+&lt;Primer&gt; it's one card
+&lt;TTimo&gt; ah ok
+&lt;Primer&gt; 2 rgb 15 outputs
+&lt;Primer&gt; it's treated as if it were one card
+&lt;Primer&gt; <A HREF="http://sh.nu/mon/head-001.jpg">http://sh.nu/mon/head-001.jpg</A>
+&lt;TTimo&gt; so it's like a desktop with a wiiide resolution
+&lt;TTimo&gt; I didn't know nvidia sold that
+&lt;Primer&gt; they've had this for quite a while now
+&lt;TTimo&gt; heh .. that your kid :)
+&lt;Primer&gt; this is a geforce 2 mx with twinview
+&lt;Primer&gt; winfast leadtek geforce 2 mx dh pro
+&lt;Primer&gt; is the make/model
+&lt;TTimo&gt; well .. it's not a &quot;very&quot; standard setup, so I would think that's the problem
+&lt;Primer&gt; you gonna be here for a while? what time is it there?
+&lt;TTimo&gt; did all versions of Radiant have the problem with this setup?
+&lt;Primer&gt; yes
+&lt;Primer&gt; abut I had this same problem on my old gf1 ddr
+&lt;Primer&gt; same EXACT problem
+&lt;TTimo&gt; so, the ones you downloaded as binary and the ones you compiled
+&lt;Primer&gt; yes
+&lt;Primer&gt; and on the old card too
+&lt;Primer&gt; the old card was a single head
+&lt;TTimo&gt; mh .. I don't think I would be able to reproduce the problem .. I have single head gf1 and it's been working great ..
+&lt;Primer&gt; ok, let me test now
+&lt;TTimo&gt; you would have to build it and try to track down the performance hit
+&lt;Primer&gt; I quit q3
+&lt;Primer&gt; 1-1TA?
+&lt;TTimo&gt; yeah that's the latest stab;e
+&lt;TTimo&gt; stable even
+&lt;Primer&gt; btw, the instructions for downloading the source from cvs...
+&lt;Primer&gt; says that I need to get Alpha GtkRadint for 1-1, and just GtkRadiant dor 1.2
+&lt;Primer&gt; I believe this is...backwards?
+&lt;TTimo&gt; no no
+&lt;TTimo&gt; the stable version is on a branch
+&lt;TTimo&gt; and the experimental one is in the trunk
+&lt;Primer&gt; ok, that textures thing...no go
+&lt;TTimo&gt; cause the main developement work is supposed to be happening on 1.2 now
+&lt;Primer&gt; maybe I should nuke my ~/.q3as/radiant?
+&lt;TTimo&gt; that may be a good idea
+&lt;Primer&gt; damn, it just hangs
+&lt;Primer&gt; I sometimes have to wait literally minutes before I get a response from the app
+&lt;TTimo&gt; err
+&lt;TTimo&gt; you should definitely compile a debug build and try to find out where it's hanging
+&lt;Primer&gt; I'm gonna re-install 1-1
+&lt;Primer&gt; heh
+&lt;Primer&gt; I'm not much of a coder
+&lt;TTimo&gt; mh
+&lt;TTimo&gt; well I could get you some debug builds and stuff I guess
+&lt;Primer&gt; I knew enough to add -I../incude to the Makefile though :)
+&lt;Primer&gt; err
+&lt;Primer&gt; -I../include
+&lt;Primer&gt; well, I'm willing to compile it
+&lt;Primer&gt; if you give me a few pointers
+  NICK  MarsSleep is now known as MarsMattel
+&lt;TTimo&gt; I need to work some on current Alpha
+&lt;TTimo&gt; and make sure it's building
+&lt;Primer&gt; well, I jkust built it
+&lt;Primer&gt; it builds
+&lt;Primer&gt; :P
+&lt;TTimo&gt; mh ok .. that means it wasn't too bad
+&lt;Primer&gt; so, cvs co Alpha GtkRadiant?
+&lt;Primer&gt; and that will get me 1-1TA?
+&lt;TTimo&gt; cvs co -r Alpha GtkRadiant
+&lt;Primer&gt; ok
+&lt;TTimo&gt; that will get you .. 1.1-TA.1
+&lt;TTimo&gt; i.e. a bugfix build of 1.1-TA we are preparing
+&lt;Primer&gt; ok
+&lt;Primer&gt; pulling it down now
+&lt;TTimo&gt; I'll open a bug report on bugzilla about it
+&lt;Primer&gt; is it simply a matter of setting a debug flag in the Makefile?
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000265.html">[Gtkradiant] roadmap, developement process (Was: realtime
+ lighting)
+</A></li>
+	<LI> Next message: <A HREF="000260.html">[Gtkradiant] [Bug 68] nightly build code for IS setup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>
+

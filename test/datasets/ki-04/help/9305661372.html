@@ -1,0 +1,557 @@
+<!-- <DOCUMENT>
+	<FILE>
+		9305661372.html
+	</FILE>
+	<URL>
+		http://www.two4u.com/bg-faq/
+	</URL>
+	<TITLE>
+		The background FAQ
+	</TITLE>
+	<GENRE>
+		help
+	</GENRE>
+	<PLAINTEXT>
+ The background FAQ The background FAQ About the FAQ The FAQ is being maintained by Mark Koenen &lt; bg-faq@two4u.com &gt; You can find it at http://www.two4u.com/bg-faq/ Sun Mar 28 09:59:40 PST 1999 The questions Which browsers support backgrounds? Which attributes are available? What kind of parameter do the attributes require? Damn! How do I convert to HEX??? Can I change the background in the middle of the HTML document? Can I change the color of the font in the middle of the HTML document? How does `tiling' work? How do I create the `fading' and `thunder' effect? Could you give me a complete example? How do I create a watermark effect / make the background fixed? ( NEW! ) How do I create a bar at the left of my document? Where can I find databases with color examples? Where can I find databases with textures? Color pickers: what are they and where can I get them? What are style sheets? This FAQ sux! Don't you know any other documents on backgrounds? The answers 1. Which browsers support backgrounds? Only since the HTML 3.0 draft one is able to change the background by specifying an image (assuming you have a graphical browser ofcourse). One can specify more than just the background only (for example it's possible to change the color of the text). The way to effect that, depends on the browser. There are two types browsers: The ones that follow the `Netscapeisms' (as from HTML 3.2 these `Netscapeisms' are justified to use...). At the least the next browsers follow those Netscapeisms: Netscape 1.1 (and higher) Microsoft Internet Explorer (MSIE) 2.0 (and higher) Mosaic for Microsoft Windows (2.0.0) Spyglass Mosaic 2.1 IBM's WebExplorer for OS/2 ( download WebExplorer ) Opera (Windows 3.xx/95/NT) Tango (Windows 3.11/95). The ones that follow the principles of ` style sheets '. At the least the next browsers have a (partial) implementation of style sheets: Netscape Navigator 4.0 (and higher) Microsoft Internet Explorer 3.0 (and higher) Arena Emacs-w3 Go up to the questions 2. Which attributes are available? The browsers that follow the HTML 3.2 specification allow a few attributes to the BODY element that influence the appearance of the background of the document, the text and also the links. Here is an overview of the attributes: BACKGROUND specifies the image that will be used as background of the current document (HTML 3.0) BGCOLOR specifies the background color (HTML 3.2) TEXT specifies the color of all the normal text (HTML 3.2) LINK specifies the coloring of non-visited links (links to documents you've never been) (HTML 3.2) VLINK specifies the coloring of visited links (links to documents where you have been before) (HTML 3.2) ALINK specifies the coloring of active links (links you activate by clicking on it) (HTML 3.2) Go up to the questions 3. What kind of parameter do the attributes require? To the BACKGROUND attribute you'll have to hand the URL to the background image, like this: BACKGROUND="my_image.gif" . All the other attributes ( BGCOLOR , TEXT , LINK , VLINK and ALINK ) require a six-characters-long color value in HEX-format . It will look like this: BGCOLOR="#FFFFFF" . Netscape and Internet Explorer do allow descriptions of colors (e.g. BGCOLOR="Green" ), but there is no list of colornames that work fine in both browsers. There is a list however at Netscape that's pretty neat. Go up to the questions 4. Damn! How do I convert to HEX??? Well, just grab your calculator and push the HEX-button (UNIX freaks type ` man dc; man bc '). If you want a more spiffy interface use the incredible handy Color Picker 2.0 made by Michael Bostock (requires support of DHTML of your browser). If that doesn't work use the online converter at http://www.two4u.com/color/dec-hex.html . If you're still curious how it all works: Netscape wants a color value in this format: #RRGGBB , where RR specifies the value of the Red component of the color, GG the Green component and BB the Blue component. As you can see each component has two positions and the value should be in HEX format. In HEX the numbers run up from 0 to 9 and after that from A to F , therefore having a base of 16 characters instead of the decimal system which has a base of 10 characters. Let's say you have a HEX value C6 , that would be 12 x 16 + 6 = 198 in the decimal system. Having two positions for each component of the color means that the maximum value for the component would be FF ( 255 in the decimal system) and that there are 256^3 (16,777,216) possible color combinations for each attribute. Go up to the questions 5. Can I change the background in the middle of the HTML document? Yes, but only by using style sheets or specific features that are supported by specific browsers. In browsers other than the ones that support style sheets or Netscape's Navigator you can't change the background in the middle of the HTML document. The most used way of creating a background is the one that was introduced with Netscape Navigator 1.1. Using the method this browser introduced, a HTML document will have this structure ( place the BODY tag right after the HEAD tag ): &lt;HTML&gt; &lt;HEAD&gt; ... &lt;/HEAD&gt; &lt;BODY ...&gt; ... &lt;/BODY&gt; &lt;/HTML&gt; Netscape's Navigator 3.0 allows the BGCOLOR attribute to be used within tables. Only BGCOLOR will work, BACKGROUND will not. Here's a table with different background colors in each cell, followed by it's HTML code: White Still white Yellow Blue &lt;TABLE BORDER&gt; &lt;TR BGCOLOR=&quot;#FFFFFF&quot;&gt; &lt;TD&gt; White &lt;/TD&gt; &lt;TD&gt; Still white &lt;/TD&gt; &lt;/TR&gt; &lt;TR&gt; &lt;TD BGCOLOR=&quot;#FFFF44&quot;&gt; Yellow &lt;/TD&gt; &lt;TD BGCOLOR=&quot;#9999FF&quot;&gt; Blue &lt;/TD&gt; &lt;/TR&gt; &lt;/TABLE&gt; Go up to the questions 6. Can I change the color of the font in the middle of the HTML document? Yes, but only the more recent browsers will support it. There is a great gap between the markup tags of Netscape/MSIE and the principles of style sheets (which are a part of HTML 3.0). Style sheets are clearly the better way to handle problems like changing the color of a piece of text. You can read more about style sheets on: http://www.w3.org/Style/ . Since the release of Netscape Navigator 2.0 it is possible to change the color of a piece of text by adding the COLOR attribute to the FONT tag. The value that goes with the COLOR attribute is a hexadicimal value , just like the one that goes with BGCOLOR , TEXT , etc.. If you wanted to make a piece of text green (assuming you have a color monitor), the code in Netscape would look like this: &lt;FONT COLOR=&quot;#00FF00&quot;&gt; This is a piece of text printed in blue &lt;/FONT&gt; Go up to the questions 7. How does `tiling' work? When you have specified a background image it always will be tiled. That means the image will be repeated in the vertical and the horizontal way. So, if you want a gradient color pattern on the background just create a image which is just a few (say 8 or 10) pixels high and very wide (so wide people will never see the tiling in horizontal or vertical direction) and has the desired gradient color pattern. The image will be very small (in file size) because it's only a few pixels high. The browser will tile the image in the vertical or the horizontal way so you have a perfect gradient background. Here are a few pages that take advantage of background images that are only a few pixels high (or wide): http://www.two4u.com/color/ http://www.sci.kun.nl/thalia/funpage/startrek/ Another `problem' with tiling is that your picture has to be `seamless'. That means that your picture fits to itself perfectly. Because when the picture will be tiled, the bottom of the picture will be placed against the top of the picture. Also the right side will be placed against the left side. Tom Karlo explains how to make such seamless pictures with Photoshop on http://www.pixelfoundry.com/Toms/Makeback/ Go up to the questions 8. How do I create the `fading' and `thunder' effect? This is a rather old `feature' that was actually a bug in Netscape Navigator 1.1. By using multiple BODY tags one was able to create a `fading' effect. Using more than one BODY tag can be dangerous because only the first BODY tag will be read! So if you create a `fading' effect from black to white, only Netscape 1.1 users will see the final page as the others will only see the first defined background: black... Someone made a page that (ab)uses the bug in full effect: http://www.netcreations.com/ramper/ Go up to the questions 9. Could you give me a complete example? Here is a complete HTML document that will result into this page . &lt;HTML&gt; &lt;HEAD&gt; &lt;TITLE&gt;A full example&lt;/TITLE&gt; &lt;/HEAD&gt; &lt;BODY BACKGROUND="background.gif" BGCOLOR="#335021" TEXT="#F7CE96" LINK="#CED2CC" VLINK="#B1C0AC" ALINK="#FFFFFF"&gt; &lt;H1&gt;A huge piece of text&lt;/H1&gt;&lt;P&gt; Some text in the normal font. As you can see by the way, there is only one &lt;CODE&gt;BODY&lt;/CODE&gt; tag. If you use more than one tag, only the first one will taken for your document. The `zoom' effect people created by using multiple &lt;CODE&gt;BODY&lt;/CODE&gt; tags only worked due to a bug in Netscape 1.1.&lt;P&gt; &lt;A HREF="http://www.two4u.com/bg-faq/"&gt;This is a link where you have already been&lt;/A&gt;&lt;P&gt; &lt;A HREF="http://Foo.Bar/Pipco/"&gt;The infamous link to the page with the 1,000 nude pics of Pamela Anderson&lt;/A&gt;&lt;P&gt; &lt;HR&gt; &lt;A HREF="http://www.sci.kun.nl/thalia/guide/color/faq.html#example"&gt;Go to the FAQ&lt;/A&gt; &lt;/BODY&gt; &lt;/HTML&gt; Go up to the questions 10. How do I create a watermark effect / make the background fixed? There are several ways to make the background stay fixed, which can be used to create a watermark effect. The best method would be to use Style Sheets. In the next example a page is created that has a fixed background image in the center of the page. Unfortunately this only works in Microsoft's Internet Explorer (MSIE) 4.0 and Netscape 5.0 . The next example code will result in next page : &lt;HTML&gt; &lt;HEAD&gt; &lt;STYLE TYPE="text/css"&gt;&lt;!-- BODY { background-color: #FFFFFF; background-image: url(../color/back_10.gif); background-position: center; background-repeat: no-repeat; background-attachment: fixed; } --&gt;&lt;/STYLE&gt; &lt;TITLE&gt;Background FAQ: Example of fixed background.&lt;/TITLE&gt; &lt;/HEAD&gt; &lt;BODY&gt; This is a lot of text, just to make sure the page will be scrolling and that the text will really be scrolling over the background image which will be centered, non-repeating and non-scrollable... Line 1. &lt;P&gt; [... other 19 lines cut away] &lt;HR&gt; &lt;A HREF="http://www.two4u.com/bg-faq/#watermark"&gt;Go to the FAQ&lt;/A&gt; &lt;/BODY&gt; &lt;/HTML&gt; Go up to the questions 11. How do I create a bar at the left of my document? In short: create a very wide but not high image that you put in the background. The image already should contain the bar you want to have at the left. You can find a more detailed explanation on this page with a complete example . Go up to the questions 12. Where can I find databases with color examples? Here is a list of just a few of them: http://www.two4u.com/color/ http://developer.netscape.com/docs/manuals/htmlguid/colortab.htm http://catless.ncl.ac.uk/Lindsay/colours.html http://www.webmotion.com/Websurfshop/Colorcode/ Go up to the questions 13. Where can I find databases with textures? Here is a list of just a few of them: http://www.netscape.com/assist/net_sites/bg/backgrounds.html http://www.ender-design.com/rg/backidx.html http://www.netcreations.com/patternland/ http://www.ozones.com/~drozone/imagesindex.html http://www.meat.com/textures/ http://www.ecn.bgu.edu/users/gas52r0/Jay/gifs.html http://raven.ubalt.edu/Images/backgrounds/sam_bg/sam_catalog.html http://www.sfsu.edu/~jtolson/textures/textures.htm http://www.best.com/~drzeus/Art/Textures/Textures.html http://www.pixelfoundry.com/bgs.html http://www.cit.gu.edu.au/~iain/htextures/ Go up to the questions 14. Color pickers: what are they and where can I get them? Color pickers are tools to compose colors with. They use images from which you can select a color instead of giving a description of a color. There are some directly accessable via WWW and some are only for usage at home. Directly accessable via WWW: Using Java(Script) ( Only supported by Netscape Navigator 2.0 and up, and MS Internet Explorer 3.0 and up ): Local copy of the Color Picker 2.0 made by Michael Bostock http://www.hidaho.com/colorcenter/cc.html (JavaScript) Using CGI: http://www.two4u.com/cgi-bin/color/compose http://www.bagism.com/colormaker/colormaker-original.html For MS Windows: http://maximized.com/freeware/clrbrwsr/ http://www.bbsinc.com/colorEditor_FAQ.html http://www.neonshop.com/software/software.html For the Mac: http://tucows.wau.nl/mac/colormac.html Go up to the questions 15. What are style sheets? With a style sheet you can *hint* a browser to display objects in a certain way. For instance you can *hint* the browser to use a different font color. The Style Sheets specifications have been around for quite some time. The problem with Style Sheets is that they are partly/poorly supported by the two most popular browsers: Netscape Navigator and MSIE. You can read more about them on: http://www.w3.org/Style/ . With the arrival of version 5.0 of both browsers, the support for CSS will be a lot better. Go up to the questions 16. This FAQ sux! Don't you know any other documents on backgrounds? Hey! This FAQ doesn't suck! Well, maybe... ;-) But I really tried my best to hand you something useful. If you think something is incorrect/missing please don't hesitate and mail me . Here are some other documents on backgrounds: http://home.netscape.com/assist/net_sites/bg/ http://dir.yahoo.com/Arts/Design_Arts/Graphic_Design/Web_Page_Design_and_Layout/Graphics/Backgrounds/ 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<HTML>
+<HEAD>
+  <SCRIPT LANGUAGE="JavaScript">
+    function openIt() {
+      window.open('/color/colorpicker/picker_two.html','picker','width=395,height=280,scrollbars=no,location=no,left=10,top=10,menubar=no,resizable=no,toolbar=no,status=no');
+    }
+  </SCRIPT>
+  <TITLE>The background FAQ</TITLE>
+  <META  name="description" content="On the backgrounds FAQ you will find answers to questions about backgrounds like: Which attributes are available?, How do I convert to HEX?, etc.">
+  <META  name="keywords" content="color, colour, background, HTML, seamless, watermark, tiling, HEX, imagemap">
+</HEAD>
+<BODY BGCOLOR="#FAFAFF">
+<CENTER>
+<H1>The background FAQ</H1>
+</CENTER>
+<HR>
+
+<H2><A NAME="about"><STRONG>About the FAQ</STRONG></A></H2>
+<UL>
+  <LI>The FAQ is being maintained by
+      <A HREF="http://www.gx.nl/markko/">Mark Koenen</A>
+      &lt;<A HREF="mailto:bg-faq@two4u.com">bg-faq@two4u.com</A>&gt;</LI>
+  <LI>You can find it at
+      <CODE><A HREF="http://www.two4u.com/bg-faq/">
+      http://www.two4u.com/bg-faq/</A></CODE></LI>
+  <LI>Sun Mar 28 09:59:40 PST 1999</LI>
+</UL>
+
+<H2><A NAME="questions"><STRONG>The questions</STRONG></A></H2>
+<OL>
+  <LI><I><A HREF="#browsers">Which browsers support
+      backgrounds?</A></I></LI>
+  <LI><I><A HREF="#attributes">Which attributes are
+      available?</A></I></LI>
+  <LI><I><A HREF="#what2hand">What kind of parameter
+      do the attributes require?</A></I></LI>
+  <LI><I><A HREF="#convert">Damn! How do I convert to
+      HEX???</A></I></LI>
+  <LI><I><A HREF="#change-it">Can I change the background
+      in the middle of the HTML document?</A></I></LI>
+  <LI><I><A HREF="#change-fontcolor">Can I change the color of the 
+      font in the middle of the HTML document?</A></I></LI>
+  <LI><I><A HREF="#tiling">How does `tiling' work?</A></I></LI>
+  <LI><I><A HREF="#fade">How do I create the `fading' and `thunder'
+      effect?</A></I></LI>
+  <LI><I><A HREF="#example">Could you give me a complete
+      example?</A></I></LI>
+  <LI><I><A HREF="#watermark">How do I create a watermark effect /
+        make the background fixed?</A></I> (<B>NEW!</B>)</LI>
+  <LI><I><A HREF="#leftbar">How do I create a bar at the left of my
+        document?</A></I></LI>
+  <LI><I><A HREF="#color-databases">Where can I find
+      databases with color examples?</A></I></LI>
+  <LI><I><A HREF="#texture-databases">Where can I find
+      databases with textures?</A></I></LI>
+  <LI><I><A HREF="#color-pickers">Color pickers: what
+      are they and where can I get them?</A></I></LI>
+  <LI><I><A HREF="#style-sheets">What are style sheets?</A></I></LI>
+  <LI><I><A HREF="#links">This FAQ sux! Don't you know
+      any other documents on backgrounds?</A></I></LI>
+</OL>
+
+<H2>The answers</H2>
+
+<H3><A NAME="browsers"><I>1. Which browsers support backgrounds?</I></A></H3>
+Only since the
+<A HREF="http://www.w3.org/hypertext/WWW/MarkUp/">HTML
+3.0</A> draft one is able to change
+the background by specifying an image
+(assuming you have a graphical browser ofcourse).<P>
+
+One can specify more than just the background only (for example it's
+possible to change the color of the text). The way to effect that, depends
+on the browser. There are two types browsers:
+<DL>
+<DT> The ones that follow the `Netscapeisms' (as from HTML 3.2 these 
+     `Netscapeisms' are justified to use...). At the least the next browsers
+     follow those Netscapeisms:
+<DD>
+  <UL>
+    <LI><A HREF="http://home.netscape.com/comprod/mirror/">Netscape 1.1</A>
+	(and higher)</LI>
+    <LI><A HREF="http://www.microsoft.com/windows/ie/default.htm">Microsoft
+	Internet Explorer (MSIE) 2.0</A> (and higher)</LI>
+    <LI><A HREF="http://www.ncsa.uiuc.edu/SDG/Software/WinMosaic/">Mosaic
+	for Microsoft Windows</A> (2.0.0)</LI>
+    <LI><A HREF="http://www.spyglass.com/products/browsertech.html">Spyglass
+	Mosaic 2.1</A></LI>
+    <LI><A HREF="http://www.raleigh.ibm.com/WebExplorer/">IBM's WebExplorer
+	for OS/2</A> (<A HREF="ftp://ftp.ibm.net/pub/WebExplorer/">download
+	WebExplorer</A>)</LI>
+    <LI><A HREF="http://opera.nta.no/">Opera (Windows 3.xx/95/NT)</A></LI>
+    <LI><A HREF="http://www.alis.com/">Tango</A> (Windows 3.11/95).</LI>
+  </UL>
+<P>
+<DT> The ones that follow the principles of
+     `<A HREF="http://www.w3.org/Style/">style sheets</A>'. At the least the
+     next browsers have a (partial) implementation of style sheets:
+<DD>
+  <UL>
+    <LI><A HREF="http://home.netscape.com/comprod/mirror/">Netscape Navigator 4.0</A>
+	(and higher)</LI>
+    <LI><A HREF="http://www.microsoft.com/windows/ie/default.htm">Microsoft
+        Internet Explorer 3.0</A> (and higher)</LI>
+    <LI><A HREF="http://www.yggdrasil.com/Products/Arena/">Arena</A></LI>
+    <LI><A HREF="http://www.cs.indiana.edu/elisp/w3/docs.html">Emacs-w3</A></LI>
+  </UL>
+</DL>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="attributes"><I>2. Which attributes are available?</I></A></H3>
+
+The browsers that follow the HTML 3.2 specification allow a few attributes
+to the <CODE>BODY</CODE> element that influence the appearance of the
+background of the document, the text and also the links. Here is an
+overview of the attributes:
+
+<DL>
+  <DT><CODE>BACKGROUND</CODE></DT>
+  <DD>specifies the image that will be used as 
+      background of the current document (HTML 3.0)
+  <DT><CODE>BGCOLOR</CODE></DT>
+  <DD>specifies the background color (HTML 3.2)
+  <DT><CODE>TEXT</CODE></DT>
+  <DD>specifies the color of all the <I>normal</I> text
+      (HTML 3.2)
+  <DT><CODE>LINK</CODE></DT>
+  <DD>specifies the coloring of non-visited links (links
+      to documents you've never been) (HTML 3.2)
+  <DT><CODE>VLINK</CODE></DT>
+  <DD>specifies the coloring of visited links (links to
+      documents where you have been before) (HTML 3.2)
+  <DT><CODE>ALINK</CODE></DT>
+  <DD>specifies the coloring of active links (links you
+      activate by clicking on it) (HTML 3.2)
+</DL>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="what2hand"><I>3. What kind of parameter do the attributes
+    require?</I></A></H3>
+To the <CODE>BACKGROUND</CODE> attribute you'll have to hand the URL to
+the background image, like this: <CODE>BACKGROUND="my_image.gif"</CODE>.<BR>
+
+All the other attributes (<CODE>BGCOLOR</CODE>, <CODE>TEXT</CODE>,
+<CODE>LINK</CODE>, <CODE>VLINK</CODE> and <CODE>ALINK</CODE>) require
+<A HREF="#convert">a six-characters-long color value in HEX-format</A>.
+It will look like this: <CODE>BGCOLOR="#FFFFFF"</CODE>.<P>
+
+Netscape and Internet Explorer do allow descriptions of colors
+(e.g.  <CODE>BGCOLOR="Green"</CODE>), but there is no list
+of colornames that work fine in both browsers. There is <A
+HREF="http://developer.netscape.com/docs/manuals/htmlguid/colortab.htm">a
+list</A> however at Netscape that's pretty neat.
+
+
+<P>
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="convert"><I>4. Damn! How do I convert to HEX???</I></A></H3>
+Well, just grab your calculator and push the HEX-button (UNIX freaks 
+type `<CODE>man dc; man bc</CODE>'). If you want a more spiffy interface
+use the incredible handy <A HREF="javascript:openIt()">Color Picker 2.0</A>
+made by Michael Bostock (requires support of DHTML of your browser). If that
+doesn't work use the online converter at
+<A HREF="http://www.two4u.com/color/dec-hex.html">http://www.two4u.com/color/dec-hex.html</A>.<P>
+     
+If you're still curious how it all works: Netscape wants a color value
+in this format: <CODE>#RRGGBB</CODE>, where <CODE>RR</CODE> specifies
+the value of the Red component of the color, <CODE>GG</CODE> the
+Green component and <CODE>BB</CODE> the Blue component. As you can see
+each component has two positions and the value should be in HEX
+format. In HEX the numbers run up from <CODE>0</CODE> to <CODE>9</CODE>
+and after that from <CODE>A</CODE> to <CODE>F</CODE>, therefore
+having a base of 16 characters instead of the decimal system which
+has a base of 10 characters. Let's say you have a HEX value
+<CODE>C6</CODE>, that would be <CODE>12 x 16 + 6 = 198</CODE> in the
+decimal system.<P>
+
+Having two positions for each component
+of the color means that the maximum value for the component would be
+<CODE>FF</CODE> (<CODE>255</CODE> in the decimal system) and that there
+are 256^3 (16,777,216) possible color combinations for each attribute.<P>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="change-it"><I>5. Can I change the background
+    in the middle of the HTML document?</I></A></H3>
+Yes, <STRONG>but only</STRONG> by using <A HREF="http://www.w3.org/Style/">style
+sheets</A> or specific features that are supported by specific browsers.
+
+<P>
+In browsers other than the ones that support style sheets or Netscape's
+Navigator you can't change the background in the middle of the HTML document.
+The most used way of creating a background is the one that was introduced
+with Netscape Navigator 1.1. Using the method this browser introduced, a
+HTML document will have this structure (<STRONG>place the <CODE>BODY</CODE>
+tag right after the <CODE>HEAD</CODE> tag</STRONG>):
+<PRE>
+&lt;HTML&gt;
+    &lt;HEAD&gt;
+        ...
+    &lt;/HEAD&gt;
+    &lt;BODY ...&gt;
+        ...
+    &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+Netscape's Navigator 3.0 allows the <CODE>BGCOLOR</CODE> attribute to be used
+within tables. Only <CODE>BGCOLOR</CODE> will work, <CODE>BACKGROUND</CODE>
+will not. Here's a table with different background colors in each cell,
+followed by it's HTML code:
+
+<P>
+<TABLE BORDER>
+  <TR BGCOLOR="#FFFFFF">
+    <TD> White </TD>
+    <TD> Still white </TD>
+  </TR>
+  <TR>
+    <TD BGCOLOR="#FFFF44"> Yellow </TD>
+    <TD BGCOLOR="#9999FF"> Blue </TD>
+  </TR>
+</TABLE>
+<PRE>
+&lt;TABLE BORDER&gt;
+  &lt;TR BGCOLOR=&quot;#FFFFFF&quot;&gt;
+    &lt;TD&gt; White &lt;/TD&gt;
+    &lt;TD&gt; Still white &lt;/TD&gt;
+  &lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD BGCOLOR=&quot;#FFFF44&quot;&gt; Yellow &lt;/TD&gt;
+    &lt;TD BGCOLOR=&quot;#9999FF&quot;&gt; Blue &lt;/TD&gt;
+  &lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="change-fontcolor"><I>6. Can I change the color of the font in the
+    middle of the HTML document?</I></A></H3>
+Yes, but only the more recent browsers will support it. There is
+a great gap between the markup tags of Netscape/MSIE and the principles of
+style sheets (which are a part of HTML 3.0). Style sheets are clearly the
+better way to handle problems like changing the color of a piece of text.
+
+<P>
+You can read more about style sheets on: 
+<A HREF="http://www.w3.org/Style/">http://www.w3.org/Style/</A>.
+
+<P>
+Since the release of Netscape Navigator 2.0 it is possible to
+change the color of a piece of text by adding the <CODE>COLOR</CODE>
+attribute to the <CODE>FONT</CODE> tag. The value that goes with the
+<CODE>COLOR</CODE> attribute is a <A HREF="#convert">hexadicimal value</A>,
+just like the one that goes with <CODE>BGCOLOR</CODE>, <CODE>TEXT</CODE>, etc..
+If you wanted to make a piece of text green (assuming you have a color
+monitor), the code in Netscape would look like this:
+<PRE>
+    &lt;FONT COLOR=&quot;#00FF00&quot;&gt;<FONT COLOR="#0000FF">This is a piece of text printed in blue</FONT>&lt;/FONT&gt;
+</PRE>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="tiling"><I>7. How does `tiling' work?</I></A></H3>
+When you have specified a background image it <EM>always</EM> will be tiled.
+That means the image will be repeated in the vertical and the horizontal way.
+So, if you want a gradient color pattern on the background just create
+a image which is just a few (say 8 or 10) pixels high and very wide (so wide
+people will never
+see the tiling in horizontal or vertical direction) and has the desired gradient
+color pattern. The image will be very small (in file size) because it's
+only a few pixels high. The browser will tile the image in the vertical or
+the horizontal way so you have a perfect gradient background.<P>
+
+Here are a few pages that take advantage of background images that are
+only a few pixels high (or wide):
+
+<UL PLAIN>
+  <LI><A HREF="http://www.two4u.com/color/">http://www.two4u.com/color/</A></LI>
+  <LI><A HREF="http://www.sci.kun.nl/thalia/funpage/startrek/">
+      http://www.sci.kun.nl/thalia/funpage/startrek/</A></LI>
+</UL>
+
+Another `problem' with tiling is that your picture has to be `seamless'.
+That means that your picture fits to itself perfectly. Because when 
+the picture will be tiled, the bottom of the picture will be placed against
+the top of the picture. Also the right side will be placed against the
+left side. Tom Karlo explains how to make such seamless pictures with
+Photoshop on <A HREF="http://www.pixelfoundry.com/Toms/Makeback/">
+http://www.pixelfoundry.com/Toms/Makeback/</A>
+
+<P>
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="fade"><I>8. How do I create the `fading' and `thunder'
+      effect?</I></A></H3>
+This is a rather old `feature' that was actually a bug in Netscape
+Navigator 1.1. By using multiple <CODE>BODY</CODE> tags one was able to
+create a `fading' effect. Using
+more than one <CODE>BODY</CODE> tag can be dangerous because <STRONG>only the
+first <CODE>BODY</CODE> tag will be read!</STRONG> So if you create a `fading'
+effect from black to white, only Netscape 1.1 users will see the final page
+as the others will only see the first defined background: black...<BR>
+
+Someone made a page that (ab)uses the bug in full effect:
+   <A HREF="http://www.netcreations.com/ramper/">
+      http://www.netcreations.com/ramper/</A><P>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="example"><I>9. Could you give me a complete example?</I></A></H3>
+Here is a complete HTML document that will result into 
+    <A HREF="example.html">this page</A>.
+<PRE>
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;A full example&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY
+  BACKGROUND="background.gif"
+  BGCOLOR="#335021"
+  TEXT="#F7CE96"
+  LINK="#CED2CC"
+  VLINK="#B1C0AC"
+  ALINK="#FFFFFF"&gt;
+
+&lt;H1&gt;A huge piece of text&lt;/H1&gt;&lt;P&gt;
+Some text in the normal font. As you can see by the way, there is only
+one &lt;CODE&gt;BODY&lt;/CODE&gt; tag. If you use more than one tag, only the
+first one will taken for your document. The `zoom' effect people created by
+using multiple &lt;CODE&gt;BODY&lt;/CODE&gt; tags only worked due to a bug in
+Netscape 1.1.&lt;P&gt;
+&lt;A HREF="http://www.two4u.com/bg-faq/"&gt;This is a
+  link where you have already been&lt;/A&gt;&lt;P&gt;
+&lt;A HREF="http://Foo.Bar/Pipco/"&gt;The infamous link to the page with the
+  1,000 nude pics of Pamela Anderson&lt;/A&gt;&lt;P&gt;
+&lt;HR&gt;
+&lt;A HREF="http://www.sci.kun.nl/thalia/guide/color/faq.html#example"&gt;Go
+  to the FAQ&lt;/A&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+<H3><A NAME="watermark"><I>10. How do I create a watermark effect / make
+        the background fixed?</I></A></H3>
+There are several ways to make the background stay fixed, which can
+be used to create a watermark effect. The best method would be to
+use Style Sheets. In the next example a page is created that has
+a fixed background image in the center of the page. Unfortunately
+this only works in Microsoft's Internet Explorer (MSIE) 4.0 and <A
+HREF="http://www.mozilla.org/">Netscape 5.0</A>.
+
+<P>
+The next example code will result in <A HREF="css.php3">next page</A>:
+
+<PRE>
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;STYLE TYPE="text/css"&gt;&lt;!--
+      BODY {
+        background-color: #FFFFFF;
+        background-image: url(../color/back_10.gif);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+    --&gt;&lt;/STYLE&gt;
+    &lt;TITLE&gt;Background FAQ: Example of fixed background.&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+
+  This is a lot of text, just to make sure the page will be scrolling and
+  that the text will really be scrolling over the background image which
+  will be centered, non-repeating and non-scrollable... Line 1.
+  &lt;P&gt;
+  [... other 19 lines cut away]
+
+  &lt;HR&gt;
+  &lt;A HREF="http://www.two4u.com/bg-faq/#watermark"&gt;Go to the FAQ&lt;/A&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+
+<P>
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+<H3><A NAME="leftbar"><I>11. How do I create a bar at the left of my
+        document?</I></A></H3>
+In short: create a very wide but not high image that you put in the
+background. The image already should contain the bar you want to have
+at the left.
+
+<P>
+You can find a more detailed explanation on <A HREF="leftbar/">this page
+with a complete example</A>.
+
+<P>
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+<H3><A NAME="color-databases"><I>12. Where can I find databases with color
+    examples?</I></A></H3>
+Here is a list of just a few of them:
+<UL PLAIN>
+  <LI><A HREF="http://www.two4u.com/color/">
+      http://www.two4u.com/color/</A></LI>
+  <LI><A HREF="http://developer.netscape.com/docs/manuals/htmlguid/colortab.htm">
+      http://developer.netscape.com/docs/manuals/htmlguid/colortab.htm</A></LI>
+  <LI><A HREF="http://catless.ncl.ac.uk/Lindsay/colours.html">
+      http://catless.ncl.ac.uk/Lindsay/colours.html</A></LI>
+  <LI><A HREF="http://www.webmotion.com/Websurfshop/Colorcode/">
+      http://www.webmotion.com/Websurfshop/Colorcode/</A></LI>
+</UL>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="texture-databases"><I>13. Where can I find databases with
+    textures?</I></A></H3>
+Here is a list of just a few of them:
+<UL PLAIN>
+  <LI><A HREF="http://www.netscape.com/assist/net_sites/bg/backgrounds.html">
+      http://www.netscape.com/assist/net_sites/bg/backgrounds.html</A></LI>
+  <LI><A HREF="http://www.ender-design.com/rg/backidx.html">
+      http://www.ender-design.com/rg/backidx.html</A></LI>
+  <LI><A HREF="http://www.netcreations.com/patternland/">
+      http://www.netcreations.com/patternland/</A></LI>
+  <LI><A HREF="http://www.ozones.com/~drozone/imagesindex.html">
+      http://www.ozones.com/~drozone/imagesindex.html</A></LI>
+  <LI><A HREF="http://www.meat.com/textures/">
+      http://www.meat.com/textures/</A></LI>
+  <LI><A HREF="http://www.ecn.bgu.edu/users/gas52r0/Jay/gifs.html">
+      http://www.ecn.bgu.edu/users/gas52r0/Jay/gifs.html</A></LI>
+  <LI><A HREF="http://raven.ubalt.edu/Images/backgrounds/sam_bg/sam_catalog.html"> http://raven.ubalt.edu/Images/backgrounds/sam_bg/sam_catalog.html</A></LI>
+  <LI><A HREF="http://www.sfsu.edu/~jtolson/textures/textures.htm">
+      http://www.sfsu.edu/~jtolson/textures/textures.htm</A></LI>
+  <LI><A HREF="http://www.best.com/~drzeus/Art/Textures/Textures.html">
+      http://www.best.com/~drzeus/Art/Textures/Textures.html</A></LI>
+  <LI><A HREF="http://www.pixelfoundry.com/bgs.html">
+      http://www.pixelfoundry.com/bgs.html</A></LI>
+  <LI><A HREF="http://www.cit.gu.edu.au/~iain/htextures/">
+      http://www.cit.gu.edu.au/~iain/htextures/</A></LI>
+</UL>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="color-pickers"><I>14. Color pickers: what are they and where
+    can I get them?</I></A></H3>
+Color pickers are tools to compose colors with. They use images from which
+you can select a color instead of giving a description of a color. There are
+some directly accessable via WWW and some are only for usage at home.<P>
+
+Directly accessable via WWW:
+<UL PLAIN>
+  <LI>Using Java(Script) (<EM>Only supported by Netscape Navigator 2.0 and up, and MS Internet Explorer 3.0 and up</EM>):
+    <UL PLAIN>
+      <LI>Local copy of the <A HREF="javascript:openIt()">Color Picker 2.0</A>
+          made by <A HREF="http://www.cs.princeton.edu/~mbostock/">Michael Bostock</A>
+      <LI><A HREF="http://www.hidaho.com/colorcenter/cc.html">
+         http://www.hidaho.com/colorcenter/cc.html</A> (JavaScript)</LI>
+    </UL>
+  </LI>
+  <LI>Using CGI:
+      <UL PLAIN>
+        <LI><A HREF="http://www.two4u.com/cgi-bin/color/compose">
+            http://www.two4u.com/cgi-bin/color/compose</A></LI>
+        <LI><A HREF="http://www.bagism.com/colormaker/colormaker-original.html">
+            http://www.bagism.com/colormaker/colormaker-original.html</A></LI>
+      </UL>
+
+    <P>
+  </LI>
+</UL>
+
+For MS Windows:
+<UL PLAIN>
+  <LI><A HREF="http://maximized.com/freeware/clrbrwsr/">
+      http://maximized.com/freeware/clrbrwsr/</A></LI>
+  <LI><A HREF="http://www.bbsinc.com/colorEditor_FAQ.html">
+      http://www.bbsinc.com/colorEditor_FAQ.html</A></LI>
+  <LI><A HREF="http://www.neonshop.com/software/software.html">
+      http://www.neonshop.com/software/software.html</A></LI>
+</UL>
+
+For the Mac:
+<UL PLAIN>
+  <LI><A HREF="http://tucows.wau.nl/mac/colormac.html">
+      http://tucows.wau.nl/mac/colormac.html</A></LI>
+</UL> 
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="style-sheets"><I>15. What are style sheets?</I></A></H3>
+With a style sheet you can *hint* a browser to display objects in a certain
+way. For instance you can *hint* the browser to use a different font color.<P>
+
+The Style Sheets specifications have been around for quite some time. The
+problem with Style Sheets is that they are partly/poorly supported by
+the two most popular browsers: Netscape Navigator and MSIE. You can read
+more about them on: <A HREF="http://www.w3.org/Style/">
+http://www.w3.org/Style/</A>. With the arrival of version 5.0 of
+both browsers, the support for CSS will be a lot better.<P>
+
+<A HREF="#questions">Go up to the questions</A>
+<HR>
+
+<H3><A NAME="links"><I>16. This FAQ sux! Don't you know any other documents
+    on backgrounds?</I></A></H3>
+Hey! This FAQ doesn't suck! Well, maybe... ;-) But I really tried my
+best to hand you something useful. If you think something is
+incorrect/missing please don't hesitate and
+<A HREF="mailto:bg-faq@two4u.com">mail me</A>.<P>
+
+Here are some other documents on backgrounds:
+<UL PLAIN>
+  <LI><A HREF="http://home.netscape.com/assist/net_sites/bg/">
+      http://home.netscape.com/assist/net_sites/bg/</A></LI>
+  <LI><A HREF="http://dir.yahoo.com/Arts/Design_Arts/Graphic_Design/Web_Page_Design_and_Layout/Graphics/Backgrounds/">
+      http://dir.yahoo.com/Arts/Design_Arts/Graphic_Design/Web_Page_Design_and_Layout/Graphics/Backgrounds/</A></LI>
+</UL> 
+</BODY>
+</HTML>
+

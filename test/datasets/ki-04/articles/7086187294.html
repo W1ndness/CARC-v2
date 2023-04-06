@@ -1,0 +1,971 @@
+<!-- <DOCUMENT>
+	<FILE>
+		7086187294.html
+	</FILE>
+	<URL>
+		http://proximity.franklin.com/index.html#Overview
+	</URL>
+	<TITLE>
+		Proximity Technology Inc.
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Proximity Technology Inc. The Proximity Wizard (261K) Proximity Technology, Inc. provides portable and intelligent linguistic software sub-systems: spelling correction and verification, hyphenation, thesaurus, dictionary, fuzzy database search and more in numerous languages. Established in 1979, Proximity was the first company to develop and provide intelligent linguistic systems for original equipment manufacturers (OEMs). Acquired in 1988 by Franklin Electronic Publishers, Inc. , the world leader in electronic book publishing, Proximity's technology is incorporated into Franklin's hand-held linguistic products. Today, Proximity Technology provides high quality linguistic Software Development Kits (SDKs) for customers internationally, including the best spelling correction technology on the planet. Table of Contents Online Demos End User Products Developer's Overview Quality and Service Clients Languages Spell Checker Hyphenation Thesaurus Dictionary Franklin Dictionary OCR Spell Checker Proximity-Scan Fuzzy Database Search Private Developer Site Contact Information Online Demos Current Products Spell Checker Stand Alone Hyphenation Thesaurus American English Dictionary American English Kids' Dictionary (Grades 1-3) British English Kids' Dictionary (Grades 1-3) OCR Speller Fuzzy Database Search (Proximity-SCAN Demo) Future Products Franklin Bilingual Dictionaries English/Spanish English/French English/German English/Portuguese German/French German/Italian Franklin Monolingual Dictionaries French Italian End User Products Sorry, at this time all the information at this site is for manufacturers only. In the past, Proximity sold the following software products to the general public in retail stores: Language Master (TM) Dictionary and Thesaurus Friendly Finder (TM) The intelligent database search companion Similar products are currently under development, and will be available here online at some future date. Developer's Overview Our Software Sub-Systems Proximity develops and licenses software sub-systems with flexible API's for integration into larger applications, and commonly refers to this collection as the Proximity Linguistic System (PLS). The current release is Revision 7.1 One Source-Code Base Our software sub-systems consist of portable "C" source code with localized operating system dependencies limited to file I/O and memory allocation. This makes the products portable across all platforms, including: Windows NT DOS OS/2 Macintosh UNIX VMS All software sub-systems can be mixed and matched with no conflicts in file names or symbols. Portable Compressed Databases Our binary pre-compressed databases are architecture independent, allowing the same file to be accessed by all computers in a heterogeneous network. Proximity's proprietary data compression technology squeezes 80,000 words with definitions and other dictionary information - 6 megabytes of ASCII information - into less than 1 megabyte of disk space, or more than one million Italian words with full phonetic spelling correction information into less than 110K, which yields a compression ratio of 1.15 words per BIT! (this is not a misprint) In addition, all our compressed databases, except the definitions dictionary and thesaurus, can be used in ROM based environments. Your Product Here is a sample list of the kinds of products which can benefit from using our software: Contact management Desktop publishing Electronic mail Forms processing Graphics presentation Integrated office systems Intelligent character recognition (ICR) Internet search engines Optical character recognition (OCR) Text Retrieval Typewriters Word processing Quality and Service Proximity provides high-quality linguistic products for more than 200 hardware and software customers, representing millions of users around the globe. State-of-the-art programming and affiliation with world-renowned linguists provide a depth of expertise to deliver quality, cutting-edge products. Flexible license terms increase the attractiveness of partnering with Proximity. Whether your customers use electronic typewriters, PCs, pen-based devices, minicomputers or mainframes, the Proximity Linguistic System helps them produce more effective written communications by giving them instant access to text proofing tools such as: Spell Checking Hyphenation Thesaurus Dictionary Proximity's development support team works closely with our OEMs to help them deliver the best solutions to meet ever-changing business needs. Each member of the support team is committed to total customer responsiveness, whether your company is large or small. Our customers depend on outstanding service and personal attention at all levels. We believe our commitment to quality products, responsiveness to our customers' needs and unmatched technical support is the key to customer satisfaction. We've invested the time, money, and resources to deliver affordable, high-quality linguistic solutions to your programming needs. Clients include: Adobe Systems Inc. (Pagemaker, Framemaker, Persuasion) Applix (Applixware, Anyware) Arbortext (Publisher) Broderbund Software (Carmen Sandiego Word Detective) Caere (OmniPage, WordScan, High-End OCR) Franklin Electronic Publishers, Inc. Lotus (Ami Pro) Macromedia (Freehand) Olivetti (Typewriters) Sharp Corporation (typewriters) Stenograph Corporation (court transcription products) Unisys Corporation Xyvision Languages Multilingual spell checking, hyphenation, and thesauruses are available in the following languages: English (American) English (British) English (Canadian) * Catalan * Danish Dutch (De Nieuwe Spelling) Finnish * French French (Canadian) German (Rechtschreibreform) German (Swiss) Italian Norwegian (Bokm&aring;l) Norwegian (Nynorsk) * Polish * Portuguese * Portuguese (Brazilian) * Russian * Spanish Swedish * Thesaurus in development Spell Checker Our word lists are created specifically for electronic use; our linguistic experts and editorial partners constantly monitor the "living" or everyday language in each country to ensure the databases are current. The Spell-Checker provides the following functions: Text Parser Spelling Verification Spelling Correction User Dictionary Text Parser Our text parser simplifies proofreading for the user by allowing certain "non-word" constructs to be skipped or flagged prior to word verification. The parser isolates a word suitable for spell checking from its surrounding text, and classifies it using a modular, extensible set of options. These options can be used to implement features such as: Find Uncapitalized Start of Sentence Find Repeated Words Ignore Numbers: e.g., 1-800-266-5626 Ignore Ordinals: e.g., 1st, 2nd, 3rd Ignore Roman Numerals, e.g., IV, VII Ignore Parentheses in Words: e.g., sales(wo)man, shoe(s) This is a specialized token parser, not a full text parser, and in its most common usage assumes that the text passed to it has already been separated from any surrounding whitespace. Spelling Verification The Spelling Verification routine offers uncompromising accuracy, fast and error-free performance accelerators and complete and high-quality data. It checks spelling, including the capitalization and punctuation pertinent to the word by itself. Two types of word lists are provided for this routine: Disk-based (lexicon, user dictionary) RAM-based (corelex, cache, tsp ). The lexicon is a closed reference, the user dictionary can be changed. The corelex is a list of most frequently used words and is available in various sizes to accommodate your software packaging needs. The cache is a list that is built as the spell-checking process is performed. The tsp (tiny-speller) is a highly compressed database (under 128K) which can be used in place of the main lexicon and corelex when available. The verifier recognizes the following word formations: Capitalization of proper nouns, and acronyms Closed Compounds Enclitics and Contractions Hyphenated Compounds Alternate Spellings Forgot to hit the space bar when typing? The uncatwords() function will verify that "thecat" is really "the cat". Spelling Correction This routine performs phonetic and typographic analysis using a proprietary technique which corrects several types of mistakes. A misspelled word is corrected by comparing it against lists of valid words, including the User Dictionary. Spelling-alternatives found by the analysis are displayed in a list - ordered from most likely to least likely - from which the user can choose the right word. User Dictionary The User Dictionary allows users to customize their systems by adding words not found in the word list; there is no restriction on the number of entries. The User Dictionary has a large storage capacity with space for more than a million words, minimizing disk usage. More than one User Dictionary can be created, allowing the user to categorize different types of supplemental words. Hyphenation of a word can be included, and words within the list can be edited. Hyphenation Proximity provides hyphenation for electronic publishing systems and word processing programs requiring perfect hyphenation. Our standard ensures 100% accuracy. Editorial Excellence The word lists used for our linguistic products are built and maintained by major international dictionary publishers. Words in these lists are hyphenated and hand-checked by lexicographers to ensure all hyphenation points are correct. Proximity runs each list through a computerized pattern generation process that determines what rules govern the hyphenation of the words. These rules always ensure 100% accuracy against the words in our lists, including irregular forms. In addition, these rules also provide high probability of accuracy for words not found in our lists - our hyphenation system knows which rule most likely governs an "unknown" word's hyphenation. Implementation Options Stand Alone Hyphenation (SAH) - a fast, compact package, provides 100% accuracy for all words found in our lists - without the need to check the word list. Our proprietary technology combines an algorithm with pattern files, replicating the results of dictionary-based hyphenation. Verified Hyphenation - provides the benefits of SAH with an extra measure of confidence. Words are verified against the Main and User word list. If a word is found in either word list, verified hyphenation will hyphenate correctly with 100% confidence. If a word is not found, this function will alert the user. Thesaurus Proximity's International Thesauruses offer the tools for users to prepare effective cross-cultural communications and gain a significant competitive advantage. Proximity's thesauruses differ in certain aspects; several languages offer synonyms only, while others provide combinations of supplemental lists (i.e., antonyms, related words, compared or contrasted words). Inflection Inflection is the process of altering a base word, e.g., when a noun becomes plural or a verb changes tense. Unlike other thesauruses which only refer you to the base word's synonyms, the Proximity thesaurus inflects the synonyms so you can replace the word in the correct form. For example, the past tense/past participle of the word "entwine" is "entwined". The Proximity thesaurus gives you the inflected (the past/past participle) forms of the synonyms: i.e., "wound," "coiled," etc. By inflecting the words, the thesaurus saves you time and embarrassing grammatical errors. The American and British English thesauruses support code-based inflection. An inflected query is converted to its root form and synonyms returned are cast into the appropriate inflected form. Meanings The American English thesaurus also offers meaning cores, characterized by a part of speech (i.e., noun, verb, etc.). A meaning core is a brief statement which summarizes a particular usage of an entry word and illustrates its relationship to associated words. Synonyms and other words are returned specifically for a selected meaning core. The other Proximity thesauruses provide responses grouped by meaning. In addition, all data files support closure of the synonym data; i.e., any response given as a response to a query is also a valid entry point. Dictionary Proximity offers one of the most comprehensive electronic dictionaries on the market. Our Concise Electronic Dictionary is an intelligent reference product produced by the combination of our proprietary recognition algorithms, top-level programming and a partnership with the nation's foremost dictionary publisher, Merriam-Webster. Available in American English only, the dictionary provides concise definitions for almost 80,000 words. Franklin Dictionary Proximity's Franklin Dictionary is a software product which provides access to the same dictionary databases used in Franklin Electronic Publishers' Handheld Reference Products. These highly compressed databases utilize Franklin's patented Fielded Dictionary Compression Techniques. It provides the following features: Random access lookup with inflection recognition Phonetic and typographic correction OCR Spell Checker Proximity's Optical Character Recognition (OCR) Spell Checker is a powerful software library designed to improve the accuracy and speed of a developer's graphics-to-text conversion product. Accuracy increases by using linguistic data to validate the output of the developer's character recognition engine. Speed increases depend on the type of product. For example: Full document processing can be speeded up by minimizing the time required for interactive post-conversion proofing. &#32; Interactive proofing can be eliminated or postponed for automatic tagging of graphic images, by creating a dictionary of words found in the image; these can be used for future queries. The OCR Spell Checker addresses a different problem area than the typical word processor spell checker. OCR Requires: Disambiguation of words in which glyphs have been joined or split, e.g., (rn ==&gt; m) or (m ==&gt; rn). Selection of correct words given uncertain spelling. Word-processing Requires: Verification of words given exact spelling. Selection of possible matches given an unverified word. The software consists of linguistic independent C source code and pre-made compressed word lists, which contain the same words used in our standard spelling product. Proximity-Scan Proximity-Scan is an innovative process for searching databases. This proprietary and patented technology judges overall similarity between a query and records in a database. It is a fuzzy matching technique which enables users to find records in a database despite misspellings, words out of order, missing words and abbreviations. It ranks database records in order of similarity to a given query; there is no need to sort, index, translate or modify your database. Record retrieval no longer requires painstaking accuracy. There are no magic characters or hard to remember operations; your best guess is all that is needed. Proximity-Scan is friendly, simple, efficient, and fast. Private Developer Site We maintain a separate restricted site for our clients and prospective clients which includes API documents, technical reports, etc., Please contact us for the necessary access information. Contact Information Thanks for visiting Proximity's home page. We hope to hear from you again soon. For further information on Proximity's products, please contact: Maria Armstrong (609) 386-2500 ext. 4520 Proximity Technology Inc. c/o Franklin Electronic Publishers One Franklin Plaza Burlington, NJ 08016 USA Email Address: proximity@franklin.com &#169; Copyright 2001 Proximity Technology Inc. All Rights reserved. 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<META NAME="ROBOTS" CONTENT="NOFOLLOW">
+<META NAME="description" CONTENT="
+We provide portable and intelligent linguistic software sub-systems: 
+spelling correction and verification, hyphenation, thesaurus, dictionary, 
+fuzzy database search, OCR/ICR, ...
+">
+<META NAME="keywords" CONTENT="
+proximity, technology, spell, spelling, check, checker, checking,
+spell-check, spell-checker, spell-checking, spellcheck, spellchecker,
+spellchecking, verification, verifier, verify, word, wordlist,
+word-list, correct, corrector, correction, typographic, phonetic,
+parse, parser, parsing, hyphenate, hyphenator, hyphenation, thesaurus,
+reference, synonym, antonym, inflect, dictionary, definition,
+proximity-scan, data, database, fuzzy, pattern, retrieval, search,
+language, international, global, multi-lingual, multilingual, linguist,
+lexicon, publisher, bokmal, norwegian, nynorsk, brazilian, british,
+canadian, catalan, danish, dutch, english, finnish, german, italian,
+swedish, russian, swiss, spanish, portuguese, french, ocr, icr, image,
+forms, processing, forms-processing, document, text, proofing,
+text-proofing, textproofing, oem, function, algorithm, api, source,
+code, source-code, sub-system, subsystem, library, software, tools,
+program, portable, compression, computer, electronic, internet,
+network, flesch, fog, readability, index, typewriter. rechtschreibreform
+de nieuwe spelling, sdk, friendly finder, language master
+">
+<TITLE>
+	Proximity Technology Inc.
+</TITLE>
+</HEAD>
+<BODY>
+
+<P ALIGN="CENTER">
+<IMG SRC="plogo.gif" ALT="Proximity"><BR>
+</P>
+<BR>
+<hr><!------------------------------------------------------>
+<P ALIGN="CENTER">
+<A HREF="pwizard.gif">
+<IMG SRC="pwizicon.gif" ALT="[wizard icon]"> 
+
+		The Proximity Wizard (261K)
+</A>
+</P>
+<br>
+
+<hr><!------------------------------------------------------>
+<P>
+Proximity Technology, Inc. provides portable and intelligent linguistic software
+sub-systems: spelling correction and verification, hyphenation, thesaurus,
+dictionary, fuzzy database search and more in numerous languages.
+<P>
+Established in 1979, Proximity was the first company to develop and provide
+intelligent linguistic systems for original equipment manufacturers (OEMs). 
+<P>
+	Acquired in 1988 by 
+
+<A HREF="http://www.franklin.com">
+
+	Franklin Electronic Publishers, Inc.
+</A>
+	, the world leader in electronic book
+	publishing, Proximity's technology is incorporated into 
+	Franklin's hand-held linguistic products.
+<P>
+     	Today, Proximity Technology provides high quality linguistic 
+	Software Development Kits (SDKs)
+     	for customers internationally, including
+	the best spelling correction technology on the planet.
+<P>
+<hr><!------------------------------------------------------------------>
+<H1>
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+		Table of Contents
+</H1>
+
+<UL>
+<LI><A HREF="#Demos"> 		Online Demos 				</A>
+<LI><A HREF="#EUP"> 		End User Products			</A>
+<P>
+<LI><A HREF="#Overview">	Developer's Overview 			</A>
+<LI><A HREF="#Service"> 	Quality and Service 			</A>
+<LI><A HREF="#Clients"> 	Clients 				</A>
+<P>
+<LI><A HREF="#Lang">		Languages 				</A>
+<P>
+<LI><A HREF="#Spell">		Spell Checker				</A>
+<LI><A HREF="#Hyph">		Hyphenation				</A>
+<LI><A HREF="#Thes">		Thesaurus				</A>
+<LI><A HREF="#Dict">		Dictionary				</A>
+<LI><A HREF="#Fdict">		Franklin Dictionary			</A>
+<P>
+<LI><A HREF="#OCR">		OCR Spell Checker			</A>
+<LI><A HREF="#SCAN">		Proximity-Scan Fuzzy Database Search	</A>
+<P>
+<LI><A HREF="#Private"> 	Private Developer Site 			</A>
+<LI><A HREF="#Contacts">	Contact Information			</A>
+</UL>
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Demos"> 	
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Online Demos
+</A> 
+</H1>
+<H2>
+Current Products
+</H2>
+<UL>
+    <LI>
+	 <A HREF="/cgi-bin/proximity/spl2html?datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F">
+	Spell Checker
+	</A>
+    <LI>
+	<A HREF="/cgi-bin/proximity/sah2html?datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F">
+	Stand Alone Hyphenation
+	</A>
+    <LI>
+	<A HREF="/cgi-bin/proximity/ths2html?datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F">
+	Thesaurus
+	</A>
+    <LI>
+	<A HREF="/cgi-bin/proximity/dct2html?language=0eng&langtable=no&datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F">
+	American English Dictionary
+	</A>
+    <LI>
+	<A HREF="/cgi-bin/proximity/kid2html?fuzzy=&language=0eng&langtable=yes&datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F">
+	American English Kids' Dictionary (Grades 1-3)
+	</A>
+    <LI>
+	<A HREF="/cgi-bin/proximity/dcq2html?fuzzy=&language=0eng&langtable=yes&datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F">
+	British English Kids' Dictionary (Grades 1-3)
+	</A>
+    <LI>
+	<A HREF="/cgi-bin/proximity/rgx2html?datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F&charset=0iso&icharset=0iso">
+	OCR Speller
+	</A>
+    <LI>
+ 	<A HREF="/cgi-bin/proximity/p2_2html?datapath=%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F&city=bch&state=fl&population=50000">
+	Fuzzy Database Search (Proximity-SCAN Demo)
+	</A>
+</UL>
+
+<H2>
+Future Products
+</H2>
+<UL>
+<LI>Franklin Bilingual Dictionaries 
+  <P>
+  <UL>
+    <LI>
+	<A HREF="/cgi-bin/proximity/pjb2html?language=engeng&langtable=yes&datapath=0%2Fhome%2Fcust1%2Fusr1016%2Fproximity%2Fdata%2F">
+	English/Spanish
+	</A>
+    <LI>English/French
+    <LI>English/German
+    <LI>English/Portuguese
+    <LI>German/French
+    <LI>German/Italian
+  </UL>
+<P>
+<LI>Franklin Monolingual Dictionaries 
+  <P>
+  <UL>
+    <LI>French
+    <LI>Italian
+  </UL>
+</UL>
+
+
+<hr><!-------------------------------------------------->
+<H1>
+<A NAME="EUP">
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+		End User Products
+</A>
+</H1>
+
+<P>
+
+	Sorry, at this time all the information at this site is for 
+	manufacturers only.
+</P>
+<P>
+	In the past, Proximity sold the following software products
+	to the general public in retail stores:
+</P>
+
+<UL>
+<LI> 	Language Master (TM) Dictionary and Thesaurus
+<LI> 	Friendly Finder (TM) The intelligent database search companion
+</UL>
+
+<P>	
+	Similar products are currently under development, and will be
+	available here online at some future date.
+</P>
+
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Overview"> 	
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Developer's Overview 			
+</A>
+</H1>
+
+<DL>
+
+<P>
+<DT> 
+<STRONG> 
+			Our Software Sub-Systems 
+</STRONG>
+
+<P>
+<DD>
+	Proximity develops and licenses software sub-systems with 
+	flexible API's for integration into larger applications, 
+	and commonly refers to this collection as the 
+<EM>
+	Proximity Linguistic System (PLS).
+</EM>
+	The current release is Revision 7.1 
+</DL>
+
+<DL>
+
+<P>
+<DT>
+<STRONG>
+	One Source-Code Base
+</STRONG>
+
+<P>
+<DD>
+	Our software sub-systems consist of portable "C" source code with 
+	localized operating system dependencies limited to file I/O and 
+	memory allocation.  This makes the products portable across
+	all platforms, including:
+<P>
+<UL>
+<LI>	Windows
+<LI>	NT
+<LI>	DOS
+<LI>	OS/2
+<P>
+<LI>	Macintosh
+<LI>	UNIX
+<LI>	VMS
+</UL>
+
+<P>
+	All software sub-systems can be mixed and matched with
+	no conflicts in file names or symbols.
+
+<P>
+<DT>
+<STRONG>
+	Portable Compressed Databases
+</STRONG>
+
+<P>
+<DD>
+
+	Our binary pre-compressed databases are architecture independent,
+	allowing the same file to be accessed by all computers in a
+	heterogeneous network.
+<P>
+	Proximity's proprietary data compression technology squeezes 80,000 
+	words with definitions and other dictionary information 
+	- 6 megabytes of ASCII information - 
+	into less than 1 megabyte of disk space, or more than one million
+	Italian words with 
+	full phonetic spelling correction information into less than 110K,
+	which yields a compression ratio of 1.15 words per BIT! 
+	(this is not a misprint)
+<P>
+	In addition, all our compressed databases, except the definitions 
+	dictionary and thesaurus, can be used in ROM based environments.
+</DL>
+
+<DL>
+<P>
+<DT> 
+<STRONG> 
+			Your Product 
+</STRONG>
+
+<P>
+<DD>
+	Here is a sample list of the kinds of products which can benefit
+	from using our software:
+<P>
+<UL>
+<LI> 	Contact management 
+<LI> 	Desktop publishing 
+<LI> 	Electronic mail 
+<LI> 	Forms processing 
+<LI> 	Graphics presentation 
+<LI> 	Integrated office systems 
+<LI> 	Intelligent character recognition (ICR) 
+<LI> 	Internet search engines 
+<LI> 	Optical character recognition (OCR) 
+<LI> 	Text Retrieval
+<LI> 	Typewriters 
+<LI> 	Word processing
+</UL>
+
+</DL>
+
+<hr><!-------------------------------------------------->
+<H1>
+<A NAME="Service">
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+		Quality and Service
+</A>
+</H1>
+
+<P>
+
+	Proximity provides high-quality linguistic products for more 
+	than 200 hardware and software customers, representing 
+	millions of users around the globe.
+<P>
+	State-of-the-art programming and affiliation with world-renowned 
+	linguists provide a depth of expertise to deliver quality, 
+	cutting-edge products.  Flexible license terms increase the 
+	attractiveness of partnering with Proximity.
+<P>
+	Whether your customers use electronic typewriters, PCs, 
+	pen-based devices, minicomputers or mainframes, 
+	the Proximity Linguistic System helps them produce more 
+	effective written communications by giving them instant access 
+	to text proofing tools such as:
+<UL>
+<LI> 	Spell Checking
+<LI> 	Hyphenation
+<LI> 	Thesaurus
+<LI> 	Dictionary
+</UL>
+
+<P>
+	Proximity's development support team works closely with
+	our OEMs to help them deliver the best solutions to
+	meet ever-changing business needs.  Each member of the
+	support team is committed to total customer
+	responsiveness, whether your company is large or
+	small.  Our customers depend on outstanding service and
+	personal attention at all levels.  
+<P>
+	We believe our
+	commitment to quality products, responsiveness to our
+	customers' needs and unmatched technical support is the
+	key to customer satisfaction.
+
+<P>
+	We've invested the time, money, and resources to deliver 
+	affordable, high-quality linguistic solutions to 
+	your programming needs.
+
+<hr><!-------------------------------------------------->
+<H1> 
+<A NAME="Clients"> 	
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+	Clients include: 		
+</A> 
+</H1>
+
+<UL>
+
+<LI> 	
+<A HREF="http://www.adobe.com/prodindex/pagemaker/">
+	Adobe Systems Inc. (Pagemaker, Framemaker, Persuasion)
+</A>
+
+<LI> 	
+<A HREF="http://www.applix.com/">
+	Applix (Applixware, Anyware)
+</A>
+
+<LI> 	
+<A HREF="http://www.arbortext.com/">
+	Arbortext (Publisher)
+</A>
+
+<LI> 	
+<A HREF="http://www.broderbund.com/">
+	Broderbund Software (Carmen Sandiego Word Detective)
+</A>
+
+<LI>
+<A HREF="http://www.caere.com/">
+	Caere (OmniPage, WordScan, High-End OCR)
+</A>
+
+<LI>
+<A HREF="http://www.franklin.com/">
+	Franklin Electronic Publishers, Inc.
+</A>
+
+<LI>
+<A HREF="http://www.lotus.com/">
+	Lotus (Ami Pro)
+</A>
+
+<LI>
+<A HREF="http://www.macromedia.com/">
+	Macromedia (Freehand)
+</A>
+
+<LI>
+<A HREF="http://www.olivetti.com/">
+	Olivetti (Typewriters)
+</A>
+
+<LI>
+<A HREF="http://www.sharp.co.jp/index-e.html">
+	Sharp Corporation (typewriters)
+</A>
+
+<LI>
+<A HREF="http://www.stenograph.com/">
+	Stenograph Corporation (court transcription products)
+</A>
+
+<LI>
+<A HREF="http://www.unisys.com/">
+	Unisys Corporation
+</A>
+
+<LI>
+<A HREF="http://www.xyvision.com/">
+	Xyvision
+</A>
+
+
+</UL>
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Lang"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Languages 
+</A> 
+</H1>
+
+<P>
+	Multilingual spell checking, hyphenation, and thesauruses are 
+	available in the following languages:
+
+<OL>
+<LI> 	English (American)
+<LI> 	English (British)
+<LI> 	English (Canadian) *
+<LI> 	Catalan *
+<LI> 	Danish
+<LI>	Dutch (De Nieuwe Spelling)
+<LI> 	Finnish *
+<LI> 	French
+<LI> 	French (Canadian)
+<LI> 	German (Rechtschreibreform)
+<LI> 	German (Swiss)
+<LI> 	Italian
+<LI> 	Norwegian (Bokm&aring;l)
+<LI> 	Norwegian (Nynorsk) *
+<LI> 	Polish *
+<LI> 	Portuguese *
+<LI> 	Portuguese (Brazilian) *
+<LI> 	Russian *
+<LI> 	Spanish
+<LI> 	Swedish
+</OL>
+
+<P>
+	* Thesaurus in development
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Spell"> 	
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Spell Checker 
+</A> 
+</H1>
+
+<P>
+	Our word lists are created specifically for electronic use; our 
+	linguistic experts and editorial partners constantly monitor the 
+	"living" or everyday language in each country to ensure the databases
+	are current.
+<P>
+     The Spell-Checker provides the following functions:
+<UL>
+<LI>        Text Parser
+<LI>        Spelling Verification
+<LI>        Spelling Correction
+<LI>        User Dictionary
+</UL>
+     
+<DL>
+<P>
+<DT>
+<STRONG>
+     Text Parser
+</STRONG>
+
+<P>
+<DD>
+     
+     Our text parser simplifies proofreading for the user by allowing 
+     certain "non-word" constructs to be skipped or flagged prior to
+     word verification.
+
+<P>
+     The parser isolates a word suitable for spell checking from its 
+     surrounding text, and classifies it using a modular, 
+     extensible set of options.  These options can be used to implement features
+     such as:
+<P>
+<UL>
+<LI> Find Uncapitalized Start of Sentence
+<LI> Find Repeated Words
+<P>
+<LI> Ignore Numbers: e.g., 1-800-266-5626
+<LI> Ignore Ordinals: e.g., 1st, 2nd, 3rd
+<LI> Ignore Roman Numerals, e.g., IV, VII
+<LI> Ignore Parentheses in Words: e.g., sales(wo)man, shoe(s)
+</UL>
+
+<P>
+This is a specialized token parser, not a full text parser, and in
+its  most common usage assumes that the text passed to it has already 
+been separated from any surrounding whitespace.
+
+<P>
+<DT>
+<STRONG>
+     Spelling Verification
+</STRONG>
+
+<P>
+<DD>
+     
+     The Spelling Verification routine offers uncompromising accuracy, fast 
+     and error-free performance accelerators and complete and high-quality 
+     data.  It checks spelling, including the capitalization and 
+     punctuation pertinent to the word by itself.  
+     
+     Two types of word lists are provided for this routine:  
+<OL>
+<LI> 	Disk-based (lexicon, user dictionary) 
+<LI>	RAM-based (corelex, cache, 
+tsp 
+).
+</OL>
+
+	The lexicon is a closed 
+     reference, the user dictionary can be changed.  
+     The corelex is a list 
+     of most frequently used words and is available in various sizes to 
+     accommodate your software packaging needs.  The cache is a list that is 
+     built as the spell-checking process is performed.
+     The tsp (tiny-speller) is a highly compressed database (under 128K) 
+     which can be used in place of the main lexicon and corelex when available.
+<P>
+	The verifier recognizes the following word formations:
+<UL>
+<LI> Capitalization of proper nouns, and acronyms
+<LI> Closed Compounds
+<LI> Enclitics and Contractions 
+<LI> Hyphenated Compounds
+<LI> Alternate Spellings
+</UL>
+
+<P> 
+Forgot to hit the space bar when 
+typing?
+<BR>
+The uncatwords() function will verify that "thecat" is really "the cat".
+
+<P>
+<DT>
+<STRONG>
+     Spelling Correction
+</STRONG>
+
+<P>
+<DD>
+     This routine performs phonetic and typographic analysis using a 
+     proprietary technique which corrects several types of mistakes.  A 
+     misspelled word is corrected by comparing it against lists of valid 
+     words, including the User Dictionary. 
+<P>
+     Spelling-alternatives found by 
+     the analysis are displayed in a list - ordered from most likely to 
+     least likely - from which the user can choose the right word.
+     
+<P>
+<DT>
+<STRONG>
+     User Dictionary
+</STRONG>
+
+<P>
+<DD>
+     The User Dictionary allows users to customize their systems by adding 
+     words not found in the word list; there is no restriction on the number 
+     of entries.  The User Dictionary has a large storage capacity with 
+     space for more than a million words, minimizing disk usage.  
+<P>     
+     More than 
+     one User Dictionary can be created, allowing the user to categorize 
+     different types of supplemental words.  Hyphenation of a word can be 
+     included, and words within the list can be edited.
+
+</DL>
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Hyph"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Hyphenation 
+</A> 
+</H1>
+     
+<P>
+     Proximity provides hyphenation for electronic publishing systems and 
+     word processing programs requiring perfect hyphenation.  Our standard 
+     ensures 100% accuracy.
+
+     
+<DL>
+<P>
+<DT>
+<STRONG>
+     Editorial Excellence
+</STRONG>
+
+<P>
+<DD>
+     
+<P>
+     The word lists used for our linguistic products are built and 
+     maintained by major international dictionary publishers.  
+     Words in 
+     these lists are hyphenated and hand-checked by lexicographers to 
+     ensure all hyphenation points are correct.
+     
+<P>
+     Proximity runs each list through a computerized pattern generation 
+     process that determines what rules govern the hyphenation of the 
+     words.  These rules always ensure 100% accuracy against the words in 
+     our lists, including irregular forms.  In addition, these rules also 
+     provide high probability of accuracy for words not found in our lists 
+     - our hyphenation system knows which rule most likely governs an 
+     "unknown" word's hyphenation.
+     
+<P>
+<DT>
+<STRONG>
+     Implementation Options
+</STRONG>
+
+<P>
+<DD>
+
+<UL>
+<LI>
+     
+     Stand Alone Hyphenation (SAH) - a fast, compact package, provides 
+     100% accuracy for all words found in our lists - without the need to 
+     check the word list.
+     Our proprietary technology combines an 
+     algorithm with pattern files, replicating the results of 
+     dictionary-based hyphenation.
+     
+<P>
+<LI>
+     Verified Hyphenation - provides the benefits of SAH with an extra 
+     measure of confidence.  Words are verified against the Main and User 
+     word list.  If a word is found in either word list, verified hyphenation 
+     will hyphenate correctly with 100% confidence.  If a word is not 
+     found, this function will alert the user.
+</UL>
+     
+</DL>
+
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Thes"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Thesaurus 
+</A> 
+</H1>
+
+<P>
+     Proximity's International Thesauruses offer the tools for users to 
+     prepare effective cross-cultural communications and gain a significant 
+     competitive advantage.
+<P>
+     
+     Proximity's thesauruses differ in certain aspects; several languages 
+     offer synonyms only, while others provide combinations of supplemental 
+     lists (i.e., antonyms, related words, compared or contrasted words).
+
+<DL>
+
+<P>
+<DT>
+<STRONG>
+     Inflection
+</STRONG>
+
+<P>
+<DD>
+     Inflection is the process of altering a base word, e.g., when a noun 
+     becomes plural or  a verb changes tense.  Unlike other thesauruses 
+     which only refer you to the base word's synonyms, the Proximity 
+     thesaurus inflects the synonyms so you can replace the word in the 
+     correct form.  
+<P>
+     For example, the past tense/past participle of the word 
+     "entwine" is "entwined".  The Proximity thesaurus gives you the 
+     inflected (the past/past participle) forms of the synonyms:  i.e., 
+     "wound," "coiled," etc.  By inflecting the words, the thesaurus saves 
+     you time and embarrassing grammatical errors.
+<P>
+     The American and British English thesauruses support code-based 
+     inflection.  An inflected query is converted to its root form and 
+     synonyms returned are cast into the appropriate inflected form.
+     
+<P>
+<DT>
+<STRONG>
+     Meanings
+</STRONG>
+
+<P>
+<DD>
+     The American English thesaurus also offers meaning cores, 
+     characterized by a part of speech (i.e., noun, verb, etc.).  A meaning 
+     core is a brief statement which summarizes a particular usage of an 
+     entry word and illustrates its relationship to associated words.  
+     Synonyms and other words are returned specifically for a selected 
+     meaning core.  
+<P>
+     The other Proximity thesauruses provide responses 
+     grouped by meaning.  In addition, all data files support closure of 
+     the synonym data; i.e., any response given as a response to a query is 
+     also a valid entry point.
+     
+</DL>
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Dict"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Dictionary 
+</A> 
+</H1>
+
+<P>
+	Proximity offers one of the most comprehensive electronic dictionaries 
+	on the market.  
+	Our Concise Electronic Dictionary is an intelligent reference product 
+	produced by the combination of our proprietary recognition algorithms, 
+	top-level programming and a partnership with the nation's foremost 
+	dictionary publisher, Merriam-Webster.  
+	Available in American English only, the dictionary 
+	provides concise definitions for almost 80,000 words.
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="Fdict"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Franklin Dictionary 
+</A> 
+</H1>
+
+<P>
+        Proximity's Franklin Dictionary is a software product which
+        provides access to the same dictionary
+        databases used in Franklin Electronic Publishers' Handheld
+        Reference Products. These highly compressed databases utilize
+        Franklin's patented Fielded Dictionary Compression Techniques.
+        It provides the following features:
+<P>
+<UL>
+  <LI>    Random access lookup with inflection recognition
+  <LI>    Phonetic and typographic correction
+</UL>
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="OCR"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			OCR Spell Checker 
+</A> 
+</H1>
+
+<P>
+	Proximity's Optical Character Recognition (OCR) Spell Checker 
+	is a powerful software library designed to improve the 
+<EM> 
+	accuracy 
+</EM>
+	and 
+<EM> 
+	speed 
+</EM>
+	of a developer's graphics-to-text 
+	conversion product.  
+
+<P>
+	Accuracy increases by using linguistic data to validate the output 
+	of the developer's character recognition engine.
+
+<P>
+	Speed increases depend on the type of product.  
+	For example:
+<UL>
+<LI>
+	Full document processing can be speeded up by minimizing the
+	time required for interactive post-conversion proofing.
+<BR>&#32;<BR>
+<LI>
+	Interactive proofing can be eliminated or 
+	postponed for automatic tagging of graphic images, by creating a 
+	dictionary of words found in the image; these can be used for future 
+	queries.
+</UL>
+
+<P>
+	The OCR Spell Checker addresses a different problem area than the 
+	typical word processor spell checker.
+
+<P>
+	OCR Requires:
+<OL>
+<LI> 	Disambiguation of words in which glyphs have been joined or 
+	split, e.g., (rn ==&gt; m) or (m ==&gt; rn).
+<LI> 	Selection of <EM>correct</EM> words given uncertain spelling.
+</OL>
+
+	Word-processing Requires:
+<OL>
+<LI> 	Verification of words given exact spelling.
+<LI> 	Selection of possible matches given an unverified word.
+</OL>
+
+	The software consists of linguistic independent C source code and 
+	pre-made compressed word lists, which contain the same words 
+	used in our standard spelling product.
+
+<hr><!------------------------------------------------------>
+<H1> 
+<A NAME="SCAN"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+			Proximity-Scan 
+</A> 
+</H1>
+
+<P>
+	Proximity-Scan is an innovative process for searching databases.
+	This proprietary and patented technology judges overall 
+	similarity between a query and records in a database.  
+
+<P>
+	It is a fuzzy matching technique 
+	which enables users to find records in a database despite 
+	misspellings, words out of order, missing words 
+	and abbreviations.  
+
+<P>
+	It ranks database records in order of similarity to a 
+	given query; there is no need to sort, index, translate or modify your 
+	database.  
+
+<P>
+	Record retrieval no longer requires painstaking accuracy.  
+	There are no magic characters or hard to remember operations; your 
+	best guess is all that is needed.  
+
+<P>
+	Proximity-Scan is friendly, simple, efficient, and fast.
+
+<hr><!-------------------------------------------------->
+<H1>
+<A NAME="Private">
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+		Private Developer Site
+</A>
+</H1>
+
+<P>
+	We maintain a separate restricted site for our clients and 
+	prospective clients which includes API documents,
+	technical reports, etc.,
+</P>
+<P>
+	Please contact us for the necessary access information.
+</P>
+
+<hr><!----------------------------------------------------------->
+<H1> 
+<A NAME="Contacts"> 
+<IMG ALIGN="bottom" SRC="plogosml.gif" ALT="Proximity">
+		Contact Information
+</A> 
+</H1>
+
+<P>
+	Thanks for visiting Proximity's home page. We hope to hear
+	from you again soon.
+	For further information on Proximity's products, please contact:
+<P>
+<A HREF="mailto:proximity@franklin.com">
+		Maria Armstrong
+</A> 
+		(609) 386-2500 ext. 4520
+<P>
+	Proximity Technology Inc. c/o 
+<BR>
+	Franklin Electronic Publishers 
+<BR> 
+	One Franklin Plaza 	
+<BR>
+	Burlington, NJ 08016
+<BR>
+	USA 
+<BR>
+
+<P>
+Email Address: 
+<A HREF="mailto:proximity@franklin.com">
+	proximity@franklin.com
+</A> 
+
+<hr><!------------------------------------------------------------------>
+
+<P ALIGN="center">
+&#169; Copyright 2001 Proximity Technology Inc.
+<BR>
+All Rights reserved.
+
+</BODY>
+</HTML>
+
+

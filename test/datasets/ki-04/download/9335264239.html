@@ -1,0 +1,440 @@
+<!-- <DOCUMENT>
+	<FILE>
+		9335264239.html
+	</FILE>
+	<URL>
+		http://www.bugzilla.org/download.html#howtoget
+	</URL>
+	<TITLE>
+		Bugzilla Project - Download
+	</TITLE>
+	<GENRE>
+		download
+	</GENRE>
+	<PLAINTEXT>
+ Bugzilla Project - Download Bug Tracking System Bugzilla News What is Bugzilla? Download Discussion &amp; Support The Master Plan Who's in charge here? Documentation Report a bug Security Advisories Admin's Query Cookbook Status Updates How YOU can help Quick jump within page: How to get Bugzilla A Word on Version Numbers Development Release Stable Release Localized Templates Old Stable Release CVS Instructions How to get Bugzilla Bugzilla and all of its source code are available for download. Bugzilla is licensed under the Mozilla Public License , and is thus both free and open source software. Be sure to see the Installation section of the Bugzilla Guide (there's also a copy included in the tarball for versions later than 2.12). If you want to know what's changed from one version to the next, view the changelogs for Bugzilla (generated directly from the raw CVS checkin messages). Note for upgraders: If you have an existing installation based on a tarball from version 2.12 or later, you can update to the newest release using the CVS instructions below. This is a good way to update if you've made local changes, as CVS will attempt to merge your changes with the current release (although you may have to do some merging yourself if it finds conflicts between what you changed and what we changed - see the CVS documentation for details on conflict resolution). A Word on Version Numbers Bugzilla version numbers will be in the form of aa.bb or aa.bb.cc . Stable release versions of Bugzilla will have an even number for bb . Any number in cc , if present, will indicate sequential updates to the stable version that will include security fixes that can't wait for the next stable release. Development versions always have an odd number for bb . Development versions are released periodically, and cc only indicates the passage of time since the previous version (how much time is up for debate). If you want a more stable release, you should use a tarball with an even number in the bb position in the version number. Development Release (2.17.6) Bugzilla 2.17.6 is a Development Release and is intended for developers wishing to base large landings or patches off an official bugzilla.org release. It should not be used for production purposes, unless you have a Perl programmer on staff willing to put out any fires that may arise. The vast majority of sites wanting to test or use Bugzilla in production should install 2.16.4. If you're not sure whether you should use 2.17.6 or 2.16.4, you probably want 2.16.4. A semi-in-depth look at the new features in 2.17.6 is available in our November 18th, 2002 , January 2nd, 2003 , April 24th, 2003 , and November 2nd, 2003 Status Updates. Download: 2.17.6 Tarball HTTP FTP (1197K) If you are upgrading using CVS (instructions below), here are the tags: BUGZILLA-2_17_6 - 2.17.6 specifically Windows users note: Bugzilla 2.17.6 does not work on Win32 without modifications . If you are using Windows, you'll need to pull a version from CVS and apply several patches. See the November 18th Status Update for details. Stable Release (2.16.4) Download: 2.16.4 Tarball HTTP FTP (863K) 2.16.3 to 2.16.4 patch HTTP FTP (37K) without docs: HTTP FTP (4K) 2.16.2 to 2.16.4 patch HTTP FTP (432K) without docs: HTTP FTP (17K) 2.16.1 to 2.16.4 patch HTTP FTP (433K) without docs: HTTP FTP (17K) 2.16 to 2.16.4 patch HTTP FTP (439K) without docs: HTTP FTP (21K) If you are upgrading using CVS (instructions below), here are the tags: Bugzilla_Stable - latest stable release BUGZILLA-2_16-STABLE - latest 2.16.x stable release BUGZILLA-2_16_4 - 2.16.4 specifically Windows users note: Bugzilla 2.16.4 does not work on Win32 . If you are using Windows, you'll need to pull a version from CVS and apply several patches. See the November 18th Status Update for details. Localized Templates As of Bugzilla 2.16, the capability exists to easily localize Bugzilla by creating templates in the language of your choice. Some languages are already available or in progress. The following is a list of the ones we know about at this time. These are third-party contributions, so if you need help with any of them, please contact the maintainer of the particular localization. Tag Language Available versions Maintainer be ÐÐµÐ»Ð°ÑÑÑÐºÐ°Ñ / Belarusian 2.16.3 Ð¡ÑÑÐ³ÐµÐ¹ (Siarhei) cn ä¸­æ / Chinese 2.16.1, 2.17.4 å¤©ä¸ (Hou Guangmin) de Deutsch / German 2.17.4, cvs-tip Tobias Burnus es_ES EspaÃ±ol (EspaÃ±a) / Spanish (Spain) ? Oscar Manuel GÃ³mez Senovilla es_MX EspaÃ±ol (MÃ©xico) / Spanish (Mexico) ? Javier Abdul CÃ³rdoba GÃ¡ndara fr FranÃ§ais / French 2.16.2 FrÃ©dÃ©ric Praca kr íê¸ / Korean 2.16.3 ì¬ì°ê³¤ / WooGon Shim pt_BR Portugues (Brasil) / Portuguese (Brazil) 2.17.4 Felipe Gaucho ru Ð ÑÑÑÐºÐ¸Ð¹ / Russian 2.16.1 Vitaly Fedrushkov If you have additions or corrections for this list, please mail justdave&#64;syndicomm.com If you'd like to create a new localization, please read the Localization Guide . Old Stable Release (2.14.5) NOTE: The 2.14.x series (originally released on August 29, 2001) has been discontinued and is no longer supported effective January 2, 2003. These files are included here only for the convenience of existing 2.14.x sites in need of security updates. All sites (including the existing 2.14.x sites) are strongly encouraged to upgrade to the 2.16.x series of Bugzilla, to not only take advantage of numerous bugfixes and new features, but also to continue to receive security updates. Download: 2.14.5 Tarball HTTP FTP 2.14.4 to 2.14.5 patch HTTP FTP 2.14.3 to 2.14.4 patch HTTP FTP 2.14.2 to 2.14.3 patch HTTP FTP 2.14.1 to 2.14.3 patch HTTP FTP 2.14 to 2.14.3 patch HTTP FTP If you are upgrading using CVS (instructions below), here are the tags: BUGZILLA-2_14-STABLE - latest 2.14.x stable release BUGZILLA-2_14_5 - 2.14.5 specifically Bugzilla CVS If you'd like to have some additional flexibility, you can get Bugzilla from mozilla.org's anonymous CVS server. Of course, with this added flexibility comes a little bit more complexity. If you're not familiar with CVS, you can learn about it at the official CVS website . Update Existing Install If you have a tarball from version 2.12 or later, it is already primed for being updated via CVS. This allows updating to a newer version without downloading a new tarball. The first thing you need to do is login to the CVS server anonymously. $ cd &lt;bugzilla install directory&gt; $ cvs login (Logging in to anonymous&#64;cvs-mirror.mozilla.org) CVS password: anonymous If you have an existing install that you'd like to update, you can use the cvs update command. However, you must use either the -A or a -r flag. If you wish to update to the most recent stable release, you should use the Bugzilla_Stable tag. $ cvs update -rBugzilla_Stable -dP If you want to run the latest CVS tip (at your own risk), then use the -A flag. $ cvs update -A -dP You can also checkout older versions using CVS tags. All older tags follow the format of BUGZILLA-2_16_4 . The syntax is the same as above for the Bugzilla_Stable tag. REMEMBER: Any time you cvs update your Bugzilla install, always run checksetup.pl to update any configuration changes the new version might need. If you would like to submit patches, we'd prefer that you do so against the tip rather than a stable version. If you can't do your patch against the tip, then we'd rather have it against a release than not have it at all. Initial Checkout If you do not have Bugzilla yet (either from a post 2.12 tarball or a previous checkout from CVS) then you must use the cvs checkout command. This is more difficult than downloading the tarball because Bugzilla's location in mozilla.org's CVS repository is three levels deep. The first thing you have to do is log in to the CVS repository anonymously. $ export CVSROOT=:pserver:anonymous&#64;cvs-mirror.mozilla.org:/cvsroot $ cvs login (Logging in to anonymous&#64;cvs-mirror.mozilla.org) CVS password: anonymous After that, you can either checkout the CVS tip or a specific release tag. $ cvs checkout Bugzilla If you wish to get the most recent release out of CVS, you should use the Bugzilla_Stable tag. $ cvs checkout -rBugzilla_Stable Bugzilla The Bugzilla files will now be in the mozilla/webtools/bugzilla subdirectory of the current working directory. NOTE: The commands above use the syntax for bash like shells. Other shells, such as csh or windows, should be the same for everything but setting the environment variable. Sample syntax for these two shells are shown below. csh: % setenv CVSROOT &quot;:pserver:anonymous&#64;cvs-mirror.mozilla.org:/cvsroot&quot; win: &gt; SET CVSROOT=:pserver:anonymous&#64;cvs-mirror.mozilla.org:/cvsroot Any other shell's syntax is left as an exercise for the reader. Copyright &copy; 1998-2003 The Mozilla Organization. Last modified December 22, 2003. Document History . 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+	<title>Bugzilla Project - Download</title>
+	<link rel="stylesheet" type="text/css" href="bugzilla.css">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+<table width="100%" border="0">
+<tr>
+<td>
+
+
+<!-- Begin Bugzilla logo/banner -->
+<h1 class="bugzillaHeader">
+<img src="bugzilla.jpg" width="350" height="80" alt="Bugzilla" class="bugzillaHeader">
+Bug Tracking System
+</h1>
+<!-- End Bugzilla logo/banner -->
+
+<!-- Begin Navigation Header -->
+<table class="bugzillaNav" cellspacing="0"><tr>
+  <td><a href="./">Bugzilla News</a></td>
+  <td><a href="about.html">What is Bugzilla?</a></td>
+  <td class="activePage">Download</td>
+  <td><a href="discussion.html">Discussion &amp; Support</a></td>
+</tr><tr>
+  <td><a href="roadmap.html">The Master Plan</a></td>
+  <td><a href="who_we_are.html">Who's in charge here?</a></td>
+  <td><a href="documentation.html">Documentation</a></td>
+  <td><a href="reporting_bugs.html">Report a bug</a></td>
+</tr><tr>
+  <td><a href="security.html">Security Advisories</a></td>
+  <td><a href="queries.html">Admin's Query Cookbook</a></td>
+  <td><a href="status_updates/">Status Updates</a></td>
+  <td><a href="how_to_help.html">How YOU can help</a></td>
+</tr></table>
+<!-- End Navigation Header -->
+
+<br>
+<b>Quick jump within page:</b>
+<ul>
+<li><a href="#howtoget">How to get Bugzilla</a></li>
+<li><a href="#numbering">A Word on Version Numbers</a></li>
+<li><a href="#devel">Development Release</a></li>
+<li><a href="#stable">Stable Release</a></li>
+<li><a href="#localizations">Localized Templates</a></li>
+<li><a href="#oldstable">Old Stable Release</a></li>
+<li><a href="#cvs">CVS Instructions</a></li>
+</ul>
+
+<a name="howtoget"></a>
+<H2>How to get Bugzilla</H2>
+
+<p>Bugzilla and all of its source code are available for download.  Bugzilla is
+  licensed under the <a href="http://www.mozilla.org/MPL/">Mozilla Public
+  License</a>, and is thus both free and open source software.</p>
+
+<p>Be sure to see the Installation section of the <a
+  href="documentation.html">Bugzilla Guide</a> (there's also
+  a copy included in the tarball for versions later than 2.12).</p>
+
+<p>If you want to know what's changed from one version to the next, <a href="changes.html">view
+  the changelogs for Bugzilla</a> (generated directly from the raw CVS checkin messages).</p>
+
+<p><b>Note for upgraders:</b> If you have an existing installation based on a tarball from
+  version 2.12 or later, you can update to the newest
+  release using the CVS instructions below.  This is a good way to update if you've
+  made local changes, as CVS will attempt to merge your changes with the current
+  release (although you may have to do some merging yourself if it finds conflicts
+  between what you changed and what we changed - see the
+  <a href="http://www.cvshome.org/docs/manual/cvs_10.html#SEC86">CVS documentation</a> for details on conflict
+  resolution).</p>
+
+<a name="numbering"></a>
+<h2>A Word on Version Numbers</h2>
+
+<p>Bugzilla version numbers will be in the form of <b>aa.bb</b> or <b>aa.bb.cc</b> .</p>
+<p>Stable release versions of Bugzilla will have an <b>even</b> number for
+<b>bb</b>.  Any number in <b>cc</b>, if present, will indicate sequential updates to the
+stable version that will include security fixes that can't wait for the next
+stable release.</p>
+<p>Development versions always have an <b>odd</b> number for <b>bb</b>.
+Development versions are released periodically, and <b>cc</b> only indicates
+the passage of time since the previous version (how much time is up for
+debate).</p>
+<p>If you want a more stable release, you should use a tarball with an even
+number in the <b>bb</b> position in the version number. </p>
+
+<a name="devel"></a>
+<h2>Development Release (2.17.6)</h2>
+
+<p>Bugzilla 2.17.6 is a <b>Development Release</b> and is intended for
+developers wishing to base large landings or patches off an official
+bugzilla.org release. It should not be used for production purposes, unless you
+have a Perl programmer on staff willing to put out any fires that may arise.
+The vast majority of sites wanting to test or use Bugzilla in production should
+install 2.16.4.  If you're not sure whether you should use 2.17.6 or 2.16.4,
+you probably want 2.16.4.</p>
+<p>A semi-in-depth look at the new features in 2.17.6 is available in our
+<a href="status_updates/2002-11-18.html#newfeatures">November 18th, 2002</a>,
+<a href="status_updates/2003-01-02.html#newfeatures">January 2nd, 2003</a>,
+<a href="status_updates/2003-04-24.html#newfeatures">April 24th, 2003</a>, and
+<a href="status_updates/2003-11-02.html#newfeatures">November 2nd, 2003</a> Status Updates.</p>
+
+<p>Download:</p>
+  <table border="0">
+  <tr>
+  <th align="left">2.17.6 Tarball</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.17.6.tar.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.17.6.tar.gz">FTP</a></td>
+  <td>(1197K)</td>
+  </tr>
+  </table>
+
+<p>If you are upgrading using CVS (instructions below), here are the tags:</p>
+
+<ul>
+  <li><code><b>BUGZILLA-2_17_6</b></code> - 2.17.6 specifically</li>
+</ul>
+
+<p><b>Windows users note:</b> Bugzilla 2.17.6 <b>does not work on Win32 without
+modifications</b>.  If you are using Windows, you'll need to pull a version
+from CVS and apply several patches.  See the
+<a href="status_updates/2002-11-18.html#win32">November 18th Status Update</a>
+for details.</p>
+
+<a name="stable"></a>
+<H2>Stable Release (2.16.4)</H2>
+
+<p>Download:</p>
+  <table border="0">
+  <tr>
+  <th align="left">2.16.4 Tarball</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16.4.tar.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16.4.tar.gz">FTP</a></td>
+  <td>(863K)</td>
+  </tr>
+  <tr>
+  <th align="left">2.16.3 to 2.16.4 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16.3-to-2.16.4.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16.3-to-2.16.4.diff.gz">FTP</a></td>
+  <td>(37K)</td>
+  <td><b>without docs:</b></td>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16.3-to-2.16.4-nodocs.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16.3-to-2.16.4-nodocs.diff.gz">FTP</a></td>
+  <td>(4K)</td>
+  </tr>
+  <tr>
+  <th align="left">2.16.2 to 2.16.4 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16.2-to-2.16.4.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16.2-to-2.16.4.diff.gz">FTP</a></td>
+  <td>(432K)</td>
+  <td><b>without docs:</b></td>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16.2-to-2.16.4-nodocs.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16.2-to-2.16.4-nodocs.diff.gz">FTP</a></td>
+  <td>(17K)</td>
+  </tr>
+  <tr>
+  <th align="left">2.16.1 to 2.16.4 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16.1-to-2.16.4.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16.1-to-2.16.4.diff.gz">FTP</a></td>
+  <td>(433K)</td>
+  <td><b>without docs:</b></td>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16.1-to-2.16.4-nodocs.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16.1-to-2.16.4-nodocs.diff.gz">FTP</a></td>
+  <td>(17K)</td>
+  </tr>
+  <tr>
+  <th align="left">2.16 to 2.16.4 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16-to-2.16.4.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16-to-2.16.4.diff.gz">FTP</a></td>
+  <td>(439K)</td>
+  <td><b>without docs:</b></td>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.16-to-2.16.4-nodocs.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.16-to-2.16.4-nodocs.diff.gz">FTP</a></td>
+  <td>(21K)</td>
+  </tr>
+  </table>
+
+<p>If you are upgrading using CVS (instructions below), here are the tags:</p>
+
+<ul>
+  <li><code><b>Bugzilla_Stable</b></code> - latest stable release</li>
+  <li><code><b>BUGZILLA-2_16-STABLE</b></code> - latest 2.16.x stable release</li>
+  <li><code><b>BUGZILLA-2_16_4</b></code> - 2.16.4 specifically</li>
+</ul>
+
+<p><b>Windows users note:</b> Bugzilla 2.16.4 <b>does not work on Win32</b>.  If
+you are using Windows, you'll need to pull a version from CVS and apply several
+patches.  See the
+<a href="status_updates/2002-11-18.html#win32">November 18th Status Update</a>
+for details.</p>
+
+<a name="localizations"></a>
+<h2>Localized Templates</h2>
+
+<p>As of Bugzilla 2.16, the capability exists to easily localize Bugzilla by creating
+templates in the language of your choice.  Some languages are already available or
+in progress.  The following is a list of the ones we know about at this time.  These
+are third-party contributions, so if you need help with any of them, please contact
+the maintainer of the particular localization.</p>
+
+<table class="languagetable">
+  <tr><th>Tag</th>
+      <th>Language</th>
+      <th>Available versions</th>
+      <th>Maintainer</th>
+  </tr>
+  <tr><th>be</th>
+      <td><a href="http://bugzilla-be.sourceforge.net/">ÐÐµÐ»Ð°ÑÑÑÐºÐ°Ñ / Belarusian</a></td>
+      <td>2.16.3</td>
+      <td>Ð¡ÑÑÐ³ÐµÐ¹ (Siarhei)</td>
+  </tr>
+  <tr><th>cn</th>
+      <td><a href="http://sourceforge.net/projects/bugzilla-cn/">ä¸­æ / Chinese</a></td>
+      <td>2.16.1, 2.17.4</td>
+      <td>å¤©ä¸ (Hou Guangmin)</td>
+  </tr>
+  <tr><th>de</th>
+      <td><a href="http://bugzilla-de.sourceforge.net/">Deutsch / German</a></td>
+      <td>2.17.4, cvs-tip</td>
+      <td>Tobias Burnus</td>
+  </tr>
+  <tr><th>es_ES</th>
+      <td><a href="http://sourceforge.net/projects/bugzilla-es/">EspaÃ±ol (EspaÃ±a) / Spanish (Spain)</a></td>
+      <td>?</td>
+      <td>Oscar Manuel GÃ³mez Senovilla</td>
+  </tr>
+  <tr><th>es_MX</th>
+      <td><a href="http://sourceforge.net/projects/bugzilla-es/">EspaÃ±ol (MÃ©xico) / Spanish (Mexico)</a></td>
+      <td>?</td>
+      <td>Javier Abdul CÃ³rdoba GÃ¡ndara</td>
+  </tr>
+  <tr><th>fr</th>
+      <td><a href="http://sourceforge.net/projects/bugzilla-fr/">FranÃ§ais / French</a></td>
+      <td>2.16.2</td>
+      <td>FrÃ©dÃ©ric Praca</td>
+  </tr>
+  <tr><th>kr</th>
+      <td><a href="http://sourceforge.net/projects/bugzilla-kr/">íê¸ / Korean</a></td>
+      <td>2.16.3</td>
+      <td>ì¬ì°ê³¤ / WooGon Shim</td>
+  </tr>
+  <tr><th>pt_BR</th>
+      <td><a href="http://sourceforge.net/projects/bugzilla-br/">Portugues (Brasil) / Portuguese (Brazil)</a></td>
+      <td>2.17.4</td>
+      <td>Felipe Gaucho</td>
+  </tr>
+  <tr><th>ru</th>
+      <td><a href="http://sourceforge.net/projects/bugzilla-ru/">Ð ÑÑÑÐºÐ¸Ð¹ / Russian</a></td>
+      <td>2.16.1</td>
+      <td>Vitaly Fedrushkov</td>
+  </tr>
+</table>
+
+<p>If you have additions or corrections for this list, please mail <a href="mailto:justdave&#64;syndicomm.com">justdave&#64;syndicomm.com</a></p>
+
+<p>If you'd like to create a new localization, please read the <a href="dev/l10n-guide.html">Localization Guide</a>.</p>
+
+<a name="oldstable"></a>
+<H2>Old Stable Release (2.14.5)</H2>
+
+<p><b>NOTE: The 2.14.x series (originally released on August 29, 2001) has been
+discontinued and is no longer supported effective January 2, 2003.</b> These
+files are included here only for the convenience of existing 2.14.x sites in
+need of security updates.  All sites (including the existing 2.14.x sites) are
+<b>strongly</b> encouraged to upgrade to the 2.16.x series of Bugzilla, to not
+only take advantage of numerous bugfixes and new features, but also to continue
+to receive security updates.</p>
+
+<p>Download:</p>
+  <table border="0">
+  <tr>
+  <th align="left">2.14.5 Tarball</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.14.5.tar.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.14.5.tar.gz">FTP</a></td>
+  </tr>
+  <tr>
+  <th align="left">2.14.4 to 2.14.5 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.14.4-to-2.14.5.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.14.4-to-2.14.5.diff.gz">FTP</a></td>
+  </tr>
+  <tr>
+  <th align="left">2.14.3 to 2.14.4 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.14.3-to-2.14.4.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.14.3-to-2.14.4.diff.gz">FTP</a></td>
+  </tr>
+  <tr>
+  <th align="left">2.14.2 to 2.14.3 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.14.2-to-2.14.3.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.14.2-to-2.14.3.diff.gz">FTP</a></td>
+  </tr>
+  <tr>
+  <th align="left">2.14.1 to 2.14.3 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.14.1-to-2.14.3.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.14.1-to-2.14.3.diff.gz">FTP</a></td>
+  </tr>
+  <tr>
+  <th align="left">2.14 to 2.14.3 patch</th>
+  <td><a href="http://ftp.mozilla.org/pub/webtools/bugzilla-2.14-to-2.14.3.diff.gz">HTTP</a></td>
+  <td><a href="ftp://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-2.14-to-2.14.3.diff.gz">FTP</a></td>
+  </tr>
+  </table>
+
+<p>If you are upgrading using CVS (instructions below), here are the tags:</p>
+
+<ul>
+  <li><code><b>BUGZILLA-2_14-STABLE</b></code> - latest 2.14.x stable release</li>
+  <li><code><b>BUGZILLA-2_14_5</b></code> - 2.14.5 specifically</li>
+</ul>
+
+<a name="cvs"></a>
+<H2>Bugzilla CVS</H2>
+
+<p>If you'd like to have some additional flexibility, you can get Bugzilla from
+  mozilla.org's anonymous CVS server.  Of course, with this added flexibility
+  comes a little bit more complexity.  If you're not familiar with CVS, you can
+  learn about it at the <a href="http://www.cvshome.org/">official CVS website</a>.</p>
+
+<h3>Update Existing Install</h3>
+<p>If you have a tarball from version 2.12 or later, it is already primed for
+  being updated via CVS. This allows updating to a newer version without
+  downloading a new tarball. The first thing you need to do is login to the CVS
+  server anonymously.</p>
+
+<pre class="terminal">
+$ <b>cd</b> &lt;bugzilla install directory&gt;
+$ <b>cvs login</b>
+(Logging in to anonymous&#64;cvs-mirror.mozilla.org)
+CVS password: <b>anonymous</b>
+</pre>
+
+<p>If you have an existing install that you'd like to update, you can use the
+  <code>cvs update</code> command. However, you must use either the <code>-A</code>
+  or a <code>-r</code> flag.</p>
+<p>If you wish to update to the most recent stable release, you should use the
+  <code>Bugzilla_Stable</code> tag.</p>
+<pre class="terminal">
+$ <b>cvs update -rBugzilla_Stable -dP</b>
+</pre>
+<p>If you want to run the latest CVS tip (at your own risk), then use the
+  <code>-A</code> flag.</p>
+<pre class="terminal">
+$ <b>cvs update -A -dP</b>
+</pre>
+<p>You can also checkout older versions using CVS tags.  All older tags follow
+  the format of <code>BUGZILLA-2_16_4</code>.  The syntax is the same as above
+  for the <code>Bugzilla_Stable</code> tag.</p>
+<p><b>REMEMBER:</b> Any time you <code>cvs update</code> your Bugzilla install,
+  <b>always</b> run <code>checksetup.pl</code> to update any configuration
+  changes the new version might need.</p>
+<p>If you would like to submit patches, we'd prefer that you do so against
+  the tip rather than a stable version. If you can't do your patch against
+  the tip, then we'd rather have it against a release than not have it at
+  all.</p>
+
+
+<h3>Initial Checkout</h3>
+<p>If you do not have Bugzilla yet (either from a post 2.12 tarball or a
+  previous checkout from CVS) then you must use the <code>cvs checkout</code>
+  command. This is more difficult than downloading the tarball because
+  Bugzilla's location in mozilla.org's CVS repository is three levels deep.</p>
+<p>The first thing you have to do is log in to the CVS repository anonymously.</p>
+<pre class="terminal">
+$ <b>export CVSROOT=:pserver:anonymous&#64;cvs-mirror.mozilla.org:/cvsroot</b>
+$ <b>cvs login</b>
+(Logging in to anonymous&#64;cvs-mirror.mozilla.org)
+CVS password: <b>anonymous</b>
+</pre>
+<p>After that, you can either checkout the CVS tip or a specific release tag.</p>
+<pre class="terminal">
+$ <b>cvs checkout Bugzilla</b>
+</pre>
+<p>If you wish to get the most recent release out of CVS, you should use the
+  <code>Bugzilla_Stable</code> tag.</p>
+<pre class="terminal">
+$ <b>cvs checkout -rBugzilla_Stable Bugzilla</b>
+</pre>
+<p>The Bugzilla files will now be in the <code>mozilla/webtools/bugzilla</code>
+  subdirectory of the current working directory.</p>
+
+<p><b>NOTE:</b> The commands above use the syntax for bash like shells.  Other
+  shells, such as csh or windows, should be the same for everything but setting
+  the environment variable.  Sample syntax for these two shells are shown below.</p>
+<pre class="terminal">
+csh: % <b>setenv CVSROOT &quot;:pserver:anonymous&#64;cvs-mirror.mozilla.org:/cvsroot&quot;</b>
+win: &gt; <b>SET CVSROOT=:pserver:anonymous&#64;cvs-mirror.mozilla.org:/cvsroot</b>
+</pre>
+<p>Any other shell's syntax is left as an exercise for the reader.</p>
+
+<p>
+  <a href="http://validator.w3.org/check/referer"><img border="0"
+     src="images/valid-html401.png"
+     alt="Valid HTML 4.01!" height="31" width="88"></a>
+  <a href="http://jigsaw.w3.org/css-validator/check/referer"><img
+     style="border:0;width:88px;height:31px"
+     src="images/vcss.png" 
+     alt="Valid CSS!"></a>
+</p>
+
+</td>
+</tr>
+<tr>
+<td align="right">
+<small>
+Copyright &copy; 1998-2003 The Mozilla Organization.
+<br>
+Last modified December 22, 2003.
+<br>
+<a HREF="http://www.mozilla.org/webtools/bonsai/cvslog.cgi?file=mozilla-org/html/projects/bugzilla/download.html&amp;rev=&amp;root=/cvsroot/">Document History</a>.
+</small>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+
+

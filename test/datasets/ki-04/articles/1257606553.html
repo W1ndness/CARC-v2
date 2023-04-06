@@ -1,0 +1,747 @@
+<!-- <DOCUMENT>
+	<FILE>
+		1257606553.html
+	</FILE>
+	<URL>
+		http://www.telenor.no/fou/english/publisering/temanr/ge4_00.shtml
+	</URL>
+	<TITLE>
+		Telenor - Forskning og Utvikling
+	</TITLE>
+	<GENRE>
+		articles
+	</GENRE>
+	<PLAINTEXT>
+ Telenor - Forskning og Utvikling Telenor About Telenor R&amp;D Projects External Relations Entrepreneurship Publications In Norwegian &lt;&lt; Til forsiden Main page | Telektronikk | R&amp;D publications | Annual Results | Guest editorial Rolv Bræk When the CCITT, now ITU-T, initiated work on specification and programming languages back in 1972, it was a bold step. At that time software engineering was in its infancy and the development of communication software very much a pioneering thing. Every system development involved breaking some new technological ground. At the same time it was clear that software offered far more possibilities than mere replacement of electromechanical and electronic solutions. Entirely new functionality was possible and was therefore gradually introduced into the systems. This is a well-known pattern from all areas of computing. But communication systems were not allowed to trade functionality for quality, as has been so common in other strands of computing. Even as the complexity was growing beyond bounds, the systems had to satisfy outstanding requirements to high-performance, reliability and no-break operation. Therefore, it became essential at an early stage to find ways to master the quality in the face of growing complexity. The combination of high complexity with high reliability forced the communication software industry to take a pro-active approach to software quality from the very beginning. Since communication software always has been embedded real-time software with a high degree of concurrency, distribution and heterogeneity, the solutions that were developed attacked these problems from the very beginning, while they were not yet considered important in mainstream software engineering. The early techniques developed for software engineering in general, such as SADT and Structured Analysis/Structured Design, focused on activities and data-flow. Quite deliberately they did not deal with sequential behaviour, concurrency and distribution. They emphasised abstraction and human understanding more than formality. They provided no formal semantics, and therefore it was not possible to simulate and analyse the system behaviour before it was implemented. Moreover, the mapping from abstract model to concrete design was unclear, and the value of abstract models was therefore limited to the early phases. They had little documentation value for the final product and were in many cases just thrown away. Apparently, the activity-oriented approach of those techniques did not deliver all the benefits promised, not even outside the communication domain. Later developments have focused more on data modelling, and these have been considerably more successful, especially for data-intensive applications. In recent years, the trend has been towards object-orientation and more formality. The Unified Modelling Language, UML, is the latest and most notable development in this direction. It combines a set of graphical notations with a partial semantics that makes its meaning more precise. It has notation for sequential and concurrent behaviours based on StateCharts that enable a partial simulation of behaviour before it is implemented, but still it lacks a complete semantics. The techniques developed for communication systems on the other hand, emphasised formality and dealt explicitly with sequential behaviour and concurrency from the beginning. All the formal description techniques (FDTs) ESTELLE, LOTOS and SDL had state transition based semantics that enabled simulation and analysis to take place before implementation. SDL had the additional benefit of a graphical notation that supported human comprehension combined with an underlying finite state machine semantics that could be implemented effectively. For this reason SDL has been the most successful of the FDTs, with a good track record from numerous industrial development projects. SDL as a language was object-based already when first recommended in 1976, and since 1992 it has been a full-fledged object-oriented language. It has a semantics that supports formal validation and enables complete simulation to take place before implementation, and also to generate complete and efficient implementation code automatically. These properties enable development organisations to move from an implementation oriented development paradigm to a design oriented development paradigm. In the latter, a system is documented and maintained primarily using design descriptions and not by implementation code. Contrary to the popular belief that techniques coming from the communication world are old fashioned they are still leading edge in the areas of object and behaviour modelling. When communication systems and information systems now merge into ICT systems, a corresponding merge of techniques from the I world and the C worlds is bound to take place. As the software industry in general moves towards distributed heterogeneous solutions we now see a convergence towards a similar merge for the software industry at large. This convergence leads to considerable cross-fertilisation and integration of previously different disciplines such as control systems, user interfaces and databases. UML  now emerging as a family of languages that is competing with the ITU-T languages  is developing fast and attracting far more attention than the ITU-T languages ever did. From a technical point of view, the ITU-T languages and UML partly overlap and partly complement each other. The overlap area has been greatly extended by introducing into SDL-2000 notation from UML Class Diagrams and by introducing the notion of composite states from UML State Machines/State-Charts. It is now possible to define associations between types and also partially to define types using (parts of) the UML Class diagram notation within SDL. On the other hand, SDL complements UML by providing a complete operational semantics and the possibility to precisely define the component structure of aggregate types. MSC complements UML by providing structuring mechanisms entirely missing in the UML sequence diagrams and collaboration diagrams. This issue of Telektronikk is about the family of languages currently standardised by ITU-T, and related methods, tools and middleware. The ITU-T language family presently consists of: The Specification and Description Language, SDL. The new version of SDL, called SDL-2000, is a major revision and is presented for the first time in a popular form in the article by Rick Reed. Rick Reed also presents the history of SDL in an accompanying article. Message Sequence Charts, MSC, which are used to describe external behaviour properties by means of interaction cases. MSC provide a useful complement to SDL and is used both as input when making SDL descriptions and as specification when performing verification and testing. Øystein Haugen presents the latest developments of MSC in the article MSC-2000: interacting with the future. The Abstract Syntax Notation One (ASN.1) is used to describe data structures, especially in connection with protocols. In combination with encoding rules for the physical transfer of data, ASN.1 is much used in protocol development, and may also be combined with SDL. Colin Willcock describes ASN.1 in his article. The Tree and Tabular Combined Notation, TTCN, which is used to describe test cases. TTCN may be generated from SDL and MSC. Ina Schieferdecker and Jens Grabowski describe TTCN in their article. CHILL  the CCITT HIgh Level (programming) Language. CHILL is an advanced programming language that supports concurrent processes. It has been adopted by many major telecom manufacturers and used successfully to develop a wide range of complex systems. CHILL is described in the article by Jürgen Winkler. The Object Definition Language, ODL, which is an extension of the Interface Definition Language, IDL, known from CORBA. ODL is introduced in the paper by Joachim Fischer and Marc Born. A mapping between SDL and UML has been defined in the ITU-T recommendation Z.109, SDL combined with UML, which is elaborated in the article by Birger Møller-Pedersen. This mapping allows developers and tools to put leverage on the strengths of both languages by facilitating a combined use. The article by Rolv Bræk and Arve Meisingset presents an overview of the language features of SDL-2000, MSC-2000 and UML. The purpose is to give readers that are unfamiliar with these languages a first introduction, and also a feeling for their main content as a background for the more detailed articles that follow. Readers with a basic knowledge of the languages, who are more interested in the new features, should move directly to the specialist articles. One important asset of the ITU-T languages, especially SDL, has been its formally defined semantics. Principles for defining formal semantics are presented in the paper by Andreas Prinz, using examples from SDL and MSC as illustration. It is a common misunderstanding that formal language and formal method is the same thing, but it is not. Methods are concerned with how to use the languages to achieve better results. Several methods have been introduced that are based on the ITU-T languages and UML. The article by Rolv Bræk presents some general methodology issues for using the ITU-T languages and UML. The article by Steve Randall presents specific guidelines for formal use of SDL in development, e.g. of ETSI standards, and Anthony Wiles and Milan Zoric report on their experiences from the application of these guidelines in the development of the Hiperlan standards. One strongpoint of the ITU-T languages is that abstraction, using concepts suitable for human comprehension, is combined with semantics suitable both for extensive tool support and efficient implementation. Extensive tool support for validation and testing is one of the benefits that result from this. The article by Dieter Hogrefe, Beat Koch and Helmuth Neukirchen introduces the general principles of validation and testing. The possibility to derive efficient implementations is another benefit elaborated in the article by Richard Sanders. Two commercial sets of tools that support the ITU-T languages in combination with UML are presented in two separate articles. Anders Olsen and Finn Kristoffersen present the Cinderella tools, while Philippe Leblanc, Thomas Hjelm and Anders Ek present the Telelogic tools. Middleware is an important area where communication and general computing converge. The article by Anastasius Gavras outlines the needs for distributed platforms for telecommunication applications. Amardeo Sarma presents perspectives on future standardisation in the areas covered by this issue of Telektronikk in his article. The idea behind the feature section was very ambitious. A lot of internationally acknowledged specialists have been involved. I would like to express special thanks to Arve Meisingset for all his co-editing work throughout this process. To my knowledge, this is the first time that all the ITU-T languages with associated topics have been presented in one place. Enjoy! Back to the main page G&aring; direkte til: Mobiltelefoni | Mobile Bedr.l&oslash;sninger | Smartphone | VIP Nett | Epostleser Siden sist oppdatert: 02.08.2001. Ansvarlig: Telenor . Gi oss tilbakemelding! ^ Til toppen av siden Produsert av Icon Medialab / &copy; Telenor 2000 
+	</PLAINTEXT>
+	<CONTENT>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+
+<TITLE>Telenor - Forskning og Utvikling</TITLE>
+
+
+
+<META name="description" content="">
+<META name="keywords" content="">
+<META name="author" content="espen.orre@telenor.com, Espen Orre">
+
+	
+	
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+ <!--
+   NS4 = (document.layers);
+   NS6 = (navigator.appName.indexOf("Netscape")!=-1 && navigator.appVersion.indexOf("5.")!=-1)
+   IE4 = (document.all);
+   ver4 = (NS4 || IE4);
+   IE5 = (IE4 && navigator.appVersion.indexOf("5.")!=-1);
+   isMac = (navigator.appVersion.indexOf("Mac") != -1);
+   isMenu = (NS4 || (IE4 && !isMac) || (IE5 && isMac));
+  function popUp(){return};
+  function popDown(){return};
+  function startCache(){return};
+  function startCacheSub(){return};
+  if (!ver4) event=null;
+ //-->
+ </SCRIPT>
+
+	
+	<SCRIPT LANGUAGE="JavaScript1.2" TYPE="text/javascript">
+		<!--
+
+topDomain = 'http://www.telenor.no';
+testDomain = 'http://www.telenor.no';
+
+		if (isMenu) {
+			menuVersion = 3;
+			menuWidth = 170;
+			childOverlap = 6;
+			childOffset = 3;
+			perCentOver = null;
+			secondsVisible = 0.1;
+			fntCol = "#333333";
+			fntSiz = (IE5 || IE4) ? 8 : 10;
+			fntBold = false;
+			fntItal = false;
+			fntFam = "Verdana,sans-serif";
+			backCol = "#F4F3F3";
+			overCol = "#659BA1";
+			overFnt = "#F4F3F3";
+			borWid = 1;
+			borCol = "#659BA1";
+			borSty = "solid";
+			itemPad = 0;
+			imgSrc = "/_gfx/menu_arrow.gif";
+			imgSiz = 9;
+			imgHspace = 5;
+			separator = 1;
+			separatorCol = "#659BA1";
+			isFrames = false;
+			keepHilite = true; 
+			clickStart = false;
+			clickKill = false;
+			topSpace = 45;
+			topSpaceSub = 73;
+
+			document.write("<SCRIPT LANGUAGE='JavaScript1.2' SRC='/_incl/js/hierArrays_620pix.js'><\/SCRIPT>");
+			
+				arNames = new Array("mainMenu", "subMenu");
+				layerNames = new Array("main", "sub");
+			
+			document.write("<SCRIPT LANGUAGE='JavaScript1.2' SRC='/_incl/js/hierMenus.js'><\/SCRIPT>");
+		}
+	//-->
+	</SCRIPT>
+	
+	<script language="JavaScript" src="/_incl/js/scripts_620pix.js"></script>
+	
+	<script language="JavaScript1.2">
+	function initPage(){
+		startLoop();
+		
+			startCache();
+		
+			startCacheSub();
+		
+	}
+	</script>
+
+
+  <link rel="STYLESHEET" type="text/css" href="/_incl/css/mix_ie.css">
+
+
+
+<link rel="stylesheet" href="/_css/telenor_stylez.css" type="text/css">
+</HEAD>
+
+<BODY bgcolor="#EEEEEE" text="#000000" link="#333399" vlink="#333399" marginheight="11" marginwidth="10" topmargin="20" leftmargin="10" onload="initPage()">
+
+<!-- GLOBAL TOPPMENY 1 -->
+<TABLE width="620" border="0" cellspacing="0" cellpadding="0">
+  <TR> 
+    <TD width="490" align="right" valign="bottom" class="meny"> 
+
+      <!-- nav_global START -->
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="620">
+  <form name="seek1" method=GET action="http://search.telenor.no/query.html">
+
+ 
+
+<input type="hidden" name=col value="fast">
+
+<input type="hidden" name=col value="mobil">
+
+<input type="hidden" name=col value="bedrift">
+
+<input type="hidden" name=col value="presse">
+
+<input type="hidden" name=col value="telenor">
+
+<input type=hidden name=qp value="">  
+
+<input type=hidden name=qs value="">     
+
+<input type=hidden name=qc value="">
+
+<input type=hidden name=pw value="100%">
+
+<input type=hidden name=ws value="0">
+
+<input type=hidden name=la value="">
+
+<input type=hidden name=qm value="0">
+
+<input type=hidden name=st value="1">
+
+<input type=hidden name=nh value="10">
+
+<input type=hidden name=lk value="1">
+
+<input type=hidden name=rf value="2">
+
+<input type=hidden name=oq value="">
+
+<input type=hidden name=rq value="0">
+
+  <tr valign="bottom">
+
+
+
+   <td valign="bottom">
+
+
+
+	    <table border="0" cellpadding="0" cellspacing="0" width="620">
+          <tr> 
+            <td width="270" valign="top"><a href="/index.shtml"><img name="frontpage_velkommen" alt="telenor" src="/_gfx/620pix/logo_telenor_main.gif" width="112" height="25" border="0" align="top"></a></td>
+
+
+
+	        <td valign="bottom"><img src="/_gfx/620pix/global_r1_prikker.gif" width="1" height="24" border="0"></td>
+
+
+
+	        <td valign="bottom"><a href="/produkter/" onMouseOut="popDown('main1');"  onMouseOver="popUp('main1',event,'global_produkter');" ><img name="global_produkter" alt="Produkter og tjenester" src="/_gfx/620pix/global_produkter_off.gif" width="125" height="23" border="0"></a></td>
+
+
+
+	        <td valign="bottom"><img src="/_gfx/620pix/global_r1_prikker.gif" width="1" height="24" border="0"></td>
+
+
+
+	        <td valign="bottom"><a href="/kundesenter/" onMouseOut="popDown('main2');"  onMouseOver="popUp('main2',event,'global_kundesenter')" ><img name="global_kundesenter" alt="Kundesenter" src="/_gfx/620pix/global_kundesenter_off.gif" width="70" height="23" border="0"></a></td>
+
+
+
+	        <td valign="bottom"><img src="/_gfx/620pix/global_r1_prikker.gif" width="1" height="24" border="0"></td>
+
+
+
+	        <td valign="bottom"><a href="/om/" onMouseOut="popDown('main3');"  onMouseOver="popUp('main3',event,'global_om_telenor');" ><img name="global_om_telenor" alt="Om telenor" src="/_gfx/620pix/global_om_telenor_off.gif" width="62" height="23" border="0"></a></td>
+
+
+
+	        <td valign="bottom"><img src="/_gfx/620pix/global_r1_prikker.gif" width="1" height="24" border="0"></td>
+
+
+
+	        <td valign="bottom"><a href="http://presse.telenor.no" onMouseOut="popDown('main4');"  onMouseOver="popUp('main4',event,'global_presse');" ><img name="global_presse" alt="Pressenter" src="/_gfx/620pix/global_presse_off.gif" width="39" height="23" border="0"></a></td>
+
+
+
+	        <td valign="bottom"><img src="/_gfx/620pix/global_r1_prikker.gif" width="1" height="24" border="0"></td>
+
+
+
+	        <td valign="bottom"><a href="/ir/" onMouseOut="popDown('main5');"  onMouseOver="popUp('main5',event,'global_finansiell_info');"><img name="global_finansiell_info" alt="Finansiell info" src="/_gfx/620pix/global_investor_relations_off.gif" width="101" height="23" border="0"></a></td>
+
+
+
+	   <td valign="bottom"><img src="/_gfx/620pix/global_r1_prikker.gif" width="1" height="24" border="0"></td>
+
+
+
+	        <td valign="bottom"><img src="/_gfx/620pix/1x1.gif" width="5" height="24" border="0"></td>
+
+
+
+	        <td width="78" height="24" align="left" valign="bottom">
+<input type="text" name="qt" size="7" class="topsearch"><img src="/_gfx/620pix/1x1.gif" width="1" height="2" border="0"></td>
+
+
+
+		    <td><input type="image" border="0" name="submit" src="/_gfx/620pix/global_sok_knapp.gif" width="26" height="24" border="0"></td>
+
+
+
+	  </tr>
+
+
+
+	</table>
+
+
+
+	</td>
+
+
+
+  </tr>
+
+
+
+</form>
+
+
+
+</table>
+
+
+
+<!-- nav_global END -->	
+      
+    </TD>
+  </TR>
+</TABLE>
+<!-- /GLOBAL TOPPMENY 1 -->
+<!-- GLOBAL TOPPMENY 2 -->
+<link rel="stylesheet" href="/_css/telenor_stylez.css" type="text/css">
+<TABLE bgcolor="#009966" width="620" border="0" cellspacing="0" cellpadding="0" class="meny">
+  <TR> 
+    <TD valign="bottom" width="100%" height="25"> 
+      
+      
+<!-- indre tabell global meny 2 -->
+<TABLE border="0" cellspacing="0" cellpadding="0" class="meny" bgcolor="#c0c0c0">
+<TR>
+<TD bgcolor="#99CC99" valign="top" width="10"><IMG width="5" height="16" src="/_img/meny2tab-99CC99_venstre.gif"></TD><TD bgcolor="#99CC99" style="color:#CC0000"><FONT face="helvetica,arial,sans-serif" size="-1"><A href="/fou/"><FONT color="#333399">Telenor </FONT></A></FONT></TD><TD bgcolor="#99CC99" align="right" valign="top" width="11"><IMG width="6" height="15" src="/_img/meny2tab-99CC99_hoyre.gif"></TD>
+</TR>
+</TABLE>
+<!-- /indre tabell global meny 2 -->
+
+      
+    </TD>
+    <TD width="10" height="25"><IMG width="10" height="1" src="/_img/col_blank.gif"></TD>
+  </TR>
+</TABLE>
+<!-- /GLOBAL TOPPMENY 2 -->
+
+
+
+
+
+<!-- HOVEDFELT NORMAL BREDDE -->
+<TABLE width="620" border="0" cellspacing="0" cellpadding="0">
+<TR><TD width="150" valign="top">
+
+<!-- VENSTREMENY -->
+<TABLE bgcolor="#99CC99" border="0" cellspacing="0" cellpadding="0" height=42>
+<TR>
+<TD width="10"><IMG width="10" height="5" src="/_img/col_blank.gif"></TD>
+<TD width="140"><IMG width="140" height="1" src="/_img/col_blank.gif"></TD>
+</TR>
+
+
+
+
+
+<!-- venstremenyvalg -->
+<TR><TD bgcolor="#99CC99" colspan="2"><IMG width="1" height="5" src="/_img/col_blank.gif"></TD></TR>
+<TR><TD><FONT face="helvetica,arial,sans-serif" size="-1">&nbsp;</FONT></TD>
+<TD><span class="meny"><A href="/fou/english/about/index.shtml"><FONT face="helvetica,arial,sans-serif" size="-1" color="#333399">About Telenor R&amp;D</FONT></A><BR></span></TD></TR>
+
+
+
+
+<!-- venstremenyvalg -->
+<TR><TD bgcolor="#99CC99" colspan="2"><IMG width="1" height="5" src="/_img/col_blank.gif"></TD></TR>
+<TR><TD><FONT face="helvetica,arial,sans-serif" size="-1">&nbsp;</FONT></TD>
+<TD><span class="meny"><A href="/fou/english/prosjects/index.shtml"><FONT face="helvetica,arial,sans-serif" size="-1" color="#333399">Projects</FONT></A><BR></span></TD></TR>
+
+
+
+
+<!-- venstremenyvalg -->
+<TR><TD bgcolor="#99CC99" colspan="2"><IMG width="1" height="5" src="/_img/col_blank.gif"></TD></TR>
+<TR><TD><FONT face="helvetica,arial,sans-serif" size="-1">&nbsp;</FONT></TD>
+<TD><span class="meny"><A href="/fou/english/relasjoner/index.shtml"><FONT face="helvetica,arial,sans-serif" size="-1" color="#333399">External Relations</FONT></A><BR></span></TD></TR>
+
+
+
+<!-- venstremenyvalg -->
+<TR><TD bgcolor="#99CC99" colspan="2"><IMG width="1" height="5" src="/_img/col_blank.gif"></TD></TR>
+<TR><TD><FONT face="helvetica,arial,sans-serif" size="-1">&nbsp;</FONT></TD>
+<TD><span class="meny"><A href="/fou/english/entreprenor/index.shtml"><FONT face="helvetica,arial,sans-serif" size="-1" color="#333399">Entrepreneurship</FONT></A><BR></span></TD></TR>
+
+
+
+
+<!-- venstremenyvalg -->
+<TR><TD bgcolor="#99CC99" colspan="2"><IMG width="1" height="5" src="/_img/col_blank.gif"></TD></TR>
+<TR><TD><FONT face="helvetica,arial,sans-serif" size="-1">&nbsp;</FONT></TD>
+<TD><span class="meny"><A href="/fou/english/publisering/publisering.shtml"><FONT face="helvetica,arial,sans-serif" size="-1" color="#333399"><img src="/_img/meny_pil.gif" width=10 height=10 border=0 alt=""><B>Publications</B></FONT></A><BR></span></TD></TR>
+
+
+
+
+<!-- venstremenyvalg -->
+<TR><TD bgcolor="#99CC99" colspan="2"><IMG width="1" height="5" src="/_img/col_blank.gif"></TD></TR>
+<TR><TD><FONT face="helvetica,arial,sans-serif" size="-1">&nbsp;</FONT></TD>
+<TD><span class="meny"><A href="/fou/om/index.shtml"><FONT face="helvetica,arial,sans-serif" size="-1" color="#333399">In Norwegian</FONT></A><BR></span></TD></TR>
+
+<TR><TD height="35">&nbsp;</TD><TD valign="bottom"><span class="meny"><FONT face="helvetica,arial,sans-serif" size="-2"><A href="/" title="Til forsiden (www.telenor.no)"><FONT
+color="#FFFFFF">&lt;&lt; Til forsiden</FONT></A><BR></FONT></span></TD></TR>
+</TABLE>
+<!-- /VENSTREMENY -->
+
+<IMG width="150" height="29" src="/_img/bue_99CC99.gif"><BR>
+</TD>
+<TD bgcolor="#99CC99" width="470" align="center" valign="top">
+<IMG width="1" height="19" src="/_img/col_blank.gif"><BR>
+<!-- innholdsfelt -->
+<TABLE border="0" cellspacing="0" cellpadding="0">
+<TR>
+<TD bgcolor="#999999"><IMG width="1" height="1" src="/_img/col_blank.gif"></TD>
+<TD bgcolor="#999999"><IMG width="468" height="1" src="/_img/col_blank.gif"></TD>
+<TD bgcolor="#999999"><IMG width="1" height="1" src="/_img/col_blank.gif"></TD>
+</TR>
+<TR>
+<TD bgcolor="#999999" width="1"><IMG width="1" height="300" src="/_img/col_blank.gif"></TD>
+<TD bgcolor="#FFFFFF" valign="top">
+
+
+
+<!-- INNHOLD START -->
+
+<!-- toppillustrasjon -->
+<IMG width="468" height="1" src="/_img/col_999999.gif"><BR>
+<!-- /toppillustrasjon -->
+
+<!-- toppmeny -->
+<table border="0" cellpadding="3" cellspacing="0" width="100%"><tr>
+    <td width="7"><IMG width="7" height="1" src="/_img/col_blank.gif"><br>
+    </td><td valign="top" align="right" class="meny"><div align="center"><FONT face="helvetica,arial,sans-serif" size="-2">
+
+
+
+
+<nobr><A href="/fou/english/publisering/publisering.shtml"><FONT color="#333399">Main page</FONT></A> |</nobr>
+
+
+
+
+
+
+
+
+
+
+<nobr>Telektronikk |</nobr>
+
+
+
+
+
+
+
+
+
+
+<nobr><A href="/fou/english/publisering/foupubl.shtml"><FONT color="#333399">R&amp;D publications</FONT></A> |</nobr>
+
+
+
+
+
+
+
+
+
+
+<nobr><A href="/fou/english/publisering/arsbrosjyre.shtml"><FONT color="#333399">Annual Results</FONT></A> |</nobr>
+
+
+
+
+
+
+
+
+
+</font></td>
+    <td width="7"><IMG width="7" height="1" src="/_img/col_blank.gif"><br>
+    </td></tr></table>
+<IMG width="468" height="1" src="/_img/col_999999.gif"><BR>
+<!-- /toppmeny -->
+
+<TABLE border="0" cellspacing="0" cellpadding="10" width="471" bgcolor="#FFFFFF">
+  <TR> 
+    <TD valign="top" width="468"> 
+      <p><font size="+1" face="Arial, Helvetica, sans-serif" color="#CC0000">Guest 
+        editorial</font></p>
+      <p><span lang="EN-US"><font face="Arial" size="3"><i><font size="2">Rolv 
+        Bræk</font></i></font></span> </p>
+      <p><span lang="EN-US"><font face="Arial" size="2">When the CCITT, now ITU-T, 
+        initiated work on specification and programming languages back in 1972, 
+        it was a bold step. At that time software engineering was in its infancy 
+        and the development of communication software very much a pioneering thing. 
+        Every system development involved breaking some new technological ground. 
+        At the same time it was clear that software offered far more possibilities 
+        than mere replacement of electromechanical and electronic solutions. Entirely 
+        new functionality was possible and was therefore gradually introduced 
+        into the systems. This is a well-known pattern from all areas of computing. 
+        But communication systems were not allowed to trade functionality for 
+        quality, as has been so common in other strands of computing. Even as 
+        the complexity was growing beyond bounds, the systems had to satisfy outstanding 
+        requirements to high-performance, reliability and no-break operation. 
+        Therefore, it became essential at an early stage to find ways to master 
+        the quality in the face of growing complexity.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">The 
+        combination of high complexity with high reliability forced the communication 
+        software industry to take a pro-active approach to software quality from 
+        the very beginning. Since communication software always has been embedded 
+        real-time software with a high degree of concurrency, distribution and 
+        heterogeneity, the solutions that were developed attacked these problems 
+        from the very beginning, while they were not yet considered important 
+        in mainstream software engineering.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">The 
+        early techniques developed for software engineering in general, such as 
+        SADT and Structured Analysis/Structured Design, focused on activities 
+        and data-flow. Quite deliberately they did not deal with sequential behaviour, 
+        concurrency and distribution. They emphasised abstraction and human understanding 
+        more than formality. They provided no formal semantics, and therefore 
+        it was not possible to simulate and analyse the system behaviour before 
+        it was implemented. Moreover, the mapping from abstract model to concrete 
+        design was unclear, and the value of abstract models was therefore limited 
+        to the early phases. They had little documentation value for the final 
+        product and were in many cases just thrown away. Apparently, the activity-oriented 
+        approach of those techniques did not deliver all the benefits promised, 
+        not even outside the communication domain.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">Later 
+        developments have focused more on data modelling, and these have been 
+        considerably more successful, especially for data-intensive applications. 
+        In recent years, the trend has been towards object-orientation and more 
+        formality. The Unified Modelling Language, UML, is the latest and most 
+        notable development in this direction. It combines a set of graphical 
+        notations with a partial semantics that makes its meaning more precise. 
+        It has notation for sequential and concurrent behaviours based on StateCharts 
+        that enable a partial simulation of behaviour before it is implemented, 
+        but still it lacks a complete semantics.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">The 
+        techniques developed for communication systems on the other hand, emphasised 
+        formality and dealt explicitly with sequential behaviour and concurrency 
+        from the beginning. All the formal description techniques (FDTs) ESTELLE, 
+        LOTOS and SDL had state transition based semantics that enabled simulation 
+        and analysis to take place before implementation. SDL had the additional 
+        benefit of a graphical notation that supported human comprehension combined 
+        with an underlying finite state machine semantics that could be implemented 
+        effectively. For this reason SDL has been the most successful of the FDTs, 
+        with a good track record from numerous industrial development projects.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">SDL 
+        as a language was object-based already when first recommended in 1976, 
+        and since 1992 it has been a full-fledged object-oriented language. It 
+        has a semantics that supports formal validation and enables complete simulation 
+        to take place before implementation, and also to generate complete and 
+        efficient implementation code automatically. These properties enable development 
+        organisations to move from an implementation oriented development paradigm 
+        to a design oriented development paradigm. In the latter, a system is 
+        documented and maintained primarily using design descriptions and not 
+        by implementation code.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">Contrary 
+        to the popular belief that techniques coming from the communication world 
+        are old fashioned they are still leading edge in the areas of object 
+        and behaviour modelling. When communication systems and information systems 
+        now merge into ICT systems, a corresponding merge of techniques from the 
+        I world and the C worlds is bound to take place. As the software industry 
+        in general moves towards distributed heterogeneous solutions we now see 
+        a convergence towards a similar merge for the software industry at large. 
+        This convergence leads to considerable cross-fertilisation and integration 
+        of previously different disciplines such as control systems, user interfaces 
+        and databases.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">UML 
+         now emerging as a family of languages that is competing with the ITU-T 
+        languages  is developing fast and attracting far more attention than 
+        the ITU-T languages ever did. From a technical point of view, the ITU-T 
+        languages and UML partly overlap and partly complement each other. The 
+        overlap area has been greatly extended by introducing into SDL-2000 notation 
+        from UML Class Diagrams and by introducing the notion of composite states 
+        from UML State Machines/State-Charts. It is now possible to define associations 
+        between types and also partially to define types using (parts of) the 
+        UML Class diagram notation within SDL. On the other hand, SDL complements 
+        UML by providing a complete operational semantics and the possibility 
+        to precisely define the component structure of aggregate types. MSC complements 
+        UML by providing structuring mechanisms entirely missing in the UML sequence 
+        diagrams and collaboration diagrams.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">This 
+        issue of Telektronikk is about the family of languages currently standardised 
+        by ITU-T, and related methods, tools and middleware. The ITU-T language 
+        family presently consists of:</font></span></p>
+      <ul>
+        <li> 
+          <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">The 
+            Specification and Description Language, SDL. The new version of SDL, 
+            called SDL-2000, is a major revision and is presented for the first 
+            time in a popular form in the article by Rick Reed. Rick Reed also 
+            presents the history of SDL in an accompanying article.</font></span> 
+        </li>
+        <li> 
+          <p class="MsoNormal" style="margin-top: 10; margin-bottom: 10"><span lang="EN-US"><font face="Arial" size="2">Message 
+            Sequence Charts, MSC, which are used to describe external behaviour 
+            properties by means of interaction cases. MSC provide a useful complement 
+            to SDL and is used both as input when making SDL descriptions and 
+            as specification when performing verification and testing. Øystein 
+            Haugen presents the latest developments of MSC in the article MSC-2000: 
+            interacting with the future.</font></span> 
+        </li>
+        <li> 
+          <p class="MsoNormal" style="margin-top: 10; margin-bottom: 10"><span lang="EN-US"><font face="Arial" size="2">The 
+            Abstract Syntax Notation One (ASN.1) is used to describe data structures, 
+            especially in connection with protocols. In combination with encoding 
+            rules for the physical transfer of data, ASN.1 is much used in protocol 
+            development, and may also be combined with SDL. Colin Willcock describes 
+            ASN.1 in his article.</font></span> 
+        </li>
+        <li> 
+          <p class="MsoNormal" style="margin-top: 10; margin-bottom: 10"><span lang="EN-US"><font face="Arial" size="2">The 
+            Tree and Tabular Combined Notation, TTCN, which is used to describe 
+            test cases. TTCN may be generated from SDL and MSC. Ina Schieferdecker 
+            and Jens Grabowski describe TTCN in their article.</font></span> 
+        </li>
+        <li> 
+          <p class="MsoNormal" style="margin-top: 10; margin-bottom: 10"><span lang="EN-US"><font face="Arial" size="2">CHILL 
+             the CCITT HIgh Level (programming) Language. CHILL is an advanced 
+            programming language that supports concurrent processes. It has been 
+            adopted by many major telecom manufacturers and used successfully 
+            to develop a wide range of complex systems. CHILL is described in 
+            the article by Jürgen Winkler.</font></span> 
+        </li>
+        <li> 
+          <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">The 
+            Object Definition Language, ODL, which is an extension of the Interface 
+            Definition Language, IDL, known from CORBA. ODL is introduced in the 
+            paper by Joachim Fischer and Marc Born.</font></span> 
+        </li>
+      </ul>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">A mapping 
+        between SDL and UML has been defined in the ITU-T recommendation Z.109, 
+        SDL combined with UML, which is elaborated in the article by Birger Møller-Pedersen. 
+        This mapping allows developers and tools to put leverage on the strengths 
+        of both languages by facilitating a combined use.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">The 
+        article by Rolv Bræk and Arve Meisingset presents an overview of the language 
+        features of SDL-2000, MSC-2000 and UML. The purpose is to give readers 
+        that are unfamiliar with these languages a first introduction, and also 
+        a feeling for their main content as a background for the more detailed 
+        articles that follow. Readers with a basic knowledge of the languages, 
+        who are more interested in the new features, should move directly to the 
+        specialist articles.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">One 
+        important asset of the ITU-T languages, especially SDL, has been its formally 
+        defined semantics. Principles for defining formal semantics are presented 
+        in the paper by Andreas Prinz, using examples from SDL and MSC as illustration.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">It is 
+        a common misunderstanding that formal language and formal method is the 
+        same thing, but it is not. Methods are concerned with how to use the languages 
+        to achieve better results. Several methods have been introduced that are 
+        based on the ITU-T languages and UML. The article by Rolv Bræk presents 
+        some general methodology issues for using the ITU-T languages and UML. 
+        The article by Steve Randall presents specific guidelines for formal use 
+        of SDL in development, e.g. of ETSI standards, and Anthony Wiles and Milan 
+        Zoric report on their experiences from the application of these guidelines 
+        in the development of the Hiperlan standards.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">One 
+        strongpoint of the ITU-T languages is that abstraction, using concepts 
+        suitable for human comprehension, is combined with semantics suitable 
+        both for extensive tool support and efficient implementation. Extensive 
+        tool support for validation and testing is one of the benefits that result 
+        from this. The article by Dieter Hogrefe, Beat Koch and Helmuth Neukirchen 
+        introduces the general principles of validation and testing. The possibility 
+        to derive efficient implementations is another benefit elaborated in the 
+        article by Richard Sanders.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">Two 
+        commercial sets of tools that support the ITU-T languages in combination 
+        with UML are presented in two separate articles. Anders Olsen and Finn 
+        Kristoffersen present the Cinderella tools, while Philippe Leblanc, Thomas 
+        Hjelm and Anders Ek present the Telelogic tools.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">Middleware 
+        is an important area where communication and general computing converge. 
+        The article by Anastasius Gavras outlines the needs for distributed platforms 
+        for telecommunication applications.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">Amardeo 
+        Sarma presents perspectives on future standardisation in the areas covered 
+        by this issue of Telektronikk in his article.</font></span></p>
+      <p class="MsoNormal"><span lang="EN-US"><font face="Arial" size="2">The 
+        idea behind the feature section was very ambitious. A lot of internationally 
+        acknowledged specialists have been involved. I would like to express special 
+        thanks to Arve Meisingset for all his co-editing work throughout this 
+        process. To my knowledge, this is the first time that all the ITU-T languages 
+        with associated topics have been presented in one place. Enjoy!</font></span> 
+      </p>
+      <p><font face="Arial, Helvetica, sans-serif" size="-1"><a href="/fou/english/publisering/telektronikk.shtml">Back 
+        to the main page</a></font><a href="/publikasjoner/telektronikk.shtml"><font size="-1"><font face="helvetica,arial,sans-serif"></font></font></a></p>
+      </TD>
+  </TR></TABLE>
+
+</TD>
+<TD bgcolor="#999999"><IMG width="1" height="1" src="/_img/col_blank.gif"></TD>
+</TR>
+</TABLE>
+<!-- /innholdsfelt -->
+
+</TD></TR></TABLE>
+<!-- /HOVEDFELT -->
+
+<!-- BUNNFELT SNARVEIER -->
+<TABLE border="0" cellspacing="0" cellpadding="0" width="620">
+<TR>
+<TD width="150" valign="bottom">&nbsp;</TD>
+<TD bgcolor="#333399" width="10">&nbsp;</TD>
+<TD bgcolor="#333399" width="450" align="center" valign="middle" class="meny" style="color:#FFFFFF">
+<!-- snarveier -->
+<FONT color="#FFFFFF" face="arial,helvetica,sans-serif" size="-2">
+<b>G&aring; direkte til:</b>
+<A href="http://telenormobil.no/"><FONT color="#FFFFFF">Mobiltelefoni </FONT></A>
+|
+<A href="http://telenormobil.no/bedrift/index.jsp"><FONT color="#FFFFFF">Mobile Bedr.l&oslash;sninger </FONT></A>
+|
+<nobr>
+<A href="/smartphone/"><FONT color="#FFFFFF">Smartphone </FONT></A>
+|
+<A href="http://www.telenor.no/vipnett/"><FONT color="#FFFFFF">VIP Nett </FONT></A>
+|
+<A href="http://epostleser.online.no/"><FONT color="#FFFFFF">Epostleser </FONT></A>
+</nobr>
+</FONT>
+<!-- /snarveier -->
+
+</TD>
+<TD bgcolor="#333399" width="10">&nbsp;</TD>
+</TR>
+</TABLE>
+<!-- /BUNNFELT SNARVEIER -->
+
+<!-- BUNNFELT TEKST -->
+<TABLE border="0" cellspacing="0" cellpadding="0" width="620">
+<TR>
+<TD width="152">&nbsp;</TD>
+<TD bgcolor="#CCCCCC" valign="bottom" width="8"><IMG width="8" height="17" src="/_img/bunnting_venstre.gif"></TD>
+<TD bgcolor="#CCCCCC" align="center" valign="middle" width="448">
+<!-- bunntekst -->
+
+
+<FONT face="arial,helvetica,sans-serif" size="-2">
+
+<NOBR>Siden sist oppdatert: 02.08.2001.</NOBR>
+
+<NOBR>Ansvarlig: <A href="/om/konsern/">Telenor</A>.</NOBR>
+<NOBR><A href="/om/kontakt/">Gi oss tilbakemelding!</A></NOBR>
+</FONT>
+<!-- /bunntekst -->
+
+</TD>
+<TD bgcolor="#CCCCCC" valign="bottom" width="8"><IMG width="8" height="17" src="/_img/bunnting_hoyre.gif"></TD>
+<TD width="2"></TD>
+</TR>
+<TR>
+<TD width="152" class="meny"><A href="#top"><FONT color="#666666" face="arial,helvetica,sans-serif" size="-2">^ Til toppen av siden<BR></FONT></A></TD>
+<TD colspan="4" align="right">
+<FONT color="#666666" face="arial,helvetica,sans-serif" size="-2">
+<a target="_new" style="text-decoration: none;" href="http://www.iconmedialab.no/"><FONT color="#eeeeee">Produsert av Icon Medialab /</font></a> 
+&copy; Telenor 2000 
+&nbsp;&nbsp;
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<!-- BUNNFELT TEKST -->
+
+
+</BODY>
+</HTML><!-- INNHOLD SLUTT -->

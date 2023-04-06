@@ -1,0 +1,29 @@
+Genre-KI-04
+===========
+
+Related Publication
+-------------------
+- [DOI](http://dx.doi.org/10.1007/978-3-540-30221-6_20)
+- [PDF](http://www.webis.de/publications/papers/stein_2004c.pdf)
+- [BIB](http://www.webis.de/publications/bibentries.php?bibkey=stein_2004c.bib)
+
+Genres
+------
+(1) *Help*
+  All pages that provide assistance, e.g. Question and Answers or FAQ pages.
+(2) *Article*
+  Documents with longer passages of text, such as research articles, reviews, technical reports, or book chapters.
+(3) *Discussion*
+  All pages that provide forums, mailing lists or discussion boards.
+(4) *Shop*
+  All kinds of pages whose main purpose is product information or sale.
+(5) *Portrayal (non private)*
+  Web appearances of companies, universities, and other public institutions.
+  I.e., home or entry or portal pages, descriptions of organization and mission, annual reports, brochures, contact information, etc.
+(6) *Portrayal (private)*
+  Private self-portrayals, i.e., typical private homepages with informal content.
+(7) *Link Collection*
+  Documents which consists of link lists for the main part.
+(8) *Download*
+  Pages on which freeware, shareware, demo versions of programs etc. can be downloaded.
+
