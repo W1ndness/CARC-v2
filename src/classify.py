@@ -3,8 +3,10 @@ from clftools.datasets import load
 from clftools.models.encoder.bert import BertEncoder
 from clftools.models.encoder.fastnlp import FastNLPEncoder
 from clftools.models.encoder.glove import GloVeEncoder
-from clftools.models.encoder.gensim import GensimEncoder
 from sklearn.svm import SVC
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 
 def classify(clf: Classifier,
              encoding_method: str,
@@ -32,15 +34,15 @@ def classify(clf: Classifier,
                                        preprocessing_func=func)
     text_of_webpages = [page.get_all_texts() for page in webpages]
     print("Webpage fetching and class <Webpage> instance initializing succeed.")
+
     # encoding
     supported_encoding_method = ['bert',
                                  'fastnlp-static', 'fastnlp-bert',
-                                 'glove',
-                                 'gensim']
+                                 'glove']
     if encoding_method not in supported_encoding_method:
         raise ValueError(encoding_method, f'{encoding_method} is not supported')
     if encoding_method == 'bert':
-        encoder = BertEncoder()
+        encoder = BertEncoder(model_name_or_path='/Users/macbookpro/PycharmProjects/CARC-v2/clftools/models/encoder/bert-cache/bert-base-chinese')
         text_embedding_of_webpages = [encoder.embedding(text) for text in text_of_webpages]
     elif encoding_method == 'glove':
         encoder = GloVeEncoder()
@@ -51,18 +53,30 @@ def classify(clf: Classifier,
             if 'embed_size' not in kwargs:
                 raise ValueError("Using fastnlp-static embedding, missing argument \'embed_size\'")
             text_embedding_of_webpages = [encoder.static_embed(text,
+                                                               # model_name='/Users/macbookpro/PycharmProjects/CARC-v2/clftools/models/encoder/bert-cache/bert-base-chinese',
                                                                kwargs['embed_size']) for text in text_of_webpages]
         elif encoding_method.endswith('bert'):
             text_embedding_of_webpages = [encoder.bert_embed(text) for text in text_of_webpages]
-    elif 'gensim' in encoding_method:
-        encoder = GensimEncoder()
     print("Encoding texts from webpages succeed.")
-    print(text_embedding_of_webpages[0])
+    # print(type(text_embedding_of_webpages[0]))
+
     # classification
+    X = np.array(text_embedding_of_webpages)
+    y = load.load_labels(base_dir=data_dir, endswith_html=kwargs['endswith_html'])
+    print("Loading labels succeed.")
+    y = LabelEncoder().fit_transform(y)
+    train_size = kwargs['train_size'] if 'train_size' in kwargs else 0.7
+    test_size = kwargs['test_size'] if 'test_size' in kwargs else 0.2
+    X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                                        train_size=train_size, test_size=test_size,
+                                                        random_state=42)
+    clf.fit(X_train, y_train, X_test, y_test)
+
+
 
 if __name__ == '__main__':
-    clf = SVC()
-    classify(clf, encoding_method='bert', keyword='nlp')
-
-
-
+    model = SVC()
+    clf = SklearnClassifier(model, labels=['1', '2'], model_name='SVCclf')
+    classify(clf, encoding_method='bert',
+             data_dir='/Users/macbookpro/PycharmProjects/CARC-v2/test/datasets/ki-04',
+             endswith_html=True)

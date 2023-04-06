@@ -20,7 +20,7 @@ class Classifier(metaclass=ABCMeta):
         self.model_name = model_name
 
     @abstractmethod
-    def fit(self, X_train, y_train, X_test=None, y_test=None):
+    def fit(self, X_train, y_train, X_test, y_test):
         pass
 
     @abstractmethod
@@ -34,10 +34,18 @@ class Classifier(metaclass=ABCMeta):
 
 class SklearnClassifier(Classifier):
     def __init__(self, model: sklearn.base.ClassifierMixin, labels, model_name):
+        """
+        Init method for a sklearn-based classifier
+        :param model: a sklearn-based classifier
+        :param labels: labels for classification
+        :param model_name: the name of the classifier, hopes to be unique
+        """
         super().__init__('sklearn', model, labels, model_name)
 
-    def fit(self, X_train, y_train, X_test=None, y_test=None):
+    def fit(self, X_train, y_train, X_test, y_test):
         self.model.fit(X_train, y_train)
+        print("Score on train samples:", self.score(X_train, y_train))
+        print("Score on test samples:", self.score(X_test, y_test))
 
     def predict(self, X):
         return self.model.predict(X)
@@ -54,6 +62,19 @@ class TorchClassifier(Classifier):  # @save
                  criterion: torch.nn.modules.loss._Loss,
                  optimizer: torch.optim.Optimizer,
                  batch_size: int):
+        """
+        Init method for a torch-based classifier
+        :param model: a torch-based classifier, usually as MLP
+        :param labels: labels for classification
+        :param model_name: the name of the classifier, hopes to be unique
+        :param dataset_class: the class wrapping the data(usually as np.ndarray)
+        This argument firstly designed for BERT embedding. Normally, the value is torch.TensorDataset,
+        but clftools.datasets.bert.BertDataset for BERT. You can set another class for your data.
+        :param num_epochs: the number of epochs for training
+        :param criterion: usually called loss function
+        :param optimizer: the optimizer for net
+        :param batch_size: training batch size
+        """
         super().__init__('torch', model, labels, model_name)
         self.dataset_class = dataset_class
         self.num_epochs = num_epochs
@@ -116,7 +137,7 @@ class TorchClassifier(Classifier):  # @save
         if type(m) in [torch.nn.Linear, torch.nn.Conv2d]:
             torch.nn.init.xavier_uniform_(m.weight)
 
-    def fit(self, X_train, y_train, X_test=None, y_test=None):
+    def fit(self, X_train, y_train, X_test, y_test):
         self.model.apply(TorchClassifier.init_weights)
         train_iter = DataLoader(self.dataset_class(X_train, y_train))
         test_iter = DataLoader(self.dataset_class(X_test, y_test))
