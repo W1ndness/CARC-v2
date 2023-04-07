@@ -1,5 +1,6 @@
 from torch import nn
 from torchsummary import summary
+from torch.nn import functional as F
 
 
 class MLPClassifier(nn.Module):
@@ -14,10 +15,10 @@ class MLPClassifier(nn.Module):
             self.net.add_module(f"Linear Layer {idx + 1}", nn.Linear(*layer))
             if dropout:
                 self.net.add_module(f"Dropout Layer {idx + 1}", nn.Dropout())
-            self.net.add_module(f"ReLU Layer", nn.ReLU())
+            self.net.add_module(f"ReLU Layer {idx + 1}", nn.ReLU())
         self.net.add_module(f"Linear Layer {len(layers)}",
                             nn.Linear(*layers[-1]))
-        # self.net.add_module(f"Softmax Layer", nn.Softmax(num_classes))
+        # self.net.add_module(f"Softmax Layer", nn.Softmax())
         print("====== MLP Classifier Network Architecture ======")
         print(self.net)
         print("=================================================")

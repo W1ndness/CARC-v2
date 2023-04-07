@@ -9,6 +9,7 @@ from abc import abstractmethod
 
 import sklearn.base
 import torch.nn
+import joblib
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 import numpy as np
@@ -46,11 +47,13 @@ class SklearnClassifier(Classifier):
         :param model_name: the name of the classifier, hopes to be unique
         """
         super().__init__('sklearn', model, labels, model_name)
+        self.model_path = f'{self.model_name}_model.pth'
 
     def fit(self, X_train, y_train, X_test, y_test):
         self.model.fit(X_train, y_train)
         print("Score on train samples:", self.score(X_train, y_train))
         print("Score on test samples:", self.score(X_test, y_test))
+        joblib.dump(self.model, self.model_path)
 
     def predict(self, X):
         return self.model.predict(X)
@@ -132,6 +135,7 @@ class TorchClassifier(Classifier):  # @save
                                   None))
             test_acc = d2l.evaluate_accuracy_gpu(model, test_iter)
             animator.add(epoch + 1, (None, None, test_acc))
+        animator.fig.show()
         print(f'loss {metric[0] / metric[2]:.3f}, train acc '
               f'{metric[1] / metric[3]:.3f}, test acc {test_acc:.3f}')
         print(f'{metric[2] * num_epochs / timer.sum():.1f} examples/sec on '

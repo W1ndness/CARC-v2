@@ -9,6 +9,7 @@ from lxml import etree
 from lxml.html.clean import Cleaner
 import networkx as nx
 import matplotlib.pyplot as plt
+from selectolax.parser import HTMLParser
 
 
 class Webpage:
@@ -61,7 +62,15 @@ class Webpage:
         return requests.get(url=self.url, headers=self.headers)
 
     def get_all_texts(self) -> str:
-        all_texts = self.soup.get_text()
+        tree = HTMLParser(self.html)
+        _display_none_regex = re.compile(r'display:\s*none')
+        for tag in tree.css('div.warning, div.hidden'):
+            tag.decompose()
+        for tag in tree.css('div[style]'):
+            style_value = tag.attributes['style']
+            if style_value and _display_none_regex.search(style_value):
+                tag.decompose()
+        all_texts = tree.body.text(separator=' ')
         all_texts = Webpage.clean_spaces(all_texts)
         self.all_texts = all_texts
         return all_texts
