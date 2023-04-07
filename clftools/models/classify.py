@@ -1,4 +1,9 @@
+import os
+import sys
 import os.path
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
+
 from abc import ABCMeta
 from abc import abstractmethod
 
@@ -139,8 +144,16 @@ class TorchClassifier(Classifier):  # @save
 
     def fit(self, X_train, y_train, X_test, y_test):
         self.model.apply(TorchClassifier.init_weights)
-        train_iter = DataLoader(self.dataset_class(X_train, y_train))
-        test_iter = DataLoader(self.dataset_class(X_test, y_test))
+        print("====== Data Shape ======")
+        print("X_train shape:", X_train.shape)
+        print("y_train shape:", y_train.shape)
+        print("X_test shape:", X_test.shape)
+        print("y_train shape", y_test.shape)
+        print("========================")
+        X_train, y_train = torch.from_numpy(X_train), torch.from_numpy(y_train)
+        X_test, y_test = torch.from_numpy(X_test), torch.from_numpy(y_test)
+        train_iter = DataLoader(self.dataset_class(X_train, y_train), batch_size=self.batch_size)
+        test_iter = DataLoader(self.dataset_class(X_test, y_test), batch_size=self.batch_size)
         TorchClassifier.__train(self.model,
                                 train_iter, test_iter,
                                 self.criterion,

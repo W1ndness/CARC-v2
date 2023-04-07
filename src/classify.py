@@ -1,3 +1,8 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
+
 import multiprocessing
 
 from clftools.models.classify import Classifier, SklearnClassifier, TorchClassifier
@@ -6,6 +11,7 @@ from clftools.models.encoder.bert import BertEncoder
 from clftools.models.encoder.fastnlp import FastNLPEncoder
 from clftools.models.encoder.glove import GloVeEncoder
 from clftools import constants
+from clftools.models.classifier.mlpcls import MLPClassifier
 
 from sklearn.svm import SVC
 import numpy as np
@@ -14,6 +20,11 @@ from sklearn.preprocessing import LabelEncoder
 from tqdm import tqdm
 from joblib import Parallel, delayed
 from joblib.externals.loky import set_loky_pickler
+
+import torch
+from torch.utils.data import TensorDataset
+from torch import nn
+from torch.optim import Adam
 
 set_loky_pickler("dill")
 
@@ -64,7 +75,7 @@ def classify(clf: Classifier,
                                               backend="threading",
                                               verbose=2,
                                               batch_size='auto',
-                                              pre_dispatch='2*n_jobs')(embed_work(text) for text in text_of_webpages)
+                                              pre_dispatch='2*n_jobs')(delayed(embed_work)(text) for text in text_of_webpages)
     elif encoding_method == 'glove':
         encoder = GloVeEncoder()
 
@@ -75,7 +86,7 @@ def classify(clf: Classifier,
                                               backend="threading",
                                               verbose=2,
                                               batch_size='auto',
-                                              pre_dispatch='2*n_jobs')(embed_work(text) for text in text_of_webpages)
+                                              pre_dispatch='2*n_jobs')(delayed(embed_work)(text) for text in text_of_webpages)
     elif 'fastnlp' in encoding_method:
         encoder = FastNLPEncoder()
         if encoding_method.endswith('static'):
@@ -93,7 +104,8 @@ def classify(clf: Classifier,
     X = np.array(text_embedding_of_webpages)
     y = load.load_labels(base_dir=data_dir, endswith_html=kwargs['endswith_html'])
     print("Loading labels succeed.")
-    y = LabelEncoder().fit_transform(y)
+    label_enc = LabelEncoder()
+    y = label_enc.fit_transform(y)
     train_size = kwargs['train_size'] if 'train_size' in kwargs else 0.7
     test_size = kwargs['test_size'] if 'test_size' in kwargs else 0.2
     X_train, X_test, y_train, y_test = train_test_split(X, y,
@@ -103,8 +115,21 @@ def classify(clf: Classifier,
 
 
 if __name__ == '__main__':
-    model = SVC()
-    clf = SklearnClassifier(model, labels=['1', '2'], model_name='SVCclf')
+    # model = SVC()
+    # clf = SklearnClassifier(model, labels=['1', '2'], model_name='SVCclf')
+
+    y = load.load_labels(base_dir='/Users/macbookpro/PycharmProjects/CARC-v2/test/datasets/ki-04',
+                         endswith_html=True)
+    label_enc = LabelEncoder()
+    y = label_enc.fit_transform(y)
+    num_classes = len(label_enc.classes_)
+    model = MLPClassifier(768, num_classes, [(768, num_classes)])
+    opt = Adam(params=model.parameters(), lr=1e-3)
+    clf = TorchClassifier(model, ['1', '2'], 'mlpcls',
+                          TensorDataset,
+                          10,
+                          nn.CrossEntropyLoss(), opt,
+                          batch_size=24)
     classify(clf, encoding_method='bert',
              data_dir='/Users/macbookpro/PycharmProjects/CARC-v2/test/datasets/ki-04',
              endswith_html=True)
